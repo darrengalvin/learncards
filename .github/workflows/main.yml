@@ -1,0 +1,34 @@
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: yourcaio-c75b4
+  BUCKET: gs://sitebackupcaioplatform
+
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+
+    - name: Authenticate with Google Cloud
+      uses: google-github-actions/auth@v0.4.0
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        
+    - name: Set GCP Project
+      run: gcloud config set project ${{ env.PROJECT_ID }}
+    
+    - name: Export Firestore Data
+      run: gcloud firestore export ${{ env.BUCKET }}
+
+
+
