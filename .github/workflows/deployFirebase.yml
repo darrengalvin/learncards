@@ -30,31 +30,6 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Generate firebase.json
-        run: |
-          echo '{
-            "hosting": {
-              "public": "build/web",
-              "ignore": [
-                "firebase.json",
-                "**/.*",
-                "**/node_modules/**"
-              ],
-              "rewrites": [
-                {
-                  "source": "**",
-                  "destination": "/index.html"
-                }
-              ],
-              "redirects": [
-                {
-                  "source": "/",
-                  "destination": "/library?companiesDoc=0fXG0CVY9h92MABM",
-                  "type": 301
-                }
-              ]
-            }
-          }' > firebase.json
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
         
