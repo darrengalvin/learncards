@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>506919437259-1cufiff9694hfrhgc5v1h4dkhsecoja0.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD-IaQbeCOkrHYUs2Uo0xNt3Y0RpAq5juE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>506919437259</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.goappy.learncards</string>
+	<key>PROJECT_ID</key>
+	<string>yourcaio-c75b4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>yourcaio-c75b4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:506919437259:ios:49ea433cb42889b2256c4e</string>
+	<key>DATABASE_URL</key>
+	<string>https://yourcaio-c75b4-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
