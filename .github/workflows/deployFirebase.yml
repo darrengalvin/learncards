@@ -31,21 +31,25 @@ jobs:
       - name: Create firebase.json
         run: |
           echo '{
-            "hosting": {
-              "public": "build/web",
-              "ignore": [
-                "firebase.json",
-                "**/.*",
-                "**/node_modules/**"
-              ],
-              "rewrites": [
-                {
-                  "source": "**",
-                  "destination": "/index.html"
-                }
-              ]
-            }
-          }' > firebase.json
+           {
+          "hosting": {
+            "public": "build/web",
+            "ignore": [
+              "firebase.json",
+              "**/.*",
+              "**/node_modules/**"
+            ],
+            "rewrites": [
+              {
+                "source": "/",  // Assuming you want the root path to trigger the Cloud Function
+                "function": "redirectUrl"  // Name of your Cloud Function
+              },
+              {
+                "source": "**",
+                "destination": "/index.html"  // Catch-all for SPA routing
+              }
+            ]
+          }
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
