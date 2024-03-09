@@ -21,6 +21,7 @@ jobs:
       - name: Update intl package version
         run: |
           sed -i 's/intl: 0.18.0/intl: ^0.18.1/' pubspec.yaml
+
       - name: Upgrade Dependencies
         run: flutter pub upgrade
 
@@ -43,21 +44,13 @@ jobs:
               "rewrites": [
                 {
                   "source": "**",
-                  "destination": "/index.html"
-                }
-              ],
-              "redirects": [
-                {
-                  "source": "/",
-                  "destination": "/library?companiesDoc=0fXG0CVY9h92MABM-MANUAL",
-                  "type": 301
+                  "function": "redirectUrl"
                 }
               ]
             }
           }' > firebase.json
+
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
-
-        
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
