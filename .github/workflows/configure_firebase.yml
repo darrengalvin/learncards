@@ -33,26 +33,20 @@ jobs:
       - name: Generate firebase.json
         run: |
           echo '{
-            "hosting": {
-              "public": "build/web",
-              "ignore": [
-                "firebase.json",
-                "**/.*",
-                "**/node_modules/**"
-              ],
-              "rewrites": [
-                {
-                  "source": "**",
-                  "destination": "/index.html"
-                }
-              ],
-              "redirects": [
-                {
-                  "source": "/",
-                  "destination": "/library?companiesDoc=deployed-from-git-configure",
-                  "type": 301
-                }
-              ]
+              "hosting": {
+                "public": "build/web",
+                "ignore": [
+                  "firebase.json",
+                  "**/.*",
+                  "**/node_modules/**"
+                ],
+                "rewrites": [
+                  {
+                    "source": "**",
+                    "function": "redirectUrl"
+                  }
+                ]
+              }
             }
           }' > firebase.json
       - name: Deploy to Firebase
