@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-firebase:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
@@ -27,6 +27,16 @@ jobs:
         run: firebase login:ci --token ${{ secrets.FIREBASE_TOKEN }}
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.email "149120692+darrengalvin@users.noreply.github.com "
+          git config --global user.name "darrengalvin"
+          git add firebase.json
+          git commit -m "Update firebase.json via GitHub Actions" || echo "No changes to commit"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push origin HEAD:${{ github.ref }}
+
 
       - name: Deploy Hosting and Cloud Functions
         run: |
