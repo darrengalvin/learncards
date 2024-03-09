@@ -52,6 +52,15 @@ jobs:
           }" > firebase.json
         working-directory: .  # This sets the working directory to the project root
 
+      - name: Commit firebase.json
+        run: |
+          git config --global user.name 'darrengalvin'
+          git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
+          git add firebase.json
+          git commit -m "Add firebase.json via CI"
+          git push
+
+
       - name: List files in root
         run: ls -la
         working-directory: .  # Adjust if necessary to target the intended directory
