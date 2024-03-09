@@ -50,7 +50,12 @@ jobs:
               ]
             }
           }" > firebase.json
+        working-directory: .  # This sets the working directory to the project root
 
+      - name: List files in root
+        run: ls -la
+        working-directory: .  # Adjust if necessary to target the intended directory
+      
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
