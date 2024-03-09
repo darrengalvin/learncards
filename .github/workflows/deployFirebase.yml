@@ -34,22 +34,22 @@ jobs:
       - name: Generate firebase.json
         run: |
           echo '{
-          "hosting": {
-            "public": "build/web",
-            "ignore": [
-              "firebase.json",
-              "**/.*",
-              "**/node_modules/**"
-            ],
-            "rewrites": [
-              {
-                "source": "**",
-                "function": "redirectUrl"
-              }
-            ]
-          }
-        }
-        ' > firebase.json
+            "hosting": {
+              "public": "build/web",
+              "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+              ],
+              "rewrites": [
+                {
+                  "source": "**",
+                  "function": "redirectUrl"
+                }
+              ]
+            }
+          }' > firebase.json
+
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
