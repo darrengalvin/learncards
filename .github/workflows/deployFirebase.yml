@@ -56,7 +56,7 @@ jobs:
             }
           }' > firebase.json
       - name: Deploy to Firebase
-        run: firebase deploy --only hosting --project mabm2-9fd43 --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
 
         
         env:
