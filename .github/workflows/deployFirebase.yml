@@ -19,7 +19,9 @@ jobs:
         uses: subosito/flutter-action@v1
 
       - name: Update intl package version
-        run: sed -i 's/intl: 0.18.0/intl: ^0.18.1/' pubspec.yaml
+        run: |
+          sed -i 's/intl: 0.18.0/intl: ^0.18.1/' pubspec.yaml
+
 
       - name: Upgrade Dependencies
         run: flutter pub upgrade
@@ -42,12 +44,8 @@ jobs:
               ],
               "rewrites": [
                 {
-                  "source": "/",
-                  "function": "redirectUrl"
-                },
-                {
                   "source": "**",
-                  "destination": "/index.html"
+                  "function": "redirectUrl"
                 }
               ]
             }
