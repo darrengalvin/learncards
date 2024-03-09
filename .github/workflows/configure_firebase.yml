@@ -1,0 +1,41 @@
+name: Deploy Firebase Configurations
+
+on:
+  push:
+    branches:
+      - manuallyPushed
+      - main
+      - flutterflow
+  workflow_dispatch:
+
+jobs:
+  deploy-firebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Authenticate with Firebase
+        run: firebase login:ci --token ${{ secrets.FIREBASE_TOKEN }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy Hosting and Cloud Functions
+        run: |
+          echo "Deploying to Firebase..."
+          firebase deploy --only hosting,functions --project yourcaio-c75b4
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Post-deployment Log
+        run: |
+          echo "Deployment to Firebase completed successfully."
