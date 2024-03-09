@@ -49,9 +49,8 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add firebase.json
           git diff --staged --quiet || git commit -m "Update firebase.json via GitHub Actions"
-          git push origin HEAD:${{ github.ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git -c http.extraHeader="AUTHORIZATION: bearer ${{ secrets.GITHUB_TOKEN }}" push origin HEAD:${{ github.ref }}
+
 
       - name: Deploy Hosting and Cloud Functions
         run: |
