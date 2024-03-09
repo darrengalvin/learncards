@@ -7,7 +7,6 @@ on:
       - main
       - manuallyPushed  # Include this line to trigger the workflow on changes to this branch
 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,10 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Flutter
+      - name: Setup Flutter (Use latest stable version)
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '3.13.0'  # Using Flutter version 3.13.0
+          flutter-version: 'stable'  # This automatically selects the latest stable version of Flutter
 
       - name: Update intl package version
         run: |
