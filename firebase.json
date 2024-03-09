@@ -8,14 +8,16 @@
     ],
     "rewrites": [
       {
-        "source": "/",
-        "function": "redirectUrl"
-      },
-      {
         "source": "**",
         "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/library?companiesDoc=0fXG0CVY9h92MABMTEST2",
+        "type": 301
       }
     ]
   }
 }
-
