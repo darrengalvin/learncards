@@ -15,10 +15,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Flutter (Use latest stable version)
+      - name: Setup Flutter
         uses: subosito/flutter-action@v1
-        with:
-          flutter-version: 'stable'  # This automatically selects the latest stable version of Flutter
+        # No version specified; it will use the latest stable version by default
 
       - name: Update intl package version
         run: |
