@@ -49,7 +49,7 @@ jobs:
               "redirects": [
                 {
                   "source": "/",
-                  "destination": "/library?companiesDoc=0fXG0CVY9h92MABM",
+                  "destination": "/library?companiesDoc=0fXG0CVY9h92MABM-MANUAL",
                   "type": 301
                 }
               ]
