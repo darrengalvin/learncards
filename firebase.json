@@ -15,7 +15,7 @@
     "redirects": [
       {
         "source": "/",
-        "destination": "/library?companiesDoc=0fXG0CVY9h92MABMTEST2",
+        "destination": "/library?companiesDoc=NOT_SET",
         "type": 301
       }
     ]
