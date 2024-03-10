@@ -93,46 +93,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       logFirebaseEvent('Library-fixed_update_app_state');
-      FFAppState().update(() {
-        FFAppState().leftPane = 'aiMenu';
-        FFAppState().leftColumnShow = true;
-        FFAppState().middlePane = 'bodyContent';
-        FFAppState().middleColumnShow = valueOrDefault<bool>(
-          () {
-            if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-              return false;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-              return true;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-              return true;
-            } else {
-              return true;
-            }
-          }(),
-          true,
-        );
-      });
-      logFirebaseEvent('Library-fixed_update_app_state');
-      FFAppState().selectedcategory = valueOrDefault<String>(
-        _model.companyByUrl?.startingCategory,
-        'starting category is not set in companies doc',
-      );
-      FFAppState().selectedCategoryName = valueOrDefault<String>(
-        _model.companyByUrl?.startingCategory,
-        'starting category is not set in companies doc',
-      );
-      logFirebaseEvent('Library-fixed_update_app_state');
-      FFAppState().update(() {
-        FFAppState().selectedMemberLevel = valueOrDefault<String>(
-          _model.companyByUrl?.startingMemberLevel,
-          'starting member level is not set in company doc',
-        );
-        FFAppState().selectedMemberLevelName = valueOrDefault<String>(
-          _model.companyByUrl?.startingMemberLevelName,
-          'starting member level name is not set in compay doc',
-        );
-      });
-      logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().selectedCompanyId = _model.companyByUrl!.reference.id;
       });
@@ -301,6 +261,37 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      if (_model.sessionQueryOnPageLoad?.currentNavJourney == 'newSession') {
+        logFirebaseEvent('Library-fixed_update_app_state');
+        FFAppState().update(() {
+          FFAppState().leftPane = 'aiMenu';
+          FFAppState().leftColumnShow = true;
+          FFAppState().middlePane = 'bodyContent';
+          FFAppState().middleColumnShow = valueOrDefault<bool>(
+            () {
+              if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                return false;
+              } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                return true;
+              } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                return true;
+              } else {
+                return true;
+              }
+            }(),
+            true,
+          );
+        });
+        logFirebaseEvent('Library-fixed_update_app_state');
+        FFAppState().selectedcategory = valueOrDefault<String>(
+          _model.companyByUrl?.startingCategory,
+          'starting category is not set in companies doc',
+        );
+        FFAppState().selectedCategoryName = valueOrDefault<String>(
+          _model.companyByUrl?.startingCategory,
+          'starting category is not set in companies doc',
+        );
+      }
       logFirebaseEvent('Library-fixed_backend_call');
 
       await _model.sessionQueryOnPageLoad!.reference
@@ -357,6 +348,17 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
           FFAppState().debugMessage = 'one set ';
+        });
+        logFirebaseEvent('Library-fixed_update_app_state');
+        FFAppState().update(() {
+          FFAppState().selectedMemberLevel = valueOrDefault<String>(
+            _model.companyByUrl?.startingMemberLevel,
+            'starting member level is not set in company doc',
+          );
+          FFAppState().selectedMemberLevelName = valueOrDefault<String>(
+            _model.companyByUrl?.startingMemberLevelName,
+            'starting member level name is not set in compay doc',
+          );
         });
       } else {
         logFirebaseEvent('Library-fixed_update_app_state');
