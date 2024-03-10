@@ -30,50 +30,48 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-        
+              
       - name: Check if index.html exists
         run: |
           if [ -f web/index.html ]; then
             echo "index.html exists"
-          else
-            echo "index.html does not exist"
           fi
-
-      - name: Add redirect to index.html
+      
+      - name: Add redirect script to index.html
         run: |
           set -x
-          echo "
+          echo '
           <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener("DOMContentLoaded", function() {
               switch (window.location.hostname) {
-                case 'mabm.app':
-                  console.log('Redirecting for mabm.app');
-                  window.location.href = '/library?companiesDoc=0fXG0CVY9h92MABM';
+                case "mabm.app":
+                  console.log("Redirecting for mabm.app");
+                  window.location.href = "/library?companiesDoc=0fXG0CVY9h92MABM";
                   break;
-                case 'journeyforward.app':
-                  console.log('Redirecting for journeyforward.app');
-                  window.location.href = '/library?companiesDoc=0fXG0CVY9h92MjpurneyForward';
+                case "journeyforward.app":
+                  console.log("Redirecting for journeyforward.app");
+                  window.location.href = "/library?companiesDoc=0fXG0CVY9h92MjpurneyForward";
                   break;
                 default:
-                  console.log('Hostname does not match any known hosts');
+                  console.log("Hostname does not match any known hosts");
                   break;
               }
             });
           </script>
-          " >> web/index.html
+          ' >> web/index.html
           ls -l web
           cat web/index.html
-
-          - name: Commit and push if changes
-            run: |
-              set -x
-              git config --global user.name 'github-actions[bot]'
-              git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-              git add -A
-              git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-              git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
-            env:
-              MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+      
+      - name: Commit and push if changes
+        run: |
+          set -x
+          git config --global user.name 'darrengalvin'
+          git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
+          git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
                     
       - name: Deploy to Firebase
