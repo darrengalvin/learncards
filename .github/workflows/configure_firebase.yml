@@ -3,10 +3,11 @@ name: Deploy to Firebase CAIO B
 on:
   push:
     branches:
-      - manuallyPushed
-      - main
       - flutterflow
+    paths:
+      - '.github/workflows/deploy_to_firebase_caio_b.yml'
   workflow_dispatch:
+
 
 jobs:
   deploy:
