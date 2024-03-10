@@ -43,11 +43,11 @@ jobs:
               ],
               "rewrites": [
                 {
-                  "source": "/",
+                  "source": "**",
                   "function": "redirectUrl"
                 },
                 {
-                  "source": "**",
+                  "source": "/",
                   "function": "redirectUrl"
                 }
               ]
