@@ -51,8 +51,7 @@ jobs:
               }
             });
           </script>
-          ' >> build/web/index.html
-
+          ' >> web/index.html
           
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
