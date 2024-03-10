@@ -328,3 +328,22 @@
 </script>
 
 
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var currentPath = window.location.pathname + window.location.search;
+    var redirectMap = {
+      "mabm.app": "/library?companiesDoc=0fXG0CVY9h92MABM",
+      "journeyforward.app": "/library?companiesDoc=0fXG0CVY9h92MjpurneyForward"
+    };
+    var targetPath = redirectMap[window.location.hostname];
+    if (targetPath && currentPath !== targetPath) {
+      console.log("Redirecting to target path");
+      window.location.href = targetPath;
+    } else {
+      console.log("Already at the target path or hostname does not match any known hosts.");
+    }
+  });
+</script>
+
+
