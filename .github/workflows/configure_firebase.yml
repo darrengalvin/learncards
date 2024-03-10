@@ -41,6 +41,7 @@ jobs:
 
       - name: Add redirect to index.html
         run: |
+          set -x
           echo "
           <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -62,18 +63,28 @@ jobs:
           " >> web/index.html
           ls -l web
           cat web/index.html
+      - name: Commit and push if changes
+        run: |
+          set -x
+          git config --global user.name 'darrengalvin'
+          git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
+          git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
 
-           - name: Commit and push if changes
-              run: |
-                git config --global user.name 'darrengalvin'
-                git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
-                git add -A
-                git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-                git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
-              env:
-                MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-                          
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'darrengalvin'
+          git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
+          git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+                    
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
       
