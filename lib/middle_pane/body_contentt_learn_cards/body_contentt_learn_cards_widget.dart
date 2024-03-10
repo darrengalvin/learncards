@@ -385,6 +385,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                         ),
                                                                                                                                         sessionId: widget.sessionId?.reference.id,
                                                                                                                                         companyDocId: widget.companyDoc!.reference.id,
+                                                                                                                                        sessionsDoc: widget.sessionId!,
                                                                                                                                       ),
                                                                                                                                     ),
                                                                                                                                   ),

@@ -106,12 +106,19 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
           children: [
             StreamBuilder<List<TilesRecord>>(
               stream: queryTilesRecord(
-                queryBuilder: (tilesRecord) => tilesRecord.where(
-                  'parent_id',
-                  isEqualTo: FFAppState().viewTileContentId != ''
-                      ? FFAppState().viewTileContentId
-                      : null,
-                ),
+                queryBuilder: (tilesRecord) => tilesRecord
+                    .where(
+                      'parent_id',
+                      isEqualTo: FFAppState().viewTileContentId != ''
+                          ? FFAppState().viewTileContentId
+                          : null,
+                    )
+                    .where(
+                      'companyId',
+                      isEqualTo: widget.companyDoc?.reference.id != ''
+                          ? widget.companyDoc?.reference.id
+                          : null,
+                    ),
               ),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
@@ -479,7 +486,13 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                 StreamBuilder<List<TileblocksRecord>>(
                                   stream: queryTileblocksRecord(
                                     queryBuilder: (tileblocksRecord) =>
-                                        tileblocksRecord.orderBy('id'),
+                                        tileblocksRecord
+                                            .where(
+                                              'companyId',
+                                              isEqualTo: widget
+                                                  .companyDoc?.reference.id,
+                                            )
+                                            .orderBy('id'),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.

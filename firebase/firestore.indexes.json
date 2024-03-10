@@ -263,6 +263,20 @@
       ]
     },
     {
+      "collectionGroup": "tileblocks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "companyId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "id",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "TileBlockItems",
       "queryScope": "COLLECTION",
       "fields": [

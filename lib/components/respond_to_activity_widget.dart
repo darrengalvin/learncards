@@ -16,6 +16,7 @@ class RespondToActivityWidget extends StatefulWidget {
     this.parameter3,
     this.usersEmail,
     required this.companyDocId,
+    required this.sessionsDoc,
   });
 
   final String? learnCardId;
@@ -23,6 +24,7 @@ class RespondToActivityWidget extends StatefulWidget {
   final String? parameter3;
   final String? usersEmail;
   final String? companyDocId;
+  final SessionsRecord? sessionsDoc;
 
   @override
   State<RespondToActivityWidget> createState() =>
@@ -251,7 +253,10 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
 
                         await LearnCardEntriesRecord.collection.doc().set({
                           ...createLearnCardEntriesRecordData(
-                            postedBy: 'demo user',
+                            postedBy: valueOrDefault<String>(
+                              widget.sessionsDoc?.username,
+                              'Visitor',
+                            ),
                             postedTime: getCurrentTimestamp,
                             postDetails: _model.textController.text,
                             associatedLearnCard: valueOrDefault<String>(

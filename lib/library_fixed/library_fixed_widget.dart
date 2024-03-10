@@ -1333,7 +1333,21 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 highlightColor: Colors.transparent,
                                                                                 onTap: () async {
                                                                                   logFirebaseEvent('LIBRARY_FIXED_Column_hqm03hlf_ON_TAP');
-                                                                                  if (_model.sessionQueryOnPageLoad?.currentNavJourney == 'newSession') {
+                                                                                  if (_model.firstTimeMentorChat == true) {
+                                                                                    logFirebaseEvent('Column_firestore_query');
+                                                                                    _model.checkingMentorChat = await querySessionsRecordOnce(
+                                                                                      queryBuilder: (sessionsRecord) => sessionsRecord.where(
+                                                                                        'sessionId',
+                                                                                        isEqualTo: FFAppState().nonLoggedInSessionId,
+                                                                                      ),
+                                                                                      singleRecord: true,
+                                                                                    ).then((s) => s.firstOrNull);
+                                                                                    logFirebaseEvent('Column_update_page_state');
+                                                                                    setState(() {
+                                                                                      _model.firstTimeMentorChat = false;
+                                                                                    });
+                                                                                  }
+                                                                                  if (_model.checkingMentorChat?.currentNavJourney == 'newSession') {
                                                                                     logFirebaseEvent('Column_update_app_state');
                                                                                     setState(() {
                                                                                       FFAppState().tempStreamingMessage = 'You must complete the welcome chat before you can speak to a Mentor.';
@@ -1387,6 +1401,8 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                       },
                                                                                     ).then((value) => safeSetState(() {}));
                                                                                   }
+
+                                                                                  setState(() {});
                                                                                 },
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,

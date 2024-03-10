@@ -181,6 +181,11 @@ class TileblocksRecord extends FirestoreRecord {
   String get tilerefid => _tilerefid ?? '';
   bool hasTilerefid() => _tilerefid != null;
 
+  // "companyId" field.
+  String? _companyId;
+  String get companyId => _companyId ?? '';
+  bool hasCompanyId() => _companyId != null;
+
   void _initializeFields() {
     _tiles = getDataList(snapshotData['tiles']);
     _memberlevel = getDataList(snapshotData['memberlevel']);
@@ -215,6 +220,7 @@ class TileblocksRecord extends FirestoreRecord {
     _hassocialfeed = snapshotData['hassocialfeed'] as bool?;
     _blockId = snapshotData['block_id'] as String?;
     _tilerefid = snapshotData['tilerefid'] as String?;
+    _companyId = snapshotData['companyId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -277,6 +283,7 @@ Map<String, dynamic> createTileblocksRecordData({
   bool? hassocialfeed,
   String? blockId,
   String? tilerefid,
+  String? companyId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -305,6 +312,7 @@ Map<String, dynamic> createTileblocksRecordData({
       'hassocialfeed': hassocialfeed,
       'block_id': blockId,
       'tilerefid': tilerefid,
+      'companyId': companyId,
     }.withoutNulls,
   );
 
@@ -349,7 +357,8 @@ class TileblocksRecordDocumentEquality implements Equality<TileblocksRecord> {
         listEquality.equals(e1?.tileWithinTileRef, e2?.tileWithinTileRef) &&
         e1?.hassocialfeed == e2?.hassocialfeed &&
         e1?.blockId == e2?.blockId &&
-        e1?.tilerefid == e2?.tilerefid;
+        e1?.tilerefid == e2?.tilerefid &&
+        e1?.companyId == e2?.companyId;
   }
 
   @override
@@ -386,7 +395,8 @@ class TileblocksRecordDocumentEquality implements Equality<TileblocksRecord> {
         e?.tileWithinTileRef,
         e?.hassocialfeed,
         e?.blockId,
-        e?.tilerefid
+        e?.tilerefid,
+        e?.companyId
       ]);
 
   @override

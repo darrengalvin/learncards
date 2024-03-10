@@ -43,6 +43,8 @@ class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
 
   bool askingQuestion = false;
 
+  bool firstTimeMentorChat = true;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -68,6 +70,8 @@ class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
   late HeaderContainerModel headerContainerModel;
   // Model for MiddleBodyAll component.
   late MiddleBodyAllModel middleBodyAllModel;
+  // Stores action output result for [Firestore Query - Query a collection] action in Column widget.
+  SessionsRecord? checkingMentorChat;
   // Stores action output result for [Stripe Payment] action in Button widget.
   String? paymentId;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
