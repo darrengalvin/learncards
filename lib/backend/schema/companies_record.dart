@@ -273,6 +273,16 @@ class CompaniesRecord extends FirestoreRecord {
   String get companyDocId => _companyDocId ?? '';
   bool hasCompanyDocId() => _companyDocId != null;
 
+  // "startingMemberLevel" field.
+  String? _startingMemberLevel;
+  String get startingMemberLevel => _startingMemberLevel ?? '';
+  bool hasStartingMemberLevel() => _startingMemberLevel != null;
+
+  // "startingMemberLevelName" field.
+  String? _startingMemberLevelName;
+  String get startingMemberLevelName => _startingMemberLevelName ?? '';
+  bool hasStartingMemberLevelName() => _startingMemberLevelName != null;
+
   void _initializeFields() {
     _companylogo = snapshotData['companylogo'] as String?;
     _companyname = snapshotData['companyname'] as String?;
@@ -331,6 +341,9 @@ class CompaniesRecord extends FirestoreRecord {
     _createdTime = snapshotData['createdTime'] as DateTime?;
     _updatedTime = snapshotData['updatedTime'] as DateTime?;
     _companyDocId = snapshotData['companyDocId'] as String?;
+    _startingMemberLevel = snapshotData['startingMemberLevel'] as String?;
+    _startingMemberLevelName =
+        snapshotData['startingMemberLevelName'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -418,6 +431,8 @@ Map<String, dynamic> createCompaniesRecordData({
   DateTime? createdTime,
   DateTime? updatedTime,
   String? companyDocId,
+  String? startingMemberLevel,
+  String? startingMemberLevelName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -471,6 +486,8 @@ Map<String, dynamic> createCompaniesRecordData({
       'createdTime': createdTime,
       'updatedTime': updatedTime,
       'companyDocId': companyDocId,
+      'startingMemberLevel': startingMemberLevel,
+      'startingMemberLevelName': startingMemberLevelName,
     }.withoutNulls,
   );
 
@@ -539,7 +556,9 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e1?.startingCategory == e2?.startingCategory &&
         e1?.createdTime == e2?.createdTime &&
         e1?.updatedTime == e2?.updatedTime &&
-        e1?.companyDocId == e2?.companyDocId;
+        e1?.companyDocId == e2?.companyDocId &&
+        e1?.startingMemberLevel == e2?.startingMemberLevel &&
+        e1?.startingMemberLevelName == e2?.startingMemberLevelName;
   }
 
   @override
@@ -594,7 +613,9 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e?.startingCategory,
         e?.createdTime,
         e?.updatedTime,
-        e?.companyDocId
+        e?.companyDocId,
+        e?.startingMemberLevel,
+        e?.startingMemberLevelName
       ]);
 
   @override

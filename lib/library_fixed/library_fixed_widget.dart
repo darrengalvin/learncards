@@ -93,6 +93,26 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       logFirebaseEvent('Library-fixed_update_app_state');
+      FFAppState().selectedcategory = valueOrDefault<String>(
+        _model.companyByUrl?.startingCategory,
+        'starting category is not set in companies doc',
+      );
+      FFAppState().selectedCategoryName = valueOrDefault<String>(
+        _model.companyByUrl?.startingCategory,
+        'starting category is not set in companies doc',
+      );
+      logFirebaseEvent('Library-fixed_update_app_state');
+      FFAppState().update(() {
+        FFAppState().selectedMemberLevel = valueOrDefault<String>(
+          _model.companyByUrl?.startingMemberLevel,
+          'starting member level is not set in company doc',
+        );
+        FFAppState().selectedMemberLevelName = valueOrDefault<String>(
+          _model.companyByUrl?.startingMemberLevelName,
+          'starting member level name is not set in compay doc',
+        );
+      });
+      logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().selectedCompanyId = _model.companyByUrl!.reference.id;
       });
