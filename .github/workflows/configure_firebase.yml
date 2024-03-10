@@ -67,6 +67,15 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
+
+      - name: Commit and push if changes
+        run: |
+          set -x
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
           git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
