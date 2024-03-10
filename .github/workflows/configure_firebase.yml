@@ -49,6 +49,38 @@ jobs:
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
           git push git@github.com:darrengalvin/learncards.git
+
+
+
+
+      
+      - name: Remove existing redirect script from index.html
+        run: |
+          sed -i '/<!-- Redirect Script Start -->/,/<!-- Redirect Script End -->/d' web/index.html
+
+      - name: Add redirect script to index.html
+        run: |
+          echo '
+          <!-- Redirect Script Start -->
+          <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            var currentUrl = window.location.href;
+            var targetUrl = "https://journeyforward.app/library?companiesDoc=0fXG0CVY9h92MjpurneyForward";
+      
+            console.log("Current URL:", currentUrl);
+            console.log("Target URL:", targetUrl);
+      
+            if (currentUrl !== targetUrl) {
+              console.log("Redirecting to target URL.");
+              window.location.href = targetUrl;
+            } else {
+              console.log("Already at the target URL. No redirection performed.");
+            }
+          });
+          </script>
+          <!-- Redirect Script End -->
+          ' >> web/index.html
+      
       
       - name: Create firebase.json
         run: |
