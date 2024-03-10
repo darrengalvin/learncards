@@ -84,3 +84,22 @@
   });
 </script>
 
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    switch (window.location.hostname) {
+      case "mabm.app":
+        console.log("Redirecting for mabm.app");
+        window.location.href = "/library?companiesDoc=0fXG0CVY9h92MABM";
+        break;
+      case "journeyforward.app":
+        console.log("Redirecting for journeyforward.app");
+        window.location.href = "/library?companiesDoc=0fXG0CVY9h92MjpurneyForward";
+        break;
+      default:
+        console.log("Hostname does not match any known hosts");
+        break;
+    }
+  });
+</script>
+
