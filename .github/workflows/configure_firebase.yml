@@ -60,19 +60,18 @@ jobs:
           ' >> web/index.html
           cat web/index.html
 
-    
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
       - name: Commit and push if changes
         run: |
-          set -x
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-          git push https://${{ secrets.REPO_TOKEN }}@github.com/darrengalvin/learncards.git
-        env:
-          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
-
-
+          git push git@github.com:darrengalvin/learncards.git
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
