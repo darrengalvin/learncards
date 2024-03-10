@@ -14,8 +14,9 @@ jobs:
     
     - uses: actions/setup-java@v2
       with:
-        distribution: 'temurin' # AdoptOpenJDK is now part of the Eclipse Foundation
-        java-version: '12'
+        distribution: 'temurin' # This is the Eclipse Temurin distribution, which is recommended
+        java-version: '11'
+
         
     - name: Setup Flutter
       uses: subosito/flutter-action@v1
