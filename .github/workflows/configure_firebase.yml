@@ -43,17 +43,12 @@ jobs:
               ],
               "rewrites": [
                 {
-                  "source": "/",
-                  "function": "redirectUrl"
-                },
-                {
                   "source": "**",
-                  "destination": "/index.html"
+                  "function": "redirectUrl"
                 }
               ]
             }
           }
-
           EOF
           
       - name: Deploy to Firebase
