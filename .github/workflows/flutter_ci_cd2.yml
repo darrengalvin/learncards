@@ -11,7 +11,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
+    # Cache dependencies
+    - name: Cache Flutter dependencies
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.pub-cache
+          .dart_tool
+        key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-flutter-
+
     - uses: actions/setup-java@v2
       with:
         distribution: 'temurin'
@@ -31,6 +42,16 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Cache Flutter dependencies
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/Library/Caches/CocoaPods
+          ios/Pods
+        key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cocoapods-
     
     - name: Setup Flutter
       uses: subosito/flutter-action@v1
