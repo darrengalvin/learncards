@@ -68,7 +68,11 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
+          git push https://${{ secrets.REPO_TOKEN }}@github.com/darrengalvin/learncards.git
+        env:
+          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
+
+
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
