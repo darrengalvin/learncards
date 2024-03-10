@@ -1,0 +1,75 @@
+name: Resolve firebase json issues
+
+
+permissions:
+  contents: write
+  
+
+on:
+  push:
+    branches:
+      - manuallyPushed
+      - main
+      - flutterflow
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+
+      - name: Update intl package version
+        run: |
+          sed -i 's/intl: 0.18.0/intl: ^0.18.1/' pubspec.yaml
+
+
+      - name: Upgrade Dependencies
+        run: flutter pub upgrade
+
+      - name: Build Flutter Web
+        run: flutter build web --no-tree-shake-icons
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Generate firebase.json
+        run: |
+          echo '{
+            "hosting": {
+              "public": "build/web",
+              "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+              ],
+              "rewrites": [
+                {
+                  "source": "**",
+                  "function": "redirectUrl"
+                }
+              ]
+            }
+          }' > firebase.json
+          
+      - name: Commit firebase.json if changes
+        run: |
+          git config --global user.email "149120692+darrengalvin@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          git add firebase.json
+          git commit -m "Update firebase.json via GitHub Actions" || echo "No changes to commit"
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+
+
+
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
