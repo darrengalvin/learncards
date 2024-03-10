@@ -93,6 +93,26 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       logFirebaseEvent('Library-fixed_update_app_state');
+      FFAppState().update(() {
+        FFAppState().leftPane = 'aiMenu';
+        FFAppState().leftColumnShow = true;
+        FFAppState().middlePane = 'bodyContent';
+        FFAppState().middleColumnShow = valueOrDefault<bool>(
+          () {
+            if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+              return false;
+            } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+              return true;
+            } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+              return true;
+            } else {
+              return true;
+            }
+          }(),
+          true,
+        );
+      });
+      logFirebaseEvent('Library-fixed_update_app_state');
       FFAppState().selectedcategory = valueOrDefault<String>(
         _model.companyByUrl?.startingCategory,
         'starting category is not set in companies doc',
