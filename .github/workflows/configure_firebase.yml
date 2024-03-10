@@ -65,6 +65,7 @@ jobs:
           ' >> web/index.html
           cat web/index.html
 
+
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
@@ -77,6 +78,25 @@ jobs:
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
           git push git@github.com:darrengalvin/learncards.git
+
+          - name: Create firebase.json
+          run: |
+            echo '{
+              "hosting": {
+                "public": "public",
+                "ignore": [
+                  "firebase.json",
+                  "**/.*",
+                  "**/node_modules/**"
+                ],
+                "rewrites": [
+                  {
+                    "source": "**",
+                    "destination": "/index.html"
+                  }
+                ]
+              }
+            }' > firebase.json
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
