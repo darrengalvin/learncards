@@ -51,14 +51,11 @@ jobs:
           git push git@github.com:darrengalvin/learncards.git
 
 
-
-
-      
       - name: Remove existing redirect script from index.html
         run: |
           sed -i '/<!-- Redirect Script Start -->/,/<!-- Redirect Script End -->/d' web/index.html
-
-      - name: Add redirect script to index.html
+      
+      - name: Add redirect script to index.html and output the file
         run: |
           echo '
           <!-- Redirect Script Start -->
@@ -80,7 +77,9 @@ jobs:
           </script>
           <!-- Redirect Script End -->
           ' >> web/index.html
-      
+          # Output the file to verify the script was added
+          cat web/index.html
+
       
       - name: Create firebase.json
         run: |
@@ -101,7 +100,20 @@ jobs:
             }
           }' > firebase.json
 
+        
+
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
+          git push git@github.com:darrengalvin/learncards.git
+
+
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+
