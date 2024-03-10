@@ -34,23 +34,23 @@ jobs:
         run: |
           cat <<EOF >firebase.json
           {
-            {
-          "hosting": {
-            "public": "build/web",
-            "ignore": [
-              "firebase.json",
-              "**/.*",
-              "**/node_modules/**"
-            ],
-            "rewrites": [
-              {
-                "source": "/redirect",
-                "function": "redirectUrl"
-              }
-            ]
+            "hosting": {
+              "public": "build/web",
+              "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+              ],
+              "rewrites": [
+                {
+                  "source": "/redirect",
+                  "function": "redirectUrl"
+                }
+              ]
+            }
           }
-          }
-                  EOF
+          EOF
+
           
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
