@@ -60,7 +60,7 @@ jobs:
           ' >> web/index.html
           cat web/index.html
 
-      - name: Commit and push if changes
+      - name: Commit and push if changes with STANDARD GITHUB_TOKEN
         run: |
           set -x
           git config --global user.name 'github-actions[bot]'
@@ -68,8 +68,8 @@ jobs:
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
-
-      - name: Commit and push if changes
+    
+      - name: Commit and push if changes WITH MY GITHUB TOKEN 
         run: |
           set -x
           git config --global user.name 'github-actions[bot]'
