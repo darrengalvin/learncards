@@ -67,10 +67,10 @@ jobs:
       - name: Commit and push if changes
         run: |
           git config --global user.name 'darrengalvin'
-          git config --global user.email '149120692+darrengalvin@users.noreply.github.com '
+          git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-          git push
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                           
