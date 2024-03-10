@@ -61,16 +61,14 @@ jobs:
           cat web/index.html
 
     
-      - name: Commit and push if changes WITH MY GITHUB TOKEN 
+      - name: Commit and push if changes
         run: |
           set -x
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-          git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
-        env:
-          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
