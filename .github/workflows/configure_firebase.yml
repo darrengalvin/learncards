@@ -63,14 +63,13 @@ jobs:
       - name: Commit and push if changes
         run: |
           set -x
-          git config --global user.name 'darrengalvin'
-          git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-          git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
+          git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
