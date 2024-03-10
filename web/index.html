@@ -218,3 +218,27 @@
   });
 </script>
 
+
+ <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var currentPath = window.location.pathname;
+    switch (window.location.hostname) {
+      case "mabm.app":
+        if (currentPath !== "/library?companiesDoc=0fXG0CVY9h92MABM") {
+          console.log("Redirecting for mabm.app");
+          window.location.href = "/library?companiesDoc=0fXG0CVY9h92MABM";
+        }
+        break;
+      case "journeyforward.app":
+        if (currentPath !== "/library?companiesDoc=0fXG0CVY9h92MjpurneyForward") {
+          console.log("Redirecting for journeyforward.app");
+          window.location.href = "/library?companiesDoc=0fXG0CVY9h92MjpurneyForward";
+        }
+        break;
+      default:
+        console.log("Hostname does not match any known hosts");
+        break;
+    }
+  });
+</script>
+
