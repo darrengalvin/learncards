@@ -1,4 +1,4 @@
-name: Deploy to Firebase CAIO a
+name: Deploy to Firebase CAIO SSH
 
 on:
   push:
