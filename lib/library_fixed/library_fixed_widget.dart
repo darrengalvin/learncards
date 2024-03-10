@@ -291,6 +291,21 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           _model.companyByUrl?.startingCategory,
           'starting category is not set in companies doc',
         );
+        logFirebaseEvent('Library-fixed_update_app_state');
+        FFAppState().update(() {
+          FFAppState().selectedMemberLevel = valueOrDefault<String>(
+            _model.companyByUrl?.startingMemberLevel,
+            'starting member level is not set in company doc',
+          );
+          FFAppState().selectedMemberLevelName = valueOrDefault<String>(
+            _model.companyByUrl?.startingMemberLevelName,
+            'starting member level name is not set in compay doc',
+          );
+        });
+        logFirebaseEvent('Library-fixed_update_app_state');
+        setState(() {
+          FFAppState().rightPane = 'learnCards';
+        });
       }
       logFirebaseEvent('Library-fixed_backend_call');
 
@@ -348,17 +363,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
           FFAppState().debugMessage = 'one set ';
-        });
-        logFirebaseEvent('Library-fixed_update_app_state');
-        FFAppState().update(() {
-          FFAppState().selectedMemberLevel = valueOrDefault<String>(
-            _model.companyByUrl?.startingMemberLevel,
-            'starting member level is not set in company doc',
-          );
-          FFAppState().selectedMemberLevelName = valueOrDefault<String>(
-            _model.companyByUrl?.startingMemberLevelName,
-            'starting member level name is not set in compay doc',
-          );
         });
       } else {
         logFirebaseEvent('Library-fixed_update_app_state');
@@ -439,20 +443,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         });
       }
 
-      if ((FFAppState().selectedcategory == '') ||
-          (FFAppState().selectedCategoryName == '')) {
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().selectedcategory = valueOrDefault<String>(
-            _model.companyByUrl?.startingCategory,
-            'startingCateogry notset',
-          );
-          FFAppState().selectedCategoryName = valueOrDefault<String>(
-            _model.companyByUrl?.startingCategory,
-            'startingCateogry notset',
-          );
-        });
-      }
       if ((FFAppState().leftPane == '') ||
           (FFAppState().leftPane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
