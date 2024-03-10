@@ -61,7 +61,16 @@ jobs:
           ' >> web/index.html
           ls -l web
           cat web/index.html
-      
+
+          - name: Push changes
+          run: |
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git add -A
+            git commit -m 'Update index.html' || exit 0  # exit gracefully if no changes to commit
+            git push https://${{ secrets.GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
+            \
+              
       - name: Commit and push if changes
         run: |
           set -x
@@ -69,8 +78,8 @@ jobs:
           git config --global user.email '149120692+darrengalvin@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-          git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git
-        env:
+          git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/darrengalvin/learncards.git        
+          env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
                     
