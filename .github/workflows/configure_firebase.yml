@@ -3,8 +3,6 @@ name: Deploy to Firebase CAIO SSH
 on:
   push:
     branches:
-      - manuallyPushed
-      - main
       - flutterflow
   workflow_dispatch:
 
