@@ -1,4 +1,4 @@
-name: Deploy to Firebase CAIO B
+name: Deploy to Firebase CAIO -index
 
 on:
   push:
