@@ -1,13 +1,12 @@
-name: Deploy to Firebase CAIO -index
+name: Deploy to Firebase CAIO SSH
 
 on:
   push:
     branches:
+      - manuallyPushed
+      - main
       - flutterflow
-    paths:
-      - '.github/workflows/deploy_to_firebase_caio_b.yml'
   workflow_dispatch:
-
 
 jobs:
   deploy:
@@ -37,23 +36,34 @@ jobs:
           if [ -f web/index.html ]; then
             echo "index.html exists"
           fi
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
+          git push git@github.com:darrengalvin/learncards.git
       - name: Remove existing redirect script from index.html
         run: |
           sed -i '/<!-- Redirect Script Start -->/,/<!-- Redirect Script End -->/d' web/index.html
-
+      
       - name: Add redirect script to index.html and output the file
         run: |
           echo '
           <!-- Redirect Script Start -->
           <script>
           document.addEventListener("DOMContentLoaded", function() {
-            var currentUrl = window.location.href; // This includes the full URL
+            var currentUrl = window.location.href;
             var targetUrl = "https://journeyforward.app/library?companiesDoc=0fXG0CVY9h92MjpurneyForward";
-        
+      
             console.log("Current URL:", currentUrl);
             console.log("Target URL:", targetUrl);
-        
+      
             if (currentUrl !== targetUrl) {
               console.log("Redirecting to target URL.");
               window.location.href = targetUrl;
@@ -64,13 +74,9 @@ jobs:
           </script>
           <!-- Redirect Script End -->
           ' >> web/index.html
+          # Output the file to verify the script was added
           cat web/index.html
-
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
+      
       - name: Create firebase.json
         run: |
           echo '{
@@ -90,15 +96,17 @@ jobs:
             }
           }' > firebase.json
 
-      - name: Deploy to Firebase
-        run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+        
+
 
       - name: Commit and push if changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
-          git diff --quiet && git diff --staged --quiet || git commit -m '[skip ci] Automated deployment updates'
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
           git push git@github.com:darrengalvin/learncards.git
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
