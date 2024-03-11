@@ -3,7 +3,12 @@ name: Deploy to Firebase CAIO SSH
 on:
   push:
     branches:
+      - manuallyPushed
+      - main
       - flutterflow
+    paths-ignore:
+      - '**/index.html'
+      - '**/firebase.json'
   workflow_dispatch:
 
 jobs:
