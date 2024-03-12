@@ -224,6 +224,8 @@ file:///home/runner/work/learncards/learncards/lib/components/blockv3_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/blockv3_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/chat_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/chat_widget.dart
+file:///home/runner/work/learncards/learncards/lib/components/cloudinary_uploader_model.dart
+file:///home/runner/work/learncards/learncards/lib/components/cloudinary_uploader_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/commenting_thread_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/commenting_thread_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/company_settings_model.dart
