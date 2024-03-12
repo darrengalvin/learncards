@@ -3,7 +3,7 @@ name: Deploy to Firebase CAIO
 on:
   push:
     branches:
-      - nNONE
+      - flutterflow
 
     paths-ignore:
       - '**/index.html'
