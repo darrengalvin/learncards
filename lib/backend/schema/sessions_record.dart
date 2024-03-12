@@ -157,6 +157,11 @@ class SessionsRecord extends FirestoreRecord {
   List<ThreadsStruct> get threads => _threads ?? const [];
   bool hasThreads() => _threads != null;
 
+  // "aiQuestionAsked" field.
+  String? _aiQuestionAsked;
+  String get aiQuestionAsked => _aiQuestionAsked ?? '';
+  bool hasAiQuestionAsked() => _aiQuestionAsked != null;
+
   void _initializeFields() {
     _dateTime = snapshotData['dateTime'] as DateTime?;
     _backgroundImage = snapshotData['backgroundImage'] as String?;
@@ -196,6 +201,7 @@ class SessionsRecord extends FirestoreRecord {
       snapshotData['threads'],
       ThreadsStruct.fromMap,
     );
+    _aiQuestionAsked = snapshotData['aiQuestionAsked'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -256,6 +262,7 @@ Map<String, dynamic> createSessionsRecordData({
   String? startingUrl,
   String? companyId,
   DateTime? lastActive,
+  String? aiQuestionAsked,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -282,6 +289,7 @@ Map<String, dynamic> createSessionsRecordData({
       'startingUrl': startingUrl,
       'companyId': companyId,
       'lastActive': lastActive,
+      'aiQuestionAsked': aiQuestionAsked,
     }.withoutNulls,
   );
 
@@ -325,7 +333,8 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e1?.startingUrl == e2?.startingUrl &&
         e1?.companyId == e2?.companyId &&
         e1?.lastActive == e2?.lastActive &&
-        listEquality.equals(e1?.threads, e2?.threads);
+        listEquality.equals(e1?.threads, e2?.threads) &&
+        e1?.aiQuestionAsked == e2?.aiQuestionAsked;
   }
 
   @override
@@ -357,7 +366,8 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e?.startingUrl,
         e?.companyId,
         e?.lastActive,
-        e?.threads
+        e?.threads,
+        e?.aiQuestionAsked
       ]);
 
   @override

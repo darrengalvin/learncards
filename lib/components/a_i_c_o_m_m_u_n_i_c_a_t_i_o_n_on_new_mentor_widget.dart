@@ -334,15 +334,6 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                   }(),
                                 ),
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: Image.network(
-                                      valueOrDefault<String>(
-                                        widget.companiesDoc?.backgroundImage,
-                                        'https://res.cloudinary.com/dplpckpbm/image/upload/v1703535226/learningPathwaysBright_b3strj.webp',
-                                      ),
-                                    ).image,
-                                  ),
                                   borderRadius: BorderRadius.circular(17.0),
                                 ),
                                 child: Column(
@@ -1004,334 +995,224 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                       child: Align(
                                         alignment:
                                             const AlignmentDirectional(-1.0, 1.0),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: StreamBuilder<
-                                              List<FlowiseChatsRecord>>(
-                                            stream: queryFlowiseChatsRecord(
-                                              queryBuilder:
-                                                  (flowiseChatsRecord) =>
-                                                      flowiseChatsRecord
-                                                          .where(
-                                                            'companyDocId',
-                                                            isEqualTo: widget
-                                                                .companiesDoc
-                                                                ?.reference
-                                                                .id,
-                                                          )
-                                                          .orderBy(
-                                                              'created_time'),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: Image.network(
+                                                valueOrDefault<String>(
+                                                  containerMyTeamRecord.image,
+                                                  'https://res.cloudinary.com/dplpckpbm/image/upload/v1703535226/learningPathwaysBright_b3strj.webp',
+                                                ),
+                                              ).image,
                                             ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: StreamBuilder<
+                                                List<FlowiseChatsRecord>>(
+                                              stream: queryFlowiseChatsRecord(
+                                                queryBuilder:
+                                                    (flowiseChatsRecord) =>
+                                                        flowiseChatsRecord
+                                                            .where(
+                                                              'companyDocId',
+                                                              isEqualTo: widget
+                                                                  .companiesDoc
+                                                                  ?.reference
+                                                                  .id,
+                                                            )
+                                                            .orderBy(
+                                                                'created_time'),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                );
-                                              }
-                                              List<FlowiseChatsRecord>
-                                                  columnChatsScrollableFlowiseChatsRecordList =
-                                                  snapshot.data!;
-                                              return ListView.separated(
-                                                padding: EdgeInsets.zero,
-                                                scrollDirection: Axis.vertical,
-                                                itemCount:
-                                                    columnChatsScrollableFlowiseChatsRecordList
-                                                        .length,
-                                                separatorBuilder: (_, __) =>
-                                                    const SizedBox(height: 8.0),
-                                                itemBuilder: (context,
-                                                    columnChatsScrollableIndex) {
-                                                  final columnChatsScrollableFlowiseChatsRecord =
-                                                      columnChatsScrollableFlowiseChatsRecordList[
-                                                          columnChatsScrollableIndex];
-                                                  return Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      if (valueOrDefault<bool>(
-                                                        (columnChatsScrollableFlowiseChatsRecord
-                                                                    .role ==
-                                                                'human') &&
-                                                            (columnChatsScrollableFlowiseChatsRecord
-                                                                    .threadId ==
-                                                                FFAppState()
-                                                                    .selectedThreadId) &&
-                                                            (columnChatsScrollableFlowiseChatsRecord
-                                                                    .sessionId ==
-                                                                FFAppState()
-                                                                    .nonLoggedInSessionId),
-                                                        false,
-                                                      ))
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .end,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Flexible(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            33.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child:
-                                                                    Container(
-                                                                  constraints:
-                                                                      BoxConstraints(
-                                                                    maxWidth:
-                                                                        () {
-                                                                      if (MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall) {
-                                                                        return 350.0;
-                                                                      } else if (MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointMedium) {
-                                                                        return 500.0;
-                                                                      } else if (MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointLarge) {
-                                                                        return 700.0;
-                                                                      } else {
-                                                                        return 1550.0;
-                                                                      }
-                                                                    }(),
-                                                                  ),
-                                                                  decoration:
-                                                                      const BoxDecoration(
-                                                                    color: Color(
-                                                                        0xFFE6EDFB),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .only(
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              8.0),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              8.0),
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              8.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              0.0),
-                                                                    ),
-                                                                  ),
+                                                  );
+                                                }
+                                                List<FlowiseChatsRecord>
+                                                    columnChatsScrollableFlowiseChatsRecordList =
+                                                    snapshot.data!;
+                                                return ListView.separated(
+                                                  padding: EdgeInsets.zero,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  itemCount:
+                                                      columnChatsScrollableFlowiseChatsRecordList
+                                                          .length,
+                                                  separatorBuilder: (_, __) =>
+                                                      const SizedBox(height: 8.0),
+                                                  itemBuilder: (context,
+                                                      columnChatsScrollableIndex) {
+                                                    final columnChatsScrollableFlowiseChatsRecord =
+                                                        columnChatsScrollableFlowiseChatsRecordList[
+                                                            columnChatsScrollableIndex];
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        if (valueOrDefault<
+                                                            bool>(
+                                                          (columnChatsScrollableFlowiseChatsRecord
+                                                                      .role ==
+                                                                  'human') &&
+                                                              (columnChatsScrollableFlowiseChatsRecord
+                                                                      .threadId ==
+                                                                  FFAppState()
+                                                                      .selectedThreadId) &&
+                                                              (columnChatsScrollableFlowiseChatsRecord
+                                                                      .sessionId ==
+                                                                  FFAppState()
+                                                                      .nonLoggedInSessionId),
+                                                          false,
+                                                        ))
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          33.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            4.0),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .min,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .end,
-                                                                      children: [
-                                                                        Flexible(
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                const EdgeInsets.all(9.0),
+                                                                      Container(
+                                                                    constraints:
+                                                                        BoxConstraints(
+                                                                      maxWidth:
+                                                                          () {
+                                                                        if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointSmall) {
+                                                                          return 350.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointMedium) {
+                                                                          return 500.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointLarge) {
+                                                                          return 700.0;
+                                                                        } else {
+                                                                          return 1550.0;
+                                                                        }
+                                                                      }(),
+                                                                    ),
+                                                                    decoration:
+                                                                        const BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFFE6EDFB),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(8.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(8.0),
+                                                                        topLeft:
+                                                                            Radius.circular(8.0),
+                                                                        topRight:
+                                                                            Radius.circular(0.0),
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              4.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.min,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.end,
+                                                                        children: [
+                                                                          Flexible(
                                                                             child:
-                                                                                Text(
-                                                                              columnChatsScrollableFlowiseChatsRecord.text,
-                                                                              textAlign: TextAlign.start,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                    color: Colors.black,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                  ),
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(9.0),
+                                                                              child: Text(
+                                                                                columnChatsScrollableFlowiseChatsRecord.text,
+                                                                                textAlign: TextAlign.start,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                      color: Colors.black,
+                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                    ),
+                                                                              ),
                                                                             ),
                                                                           ),
-                                                                        ),
-                                                                      ],
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Icon(
-                                                              Icons.person_2,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 35.0,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      if ((columnChatsScrollableFlowiseChatsRecord
-                                                                  .role ==
-                                                              'ai') ||
-                                                          (columnChatsScrollableFlowiseChatsRecord
-                                                                  .role ==
-                                                              'system'))
-                                                        SizedBox(
-                                                          width:
-                                                              double.infinity,
-                                                          child: Stack(
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .end,
-                                                                children: [
-                                                                  Flexible(
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        if (valueOrDefault<
-                                                                            bool>(
-                                                                          ((columnChatsScrollableFlowiseChatsRecord.role == 'ai') && (columnChatsScrollableFlowiseChatsRecord.threadId == FFAppState().selectedThreadId) && (columnChatsScrollableFlowiseChatsRecord.sessionId == FFAppState().nonLoggedInSessionId)) ||
-                                                                              (columnChatsScrollableFlowiseChatsRecord.showToAll == true),
-                                                                          false,
-                                                                        ))
-                                                                          AnimatedContainer(
-                                                                            duration:
-                                                                                const Duration(milliseconds: 100),
-                                                                            curve:
-                                                                                Curves.easeInOut,
-                                                                            constraints:
-                                                                                BoxConstraints(
-                                                                              maxWidth: () {
-                                                                                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-                                                                                  return 480.0;
-                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-                                                                                  return 580.0;
-                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-                                                                                  return 880.0;
-                                                                                } else {
-                                                                                  return 1550.0;
-                                                                                }
-                                                                              }(),
-                                                                            ),
-                                                                            decoration:
-                                                                                const BoxDecoration(
-                                                                              color: Color(0xFFF5F5F5),
-                                                                              borderRadius: BorderRadius.only(
-                                                                                bottomLeft: Radius.circular(8.0),
-                                                                                bottomRight: Radius.circular(8.0),
-                                                                                topLeft: Radius.circular(0.0),
-                                                                                topRight: Radius.circular(8.0),
-                                                                              ),
-                                                                            ),
-                                                                            alignment:
-                                                                                const AlignmentDirectional(-1.0, 0.0),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
-                                                                              child: Column(
-                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                mainAxisAlignment: MainAxisAlignment.end,
-                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                children: [
-                                                                                  Padding(
-                                                                                    padding: const EdgeInsets.all(4.0),
-                                                                                    child: Row(
-                                                                                      mainAxisSize: MainAxisSize.min,
-                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                      children: [
-                                                                                        if (responsiveVisibility(
-                                                                                          context: context,
-                                                                                          tablet: false,
-                                                                                          tabletLandscape: false,
-                                                                                          desktop: false,
-                                                                                        ))
-                                                                                          Padding(
-                                                                                            padding: const EdgeInsets.all(3.0),
-                                                                                            child: ClipRRect(
-                                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                                              child: Image.network(
-                                                                                                widget.companiesDoc!.companylogo,
-                                                                                                width: 35.0,
-                                                                                                height: 35.0,
-                                                                                                fit: BoxFit.scaleDown,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        Expanded(
-                                                                                          child: Column(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            children: [
-                                                                                              Container(
-                                                                                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                ),
-                                                                                                child: Column(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                  children: [
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                                                                                                      child: MarkdownBody(
-                                                                                                        data: valueOrDefault<String>(
-                                                                                                          columnChatsScrollableFlowiseChatsRecord.text,
-                                                                                                          '-',
-                                                                                                        ),
-                                                                                                        selectable: true,
-                                                                                                        onTapLink: (_, url, __) => launchURL(url!),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        if ((columnChatsScrollableFlowiseChatsRecord.role ==
-                                                                                'system') &&
-                                                                            (columnChatsScrollableFlowiseChatsRecord.threadId ==
-                                                                                FFAppState().selectedThreadId) &&
-                                                                            (columnChatsScrollableFlowiseChatsRecord.sessionId == FFAppState().nonLoggedInSessionId))
-                                                                          Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                15.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                AnimatedContainer(
+                                                              Icon(
+                                                                Icons.person_2,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 35.0,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        if ((columnChatsScrollableFlowiseChatsRecord
+                                                                    .role ==
+                                                                'ai') ||
+                                                            (columnChatsScrollableFlowiseChatsRecord
+                                                                    .role ==
+                                                                'system'))
+                                                          SizedBox(
+                                                            width:
+                                                                double.infinity,
+                                                            child: Stack(
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    Flexible(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          if (valueOrDefault<
+                                                                              bool>(
+                                                                            ((columnChatsScrollableFlowiseChatsRecord.role == 'ai') && (columnChatsScrollableFlowiseChatsRecord.threadId == FFAppState().selectedThreadId) && (columnChatsScrollableFlowiseChatsRecord.sessionId == FFAppState().nonLoggedInSessionId)) ||
+                                                                                (columnChatsScrollableFlowiseChatsRecord.showToAll == true),
+                                                                            false,
+                                                                          ))
+                                                                            AnimatedContainer(
                                                                               duration: const Duration(milliseconds: 100),
                                                                               curve: Curves.easeInOut,
                                                                               constraints: BoxConstraints(
@@ -1347,9 +1228,9 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                   }
                                                                                 }(),
                                                                               ),
-                                                                              decoration: BoxDecoration(
-                                                                                color: FlutterFlowTheme.of(context).customColor3,
-                                                                                borderRadius: const BorderRadius.only(
+                                                                              decoration: const BoxDecoration(
+                                                                                color: Color(0xFFF5F5F5),
+                                                                                borderRadius: BorderRadius.only(
                                                                                   bottomLeft: Radius.circular(8.0),
                                                                                   bottomRight: Radius.circular(8.0),
                                                                                   topLeft: Radius.circular(0.0),
@@ -1402,7 +1283,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: const EdgeInsets.all(6.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                                         child: MarkdownBody(
                                                                                                           data: valueOrDefault<String>(
                                                                                                             columnChatsScrollableFlowiseChatsRecord.text,
@@ -1425,49 +1306,148 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                          ),
-                                                                      ],
+                                                                          if ((columnChatsScrollableFlowiseChatsRecord.role == 'system') &&
+                                                                              (columnChatsScrollableFlowiseChatsRecord.threadId == FFAppState().selectedThreadId) &&
+                                                                              (columnChatsScrollableFlowiseChatsRecord.sessionId == FFAppState().nonLoggedInSessionId))
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                                                                              child: AnimatedContainer(
+                                                                                duration: const Duration(milliseconds: 100),
+                                                                                curve: Curves.easeInOut,
+                                                                                constraints: BoxConstraints(
+                                                                                  maxWidth: () {
+                                                                                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                      return 480.0;
+                                                                                    } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                      return 580.0;
+                                                                                    } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                      return 880.0;
+                                                                                    } else {
+                                                                                      return 1550.0;
+                                                                                    }
+                                                                                  }(),
+                                                                                ),
+                                                                                decoration: BoxDecoration(
+                                                                                  color: FlutterFlowTheme.of(context).customColor3,
+                                                                                  borderRadius: const BorderRadius.only(
+                                                                                    bottomLeft: Radius.circular(8.0),
+                                                                                    bottomRight: Radius.circular(8.0),
+                                                                                    topLeft: Radius.circular(0.0),
+                                                                                    topRight: Radius.circular(8.0),
+                                                                                  ),
+                                                                                ),
+                                                                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
+                                                                                  child: Column(
+                                                                                    mainAxisSize: MainAxisSize.min,
+                                                                                    mainAxisAlignment: MainAxisAlignment.end,
+                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsets.all(4.0),
+                                                                                        child: Row(
+                                                                                          mainAxisSize: MainAxisSize.min,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            if (responsiveVisibility(
+                                                                                              context: context,
+                                                                                              tablet: false,
+                                                                                              tabletLandscape: false,
+                                                                                              desktop: false,
+                                                                                            ))
+                                                                                              Padding(
+                                                                                                padding: const EdgeInsets.all(3.0),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                                  child: Image.network(
+                                                                                                    widget.companiesDoc!.companylogo,
+                                                                                                    width: 35.0,
+                                                                                                    height: 35.0,
+                                                                                                    fit: BoxFit.scaleDown,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            Expanded(
+                                                                                              child: Column(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Container(
+                                                                                                    width: MediaQuery.sizeOf(context).width * 1.0,
+                                                                                                    decoration: BoxDecoration(
+                                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                    ),
+                                                                                                    child: Column(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                      children: [
+                                                                                                        Padding(
+                                                                                                          padding: const EdgeInsets.all(6.0),
+                                                                                                          child: MarkdownBody(
+                                                                                                            data: valueOrDefault<String>(
+                                                                                                              columnChatsScrollableFlowiseChatsRecord.text,
+                                                                                                              '-',
+                                                                                                            ),
+                                                                                                            selectable: true,
+                                                                                                            onTapLink: (_, url, __) => launchURL(url!),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                        ],
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              if (responsiveVisibility(
-                                                                context:
-                                                                    context,
-                                                                phone: false,
-                                                              ))
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(
-                                                                              6.0),
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .asset(
-                                                                      'assets/images/UpSkilller__1_-removebg-preview.png',
-                                                                      width:
-                                                                          35.0,
-                                                                      height:
-                                                                          35.0,
-                                                                      fit: BoxFit
-                                                                          .scaleDown,
-                                                                    ),
-                                                                  ),
+                                                                  ],
                                                                 ),
-                                                            ],
+                                                                if (responsiveVisibility(
+                                                                  context:
+                                                                      context,
+                                                                  phone: false,
+                                                                ))
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            6.0),
+                                                                    child:
+                                                                        ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        'assets/images/UpSkilller__1_-removebg-preview.png',
+                                                                        width:
+                                                                            35.0,
+                                                                        height:
+                                                                            35.0,
+                                                                        fit: BoxFit
+                                                                            .scaleDown,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                    ],
-                                                  );
-                                                },
-                                                controller: _model
-                                                    .columnChatsScrollable,
-                                              );
-                                            },
+                                                      ],
+                                                    );
+                                                  },
+                                                  controller: _model
+                                                      .columnChatsScrollable,
+                                                );
+                                              },
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -2281,6 +2261,21 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                       onPressed: () async {
                                                         logFirebaseEvent(
                                                             'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_NEW_MEN');
+                                                        logFirebaseEvent(
+                                                            'IconButton_firestore_query');
+                                                        _model.sessionForFlowise =
+                                                            await querySessionsRecordOnce(
+                                                          queryBuilder:
+                                                              (sessionsRecord) =>
+                                                                  sessionsRecord
+                                                                      .where(
+                                                            'sessionId',
+                                                            isEqualTo: FFAppState()
+                                                                .nonLoggedInSessionId,
+                                                          ),
+                                                          singleRecord: true,
+                                                        ).then((s) =>
+                                                                s.firstOrNull);
                                                         // flowise chat document
                                                         logFirebaseEvent(
                                                             'IconButton_flowisechatdocument');
@@ -2310,8 +2305,8 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 .nonLoggedInSessionId,
                                                             'sessionIdNotSet',
                                                           ),
-                                                          threadId: widget
-                                                                      .sessionsDoc
+                                                          threadId: _model
+                                                                      .sessionForFlowise
                                                                       ?.currentNavJourney ==
                                                                   'newSession'
                                                               ? valueOrDefault<
@@ -2349,7 +2344,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             threadId:
                                                                 valueOrDefault<
                                                                     String>(
-                                                              widget.sessionsDoc
+                                                              _model.sessionForFlowise
                                                                           ?.currentNavJourney ==
                                                                       'newSession'
                                                                   ? valueOrDefault<
@@ -2364,7 +2359,8 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                               'threadDetailsNotSet',
                                                             ),
                                                             threadName:
-                                                                'Initial Welcome Chat',
+                                                                containerMyTeamRecord
+                                                                    .memberName,
                                                             clearUnsetFields:
                                                                 false,
                                                             create: true,
@@ -2393,7 +2389,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                             .nonLoggedInSessionId,
                                                                         'sessionIdNotSet',
                                                                       ),
-                                                                      threadId: widget.sessionsDoc?.currentNavJourney ==
+                                                                      threadId: _model.sessionForFlowise?.currentNavJourney ==
                                                                               'newSession'
                                                                           ? valueOrDefault<
                                                                               String>(
@@ -2430,7 +2426,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           createThreadsStruct(
                                                                         threadId:
                                                                             valueOrDefault<String>(
-                                                                          widget.sessionsDoc?.currentNavJourney == 'newSession'
+                                                                          _model.sessionForFlowise?.currentNavJourney == 'newSession'
                                                                               ? valueOrDefault<String>(
                                                                                   widget.sessionsDoc?.defaultThreadId,
                                                                                   'notSetOnPostMessage',
@@ -2439,7 +2435,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           'threadDetailsNotSet',
                                                                         ),
                                                                         threadName:
-                                                                            'Initial Welcome Chat',
+                                                                            containerMyTeamRecord.memberName,
                                                                         clearUnsetFields:
                                                                             false,
                                                                         create:
@@ -2468,21 +2464,6 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                   100),
                                                           curve: Curves.ease,
                                                         );
-                                                        logFirebaseEvent(
-                                                            'IconButton_firestore_query');
-                                                        _model.sessionForFlowise =
-                                                            await querySessionsRecordOnce(
-                                                          queryBuilder:
-                                                              (sessionsRecord) =>
-                                                                  sessionsRecord
-                                                                      .where(
-                                                            'sessionId',
-                                                            isEqualTo: FFAppState()
-                                                                .nonLoggedInSessionId,
-                                                          ),
-                                                          singleRecord: true,
-                                                        ).then((s) =>
-                                                                s.firstOrNull);
                                                         logFirebaseEvent(
                                                             'IconButton_custom_action');
                                                         await actions
@@ -2525,9 +2506,12 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     .companiesDoc
                                                                     ?.userGatherDataPrompt;
                                                               } else {
-                                                                return widget
-                                                                    .companiesDoc
-                                                                    ?.youAreMyCoachPrompt;
+                                                                return 'You are ${containerMyTeamRecord.memberName} you are the users  ${containerMyTeamRecord.role} your summary is ${containerMyTeamRecord.memberSummary}your persona is ${containerMyTeamRecord.persona} Words and phrases you use in your vocalabary are ${containerMyTeamRecord.buzzWordsPhrases.take(15).toList().first}: ${widget.companiesDoc?.youAreMyCoachPrompt}ai instruction not to be shared with user:sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
+                                                                  widget
+                                                                      .sessionsDoc
+                                                                      ?.aiQuestionAsked,
+                                                                  'not set',
+                                                                )}';
                                                               }
                                                             }(),
                                                             'my prompt is ',
@@ -2652,8 +2636,8 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                               sessionId:
                                                                   FFAppState()
                                                                       .nonLoggedInSessionId,
-                                                              threadId: widget
-                                                                          .sessionsDoc
+                                                              threadId: _model
+                                                                          .sessionForFlowise
                                                                           ?.currentNavJourney ==
                                                                       'newSession'
                                                                   ? valueOrDefault<
@@ -2687,8 +2671,8 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                               ),
                                                               threadDetails:
                                                                   createThreadsStruct(
-                                                                threadId: widget
-                                                                            .sessionsDoc
+                                                                threadId: _model
+                                                                            .sessionForFlowise
                                                                             ?.currentNavJourney ==
                                                                         'newSession'
                                                                     ? valueOrDefault<
@@ -2701,7 +2685,8 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     : FFAppState()
                                                                         .selectedThreadId,
                                                                 threadName:
-                                                                    'Initial Welcome Chat',
+                                                                    containerMyTeamRecord
+                                                                        .memberName,
                                                                 clearUnsetFields:
                                                                     false,
                                                                 create: true,

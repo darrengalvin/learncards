@@ -1333,7 +1333,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 highlightColor: Colors.transparent,
                                                                                 onTap: () async {
                                                                                   logFirebaseEvent('LIBRARY_FIXED_Column_hqm03hlf_ON_TAP');
-                                                                                  if (_model.firstTimeMentorChat == true) {
+                                                                                  if ((_model.sessionQueryOnPageLoad?.currentNavJourney == 'mentorChat') || (_model.sessionQueryOnPageLoad?.currentNavJourney == 'newSession')) {
                                                                                     logFirebaseEvent('Column_firestore_query');
                                                                                     _model.checkingMentorChat = await querySessionsRecordOnce(
                                                                                       queryBuilder: (sessionsRecord) => sessionsRecord.where(
@@ -1342,10 +1342,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                       ),
                                                                                       singleRecord: true,
                                                                                     ).then((s) => s.firstOrNull);
-                                                                                    logFirebaseEvent('Column_update_page_state');
-                                                                                    setState(() {
-                                                                                      _model.firstTimeMentorChat = false;
-                                                                                    });
                                                                                   }
                                                                                   if (_model.checkingMentorChat?.currentNavJourney == 'newSession') {
                                                                                     logFirebaseEvent('Column_update_app_state');
@@ -1373,12 +1369,65 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                         );
                                                                                       },
                                                                                     ).then((value) => safeSetState(() {}));
+                                                                                  } else if (_model.checkingMentorChat?.currentNavJourney == 'mentorChat') {
+                                                                                    logFirebaseEvent('Column_update_app_state');
+                                                                                    setState(() {
+                                                                                      FFAppState().tempStreamingMessage = 'You are now chatting with : ${myTeamItem.memberName}';
+                                                                                    });
+                                                                                    logFirebaseEvent('Column_update_app_state');
+                                                                                    setState(() {
+                                                                                      FFAppState().selectedTeam = myTeamItem.reference.id;
+                                                                                    });
+                                                                                    if (FFAppState().selectedThreadId == _model.checkingMentorChat?.defaultThreadId) {
+                                                                                      logFirebaseEvent('Column_update_app_state');
+                                                                                      setState(() {
+                                                                                        FFAppState().selectedThreadId = '${myTeamItem.memberName}__${random_data.randomString(
+                                                                                          15,
+                                                                                          15,
+                                                                                          true,
+                                                                                          true,
+                                                                                          true,
+                                                                                        )}';
+                                                                                      });
+                                                                                    }
+                                                                                    logFirebaseEvent('Column_bottom_sheet');
+                                                                                    await showModalBottomSheet(
+                                                                                      isScrollControlled: true,
+                                                                                      backgroundColor: Colors.transparent,
+                                                                                      enableDrag: false,
+                                                                                      context: context,
+                                                                                      builder: (context) {
+                                                                                        return WebViewAware(
+                                                                                          child: GestureDetector(
+                                                                                            onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                            child: Padding(
+                                                                                              padding: MediaQuery.viewInsetsOf(context),
+                                                                                              child: AICOMMUNICATIONOnNewMentorWidget(
+                                                                                                companiesDoc: widget.companiesDoc!,
+                                                                                                sessionsDoc: _model.sessionQueryOnPageLoad,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    ).then((value) => safeSetState(() {}));
                                                                                   } else {
                                                                                     logFirebaseEvent('Column_update_app_state');
                                                                                     setState(() {
                                                                                       FFAppState().selectedTeam = myTeamItem.reference.id;
-                                                                                      FFAppState().selectedThreadId = myTeamItem.memberId;
                                                                                     });
+                                                                                    if (FFAppState().selectedThreadId == _model.checkingMentorChat?.defaultThreadId) {
+                                                                                      logFirebaseEvent('Column_update_app_state');
+                                                                                      setState(() {
+                                                                                        FFAppState().selectedThreadId = '${myTeamItem.memberName}: ${random_data.randomString(
+                                                                                          9,
+                                                                                          9,
+                                                                                          true,
+                                                                                          true,
+                                                                                          true,
+                                                                                        )}';
+                                                                                      });
+                                                                                    }
                                                                                     logFirebaseEvent('Column_bottom_sheet');
                                                                                     await showModalBottomSheet(
                                                                                       isScrollControlled: true,

@@ -2,7 +2,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'cloudinary_upload_test_model.dart';
 export 'cloudinary_upload_test_model.dart';
 
@@ -59,6 +61,7 @@ class _CloudinaryUploadTestWidgetState
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -85,13 +88,48 @@ class _CloudinaryUploadTestWidgetState
                           },
                         ),
                       ),
+                      FFButtonWidget(
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'CLOUDINARY_UPLOAD_TEST_BUTTON_BTN_ON_TAP');
+                          logFirebaseEvent('Button_launch_u_r_l');
+                          await launchURL(
+                              'https://yourcaio.co.uk/cloudinary.html');
+                        },
+                        text: 'Button',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
+                                color: Colors.white,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmallFamily),
+                              ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
                     ],
                   ),
                   Expanded(
                     child: FlutterFlowWebView(
                       content:
-                          '<html>       <body>       <!-- Cloudinary Upload Button -->       <button id=\"upload_widget\" class=\"cloudinary-button\">Upload files</button>              <!-- Cloudinary Widget Script -->       <script src=\"https://upload-widget.cloudinary.com/global/all.js\" type=\"text/javascript\"></script>          <script type=\"text/javascript\">         var myWidget = cloudinary.createUploadWidget({         cloudName: \'hzxyensd5\',          uploadPreset: \'${widget.presetId}\',         // Add other widget configurations here if needed       }, (error, result) => {            if (!error && result && result.event === \"success\") {              console.log(\'Done! Here is the image info: \', result.info);              // You can add additional JavaScript here to handle the uploaded image           }       });        // Event listener for the upload button       document.getElementById(\"upload_widget\").addEventListener(\"click\", function(){           myWidget.open();       }, false);       </script>       </body>       </html>',
-                      height: MediaQuery.sizeOf(context).height * 1.0,
+                          '<!DOCTYPE html> <html lang=\"en\"> <head>     <meta charset=\"UTF-8\">     <title>Cloudinary Upload</title>     <script src=\"https://upload-widget.cloudinary.com/global/all.js\" type=\"text/javascript\"></script>     <script type=\"text/javascript\">     function showUploadWidget() {         cloudinary.openUploadWidget({             cloudName: \"dplpckpbm\",             uploadPreset: \"${widget.presetId}\",             sources: [                 \"local\", \"url\", \"camera\", \"image_search\",                 \"google_drive\", \"dropbox\", \"instagram\",                 \"facebook\", \"shutterstock\", \"getty\",                 \"istock\", \"unsplash\"             ],             googleApiKey: \"<image_search_google_api_key>\",             showAdvancedOptions: true,             cropping: true,             multiple: false,             defaultSource: \"local\",             styles: {                 palette: {                     window: \"#FFFFFF\",                     windowBorder: \"#90A0B3\",                     tabIcon: \"#0078FF\",                     menuIcons: \"#5A616A\",                     textDark: \"#000000\",                     textLight: \"#FFFFFF\",                     link: \"#0078FF\",                     action: \"#FF620C\",                     inactiveTabIcon: \"#0E2F5A\",                     error: \"#F44235\",                     inProgress: \"#0078FF\",                     complete: \"#20B832\",                     sourceBg: \"#E4EBF1\"                 },                 fonts: {                     default: { active: true }                 }             }         }, (err, info) => {             if (!err) {                 console.log(\"Upload Widget event - \", info);             }         });     }     </script> </head> <body>     <button id=\"upload_widget\" class=\"cloudinary-button\" onclick=\"showUploadWidget()\">Upload files</button> </body> </html>',
+                      width: 600.0,
+                      height: MediaQuery.sizeOf(context).height * 6.0,
                       verticalScroll: false,
                       horizontalScroll: false,
                     ),

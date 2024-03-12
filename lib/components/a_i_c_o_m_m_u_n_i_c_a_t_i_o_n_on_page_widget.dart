@@ -1449,132 +1449,454 @@ class _AICOMMUNICATIONOnPageWidgetState
                                         ],
                                       ),
                                     ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                    ),
-                                    child: Visibility(
-                                      visible: _model.questionReady == true,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .askTheQuestionController1,
-                                                focusNode: _model
-                                                    .askTheQuestionFocusNode1,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText: 'Respond Here',
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                            fontSize: 18.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMediumFamily),
-                                                          ),
-                                                  hintStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium,
-                                                  enabledBorder:
-                                                      UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      UnderlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFF464646),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  errorBorder:
-                                                      UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  contentPadding:
-                                                      const EdgeInsetsDirectional
-                                                          .fromSTEB(12.0, 0.0,
-                                                              0.0, 0.0),
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
+                                  if (widget.sessionsDoc?.currentNavJourney !=
+                                      'mentorChat')
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                      ),
+                                      child: Visibility(
+                                        visible: _model.questionReady == true,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .askTheQuestionController1,
+                                                  focusNode: _model
+                                                      .askTheQuestionFocusNode1,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Respond Here',
+                                                    labelStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .override(
+                                                              fontFamily:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                                validator: _model
-                                                    .askTheQuestionController1Validator
-                                                    .asValidator(context),
+                                                                      .labelMediumFamily,
+                                                              fontSize: 18.0,
+                                                              useGoogleFonts: GoogleFonts
+                                                                      .asMap()
+                                                                  .containsKey(
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMediumFamily),
+                                                            ),
+                                                    hintStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium,
+                                                    enabledBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFF464646),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    contentPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(12.0, 0.0,
+                                                                0.0, 0.0),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 16.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                                  validator: _model
+                                                      .askTheQuestionController1Validator
+                                                      .asValidator(context),
+                                                ),
                                               ),
-                                            ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                              tablet: false,
-                                              tabletLandscape: false,
-                                              desktop: false,
-                                            ))
+                                              if (responsiveVisibility(
+                                                context: context,
+                                                phone: false,
+                                                tablet: false,
+                                                tabletLandscape: false,
+                                                desktop: false,
+                                              ))
+                                                FlutterFlowIconButton(
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  borderRadius: 5.0,
+                                                  borderWidth: 1.0,
+                                                  buttonSize: 55.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .success,
+                                                  icon: Icon(
+                                                    Icons.send_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  showLoadingIndicator: true,
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_send_sh');
+                                                    logFirebaseEvent(
+                                                        'IconButton_firestore_query');
+                                                    _model.companyQueryByCode =
+                                                        await queryCompaniesRecordOnce(
+                                                      queryBuilder:
+                                                          (companiesRecord) =>
+                                                              companiesRecord
+                                                                  .where(
+                                                        'companyCode',
+                                                        isEqualTo:
+                                                            valueOrDefault<
+                                                                String>(
+                                                          FFAppState()
+                                                              .companySecretCode,
+                                                          '223344',
+                                                        ),
+                                                      ),
+                                                    );
+                                                    if (FFAppState()
+                                                                .nonLoggedInSessionId ==
+                                                            '') {}
+                                                    // flowise chat document
+                                                    logFirebaseEvent(
+                                                        'IconButton_flowisechatdocument');
+
+                                                    await FlowiseChatsRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set(
+                                                            createFlowiseChatsRecordData(
+                                                          userId: loggedIn
+                                                              ? currentUserReference
+                                                                  ?.id
+                                                              : FFAppState()
+                                                                  .nonLoggedInSessionId,
+                                                          role: 'human',
+                                                          text: _model
+                                                              .askTheQuestionController1
+                                                              .text,
+                                                          createdTime:
+                                                              getCurrentTimestamp,
+                                                          sessionId: FFAppState()
+                                                              .nonLoggedInSessionId,
+                                                          threadId: FFAppState()
+                                                              .selectedThreadId,
+                                                        ));
+                                                    if (!(FFAppState()
+                                                                .selectedThreadId !=
+                                                            '')) {
+                                                      // generate active thread id
+                                                      logFirebaseEvent(
+                                                          'IconButton_generateactivethreadid');
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .activeThread =
+                                                            random_data
+                                                                .randomString(
+                                                          12,
+                                                          22,
+                                                          true,
+                                                          true,
+                                                          true,
+                                                        );
+                                                        FFAppState()
+                                                                .selectedThreadId =
+                                                            random_data
+                                                                .randomString(
+                                                          12,
+                                                          22,
+                                                          true,
+                                                          true,
+                                                          true,
+                                                        );
+                                                      });
+                                                    }
+                                                    // question ready false
+                                                    logFirebaseEvent(
+                                                        'IconButton_questionreadyfalse');
+                                                    setState(() {
+                                                      _model.questionReady =
+                                                          false;
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'IconButton_scroll_to');
+                                                    await _model
+                                                        .columnChatsScrollable
+                                                        ?.animateTo(
+                                                      _model
+                                                          .columnChatsScrollable!
+                                                          .position
+                                                          .maxScrollExtent,
+                                                      duration: const Duration(
+                                                          milliseconds: 100),
+                                                      curve: Curves.ease,
+                                                    );
+                                                    logFirebaseEvent(
+                                                        'IconButton_custom_action');
+                                                    await actions
+                                                        .callFlowiseStreamingChat(
+                                                      _model
+                                                          .askTheQuestionController1
+                                                          .text,
+                                                      widget.companiesDoc
+                                                          ?.youAreMyCoachPrompt,
+                                                      '1',
+                                                      FFAppState()
+                                                          .nonLoggedInSessionId,
+                                                      FFAppState()
+                                                          .nonLoggedInSessionId,
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode
+                                                            ?.first
+                                                            .supabaseProjUrl,
+                                                        'https://efdipbnxemvehcjbxekx.supabase.co',
+                                                      ),
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode
+                                                            ?.first
+                                                            .tableName,
+                                                        'table_name',
+                                                      ),
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode
+                                                            ?.first
+                                                            .supabaseApiKey,
+                                                        'apikey',
+                                                      ),
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode
+                                                            ?.first
+                                                            .queryName,
+                                                        'queryName',
+                                                      ),
+                                                      valueOrDefault<bool>(
+                                                        _model
+                                                            .companyQueryByCode
+                                                            ?.first
+                                                            .isLearnCards,
+                                                        false,
+                                                      ),
+                                                      () async {
+                                                        // scroll non streaming column
+                                                        logFirebaseEvent(
+                                                            '_scrollnonstreamingcolumn');
+                                                        await _model
+                                                            .columnChatsScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnChatsScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                        // scroll streaming
+                                                        logFirebaseEvent(
+                                                            '_scrollstreaming');
+                                                        await _model
+                                                            .columnMarkdownScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnMarkdownScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                      },
+                                                      () async {
+                                                        // scroll non streaming column
+                                                        logFirebaseEvent(
+                                                            '_scrollnonstreamingcolumn');
+                                                        await _model
+                                                            .columnChatsScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnChatsScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                        // scroll streaming
+                                                        logFirebaseEvent(
+                                                            '_scrollstreaming');
+                                                        await _model
+                                                            .columnMarkdownScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnMarkdownScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                      },
+                                                      'unknown',
+                                                    );
+                                                    // flowise chat document ai
+                                                    logFirebaseEvent(
+                                                        'IconButton_flowisechatdocumentai');
+
+                                                    await FlowiseChatsRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set(
+                                                            createFlowiseChatsRecordData(
+                                                          userId: loggedIn
+                                                              ? currentUserReference
+                                                                  ?.id
+                                                              : FFAppState()
+                                                                  .nonLoggedInSessionId,
+                                                          role: 'ai',
+                                                          text: FFAppState()
+                                                              .flowiseMessages
+                                                              .first
+                                                              .message,
+                                                          createdTime:
+                                                              getCurrentTimestamp,
+                                                          sessionId: FFAppState()
+                                                              .nonLoggedInSessionId,
+                                                          threadId:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            FFAppState()
+                                                                .selectedThreadId,
+                                                            'no thread id found',
+                                                          ),
+                                                        ));
+                                                    logFirebaseEvent(
+                                                        'IconButton_scroll_to');
+                                                    await _model
+                                                        .columnChatsScrollable
+                                                        ?.animateTo(
+                                                      _model
+                                                          .columnChatsScrollable!
+                                                          .position
+                                                          .maxScrollExtent,
+                                                      duration: const Duration(
+                                                          milliseconds: 100),
+                                                      curve: Curves.ease,
+                                                    );
+                                                    // question ready false
+                                                    logFirebaseEvent(
+                                                        'IconButton_questionreadyfalse');
+                                                    setState(() {
+                                                      _model.questionReady =
+                                                          true;
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'IconButton_update_app_state');
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .flowiseMessages = [];
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'IconButton_wait__delay');
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            milliseconds: 500));
+                                                    logFirebaseEvent(
+                                                        'IconButton_clear_text_fields_pin_codes');
+                                                    setState(() {
+                                                      _model
+                                                          .askTheQuestionController1
+                                                          ?.clear();
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'IconButton_scroll_to');
+                                                    await _model
+                                                        .columnChatsScrollable
+                                                        ?.animateTo(
+                                                      _model
+                                                          .columnChatsScrollable!
+                                                          .position
+                                                          .maxScrollExtent,
+                                                      duration: const Duration(
+                                                          milliseconds: 100),
+                                                      curve: Curves.ease,
+                                                    );
+
+                                                    setState(() {});
+                                                  },
+                                                ),
                                               FlutterFlowIconButton(
                                                 borderColor:
                                                     FlutterFlowTheme.of(context)
@@ -1584,7 +1906,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 buttonSize: 55.0,
                                                 fillColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .success,
+                                                        .alternate,
                                                 icon: Icon(
                                                   Icons.send_sharp,
                                                   color: FlutterFlowTheme.of(
@@ -1596,80 +1918,169 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 onPressed: () async {
                                                   logFirebaseEvent(
                                                       'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_send_sh');
-                                                  logFirebaseEvent(
-                                                      'IconButton_firestore_query');
-                                                  _model.companyQueryByCode =
-                                                      await queryCompaniesRecordOnce(
-                                                    queryBuilder:
-                                                        (companiesRecord) =>
-                                                            companiesRecord
-                                                                .where(
-                                                      'companyCode',
-                                                      isEqualTo: valueOrDefault<
-                                                          String>(
-                                                        FFAppState()
-                                                            .companySecretCode,
-                                                        '223344',
-                                                      ),
-                                                    ),
-                                                  );
-                                                  if (FFAppState()
-                                                              .nonLoggedInSessionId ==
-                                                          '') {}
                                                   // flowise chat document
                                                   logFirebaseEvent(
                                                       'IconButton_flowisechatdocument');
 
-                                                  await FlowiseChatsRecord
-                                                      .collection
-                                                      .doc()
+                                                  var flowiseChatsRecordReference1 =
+                                                      FlowiseChatsRecord
+                                                          .collection
+                                                          .doc();
+                                                  await flowiseChatsRecordReference1
                                                       .set(
                                                           createFlowiseChatsRecordData(
-                                                        userId: loggedIn
-                                                            ? currentUserReference
-                                                                ?.id
-                                                            : FFAppState()
-                                                                .nonLoggedInSessionId,
-                                                        role: 'human',
-                                                        text: _model
-                                                            .askTheQuestionController1
-                                                            .text,
-                                                        createdTime:
-                                                            getCurrentTimestamp,
-                                                        sessionId: FFAppState()
+                                                    userId: loggedIn
+                                                        ? currentUserReference
+                                                            ?.id
+                                                        : FFAppState()
                                                             .nonLoggedInSessionId,
-                                                        threadId: FFAppState()
+                                                    role: 'human',
+                                                    text: _model
+                                                        .askTheQuestionController1
+                                                        .text,
+                                                    createdTime:
+                                                        getCurrentTimestamp,
+                                                    sessionId:
+                                                        valueOrDefault<String>(
+                                                      FFAppState()
+                                                          .nonLoggedInSessionId,
+                                                      'sessionIdNotSet',
+                                                    ),
+                                                    threadId: widget.sessionsDoc
+                                                                ?.currentNavJourney ==
+                                                            'newSession'
+                                                        ? valueOrDefault<
+                                                            String>(
+                                                            widget.sessionsDoc
+                                                                ?.defaultThreadId,
+                                                            'notSetOnPostMessage',
+                                                          )
+                                                        : FFAppState()
                                                             .selectedThreadId,
-                                                      ));
-                                                  if (!(FFAppState()
-                                                              .selectedThreadId !=
-                                                          '')) {
-                                                    // generate active thread id
-                                                    logFirebaseEvent(
-                                                        'IconButton_generateactivethreadid');
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .activeThread =
-                                                          random_data
-                                                              .randomString(
-                                                        12,
-                                                        22,
-                                                        true,
-                                                        true,
-                                                        true,
-                                                      );
-                                                      FFAppState()
-                                                              .selectedThreadId =
-                                                          random_data
-                                                              .randomString(
-                                                        12,
-                                                        22,
-                                                        true,
-                                                        true,
-                                                        true,
-                                                      );
-                                                    });
-                                                  }
+                                                    companyName:
+                                                        valueOrDefault<String>(
+                                                      widget.companiesDoc
+                                                          ?.companyname,
+                                                      'coname',
+                                                    ),
+                                                    chatType:
+                                                        valueOrDefault<String>(
+                                                      FFAppState().chatType,
+                                                      'none',
+                                                    ),
+                                                    companyDocId:
+                                                        valueOrDefault<String>(
+                                                      widget.companiesDoc
+                                                          ?.reference.id,
+                                                      'doc',
+                                                    ),
+                                                    threadDetails:
+                                                        createThreadsStruct(
+                                                      threadId: valueOrDefault<
+                                                          String>(
+                                                        widget.sessionsDoc
+                                                                    ?.currentNavJourney ==
+                                                                'newSession'
+                                                            ? valueOrDefault<
+                                                                String>(
+                                                                widget
+                                                                    .sessionsDoc
+                                                                    ?.defaultThreadId,
+                                                                'notSetOnPostMessage',
+                                                              )
+                                                            : FFAppState()
+                                                                .selectedThreadId,
+                                                        'threadDetailsNotSet',
+                                                      ),
+                                                      threadName:
+                                                          'Initial Welcome Chat',
+                                                      clearUnsetFields: false,
+                                                      create: true,
+                                                    ),
+                                                  ));
+                                                  _model.createdThread =
+                                                      FlowiseChatsRecord
+                                                          .getDocumentFromData(
+                                                              createFlowiseChatsRecordData(
+                                                                userId: loggedIn
+                                                                    ? currentUserReference
+                                                                        ?.id
+                                                                    : FFAppState()
+                                                                        .nonLoggedInSessionId,
+                                                                role: 'human',
+                                                                text: _model
+                                                                    .askTheQuestionController1
+                                                                    .text,
+                                                                createdTime:
+                                                                    getCurrentTimestamp,
+                                                                sessionId:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  FFAppState()
+                                                                      .nonLoggedInSessionId,
+                                                                  'sessionIdNotSet',
+                                                                ),
+                                                                threadId: widget
+                                                                            .sessionsDoc
+                                                                            ?.currentNavJourney ==
+                                                                        'newSession'
+                                                                    ? valueOrDefault<
+                                                                        String>(
+                                                                        widget
+                                                                            .sessionsDoc
+                                                                            ?.defaultThreadId,
+                                                                        'notSetOnPostMessage',
+                                                                      )
+                                                                    : FFAppState()
+                                                                        .selectedThreadId,
+                                                                companyName:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  widget
+                                                                      .companiesDoc
+                                                                      ?.companyname,
+                                                                  'coname',
+                                                                ),
+                                                                chatType:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  FFAppState()
+                                                                      .chatType,
+                                                                  'none',
+                                                                ),
+                                                                companyDocId:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  widget
+                                                                      .companiesDoc
+                                                                      ?.reference
+                                                                      .id,
+                                                                  'doc',
+                                                                ),
+                                                                threadDetails:
+                                                                    createThreadsStruct(
+                                                                  threadId:
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                    widget.sessionsDoc?.currentNavJourney ==
+                                                                            'newSession'
+                                                                        ? valueOrDefault<
+                                                                            String>(
+                                                                            widget.sessionsDoc?.defaultThreadId,
+                                                                            'notSetOnPostMessage',
+                                                                          )
+                                                                        : FFAppState()
+                                                                            .selectedThreadId,
+                                                                    'threadDetailsNotSet',
+                                                                  ),
+                                                                  threadName:
+                                                                      'Initial Welcome Chat',
+                                                                  clearUnsetFields:
+                                                                      false,
+                                                                  create: true,
+                                                                ),
+                                                              ),
+                                                              flowiseChatsRecordReference1);
                                                   // question ready false
                                                   logFirebaseEvent(
                                                       'IconButton_questionreadyfalse');
@@ -1691,48 +2102,88 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     curve: Curves.ease,
                                                   );
                                                   logFirebaseEvent(
+                                                      'IconButton_firestore_query');
+                                                  _model.sessionForFlowise =
+                                                      await querySessionsRecordOnce(
+                                                    queryBuilder:
+                                                        (sessionsRecord) =>
+                                                            sessionsRecord
+                                                                .where(
+                                                      'sessionId',
+                                                      isEqualTo: FFAppState()
+                                                          .nonLoggedInSessionId,
+                                                    ),
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
+                                                  logFirebaseEvent(
                                                       'IconButton_custom_action');
                                                   await actions
                                                       .callFlowiseStreamingChat(
                                                     _model
                                                         .askTheQuestionController1
                                                         .text,
-                                                    widget.companiesDoc
-                                                        ?.youAreMyCoachPrompt,
+                                                    valueOrDefault<String>(
+                                                      () {
+                                                        if ((widget.sessionsDoc
+                                                                        ?.currentNavJourney ==
+                                                                    null ||
+                                                                widget.sessionsDoc
+                                                                        ?.currentNavJourney ==
+                                                                    '') &&
+                                                            ((widget.isLearnCard !=
+                                                                    true) ||
+                                                                (FFAppState()
+                                                                        .IsLearnCard !=
+                                                                    true))) {
+                                                          return 'This weeks focus topic is${widget.companiesDoc?.userGatherDataPrompt}';
+                                                        } else if ((widget
+                                                                    .isLearnCard ==
+                                                                true) ||
+                                                            (FFAppState()
+                                                                    .IsLearnCard ==
+                                                                true)) {
+                                                          return widget
+                                                              .companiesDoc
+                                                              ?.continueLearnCardPrompt;
+                                                        } else if ((widget
+                                                                    .sessionsDoc
+                                                                    ?.currentNavJourney ==
+                                                                'newUser') ||
+                                                            (widget.sessionsDoc
+                                                                    ?.currentNavJourney ==
+                                                                'newSession')) {
+                                                          return 'This weeks topic is : ${widget.companiesDoc?.companyAiData.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
+                                                        } else {
+                                                          return widget
+                                                              .companiesDoc
+                                                              ?.youAreMyCoachPrompt;
+                                                        }
+                                                      }(),
+                                                      'my prompt is ',
+                                                    ),
                                                     '1',
                                                     FFAppState()
                                                         .nonLoggedInSessionId,
                                                     FFAppState()
                                                         .nonLoggedInSessionId,
+                                                    widget.companiesDoc
+                                                        ?.supabaseProjUrl,
                                                     valueOrDefault<String>(
-                                                      _model
-                                                          .companyQueryByCode
-                                                          ?.first
-                                                          .supabaseProjUrl,
-                                                      'https://efdipbnxemvehcjbxekx.supabase.co',
+                                                      widget.companiesDoc
+                                                          ?.tableName,
+                                                      'tableName',
                                                     ),
                                                     valueOrDefault<String>(
-                                                      _model.companyQueryByCode
-                                                          ?.first.tableName,
-                                                      'table_name',
+                                                      widget.companiesDoc
+                                                          ?.supabaseApiKey,
+                                                      'tableName',
                                                     ),
                                                     valueOrDefault<String>(
-                                                      _model
-                                                          .companyQueryByCode
-                                                          ?.first
-                                                          .supabaseApiKey,
-                                                      'apikey',
-                                                    ),
-                                                    valueOrDefault<String>(
-                                                      _model.companyQueryByCode
-                                                          ?.first.queryName,
+                                                      widget.companiesDoc
+                                                          ?.queryName,
                                                       'queryName',
                                                     ),
-                                                    valueOrDefault<bool>(
-                                                      _model.companyQueryByCode
-                                                          ?.first.isLearnCards,
-                                                      false,
-                                                    ),
+                                                    false,
                                                     () async {
                                                       // scroll non streaming column
                                                       logFirebaseEvent(
@@ -1818,12 +2269,55 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             getCurrentTimestamp,
                                                         sessionId: FFAppState()
                                                             .nonLoggedInSessionId,
-                                                        threadId:
+                                                        threadId: widget
+                                                                    .sessionsDoc
+                                                                    ?.currentNavJourney ==
+                                                                'newSession'
+                                                            ? valueOrDefault<
+                                                                String>(
+                                                                widget
+                                                                    .sessionsDoc
+                                                                    ?.defaultThreadId,
+                                                                'notSetOnPostMessage',
+                                                              )
+                                                            : FFAppState()
+                                                                .selectedThreadId,
+                                                        companyName:
                                                             valueOrDefault<
                                                                 String>(
-                                                          FFAppState()
-                                                              .selectedThreadId,
-                                                          'no thread id found',
+                                                          widget.companiesDoc
+                                                              ?.companyname,
+                                                          'coName',
+                                                        ),
+                                                        chatType: FFAppState()
+                                                            .chatType,
+                                                        companyDocId:
+                                                            valueOrDefault<
+                                                                String>(
+                                                          widget.companiesDoc
+                                                              ?.reference.id,
+                                                          'id',
+                                                        ),
+                                                        threadDetails:
+                                                            createThreadsStruct(
+                                                          threadId: widget
+                                                                      .sessionsDoc
+                                                                      ?.currentNavJourney ==
+                                                                  'newSession'
+                                                              ? valueOrDefault<
+                                                                  String>(
+                                                                  widget
+                                                                      .sessionsDoc
+                                                                      ?.defaultThreadId,
+                                                                  'notSetOnPostMessage',
+                                                                )
+                                                              : FFAppState()
+                                                                  .selectedThreadId,
+                                                          threadName:
+                                                              'Initial Welcome Chat',
+                                                          clearUnsetFields:
+                                                              false,
+                                                          create: true,
                                                         ),
                                                       ));
                                                   logFirebaseEvent(
@@ -1880,293 +2374,120 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   setState(() {});
                                                 },
                                               ),
-                                            FlutterFlowIconButton(
-                                              borderColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              borderRadius: 5.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 55.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              icon: Icon(
-                                                Icons.send_sharp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                              if (responsiveVisibility(
+                                                context: context,
+                                                phone: false,
+                                                tablet: false,
+                                                tabletLandscape: false,
+                                                desktop: false,
+                                              ))
+                                                FlutterFlowIconButton(
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  borderRadius: 5.0,
+                                                  borderWidth: 1.0,
+                                                  buttonSize: 55.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .accent1,
+                                                  icon: Icon(
+                                                    Icons.send_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .primaryText,
-                                                size: 24.0,
-                                              ),
-                                              showLoadingIndicator: true,
-                                              onPressed: () async {
-                                                logFirebaseEvent(
-                                                    'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_send_sh');
-                                                // flowise chat document
-                                                logFirebaseEvent(
-                                                    'IconButton_flowisechatdocument');
+                                                    size: 24.0,
+                                                  ),
+                                                  showLoadingIndicator: true,
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_send_sh');
+                                                    logFirebaseEvent(
+                                                        'IconButton_firestore_query');
+                                                    _model.companyQueryByCode1 =
+                                                        await queryCompaniesRecordOnce(
+                                                      queryBuilder:
+                                                          (companiesRecord) =>
+                                                              companiesRecord
+                                                                  .where(
+                                                        'companyCode',
+                                                        isEqualTo:
+                                                            valueOrDefault<
+                                                                String>(
+                                                          FFAppState()
+                                                              .companySecretCode,
+                                                          '223344',
+                                                        ),
+                                                      ),
+                                                    );
+                                                    if (FFAppState()
+                                                                .nonLoggedInSessionId ==
+                                                            '') {}
+                                                    // flowise chat document
+                                                    logFirebaseEvent(
+                                                        'IconButton_flowisechatdocument');
 
-                                                var flowiseChatsRecordReference1 =
-                                                    FlowiseChatsRecord
+                                                    await FlowiseChatsRecord
                                                         .collection
-                                                        .doc();
-                                                await flowiseChatsRecordReference1
-                                                    .set(
-                                                        createFlowiseChatsRecordData(
-                                                  userId: loggedIn
-                                                      ? currentUserReference?.id
-                                                      : FFAppState()
-                                                          .nonLoggedInSessionId,
-                                                  role: 'human',
-                                                  text: _model
-                                                      .askTheQuestionController1
-                                                      .text,
-                                                  createdTime:
-                                                      getCurrentTimestamp,
-                                                  sessionId:
-                                                      valueOrDefault<String>(
-                                                    FFAppState()
-                                                        .nonLoggedInSessionId,
-                                                    'sessionIdNotSet',
-                                                  ),
-                                                  threadId: widget.sessionsDoc
-                                                              ?.currentNavJourney ==
-                                                          'newSession'
-                                                      ? valueOrDefault<String>(
-                                                          widget.sessionsDoc
-                                                              ?.defaultThreadId,
-                                                          'notSetOnPostMessage',
-                                                        )
-                                                      : FFAppState()
-                                                          .selectedThreadId,
-                                                  companyName:
-                                                      valueOrDefault<String>(
-                                                    widget.companiesDoc
-                                                        ?.companyname,
-                                                    'coname',
-                                                  ),
-                                                  chatType:
-                                                      valueOrDefault<String>(
-                                                    FFAppState().chatType,
-                                                    'none',
-                                                  ),
-                                                  companyDocId:
-                                                      valueOrDefault<String>(
-                                                    widget.companiesDoc
-                                                        ?.reference.id,
-                                                    'doc',
-                                                  ),
-                                                  threadDetails:
-                                                      createThreadsStruct(
-                                                    threadId:
-                                                        valueOrDefault<String>(
-                                                      widget.sessionsDoc
-                                                                  ?.currentNavJourney ==
-                                                              'newSession'
-                                                          ? valueOrDefault<
-                                                              String>(
-                                                              widget.sessionsDoc
-                                                                  ?.defaultThreadId,
-                                                              'notSetOnPostMessage',
-                                                            )
-                                                          : FFAppState()
-                                                              .selectedThreadId,
-                                                      'threadDetailsNotSet',
-                                                    ),
-                                                    threadName:
-                                                        'Initial Welcome Chat',
-                                                    clearUnsetFields: false,
-                                                    create: true,
-                                                  ),
-                                                ));
-                                                _model.createdThread =
-                                                    FlowiseChatsRecord
-                                                        .getDocumentFromData(
+                                                        .doc()
+                                                        .set(
                                                             createFlowiseChatsRecordData(
-                                                              userId: loggedIn
-                                                                  ? currentUserReference
-                                                                      ?.id
-                                                                  : FFAppState()
-                                                                      .nonLoggedInSessionId,
-                                                              role: 'human',
-                                                              text: _model
-                                                                  .askTheQuestionController1
-                                                                  .text,
-                                                              createdTime:
-                                                                  getCurrentTimestamp,
-                                                              sessionId:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                FFAppState()
-                                                                    .nonLoggedInSessionId,
-                                                                'sessionIdNotSet',
-                                                              ),
-                                                              threadId: widget
-                                                                          .sessionsDoc
-                                                                          ?.currentNavJourney ==
-                                                                      'newSession'
-                                                                  ? valueOrDefault<
-                                                                      String>(
-                                                                      widget
-                                                                          .sessionsDoc
-                                                                          ?.defaultThreadId,
-                                                                      'notSetOnPostMessage',
-                                                                    )
-                                                                  : FFAppState()
-                                                                      .selectedThreadId,
-                                                              companyName:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                widget
-                                                                    .companiesDoc
-                                                                    ?.companyname,
-                                                                'coname',
-                                                              ),
-                                                              chatType:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                FFAppState()
-                                                                    .chatType,
-                                                                'none',
-                                                              ),
-                                                              companyDocId:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                widget
-                                                                    .companiesDoc
-                                                                    ?.reference
-                                                                    .id,
-                                                                'doc',
-                                                              ),
-                                                              threadDetails:
-                                                                  createThreadsStruct(
-                                                                threadId:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  widget.sessionsDoc
-                                                                              ?.currentNavJourney ==
-                                                                          'newSession'
-                                                                      ? valueOrDefault<
-                                                                          String>(
-                                                                          widget
-                                                                              .sessionsDoc
-                                                                              ?.defaultThreadId,
-                                                                          'notSetOnPostMessage',
-                                                                        )
-                                                                      : FFAppState()
-                                                                          .selectedThreadId,
-                                                                  'threadDetailsNotSet',
-                                                                ),
-                                                                threadName:
-                                                                    'Initial Welcome Chat',
-                                                                clearUnsetFields:
-                                                                    false,
-                                                                create: true,
-                                                              ),
-                                                            ),
-                                                            flowiseChatsRecordReference1);
-                                                // question ready false
-                                                logFirebaseEvent(
-                                                    'IconButton_questionreadyfalse');
-                                                setState(() {
-                                                  _model.questionReady = false;
-                                                });
-                                                logFirebaseEvent(
-                                                    'IconButton_scroll_to');
-                                                await _model
-                                                    .columnChatsScrollable
-                                                    ?.animateTo(
-                                                  _model.columnChatsScrollable!
-                                                      .position.maxScrollExtent,
-                                                  duration: const Duration(
-                                                      milliseconds: 100),
-                                                  curve: Curves.ease,
-                                                );
-                                                logFirebaseEvent(
-                                                    'IconButton_firestore_query');
-                                                _model.sessionForFlowise =
-                                                    await querySessionsRecordOnce(
-                                                  queryBuilder:
-                                                      (sessionsRecord) =>
-                                                          sessionsRecord.where(
-                                                    'sessionId',
-                                                    isEqualTo: FFAppState()
-                                                        .nonLoggedInSessionId,
-                                                  ),
-                                                  singleRecord: true,
-                                                ).then((s) => s.firstOrNull);
-                                                logFirebaseEvent(
-                                                    'IconButton_custom_action');
-                                                await actions
-                                                    .callFlowiseStreamingChat(
-                                                  _model
-                                                      .askTheQuestionController1
-                                                      .text,
-                                                  valueOrDefault<String>(
-                                                    () {
-                                                      if ((widget.sessionsDoc
-                                                                      ?.currentNavJourney ==
-                                                                  null ||
-                                                              widget.sessionsDoc
-                                                                      ?.currentNavJourney ==
-                                                                  '') &&
-                                                          ((widget.isLearnCard !=
-                                                                  true) ||
-                                                              (FFAppState()
-                                                                      .IsLearnCard !=
-                                                                  true))) {
-                                                        return 'This weeks focus topic is${widget.companiesDoc?.userGatherDataPrompt}';
-                                                      } else if ((widget
-                                                                  .isLearnCard ==
-                                                              true) ||
-                                                          (FFAppState()
-                                                                  .IsLearnCard ==
-                                                              true)) {
-                                                        return widget
-                                                            .companiesDoc
-                                                            ?.continueLearnCardPrompt;
-                                                      } else if ((widget
-                                                                  .sessionsDoc
-                                                                  ?.currentNavJourney ==
-                                                              'newUser') ||
-                                                          (widget.sessionsDoc
-                                                                  ?.currentNavJourney ==
-                                                              'newSession')) {
-                                                        return 'This weeks topic is : ${widget.companiesDoc?.companyAiData.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
-                                                      } else {
-                                                        return widget
-                                                            .companiesDoc
-                                                            ?.youAreMyCoachPrompt;
-                                                      }
-                                                    }(),
-                                                    'my prompt is ',
-                                                  ),
-                                                  '1',
-                                                  FFAppState()
-                                                      .nonLoggedInSessionId,
-                                                  FFAppState()
-                                                      .nonLoggedInSessionId,
-                                                  widget.companiesDoc
-                                                      ?.supabaseProjUrl,
-                                                  valueOrDefault<String>(
-                                                    widget.companiesDoc
-                                                        ?.tableName,
-                                                    'tableName',
-                                                  ),
-                                                  valueOrDefault<String>(
-                                                    widget.companiesDoc
-                                                        ?.supabaseApiKey,
-                                                    'tableName',
-                                                  ),
-                                                  valueOrDefault<String>(
-                                                    widget.companiesDoc
-                                                        ?.queryName,
-                                                    'queryName',
-                                                  ),
-                                                  false,
-                                                  () async {
-                                                    // scroll non streaming column
+                                                          userId: loggedIn
+                                                              ? currentUserReference
+                                                                  ?.id
+                                                              : FFAppState()
+                                                                  .nonLoggedInSessionId,
+                                                          role: 'human',
+                                                          text: _model
+                                                              .askTheQuestionController1
+                                                              .text,
+                                                          createdTime:
+                                                              getCurrentTimestamp,
+                                                          sessionId: FFAppState()
+                                                              .nonLoggedInSessionId,
+                                                          threadId: FFAppState()
+                                                              .selectedThreadId,
+                                                        ));
+                                                    if (!(FFAppState()
+                                                                .selectedThreadId !=
+                                                            '')) {
+                                                      // generate active thread id
+                                                      logFirebaseEvent(
+                                                          'IconButton_generateactivethreadid');
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .activeThread =
+                                                            random_data
+                                                                .randomString(
+                                                          12,
+                                                          22,
+                                                          true,
+                                                          true,
+                                                          true,
+                                                        );
+                                                        FFAppState()
+                                                                .selectedThreadId =
+                                                            random_data
+                                                                .randomString(
+                                                          12,
+                                                          22,
+                                                          true,
+                                                          true,
+                                                          true,
+                                                        );
+                                                      });
+                                                    }
+                                                    // question ready false
                                                     logFirebaseEvent(
-                                                        '_scrollnonstreamingcolumn');
+                                                        'IconButton_questionreadyfalse');
+                                                    setState(() {
+                                                      _model.questionReady =
+                                                          false;
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'IconButton_scroll_to');
                                                     await _model
                                                         .columnChatsScrollable
                                                         ?.animateTo(
@@ -2178,62 +2499,132 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
-                                                    // scroll streaming
                                                     logFirebaseEvent(
-                                                        '_scrollstreaming');
-                                                    await _model
-                                                        .columnMarkdownScrollable
-                                                        ?.animateTo(
+                                                        'IconButton_custom_action');
+                                                    await actions
+                                                        .callFlowiseStreamingChat(
                                                       _model
-                                                          .columnMarkdownScrollable!
-                                                          .position
-                                                          .maxScrollExtent,
-                                                      duration: const Duration(
-                                                          milliseconds: 100),
-                                                      curve: Curves.ease,
+                                                          .askTheQuestionController1
+                                                          .text,
+                                                      widget.companiesDoc
+                                                          ?.userGatherDataPrompt,
+                                                      '1',
+                                                      FFAppState()
+                                                          .nonLoggedInSessionId,
+                                                      FFAppState()
+                                                          .nonLoggedInSessionId,
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode1
+                                                            ?.first
+                                                            .supabaseProjUrl,
+                                                        'https://efdipbnxemvehcjbxekx.supabase.co',
+                                                      ),
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode1
+                                                            ?.first
+                                                            .tableName,
+                                                        'table_name',
+                                                      ),
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode1
+                                                            ?.first
+                                                            .supabaseApiKey,
+                                                        'apikey',
+                                                      ),
+                                                      valueOrDefault<String>(
+                                                        _model
+                                                            .companyQueryByCode1
+                                                            ?.first
+                                                            .queryName,
+                                                        'queryName',
+                                                      ),
+                                                      valueOrDefault<bool>(
+                                                        _model
+                                                            .companyQueryByCode1
+                                                            ?.first
+                                                            .isLearnCards,
+                                                        false,
+                                                      ),
+                                                      () async {
+                                                        // scroll non streaming column
+                                                        logFirebaseEvent(
+                                                            '_scrollnonstreamingcolumn');
+                                                        await _model
+                                                            .columnChatsScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnChatsScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                        // scroll streaming
+                                                        logFirebaseEvent(
+                                                            '_scrollstreaming');
+                                                        await _model
+                                                            .columnMarkdownScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnMarkdownScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                      },
+                                                      () async {
+                                                        // scroll non streaming column
+                                                        logFirebaseEvent(
+                                                            '_scrollnonstreamingcolumn');
+                                                        await _model
+                                                            .columnChatsScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnChatsScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                        // scroll streaming
+                                                        logFirebaseEvent(
+                                                            '_scrollstreaming');
+                                                        await _model
+                                                            .columnMarkdownScrollable
+                                                            ?.animateTo(
+                                                          _model
+                                                              .columnMarkdownScrollable!
+                                                              .position
+                                                              .maxScrollExtent,
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  100),
+                                                          curve: Curves.ease,
+                                                        );
+                                                      },
+                                                      'unknown',
                                                     );
-                                                  },
-                                                  () async {
-                                                    // scroll non streaming column
+                                                    // flowise chat document ai
                                                     logFirebaseEvent(
-                                                        '_scrollnonstreamingcolumn');
-                                                    await _model
-                                                        .columnChatsScrollable
-                                                        ?.animateTo(
-                                                      _model
-                                                          .columnChatsScrollable!
-                                                          .position
-                                                          .maxScrollExtent,
-                                                      duration: const Duration(
-                                                          milliseconds: 100),
-                                                      curve: Curves.ease,
-                                                    );
-                                                    // scroll streaming
-                                                    logFirebaseEvent(
-                                                        '_scrollstreaming');
-                                                    await _model
-                                                        .columnMarkdownScrollable
-                                                        ?.animateTo(
-                                                      _model
-                                                          .columnMarkdownScrollable!
-                                                          .position
-                                                          .maxScrollExtent,
-                                                      duration: const Duration(
-                                                          milliseconds: 100),
-                                                      curve: Curves.ease,
-                                                    );
-                                                  },
-                                                  'unknown',
-                                                );
-                                                // flowise chat document ai
-                                                logFirebaseEvent(
-                                                    'IconButton_flowisechatdocumentai');
+                                                        'IconButton_flowisechatdocumentai');
 
-                                                await FlowiseChatsRecord
-                                                    .collection
-                                                    .doc()
-                                                    .set(
-                                                        createFlowiseChatsRecordData(
+                                                    var flowiseChatsRecordReference2 =
+                                                        FlowiseChatsRecord
+                                                            .collection
+                                                            .doc();
+                                                    await flowiseChatsRecordReference2
+                                                        .set(
+                                                            createFlowiseChatsRecordData(
                                                       userId: loggedIn
                                                           ? currentUserReference
                                                               ?.id
@@ -2248,451 +2639,101 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           getCurrentTimestamp,
                                                       sessionId: FFAppState()
                                                           .nonLoggedInSessionId,
-                                                      threadId: widget
-                                                                  .sessionsDoc
-                                                                  ?.currentNavJourney ==
-                                                              'newSession'
-                                                          ? valueOrDefault<
-                                                              String>(
-                                                              widget.sessionsDoc
-                                                                  ?.defaultThreadId,
-                                                              'notSetOnPostMessage',
-                                                            )
-                                                          : FFAppState()
-                                                              .selectedThreadId,
-                                                      companyName:
-                                                          valueOrDefault<
-                                                              String>(
-                                                        widget.companiesDoc
-                                                            ?.companyname,
-                                                        'coName',
-                                                      ),
-                                                      chatType:
-                                                          FFAppState().chatType,
-                                                      companyDocId:
-                                                          valueOrDefault<
-                                                              String>(
-                                                        widget.companiesDoc
-                                                            ?.reference.id,
-                                                        'id',
-                                                      ),
-                                                      threadDetails:
-                                                          createThreadsStruct(
-                                                        threadId: widget
-                                                                    .sessionsDoc
-                                                                    ?.currentNavJourney ==
-                                                                'newSession'
-                                                            ? valueOrDefault<
-                                                                String>(
-                                                                widget
-                                                                    .sessionsDoc
-                                                                    ?.defaultThreadId,
-                                                                'notSetOnPostMessage',
-                                                              )
-                                                            : FFAppState()
-                                                                .selectedThreadId,
-                                                        threadName:
-                                                            'Initial Welcome Chat',
-                                                        clearUnsetFields: false,
-                                                        create: true,
-                                                      ),
-                                                    ));
-                                                logFirebaseEvent(
-                                                    'IconButton_scroll_to');
-                                                await _model
-                                                    .columnChatsScrollable
-                                                    ?.animateTo(
-                                                  _model.columnChatsScrollable!
-                                                      .position.maxScrollExtent,
-                                                  duration: const Duration(
-                                                      milliseconds: 100),
-                                                  curve: Curves.ease,
-                                                );
-                                                // question ready false
-                                                logFirebaseEvent(
-                                                    'IconButton_questionreadyfalse');
-                                                setState(() {
-                                                  _model.questionReady = true;
-                                                });
-                                                logFirebaseEvent(
-                                                    'IconButton_update_app_state');
-                                                setState(() {
-                                                  FFAppState().flowiseMessages =
-                                                      [];
-                                                });
-                                                logFirebaseEvent(
-                                                    'IconButton_wait__delay');
-                                                await Future.delayed(
-                                                    const Duration(
-                                                        milliseconds: 500));
-                                                logFirebaseEvent(
-                                                    'IconButton_clear_text_fields_pin_codes');
-                                                setState(() {
-                                                  _model
-                                                      .askTheQuestionController1
-                                                      ?.clear();
-                                                });
-                                                logFirebaseEvent(
-                                                    'IconButton_scroll_to');
-                                                await _model
-                                                    .columnChatsScrollable
-                                                    ?.animateTo(
-                                                  _model.columnChatsScrollable!
-                                                      .position.maxScrollExtent,
-                                                  duration: const Duration(
-                                                      milliseconds: 100),
-                                                  curve: Curves.ease,
-                                                );
-
-                                                setState(() {});
-                                              },
-                                            ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                              tablet: false,
-                                              tabletLandscape: false,
-                                              desktop: false,
-                                            ))
-                                              FlutterFlowIconButton(
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                borderRadius: 5.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 55.0,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                icon: Icon(
-                                                  Icons.send_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  size: 24.0,
-                                                ),
-                                                showLoadingIndicator: true,
-                                                onPressed: () async {
-                                                  logFirebaseEvent(
-                                                      'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_send_sh');
-                                                  logFirebaseEvent(
-                                                      'IconButton_firestore_query');
-                                                  _model.companyQueryByCode1 =
-                                                      await queryCompaniesRecordOnce(
-                                                    queryBuilder:
-                                                        (companiesRecord) =>
-                                                            companiesRecord
-                                                                .where(
-                                                      'companyCode',
-                                                      isEqualTo: valueOrDefault<
+                                                      threadId: valueOrDefault<
                                                           String>(
                                                         FFAppState()
-                                                            .companySecretCode,
-                                                        '223344',
-                                                      ),
-                                                    ),
-                                                  );
-                                                  if (FFAppState()
-                                                              .nonLoggedInSessionId ==
-                                                          '') {}
-                                                  // flowise chat document
-                                                  logFirebaseEvent(
-                                                      'IconButton_flowisechatdocument');
-
-                                                  await FlowiseChatsRecord
-                                                      .collection
-                                                      .doc()
-                                                      .set(
-                                                          createFlowiseChatsRecordData(
-                                                        userId: loggedIn
-                                                            ? currentUserReference
-                                                                ?.id
-                                                            : FFAppState()
-                                                                .nonLoggedInSessionId,
-                                                        role: 'human',
-                                                        text: _model
-                                                            .askTheQuestionController1
-                                                            .text,
-                                                        createdTime:
-                                                            getCurrentTimestamp,
-                                                        sessionId: FFAppState()
-                                                            .nonLoggedInSessionId,
-                                                        threadId: FFAppState()
                                                             .selectedThreadId,
-                                                      ));
-                                                  if (!(FFAppState()
-                                                              .selectedThreadId !=
-                                                          '')) {
-                                                    // generate active thread id
+                                                        'no thread id found',
+                                                      ),
+                                                    ));
+                                                    _model.creeatedWelcomeChatDoc =
+                                                        FlowiseChatsRecord
+                                                            .getDocumentFromData(
+                                                                createFlowiseChatsRecordData(
+                                                                  userId: loggedIn
+                                                                      ? currentUserReference
+                                                                          ?.id
+                                                                      : FFAppState()
+                                                                          .nonLoggedInSessionId,
+                                                                  role: 'ai',
+                                                                  text: FFAppState()
+                                                                      .flowiseMessages
+                                                                      .first
+                                                                      .message,
+                                                                  createdTime:
+                                                                      getCurrentTimestamp,
+                                                                  sessionId:
+                                                                      FFAppState()
+                                                                          .nonLoggedInSessionId,
+                                                                  threadId:
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                    FFAppState()
+                                                                        .selectedThreadId,
+                                                                    'no thread id found',
+                                                                  ),
+                                                                ),
+                                                                flowiseChatsRecordReference2);
                                                     logFirebaseEvent(
-                                                        'IconButton_generateactivethreadid');
+                                                        'IconButton_scroll_to');
+                                                    await _model
+                                                        .columnChatsScrollable
+                                                        ?.animateTo(
+                                                      _model
+                                                          .columnChatsScrollable!
+                                                          .position
+                                                          .maxScrollExtent,
+                                                      duration: const Duration(
+                                                          milliseconds: 100),
+                                                      curve: Curves.ease,
+                                                    );
+                                                    // question ready false
+                                                    logFirebaseEvent(
+                                                        'IconButton_questionreadyfalse');
+                                                    setState(() {
+                                                      _model.questionReady =
+                                                          true;
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'IconButton_update_app_state');
                                                     setState(() {
                                                       FFAppState()
-                                                              .activeThread =
-                                                          random_data
-                                                              .randomString(
-                                                        12,
-                                                        22,
-                                                        true,
-                                                        true,
-                                                        true,
-                                                      );
-                                                      FFAppState()
-                                                              .selectedThreadId =
-                                                          random_data
-                                                              .randomString(
-                                                        12,
-                                                        22,
-                                                        true,
-                                                        true,
-                                                        true,
-                                                      );
+                                                          .flowiseMessages = [];
                                                     });
-                                                  }
-                                                  // question ready false
-                                                  logFirebaseEvent(
-                                                      'IconButton_questionreadyfalse');
-                                                  setState(() {
-                                                    _model.questionReady =
-                                                        false;
-                                                  });
-                                                  logFirebaseEvent(
-                                                      'IconButton_scroll_to');
-                                                  await _model
-                                                      .columnChatsScrollable
-                                                      ?.animateTo(
-                                                    _model
-                                                        .columnChatsScrollable!
-                                                        .position
-                                                        .maxScrollExtent,
-                                                    duration: const Duration(
-                                                        milliseconds: 100),
-                                                    curve: Curves.ease,
-                                                  );
-                                                  logFirebaseEvent(
-                                                      'IconButton_custom_action');
-                                                  await actions
-                                                      .callFlowiseStreamingChat(
-                                                    _model
-                                                        .askTheQuestionController1
-                                                        .text,
-                                                    widget.companiesDoc
-                                                        ?.userGatherDataPrompt,
-                                                    '1',
-                                                    FFAppState()
-                                                        .nonLoggedInSessionId,
-                                                    FFAppState()
-                                                        .nonLoggedInSessionId,
-                                                    valueOrDefault<String>(
+                                                    logFirebaseEvent(
+                                                        'IconButton_wait__delay');
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            milliseconds: 500));
+                                                    logFirebaseEvent(
+                                                        'IconButton_clear_text_fields_pin_codes');
+                                                    setState(() {
                                                       _model
-                                                          .companyQueryByCode1
-                                                          ?.first
-                                                          .supabaseProjUrl,
-                                                      'https://efdipbnxemvehcjbxekx.supabase.co',
-                                                    ),
-                                                    valueOrDefault<String>(
-                                                      _model.companyQueryByCode1
-                                                          ?.first.tableName,
-                                                      'table_name',
-                                                    ),
-                                                    valueOrDefault<String>(
+                                                          .askTheQuestionController1
+                                                          ?.clear();
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'IconButton_scroll_to');
+                                                    await _model
+                                                        .columnChatsScrollable
+                                                        ?.animateTo(
                                                       _model
-                                                          .companyQueryByCode1
-                                                          ?.first
-                                                          .supabaseApiKey,
-                                                      'apikey',
-                                                    ),
-                                                    valueOrDefault<String>(
-                                                      _model.companyQueryByCode1
-                                                          ?.first.queryName,
-                                                      'queryName',
-                                                    ),
-                                                    valueOrDefault<bool>(
-                                                      _model.companyQueryByCode1
-                                                          ?.first.isLearnCards,
-                                                      false,
-                                                    ),
-                                                    () async {
-                                                      // scroll non streaming column
-                                                      logFirebaseEvent(
-                                                          '_scrollnonstreamingcolumn');
-                                                      await _model
-                                                          .columnChatsScrollable
-                                                          ?.animateTo(
-                                                        _model
-                                                            .columnChatsScrollable!
-                                                            .position
-                                                            .maxScrollExtent,
-                                                        duration: const Duration(
-                                                            milliseconds: 100),
-                                                        curve: Curves.ease,
-                                                      );
-                                                      // scroll streaming
-                                                      logFirebaseEvent(
-                                                          '_scrollstreaming');
-                                                      await _model
-                                                          .columnMarkdownScrollable
-                                                          ?.animateTo(
-                                                        _model
-                                                            .columnMarkdownScrollable!
-                                                            .position
-                                                            .maxScrollExtent,
-                                                        duration: const Duration(
-                                                            milliseconds: 100),
-                                                        curve: Curves.ease,
-                                                      );
-                                                    },
-                                                    () async {
-                                                      // scroll non streaming column
-                                                      logFirebaseEvent(
-                                                          '_scrollnonstreamingcolumn');
-                                                      await _model
-                                                          .columnChatsScrollable
-                                                          ?.animateTo(
-                                                        _model
-                                                            .columnChatsScrollable!
-                                                            .position
-                                                            .maxScrollExtent,
-                                                        duration: const Duration(
-                                                            milliseconds: 100),
-                                                        curve: Curves.ease,
-                                                      );
-                                                      // scroll streaming
-                                                      logFirebaseEvent(
-                                                          '_scrollstreaming');
-                                                      await _model
-                                                          .columnMarkdownScrollable
-                                                          ?.animateTo(
-                                                        _model
-                                                            .columnMarkdownScrollable!
-                                                            .position
-                                                            .maxScrollExtent,
-                                                        duration: const Duration(
-                                                            milliseconds: 100),
-                                                        curve: Curves.ease,
-                                                      );
-                                                    },
-                                                    'unknown',
-                                                  );
-                                                  // flowise chat document ai
-                                                  logFirebaseEvent(
-                                                      'IconButton_flowisechatdocumentai');
+                                                          .columnChatsScrollable!
+                                                          .position
+                                                          .maxScrollExtent,
+                                                      duration: const Duration(
+                                                          milliseconds: 100),
+                                                      curve: Curves.ease,
+                                                    );
 
-                                                  var flowiseChatsRecordReference2 =
-                                                      FlowiseChatsRecord
-                                                          .collection
-                                                          .doc();
-                                                  await flowiseChatsRecordReference2
-                                                      .set(
-                                                          createFlowiseChatsRecordData(
-                                                    userId: loggedIn
-                                                        ? currentUserReference
-                                                            ?.id
-                                                        : FFAppState()
-                                                            .nonLoggedInSessionId,
-                                                    role: 'ai',
-                                                    text: FFAppState()
-                                                        .flowiseMessages
-                                                        .first
-                                                        .message,
-                                                    createdTime:
-                                                        getCurrentTimestamp,
-                                                    sessionId: FFAppState()
-                                                        .nonLoggedInSessionId,
-                                                    threadId:
-                                                        valueOrDefault<String>(
-                                                      FFAppState()
-                                                          .selectedThreadId,
-                                                      'no thread id found',
-                                                    ),
-                                                  ));
-                                                  _model.creeatedWelcomeChatDoc =
-                                                      FlowiseChatsRecord
-                                                          .getDocumentFromData(
-                                                              createFlowiseChatsRecordData(
-                                                                userId: loggedIn
-                                                                    ? currentUserReference
-                                                                        ?.id
-                                                                    : FFAppState()
-                                                                        .nonLoggedInSessionId,
-                                                                role: 'ai',
-                                                                text: FFAppState()
-                                                                    .flowiseMessages
-                                                                    .first
-                                                                    .message,
-                                                                createdTime:
-                                                                    getCurrentTimestamp,
-                                                                sessionId:
-                                                                    FFAppState()
-                                                                        .nonLoggedInSessionId,
-                                                                threadId:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  FFAppState()
-                                                                      .selectedThreadId,
-                                                                  'no thread id found',
-                                                                ),
-                                                              ),
-                                                              flowiseChatsRecordReference2);
-                                                  logFirebaseEvent(
-                                                      'IconButton_scroll_to');
-                                                  await _model
-                                                      .columnChatsScrollable
-                                                      ?.animateTo(
-                                                    _model
-                                                        .columnChatsScrollable!
-                                                        .position
-                                                        .maxScrollExtent,
-                                                    duration: const Duration(
-                                                        milliseconds: 100),
-                                                    curve: Curves.ease,
-                                                  );
-                                                  // question ready false
-                                                  logFirebaseEvent(
-                                                      'IconButton_questionreadyfalse');
-                                                  setState(() {
-                                                    _model.questionReady = true;
-                                                  });
-                                                  logFirebaseEvent(
-                                                      'IconButton_update_app_state');
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .flowiseMessages = [];
-                                                  });
-                                                  logFirebaseEvent(
-                                                      'IconButton_wait__delay');
-                                                  await Future.delayed(
-                                                      const Duration(
-                                                          milliseconds: 500));
-                                                  logFirebaseEvent(
-                                                      'IconButton_clear_text_fields_pin_codes');
-                                                  setState(() {
-                                                    _model
-                                                        .askTheQuestionController1
-                                                        ?.clear();
-                                                  });
-                                                  logFirebaseEvent(
-                                                      'IconButton_scroll_to');
-                                                  await _model
-                                                      .columnChatsScrollable
-                                                      ?.animateTo(
-                                                    _model
-                                                        .columnChatsScrollable!
-                                                        .position
-                                                        .maxScrollExtent,
-                                                    duration: const Duration(
-                                                        milliseconds: 100),
-                                                    curve: Curves.ease,
-                                                  );
-
-                                                  setState(() {});
-                                                },
-                                              ),
-                                          ],
+                                                    setState(() {});
+                                                  },
+                                                ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
                                   if ((widget.sessionsDoc?.userEmail != null &&
                                           widget.sessionsDoc?.userEmail !=
                                               '') &&

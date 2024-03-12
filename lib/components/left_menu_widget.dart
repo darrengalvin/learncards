@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/cloudinary_uploader_widget.dart';
 import '/components/developer_debug_mode_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -303,6 +304,98 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                     ),
                   ),
                 ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    logFirebaseEvent(
+                        'LEFT_MENU_UPLOAD_TO_A_I_BRAIN_BTN_ON_TAP');
+                    logFirebaseEvent('Button_bottom_sheet');
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: false,
+                      context: context,
+                      builder: (context) {
+                        return WebViewAware(
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: const CloudinaryUploaderWidget(
+                              presetId: 'martial-arts',
+                            ),
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
+                  },
+                  text: 'Upload to AI Brain',
+                  options: FFButtonOptions(
+                    height: 50.0,
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                    iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).selectedButton,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleSmallFamily,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          fontSize: 18.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).titleSmallFamily),
+                        ),
+                    elevation: 1.0,
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    logFirebaseEvent(
+                        'LEFT_MENU_2_UPLOAD_TO_A_I_BRAIN_BTN_ON_T');
+                    logFirebaseEvent('Button_navigate_to');
+
+                    context.pushNamed(
+                      'cloudinaryUploadTest',
+                      queryParameters: {
+                        'presetId': serializeParam(
+                          'martial-arts',
+                          ParamType.String,
+                        ),
+                      }.withoutNulls,
+                    );
+                  },
+                  text: '2 Upload to AI Brain',
+                  options: FFButtonOptions(
+                    height: 50.0,
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                    iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).selectedButton,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleSmallFamily,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          fontSize: 18.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).titleSmallFamily),
+                        ),
+                    elevation: 1.0,
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
               if (responsiveVisibility(
                 context: context,
                 phone: false,

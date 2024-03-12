@@ -2339,6 +2339,49 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
+                                        text: 'First Time Mentor Chat:  ',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                      TextSpan(
+                                        text: FFAppState().rightPane,
+                                        style: const TextStyle(),
+                                      )
+                                    ],
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 12.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                RichText(
+                                  textScaler: MediaQuery.of(context).textScaler,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
                                         text: 'Selected LearncardId',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
