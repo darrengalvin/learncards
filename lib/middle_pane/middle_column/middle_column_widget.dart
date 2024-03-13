@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/components/social_feed_bottoms_h_e_e_t_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/middle_pane/body_content/body_content_widget.dart';
 import '/middle_pane/body_content_mainiles/body_content_mainiles_widget.dart';
@@ -9,7 +8,6 @@ import '/middle_pane/preparing/preparing_widget.dart';
 import '/right_pane/social_feed_new_componant/social_feed_new_componant_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'middle_column_model.dart';
 export 'middle_column_model.dart';
@@ -20,7 +18,7 @@ class MiddleColumnWidget extends StatefulWidget {
     required this.companyDoc,
     required this.sessionsDoc,
     bool? isMiddleShow,
-  }) : this.isMiddleShow = isMiddleShow ?? false;
+  }) : isMiddleShow = isMiddleShow ?? false;
 
   final CompaniesRecord? companyDoc;
   final SessionsRecord? sessionsDoc;
@@ -84,7 +82,7 @@ class _MiddleColumnWidgetState extends State<MiddleColumnWidget> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Align(
-              alignment: AlignmentDirectional(-1.0, -1.0),
+              alignment: const AlignmentDirectional(-1.0, -1.0),
               child: Builder(
                 builder: (context) {
                   if (FFAppState().middlePane == 'preparing') {
@@ -112,7 +110,7 @@ class _MiddleColumnWidgetState extends State<MiddleColumnWidget> {
                       model: _model.socialFeedNewComponantModel,
                       updateCallback: () => setState(() {}),
                       updateOnChange: true,
-                      child: SocialFeedNewComponantWidget(),
+                      child: const SocialFeedNewComponantWidget(),
                     );
                   } else if (FFAppState().middlePane ==
                       'bodyContentMainTiles') {
@@ -150,7 +148,7 @@ class _MiddleColumnWidgetState extends State<MiddleColumnWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.bodyContenttLearnCardsModel,
@@ -166,7 +164,7 @@ class _MiddleColumnWidgetState extends State<MiddleColumnWidget> {
                       ],
                     );
                   } else {
-                    return Column(
+                    return const Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [],
                     );

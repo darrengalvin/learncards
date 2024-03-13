@@ -2,24 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
-import '/backend/supabase/supabase.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -88,7 +80,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
         child: RootPageContext.wrap(
-          appStateNotifier.loggedIn ? LibraryFixedWidget() : DemoWidget(),
+          appStateNotifier.loggedIn ? const LibraryFixedWidget() : const DemoWidget(),
           errorRoute: state.location,
         ),
       ),
@@ -97,18 +89,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: '_initialize',
           path: '/',
           builder: (context, _) => RootPageContext.wrap(
-            appStateNotifier.loggedIn ? LibraryFixedWidget() : DemoWidget(),
+            appStateNotifier.loggedIn ? const LibraryFixedWidget() : const DemoWidget(),
           ),
           routes: [
             FFRoute(
               name: 'signup',
               path: 'signup',
-              builder: (context, params) => SignupWidget(),
+              builder: (context, params) => const SignupWidget(),
             ),
             FFRoute(
               name: 'CreateProfile',
               path: 'createProfile',
-              builder: (context, params) => CreateProfileWidget(),
+              builder: (context, params) => const CreateProfileWidget(),
             ),
             FFRoute(
               name: 'EditProfile',
@@ -125,7 +117,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'BroadcastListing',
               path: 'BroadcastListing',
-              builder: (context, params) => BroadcastListingWidget(),
+              builder: (context, params) => const BroadcastListingWidget(),
             ),
             FFRoute(
               name: 'ViewBroadcast',
@@ -187,7 +179,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'podcasts',
               path: 'podcasts',
-              builder: (context, params) => PodcastsWidget(),
+              builder: (context, params) => const PodcastsWidget(),
             ),
             FFRoute(
               name: 'insideFeatured',
@@ -207,17 +199,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'notifications',
               path: 'notifications',
-              builder: (context, params) => NotificationsWidget(),
+              builder: (context, params) => const NotificationsWidget(),
             ),
             FFRoute(
               name: 'forgotpassword',
               path: 'forgotpassword',
-              builder: (context, params) => ForgotpasswordWidget(),
+              builder: (context, params) => const ForgotpasswordWidget(),
             ),
             FFRoute(
               name: 'leads',
               path: 'leads',
-              builder: (context, params) => LeadsWidget(),
+              builder: (context, params) => const LeadsWidget(),
             ),
             FFRoute(
               name: 'searchVideos',
@@ -270,7 +262,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'settings',
               path: 'settings',
-              builder: (context, params) => SettingsWidget(),
+              builder: (context, params) => const SettingsWidget(),
             ),
             FFRoute(
               name: 'ManageMemberLevels',
@@ -286,12 +278,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'onboardingForms',
               path: 'onboardingForms',
-              builder: (context, params) => OnboardingFormsWidget(),
+              builder: (context, params) => const OnboardingFormsWidget(),
             ),
             FFRoute(
               name: 'customForm',
               path: 'customForm',
-              builder: (context, params) => CustomFormWidget(),
+              builder: (context, params) => const CustomFormWidget(),
             ),
             FFRoute(
               name: 'insideForm',
@@ -309,7 +301,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'BugReporting',
               path: 'bugReporting',
-              builder: (context, params) => BugReportingWidget(),
+              builder: (context, params) => const BugReportingWidget(),
             ),
             FFRoute(
               name: 'SocialFeedCopy',
@@ -476,7 +468,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'QUESTIONS',
               path: 'questions',
-              builder: (context, params) => QuestionsWidget(),
+              builder: (context, params) => const QuestionsWidget(),
             ),
             FFRoute(
               name: 'SocialFeedInside',
@@ -552,27 +544,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AppEntries',
               path: 'appEntries',
-              builder: (context, params) => AppEntriesWidget(),
+              builder: (context, params) => const AppEntriesWidget(),
             ),
             FFRoute(
               name: 'APP_Setup',
               path: 'aPPSetup',
-              builder: (context, params) => APPSetupWidget(),
+              builder: (context, params) => const APPSetupWidget(),
             ),
             FFRoute(
               name: 'reels',
               path: 'reels',
-              builder: (context, params) => ReelsWidget(),
+              builder: (context, params) => const ReelsWidget(),
             ),
             FFRoute(
               name: 'profile',
               path: 'profile',
-              builder: (context, params) => ProfileWidget(),
+              builder: (context, params) => const ProfileWidget(),
             ),
             FFRoute(
               name: 'CreateREEL',
               path: 'createREEL',
-              builder: (context, params) => CreateREELWidget(),
+              builder: (context, params) => const CreateREELWidget(),
             ),
             FFRoute(
               name: 'ViewBroadcastCompon',
@@ -602,7 +594,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AppSettings',
               path: 'appSettings',
-              builder: (context, params) => AppSettingsWidget(),
+              builder: (context, params) => const AppSettingsWidget(),
             ),
             FFRoute(
               name: 'tilesCopy',
@@ -649,27 +641,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'VIDEO',
               path: 'video',
-              builder: (context, params) => VideoWidget(),
+              builder: (context, params) => const VideoWidget(),
             ),
             FFRoute(
               name: 'thumbnailpicker',
               path: 'thumbnailpicker',
-              builder: (context, params) => ThumbnailpickerWidget(),
+              builder: (context, params) => const ThumbnailpickerWidget(),
             ),
             FFRoute(
               name: 'dashNews',
               path: 'librarysc',
-              builder: (context, params) => DashNewsWidget(),
+              builder: (context, params) => const DashNewsWidget(),
             ),
             FFRoute(
               name: 'featuredPage',
               path: 'libraryfeatured',
-              builder: (context, params) => FeaturedPageWidget(),
+              builder: (context, params) => const FeaturedPageWidget(),
             ),
             FFRoute(
               name: 'alitest',
               path: 'alitest',
-              builder: (context, params) => AlitestWidget(),
+              builder: (context, params) => const AlitestWidget(),
             ),
             FFRoute(
               name: 'cloudinaryUploadTest',
@@ -681,37 +673,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'landing',
               path: 'landing',
-              builder: (context, params) => LandingWidget(),
+              builder: (context, params) => const LandingWidget(),
             ),
             FFRoute(
               name: 'landingCopy',
               path: 'landingCopy',
-              builder: (context, params) => LandingCopyWidget(),
+              builder: (context, params) => const LandingCopyWidget(),
             ),
             FFRoute(
               name: 'flowiseTest',
               path: 'flowiseTest',
-              builder: (context, params) => FlowiseTestWidget(),
+              builder: (context, params) => const FlowiseTestWidget(),
             ),
             FFRoute(
               name: 'apiStream',
               path: 'apiStream',
-              builder: (context, params) => ApiStreamWidget(),
+              builder: (context, params) => const ApiStreamWidget(),
             ),
             FFRoute(
               name: 'apiStreamChats',
               path: 'apiStreamChats',
-              builder: (context, params) => ApiStreamChatsWidget(),
+              builder: (context, params) => const ApiStreamChatsWidget(),
             ),
             FFRoute(
               name: 'Responsive',
               path: 'responsive',
-              builder: (context, params) => ResponsiveWidget(),
+              builder: (context, params) => const ResponsiveWidget(),
             ),
             FFRoute(
               name: 'demo',
               path: 'demo',
-              builder: (context, params) => DemoWidget(),
+              builder: (context, params) => const DemoWidget(),
             ),
             FFRoute(
               name: 'socialFeed',
@@ -1009,15 +1001,14 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class _RouteErrorBuilder extends StatefulWidget {
   const _RouteErrorBuilder({
-    Key? key,
     required this.state,
     required this.child,
-  }) : super(key: key);
+  });
 
   final GoRouterState state;
   final Widget child;

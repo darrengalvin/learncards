@@ -11,7 +11,7 @@ class WatermillOffsetsMessageEmbedderTable
 }
 
 class WatermillOffsetsMessageEmbedderRow extends SupabaseDataRow {
-  WatermillOffsetsMessageEmbedderRow(Map<String, dynamic> data) : super(data);
+  WatermillOffsetsMessageEmbedderRow(super.data);
 
   @override
   SupabaseTable get table => WatermillOffsetsMessageEmbedderTable();

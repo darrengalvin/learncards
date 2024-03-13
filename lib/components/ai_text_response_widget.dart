@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'ai_text_response_model.dart';
 export 'ai_text_response_model.dart';
 
@@ -50,13 +49,13 @@ class _AiTextResponseWidgetState extends State<AiTextResponseWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5.0),
       child: TextFormField(
         controller: _model.textController,
         focusNode: _model.textFieldFocusNode,
         onChanged: (_) => EasyDebounce.debounce(
           '_model.textController',
-          Duration(milliseconds: 2000),
+          const Duration(milliseconds: 2000),
           () async {
             logFirebaseEvent('AI_TEXT_RESPONSE_TextField_c823k3po_ON_T');
             logFirebaseEvent('TextField_update_app_state');
@@ -82,21 +81,21 @@ class _AiTextResponseWidgetState extends State<AiTextResponseWidget> {
             borderRadius: BorderRadius.circular(15.0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(0x00000000),
               width: 1.0,
             ),
             borderRadius: BorderRadius.circular(15.0),
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(0x00000000),
               width: 1.0,
             ),
             borderRadius: BorderRadius.circular(15.0),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(0x00000000),
               width: 1.0,
             ),

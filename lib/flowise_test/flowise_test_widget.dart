@@ -1,12 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -59,13 +56,13 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 399.0,
                         height: 300.0,
@@ -80,11 +77,11 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                             logFirebaseEvent('Button_backend_call');
                             _model.apiResult9jb =
                                 await FlowiseGroup.flowiseAPICallCall.call(
-                              question: (_model.sessionsQuery?.first?.userAiData
-                                      ?.toMap())
+                              question: (_model.sessionsQuery?.first.userAiData
+                                      .toMap())
                                   ?.toString(),
                               systemMessagePrompt:
-                                  'I am using a learning platform that generates learn cards, with ${functions.stringifyJSON((_model.companiesQuery?.first?.companyAiData?.toMap())?.toString())} the topic I have been studying is  body(topic)  sales techniques and the learn card I am ready to generate is   body(readingItem)${(_model.sessionsQuery?.first?.userAiData?.toMap())?.toString()} I need an introduction text (HTMLbodyText) that engages me in the topic with a view of educating me,  You will decide on an activity that we can do together via interactive chat, You will give that activity a name, description and you will explain in the body text why you have chosen this for me. You will give me an estimated time between 15-30 minutes to complete said activity.  You will invite me to engage in said activity by using one of my learn cards by clicking on the button below ‘generate learn card’.  This will be returned as a json object and the body text will be in HTML${'${_model.companiesQuery?.first?.companyAiData?.companyName} ${_model.companiesQuery?.first?.companyAiData?.companySummary} ${_model.companiesQuery?.first?.companyAiData?.companyIndustry}'}${_model.sessionsQuery?.first?.userAiData?.userName}${_model.sessionsQuery?.first?.userAiData?.learningStyle}${_model.sessionsQuery?.first?.userAiData?.jobRole} with the following keys  activityName, activityDescription, activityPurpose, estimatedCompletionTime, HTMLbodyText, invitation',
+                                  'I am using a learning platform that generates learn cards, with ${functions.stringifyJSON((_model.companiesQuery?.first.companyAiData.toMap())?.toString())} the topic I have been studying is  body(topic)  sales techniques and the learn card I am ready to generate is   body(readingItem)${(_model.sessionsQuery?.first.userAiData.toMap())?.toString()} I need an introduction text (HTMLbodyText) that engages me in the topic with a view of educating me,  You will decide on an activity that we can do together via interactive chat, You will give that activity a name, description and you will explain in the body text why you have chosen this for me. You will give me an estimated time between 15-30 minutes to complete said activity.  You will invite me to engage in said activity by using one of my learn cards by clicking on the button below ‘generate learn card’.  This will be returned as a json object and the body text will be in HTML${'${_model.companiesQuery?.first.companyAiData.companyName} ${_model.companiesQuery?.first.companyAiData.companySummary} ${_model.companiesQuery?.first.companyAiData.companyIndustry}'}${_model.sessionsQuery?.first.userAiData.userName}${_model.sessionsQuery?.first.userAiData.learningStyle}${_model.sessionsQuery?.first.userAiData.jobRole} with the following keys  activityName, activityDescription, activityPurpose, estimatedCompletionTime, HTMLbodyText, invitation',
                             );
 
                             setState(() {});
@@ -92,9 +89,9 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                           text: 'Button',
                           options: FFButtonOptions(
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -109,7 +106,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                                           .titleSmallFamily),
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -119,7 +116,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 399.0,
                         height: 300.0,
@@ -139,7 +136,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
@@ -151,7 +148,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
@@ -167,7 +164,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 399.0,
                         height: 300.0,
@@ -215,7 +212,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                               builder: (alertDialogContext) {
                                 return WebViewAware(
                                   child: AlertDialog(
-                                    title: Text('The Value of Users is'),
+                                    title: const Text('The Value of Users is'),
                                     content: Text((_model
                                             .sessionsQuery!.first.userAiData
                                             .toMap())
@@ -224,7 +221,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
+                                        child: const Text('Ok'),
                                       ),
                                     ],
                                   ),
@@ -249,7 +246,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                               builder: (alertDialogContext) {
                                 return WebViewAware(
                                   child: AlertDialog(
-                                    title: Text('The value of companies is'),
+                                    title: const Text('The value of companies is'),
                                     content: Text((_model
                                             .companiesQuery!.first.companyAiData
                                             .toMap())
@@ -258,7 +255,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
+                                        child: const Text('Ok'),
                                       ),
                                     ],
                                   ),
@@ -271,9 +268,9 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                           text: 'sample data',
                           options: FFButtonOptions(
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -288,7 +285,7 @@ class _FlowiseTestWidgetState extends State<FlowiseTestWidget> {
                                           .titleSmallFamily),
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

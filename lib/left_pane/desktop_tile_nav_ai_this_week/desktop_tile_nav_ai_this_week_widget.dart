@@ -1,13 +1,11 @@
 import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/not_today_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -64,9 +62,9 @@ class _DesktopTileNavAiThisWeekWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 0.0),
         child: StreamBuilder<List<Tilesv2Record>>(
           stream: queryTilesv2Record(
             queryBuilder: (tilesv2Record) => tilesv2Record
@@ -94,7 +92,7 @@ class _DesktopTileNavAiThisWeekWidgetState
             List<Tilesv2Record> desktopTileNavTilesv2RecordList =
                 snapshot.data!;
             return AnimatedContainer(
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               curve: Curves.easeInOut,
               width: double.infinity,
               height: double.infinity,
@@ -106,7 +104,7 @@ class _DesktopTileNavAiThisWeekWidgetState
               ),
               child: Container(
                 height: double.infinity,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +117,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
                               bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(16.0),
@@ -131,9 +129,9 @@ class _DesktopTileNavAiThisWeekWidgetState
                     ),
                     Expanded(
                       child: Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -153,9 +151,9 @@ class _DesktopTileNavAiThisWeekWidgetState
                                               CrossAxisAlignment.start,
                                           children: [
                                             Container(
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: Builder(
                                                   builder: (context) {
@@ -190,11 +188,11 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                 navTile1DesktopIndex];
                                                         return Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         4.0,
                                                                         2.0,
@@ -207,7 +205,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                           16.0),
                                                               child:
                                                                   AnimatedContainer(
-                                                                duration: Duration(
+                                                                duration: const Duration(
                                                                     milliseconds:
                                                                         170),
                                                                 curve: Curves
@@ -229,7 +227,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                   ),
                                                                 ),
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         -1.0,
                                                                         0.0),
                                                                 child:
@@ -245,7 +243,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             7.0,
                                                                             7.0,
                                                                             7.0,
@@ -352,8 +350,8 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                 90.0,
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: widget.companyDoc?.colors?.primaryColor,
-                                                                              borderRadius: BorderRadius.only(
+                                                                              color: widget.companyDoc?.colors.primaryColor,
+                                                                              borderRadius: const BorderRadius.only(
                                                                                 bottomLeft: Radius.circular(13.0),
                                                                                 bottomRight: Radius.circular(13.0),
                                                                                 topLeft: Radius.circular(13.0),
@@ -369,7 +367,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                             ),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -379,7 +377,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                           child: Column(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             mainAxisAlignment: MainAxisAlignment.start,
@@ -416,7 +414,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                         ),
                                                                                         Expanded(
                                                                                           child: Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
+                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                                                                                             child: Column(
                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                               mainAxisAlignment: MainAxisAlignment.start,
@@ -431,7 +429,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                       maxLines: 3,
                                                                                                       style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                                                            color: widget.companyDoc?.colors?.secondaryTextColor,
+                                                                                                            color: widget.companyDoc?.colors.secondaryTextColor,
                                                                                                             fontSize: 12.0,
                                                                                                             fontWeight: FontWeight.normal,
                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
@@ -440,7 +438,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                   ],
                                                                                                 ),
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                   child: Column(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     children: [
@@ -450,7 +448,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                         maxLines: 3,
                                                                                                         style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                                                              color: widget.companyDoc?.colors?.secondaryTextColor,
+                                                                                                              color: widget.companyDoc?.colors.secondaryTextColor,
                                                                                                               fontSize: 16.0,
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
@@ -477,7 +475,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                             0.8,
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               4.0,
                                                                               0.0,
                                                                               4.0,
@@ -485,14 +483,14 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                           child:
                                                                               AnimatedContainer(
                                                                             duration:
-                                                                                Duration(milliseconds: 100),
+                                                                                const Duration(milliseconds: 100),
                                                                             curve:
                                                                                 Curves.easeInOut,
                                                                             width:
                                                                                 double.infinity,
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: widget.companyDoc?.colors?.primaryColor,
+                                                                              color: widget.companyDoc?.colors.primaryColor,
                                                                               borderRadius: BorderRadius.circular(17.0),
                                                                               border: Border.all(
                                                                                 color: Colors.transparent,
@@ -500,7 +498,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                             ),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                               child: Builder(
                                                                                 builder: (context) {
                                                                                   final tileTier2 = desktopTileNavTilesv2RecordList
@@ -514,7 +512,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                     children: List.generate(tileTier2.length, (tileTier2Index) {
                                                                                       final tileTier2Item = tileTier2[tileTier2Index];
                                                                                       return Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
                                                                                         child: InkWell(
                                                                                           splashColor: Colors.transparent,
                                                                                           focusColor: Colors.transparent,
@@ -522,7 +520,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                           highlightColor: Colors.transparent,
                                                                                           onTap: () async {
                                                                                             logFirebaseEvent('DESKTOP_TILE_NAV_AI_THIS_WEEK_tile_ON_TA');
-                                                                                            var _shouldSetState = false;
+                                                                                            var shouldSetState = false;
                                                                                             logFirebaseEvent('tile_firestore_query');
                                                                                             _model.companyQuery = await queryCompaniesRecordOnce(
                                                                                               queryBuilder: (companiesRecord) => companiesRecord.where(
@@ -531,7 +529,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                               ),
                                                                                               singleRecord: true,
                                                                                             ).then((s) => s.firstOrNull);
-                                                                                            _shouldSetState = true;
+                                                                                            shouldSetState = true;
                                                                                             logFirebaseEvent('tile_update_app_state');
                                                                                             _model.updatePage(() {
                                                                                               FFAppState().viewTileContentId = navTile1DesktopItem.reference.id;
@@ -547,7 +545,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                   return WebViewAware(
                                                                                                     child: Padding(
                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                      child: Container(
+                                                                                                      child: SizedBox(
                                                                                                         height: 300.0,
                                                                                                         child: NotTodayWidget(
                                                                                                           tileDoc: tileTier2Item,
@@ -558,7 +556,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                 },
                                                                                               ).then((value) => safeSetState(() {}));
 
-                                                                                              if (_shouldSetState) setState(() {});
+                                                                                              if (shouldSetState) setState(() {});
                                                                                               return;
                                                                                             }
                                                                                             logFirebaseEvent('tile_update_app_state');
@@ -643,17 +641,17 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                               ));
                                                                                               if (!loggedIn) {}
                                                                                             }
-                                                                                            if (_shouldSetState) setState(() {});
+                                                                                            if (shouldSetState) setState(() {});
                                                                                           },
                                                                                           child: Container(
                                                                                             decoration: BoxDecoration(
                                                                                               color: tileTier2Item.tileToday == true
                                                                                                   ? valueOrDefault<Color>(
-                                                                                                      widget.companyDoc?.colors?.secondaryColor,
+                                                                                                      widget.companyDoc?.colors.secondaryColor,
                                                                                                       FlutterFlowTheme.of(context).greenish,
                                                                                                     )
                                                                                                   : valueOrDefault<Color>(
-                                                                                                      widget.companyDoc?.colors?.primaryColor,
+                                                                                                      widget.companyDoc?.colors.primaryColor,
                                                                                                       FlutterFlowTheme.of(context).secondary,
                                                                                                     ),
                                                                                               borderRadius: BorderRadius.circular(6.0),
@@ -666,17 +664,17 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                               ),
                                                                                             ),
                                                                                             child: Padding(
-                                                                                              padding: EdgeInsets.all(8.0),
+                                                                                              padding: const EdgeInsets.all(8.0),
                                                                                               child: Row(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                 children: [
                                                                                                   if (valueOrDefault<bool>(
-                                                                                                    tileTier2Item.image != null && tileTier2Item.image != '',
+                                                                                                    tileTier2Item.image != '',
                                                                                                     false,
                                                                                                   ))
                                                                                                     Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                       child: Column(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         mainAxisAlignment: MainAxisAlignment.center,
@@ -699,7 +697,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                     ),
                                                                                                   Expanded(
                                                                                                     child: Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                                       child: Column(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         mainAxisAlignment: MainAxisAlignment.center,
@@ -711,11 +709,11 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                                   fontFamily: 'Outfit',
                                                                                                                   color: tileTier2Item.tileToday == true
                                                                                                                       ? valueOrDefault<Color>(
-                                                                                                                          widget.companyDoc?.colors?.secondaryTextColor,
+                                                                                                                          widget.companyDoc?.colors.secondaryTextColor,
                                                                                                                           FlutterFlowTheme.of(context).secondary,
                                                                                                                         )
                                                                                                                       : valueOrDefault<Color>(
-                                                                                                                          widget.companyDoc?.colors?.secondaryTextColor,
+                                                                                                                          widget.companyDoc?.colors.secondaryTextColor,
                                                                                                                           FlutterFlowTheme.of(context).secondary,
                                                                                                                         ),
                                                                                                                   fontSize: 15.0,
@@ -728,7 +726,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                     ),
                                                                                                   ),
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 8.0, 0.0),
+                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 8.0, 0.0),
                                                                                                     child: Column(
                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -737,11 +735,11 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                                               child: Container(
                                                                                                                 width: 40.0,
                                                                                                                 height: 40.0,
-                                                                                                                decoration: BoxDecoration(),
+                                                                                                                decoration: const BoxDecoration(),
                                                                                                                 child: Visibility(
                                                                                                                   visible: valueOrDefault<bool>(
                                                                                                                     tileTier2Item.tileToday != true,
@@ -752,7 +750,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                                     borderRadius: 20.0,
                                                                                                                     borderWidth: 1.0,
                                                                                                                     buttonSize: 40.0,
-                                                                                                                    fillColor: Color(0xFFCEBB57),
+                                                                                                                    fillColor: const Color(0xFFCEBB57),
                                                                                                                     icon: FaIcon(
                                                                                                                       FontAwesomeIcons.lock,
                                                                                                                       color: FlutterFlowTheme.of(context).primaryText,

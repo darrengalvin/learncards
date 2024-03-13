@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,9 +68,9 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(25.0),
         child: Container(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.sizeOf(context).width * 1.0,
@@ -124,9 +123,9 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                           FlutterFlowTheme.of(context).primaryBackground,
                           FlutterFlowTheme.of(context).secondary
                         ],
-                        stops: [0.0, 1.0],
-                        begin: AlignmentDirectional(0.0, -1.0),
-                        end: AlignmentDirectional(0, 1.0),
+                        stops: const [0.0, 1.0],
+                        begin: const AlignmentDirectional(0.0, -1.0),
+                        end: const AlignmentDirectional(0, 1.0),
                       ),
                       borderRadius: BorderRadius.circular(17.0),
                     ),
@@ -138,7 +137,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
                               child: Icon(
@@ -149,7 +148,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                             ),
                             if (_model.tellMeMorePressed != true)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 22.0, 0.0, 22.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -164,16 +163,16 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                     setState(() {});
                                   },
                                   text: 'Tell me more',
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.perm_device_info,
                                     size: 15.0,
                                   ),
                                   options: FFButtonOptions(
                                     width: 190.0,
                                     height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color:
                                         FlutterFlowTheme.of(context).secondary,
@@ -189,7 +188,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                               .containsKey('Lexend Deca'),
                                         ),
                                     elevation: 2.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -199,17 +198,17 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               if (listViewCategoriesRecord?.userspendingaccess
-                                      ?.contains(currentUserReference) ==
+                                      .contains(currentUserReference) ==
                                   false)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 10.0),
                                   child: Text(
                                     listViewCategoriesRecord!.noaccesstitle,
@@ -250,10 +249,10 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                           ),
                         ),
                         if (listViewCategoriesRecord?.userspendingaccess
-                                ?.contains(currentUserReference) ==
+                                .contains(currentUserReference) ==
                             false)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: Text(
                               listViewCategoriesRecord!.noaccessbody,
@@ -262,10 +261,10 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                             ),
                           ),
                         if (listViewCategoriesRecord?.userspendingaccess
-                                ?.contains(currentUserReference) ==
+                                .contains(currentUserReference) ==
                             true)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 10.0, 20.0, 10.0),
                             child: Text(
                               listViewCategoriesRecord!.accesspendngmessage,
@@ -276,10 +275,10 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                           constraints: BoxConstraints(
                             maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                           ),
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.all(15.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -292,11 +291,11 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                               autovalidateMode: AutovalidateMode.disabled,
                               child: Container(
                                 height: 400.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Column(
                                   children: [
                                     Align(
-                                      alignment: Alignment(0.0, 0),
+                                      alignment: const Alignment(0.0, 0),
                                       child: TabBar(
                                         isScrollable: true,
                                         labelColor: FlutterFlowTheme.of(context)
@@ -318,11 +317,11 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                               context)
                                                           .titleMediumFamily),
                                             ),
-                                        unselectedLabelStyle: TextStyle(),
+                                        unselectedLabelStyle: const TextStyle(),
                                         indicatorColor:
                                             FlutterFlowTheme.of(context)
                                                 .customColor7,
-                                        tabs: [
+                                        tabs: const [
                                           Tab(
                                             text: 'Login',
                                           ),
@@ -342,7 +341,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     44.0, 0.0, 44.0, 0.0),
                                             child: SingleChildScrollView(
                                               child: Column(
@@ -352,7 +351,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 20.0,
                                                                 0.0, 0.0),
                                                     child: TextFormField(
@@ -464,7 +463,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         filled: true,
                                                         fillColor: Colors.white,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     20.0,
                                                                     24.0,
@@ -498,7 +497,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 24.0,
                                                                 0.0, 0.0),
                                                     child: TextFormField(
@@ -568,7 +567,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 1.0,
@@ -581,7 +580,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         errorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 1.0,
@@ -594,7 +593,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 1.0,
@@ -607,7 +606,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         filled: true,
                                                         fillColor: Colors.white,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     20.0,
                                                                     24.0,
@@ -629,7 +628,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                     .visibility_outlined
                                                                 : Icons
                                                                     .visibility_off_outlined,
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF95A1AC),
                                                             size: 20.0,
                                                           ),
@@ -643,7 +642,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                 fontFamily: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmallFamily,
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF0F1113),
                                                                 fontWeight:
                                                                     FontWeight
@@ -661,7 +660,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 24.0,
                                                                 0.0, 0.0),
                                                     child: FFButtonWidget(
@@ -734,14 +733,14 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         width: 230.0,
                                                         height: 50.0,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -772,7 +771,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                           'Lexend Deca'),
                                                                 ),
                                                         elevation: 0.0,
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,
@@ -782,7 +781,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 20.0,
                                                                 0.0, 0.0),
                                                     child: FFButtonWidget(
@@ -800,21 +799,21 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         width: 190.0,
                                                         height: 40.0,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         color:
-                                                            Color(0x0039D2C0),
+                                                            const Color(0x0039D2C0),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -833,7 +832,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                               .labelSmallFamily),
                                                                 ),
                                                         elevation: 0.0,
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,
@@ -847,7 +846,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     14.0, 0.0, 14.0, 0.0),
                                             child: Stack(
                                               children: [
@@ -861,7 +860,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                           true)
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       20.0,
                                                                       0.0,
@@ -875,7 +874,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                       .max,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           10.0,
@@ -917,7 +916,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                             fontFamily:
                                                                                 'Lexend Deca',
                                                                             color:
-                                                                                Color(0xFF95A1AC),
+                                                                                const Color(0xFF95A1AC),
                                                                             fontSize:
                                                                                 14.0,
                                                                             fontWeight:
@@ -978,7 +977,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                       fillColor:
                                                                           Colors
                                                                               .white,
-                                                                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           24.0,
                                                                           20.0,
@@ -1012,7 +1011,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           12.0,
@@ -1055,7 +1054,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                             fontFamily:
                                                                                 'Lexend Deca',
                                                                             color:
-                                                                                Color(0xFF95A1AC),
+                                                                                const Color(0xFF95A1AC),
                                                                             fontSize:
                                                                                 14.0,
                                                                             fontWeight:
@@ -1116,7 +1115,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                       fillColor:
                                                                           Colors
                                                                               .white,
-                                                                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           24.0,
                                                                           20.0,
@@ -1136,7 +1135,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                               ? Icons.visibility_outlined
                                                                               : Icons.visibility_off_outlined,
                                                                           color:
-                                                                              Color(0xFF95A1AC),
+                                                                              const Color(0xFF95A1AC),
                                                                           size:
                                                                               20.0,
                                                                         ),
@@ -1167,7 +1166,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           12.0,
@@ -1208,7 +1207,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                             fontFamily:
                                                                                 'Lexend Deca',
                                                                             color:
-                                                                                Color(0xFF95A1AC),
+                                                                                const Color(0xFF95A1AC),
                                                                             fontSize:
                                                                                 14.0,
                                                                             fontWeight:
@@ -1269,7 +1268,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                       fillColor:
                                                                           Colors
                                                                               .white,
-                                                                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           24.0,
                                                                           20.0,
@@ -1289,7 +1288,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                               ? Icons.visibility_outlined
                                                                               : Icons.visibility_off_outlined,
                                                                           color:
-                                                                              Color(0xFF95A1AC),
+                                                                              const Color(0xFF95A1AC),
                                                                           size:
                                                                               20.0,
                                                                         ),
@@ -1317,7 +1316,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           24.0,
@@ -1342,7 +1341,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                               .text) {
                                                                         ScaffoldMessenger.of(context)
                                                                             .showSnackBar(
-                                                                          SnackBar(
+                                                                          const SnackBar(
                                                                             content:
                                                                                 Text(
                                                                               'Passwords don\'t match!',
@@ -1441,12 +1440,12 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                           230.0,
                                                                       height:
                                                                           50.0,
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1470,7 +1469,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                                 GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                           ),
                                                                       borderSide:
-                                                                          BorderSide(
+                                                                          const BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:

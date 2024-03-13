@@ -5,7 +5,6 @@ import '/components/learning_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,8 +23,8 @@ class HeaderContainerWidget extends StatefulWidget {
     this.companiesDoc,
     this.memberLevels,
     this.sessionsDoc,
-  })  : this.title = title ?? 'Library',
-        this.currentTier = currentTier ?? 0;
+  })  : title = title ?? 'Library',
+        currentTier = currentTier ?? 0;
 
   final Future Function()? action;
   final String title;
@@ -92,10 +91,10 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
         }
         List<Tilesv2Record> containerTilesv2RecordList = snapshot.data!;
         return Container(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 850.0,
           ),
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -124,7 +123,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                 desktop: false,
                               ))
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 7.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -147,7 +146,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderRadius: 0.0,
@@ -186,7 +185,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 0.0, 0.0),
                                       child:
                                           StreamBuilder<List<LearnCardsRecord>>(
@@ -232,9 +231,9 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                       .first
                                                   : null;
                                           return Container(
-                                            decoration: BoxDecoration(),
+                                            decoration: const BoxDecoration(),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 7.0, 0.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -246,18 +245,18 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       AnimatedContainer(
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.easeInOut,
                                                         constraints:
-                                                            BoxConstraints(
+                                                            const BoxConstraints(
                                                           maxWidth: 600.0,
                                                         ),
                                                         decoration:
-                                                            BoxDecoration(),
+                                                            const BoxDecoration(),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -308,7 +307,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                               1.0,
                                       maxHeight: 130.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => Builder(
                                         builder: (context) {
@@ -319,7 +318,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                         valueOrDefault<bool>(
                                                               (currentUserDocument
                                                                               ?.hasaccess
-                                                                              ?.toList() ??
+                                                                              .toList() ??
                                                                           [])
                                                                       .contains(e
                                                                           .reference
@@ -334,7 +333,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                 false) ||
                                                             (widget.sessionsDoc
                                                                     ?.hasAccess
-                                                                    ?.contains(e
+                                                                    .contains(e
                                                                         .reference
                                                                         .id) ==
                                                                 false) ||
@@ -347,7 +346,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                           widget.companiesDoc
                                                               ?.reference.id))
                                                   .toList()
-                                                  ?.toList() ??
+                                                  .toList() ??
                                               [];
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
@@ -396,10 +395,10 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsets.all(5.0),
+                                                          const EdgeInsets.all(5.0),
                                                       child: Container(
                                                         constraints:
-                                                            BoxConstraints(
+                                                            const BoxConstraints(
                                                           maxWidth: 300.0,
                                                           maxHeight: 150.0,
                                                         ),
@@ -418,7 +417,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       5.0,
                                                                       5.0,
@@ -472,7 +471,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
                                 child: StreamBuilder<List<CategoriesRecord>>(
                                   stream: queryCategoriesRecord(),
                                   builder: (context, snapshot) {
@@ -497,11 +496,11 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                         snapshot.data!;
                                     return ClipRRect(
                                       child: AnimatedContainer(
-                                        duration: Duration(milliseconds: 100),
+                                        duration: const Duration(milliseconds: 100),
                                         curve: Curves.easeInOut,
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
@@ -542,7 +541,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                               true,
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -555,7 +554,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                           17.0),
                                                               child:
                                                                   AnimatedContainer(
-                                                                duration: Duration(
+                                                                duration: const Duration(
                                                                     milliseconds:
                                                                         100),
                                                                 curve: Curves
@@ -576,7 +575,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                   ),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -752,11 +751,11 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                               (alertDialogContext) {
                                                                             return WebViewAware(
                                                                               child: AlertDialog(
-                                                                                title: Text('conditions not met '),
+                                                                                title: const Text('conditions not met '),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
+                                                                                    child: const Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -769,8 +768,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                               '') ||
                                                                           valueOrDefault<
                                                                               bool>(
-                                                                            FFAppState().selectedCategoryName == null ||
-                                                                                FFAppState().selectedCategoryName == '',
+                                                                            FFAppState().selectedCategoryName == '',
                                                                             false,
                                                                           )) {
                                                                         logFirebaseEvent(
@@ -795,7 +793,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                       child:
                                                                           AnimatedContainer(
                                                                         duration:
-                                                                            Duration(milliseconds: 100),
+                                                                            const Duration(milliseconds: 100),
                                                                         curve: Curves
                                                                             .easeIn,
                                                                         height:
@@ -809,7 +807,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                             fit:
                                                                                 BoxFit.cover,
                                                                             alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                                const AlignmentDirectional(0.0, 0.0),
                                                                             image:
                                                                                 Image.network(
                                                                               '',
@@ -825,7 +823,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                         ),
                                                                         child:
                                                                             Align(
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                           child:

@@ -3,10 +3,8 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/social_feed/social_edit_posts/social_edit_posts_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_comment_functions_model.dart';
 export 'edit_comment_functions_model.dart';
@@ -60,7 +58,7 @@ class _EditCommentFunctionsWidgetState
     return Material(
       color: Colors.transparent,
       elevation: 5.0,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
@@ -73,7 +71,7 @@ class _EditCommentFunctionsWidgetState
         height: 400.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(16.0),
@@ -104,7 +102,7 @@ class _EditCommentFunctionsWidgetState
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: 50.0,
                       height: 4.0,
@@ -116,12 +114,12 @@ class _EditCommentFunctionsWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -134,7 +132,7 @@ class _EditCommentFunctionsWidgetState
                               logFirebaseEvent('Icon_bottom_sheet');
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.cancel_outlined,
                               color: Colors.black,
                               size: 24.0,
@@ -144,7 +142,7 @@ class _EditCommentFunctionsWidgetState
                         if (columnSocialpostsRecord.postuser ==
                             currentUserReference)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -161,7 +159,7 @@ class _EditCommentFunctionsWidgetState
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFE70C10),
+                                  color: const Color(0xFFE70C10),
                                   borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: FlutterFlowTheme.of(context).primary,
@@ -169,7 +167,7 @@ class _EditCommentFunctionsWidgetState
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -203,7 +201,7 @@ class _EditCommentFunctionsWidgetState
                         if (columnSocialpostsRecord.postuser ==
                             currentUserReference)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -218,7 +216,7 @@ class _EditCommentFunctionsWidgetState
                                   isScrollControlled: true,
                                   backgroundColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  barrierColor: Color(0x00000000),
+                                  barrierColor: const Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
@@ -245,7 +243,7 @@ class _EditCommentFunctionsWidgetState
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -277,7 +275,7 @@ class _EditCommentFunctionsWidgetState
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -297,7 +295,7 @@ class _EditCommentFunctionsWidgetState
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xFFE70C10),
+                                color: const Color(0xFFE70C10),
                                 borderRadius: BorderRadius.circular(0.0),
                                 border: Border.all(
                                   color: FlutterFlowTheme.of(context)
@@ -306,7 +304,7 @@ class _EditCommentFunctionsWidgetState
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,

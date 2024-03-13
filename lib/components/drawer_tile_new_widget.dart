@@ -11,11 +11,9 @@ import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'drawer_tile_new_model.dart';
 export 'drawer_tile_new_model.dart';
 
@@ -80,12 +78,12 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
             color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,7 +92,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 20.0, 0.0),
                             child: Container(
                               width: 50.0,
@@ -103,7 +101,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                               ),
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderRadius: 20.0,
@@ -137,7 +135,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Builder(
                           builder: (context) {
                             if (_model.isEdit) {
@@ -167,7 +165,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                 borderRadius: 20.0,
                                 borderWidth: 1.0,
                                 buttonSize: 40.0,
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.add,
                                   color: Color(0xFF1AADF9),
                                   size: 24.0,
@@ -197,14 +195,14 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 20.0, 8.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 100.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x411D2429),
@@ -214,12 +212,12 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 1.0, 1.0, 1.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -326,8 +324,6 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                             child: Image.network(
                                               valueOrDefault<String>(
                                                 _model.uploadedFileUrl !=
-                                                            null &&
-                                                        _model.uploadedFileUrl !=
                                                             ''
                                                     ? valueOrDefault<String>(
                                                         _model.uploadedFileUrl,
@@ -346,7 +342,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 8.0, 4.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -362,7 +358,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                     .titleMedium
                                                     .override(
                                                       fontFamily: 'Outfit',
-                                                      color: Color(0xFF090F13),
+                                                      color: const Color(0xFF090F13),
                                                       fontSize: 18.0,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -386,7 +382,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 24.0, 16.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -405,18 +401,18 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                       .secondaryBackground,
                                             ),
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Container(
                                                 width: 32.0,
                                                 height: 32.0,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   color: Color(0xFF1AADF9),
                                                   shape: BoxShape.circle,
                                                 ),
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Text(
                                                   '1',
@@ -443,7 +439,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Tile Name',
@@ -462,7 +458,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                               .secondaryBackground,
                                         ),
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Builder(
                                           builder: (context) {
                                             if (valueOrDefault<bool>(
@@ -500,8 +496,6 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                               );
                                             } else if (valueOrDefault<bool>(
                                               _model.textController.text !=
-                                                      null &&
-                                                  _model.textController.text !=
                                                       '',
                                               false,
                                             )) {
@@ -546,14 +540,14 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 8.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.textController,
                                     focusNode: _model.textFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.textController',
-                                      Duration(milliseconds: 2000),
+                                      const Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
                                     autofocus: true,
@@ -574,7 +568,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF1AADF9),
                                           width: 2.0,
                                         ),
@@ -613,7 +607,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 24.0, 16.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -632,18 +626,18 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                       .secondaryBackground,
                                             ),
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Container(
                                                 width: 32.0,
                                                 height: 32.0,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   color: Color(0xFF1AADF9),
                                                   shape: BoxShape.circle,
                                                 ),
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Text(
                                                   '2',
@@ -670,7 +664,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Choose type',
@@ -689,19 +683,19 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                               .secondaryBackground,
                                         ),
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 0.0),
                                   child: FlutterFlowDropDown<String>(
                                     controller:
                                         _model.dropDownValueController ??=
                                             FormFieldController<String>(null),
-                                    options: [
+                                    options: const [
                                       'Text',
                                       'Image',
                                       'Video',
@@ -725,10 +719,10 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     elevation: 2.0,
-                                    borderColor: Color(0xFF1AADF9),
+                                    borderColor: const Color(0xFF1AADF9),
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                    margin: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
                                     isSearchable: false,
@@ -742,7 +736,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 24.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -760,20 +754,20 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                               ),
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Container(
                                                   width: 32.0,
                                                   height: 32.0,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color(0xFF1AADF9),
                                                     shape: BoxShape.circle,
                                                   ),
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
                                                     '3',
@@ -799,7 +793,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: InkWell(
@@ -840,7 +834,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                 .secondaryBackground,
                                           ),
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                         ),
                                       ],
                                     ),
@@ -857,7 +851,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                           onChanged: (newValue) async {
                                             setState(() =>
                                                 _model.switchListTileValue1 =
-                                                    newValue!);
+                                                    newValue);
                                           },
                                           title: Text(
                                             'Members',
@@ -867,7 +861,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                           tileColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
-                                          activeColor: Color(0xFF1AADF9),
+                                          activeColor: const Color(0xFF1AADF9),
                                           activeTrackColor:
                                               FlutterFlowTheme.of(context)
                                                   .accent1,
@@ -881,7 +875,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                           onChanged: (newValue) async {
                                             setState(() =>
                                                 _model.switchListTileValue2 =
-                                                    newValue!);
+                                                    newValue);
                                           },
                                           title: Text(
                                             'Subscriptions',
@@ -907,7 +901,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                           onChanged: (newValue) async {
                                             setState(() =>
                                                 _model.switchListTileValue3 =
-                                                    newValue!);
+                                                    newValue);
                                           },
                                           title: Text(
                                             'Livestreams',
@@ -954,7 +948,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                               itemBuilder: (context, appDocIndex) {
                                 final appDocItem = appDoc[appDocIndex];
                                 return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       4.0, 20.0, 4.0, 0.0),
                                   child: Container(
                                     width:
@@ -962,7 +956,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                     height: 100.0,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x411D2429),
@@ -972,13 +966,13 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 1.0, 1.0),
                                             child: ClipRRect(
                                               borderRadius:
@@ -996,7 +990,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 8.0, 4.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1013,7 +1007,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
-                                                              Color(0xFF090F13),
+                                                              const Color(0xFF090F13),
                                                           fontSize: 18.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1034,7 +1028,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -1074,11 +1068,11 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                                         return FlutterFlowTheme.of(context)
                                                                             .error;
                                                                       } else {
-                                                                        return Color(
+                                                                        return const Color(
                                                                             0xFF7C8791);
                                                                       }
                                                                     }(),
-                                                                    Color(
+                                                                    const Color(
                                                                         0xFF7C8791),
                                                                   ),
                                                                   fontSize:
@@ -1103,7 +1097,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                                                 .secondaryBackground,
                                                           ),
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Builder(
                                                             builder: (context) {
@@ -1214,7 +1208,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
@@ -1227,9 +1221,9 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                         text: 'Cancel',
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).selectedButton,
                           textStyle: FlutterFlowTheme.of(context)
@@ -1243,7 +1237,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                         .titleSmallFamily),
                               ),
                           elevation: 0.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -1253,7 +1247,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
@@ -1323,11 +1317,11 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                         text: 'Save',
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF1AADF9),
+                          color: const Color(0xFF1AADF9),
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
@@ -1339,7 +1333,7 @@ class _DrawerTileNewWidgetState extends State<DrawerTileNewWidget> {
                                         .titleSmallFamily),
                               ),
                           elevation: 0.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

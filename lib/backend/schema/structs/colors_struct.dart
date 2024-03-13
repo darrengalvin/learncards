@@ -152,7 +152,7 @@ class ColorsStruct extends FFFirebaseStruct {
           ParamType.Color,
           false,
         ),
-        firestoreUtilData: FirestoreUtilData(
+        firestoreUtilData: const FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
         ),

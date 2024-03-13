@@ -179,7 +179,7 @@ class TileNavStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
-        firestoreUtilData: FirestoreUtilData(
+        firestoreUtilData: const FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
         ),

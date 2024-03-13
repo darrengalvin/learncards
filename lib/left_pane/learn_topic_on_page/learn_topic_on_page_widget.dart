@@ -4,9 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'learn_topic_on_page_model.dart';
 export 'learn_topic_on_page_model.dart';
@@ -30,8 +28,8 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -70,7 +68,7 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<List<CompaniesRecord>>(
         stream: queryCompaniesRecord(
           queryBuilder: (companiesRecord) => companiesRecord.where(
@@ -122,9 +120,9 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                   }
                 }(),
               ),
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Align(
-                alignment: AlignmentDirectional(-1.0, -1.0),
+                alignment: const AlignmentDirectional(-1.0, -1.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -153,7 +151,7 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                                 }
                               }(),
                             ),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(0.0),
                                 bottomRight: Radius.circular(0.0),
@@ -185,7 +183,7 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                                         }
                                       }(),
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                   Divider(
                                     thickness: 1.0,
@@ -206,7 +204,7 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                                                 MainAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 40.0, 0.0),
                                                 child: SelectionArea(
@@ -224,7 +222,7 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                                                         .bodyMedium,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -261,7 +259,7 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                                                 MainAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 40.0, 0.0),
                                                 child: SelectionArea(
@@ -308,7 +306,7 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                                         }
                                       }(),
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:

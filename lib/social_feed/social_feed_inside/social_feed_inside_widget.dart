@@ -14,7 +14,6 @@ import '/pages/search_pages/live_video/broadcast_name_input/broadcast_name_input
 import '/right_pane/social_feed_new_componant/social_feed_new_componant_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -78,8 +77,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 1000.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -98,8 +97,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 1200.ms,
           duration: 600.ms,
-          begin: Offset(92.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(92.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -118,8 +117,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -138,8 +137,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 900.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -158,8 +157,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(-31.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-31.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -178,8 +177,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -198,8 +197,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 150.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -218,8 +217,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -238,8 +237,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 250.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -258,8 +257,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -278,8 +277,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(-31.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-31.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -298,8 +297,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -318,8 +317,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 150.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -338,8 +337,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -358,8 +357,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 250.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -378,8 +377,8 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -449,7 +448,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                         logFirebaseEvent('Stack_update_app_state');
                         FFAppState().update(() {});
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(
@@ -457,7 +456,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                             Container(
                               width: double.infinity,
                               height: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                             ).animateOnPageLoad(animationsMap[
                                 'containerOnPageLoadAnimation1']!),
                             Container(
@@ -476,9 +475,9 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                     FlutterFlowTheme.of(context)
                                         .secondaryBackground
                                   ],
-                                  stops: [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
-                                  begin: AlignmentDirectional(1.0, 0.0),
-                                  end: AlignmentDirectional(-1.0, 0),
+                                  stops: const [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
+                                  begin: const AlignmentDirectional(1.0, 0.0),
+                                  end: const AlignmentDirectional(-1.0, 0),
                                 ),
                               ),
                             ),
@@ -501,6 +500,21 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                               opaque: false,
                                               cursor: MouseCursor.defer ??
                                                   MouseCursor.defer,
+                                              onEnter: ((event) async {
+                                                setState(() =>
+                                                    _model.mouseRegionHovered1 =
+                                                        true);
+                                                logFirebaseEvent(
+                                                    'SOCIAL_FEED_INSIDE_MouseRegion_zprd98r1_');
+                                                logFirebaseEvent(
+                                                    'MouseRegion_update_app_state');
+                                                setState(() {});
+                                              }),
+                                              onExit: ((event) async {
+                                                setState(() =>
+                                                    _model.mouseRegionHovered1 =
+                                                        false);
+                                              }),
                                               child: Visibility(
                                                 visible: responsiveVisibility(
                                                   context: context,
@@ -525,32 +539,37 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                         updateCallback: () =>
                                                             setState(() {}),
                                                         child:
-                                                            SideMenuCopyWidget(),
+                                                            const SideMenuCopyWidget(),
                                                       ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
+                                            ),
+                                            MouseRegion(
+                                              opaque: false,
+                                              cursor: MouseCursor.defer ??
+                                                  MouseCursor.defer,
                                               onEnter: ((event) async {
                                                 setState(() =>
-                                                    _model.mouseRegionHovered1 =
+                                                    _model.mouseRegionHovered2 =
                                                         true);
                                                 logFirebaseEvent(
-                                                    'SOCIAL_FEED_INSIDE_MouseRegion_zprd98r1_');
+                                                    'SOCIAL_FEED_INSIDE_MouseRegion_rb6dv10f_');
                                                 logFirebaseEvent(
                                                     'MouseRegion_update_app_state');
                                                 setState(() {});
                                               }),
                                               onExit: ((event) async {
                                                 setState(() =>
-                                                    _model.mouseRegionHovered1 =
+                                                    _model.mouseRegionHovered2 =
                                                         false);
+                                                logFirebaseEvent(
+                                                    'SOCIAL_FEED_INSIDE_MouseRegion_rb6dv10f_');
+                                                logFirebaseEvent(
+                                                    'MouseRegion_update_app_state');
+                                                setState(() {});
                                               }),
-                                            ),
-                                            MouseRegion(
-                                              opaque: false,
-                                              cursor: MouseCursor.defer ??
-                                                  MouseCursor.defer,
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -564,7 +583,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: wrapWithModel(
                                                         model: _model
@@ -579,26 +598,6 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                   ),
                                                 ],
                                               ),
-                                              onEnter: ((event) async {
-                                                setState(() =>
-                                                    _model.mouseRegionHovered2 =
-                                                        true);
-                                                logFirebaseEvent(
-                                                    'SOCIAL_FEED_INSIDE_MouseRegion_rb6dv10f_');
-                                                logFirebaseEvent(
-                                                    'MouseRegion_update_app_state');
-                                                setState(() {});
-                                              }),
-                                              onExit: ((event) async {
-                                                setState(() =>
-                                                    _model.mouseRegionHovered2 =
-                                                        false);
-                                                logFirebaseEvent(
-                                                    'SOCIAL_FEED_INSIDE_MouseRegion_rb6dv10f_');
-                                                logFirebaseEvent(
-                                                    'MouseRegion_update_app_state');
-                                                setState(() {});
-                                              }),
                                             ),
                                           ],
                                         ),
@@ -632,11 +631,11 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                           ),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: double.infinity,
                                             height: double.infinity,
                                             child: Stack(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, -1.0),
                                               children: [
                                                 SingleChildScrollView(
@@ -648,7 +647,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                         width: double.infinity,
                                                         height: 88.0,
                                                         decoration:
-                                                            BoxDecoration(),
+                                                            const BoxDecoration(),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -664,7 +663,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                 children: [
                                                                   Expanded(
                                                                     child:
-                                                                        Container(
+                                                                        SizedBox(
                                                                       width: double
                                                                           .infinity,
                                                                       height:
@@ -678,7 +677,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                             height:
                                                                                 100.0,
                                                                             decoration:
-                                                                                BoxDecoration(),
+                                                                                const BoxDecoration(),
                                                                           ),
                                                                           Row(
                                                                             mainAxisSize:
@@ -715,7 +714,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           20.0,
@@ -749,7 +748,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                           updateCallback: () =>
                                                                               setState(() {}),
                                                                           child:
-                                                                              SocialFeedNewComponantWidget(),
+                                                                              const SocialFeedNewComponantWidget(),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -768,7 +767,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                       flex: 1,
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             20.0,
                                                                             0.0,
                                                                             0.0,
@@ -783,7 +782,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                               phone: false,
                                                                             ))
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
@@ -794,14 +793,14 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                       Container(
                                                                                         width: double.infinity,
                                                                                         decoration: BoxDecoration(
-                                                                                          boxShadow: [
+                                                                                          boxShadow: const [
                                                                                             BoxShadow(
                                                                                               blurRadius: 15.0,
                                                                                               color: Color(0x25000000),
                                                                                               offset: Offset(0.0, 8.0),
                                                                                             )
                                                                                           ],
-                                                                                          gradient: LinearGradient(
+                                                                                          gradient: const LinearGradient(
                                                                                             colors: [
                                                                                               Color(0x12068DE2),
                                                                                               Color(0x00068DE2),
@@ -828,27 +827,27 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                           ),
                                                                                           child: ClipRRect(
                                                                                             child: Container(
-                                                                                              decoration: BoxDecoration(),
+                                                                                              decoration: const BoxDecoration(),
                                                                                             ),
                                                                                           ),
                                                                                         ),
                                                                                       ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation2']!),
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                                                                                       child: Column(
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         children: [
                                                                                           Container(
                                                                                             width: double.infinity,
                                                                                             decoration: BoxDecoration(
-                                                                                              boxShadow: [
+                                                                                              boxShadow: const [
                                                                                                 BoxShadow(
                                                                                                   blurRadius: 15.0,
                                                                                                   color: Color(0x25000000),
                                                                                                   offset: Offset(0.0, 8.0),
                                                                                                 )
                                                                                               ],
-                                                                                              gradient: LinearGradient(
+                                                                                              gradient: const LinearGradient(
                                                                                                 colors: [
                                                                                                   Color(0x12068DE2),
                                                                                                   Color(0x00068DE2),
@@ -884,11 +883,11 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                 decoration: BoxDecoration(
                                                                                                   color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                                 ),
-                                                                                                child: Container(
+                                                                                                child: SizedBox(
                                                                                                   width: double.infinity,
                                                                                                   height: double.infinity,
                                                                                                   child: Stack(
-                                                                                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                                                                                    alignment: const AlignmentDirectional(0.0, -1.0),
                                                                                                     children: [
                                                                                                       SingleChildScrollView(
                                                                                                         child: Column(
@@ -897,7 +896,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                             Container(
                                                                                                               width: double.infinity,
                                                                                                               height: 88.0,
-                                                                                                              decoration: BoxDecoration(),
+                                                                                                              decoration: const BoxDecoration(),
                                                                                                               child: Row(
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -907,13 +906,13 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       children: [
                                                                                                                         Expanded(
-                                                                                                                          child: Container(
+                                                                                                                          child: SizedBox(
                                                                                                                             width: double.infinity,
                                                                                                                             height: 88.0,
                                                                                                                             child: Stack(
                                                                                                                               children: [
                                                                                                                                 Align(
-                                                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                                                   child: wrapWithModel(
                                                                                                                                     model: _model.headerContainerModel2,
                                                                                                                                     updateCallback: () => setState(() {}),
@@ -937,7 +936,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 children: [
                                                                                                                   Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                                                     child: Row(
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -949,7 +948,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                             await showModalBottomSheet(
                                                                                                                               isScrollControlled: true,
                                                                                                                               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                              barrierColor: Color(0x00000000),
+                                                                                                                              barrierColor: const Color(0x00000000),
                                                                                                                               context: context,
                                                                                                                               builder: (context) {
                                                                                                                                 return WebViewAware(
@@ -957,7 +956,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                     onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                     child: Padding(
                                                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                      child: Container(
+                                                                                                                                      child: const SizedBox(
                                                                                                                                         height: 650.0,
                                                                                                                                         child: BroadcastNameInputWidget(),
                                                                                                                                       ),
@@ -968,15 +967,15 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                             ).then((value) => safeSetState(() {}));
                                                                                                                           },
                                                                                                                           text: 'Go Live',
-                                                                                                                          icon: Icon(
+                                                                                                                          icon: const Icon(
                                                                                                                             Icons.settings_input_antenna,
                                                                                                                             size: 15.0,
                                                                                                                           ),
                                                                                                                           options: FFButtonOptions(
                                                                                                                             width: 120.0,
                                                                                                                             height: 40.0,
-                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                                            iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                                             color: FlutterFlowTheme.of(context).primary,
                                                                                                                             textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                                                   fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -984,7 +983,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                                                                 ),
                                                                                                                             elevation: 2.0,
-                                                                                                                            borderSide: BorderSide(
+                                                                                                                            borderSide: const BorderSide(
                                                                                                                               color: Colors.transparent,
                                                                                                                               width: 1.0,
                                                                                                                             ),
@@ -992,9 +991,9 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                           ),
                                                                                                                         ),
                                                                                                                         Align(
-                                                                                                                          alignment: AlignmentDirectional(0.3, 0.1),
+                                                                                                                          alignment: const AlignmentDirectional(0.3, 0.1),
                                                                                                                           child: Padding(
-                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 8.0, 0.0),
+                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 8.0, 0.0),
                                                                                                                             child: SelectionArea(
                                                                                                                                 child: Text(
                                                                                                                               'Live Videos',
@@ -1012,7 +1011,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                     ),
                                                                                                                   ),
                                                                                                                   Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 40.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 40.0),
                                                                                                                     child: Row(
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1024,7 +1023,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                               children: [
                                                                                                                                 Padding(
-                                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                                                                                                                                   child: SingleChildScrollView(
                                                                                                                                     child: Column(
                                                                                                                                       mainAxisSize: MainAxisSize.max,
@@ -1037,11 +1036,11 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                               constraints: BoxConstraints(
                                                                                                                                                 maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                                                                                                                                               ),
-                                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                                               child: wrapWithModel(
                                                                                                                                                 model: _model.navChipsModel,
                                                                                                                                                 updateCallback: () => setState(() {}),
-                                                                                                                                                child: NavChipsWidget(),
+                                                                                                                                                child: const NavChipsWidget(),
                                                                                                                                               ),
                                                                                                                                             ),
                                                                                                                                           ],
@@ -1051,12 +1050,12 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                                           children: [
                                                                                                                                             Padding(
-                                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                                                                                                                                               child: Container(
                                                                                                                                                 constraints: BoxConstraints(
                                                                                                                                                   maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                                                                                                                                                 ),
-                                                                                                                                                decoration: BoxDecoration(),
+                                                                                                                                                decoration: const BoxDecoration(),
                                                                                                                                                 child: SingleChildScrollView(
                                                                                                                                                   child: Column(
                                                                                                                                                     mainAxisSize: MainAxisSize.max,
@@ -1139,7 +1138,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                                                                                                                                                   children: [
                                                                                                                                                                                     Padding(
-                                                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                                                                                                                       child: Container(
                                                                                                                                                                                         height: 100.0,
                                                                                                                                                                                         decoration: BoxDecoration(
@@ -1148,19 +1147,19 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                                                                               FlutterFlowTheme.of(context).primaryBackground,
                                                                                                                                                                                               FlutterFlowTheme.of(context).secondary
                                                                                                                                                                                             ],
-                                                                                                                                                                                            stops: [0.0, 1.0],
-                                                                                                                                                                                            begin: AlignmentDirectional(0.0, -1.0),
-                                                                                                                                                                                            end: AlignmentDirectional(0, 1.0),
+                                                                                                                                                                                            stops: const [0.0, 1.0],
+                                                                                                                                                                                            begin: const AlignmentDirectional(0.0, -1.0),
+                                                                                                                                                                                            end: const AlignmentDirectional(0, 1.0),
                                                                                                                                                                                           ),
                                                                                                                                                                                           borderRadius: BorderRadius.circular(16.0),
                                                                                                                                                                                         ),
                                                                                                                                                                                         child: Padding(
-                                                                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
+                                                                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
                                                                                                                                                                                           child: Row(
                                                                                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                                                                                             children: [
                                                                                                                                                                                               ClipRRect(
-                                                                                                                                                                                                borderRadius: BorderRadius.only(
+                                                                                                                                                                                                borderRadius: const BorderRadius.only(
                                                                                                                                                                                                   bottomLeft: Radius.circular(8.0),
                                                                                                                                                                                                   bottomRight: Radius.circular(0.0),
                                                                                                                                                                                                   topLeft: Radius.circular(8.0),
@@ -1175,7 +1174,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                                                                               ),
                                                                                                                                                                                               Expanded(
                                                                                                                                                                                                 child: Padding(
-                                                                                                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                                                                                                                   child: Column(
                                                                                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -1206,14 +1205,14 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                                                                                             ),
                                                                                                                                                                                                           if (listViewBroadcastsRecord.isLive)
                                                                                                                                                                                                             Padding(
-                                                                                                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                                                                                                               child: Text(
                                                                                                                                                                                                                 'Live Now',
                                                                                                                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                                                                                               ),
                                                                                                                                                                                                             ),
                                                                                                                                                                                                           Padding(
-                                                                                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                                                                                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                                                                                                                                                                                                             child: FlutterFlowIconButton(
                                                                                                                                                                                                               borderColor: Colors.transparent,
                                                                                                                                                                                                               borderRadius: 30.0,
@@ -1239,7 +1238,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                                                                                           children: [
                                                                                                                                                                                                             Expanded(
                                                                                                                                                                                                               child: Padding(
-                                                                                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                                                                                                 child: Text(
                                                                                                                                                                                                                   listViewBroadcastsRecord.name,
                                                                                                                                                                                                                   style: FlutterFlowTheme.of(context).bodySmall,
@@ -1253,7 +1252,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                                                                                                         children: [
                                                                                                                                                                                                           Padding(
-                                                                                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                                                                                             child: Text(
                                                                                                                                                                                                               dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord.time!),
                                                                                                                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -1309,10 +1308,10 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                               height: 1.0,
                                                                                                                                               decoration: BoxDecoration(
                                                                                                                                                 gradient: LinearGradient(
-                                                                                                                                                  colors: [Color(0x003C89B9), FlutterFlowTheme.of(context).iconBorder],
-                                                                                                                                                  stops: [0.0, 1.0],
-                                                                                                                                                  begin: AlignmentDirectional(1.0, 0.0),
-                                                                                                                                                  end: AlignmentDirectional(-1.0, 0),
+                                                                                                                                                  colors: [const Color(0x003C89B9), FlutterFlowTheme.of(context).iconBorder],
+                                                                                                                                                  stops: const [0.0, 1.0],
+                                                                                                                                                  begin: const AlignmentDirectional(1.0, 0.0),
+                                                                                                                                                  end: const AlignmentDirectional(-1.0, 0),
                                                                                                                                                 ),
                                                                                                                                               ),
                                                                                                                                             ),
@@ -1336,12 +1335,12 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                         ),
                                                                                                       ),
                                                                                                       Align(
-                                                                                                        alignment: AlignmentDirectional(-1.0, -1.0),
+                                                                                                        alignment: const AlignmentDirectional(-1.0, -1.0),
                                                                                                         child: Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(40.0, 80.0, 0.0, 0.0),
+                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(40.0, 80.0, 0.0, 0.0),
                                                                                                           child: Container(
                                                                                                             width: 300.0,
-                                                                                                            decoration: BoxDecoration(
+                                                                                                            decoration: const BoxDecoration(
                                                                                                               color: Color(0xE6070814),
                                                                                                               boxShadow: [
                                                                                                                 BoxShadow(
@@ -1358,12 +1357,12 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                 children: [
                                                                                                                   Padding(
-                                                                                                                    padding: EdgeInsets.all(20.0),
+                                                                                                                    padding: const EdgeInsets.all(20.0),
                                                                                                                     child: Column(
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       children: [
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1377,7 +1376,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                             child: Container(
                                                                                                                               width: double.infinity,
                                                                                                                               height: 50.0,
-                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1391,7 +1390,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                         size: 20.0,
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           'Stations',
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1410,7 +1409,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation4']!),
                                                                                                                         ),
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1424,7 +1423,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                             child: Container(
                                                                                                                               width: double.infinity,
                                                                                                                               height: 50.0,
-                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1438,7 +1437,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                         size: 20.0,
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           'Car connect',
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1457,7 +1456,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation5']!),
                                                                                                                         ),
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1471,7 +1470,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                             child: Container(
                                                                                                                               width: double.infinity,
                                                                                                                               height: 50.0,
-                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1485,7 +1484,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                         size: 20.0,
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           'Locker',
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1504,7 +1503,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation6']!),
                                                                                                                         ),
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1518,7 +1517,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                             child: Container(
                                                                                                                               width: double.infinity,
                                                                                                                               height: 50.0,
-                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1532,7 +1531,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                         size: 20.0,
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           'Charge reports',
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1551,7 +1550,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation7']!),
                                                                                                                         ),
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1565,7 +1564,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                             child: Container(
                                                                                                                               width: double.infinity,
                                                                                                                               height: 50.0,
-                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1579,7 +1578,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                                                                         size: 20.0,
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           'Warnings',
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1640,16 +1639,16 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(40.0,
                                                                 80.0, 0.0, 0.0),
                                                     child: Container(
                                                       width: 300.0,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         color:
                                                             Color(0xE6070814),
                                                         boxShadow: [
@@ -1675,7 +1674,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsets
+                                                                  const EdgeInsets
                                                                       .all(
                                                                           20.0),
                                                               child: Column(
@@ -1684,7 +1683,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1720,7 +1719,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1737,7 +1736,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Stations',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1757,7 +1756,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                             animationsMap['containerOnPageLoadAnimation10']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1793,7 +1792,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1810,7 +1809,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Car connect',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1830,7 +1829,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                             animationsMap['containerOnPageLoadAnimation11']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1866,7 +1865,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1883,7 +1882,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Locker',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1903,7 +1902,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                             animationsMap['containerOnPageLoadAnimation12']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1939,7 +1938,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1956,7 +1955,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Charge reports',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1976,7 +1975,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                             animationsMap['containerOnPageLoadAnimation13']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -2012,7 +2011,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -2029,7 +2028,7 @@ class _SocialFeedInsideWidgetState extends State<SocialFeedInsideWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Warnings',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(

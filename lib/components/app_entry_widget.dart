@@ -5,10 +5,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'app_entry_model.dart';
 export 'app_entry_model.dart';
 
@@ -53,12 +51,12 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x2B202529),
@@ -68,7 +66,7 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,13 +74,13 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 300.0,
                     height: 170.0,
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(1.01, 1.05),
+                          alignment: const AlignmentDirectional(1.01, 1.05),
                           child: ClipRRect(
                             child: BackdropFilter(
                               filter: ImageFilter.blur(
@@ -92,7 +90,7 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
                               child: Container(
                                 width: 50.0,
                                 height: 24.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xBF0F1113),
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0.0),
@@ -101,7 +99,7 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
                                     topRight: Radius.circular(0.0),
                                   ),
                                 ),
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '05:03',
                                   style: FlutterFlowTheme.of(context)
@@ -121,8 +119,8 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Container(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: SizedBox(
                             width: 300.0,
                             height: 170.0,
                             child: custom_widgets.VideoWithPlay(
@@ -139,7 +137,7 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: Text(
                         '1.Sketch and userflows within your application',
                         style: FlutterFlowTheme.of(context).titleMedium,
@@ -149,7 +147,7 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Text(
                   'Sketch and userflows within your application are an important part of any problem! We go over the common use cases in order to not make rookie mistakes.',
                   style: FlutterFlowTheme.of(context).bodySmall,
@@ -166,17 +164,17 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
                     print('Button pressed ...');
                   },
                   text: 'Download',
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.cloud_download_rounded,
                     size: 15.0,
                   ),
                   options: FFButtonOptions(
                     width: 130.0,
                     height: 44.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0x004B39EF),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: const Color(0x004B39EF),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).titleSmallFamily,
@@ -185,7 +183,7 @@ class _AppEntryWidgetState extends State<AppEntryWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).titleSmallFamily),
                         ),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

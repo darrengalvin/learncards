@@ -3,7 +3,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/stripe/payment_manager.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_landing_widget.dart';
-import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_copy_widget.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_my_mentor_widget.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_welcome_widget.dart';
@@ -19,7 +18,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +74,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                     : FocusScope.of(context).unfocus(),
                 child: Padding(
                   padding: MediaQuery.viewInsetsOf(context),
-                  child: DeveloperDebugModeWidget(),
+                  child: const DeveloperDebugModeWidget(),
                 ),
               ),
             );
@@ -98,7 +96,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         FFAppState().selectedCompanyId = _model.companyByUrl!.reference.id;
       });
       if (_model.companyByUrl?.landingUrls
-              ?.contains(FFAppState().selectedCompanyUrl) ==
+              .contains(FFAppState().selectedCompanyUrl) ==
           true) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -133,8 +131,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         ).then((s) => s.firstOrNull);
       }
 
-      if (FFAppState().nonLoggedInSessionId == null ||
-          FFAppState().nonLoggedInSessionId == '') {
+      if (FFAppState().nonLoggedInSessionId == '') {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
           FFAppState().debugMessage = valueOrDefault<String>(
@@ -318,15 +315,15 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
             _model.istOfTeam
                 ?.where((e) => e.positionId == 1)
                 .toList()
-                ?.first
-                ?.memberName,
+                .first
+                .memberName,
             '-',
           )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
             _model.istOfTeam
                 ?.where((e) => e.positionId == 1)
                 .toList()
-                ?.first
-                ?.reference
+                .first
+                .reference
                 .id,
             '-',
           )}',
@@ -347,15 +344,15 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
               _model.istOfTeam
                   ?.where((e) => e.positionId == 2)
                   .toList()
-                  ?.first
-                  ?.memberName,
+                  .first
+                  .memberName,
               '-',
             )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
               _model.istOfTeam
                   ?.where((e) => e.positionId == 2)
                   .toList()
-                  ?.first
-                  ?.reference
+                  .first
+                  .reference
                   .id,
               '-',
             )}',
@@ -383,15 +380,15 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
               _model.istOfTeam
                   ?.where((e) => e.positionId == 2)
                   .toList()
-                  ?.first
-                  ?.memberName,
+                  .first
+                  .memberName,
               '-',
             )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
               _model.istOfTeam
                   ?.where((e) => e.positionId == 2)
                   .toList()
-                  ?.first
-                  ?.reference
+                  .first
+                  .reference
                   .id,
               '-',
             )}',
@@ -419,15 +416,15 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
               _model.istOfTeam
                   ?.where((e) => e.positionId == 2)
                   .toList()
-                  ?.first
-                  ?.memberName,
+                  .first
+                  .memberName,
               '-',
             )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
               _model.istOfTeam
                   ?.where((e) => e.positionId == 2)
                   .toList()
-                  ?.first
-                  ?.reference
+                  .first
+                  .reference
                   .id,
               '-',
             )}',
@@ -445,7 +442,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         });
       }
 
-      if ((FFAppState().leftPane == null || FFAppState().leftPane == '') ||
+      if ((FFAppState().leftPane == '') ||
           (FFAppState().leftPane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -469,7 +466,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         });
       }
 
-      if ((FFAppState().middlePane == null || FFAppState().middlePane == '') ||
+      if ((FFAppState().middlePane == '') ||
           (FFAppState().middlePane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -489,7 +486,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           );
         });
       }
-      if ((FFAppState().rightPane == null || FFAppState().rightPane == '') ||
+      if ((FFAppState().rightPane == '') ||
           (FFAppState().rightPane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -567,7 +564,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           FFAppState().selectedThreadId =
               _model.sessionQueryOnPageLoad!.defaultThreadId;
         });
-        if (_model.queryFlowiseChats!.length >= 1) {
+        if (_model.queryFlowiseChats!.isNotEmpty) {
           logFirebaseEvent('Library-fixed_update_app_state');
           setState(() {
             FFAppState().debugMessage = valueOrDefault<String>(
@@ -771,7 +768,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 50.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -795,9 +792,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                             text: 'Admin Dash',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -824,7 +821,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                     ),
                   ),
                 ),
-                endDrawer: Container(
+                endDrawer: SizedBox(
                   width: 450.0,
                   child: Drawer(
                     elevation: 16.0,
@@ -848,6 +845,48 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                   child: MouseRegion(
                     opaque: false,
                     cursor: MouseCursor.defer ?? MouseCursor.defer,
+                    onEnter: ((event) async {
+                      setState(() => _model.mouseRegionHovered = true);
+                      logFirebaseEvent(
+                          'LIBRARY_FIXED_MouseRegion_tgmjc0s6_ON_TO');
+                      logFirebaseEvent('MouseRegion_backend_call');
+
+                      await _model.sessionQueryOnPageLoad!.reference
+                          .update(createSessionsRecordData(
+                        lastActive: getCurrentTimestamp,
+                      ));
+                      if ((_model.sessionQueryOnPageLoad?.currentNavJourney ==
+                              'newSession') &&
+                          (FFAppState().bottomSheetOpen == true)) {
+                        logFirebaseEvent('MouseRegion_bottom_sheet');
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return WebViewAware(
+                              child: GestureDetector(
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: AICOMMUNICATIONOnPageWidget(
+                                    companiesDoc: _model.companyByUrl!,
+                                    sessionsDoc: _model.sessionQueryOnPageLoad,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
+                      }
+                    }),
+                    onExit: ((event) async {
+                      setState(() => _model.mouseRegionHovered = false);
+                    }),
                     child: StreamBuilder<List<MemberLevelsRecord>>(
                       stream: queryMemberLevelsRecord(),
                       builder: (context, snapshot) {
@@ -881,28 +920,28 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                             });
                           },
                           child: Container(
-                            decoration: BoxDecoration(),
-                            alignment: AlignmentDirectional(-1.0, -1.0),
+                            decoration: const BoxDecoration(),
+                            alignment: const AlignmentDirectional(-1.0, -1.0),
                             child: Align(
-                              alignment: AlignmentDirectional(-1.0, -1.0),
+                              alignment: const AlignmentDirectional(-1.0, -1.0),
                               child: Container(
-                                decoration: BoxDecoration(),
-                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                decoration: const BoxDecoration(),
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
                                 child: Stack(
                                   children: [
                                     Container(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxHeight: double.infinity,
                                       ),
                                       decoration: BoxDecoration(
                                         color: _model
-                                            .companyByUrl?.colors?.primaryColor,
+                                            .companyByUrl?.colors.primaryColor,
                                       ),
                                       alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
+                                          const AlignmentDirectional(-1.0, -1.0),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(0.0),
@@ -914,12 +953,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                             child: Opacity(
                                               opacity: 0.8,
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: double.infinity,
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     minWidth: 900.0,
                                                     minHeight: 350.0,
                                                   ),
@@ -932,20 +971,20 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                     ),
                                                   ),
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, -1.0),
                                                     child: Stack(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, -1.0),
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: ClipRRect(
                                                             borderRadius:
@@ -979,7 +1018,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                       ),
                                     ),
                                     Container(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -1008,7 +1047,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                 0.27,
                                                       ),
                                                       decoration:
-                                                          BoxDecoration(),
+                                                          const BoxDecoration(),
                                                       child: wrapWithModel(
                                                         model: _model
                                                             .headerContainerModel,
@@ -1046,7 +1085,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                   0.57,
                                                         ),
                                                         decoration:
-                                                            BoxDecoration(),
+                                                            const BoxDecoration(),
                                                         child:
                                                             SingleChildScrollView(
                                                           child: Column(
@@ -1066,7 +1105,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                 updateOnChange:
                                                                     true,
                                                                 child:
-                                                                    MiddleBodyAllWidget(),
+                                                                    const MiddleBodyAllWidget(),
                                                               ),
                                                             ],
                                                           ),
@@ -1306,58 +1345,31 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   ).then((s) => s.firstOrNull);
                                                                                   logFirebaseEvent('Column_update_app_state');
                                                                                   setState(() {
-                                                                                    FFAppState().selectedThreadId = () {
-                                                                                      if (myTeamItem.positionId == 1) {
-                                                                                        return valueOrDefault<String>(
-                                                                                          _model.checkingMentorChat?.person1ThreadId,
-                                                                                          'o',
-                                                                                        );
-                                                                                      } else if (myTeamItem.positionId == 1) {
-                                                                                        return valueOrDefault<String>(
-                                                                                          _model.checkingMentorChat?.person2ThreadId,
-                                                                                          'o',
-                                                                                        );
-                                                                                      } else if (myTeamItem.positionId == 3) {
-                                                                                        return valueOrDefault<String>(
-                                                                                          _model.checkingMentorChat?.person2ThreadId,
-                                                                                          'o',
-                                                                                        );
-                                                                                      } else {
-                                                                                        return valueOrDefault<String>(
-                                                                                          _model.checkingMentorChat?.defaultThreadId,
-                                                                                          'o',
-                                                                                        );
-                                                                                      }
-                                                                                    }();
+                                                                                    FFAppState().selectedThreadId = '${myTeamItem.reference.id}+${_model.sessionQueryOnPageLoad?.reference.id}';
                                                                                   });
                                                                                   logFirebaseEvent('Column_update_app_state');
                                                                                   setState(() {
                                                                                     FFAppState().selectedTeam = myTeamItem.reference.id;
                                                                                   });
-                                                                                  logFirebaseEvent('Column_bottom_sheet');
-                                                                                  await showModalBottomSheet(
-                                                                                    isScrollControlled: true,
-                                                                                    backgroundColor: Colors.transparent,
-                                                                                    useSafeArea: true,
-                                                                                    context: context,
-                                                                                    builder: (context) {
-                                                                                      return WebViewAware(
-                                                                                        child: GestureDetector(
-                                                                                          onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                          child: Padding(
-                                                                                            padding: MediaQuery.viewInsetsOf(context),
-                                                                                            child: Container(
-                                                                                              height: MediaQuery.sizeOf(context).height * 0.9,
-                                                                                              child: AICOMMUNICATIONOnPageCopyWidget(
-                                                                                                sessionsDoc: _model.sessionQueryOnPageLoad,
-                                                                                                companiesDoc: widget.companiesDoc!,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      );
+                                                                                  logFirebaseEvent('Column_navigate_to');
+
+                                                                                  context.pushNamed(
+                                                                                    'chatPage',
+                                                                                    queryParameters: {
+                                                                                      'companiesDoc': serializeParam(
+                                                                                        _model.companyByUrl,
+                                                                                        ParamType.Document,
+                                                                                      ),
+                                                                                      'sessionsDoc': serializeParam(
+                                                                                        _model.sessionQueryOnPageLoad,
+                                                                                        ParamType.Document,
+                                                                                      ),
+                                                                                    }.withoutNulls,
+                                                                                    extra: <String, dynamic>{
+                                                                                      'companiesDoc': _model.companyByUrl,
+                                                                                      'sessionsDoc': _model.sessionQueryOnPageLoad,
                                                                                     },
-                                                                                  ).then((value) => safeSetState(() {}));
+                                                                                  );
 
                                                                                   setState(() {});
                                                                                 },
@@ -1365,18 +1377,18 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                                       child: Container(
                                                                                         width: 100.0,
                                                                                         height: 100.0,
-                                                                                        decoration: BoxDecoration(),
+                                                                                        decoration: const BoxDecoration(),
                                                                                         child: Stack(
                                                                                           children: [
                                                                                             Container(
                                                                                               width: 90.0,
                                                                                               height: 90.0,
                                                                                               clipBehavior: Clip.antiAlias,
-                                                                                              decoration: BoxDecoration(
+                                                                                              decoration: const BoxDecoration(
                                                                                                 shape: BoxShape.circle,
                                                                                               ),
                                                                                               child: Image.network(
@@ -1391,7 +1403,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                               width: 40.0,
                                                                                               height: 40.0,
                                                                                               clipBehavior: Clip.antiAlias,
-                                                                                              decoration: BoxDecoration(
+                                                                                              decoration: const BoxDecoration(
                                                                                                 shape: BoxShape.circle,
                                                                                               ),
                                                                                               child: Image.network(
@@ -1451,7 +1463,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -1498,7 +1510,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'OnLoad',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -1508,12 +1520,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1531,7 +1543,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -1555,7 +1567,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -1613,7 +1625,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'OnLoad',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -1623,12 +1635,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1646,7 +1658,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -1670,7 +1682,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -1728,7 +1740,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'OnLoad',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -1738,12 +1750,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1761,7 +1773,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -1785,7 +1797,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -1812,7 +1824,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                   child: Padding(
                                                                                     padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: AICOMMUNICATIONLandingWidget(),
+                                                                                    child: const AICOMMUNICATIONLandingWidget(),
                                                                                   ),
                                                                                 ),
                                                                               );
@@ -1839,7 +1851,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'landing',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -1849,12 +1861,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1872,7 +1884,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -1896,7 +1908,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -1955,7 +1967,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'welcome',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -1965,12 +1977,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1988,7 +2000,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -2023,7 +2035,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           false,
                                                                         ))
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 20.0,
                                                                                 1.0,
                                                                                 20.0,
@@ -2057,7 +2069,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   initialLearnCards: 10,
                                                                                   aiLearnCardsPrompt: '',
                                                                                   companyDetails: '',
-                                                                                  backgroundImage: _model.textController.text != null && _model.textController.text != '' ? _model.textController.text : null,
+                                                                                  backgroundImage: _model.textController.text != '' ? _model.textController.text : null,
                                                                                   companyAiData: createCompanyDataForAiStruct(
                                                                                     companyName: 'Random Nsme ${random_data.randomString(
                                                                                       5,
@@ -2127,7 +2139,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                       initialLearnCards: 10,
                                                                                       aiLearnCardsPrompt: '',
                                                                                       companyDetails: '',
-                                                                                      backgroundImage: _model.textController.text != null && _model.textController.text != '' ? _model.textController.text : null,
+                                                                                      backgroundImage: _model.textController.text != '' ? _model.textController.text : null,
                                                                                       companyAiData: createCompanyDataForAiStruct(
                                                                                         companyName: 'Random Nsme ${random_data.randomString(
                                                                                           5,
@@ -2309,11 +2321,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   builder: (alertDialogContext) {
                                                                                     return WebViewAware(
                                                                                       child: AlertDialog(
-                                                                                        title: Text('Getting Topics'),
+                                                                                        title: const Text('Getting Topics'),
                                                                                         actions: [
                                                                                           TextButton(
                                                                                             onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
+                                                                                            child: const Text('Ok'),
                                                                                           ),
                                                                                         ],
                                                                                       ),
@@ -2324,7 +2336,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 _model.apiResult939 = await CloudFunctionsGroup.getTopicsCall.call(
                                                                                   sessionId: _model.sessionQueryOnPageLoad?.reference.id,
                                                                                   systemMessagePrompt: valueOrDefault<String>(
-                                                                                    'As a business that${_model.createdCompany?.companyAiData?.companySummary}in ${_model.createdCompany?.companyAiData?.companyIndustry}lean on some famous frameworks if it helps.Each topic should  have a unique name and have 5 days of activities, these activities are delivered via an interactive ai chat in an app, so they can either be designed to get immediate responses or for the individual to take an action and then share their actions, either way the ai must get a response back of the activity that was completed.  The activity should be designed to last only 6-8 minutes, they are bite size.  The 5 days  must have a conclusion, whereby the person who has completed 1-5 activities feels satisfied and complete with a learning outcome that will move them forward. Please return JSON in the following format. Id increment by 1, start at 1 pillarCategory weeklyTopicName dailyActivity (list of 1-5 days of activities)  just the activity name a showAdminDate which is always on a Monday and each item will increase by one week and a showUsersDate which is on the friday following the monday.todays date is  ${dateTimeFormat('MMMMEEEEd', getCurrentTimestamp)} so the first date will be ${getCurrentTimestamp.toString()}nd will increase by a week per item  Always Use English UK Locale and Spelling',
+                                                                                    'As a business that${_model.createdCompany?.companyAiData.companySummary}in ${_model.createdCompany?.companyAiData.companyIndustry}lean on some famous frameworks if it helps.Each topic should  have a unique name and have 5 days of activities, these activities are delivered via an interactive ai chat in an app, so they can either be designed to get immediate responses or for the individual to take an action and then share their actions, either way the ai must get a response back of the activity that was completed.  The activity should be designed to last only 6-8 minutes, they are bite size.  The 5 days  must have a conclusion, whereby the person who has completed 1-5 activities feels satisfied and complete with a learning outcome that will move them forward. Please return JSON in the following format. Id increment by 1, start at 1 pillarCategory weeklyTopicName dailyActivity (list of 1-5 days of activities)  just the activity name a showAdminDate which is always on a Monday and each item will increase by one week and a showUsersDate which is on the friday following the monday.todays date is  ${dateTimeFormat('MMMMEEEEd', getCurrentTimestamp)} so the first date will be ${getCurrentTimestamp.toString()}nd will increase by a week per item  Always Use English UK Locale and Spelling',
                                                                                     'notset',
                                                                                   ),
                                                                                   learnCardId: 'notset',
@@ -2351,12 +2363,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                     builder: (alertDialogContext) {
                                                                                       return WebViewAware(
                                                                                         child: AlertDialog(
-                                                                                          title: Text('GOT  TOPICS'),
+                                                                                          title: const Text('GOT  TOPICS'),
                                                                                           content: Text((_model.apiResult939?.bodyText ?? '')),
                                                                                           actions: [
                                                                                             TextButton(
                                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                              child: Text('Ok'),
+                                                                                              child: const Text('Ok'),
                                                                                             ),
                                                                                           ],
                                                                                         ),
@@ -2370,11 +2382,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                     builder: (alertDialogContext) {
                                                                                       return WebViewAware(
                                                                                         child: AlertDialog(
-                                                                                          title: Text('get topics failed'),
+                                                                                          title: const Text('get topics failed'),
                                                                                           actions: [
                                                                                             TextButton(
                                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                              child: Text('Ok'),
+                                                                                              child: const Text('Ok'),
                                                                                             ),
                                                                                           ],
                                                                                         ),
@@ -2386,14 +2398,14 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 setState(() {});
                                                                               },
                                                                               text: 'Simulated Company',
-                                                                              icon: Icon(
+                                                                              icon: const Icon(
                                                                                 Icons.location_history,
                                                                                 size: 15.0,
                                                                               ),
                                                                               options: FFButtonOptions(
                                                                                 height: 50.0,
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
-                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                                                                                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                 color: FlutterFlowTheme.of(context).selectedButton,
                                                                                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -2402,7 +2414,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                     ),
                                                                                 elevation: 1.0,
-                                                                                borderSide: BorderSide(
+                                                                                borderSide: const BorderSide(
                                                                                   color: Colors.transparent,
                                                                                   width: 1.0,
                                                                                 ),
@@ -2439,7 +2451,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             ),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                               child: TextFormField(
                                                                                 controller: _model.textController,
                                                                                 focusNode: _model.textFieldFocusNode,
@@ -2499,7 +2511,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -2520,11 +2532,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: Text('ready to read '),
+                                                                                  title: const Text('ready to read '),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
+                                                                                      child: const Text('Ok'),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -2545,11 +2557,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: Text('read on page load doc'),
+                                                                                  title: const Text('read on page load doc'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
+                                                                                      child: const Text('Ok'),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -2564,12 +2576,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: Text('The tread is '),
+                                                                                    title: const Text('The tread is '),
                                                                                     content: Text(_model.sessionQueryOnPageLoad!.coachMeThreadID),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: Text('Ok'),
+                                                                                        child: const Text('Ok'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -2584,11 +2596,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 builder: (alertDialogContext) {
                                                                                   return WebViewAware(
                                                                                     child: AlertDialog(
-                                                                                      title: Text('they match'),
+                                                                                      title: const Text('they match'),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
+                                                                                          child: const Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -2602,11 +2614,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 builder: (alertDialogContext) {
                                                                                   return WebViewAware(
                                                                                     child: AlertDialog(
-                                                                                      title: Text('they dont match'),
+                                                                                      title: const Text('they dont match'),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
+                                                                                          child: const Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -2624,12 +2636,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 builder: (alertDialogContext) {
                                                                                   return WebViewAware(
                                                                                     child: AlertDialog(
-                                                                                      title: Text('they dont match'),
+                                                                                      title: const Text('they dont match'),
                                                                                       content: Text(FFAppState().tempCoachMeThreadId == _model.readDocQuery?.coachMeThreadID ? 'they match now' : 'still no match'),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
+                                                                                          child: const Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -2644,11 +2656,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: Text('The tread is empty'),
+                                                                                    title: const Text('The tread is empty'),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: Text('Ok'),
+                                                                                        child: const Text('Ok'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -2722,7 +2734,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'Coach/Mentor Test',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -2732,12 +2744,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -2755,7 +2767,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -2785,7 +2797,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                       model: _model.leftMenuModel,
                                       updateCallback: () => setState(() {}),
                                       updateOnChange: true,
-                                      child: LeftMenuWidget(),
+                                      child: const LeftMenuWidget(),
                                     ),
                                   ],
                                 ),
@@ -2795,48 +2807,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                         );
                       },
                     ),
-                    onEnter: ((event) async {
-                      setState(() => _model.mouseRegionHovered = true);
-                      logFirebaseEvent(
-                          'LIBRARY_FIXED_MouseRegion_tgmjc0s6_ON_TO');
-                      logFirebaseEvent('MouseRegion_backend_call');
-
-                      await _model.sessionQueryOnPageLoad!.reference
-                          .update(createSessionsRecordData(
-                        lastActive: getCurrentTimestamp,
-                      ));
-                      if ((_model.sessionQueryOnPageLoad?.currentNavJourney ==
-                              'newSession') &&
-                          (FFAppState().bottomSheetOpen == true)) {
-                        logFirebaseEvent('MouseRegion_bottom_sheet');
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return WebViewAware(
-                              child: GestureDetector(
-                                onTap: () => _model.unfocusNode.canRequestFocus
-                                    ? FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode)
-                                    : FocusScope.of(context).unfocus(),
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: AICOMMUNICATIONOnPageWidget(
-                                    companiesDoc: _model.companyByUrl!,
-                                    sessionsDoc: _model.sessionQueryOnPageLoad,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ).then((value) => safeSetState(() {}));
-                      }
-                    }),
-                    onExit: ((event) async {
-                      setState(() => _model.mouseRegionHovered = false);
-                    }),
                   ),
                 ),
               ),

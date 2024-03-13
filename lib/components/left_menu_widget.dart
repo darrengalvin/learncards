@@ -1,4 +1,3 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/cloudinary_uploader_widget.dart';
@@ -7,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -119,7 +117,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               'You are attempting to enter developer mode, only do this if you have been instructed to do so.  Else press cancel below.',
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -143,7 +141,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                                   return WebViewAware(
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: DeveloperDebugModeWidget(),
+                                      child: const DeveloperDebugModeWidget(),
                                     ),
                                   );
                                 },
@@ -152,9 +150,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                             text: 'Enter Debug',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -170,7 +168,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -178,7 +176,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -192,9 +190,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                               text: 'Leave Debug',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -210,7 +208,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                                                   .titleSmallFamily),
                                     ),
                                 elevation: 3.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -228,7 +226,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                 false,
               ))
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent('LEFT_MENU_COMP_LOGIN_BTN_ON_TAP');
@@ -240,9 +238,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                     options: FFButtonOptions(
                       height: 50.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).selectedButton,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -255,7 +253,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 1.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -268,7 +266,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                 false,
               ))
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent('LEFT_MENU_COMP_LOGOUT_BTN_ON_TAP');
@@ -283,9 +281,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                     options: FFButtonOptions(
                       height: 50.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).selectedButton,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -298,7 +296,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 1.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -307,7 +305,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                   ),
                 ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     logFirebaseEvent(
@@ -322,7 +320,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                         return WebViewAware(
                           child: Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: CloudinaryUploaderWidget(
+                            child: const CloudinaryUploaderWidget(
                               presetId: 'martial-arts',
                             ),
                           ),
@@ -334,9 +332,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                   options: FFButtonOptions(
                     height: 50.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).selectedButton,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
@@ -347,7 +345,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                               FlutterFlowTheme.of(context).titleSmallFamily),
                         ),
                     elevation: 1.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -356,7 +354,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 0.0, 10.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     logFirebaseEvent(
@@ -377,9 +375,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                   options: FFButtonOptions(
                     height: 50.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).selectedButton,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
@@ -390,7 +388,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                               FlutterFlowTheme.of(context).titleSmallFamily),
                         ),
                     elevation: 1.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -416,9 +414,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
@@ -428,7 +426,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                               FlutterFlowTheme.of(context).titleSmallFamily),
                         ),
                     elevation: 3.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -443,7 +441,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                 desktop: false,
               ))
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent('LEFT_MENU_COMP_ADMIN_DASH_BTN_ON_TAP');
@@ -462,14 +460,14 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              title: Text('company is'),
+                              title: const Text('company is'),
                               content:
                                   Text(_model.companyInLeftMenu!.companyname),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
+                                  child: const Text('Ok'),
                                 ),
                               ],
                             ),
@@ -497,9 +495,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall

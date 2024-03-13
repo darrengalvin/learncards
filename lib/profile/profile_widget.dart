@@ -1,15 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -67,7 +63,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                   Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -75,7 +71,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             children: [
                               Container(
                                 width: 900.0,
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                   maxWidth: 1000.0,
                                 ),
                                 decoration: BoxDecoration(
@@ -148,7 +144,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                       .secondaryBackground,
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 55.0, 0.0, 0.0),
                                                   child: Row(
@@ -162,17 +158,12 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                         children: [
                                                           if ((FFAppState()
                                                                           .profilepic !=
-                                                                      null &&
-                                                                  FFAppState()
-                                                                          .profilepic !=
                                                                       '') &&
                                                               (currentUserPhoto ==
-                                                                      null ||
-                                                                  currentUserPhoto ==
                                                                       ''))
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child:
                                                                   AuthUserStreamWidget(
@@ -184,7 +175,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                   clipBehavior:
                                                                       Clip.antiAlias,
                                                                   decoration:
-                                                                      BoxDecoration(
+                                                                      const BoxDecoration(
                                                                     shape: BoxShape
                                                                         .circle,
                                                                   ),
@@ -205,12 +196,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                       Stack(
                                                         children: [
                                                           if (currentUserPhoto !=
-                                                                  null &&
-                                                              currentUserPhoto !=
                                                                   '')
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child:
                                                                   AuthUserStreamWidget(
@@ -222,7 +211,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                   clipBehavior:
                                                                       Clip.antiAlias,
                                                                   decoration:
-                                                                      BoxDecoration(
+                                                                      const BoxDecoration(
                                                                     shape: BoxShape
                                                                         .circle,
                                                                   ),
@@ -250,7 +239,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 8.0,
                                                                 0.0, 0.0),
                                                     child: AuthUserStreamWidget(
@@ -289,7 +278,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -318,7 +307,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                 ],
                                               ),
                                               Padding(
-                                                padding: EdgeInsets.all(10.0),
+                                                padding: const EdgeInsets.all(10.0),
                                                 child: Text(
                                                   ' Your membership level',
                                                   style: FlutterFlowTheme.of(
@@ -332,7 +321,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                     final memberlevel =
                                                         (currentUserDocument
                                                                     ?.memberlevel
-                                                                    ?.toList() ??
+                                                                    .toList() ??
                                                                 [])
                                                             .toList();
                                                     return Column(
@@ -365,7 +354,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 12.0, 0.0, 12.0),
                                         child: Text(
                                           'Account Settings',
@@ -408,7 +397,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                               scrollDirection: Axis.horizontal,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 12.0),
                                                   child: Container(
@@ -423,7 +412,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -445,7 +434,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                   .circle,
                                                             ),
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Card(
                                                               clipBehavior: Clip
@@ -462,7 +451,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             12.0),
                                                                 child: Icon(
@@ -478,7 +467,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     12.0),
                                                             child: Column(
                                                               mainAxisSize:
@@ -605,11 +594,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: Text('Refresh Complete'),
+                                                                                    title: const Text('Refresh Complete'),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: Text('Ok'),
+                                                                                        child: const Text('Ok'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -623,12 +612,12 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: Text('Unable to refresh your score. (702)'),
-                                                                                    content: Text('We tried to refresh to Your membership data and did not succeed, developers have been notified please try later. '),
+                                                                                    title: const Text('Unable to refresh your score. (702)'),
+                                                                                    content: const Text('We tried to refresh to Your membership data and did not succeed, developers have been notified please try later. '),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: Text('Ok'),
+                                                                                        child: const Text('Ok'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -653,12 +642,12 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: Text('Please try later'),
-                                                                                  content: Text('The ISP App tried to conenct to the ISP Member Portal but failed to establish a connection. Developers have been notified, please try later. (Errorcode -102)'),
+                                                                                  title: const Text('Please try later'),
+                                                                                  content: const Text('The ISP App tried to conenct to the ISP Member Portal but failed to establish a connection. Developers have been notified, please try later. (Errorcode -102)'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
+                                                                                      child: const Text('Ok'),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -674,16 +663,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                   ],
                                                                 ),
                                                                 if (valueOrDefault(
-                                                                            currentUserDocument
-                                                                                ?.cpdscore,
-                                                                            '') !=
-                                                                        null &&
-                                                                    valueOrDefault(
                                                                             currentUserDocument?.cpdscore,
                                                                             '') !=
                                                                         '')
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -717,7 +701,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 45.0, 0.0, 20.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -726,7 +710,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -749,9 +733,9 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                             options: FFButtonOptions(
                                               width: 90.0,
                                               height: 40.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: Colors.white,
                                               textStyle: FlutterFlowTheme.of(
@@ -759,7 +743,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                   .bodySmall
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF4B39EF),
+                                                    color: const Color(0xFF4B39EF),
                                                     fontSize: 14.0,
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -769,7 +753,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                 'Lexend Deca'),
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -786,7 +770,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                     currentUserDocument?.isadmin, false) ==
                                 true)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 45.0, 0.0, 20.0),
                                 child: AuthUserStreamWidget(
                                   builder: (context) => Row(

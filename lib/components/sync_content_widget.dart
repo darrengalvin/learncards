@@ -6,10 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'sync_content_model.dart';
 export 'sync_content_model.dart';
 
@@ -46,8 +44,8 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
           curve: Curves.bounceOut,
           delay: 300.ms,
           duration: 400.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -115,15 +113,15 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     maxWidth: 770.0,
                   ),
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -152,15 +150,15 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     maxWidth: 770.0,
                   ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 12.0,
                         color: Color(0x1E000000),
@@ -174,7 +172,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 80.0,
                           child: Stack(
                             children: [
@@ -219,28 +217,28 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
-                                  errorBorder: UnderlineInputBorder(
+                                  errorBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 2.0,
                                     ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
-                                  focusedErrorBorder: UnderlineInputBorder(
+                                  focusedErrorBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 2.0,
                                     ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
                                   contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
+                                      const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 0.0, 32.0),
                                 ),
                                 style: FlutterFlowTheme.of(context).titleMedium,
@@ -248,9 +246,9 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                     .asValidator(context),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(1.0, 0.0),
+                                alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 16.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () {
@@ -260,10 +258,10 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                     options: FFButtonOptions(
                                       width: 90.0,
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -281,7 +279,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 4.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -294,7 +292,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                           ),
                         ),
                         ClipRRect(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(12.0),
                             bottomRight: Radius.circular(12.0),
                             topLeft: Radius.circular(0.0),
@@ -306,7 +304,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(12.0),
                                 bottomRight: Radius.circular(12.0),
                                 topLeft: Radius.circular(0.0),
@@ -316,13 +314,13 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                             child: Column(
                               children: [
                                 Align(
-                                  alignment: Alignment(0.0, 0),
+                                  alignment: const Alignment(0.0, 0),
                                   child: FlutterFlowButtonTabBar(
                                     useToggleButtonStyle: true,
                                     isScrollable: true,
                                     labelStyle:
                                         FlutterFlowTheme.of(context).bodyLarge,
-                                    unselectedLabelStyle: TextStyle(),
+                                    unselectedLabelStyle: const TextStyle(),
                                     labelColor:
                                         FlutterFlowTheme.of(context).info,
                                     unselectedLabelColor:
@@ -341,14 +339,14 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                     borderRadius: 12.0,
                                     elevation: 0.0,
                                     labelPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                     buttonMargin:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 8.0, 0.0, 8.0),
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 12.0),
-                                    tabs: [
+                                    tabs: const [
                                       Tab(
                                         text: 'Templates',
                                       ),
@@ -391,7 +389,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         .alternate,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 child: Row(
@@ -402,7 +400,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       flex: 3,
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -420,7 +418,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -438,7 +436,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -472,7 +470,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: Container(
@@ -487,7 +485,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .alternate,
-                                                            offset: Offset(
+                                                            offset: const Offset(
                                                                 0.0, 1.0),
                                                           )
                                                         ],
@@ -497,7 +495,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     12.0,
@@ -511,7 +509,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               flex: 3,
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -557,12 +555,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                               20.0),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           0.0,
                                                                           12.0,
@@ -591,7 +589,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: Container(
@@ -606,7 +604,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .alternate,
-                                                            offset: Offset(
+                                                            offset: const Offset(
                                                                 0.0, 1.0),
                                                           )
                                                         ],
@@ -616,7 +614,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     12.0,
@@ -630,7 +628,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               flex: 3,
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -676,12 +674,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                               20.0),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           0.0,
                                                                           12.0,
@@ -710,7 +708,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: Container(
@@ -725,7 +723,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .alternate,
-                                                            offset: Offset(
+                                                            offset: const Offset(
                                                                 0.0, 1.0),
                                                           )
                                                         ],
@@ -735,7 +733,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     12.0,
@@ -749,7 +747,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               flex: 3,
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -795,12 +793,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                               20.0),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           0.0,
                                                                           12.0,
@@ -851,7 +849,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         .alternate,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 child: Row(
@@ -862,7 +860,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       flex: 3,
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -880,7 +878,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -898,7 +896,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -932,7 +930,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: Container(
@@ -947,7 +945,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .alternate,
-                                                            offset: Offset(
+                                                            offset: const Offset(
                                                                 0.0, 1.0),
                                                           )
                                                         ],
@@ -957,7 +955,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     12.0,
@@ -971,7 +969,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               flex: 3,
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1017,12 +1015,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                               20.0),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           0.0,
                                                                           12.0,
@@ -1051,7 +1049,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: Container(
@@ -1066,7 +1064,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .alternate,
-                                                            offset: Offset(
+                                                            offset: const Offset(
                                                                 0.0, 1.0),
                                                           )
                                                         ],
@@ -1076,7 +1074,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     12.0,
@@ -1090,7 +1088,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               flex: 3,
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1136,12 +1134,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                               20.0),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           0.0,
                                                                           12.0,
@@ -1170,7 +1168,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: Container(
@@ -1185,7 +1183,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .alternate,
-                                                            offset: Offset(
+                                                            offset: const Offset(
                                                                 0.0, 1.0),
                                                           )
                                                         ],
@@ -1195,7 +1193,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     12.0,
@@ -1209,7 +1207,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               flex: 3,
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1255,12 +1253,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                               20.0),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           0.0,
                                                                           12.0,
@@ -1311,7 +1309,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         .alternate,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 12.0, 0.0, 12.0),
                                                 child: Text(
@@ -1328,7 +1326,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: InkWell(
@@ -1362,7 +1360,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .alternate,
-                                                              offset: Offset(
+                                                              offset: const Offset(
                                                                   0.0, 1.0),
                                                             )
                                                           ],
@@ -1373,7 +1371,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       0.0,
@@ -1386,7 +1384,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -1409,7 +1407,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             2.0),
                                                                     child:
                                                                         ClipRRect(
@@ -1433,7 +1431,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               Expanded(
                                                                 flex: 3,
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1456,7 +1454,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             .bodyLarge,
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             4.0,
                                                                             0.0,
@@ -1502,12 +1500,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             BorderRadius.circular(20.0),
                                                                       ),
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             12.0,
                                                                             0.0,
                                                                             12.0,
@@ -1537,7 +1535,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: InkWell(
@@ -1571,7 +1569,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .alternate,
-                                                              offset: Offset(
+                                                              offset: const Offset(
                                                                   0.0, 1.0),
                                                             )
                                                           ],
@@ -1582,7 +1580,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       0.0,
@@ -1595,7 +1593,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -1618,7 +1616,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             2.0),
                                                                     child:
                                                                         ClipRRect(
@@ -1642,7 +1640,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               Expanded(
                                                                 flex: 3,
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1665,7 +1663,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             .bodyLarge,
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             4.0,
                                                                             0.0,
@@ -1711,12 +1709,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             BorderRadius.circular(20.0),
                                                                       ),
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             12.0,
                                                                             0.0,
                                                                             12.0,
@@ -1746,7 +1744,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: InkWell(
@@ -1780,7 +1778,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .alternate,
-                                                              offset: Offset(
+                                                              offset: const Offset(
                                                                   0.0, 1.0),
                                                             )
                                                           ],
@@ -1791,7 +1789,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       0.0,
@@ -1804,7 +1802,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -1827,7 +1825,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             2.0),
                                                                     child:
                                                                         ClipRRect(
@@ -1851,7 +1849,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               Expanded(
                                                                 flex: 3,
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1874,7 +1872,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             .bodyLarge,
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             4.0,
                                                                             0.0,
@@ -1920,12 +1918,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             BorderRadius.circular(20.0),
                                                                       ),
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             12.0,
                                                                             0.0,
                                                                             12.0,
@@ -1955,7 +1953,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 1.0),
                                                     child: InkWell(
@@ -1989,7 +1987,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .alternate,
-                                                              offset: Offset(
+                                                              offset: const Offset(
                                                                   0.0, 1.0),
                                                             )
                                                           ],
@@ -2000,7 +1998,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       0.0,
@@ -2013,7 +2011,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -2036,7 +2034,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             2.0),
                                                                     child:
                                                                         ClipRRect(
@@ -2060,7 +2058,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                               Expanded(
                                                                 flex: 3,
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2083,7 +2081,7 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             .bodyLarge,
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             4.0,
                                                                             0.0,
@@ -2129,12 +2127,12 @@ class _SyncContentWidgetState extends State<SyncContentWidget>
                                                                             BorderRadius.circular(20.0),
                                                                       ),
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             12.0,
                                                                             0.0,
                                                                             12.0,
