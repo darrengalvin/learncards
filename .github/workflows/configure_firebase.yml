@@ -48,8 +48,8 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
-          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
-          git push git@github.com:darrengalvin/learncards.git
+          git diff --quiet && git diff --staged --quiet || (git commit -m 'Update index.html' && git pull --rebase origin flutterflow && git push git@github.com:darrengalvin/learncards.git)
+      
       - name: Remove existing redirect script from index.html
         run: |
           sed -i '/<!-- Redirect Script Start -->/,/<!-- Redirect Script End -->/d' web/index.html
