@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/d_e_b_u_g_panel_widget.dart';
-import '/components/learn_card_projects_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -813,7 +812,8 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     GoRouter.of(context)
                                                         .clearRedirectLocation();
 
-                                                    context.goNamedAuth('demo',
+                                                    context.goNamedAuth(
+                                                        'Library-fixed',
                                                         context.mounted);
                                                   },
                                                   text: 'Logout ',
@@ -903,12 +903,13 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                     final companiesScrollItem =
                                                                         companiesScroll[
                                                                             companiesScrollIndex];
-                                                                    return LearnCardProjectsWidget(
-                                                                      key: Key(
-                                                                          'Keyglj_${companiesScrollIndex}_of_${companiesScroll.length}'),
-                                                                      companyDoc:
-                                                                          companiesScrollItem,
-                                                                    );
+                                                                    return Container(
+                                                                        width:
+                                                                            100,
+                                                                        height:
+                                                                            100,
+                                                                        color: Colors
+                                                                            .green);
                                                                   }),
                                                                 ),
                                                               );

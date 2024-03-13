@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -307,26 +306,11 @@ class _LearnTopicOnPageWidgetState extends State<LearnTopicOnPageWidget>
                                       }(),
                                     ),
                                     decoration: const BoxDecoration(),
-                                    child: Row(
+                                    child: const Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: wrapWithModel(
-                                            model: _model
-                                                .aICOMMUNICATIONOnPageModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: AICOMMUNICATIONOnPageWidget(
-                                              askingQuestion: false,
-                                              companiesDoc:
-                                                  containerCompaniesRecordList
-                                                      .first,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                      children: [],
                                     ),
                                   ),
                                 ],

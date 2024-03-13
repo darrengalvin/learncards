@@ -1229,7 +1229,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                         .clearRedirectLocation();
 
                                                                     context.goNamedAuth(
-                                                                        'demo',
+                                                                        'Library-fixed',
                                                                         context
                                                                             .mounted);
                                                                   },

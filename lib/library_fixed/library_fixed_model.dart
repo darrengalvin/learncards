@@ -55,9 +55,9 @@ class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
   // Stores action output result for [Backend Call - Create Document] action in Library-fixed widget.
   SessionsRecord? sessionsCreated;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
-  List<MyTeamRecord>? istOfTeam;
-  // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
   SessionsRecord? sessionQueryOnPageLoad;
+  // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
+  MyTeamRecord? loadingcHATmENTOR;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
   List<FlowiseChatsRecord>? queryFlowiseChats;
   // Stores action output result for [Backend Call - Create Document] action in Library-fixed widget.
@@ -72,8 +72,6 @@ class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
   late MiddleBodyAllModel middleBodyAllModel;
   // Stores action output result for [Firestore Query - Query a collection] action in Column widget.
   SessionsRecord? checkingMentorChat;
-  // Stores action output result for [Stripe Payment] action in Button widget.
-  String? paymentId;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   CompaniesRecord? createdCompany;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.

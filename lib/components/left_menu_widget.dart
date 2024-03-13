@@ -275,7 +275,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                       await authManager.signOut();
                       GoRouter.of(context).clearRedirectLocation();
 
-                      context.goNamedAuth('demo', context.mounted);
+                      context.goNamedAuth('Library-fixed', context.mounted);
                     },
                     text: 'Logout',
                     options: FFButtonOptions(

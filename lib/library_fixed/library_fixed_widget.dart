@@ -1,10 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/stripe/payment_manager.dart';
-import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_landing_widget.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_my_mentor_widget.dart';
-import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_welcome_widget.dart';
 import '/components/developer_debug_mode_widget.dart';
 import '/components/drawer_tile_tree_widget.dart';
@@ -240,13 +237,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         });
       }
 
-      logFirebaseEvent('Library-fixed_firestore_query');
-      _model.istOfTeam = await queryMyTeamRecordOnce(
-        queryBuilder: (myTeamRecord) => myTeamRecord.where(
-          'company',
-          isEqualTo: _model.companyByUrl?.reference.id,
-        ),
-      );
       logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().debugMessage = 'team queried';
@@ -306,142 +296,10 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           FFAppState().rightPane = 'learnCards';
         });
       }
-      logFirebaseEvent('Library-fixed_backend_call');
-
-      await _model.sessionQueryOnPageLoad!.reference
-          .update(createSessionsRecordData(
-        person1ThreadId: valueOrDefault<String>(
-          '${valueOrDefault<String>(
-            _model.istOfTeam
-                ?.where((e) => e.positionId == 1)
-                .toList()
-                .first
-                .memberName,
-            '-',
-          )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
-            _model.istOfTeam
-                ?.where((e) => e.positionId == 1)
-                .toList()
-                .first
-                .reference
-                .id,
-            '-',
-          )}',
-          '222',
-        ),
-      ));
       logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().debugMessage = 'person 1 set';
       });
-      if (_model.istOfTeam!.length > 1) {
-        logFirebaseEvent('Library-fixed_backend_call');
-
-        await _model.sessionQueryOnPageLoad!.reference
-            .update(createSessionsRecordData(
-          person2ThreadId: valueOrDefault<String>(
-            '${valueOrDefault<String>(
-              _model.istOfTeam
-                  ?.where((e) => e.positionId == 2)
-                  .toList()
-                  .first
-                  .memberName,
-              '-',
-            )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
-              _model.istOfTeam
-                  ?.where((e) => e.positionId == 2)
-                  .toList()
-                  .first
-                  .reference
-                  .id,
-              '-',
-            )}',
-            '222',
-          ),
-        ));
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage = 'one set ';
-        });
-      } else {
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage = 'one skipped';
-        });
-      }
-
-      if (_model.istOfTeam!.length > 2) {
-        logFirebaseEvent('Library-fixed_backend_call');
-
-        await _model.sessionQueryOnPageLoad!.reference
-            .update(createSessionsRecordData(
-          person3ThreadId: valueOrDefault<String>(
-            '${valueOrDefault<String>(
-              _model.istOfTeam
-                  ?.where((e) => e.positionId == 2)
-                  .toList()
-                  .first
-                  .memberName,
-              '-',
-            )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
-              _model.istOfTeam
-                  ?.where((e) => e.positionId == 2)
-                  .toList()
-                  .first
-                  .reference
-                  .id,
-              '-',
-            )}',
-            '222',
-          ),
-        ));
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage = 'person 2 set';
-        });
-      } else {
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage = 'person 2 skipped';
-        });
-      }
-
-      if (_model.istOfTeam!.length > 3) {
-        logFirebaseEvent('Library-fixed_backend_call');
-
-        await _model.sessionQueryOnPageLoad!.reference
-            .update(createSessionsRecordData(
-          person3ThreadId: valueOrDefault<String>(
-            '${valueOrDefault<String>(
-              _model.istOfTeam
-                  ?.where((e) => e.positionId == 2)
-                  .toList()
-                  .first
-                  .memberName,
-              '-',
-            )}${FFAppState().nonLoggedInSessionId}${valueOrDefault<String>(
-              _model.istOfTeam
-                  ?.where((e) => e.positionId == 2)
-                  .toList()
-                  .first
-                  .reference
-                  .id,
-              '-',
-            )}',
-            '222',
-          ),
-        ));
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage = 'person 3 set';
-        });
-      } else {
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage = 'person 3 skpped';
-        });
-      }
-
       if ((FFAppState().leftPane == '') ||
           (FFAppState().leftPane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
@@ -535,6 +393,23 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().debugMessage = 'set selected thread';
+      });
+      logFirebaseEvent('Library-fixed_firestore_query');
+      _model.loadingcHATmENTOR = await queryMyTeamRecordOnce(
+        queryBuilder: (myTeamRecord) => myTeamRecord
+            .where(
+              'positionId',
+              isEqualTo: 1,
+            )
+            .where(
+              'company',
+              isEqualTo: FFAppState().selectedCompanyId,
+            ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      logFirebaseEvent('Library-fixed_update_app_state');
+      setState(() {
+        FFAppState().selectedTeam = _model.loadingcHATmENTOR!.reference.id;
       });
       if (valueOrDefault<bool>(
         (_model.sessionQueryOnPageLoad?.currentNavJourney == 'newSession') &&
@@ -644,31 +519,25 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
               flowiseChatsRecordReference);
         }
 
-        logFirebaseEvent('Library-fixed_bottom_sheet');
-        await showModalBottomSheet(
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          isDismissible: false,
-          useSafeArea: true,
-          context: context,
-          builder: (context) {
-            return WebViewAware(
-              child: GestureDetector(
-                onTap: () => _model.unfocusNode.canRequestFocus
-                    ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                    : FocusScope.of(context).unfocus(),
-                child: Padding(
-                  padding: MediaQuery.viewInsetsOf(context),
-                  child: AICOMMUNICATIONOnPageWidget(
-                    companiesDoc: _model.companyByUrl!,
-                    sessionsDoc: _model.sessionQueryOnPageLoad,
-                    isLearnCard: false,
-                  ),
-                ),
-              ),
-            );
+        logFirebaseEvent('Library-fixed_navigate_to');
+
+        context.pushNamed(
+          'chatPage',
+          queryParameters: {
+            'companiesDoc': serializeParam(
+              _model.companyByUrl,
+              ParamType.Document,
+            ),
+            'sessionsDoc': serializeParam(
+              _model.sessionQueryOnPageLoad,
+              ParamType.Document,
+            ),
+          }.withoutNulls,
+          extra: <String, dynamic>{
+            'companiesDoc': _model.companyByUrl,
+            'sessionsDoc': _model.sessionQueryOnPageLoad,
           },
-        ).then((value) => safeSetState(() {}));
+        );
       } else {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -682,31 +551,25 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         });
         if (_model.sessionQueryOnPageLoad?.userEmail == null ||
             _model.sessionQueryOnPageLoad?.userEmail == '') {
-          logFirebaseEvent('Library-fixed_bottom_sheet');
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            isDismissible: false,
-            useSafeArea: true,
-            context: context,
-            builder: (context) {
-              return WebViewAware(
-                child: GestureDetector(
-                  onTap: () => _model.unfocusNode.canRequestFocus
-                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                      : FocusScope.of(context).unfocus(),
-                  child: Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: AICOMMUNICATIONOnPageWidget(
-                      companiesDoc: _model.companyByUrl!,
-                      sessionsDoc: _model.sessionQueryOnPageLoad,
-                      isLearnCard: false,
-                    ),
-                  ),
-                ),
-              );
+          logFirebaseEvent('Library-fixed_navigate_to');
+
+          context.pushNamed(
+            'chatPage',
+            queryParameters: {
+              'companiesDoc': serializeParam(
+                _model.companyByUrl,
+                ParamType.Document,
+              ),
+              'sessionsDoc': serializeParam(
+                _model.sessionQueryOnPageLoad,
+                ParamType.Document,
+              ),
+            }.withoutNulls,
+            extra: <String, dynamic>{
+              'companiesDoc': _model.companyByUrl,
+              'sessionsDoc': _model.sessionQueryOnPageLoad,
             },
-          ).then((value) => safeSetState(() {}));
+          );
         }
       }
     });
@@ -855,34 +718,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                           .update(createSessionsRecordData(
                         lastActive: getCurrentTimestamp,
                       ));
-                      if ((_model.sessionQueryOnPageLoad?.currentNavJourney ==
-                              'newSession') &&
-                          (FFAppState().bottomSheetOpen == true)) {
-                        logFirebaseEvent('MouseRegion_bottom_sheet');
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return WebViewAware(
-                              child: GestureDetector(
-                                onTap: () => _model.unfocusNode.canRequestFocus
-                                    ? FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode)
-                                    : FocusScope.of(context).unfocus(),
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: AICOMMUNICATIONOnPageWidget(
-                                    companiesDoc: _model.companyByUrl!,
-                                    sessionsDoc: _model.sessionQueryOnPageLoad,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ).then((value) => safeSetState(() {}));
-                      }
                     }),
                     onExit: ((event) async {
                       setState(() => _model.mouseRegionHovered = false);
@@ -1343,33 +1178,53 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                     ),
                                                                                     singleRecord: true,
                                                                                   ).then((s) => s.firstOrNull);
-                                                                                  logFirebaseEvent('Column_update_app_state');
-                                                                                  setState(() {
-                                                                                    FFAppState().selectedThreadId = '${myTeamItem.reference.id}+${_model.sessionQueryOnPageLoad?.reference.id}';
-                                                                                  });
-                                                                                  logFirebaseEvent('Column_update_app_state');
-                                                                                  setState(() {
-                                                                                    FFAppState().selectedTeam = myTeamItem.reference.id;
-                                                                                  });
-                                                                                  logFirebaseEvent('Column_navigate_to');
+                                                                                  if ((_model.checkingMentorChat?.currentNavJourney == 'newSession') && (myTeamItem.positionId != 1)) {
+                                                                                    logFirebaseEvent('Column_alert_dialog');
+                                                                                    await showDialog(
+                                                                                      context: context,
+                                                                                      builder: (alertDialogContext) {
+                                                                                        return WebViewAware(
+                                                                                          child: AlertDialog(
+                                                                                            title: const Text('You must complete the welcome chat first.'),
+                                                                                            actions: [
+                                                                                              TextButton(
+                                                                                                onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                child: const Text('Ok'),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    );
+                                                                                  } else {
+                                                                                    logFirebaseEvent('Column_update_app_state');
+                                                                                    setState(() {
+                                                                                      FFAppState().selectedThreadId = myTeamItem.positionId == 1 ? _model.sessionQueryOnPageLoad!.defaultThreadId : '${myTeamItem.reference.id}+${_model.checkingMentorChat?.reference.id}';
+                                                                                    });
+                                                                                    logFirebaseEvent('Column_update_app_state');
+                                                                                    setState(() {
+                                                                                      FFAppState().selectedTeam = myTeamItem.reference.id;
+                                                                                    });
+                                                                                    logFirebaseEvent('Column_navigate_to');
 
-                                                                                  context.pushNamed(
-                                                                                    'chatPage',
-                                                                                    queryParameters: {
-                                                                                      'companiesDoc': serializeParam(
-                                                                                        _model.companyByUrl,
-                                                                                        ParamType.Document,
-                                                                                      ),
-                                                                                      'sessionsDoc': serializeParam(
-                                                                                        _model.sessionQueryOnPageLoad,
-                                                                                        ParamType.Document,
-                                                                                      ),
-                                                                                    }.withoutNulls,
-                                                                                    extra: <String, dynamic>{
-                                                                                      'companiesDoc': _model.companyByUrl,
-                                                                                      'sessionsDoc': _model.sessionQueryOnPageLoad,
-                                                                                    },
-                                                                                  );
+                                                                                    context.pushNamed(
+                                                                                      'chatPage',
+                                                                                      queryParameters: {
+                                                                                        'companiesDoc': serializeParam(
+                                                                                          _model.companyByUrl,
+                                                                                          ParamType.Document,
+                                                                                        ),
+                                                                                        'sessionsDoc': serializeParam(
+                                                                                          _model.sessionQueryOnPageLoad,
+                                                                                          ParamType.Document,
+                                                                                        ),
+                                                                                      }.withoutNulls,
+                                                                                      extra: <String, dynamic>{
+                                                                                        'companiesDoc': _model.companyByUrl,
+                                                                                        'sessionsDoc': _model.sessionQueryOnPageLoad,
+                                                                                      },
+                                                                                    );
+                                                                                  }
 
                                                                                   setState(() {});
                                                                                 },
@@ -1475,138 +1330,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           logFirebaseEvent(
                                                                               'LIBRARY_FIXED_PAGE_ON_LOAD_BTN_ON_TAP');
                                                                           logFirebaseEvent(
-                                                                              'Button_stripe_payment');
-                                                                          final paymentResponse =
-                                                                              await processStripePayment(
-                                                                            context,
-                                                                            amount:
-                                                                                1144,
-                                                                            currency:
-                                                                                'GBP',
-                                                                            customerEmail:
-                                                                                _model.sessionQueryOnPageLoad!.userEmail,
-                                                                            customerName:
-                                                                                _model.sessionQueryOnPageLoad!.username,
-                                                                            description:
-                                                                                'DEMO PRODUCT',
-                                                                            allowGooglePay:
-                                                                                false,
-                                                                            allowApplePay:
-                                                                                false,
-                                                                          );
-                                                                          if (paymentResponse.paymentId == null &&
-                                                                              paymentResponse.errorMessage != null) {
-                                                                            showSnackbar(
-                                                                              context,
-                                                                              'Error: ${paymentResponse.errorMessage}',
-                                                                            );
-                                                                          }
-                                                                          _model.paymentId =
-                                                                              paymentResponse.paymentId ?? '';
-
-                                                                          setState(
-                                                                              () {});
-                                                                        },
-                                                                        text:
-                                                                            'OnLoad',
-                                                                        icon:
-                                                                            const Icon(
-                                                                          Icons
-                                                                              .location_history,
-                                                                          size:
-                                                                              15.0,
-                                                                        ),
-                                                                        options:
-                                                                            FFButtonOptions(
-                                                                          height:
-                                                                              50.0,
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              24.0,
-                                                                              4.0,
-                                                                              24.0,
-                                                                              4.0),
-                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).selectedButton,
-                                                                          textStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                                fontSize: 18.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                              ),
-                                                                          elevation:
-                                                                              1.0,
-                                                                          borderSide:
-                                                                              const BorderSide(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  if (responsiveVisibility(
-                                                                    context:
-                                                                        context,
-                                                                    phone:
-                                                                        false,
-                                                                    tablet:
-                                                                        false,
-                                                                    tabletLandscape:
-                                                                        false,
-                                                                    desktop:
-                                                                        false,
-                                                                  ))
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          20.0,
-                                                                          1.0,
-                                                                          20.0,
-                                                                          10.0),
-                                                                      child:
-                                                                          FFButtonWidget(
-                                                                        onPressed:
-                                                                            () async {
-                                                                          logFirebaseEvent(
-                                                                              'LIBRARY_FIXED_PAGE_ON_LOAD_BTN_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Button_bottom_sheet');
-                                                                          await showModalBottomSheet(
-                                                                            isScrollControlled:
-                                                                                true,
-                                                                            backgroundColor:
-                                                                                Colors.transparent,
-                                                                            context:
-                                                                                context,
-                                                                            builder:
-                                                                                (context) {
-                                                                              return WebViewAware(
-                                                                                child: GestureDetector(
-                                                                                  onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                  child: Padding(
-                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: AICOMMUNICATIONOnPageWidget(
-                                                                                      companiesDoc: widget.companiesDoc!,
-                                                                                      isLearnCard: false,
-                                                                                      sessionsDoc: _model.sessionQueryOnPageLoad,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ).then((value) =>
-                                                                              safeSetState(() {}));
-
-                                                                          logFirebaseEvent(
                                                                               'Button_update_app_state');
                                                                           setState(
                                                                               () {
@@ -1624,232 +1347,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         },
                                                                         text:
                                                                             'OnLoad',
-                                                                        icon:
-                                                                            const Icon(
-                                                                          Icons
-                                                                              .location_history,
-                                                                          size:
-                                                                              15.0,
-                                                                        ),
-                                                                        options:
-                                                                            FFButtonOptions(
-                                                                          height:
-                                                                              50.0,
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              24.0,
-                                                                              4.0,
-                                                                              24.0,
-                                                                              4.0),
-                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).selectedButton,
-                                                                          textStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                                fontSize: 18.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                              ),
-                                                                          elevation:
-                                                                              1.0,
-                                                                          borderSide:
-                                                                              const BorderSide(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  if (responsiveVisibility(
-                                                                    context:
-                                                                        context,
-                                                                    phone:
-                                                                        false,
-                                                                    tablet:
-                                                                        false,
-                                                                    tabletLandscape:
-                                                                        false,
-                                                                    desktop:
-                                                                        false,
-                                                                  ))
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          20.0,
-                                                                          1.0,
-                                                                          20.0,
-                                                                          10.0),
-                                                                      child:
-                                                                          FFButtonWidget(
-                                                                        onPressed:
-                                                                            () async {
-                                                                          logFirebaseEvent(
-                                                                              'LIBRARY_FIXED_PAGE_ON_LOAD_BTN_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Button_bottom_sheet');
-                                                                          await showModalBottomSheet(
-                                                                            isScrollControlled:
-                                                                                true,
-                                                                            backgroundColor:
-                                                                                Colors.transparent,
-                                                                            context:
-                                                                                context,
-                                                                            builder:
-                                                                                (context) {
-                                                                              return WebViewAware(
-                                                                                child: GestureDetector(
-                                                                                  onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                  child: Padding(
-                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: AICOMMUNICATIONOnPageWidget(
-                                                                                      companiesDoc: widget.companiesDoc!,
-                                                                                      isLearnCard: false,
-                                                                                      sessionsDoc: _model.sessionQueryOnPageLoad,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ).then((value) =>
-                                                                              safeSetState(() {}));
-
-                                                                          logFirebaseEvent(
-                                                                              'Button_update_app_state');
-                                                                          setState(
-                                                                              () {
-                                                                            FFAppState().selectedThreadId =
-                                                                                random_data.randomString(
-                                                                              10,
-                                                                              10,
-                                                                              true,
-                                                                              true,
-                                                                              true,
-                                                                            );
-                                                                            FFAppState().chatType =
-                                                                                'onboarding';
-                                                                          });
-                                                                        },
-                                                                        text:
-                                                                            'OnLoad',
-                                                                        icon:
-                                                                            const Icon(
-                                                                          Icons
-                                                                              .location_history,
-                                                                          size:
-                                                                              15.0,
-                                                                        ),
-                                                                        options:
-                                                                            FFButtonOptions(
-                                                                          height:
-                                                                              50.0,
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              24.0,
-                                                                              4.0,
-                                                                              24.0,
-                                                                              4.0),
-                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).selectedButton,
-                                                                          textStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                                fontSize: 18.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                              ),
-                                                                          elevation:
-                                                                              1.0,
-                                                                          borderSide:
-                                                                              const BorderSide(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  if (responsiveVisibility(
-                                                                    context:
-                                                                        context,
-                                                                    phone:
-                                                                        false,
-                                                                    tablet:
-                                                                        false,
-                                                                    tabletLandscape:
-                                                                        false,
-                                                                    desktop:
-                                                                        false,
-                                                                  ))
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          20.0,
-                                                                          1.0,
-                                                                          20.0,
-                                                                          10.0),
-                                                                      child:
-                                                                          FFButtonWidget(
-                                                                        onPressed:
-                                                                            () async {
-                                                                          logFirebaseEvent(
-                                                                              'LIBRARY_FIXED_PAGE_LANDING_BTN_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Button_bottom_sheet');
-                                                                          await showModalBottomSheet(
-                                                                            isScrollControlled:
-                                                                                true,
-                                                                            backgroundColor:
-                                                                                Colors.transparent,
-                                                                            context:
-                                                                                context,
-                                                                            builder:
-                                                                                (context) {
-                                                                              return WebViewAware(
-                                                                                child: GestureDetector(
-                                                                                  onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                  child: Padding(
-                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: const AICOMMUNICATIONLandingWidget(),
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ).then((value) =>
-                                                                              safeSetState(() {}));
-
-                                                                          logFirebaseEvent(
-                                                                              'Button_update_app_state');
-                                                                          setState(
-                                                                              () {
-                                                                            FFAppState().selectedThreadId =
-                                                                                random_data.randomString(
-                                                                              10,
-                                                                              10,
-                                                                              true,
-                                                                              true,
-                                                                              true,
-                                                                            );
-                                                                            FFAppState().chatType =
-                                                                                'onboarding';
-                                                                          });
-                                                                        },
-                                                                        text:
-                                                                            'landing',
                                                                         icon:
                                                                             const Icon(
                                                                           Icons

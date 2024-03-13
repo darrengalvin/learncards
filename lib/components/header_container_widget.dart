@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart';
 import '/components/learning_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -717,30 +716,6 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                               true,
                                                                         ).then((s) =>
                                                                                 s.firstOrNull);
-                                                                        logFirebaseEvent(
-                                                                            'Container_bottom_sheet');
-                                                                        await showModalBottomSheet(
-                                                                          isScrollControlled:
-                                                                              true,
-                                                                          backgroundColor:
-                                                                              Colors.transparent,
-                                                                          enableDrag:
-                                                                              false,
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (context) {
-                                                                            return WebViewAware(
-                                                                              child: Padding(
-                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                child: AICOMMUNICATIONOnPageWidget(
-                                                                                  companiesDoc: _model.companycheckforbottomchat!,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ).then((value) =>
-                                                                            safeSetState(() {}));
                                                                       } else {
                                                                         logFirebaseEvent(
                                                                             'Container_alert_dialog');

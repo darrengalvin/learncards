@@ -1794,7 +1794,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                               .clearRedirectLocation();
 
                                           context.goNamedAuth(
-                                              'demo', context.mounted);
+                                              'Library-fixed', context.mounted);
                                         },
                                         text: 'Logout',
                                         options: FFButtonOptions(
@@ -2039,7 +2039,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         .clearRedirectLocation();
 
                                     context.goNamedAuth(
-                                        'demo', context.mounted);
+                                        'Library-fixed', context.mounted);
                                   },
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,

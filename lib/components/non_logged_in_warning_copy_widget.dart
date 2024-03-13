@@ -574,8 +574,7 @@ class _NonLoggedInWarningCopyWidgetState
                                 ),
                               });
 
-                              context.goNamedAuth(
-                                  'Library-fixed', context.mounted);
+                              context.goNamedAuth('demo', context.mounted);
                             },
                             text: 'Save My Progress',
                             options: FFButtonOptions(

@@ -723,7 +723,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                         ));
 
                                                         context.goNamedAuth(
-                                                            'Library-fixed',
+                                                            'demo',
                                                             context.mounted);
 
                                                         setState(() {});
@@ -1425,7 +1425,7 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                                                       ));
 
                                                                       context.goNamedAuth(
-                                                                          'Library-fixed',
+                                                                          'demo',
                                                                           context
                                                                               .mounted);
 

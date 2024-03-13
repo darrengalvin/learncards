@@ -80,7 +80,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
         child: RootPageContext.wrap(
-          appStateNotifier.loggedIn ? const LibraryFixedWidget() : const DemoWidget(),
+          appStateNotifier.loggedIn ? const DemoWidget() : const LibraryFixedWidget(),
           errorRoute: state.location,
         ),
       ),
@@ -89,7 +89,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: '_initialize',
           path: '/',
           builder: (context, _) => RootPageContext.wrap(
-            appStateNotifier.loggedIn ? const LibraryFixedWidget() : const DemoWidget(),
+            appStateNotifier.loggedIn ? const DemoWidget() : const LibraryFixedWidget(),
           ),
           routes: [
             FFRoute(
@@ -934,7 +934,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/demo';
+            return '/library';
           }
           return null;
         },

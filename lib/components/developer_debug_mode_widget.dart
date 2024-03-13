@@ -452,6 +452,7 @@ class _DeveloperDebugModeWidgetState extends State<DeveloperDebugModeWidget>
                                             FFAppState().selectedCategoryName =
                                                 '';
                                             FFAppState().debugCount = 0;
+                                            FFAppState().selectedTeam = '';
                                           });
                                         },
                                         text: 'Start Over',

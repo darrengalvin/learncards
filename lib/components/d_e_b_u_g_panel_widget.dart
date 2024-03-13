@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart';
 import '/components/social_feed_bottoms_h_e_e_t_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -471,30 +470,6 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                             .nonLoggedInSessionId,
                                                       ),
                                                     );
-                                                    logFirebaseEvent(
-                                                        'Button_bottom_sheet');
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return WebViewAware(
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                AICOMMUNICATIONOnPageWidget(
-                                                              companiesDoc: widget
-                                                                  .parameter2!,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
 
                                                     setState(() {});
                                                   },
@@ -1320,35 +1295,8 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    logFirebaseEvent(
-                                                        'D_E_B_U_G_PANEL_WELCOME_CHAT_BTN_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Button_bottom_sheet');
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return WebViewAware(
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                AICOMMUNICATIONOnPageWidget(
-                                                              companiesDoc: widget
-                                                                  .parameter2!,
-                                                              askingQuestion:
-                                                                  false,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
                                                   },
                                                   text: 'Welcome Chat',
                                                   icon: const Icon(
