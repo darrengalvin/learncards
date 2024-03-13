@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/testpage/components/loading/loading_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -93,7 +94,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -109,7 +110,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                       'Documents',
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
-                    actions: const [],
+                    actions: [],
                     centerTitle: true,
                     elevation: 2.0,
                   )
@@ -131,7 +132,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
@@ -146,7 +147,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -163,11 +164,11 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -200,7 +201,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -217,11 +218,11 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -254,7 +255,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -271,11 +272,11 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -335,7 +336,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           12.0,
@@ -351,7 +352,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                     EasyDebounce
                                                                         .debounce(
                                                                   '_model.textFieldDocumentsController',
-                                                                  const Duration(
+                                                                  Duration(
                                                                       milliseconds:
                                                                           2000),
                                                                   () async {
@@ -366,8 +367,8 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                             records
                                                                                 .map(
                                                                                   (record) => TextSearchItem.fromTerms(record, [
-                                                                                    record.documenttitle,
-                                                                                    record.description
+                                                                                    record.documenttitle!,
+                                                                                    record.description!
                                                                                   ]),
                                                                                 )
                                                                                 .toList(),
@@ -405,7 +406,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                   enabledBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -418,7 +419,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                   focusedBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -431,7 +432,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                   errorBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -444,7 +445,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                   focusedErrorBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -501,13 +502,13 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.all(10.0),
                                 child: Builder(
                                   builder: (context) {
                                     final searchDocuments =
                                         _model.simpleSearchResults.toList();
                                     if (searchDocuments.isEmpty) {
-                                      return const LoadingWidget();
+                                      return LoadingWidget();
                                     }
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -522,7 +523,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                 searchDocumentsIndex];
                                         return Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 3.0, 0.0, 0.0),
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
@@ -530,7 +531,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                 1.0,
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              boxShadow: const [
+                                              boxShadow: [
                                                 BoxShadow(
                                                   blurRadius: 3.0,
                                                   color: Color(0x411D2429),
@@ -544,14 +545,14 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 8.0, 16.0, 4.0),
                                                   child: Container(
                                                     width: double.infinity,
                                                     decoration: BoxDecoration(
                                                       color: Colors.white,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -567,14 +568,14 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 16.0, 0.0),
                                                   child: Container(
                                                     width: double.infinity,
                                                     decoration: BoxDecoration(
                                                       color: Colors.white,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 7.0,
                                                           color:
@@ -589,7 +590,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   8.0,
@@ -610,7 +611,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -638,7 +639,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                           fontFamily:
                                                                               'Outfit',
                                                                           color:
-                                                                              const Color(0xFF101213),
+                                                                              Color(0xFF101213),
                                                                           fontSize:
                                                                               14.0,
                                                                           fontWeight:
@@ -648,7 +649,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                         ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -664,7 +665,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                             fontFamily:
                                                                                 'Outfit',
                                                                             color:
-                                                                                const Color(0xFF57636C),
+                                                                                Color(0xFF57636C),
                                                                             fontSize:
                                                                                 14.0,
                                                                             fontWeight:
@@ -680,7 +681,7 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -688,12 +689,12 @@ class _SearchDocumentsWidgetState extends State<SearchDocumentsWidget> {
                                                                         0.0),
                                                             child:
                                                                 FlutterFlowIconButton(
-                                                              borderColor: const Color(
+                                                              borderColor: Color(
                                                                   0xFFF1F4F8),
                                                               borderRadius: 8.0,
                                                               borderWidth: 2.0,
                                                               buttonSize: 40.0,
-                                                              icon: const Icon(
+                                                              icon: Icon(
                                                                 Icons
                                                                     .cloud_download_outlined,
                                                                 color: Color(

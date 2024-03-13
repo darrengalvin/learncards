@@ -6,6 +6,8 @@ import '/components/non_logged_in_warning_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -58,13 +60,13 @@ class _TriggerAPICALLSWidgetState extends State<TriggerAPICALLSWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Container(
               width: 399.0,
               height: 300.0,
@@ -92,7 +94,7 @@ class _TriggerAPICALLSWidgetState extends State<TriggerAPICALLSWidget> {
                         return WebViewAware(
                           child: Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: const NonLoggedInWarningWidget(),
+                            child: NonLoggedInWarningWidget(),
                           ),
                         );
                       },
@@ -103,7 +105,7 @@ class _TriggerAPICALLSWidgetState extends State<TriggerAPICALLSWidget> {
                       await FlowiseGroup.flowiseAPICallCall.call(
                     question: FFAppState().selectedReadingItem,
                     systemMessagePrompt:
-                        'The body text will be in HTML with H1,H2,P tag start the html <!DOCTYPE html> make sure there are no backticks, or quotation marks around the json. Always use UK english spelling and locale I am using a self guided learning platform ${_model.companyOwner?.first.companyname}You are generating learn cards, the primary topic I have been studying is  ${valueOrDefault<String>(
+                        'The body text will be in HTML with H1,H2,P tag start the html <!DOCTYPE html> make sure there are no backticks, or quotation marks around the json. Always use UK english spelling and locale I am using a self guided learning platform ${_model.companyOwner?.first?.companyname}You are generating learn cards, the primary topic I have been studying is  ${valueOrDefault<String>(
                       FFAppState().selectedTopic,
                       'selected topic was not set',
                     )}and the learn card I am ready to generate is  ${valueOrDefault<String>(
@@ -130,9 +132,9 @@ class _TriggerAPICALLSWidgetState extends State<TriggerAPICALLSWidget> {
                 text: 'Button',
                 options: FFButtonOptions(
                   height: 40.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily:
@@ -142,7 +144,7 @@ class _TriggerAPICALLSWidgetState extends State<TriggerAPICALLSWidget> {
                             FlutterFlowTheme.of(context).titleSmallFamily),
                       ),
                   elevation: 3.0,
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

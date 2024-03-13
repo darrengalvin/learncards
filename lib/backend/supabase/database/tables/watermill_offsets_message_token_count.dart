@@ -11,7 +11,7 @@ class WatermillOffsetsMessageTokenCountTable
 }
 
 class WatermillOffsetsMessageTokenCountRow extends SupabaseDataRow {
-  WatermillOffsetsMessageTokenCountRow(super.data);
+  WatermillOffsetsMessageTokenCountRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => WatermillOffsetsMessageTokenCountTable();

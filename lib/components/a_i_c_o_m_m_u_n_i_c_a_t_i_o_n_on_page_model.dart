@@ -1,9 +1,28 @@
+import '/auth/base_auth_user_provider.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart'
     show AICOMMUNICATIONOnPageWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AICOMMUNICATIONOnPageModel
     extends FlutterFlowModel<AICOMMUNICATIONOnPageWidget> {
@@ -15,8 +34,6 @@ class AICOMMUNICATIONOnPageModel
 
   // State field(s) for Column widget.
   ScrollController? columnController;
-  // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
-  SessionsRecord? checkChatCompleted;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -44,11 +61,6 @@ class AICOMMUNICATIONOnPageModel
   FocusNode? askTheQuestionFocusNode2;
   TextEditingController? askTheQuestionController2;
   String? Function(BuildContext, String?)? askTheQuestionController2Validator;
-  // State field(s) for PinCode widget.
-  TextEditingController? pinCodeController;
-  String? Function(BuildContext, String?)? pinCodeControllerValidator;
-  // Stores action output result for [Firestore Query - Query a collection] action in PinCode widget.
-  List<CompaniesRecord>? allCompanies;
 
   /// Initialization and disposal methods.
 
@@ -57,7 +69,6 @@ class AICOMMUNICATIONOnPageModel
     columnController = ScrollController();
     columnChatsScrollable = ScrollController();
     columnMarkdownScrollable = ScrollController();
-    pinCodeController = TextEditingController();
   }
 
   @override
@@ -70,8 +81,6 @@ class AICOMMUNICATIONOnPageModel
 
     askTheQuestionFocusNode2?.dispose();
     askTheQuestionController2?.dispose();
-
-    pinCodeController?.dispose();
   }
 
   /// Action blocks are added here.

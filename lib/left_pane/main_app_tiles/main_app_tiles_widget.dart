@@ -1,9 +1,13 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/noaccesspopup_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,7 +71,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(-1.0, -1.0),
+      alignment: AlignmentDirectional(-1.0, -1.0),
       child: StreamBuilder<List<TilesRecord>>(
         stream: queryTilesRecord(
           queryBuilder: (tilesRecord) => tilesRecord.where(
@@ -92,7 +96,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
           }
           List<TilesRecord> desktopTileNavTilesRecordList = snapshot.data!;
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 100),
             curve: Curves.easeInOut,
             width: double.infinity,
             height: double.infinity,
@@ -102,9 +106,9 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
             ),
-            alignment: const AlignmentDirectional(-1.0, -1.0),
+            alignment: AlignmentDirectional(-1.0, -1.0),
             child: Align(
-              alignment: const AlignmentDirectional(-1.0, -1.0),
+              alignment: AlignmentDirectional(-1.0, -1.0),
               child: StreamBuilder<List<CompaniesRecord>>(
                 stream: queryCompaniesRecord(
                   queryBuilder: (companiesRecord) => companiesRecord.where(
@@ -135,10 +139,10 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                   return Container(
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: const BoxDecoration(),
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                    decoration: BoxDecoration(),
+                    alignment: AlignmentDirectional(-1.0, -1.0),
                     child: Align(
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      alignment: AlignmentDirectional(-1.0, -1.0),
                       child: Builder(
                         builder: (context) {
                           final tilesParents = desktopTileNavTilesRecordList
@@ -162,13 +166,13 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                 final tilesParentsItem =
                                     tilesParents[tilesParentsIndex];
                                 return Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Container(
-                                    decoration: const BoxDecoration(),
-                                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                                    decoration: BoxDecoration(),
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
+                                          AlignmentDirectional(-1.0, -1.0),
                                       child: SingleChildScrollView(
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -176,7 +180,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(7.0, 7.0, 7.0, 7.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
@@ -322,7 +326,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                         valueOrDefault<bool>(
                                                           (currentUserDocument
                                                                       ?.hasaccess
-                                                                      .toList() ??
+                                                                      ?.toList() ??
                                                                   [])
                                                               .contains(widget
                                                                   .categorySelected),
@@ -361,7 +365,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                 .viewInsetsOf(
                                                                     context),
                                                             child:
-                                                                const NoaccesspopupWidget(),
+                                                                NoaccesspopupWidget(),
                                                           ),
                                                         );
                                                       },
@@ -387,7 +391,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                           .primaryText,
                                                     ),
                                                     borderRadius:
-                                                        const BorderRadius.only(
+                                                        BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(13.0),
                                                       bottomRight:
@@ -421,7 +425,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 16.0,
                                                                 0.0, 16.0),
                                                     child: Row(
@@ -439,7 +443,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -499,7 +503,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                               ),
                                                               Expanded(
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           8.0,
                                                                           5.0,
@@ -566,7 +570,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                         ],
                                                                       ),
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             5.0,
                                                                             0.0,
@@ -603,7 +607,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -722,16 +726,16 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: const Text('Delete Tile?'),
-                                                                                  content: const Text('If you continue this tile will be deleted forever'),
+                                                                                  title: Text('Delete Tile?'),
+                                                                                  content: Text('If you continue this tile will be deleted forever'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                      child: const Text('Cancel'),
+                                                                                      child: Text('Cancel'),
                                                                                     ),
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                      child: const Text('Confirm'),
+                                                                                      child: Text('Confirm'),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -770,14 +774,14 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                             Opacity(
                                               opacity: 0.8,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           4.0, 0.0, 4.0, 0.0),
                                                   child: AnimatedContainer(
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.easeInOut,
                                                     width: double.infinity,
@@ -797,7 +801,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   0.0,
@@ -825,7 +829,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                     tileTier2[
                                                                         tileTier2Index];
                                                                 return Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           12.0,
@@ -976,7 +980,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                                 true) &&
                                                                             valueOrDefault<
                                                                                 bool>(
-                                                                              (currentUserDocument?.hasaccess.toList() ?? []).contains(widget.categorySelected),
+                                                                              (currentUserDocument?.hasaccess?.toList() ?? []).contains(widget.categorySelected),
                                                                               false,
                                                                             )) {
                                                                           return true;
@@ -1013,7 +1017,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                             return WebViewAware(
                                                                               child: Padding(
                                                                                 padding: MediaQuery.viewInsetsOf(context),
-                                                                                child: const NoaccesspopupWidget(),
+                                                                                child: NoaccesspopupWidget(),
                                                                               ),
                                                                             );
                                                                           },
@@ -1025,7 +1029,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                         Container(
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xB2FAFAFA),
                                                                         borderRadius:
                                                                             BorderRadius.circular(16.0),
@@ -1045,7 +1049,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            const EdgeInsets.all(8.0),
+                                                                            EdgeInsets.all(8.0),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1054,11 +1058,11 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                               MainAxisAlignment.spaceBetween,
                                                                           children: [
                                                                             if (valueOrDefault<bool>(
-                                                                              tileTier2Item.image != '',
+                                                                              tileTier2Item.image != null && tileTier2Item.image != '',
                                                                               false,
                                                                             ))
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1081,7 +1085,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                               ),
                                                                             Expanded(
                                                                               child: Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1123,7 +1127,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                               ),
                                                                             ),
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 8.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 8.0, 0.0),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1133,7 +1137,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                                     false,
                                                                                   ))
                                                                                     Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                                                                       child: AuthUserStreamWidget(
                                                                                         builder: (context) => InkWell(
                                                                                           splashColor: Colors.transparent,
@@ -1163,7 +1167,7 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                                     false,
                                                                                   ))
                                                                                     Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                       child: AuthUserStreamWidget(
                                                                                         builder: (context) => InkWell(
                                                                                           splashColor: Colors.transparent,
@@ -1178,16 +1182,16 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                                                                   builder: (alertDialogContext) {
                                                                                                     return WebViewAware(
                                                                                                       child: AlertDialog(
-                                                                                                        title: const Text('Delete Tile?'),
-                                                                                                        content: const Text('If you continue this tile will be deleted forever'),
+                                                                                                        title: Text('Delete Tile?'),
+                                                                                                        content: Text('If you continue this tile will be deleted forever'),
                                                                                                         actions: [
                                                                                                           TextButton(
                                                                                                             onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                            child: const Text('Cancel'),
+                                                                                                            child: Text('Cancel'),
                                                                                                           ),
                                                                                                           TextButton(
                                                                                                             onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                            child: const Text('Confirm'),
+                                                                                                            child: Text('Confirm'),
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),

@@ -1,11 +1,14 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'company_settings_model.dart';
 export 'company_settings_model.dart';
 
@@ -90,18 +93,18 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(22.0),
         child: Container(
           width: double.infinity,
           height: MediaQuery.sizeOf(context).height * 0.8,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 750.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xC5FFFFFF),
-            boxShadow: const [
+            color: Color(0xC5FFFFFF),
+            boxShadow: [
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
@@ -121,7 +124,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             14.0, 14.0, 14.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -162,7 +165,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -175,7 +178,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () {
@@ -186,17 +189,17 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0x0039D2C0),
+                                            color: Color(0x0039D2C0),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMedium,
                                             elevation: 0.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -204,15 +207,15 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         ),
                                       ),
                                       Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 600.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: TextFormField(
@@ -251,7 +254,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                         fontFamily:
                                                             'Lexend Deca',
                                                         color:
-                                                            const Color(0xFF95A1AC),
+                                                            Color(0xFF95A1AC),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -275,7 +278,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -285,7 +288,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -295,7 +298,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -306,7 +309,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   filled: true,
                                                   fillColor: Colors.white,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -382,11 +385,11 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -412,7 +415,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -432,7 +435,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -445,7 +448,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () {
@@ -456,17 +459,17 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0x0039D2C0),
+                                            color: Color(0x0039D2C0),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMedium,
                                             elevation: 0.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -474,15 +477,15 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         ),
                                       ),
                                       Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 600.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: TextFormField(
@@ -521,7 +524,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                         fontFamily:
                                                             'Lexend Deca',
                                                         color:
-                                                            const Color(0xFF95A1AC),
+                                                            Color(0xFF95A1AC),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -545,7 +548,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -555,7 +558,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -565,7 +568,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -576,7 +579,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   filled: true,
                                                   fillColor: Colors.white,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -652,11 +655,11 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -682,7 +685,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -702,7 +705,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -715,7 +718,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () {
@@ -726,17 +729,17 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0x0039D2C0),
+                                            color: Color(0x0039D2C0),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMedium,
                                             elevation: 0.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -744,15 +747,15 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         ),
                                       ),
                                       Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 600.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: TextFormField(
@@ -791,7 +794,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                         fontFamily:
                                                             'Lexend Deca',
                                                         color:
-                                                            const Color(0xFF95A1AC),
+                                                            Color(0xFF95A1AC),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -815,7 +818,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -825,7 +828,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -835,7 +838,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -846,7 +849,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   filled: true,
                                                   fillColor: Colors.white,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -922,11 +925,11 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -952,7 +955,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -972,7 +975,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -985,7 +988,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () {
@@ -996,17 +999,17 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0x0039D2C0),
+                                            color: Color(0x0039D2C0),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMedium,
                                             elevation: 0.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -1014,15 +1017,15 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         ),
                                       ),
                                       Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 600.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: TextFormField(
@@ -1061,7 +1064,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                         fontFamily:
                                                             'Lexend Deca',
                                                         color:
-                                                            const Color(0xFF95A1AC),
+                                                            Color(0xFF95A1AC),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -1085,7 +1088,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1095,7 +1098,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1105,7 +1108,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1116,7 +1119,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   filled: true,
                                                   fillColor: Colors.white,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -1192,11 +1195,11 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1222,7 +1225,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1242,7 +1245,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1255,7 +1258,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () {
@@ -1266,17 +1269,17 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0x0039D2C0),
+                                            color: Color(0x0039D2C0),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMedium,
                                             elevation: 0.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -1284,15 +1287,15 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         ),
                                       ),
                                       Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 600.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: TextFormField(
@@ -1331,7 +1334,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                         fontFamily:
                                                             'Lexend Deca',
                                                         color:
-                                                            const Color(0xFF95A1AC),
+                                                            Color(0xFF95A1AC),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -1355,7 +1358,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1365,7 +1368,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1375,7 +1378,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1386,7 +1389,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   filled: true,
                                                   fillColor: Colors.white,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -1462,11 +1465,11 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1492,7 +1495,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1512,7 +1515,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1525,7 +1528,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () {
@@ -1536,17 +1539,17 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0x0039D2C0),
+                                            color: Color(0x0039D2C0),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMedium,
                                             elevation: 0.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -1554,15 +1557,15 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                         ),
                                       ),
                                       Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 600.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: TextFormField(
@@ -1601,7 +1604,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                         fontFamily:
                                                             'Lexend Deca',
                                                         color:
-                                                            const Color(0xFF95A1AC),
+                                                            Color(0xFF95A1AC),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -1625,7 +1628,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1635,7 +1638,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1645,7 +1648,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1656,7 +1659,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   filled: true,
                                                   fillColor: Colors.white,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -1732,11 +1735,11 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1762,7 +1765,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1781,7 +1784,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                 ],
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
@@ -1791,7 +1794,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                 children: [],
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
@@ -1801,7 +1804,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                 children: [],
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 0.0, 0.0),
                               child: Row(
@@ -1811,7 +1814,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                 children: [],
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 25.0, 0.0, 0.0),
                               child: Row(
@@ -1820,7 +1823,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                                 children: [],
                               ),
                             ),
-                            const SingleChildScrollView(
+                            SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -1840,7 +1843,7 @@ class _CompanySettingsWidgetState extends State<CompanySettingsWidget> {
                           ],
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             14.0, 14.0, 14.0, 0.0),
                         child: Column(

@@ -5,12 +5,14 @@ import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'dash_model.dart';
 export 'dash_model.dart';
@@ -47,15 +49,15 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(0.0, 20.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 20.0),
+          end: Offset(0.0, 0.0),
         ),
         TiltEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(0.698, 0),
-          end: const Offset(0, 0),
+          begin: Offset(0.698, 0),
+          end: Offset(0, 0),
         ),
       ],
     ),
@@ -73,15 +75,15 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(0.0, 20.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 20.0),
+          end: Offset(0.0, 0.0),
         ),
         TiltEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(0.698, 0),
-          end: const Offset(0, 0),
+          begin: Offset(0.698, 0),
+          end: Offset(0, 0),
         ),
       ],
     ),
@@ -99,15 +101,15 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(0.0, 20.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 20.0),
+          end: Offset(0.0, 0.0),
         ),
         TiltEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(0.698, 0),
-          end: const Offset(0, 0),
+          begin: Offset(0.698, 0),
+          end: Offset(0, 0),
         ),
       ],
     ),
@@ -132,11 +134,11 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                 widget.companyDoc?.companyname,
                 'companynotset',
               )),
-              content: const Text('passed by parameter'),
+              content: Text('passed by parameter'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
+                  child: Text('Ok'),
                 ),
               ],
             ),
@@ -189,7 +191,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                     actions: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
@@ -240,7 +242,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                   List<SessionsRecord> containerSessionsRecordList =
                       snapshot.data!;
                   return Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: StreamBuilder<List<FlowiseChatsRecord>>(
                       stream: queryFlowiseChatsRecord(
                         queryBuilder: (flowiseChatsRecord) =>
@@ -270,7 +272,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                         List<FlowiseChatsRecord>
                             containerFlowiseChatsRecordList = snapshot.data!;
                         return Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -278,13 +280,13 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                 Container(
                                   width: double.infinity,
                                   height: 140.0,
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxHeight: 140.0,
                                   ),
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x33000000),
@@ -293,7 +295,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                     ],
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 4.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -302,7 +304,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Below is a summary of your app.',
@@ -313,7 +315,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: ListView(
                                               padding: EdgeInsets.zero,
@@ -322,7 +324,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                               scrollDirection: Axis.horizontal,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 8.0, 8.0),
                                                   child: StreamBuilder<
@@ -388,14 +390,14 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                   .circular(
                                                                       8.0),
                                                           border: Border.all(
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFFE0E3E7),
                                                             width: 2.0,
                                                           ),
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   12.0),
                                                           child: Column(
                                                             mainAxisSize:
@@ -418,7 +420,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -439,7 +441,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 8.0, 8.0),
                                                   child: InkWell(
@@ -490,12 +492,12 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                 .circular(8.0),
                                                         border: Border.all(
                                                           color:
-                                                              const Color(0xFFE0E3E7),
+                                                              Color(0xFFE0E3E7),
                                                           width: 2.0,
                                                         ),
                                                       ),
                                                       child: Padding(
-                                                        padding: const EdgeInsets.all(
+                                                        padding: EdgeInsets.all(
                                                             12.0),
                                                         child: Column(
                                                           mainAxisSize:
@@ -561,7 +563,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -581,7 +583,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 8.0, 8.0),
                                                   child: Container(
@@ -595,13 +597,13 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                               8.0),
                                                       border: Border.all(
                                                         color:
-                                                            const Color(0xFFE0E3E7),
+                                                            Color(0xFFE0E3E7),
                                                         width: 2.0,
                                                       ),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(12.0),
+                                                          EdgeInsets.all(12.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -632,7 +634,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -651,7 +653,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 16.0, 8.0),
                                                   child: Container(
@@ -665,13 +667,13 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                               8.0),
                                                       border: Border.all(
                                                         color:
-                                                            const Color(0xFFE0E3E7),
+                                                            Color(0xFFE0E3E7),
                                                         width: 2.0,
                                                       ),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(12.0),
+                                                          EdgeInsets.all(12.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -700,7 +702,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -727,7 +729,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 0.0),
                                   child: StreamBuilder<List<Tilesv2Record>>(
                                     stream: queryTilesv2Record(
@@ -768,7 +770,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -780,13 +782,13 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 8.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 12.0, 0.0),
                                                 child: Row(
@@ -798,7 +800,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   12.0,
@@ -819,7 +821,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -870,7 +872,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                               topicTilesIndex];
                                                       return Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     2.0,
@@ -895,7 +897,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                             ),
                                                             Expanded(
                                                               child: Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         12.0,
@@ -951,7 +953,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                             final activitiesItem =
                                                                                 activities[activitiesIndex];
                                                                             return Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 activitiesItem,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
@@ -962,7 +964,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                       },
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           8.0,
                                                                           0.0,
@@ -973,7 +975,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 4.0,
@@ -993,7 +995,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                           ),
                                                                           Container(
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 SwitchForContentGenWidget(
                                                                               key: Key('Key4lq_${topicTilesIndex}_of_${topicTiles.length}'),
@@ -1023,7 +1025,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   12.0,
@@ -1044,7 +1046,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -1064,7 +1066,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1085,7 +1087,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -1113,14 +1115,14 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -1134,7 +1136,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 12.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1142,7 +1144,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 12.0, 12.0, 0.0),
                                                 child: Column(
@@ -1160,7 +1162,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -1182,7 +1184,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 8.0),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
@@ -1190,7 +1192,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                             scrollDirection: Axis.vertical,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 1.0),
                                                 child: Container(
@@ -1199,7 +1201,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 0.0,
                                                         color:
@@ -1210,12 +1212,12 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                     ],
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 0.0),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 1.0),
                                                 child: Container(
@@ -1226,11 +1228,11 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                         .secondaryBackground,
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 2.0,
                                                                 0.0, 2.0),
                                                     child: Row(
@@ -1253,7 +1255,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         12.0,
@@ -1296,7 +1298,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                   ],
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -1310,7 +1312,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -1322,7 +1324,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             4.0,
@@ -1365,7 +1367,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                         elevation:
                                                                             4.0,
                                                                         padding:
-                                                                            const EdgeInsets.all(8.0),
+                                                                            EdgeInsets.all(8.0),
                                                                         position:
                                                                             badges.BadgePosition.topStart(),
                                                                         animationType: badges
@@ -1375,7 +1377,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                                             true,
                                                                         child:
                                                                             Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               4.0,
                                                                               0.0,
@@ -1412,14 +1414,14 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                       'containerOnPageLoadAnimation6']!),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 24.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -1429,7 +1431,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -1438,7 +1440,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 12.0, 0.0, 0.0),
                                             child: Text(
                                               'Recent Activity',
@@ -1449,7 +1451,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 0.0, 0.0),
                                             child: Text(
                                               'Below is an overview of tasks & activity completed.',
@@ -1460,7 +1462,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1469,7 +1471,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                               children: [
                                                 Container(
                                                   height: 32.0,
-                                                  constraints: const BoxConstraints(
+                                                  constraints: BoxConstraints(
                                                     maxHeight: 32.0,
                                                   ),
                                                   decoration: BoxDecoration(
@@ -1482,7 +1484,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: Row(
@@ -1502,7 +1504,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
@@ -1521,7 +1523,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                 ),
                                                 Container(
                                                   height: 32.0,
-                                                  constraints: const BoxConstraints(
+                                                  constraints: BoxConstraints(
                                                     maxHeight: 32.0,
                                                   ),
                                                   decoration: BoxDecoration(
@@ -1534,7 +1536,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: Row(
@@ -1554,7 +1556,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
@@ -1573,7 +1575,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                 ),
                                                 Container(
                                                   height: 32.0,
-                                                  constraints: const BoxConstraints(
+                                                  constraints: BoxConstraints(
                                                     maxHeight: 32.0,
                                                   ),
                                                   decoration: BoxDecoration(
@@ -1586,7 +1588,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: Row(
@@ -1606,7 +1608,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
@@ -1628,9 +1630,9 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 16.0, 0.0),
-                                            child: SizedBox(
+                                            child: Container(
                                               width: double.infinity,
                                               height: 200.0,
                                               child: FlutterFlowLineChart(
@@ -1715,7 +1717,7 @@ class _DashWidgetState extends State<DashWidget> with TickerProviderStateMixin {
                                                           .secondaryBackground,
                                                   showBorder: false,
                                                 ),
-                                                axisBounds: const AxisBounds(),
+                                                axisBounds: AxisBounds(),
                                                 xAxisLabelInfo: AxisLabelInfo(
                                                   title: 'Last 30 Days',
                                                   titleTextStyle:

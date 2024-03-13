@@ -1,3 +1,4 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/company_settings_widget.dart';
@@ -9,7 +10,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/search_pages/live_video/broadcast_name_input/broadcast_name_input_widget.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -44,8 +47,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(-37.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-37.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -56,8 +59,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
           curve: Curves.easeOut,
           delay: 150.ms,
           duration: 700.ms,
-          begin: const Offset(-43.00000000000001, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-43.00000000000001, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -102,26 +105,14 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
             FlutterFlowTheme.of(context).primaryBackground,
             FlutterFlowTheme.of(context).secondary
           ],
-          stops: const [0.0, 1.0],
-          begin: const AlignmentDirectional(0.0, -1.0),
-          end: const AlignmentDirectional(0, 1.0),
+          stops: [0.0, 1.0],
+          begin: AlignmentDirectional(0.0, -1.0),
+          end: AlignmentDirectional(0, 1.0),
         ),
       ),
       child: MouseRegion(
         opaque: false,
         cursor: MouseCursor.defer ?? MouseCursor.defer,
-        onEnter: ((event) async {
-          setState(() => _model.mouseRegionHovered = true);
-        }),
-        onExit: ((event) async {
-          setState(() => _model.mouseRegionHovered = false);
-          logFirebaseEvent('SIDE_MENU_MouseRegion_kvbssdee_ON_TOGGLE');
-          logFirebaseEvent('MouseRegion_update_app_state');
-          setState(() {
-            FFAppState().showmenuopen = false;
-            FFAppState().drawerMenu = false;
-          });
-        }),
         child: StreamBuilder<List<CompaniesRecord>>(
           stream: queryCompaniesRecord(
             queryBuilder: (companiesRecord) => companiesRecord.where(
@@ -166,7 +157,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,8 +173,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                     Container(
                                       width: 250.0,
                                       height: 150.0,
-                                      decoration: const BoxDecoration(),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      decoration: BoxDecoration(),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Stack(
                                         children: [
                                           Image.network(
@@ -194,7 +185,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                             fit: BoxFit.cover,
                                           ),
                                           Image.network(
-                                            listViewCompaniesRecord
+                                            listViewCompaniesRecord!
                                                 .companylogoSquare,
                                             width: double.infinity,
                                             height: 300.0,
@@ -208,7 +199,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 50.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -219,12 +210,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 50.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -251,7 +242,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -291,12 +282,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 50.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -318,7 +309,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -358,12 +349,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 50.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -385,7 +376,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -425,12 +416,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 50.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -456,7 +447,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -533,12 +524,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 50.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -565,7 +556,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -652,12 +643,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                       ))
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -685,7 +676,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     0.0,
@@ -723,16 +714,16 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                           ),
                                         ),
                                       if (listViewCompaniesRecord
-                                              .hassocialfeed !=
+                                              ?.hassocialfeed !=
                                           false)
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -760,7 +751,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     0.0,
@@ -799,16 +790,16 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       if (isWeb &&
                                           (listViewCompaniesRecord
-                                                  .haslivevideo !=
+                                                  ?.haslivevideo !=
                                               false))
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -835,7 +826,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     0.0,
@@ -899,7 +890,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                 FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
-                                                            barrierColor: const Color(
+                                                            barrierColor: Color(
                                                                 0x00000000),
                                                             context: context,
                                                             builder: (context) {
@@ -909,7 +900,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                       .viewInsetsOf(
                                                                           context),
                                                                   child:
-                                                                      const SizedBox(
+                                                                      Container(
                                                                     height:
                                                                         350.0,
                                                                     child:
@@ -930,12 +921,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                           ),
                                         ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 50.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -961,7 +952,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -1001,7 +992,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -1015,7 +1006,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                           child: Container(
                                             width: double.infinity,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1028,7 +1019,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -1068,7 +1059,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -1086,7 +1077,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                           child: Container(
                                             width: double.infinity,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1099,7 +1090,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -1139,7 +1130,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -1157,7 +1148,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                           child: Container(
                                             width: double.infinity,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1170,7 +1161,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -1215,7 +1206,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                           true)
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: AuthUserStreamWidget(
                                             builder: (context) => InkWell(
@@ -1235,7 +1226,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                               child: Container(
                                                 width: double.infinity,
                                                 height: 50.0,
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: Visibility(
                                                   visible: valueOrDefault<bool>(
                                                           currentUserDocument
@@ -1255,7 +1246,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
@@ -1294,16 +1285,16 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                             ),
                                           ),
                                         ),
-                                      if (listViewCompaniesRecord.aILicence ==
+                                      if (listViewCompaniesRecord?.aILicence ==
                                           true)
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: StreamBuilder<
                                                 List<UsersRecord>>(
                                               stream: queryUsersRecord(
@@ -1384,7 +1375,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             16.0,
                                                                             0.0,
@@ -1429,7 +1420,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                       ))
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 12.0, 16.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1466,7 +1457,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 8.0,
                                                                 12.0, 8.0),
                                                     child: Row(
@@ -1478,7 +1469,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       0.0,
@@ -1496,7 +1487,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -1525,16 +1516,16 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                           ),
                                                           child: Stack(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.95,
                                                                         0.0),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1552,7 +1543,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -0.85,
                                                                         0.0),
                                                                 child:
@@ -1564,7 +1555,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
-                                                                    boxShadow: const [
+                                                                    boxShadow: [
                                                                       BoxShadow(
                                                                         blurRadius:
                                                                             4.0,
@@ -1610,7 +1601,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 1.0,
                                                         color:
@@ -1632,7 +1623,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 8.0,
                                                                 12.0, 8.0),
                                                     child: Row(
@@ -1644,7 +1635,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       0.0,
@@ -1662,7 +1653,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -1702,10 +1693,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                           ),
                                                           child: Stack(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             children: [
-                                                              const Align(
+                                                              Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
                                                                         -0.9,
@@ -1728,7 +1719,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.9,
                                                                         0.0),
                                                                 child:
@@ -1737,9 +1728,9 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                   height: 36.0,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF14181B),
-                                                                    boxShadow: const [
+                                                                    boxShadow: [
                                                                       BoxShadow(
                                                                         blurRadius:
                                                                             4.0,
@@ -1800,10 +1791,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -1825,7 +1816,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -1848,10 +1839,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                       text: 'clear',
                                       options: FFButtonOptions(
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -1872,7 +1863,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -1898,7 +1889,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                         context),
                                                 child: CompanySettingsWidget(
                                                   companyDoc:
-                                                      listViewCompaniesRecord,
+                                                      listViewCompaniesRecord!,
                                                 ),
                                               ),
                                             );
@@ -1908,10 +1899,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                       text: 'Company Settings',
                                       options: FFButtonOptions(
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -1932,7 +1923,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -1997,7 +1988,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -2012,18 +2003,18 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 24.0, 20.0, 24.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 50.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -2056,7 +2047,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Logout',
@@ -2095,7 +2086,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                             animationsMap['columnOnPageLoadAnimation2']!),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 0.0, 20.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -2105,27 +2096,27 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                           onTap: () async {
                             logFirebaseEvent(
                                 'SIDE_MENU_COMP_Row_o6qe2bfz_ON_TAP');
-                            navigate() {}
+                            Function() _navigate = () {};
                             logFirebaseEvent('Row_alert_dialog');
                             var confirmDialogResponse = await showDialog<bool>(
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return WebViewAware(
                                       child: AlertDialog(
-                                        title: const Text(
+                                        title: Text(
                                             'This will delete your account'),
-                                        content: const Text(
+                                        content: Text(
                                             'Are you sure you wish to do this? it will delete everything '),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext, false),
-                                            child: const Text('Cancel'),
+                                            child: Text('Cancel'),
                                           ),
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext, true),
-                                            child: const Text('Confirm'),
+                                            child: Text('Confirm'),
                                           ),
                                         ],
                                       ),
@@ -2142,12 +2133,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      title: const Text('Deleted'),
+                                      title: Text('Deleted'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -2156,14 +2147,14 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                               );
                             }
 
-                            navigate();
+                            _navigate();
                           },
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Delete My Account',
@@ -2176,7 +2167,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 0.0, 10.0, 0.0),
                         child: StreamBuilder<List<SessionsRecord>>(
                           stream: querySessionsRecord(
@@ -2206,7 +2197,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                             return ClipRRect(
                               borderRadius: BorderRadius.circular(17.0),
                               child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 100),
+                                duration: Duration(milliseconds: 100),
                                 curve: Curves.easeIn,
                                 width: 540.0,
                                 height: 120.0,
@@ -2218,7 +2209,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(15.0),
+                                  padding: EdgeInsets.all(15.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -2243,8 +2234,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         color: listViewCompaniesRecord
-                                                            .colors
-                                                            .secondaryTextColor,
+                                                            ?.colors
+                                                            ?.secondaryTextColor,
                                                         fontSize: 22.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -2273,8 +2264,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   style: TextStyle(
                                                     color:
                                                         listViewCompaniesRecord
-                                                            .colors
-                                                            .secondaryTextColor,
+                                                            ?.colors
+                                                            ?.secondaryTextColor,
                                                   ),
                                                 )
                                               ],
@@ -2287,8 +2278,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         color: listViewCompaniesRecord
-                                                            .colors
-                                                            .secondaryTextColor,
+                                                            ?.colors
+                                                            ?.secondaryTextColor,
                                                         fontSize: 22.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
@@ -2320,8 +2311,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         color: listViewCompaniesRecord
-                                                            .colors
-                                                            .secondaryTextColor,
+                                                            ?.colors
+                                                            ?.secondaryTextColor,
                                                         fontSize: 22.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -2347,8 +2338,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                   style: TextStyle(
                                                     color:
                                                         listViewCompaniesRecord
-                                                            .colors
-                                                            .secondaryTextColor,
+                                                            ?.colors
+                                                            ?.secondaryTextColor,
                                                   ),
                                                 )
                                               ],
@@ -2361,8 +2352,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         color: listViewCompaniesRecord
-                                                            .colors
-                                                            .secondaryTextColor,
+                                                            ?.colors
+                                                            ?.secondaryTextColor,
                                                         fontSize: 22.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
@@ -2391,6 +2382,18 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
             );
           },
         ),
+        onEnter: ((event) async {
+          setState(() => _model.mouseRegionHovered = true);
+        }),
+        onExit: ((event) async {
+          setState(() => _model.mouseRegionHovered = false);
+          logFirebaseEvent('SIDE_MENU_MouseRegion_kvbssdee_ON_TOGGLE');
+          logFirebaseEvent('MouseRegion_update_app_state');
+          setState(() {
+            FFAppState().showmenuopen = false;
+            FFAppState().drawerMenu = false;
+          });
+        }),
       ),
     );
   }

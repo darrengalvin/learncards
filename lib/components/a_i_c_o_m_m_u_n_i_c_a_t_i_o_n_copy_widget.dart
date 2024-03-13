@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,6 +9,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +20,7 @@ class AICOMMUNICATIONCopyWidget extends StatefulWidget {
   const AICOMMUNICATIONCopyWidget({
     super.key,
     bool? askingQuestion,
-  }) : askingQuestion = askingQuestion ?? false;
+  }) : this.askingQuestion = askingQuestion ?? false;
 
   final bool askingQuestion;
 
@@ -41,8 +43,8 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1500.ms,
-          begin: const Offset(0.0, 1.0),
-          end: const Offset(1.0, 1.0),
+          begin: Offset(0.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -71,7 +73,8 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
     _model.askTheQuestionFocusNode!.addListener(
       () async {
         logFirebaseEvent('A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_COPY_AskTh');
-        if (_model.askTheQuestionController.text != '') {
+        if (_model.askTheQuestionController.text != null &&
+            _model.askTheQuestionController.text != '') {
           logFirebaseEvent('AskTheQuestion_update_component_state');
           setState(() {});
         } else {
@@ -124,11 +127,13 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                             focusNode: _model.askTheQuestionFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.askTheQuestionController',
-                              const Duration(milliseconds: 2000),
+                              Duration(milliseconds: 2000),
                               () async {
                                 logFirebaseEvent(
                                     'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_COPY_AskTh');
                                 if (_model.askTheQuestionController.text !=
+                                        null &&
+                                    _model.askTheQuestionController.text !=
                                         '') {
                                   logFirebaseEvent(
                                       'AskTheQuestion_update_component_state');
@@ -189,7 +194,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -221,13 +226,13 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                       Container(
                         width: 3000.0,
                         height: 1000.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 30.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -248,9 +253,9 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.0, 1.0),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(8.0),
                                       child: ListView(
                                         padding: EdgeInsets.zero,
                                         reverse: true,
@@ -272,7 +277,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   Flexible(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   33.0,
                                                                   0.0,
@@ -280,7 +285,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                   0.0),
                                                       child: Container(
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           color:
                                                               Color(0xFF74C5FF),
                                                           borderRadius:
@@ -301,7 +306,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   4.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -314,7 +319,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                               Flexible(
                                                                 child: Padding(
                                                                   padding:
-                                                                      const EdgeInsets
+                                                                      EdgeInsets
                                                                           .all(
                                                                               9.0),
                                                                   child: Text(
@@ -351,7 +356,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              Container(
                                                 width: double.infinity,
                                                 child: Stack(
                                                   children: [
@@ -361,7 +366,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                     ))
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsets.all(6.0),
+                                                            EdgeInsets.all(6.0),
                                                         child: ClipRRect(
                                                           borderRadius:
                                                               BorderRadius
@@ -380,8 +385,8 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                 ),
                                               ),
                                             ]
-                                                .divide(const SizedBox(height: 8.0))
-                                                .around(const SizedBox(height: 8.0)),
+                                                .divide(SizedBox(height: 8.0))
+                                                .around(SizedBox(height: 8.0)),
                                           ),
                                         ],
                                       ),
@@ -406,7 +411,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 50.0, 0.0),
                                               child: Row(
@@ -422,7 +427,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       5.0,
                                                                       15.0,
@@ -446,7 +451,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     25.0,
                                                                     0.0,
@@ -462,14 +467,14 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                               FFButtonOptions(
                                                             height: 40.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -496,7 +501,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -529,7 +534,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   Expanded(
                                                     flex: 1,
                                                     child: AnimatedContainer(
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 200),
                                                       curve: Curves.easeIn,
                                                       width: MediaQuery.sizeOf(
@@ -537,10 +542,10 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                               .width *
                                                           1.0,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -555,7 +560,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                               EasyDebounce
                                                                   .debounce(
                                                             '_model.textFieldMessageController',
-                                                            const Duration(
+                                                            Duration(
                                                                 milliseconds:
                                                                     2000),
                                                             () =>
@@ -566,6 +571,9 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                             logFirebaseEvent(
                                                                 'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_COPY_TextF');
                                                             if (!(_model.askTheQuestionController
+                                                                        .text !=
+                                                                    null &&
+                                                                _model.askTheQuestionController
                                                                         .text !=
                                                                     '')) {
                                                               logFirebaseEvent(
@@ -588,7 +596,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                               GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
                                                                         ),
                                                                   ),
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           4000),
                                                                   backgroundColor:
@@ -600,6 +608,9 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                               return;
                                                             }
                                                             if (!(FFAppState()
+                                                                        .sessionId !=
+                                                                    null &&
+                                                                FFAppState()
                                                                         .sessionId !=
                                                                     '')) {
                                                               logFirebaseEvent(
@@ -663,7 +674,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                             enabledBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xB9BCBCBC),
                                                                 width: 1.0,
@@ -735,7 +746,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                             .bodyMediumFamily),
                                                               ),
                                                           cursorColor:
-                                                              const Color(0xFF323232),
+                                                              Color(0xFF323232),
                                                           validator: _model
                                                               .textFieldMessageControllerValidator
                                                               .asValidator(
@@ -748,14 +759,14 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                     flex: 1,
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
                                                                   12.0,
                                                                   0.0),
                                                       child: AnimatedContainer(
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.easeIn,
                                                         width: 100.0,
@@ -763,13 +774,13 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                         decoration:
                                                             BoxDecoration(
                                                           color:
-                                                              const Color(0xFFEFEFEF),
+                                                              Color(0xFFEFEFEF),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
                                                                       8.0),
                                                           border: Border.all(
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFFCBCBCB),
                                                           ),
                                                         ),
@@ -797,7 +808,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       gradient:
-                                                                          const LinearGradient(
+                                                                          LinearGradient(
                                                                         colors: [
                                                                           Colors
                                                                               .white,
@@ -837,7 +848,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 AnimatedContainer(
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 200),
                                                   curve: Curves.easeInOut,
                                                   width: 65.0,
@@ -859,7 +870,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .accent1,
-                                                    icon: const Icon(
+                                                    icon: Icon(
                                                       Icons.send,
                                                       color: Colors.white,
                                                       size: 24.0,
@@ -869,6 +880,9 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                       logFirebaseEvent(
                                                           'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_COPY_send_');
                                                       if (!(_model.textFieldMessageController
+                                                                  .text !=
+                                                              null &&
+                                                          _model.textFieldMessageController
                                                                   .text !=
                                                               '')) {
                                                         logFirebaseEvent(
@@ -895,7 +909,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                             FlutterFlowTheme.of(context).bodyLargeFamily),
                                                                   ),
                                                             ),
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     4000),
                                                             backgroundColor:
@@ -907,6 +921,9 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                         return;
                                                       }
                                                       if (!(FFAppState()
+                                                                  .sessionId !=
+                                                              null &&
+                                                          FFAppState()
                                                                   .sessionId !=
                                                               '')) {
                                                         logFirebaseEvent(
@@ -935,7 +952,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   ),
                                                 ),
                                                 AnimatedContainer(
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 200),
                                                   curve: Curves.easeInOut,
                                                   width: 65.0,
@@ -947,13 +964,13 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   ),
                                                   child: FlutterFlowIconButton(
                                                     borderColor:
-                                                        const Color(0xFFB5B5B5),
+                                                        Color(0xFFB5B5B5),
                                                     borderRadius: 5.0,
                                                     borderWidth: 1.0,
                                                     buttonSize: 45.0,
                                                     fillColor:
-                                                        const Color(0xFFD3D3D3),
-                                                    icon: const Icon(
+                                                        Color(0xFFD3D3D3),
+                                                    icon: Icon(
                                                       Icons.send,
                                                       color: Colors.white,
                                                       size: 24.0,
@@ -973,9 +990,9 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.0, 1.0),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(8.0),
                                       child: Builder(
                                         builder: (context) {
                                           final localMessages =
@@ -1010,7 +1027,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                         Flexible(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         33.0,
                                                                         0.0,
@@ -1018,7 +1035,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                         0.0),
                                                             child: Container(
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 color: Color(
                                                                     0xFF74C5FF),
                                                                 borderRadius:
@@ -1040,7 +1057,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsets
+                                                                    EdgeInsets
                                                                         .all(
                                                                             4.0),
                                                                 child: Row(
@@ -1055,7 +1072,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            const EdgeInsets.all(9.0),
+                                                                            EdgeInsets.all(9.0),
                                                                         child:
                                                                             Text(
                                                                           localMessagesItem
@@ -1092,7 +1109,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                         'ai',
                                                     false,
                                                   ))
-                                                    SizedBox(
+                                                    Container(
                                                       width: double.infinity,
                                                       child: Stack(
                                                         children: [
@@ -1126,18 +1143,18 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                 Flexible(
                                                                   child:
                                                                       AnimatedContainer(
-                                                                    duration: const Duration(
+                                                                    duration: Duration(
                                                                         milliseconds:
                                                                             100),
                                                                     curve: Curves
                                                                         .easeInOut,
                                                                     constraints:
-                                                                        const BoxConstraints(
+                                                                        BoxConstraints(
                                                                       maxWidth:
                                                                           600.0,
                                                                     ),
                                                                     decoration:
-                                                                        const BoxDecoration(
+                                                                        BoxDecoration(
                                                                       color: Color(
                                                                           0xFFEEEEEE),
                                                                       borderRadius:
@@ -1154,12 +1171,12 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                       ),
                                                                     ),
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             -1.0,
                                                                             1.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1175,7 +1192,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                         children: [
                                                                           Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(4.0),
+                                                                                EdgeInsets.all(4.0),
                                                                             child:
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.min,
@@ -1188,7 +1205,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                                   desktop: false,
                                                                                 ))
                                                                                   Padding(
-                                                                                    padding: const EdgeInsets.all(6.0),
+                                                                                    padding: EdgeInsets.all(6.0),
                                                                                     child: ClipRRect(
                                                                                       borderRadius: BorderRadius.circular(8.0),
                                                                                       child: Image.asset(
@@ -1201,7 +1218,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                                   ),
                                                                                 Flexible(
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(9.0, 9.0, 9.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(9.0, 9.0, 9.0, 0.0),
                                                                                     child: Text(
                                                                                       valueOrDefault<String>(
                                                                                         functions.splitMessage(localMessagesItem.message, 'Here are some links for further reading', 0),
@@ -1225,10 +1242,10 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                             false,
                                                                           ))
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 8.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 8.0),
                                                                               child: Container(
                                                                                 width: double.infinity,
-                                                                                constraints: const BoxConstraints(
+                                                                                constraints: BoxConstraints(
                                                                                   minHeight: 40.0,
                                                                                 ),
                                                                                 decoration: BoxDecoration(
@@ -1240,7 +1257,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(18.0, 12.0, 0.0, 4.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(18.0, 12.0, 0.0, 4.0),
                                                                                       child: Text(
                                                                                         'Further Reading',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
@@ -1256,7 +1273,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                             ),
                                                                                             child: Padding(
-                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(13.0, 0.0, 13.0, 0.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(13.0, 0.0, 13.0, 0.0),
                                                                                               child: Builder(
                                                                                                 builder: (context) {
                                                                                                   final linkName = functions
@@ -1271,24 +1288,24 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                                                     children: List.generate(linkName.length, (linkNameIndex) {
                                                                                                       final linkNameItem = linkName[linkNameIndex];
                                                                                                       return Padding(
-                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 4.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 4.0),
                                                                                                         child: Row(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
                                                                                                             Padding(
-                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                                                                                                               child: Container(
                                                                                                                 width: 24.0,
                                                                                                                 height: 24.0,
-                                                                                                                decoration: const BoxDecoration(
+                                                                                                                decoration: BoxDecoration(
                                                                                                                   color: Color(0x57B3B1B1),
                                                                                                                   shape: BoxShape.circle,
                                                                                                                 ),
                                                                                                                 child: Align(
-                                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                   child: Text(
                                                                                                                     valueOrDefault<String>(
-                                                                                                                      valueOrDefault<String>(
+                                                                                                                      '${valueOrDefault<String>(
                                                                                                                         ((valueOrDefault<int>(
                                                                                                                                       linkNameIndex,
                                                                                                                                       0,
@@ -1297,7 +1314,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                                                                                                 1)
                                                                                                                             .toString(),
                                                                                                                         '1',
-                                                                                                                      ),
+                                                                                                                      )}',
                                                                                                                       '1',
                                                                                                                     ),
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1383,7 +1400,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                           ))
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(6.0),
                                                               child: ClipRRect(
                                                                 borderRadius:
@@ -1405,9 +1422,9 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                     ),
                                                 ]
                                                     .divide(
-                                                        const SizedBox(height: 8.0))
+                                                        SizedBox(height: 8.0))
                                                     .around(
-                                                        const SizedBox(height: 8.0)),
+                                                        SizedBox(height: 8.0)),
                                               );
                                             },
                                           );
@@ -1419,16 +1436,16 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 50.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Container(
                                     height: 60.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
@@ -1460,7 +1477,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 20.0, 0.0),
                                                   child: Container(
@@ -1476,7 +1493,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         'I’m feeling burnt out',
@@ -1498,7 +1515,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 20.0, 0.0),
                                                   child: Container(
@@ -1514,7 +1531,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         'What is CORE how do i use it?',
@@ -1536,7 +1553,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 20.0, 0.0),
                                                   child: Container(
@@ -1552,7 +1569,7 @@ class _AICOMMUNICATIONCopyWidgetState extends State<AICOMMUNICATIONCopyWidget>
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         'Who is Carl Rogers?',

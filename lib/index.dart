@@ -75,3 +75,4 @@ export '/social_feed/social_feed_widget.dart' show SocialFeedWidget;
 export '/library_fixed/library_fixed_widget.dart' show LibraryFixedWidget;
 export '/dash/dash_widget.dart' show DashWidget;
 export '/sessions/sessions_widget.dart' show SessionsWidget;
+export '/chat_page/chat_page_widget.dart' show ChatPageWidget;

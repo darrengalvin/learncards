@@ -7,6 +7,7 @@ import '/flutter_flow/form_field_controller.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'edit_text_block_model.dart';
 export 'edit_text_block_model.dart';
 
@@ -64,11 +65,11 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
               child: FlutterFlowChoiceChips(
-                options: const [
+                options: [
                   ChipData('Header'),
                   ChipData('Body'),
                   ChipData('List')
@@ -76,7 +77,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
                 onChanged: (val) =>
                     setState(() => _model.textIOptionsValue = val?.firstOrNull),
                 selectedChipStyle: ChipStyle(
-                  backgroundColor: const Color(0xFF1AADF9),
+                  backgroundColor: Color(0xFF1AADF9),
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).bodyMediumFamily,
@@ -128,13 +129,13 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
             false,
           ))
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
               child: TextFormField(
                 controller: _model.headerController,
                 focusNode: _model.headerFocusNode,
                 onChanged: (_) => EasyDebounce.debounce(
                   '_model.headerController',
-                  const Duration(milliseconds: 2000),
+                  Duration(milliseconds: 2000),
                   () => setState(() {}),
                 ),
                 obscureText: false,
@@ -150,7 +151,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Color(0xFF1AADF9),
                       width: 2.0,
                     ),
@@ -182,13 +183,13 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
             false,
           ))
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
               child: TextFormField(
                 controller: _model.paragraphController,
                 focusNode: _model.paragraphFocusNode,
                 onChanged: (_) => EasyDebounce.debounce(
                   '_model.paragraphController',
-                  const Duration(milliseconds: 2000),
+                  Duration(milliseconds: 2000),
                   () => setState(() {}),
                 ),
                 obscureText: false,
@@ -204,7 +205,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Color(0xFF1AADF9),
                       width: 2.0,
                     ),
@@ -236,7 +237,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
             false,
           ))
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
               child: wrapWithModel(
                 model: _model.textListModel,
                 updateCallback: () => setState(() {}),

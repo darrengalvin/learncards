@@ -51,9 +51,9 @@ class _PreparingWidgetState extends State<PreparingWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,12 +76,12 @@ class _PreparingWidgetState extends State<PreparingWidget> {
                   }
                 }(),
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primary,
@@ -91,7 +91,7 @@ class _PreparingWidgetState extends State<PreparingWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 25.0, 0.0, 10.0),
                             child: Text(
                               'Hello and welcome! ',
@@ -112,7 +112,7 @@ class _PreparingWidgetState extends State<PreparingWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 25.0, 0.0, 25.0, 0.0),
                             child: Text(
                               'I am currently  delving through hundreds of hours and thousands of documents, to tailor a unique and effective learning journey specifically for you. This process is intricate and will take a little while to complete. In the meantime, you have two choices: you can engage in the learncard activity below, which will offer you a glimpse into what your learning journey could be like, or you can choose to return later. If you haven\'t experienced a learncard before, I highly recommend trying it out for a valuable insight into your potential learning journey. I\'ll notify you via email once everything is ready for you.\n',
@@ -139,7 +139,7 @@ class _PreparingWidgetState extends State<PreparingWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(25.0),
+                        padding: EdgeInsets.all(25.0),
                         child: StreamBuilder<List<LearnCardsRecord>>(
                           stream: queryLearnCardsRecord(
                             queryBuilder: (learnCardsRecord) =>

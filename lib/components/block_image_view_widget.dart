@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'block_image_view_model.dart';
 export 'block_image_view_model.dart';
 
@@ -46,18 +48,18 @@ class _BlockImageViewWidgetState extends State<BlockImageViewWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(24.0),
           child: Container(
             width: double.infinity,
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 530.0,
             ),
             decoration: BoxDecoration(
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 3.0,
                   color: Color(0x33000000),
@@ -69,13 +71,13 @@ class _BlockImageViewWidgetState extends State<BlockImageViewWidget> {
                   FlutterFlowTheme.of(context).primaryBackground,
                   FlutterFlowTheme.of(context).secondary
                 ],
-                stops: const [0.0, 1.0],
-                begin: const AlignmentDirectional(0.0, -1.0),
-                end: const AlignmentDirectional(0, 1.0),
+                stops: [0.0, 1.0],
+                begin: AlignmentDirectional(0.0, -1.0),
+                end: AlignmentDirectional(0, 1.0),
               ),
               borderRadius: BorderRadius.circular(24.0),
               border: Border.all(
-                color: const Color(0xFFEFF7F5),
+                color: Color(0xFFEFF7F5),
                 width: 1.0,
               ),
             ),
@@ -83,7 +85,7 @@ class _BlockImageViewWidgetState extends State<BlockImageViewWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +95,7 @@ class _BlockImageViewWidgetState extends State<BlockImageViewWidget> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 10.0, 10.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -129,20 +131,20 @@ class _BlockImageViewWidgetState extends State<BlockImageViewWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 10.0, 10.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -218,7 +220,7 @@ class _BlockImageViewWidgetState extends State<BlockImageViewWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 10.0, 10.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,

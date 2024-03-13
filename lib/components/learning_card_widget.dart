@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'learning_card_model.dart';
 export 'learning_card_model.dart';
 
@@ -55,7 +56,7 @@ class _LearningCardWidgetState extends State<LearningCardWidget> {
       child: Opacity(
         opacity: 0.8,
         child: Align(
-          alignment: const AlignmentDirectional(-1.0, -1.0),
+          alignment: AlignmentDirectional(-1.0, -1.0),
           child: Container(
             constraints: BoxConstraints(
               maxWidth: () {
@@ -73,11 +74,11 @@ class _LearningCardWidgetState extends State<LearningCardWidget> {
               }(),
             ),
             decoration: BoxDecoration(
-              color: widget.companyDoc?.colors.secondaryTextColor,
+              color: widget.companyDoc?.colors?.secondaryTextColor,
               borderRadius: BorderRadius.circular(17.0),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -107,7 +108,7 @@ class _LearningCardWidgetState extends State<LearningCardWidget> {
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 8.0, 0.0, 0.0),
                             child: SingleChildScrollView(
                               child: Column(
@@ -126,7 +127,7 @@ class _LearningCardWidgetState extends State<LearningCardWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodyLargeFamily,
                                           color: widget
-                                              .companyDoc?.colors.primaryColor,
+                                              .companyDoc?.colors?.primaryColor,
                                           fontSize: valueOrDefault<double>(
                                             () {
                                               if (MediaQuery.sizeOf(context)

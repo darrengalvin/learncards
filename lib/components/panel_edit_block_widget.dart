@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/edit_text_block_widget.dart';
 import '/components/image_gallery_widget.dart';
@@ -7,10 +8,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'panel_edit_block_model.dart';
 export 'panel_edit_block_model.dart';
 
@@ -21,7 +24,7 @@ class PanelEditBlockWidget extends StatefulWidget {
     required this.action,
     this.tileBlock,
     bool? isDrawer,
-  }) : isDrawer = isDrawer ?? false;
+  }) : this.isDrawer = isDrawer ?? false;
 
   final String? editBlockId;
   final Future Function()? action;
@@ -64,13 +67,13 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
   Widget build(BuildContext context) {
     return ClipRRect(
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 1500),
+        duration: Duration(milliseconds: 1500),
         curve: Curves.easeInOut,
         width: valueOrDefault<double>(
           _model.panelSize,
           450.0,
         ),
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           maxWidth: 450.0,
         ),
         decoration: BoxDecoration(
@@ -110,13 +113,13 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                 if (widget.isDrawer)
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -128,9 +131,9 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                             text: 'Cancel',
                             options: FFButtonOptions(
                               height: 32.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -156,7 +159,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -258,11 +261,11 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                             text: 'Save',
                             options: FFButtonOptions(
                               height: 32.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: const Color(0xFF1AADF9),
+                              color: Color(0xFF1AADF9),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -275,7 +278,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 0.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -296,7 +299,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -306,7 +309,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 18.0, 0.0),
                                       child: Container(
                                         width: 50.0,
@@ -316,19 +319,19 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                               .secondaryBackground,
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: 32.0,
                                             height: 32.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFF1AADF9),
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '>',
                                               style:
@@ -361,7 +364,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                       desktop: false,
                                     ))
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Label',
@@ -384,7 +387,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                       focusNode: _model.blockTitleFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.blockTitleController',
-                                        const Duration(milliseconds: 2000),
+                                        Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
                                       obscureText: false,
@@ -404,7 +407,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0xFF1AADF9),
                                             width: 2.0,
                                           ),
@@ -442,7 +445,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 12.0, 24.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -452,7 +455,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 18.0, 0.0),
                                       child: Container(
                                         width: 50.0,
@@ -462,19 +465,19 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                               .secondaryBackground,
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: 32.0,
                                             height: 32.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFF1AADF9),
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '>',
                                               style:
@@ -507,7 +510,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                       desktop: false,
                                     ))
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Label',
@@ -525,7 +528,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                         .secondaryBackground,
                                   ),
                                   child: FlutterFlowChoiceChips(
-                                    options: const [
+                                    options: [
                                       ChipData('Text'),
                                       ChipData('Image'),
                                       ChipData('Video')
@@ -613,10 +616,10 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                             false,
                           ))
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 100),
+                                duration: Duration(milliseconds: 100),
                                 curve: Curves.easeInOut,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
@@ -680,7 +683,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'Audio Coming Soon...',
                                               textAlign: TextAlign.center,
@@ -703,7 +706,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'Links Coming Soon...',
                                               textAlign: TextAlign.center,
@@ -726,7 +729,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'Files Coming Soon...',
                                               textAlign: TextAlign.center,
@@ -756,7 +759,7 @@ class _PanelEditBlockWidgetState extends State<PanelEditBlockWidget> {
                                                 size: 48.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 24.0, 0.0, 0.0),
                                                 child: InkWell(

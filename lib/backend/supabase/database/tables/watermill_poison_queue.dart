@@ -10,7 +10,7 @@ class WatermillPoisonQueueTable extends SupabaseTable<WatermillPoisonQueueRow> {
 }
 
 class WatermillPoisonQueueRow extends SupabaseDataRow {
-  WatermillPoisonQueueRow(super.data);
+  WatermillPoisonQueueRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => WatermillPoisonQueueTable();
@@ -24,11 +24,11 @@ class WatermillPoisonQueueRow extends SupabaseDataRow {
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
-  dynamic get payload => getField<dynamic>('payload');
-  set payload(dynamic value) => setField<dynamic>('payload', value);
+  dynamic? get payload => getField<dynamic>('payload');
+  set payload(dynamic? value) => setField<dynamic>('payload', value);
 
-  dynamic get metadata => getField<dynamic>('metadata');
-  set metadata(dynamic value) => setField<dynamic>('metadata', value);
+  dynamic? get metadata => getField<dynamic>('metadata');
+  set metadata(dynamic? value) => setField<dynamic>('metadata', value);
 
   String get transactionId => getField<String>('transaction_id')!;
   set transactionId(String value) => setField<String>('transaction_id', value);

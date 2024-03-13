@@ -17,7 +17,7 @@ class EditTileBlockCopyCopyWidget extends StatefulWidget {
   const EditTileBlockCopyCopyWidget({
     super.key,
     bool? isNewTile,
-  }) : isNewTile = isNewTile ?? true;
+  }) : this.isNewTile = isNewTile ?? true;
 
   final bool isNewTile;
 
@@ -56,18 +56,18 @@ class _EditTileBlockCopyCopyWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         height: MediaQuery.sizeOf(context).height * 1.0,
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           maxHeight: 700.0,
         ),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Color(0x35000000),
         ),
-        alignment: const AlignmentDirectional(-1.0, 0.0),
+        alignment: AlignmentDirectional(-1.0, 0.0),
         child: Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -75,17 +75,17 @@ class _EditTileBlockCopyCopyWidgetState
             children: [
               Flexible(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24.0),
                     child: Container(
                       height: 600.0,
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 100.0,
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primary,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 7.0,
                             color: Color(0x32171717),
@@ -95,19 +95,19 @@ class _EditTileBlockCopyCopyWidgetState
                         borderRadius: BorderRadius.circular(24.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(24.0),
+                        padding: EdgeInsets.all(24.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AnimatedContainer(
-                              duration: const Duration(milliseconds: 240),
+                              duration: Duration(milliseconds: 240),
                               curve: Curves.easeInOut,
                               width: valueOrDefault<double>(
                                 _model.tileLayoutWidth,
                                 60.0,
                               ),
-                              constraints: const BoxConstraints(
+                              constraints: BoxConstraints(
                                 minWidth: 60.0,
                               ),
                               decoration: BoxDecoration(
@@ -144,24 +144,24 @@ class _EditTileBlockCopyCopyWidgetState
                                     },
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 18.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 80.0, 0.0, 0.0),
                                             child: Transform.rotate(
                                               angle: -1.5708,
-                                              alignment: const Alignment(-1.0, 0.0),
-                                              origin: const Offset(30.0, 0.0),
+                                              alignment: Alignment(-1.0, 0.0),
+                                              origin: Offset(30.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         30.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -216,7 +216,7 @@ class _EditTileBlockCopyCopyWidgetState
                                     ),
                                     child: Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -225,7 +225,7 @@ class _EditTileBlockCopyCopyWidgetState
                                             borderRadius: 30.0,
                                             borderWidth: 1.0,
                                             buttonSize: 60.0,
-                                            icon: const Icon(
+                                            icon: Icon(
                                               Icons.arrow_forward_ios,
                                               color: Color(0xFF1AADF9),
                                               size: 30.0,
@@ -282,7 +282,7 @@ class _EditTileBlockCopyCopyWidgetState
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 18.0, 12.0, 12.0),
                                       child: ClipRRect(
                                         borderRadius:
@@ -310,7 +310,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                         child: Theme(
                                                           data: ThemeData(
                                                             checkboxTheme:
-                                                                const CheckboxThemeData(
+                                                                CheckboxThemeData(
                                                               visualDensity:
                                                                   VisualDensity
                                                                       .compact,
@@ -368,7 +368,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 8.0),
                                                     child: Container(
@@ -379,7 +379,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     0.0,
@@ -391,7 +391,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -438,12 +438,12 @@ class _EditTileBlockCopyCopyWidgetState
                                                                       MainAxisSize
                                                                           .max,
                                                                   children: [
-                                                                    SizedBox(
+                                                                    Container(
                                                                       width:
                                                                           200.0,
                                                                       child:
                                                                           FlutterFlowCheckboxGroup(
-                                                                        options: const [
+                                                                        options: [
                                                                           'Subscriptions',
                                                                           'Premium Content'
                                                                         ],
@@ -456,7 +456,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                                           [],
                                                                         ),
                                                                         activeColor:
-                                                                            const Color(0xFF1AADF9),
+                                                                            Color(0xFF1AADF9),
                                                                         checkColor:
                                                                             FlutterFlowTheme.of(context).primary,
                                                                         checkboxBorderColor:
@@ -537,24 +537,24 @@ class _EditTileBlockCopyCopyWidgetState
                                     },
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 18.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 80.0, 0.0, 0.0),
                                             child: Transform.rotate(
                                               angle: -1.5708,
-                                              alignment: const Alignment(-1.0, 0.0),
-                                              origin: const Offset(30.0, 0.0),
+                                              alignment: Alignment(-1.0, 0.0),
+                                              origin: Offset(30.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         30.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -594,7 +594,7 @@ class _EditTileBlockCopyCopyWidgetState
                             wrapWithModel(
                               model: _model.panelBlockSetupModel,
                               updateCallback: () => setState(() {}),
-                              child: const PanelBlockSetupWidget(),
+                              child: PanelBlockSetupWidget(),
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
@@ -640,18 +640,18 @@ class _EditTileBlockCopyCopyWidgetState
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 18.0, 12.0, 12.0),
                                     child: Container(
                                       width: 300.0,
                                       height: 600.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0x4CD0E5FF),
+                                        color: Color(0x4CD0E5FF),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 12.0, 4.0, 4.0),
                                         child: StreamBuilder<List<TilesRecord>>(
                                           stream: queryTilesRecord(
@@ -701,12 +701,13 @@ class _EditTileBlockCopyCopyWidgetState
                                                         listViewIndex];
                                                 return Container(
                                                   key: ValueKey(
-                                                      "ListView_x5r9akou" '_' +
+                                                      "ListView_x5r9akou" +
+                                                          '_' +
                                                           listViewIndex
                                                               .toString()),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 0.0),
                                                     child: Container(
@@ -719,7 +720,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     0.0,
@@ -752,7 +753,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                                               context)
                                                                           .secondary,
                                                                   barrierColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0x00000000),
                                                                   context:
                                                                       context,
@@ -764,7 +765,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                                         padding:
                                                                             MediaQuery.viewInsetsOf(context),
                                                                         child:
-                                                                            SizedBox(
+                                                                            Container(
                                                                           height:
                                                                               600.0,
                                                                           child:
@@ -792,7 +793,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -908,18 +909,18 @@ class _EditTileBlockCopyCopyWidgetState
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 18.0, 12.0, 12.0),
                                     child: Container(
                                       width: 300.0,
                                       height: 600.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0x4CD0E5FF),
+                                        color: Color(0x4CD0E5FF),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 12.0, 4.0, 4.0),
                                         child: StreamBuilder<List<TilesRecord>>(
                                           stream: queryTilesRecord(
@@ -969,12 +970,13 @@ class _EditTileBlockCopyCopyWidgetState
                                                         listViewIndex];
                                                 return Container(
                                                   key: ValueKey(
-                                                      "ListView_l5aqig4r" '_' +
+                                                      "ListView_l5aqig4r" +
+                                                          '_' +
                                                           listViewIndex
                                                               .toString()),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 0.0),
                                                     child: Container(
@@ -987,7 +989,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     0.0,
@@ -1020,7 +1022,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                                               context)
                                                                           .secondary,
                                                                   barrierColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0x00000000),
                                                                   context:
                                                                       context,
@@ -1032,7 +1034,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                                         padding:
                                                                             MediaQuery.viewInsetsOf(context),
                                                                         child:
-                                                                            SizedBox(
+                                                                            Container(
                                                                           height:
                                                                               600.0,
                                                                           child:
@@ -1060,7 +1062,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -1175,7 +1177,7 @@ class _EditTileBlockCopyCopyWidgetState
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 18.0, 12.0, 12.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -1183,16 +1185,16 @@ class _EditTileBlockCopyCopyWidgetState
                                         width: 300.0,
                                         height: 600.0,
                                         decoration: BoxDecoration(
-                                          color: const Color(0x8ED0E5FF),
+                                          color: Color(0x8ED0E5FF),
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     4.0, 12.0, 4.0, 4.0),
                                             child: ListView(
                                               padding: EdgeInsets.zero,
@@ -1201,7 +1203,7 @@ class _EditTileBlockCopyCopyWidgetState
                                               scrollDirection: Axis.vertical,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 3.0, 0.0, 0.0),
                                                   child: Container(
@@ -1214,7 +1216,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -1285,7 +1287,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 3.0, 0.0, 0.0),
                                                   child: Container(
@@ -1298,7 +1300,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -1369,7 +1371,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 3.0, 0.0, 0.0),
                                                   child: Container(
@@ -1382,7 +1384,7 @@ class _EditTileBlockCopyCopyWidgetState
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,

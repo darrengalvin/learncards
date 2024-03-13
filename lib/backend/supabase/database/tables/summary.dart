@@ -9,7 +9,7 @@ class SummaryTable extends SupabaseTable<SummaryRow> {
 }
 
 class SummaryRow extends SupabaseDataRow {
-  SummaryRow(super.data);
+  SummaryRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => SummaryTable();
@@ -32,8 +32,8 @@ class SummaryRow extends SupabaseDataRow {
   String? get content => getField<String>('content');
   set content(String? value) => setField<String>('content', value);
 
-  dynamic get metadata => getField<dynamic>('metadata');
-  set metadata(dynamic value) => setField<dynamic>('metadata', value);
+  dynamic? get metadata => getField<dynamic>('metadata');
+  set metadata(dynamic? value) => setField<dynamic>('metadata', value);
 
   int get tokenCount => getField<int>('token_count')!;
   set tokenCount(int value) => setField<int>('token_count', value);

@@ -1,5 +1,7 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,6 +11,8 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -23,7 +27,7 @@ class AICOMMUNICATIONLandingWidget extends StatefulWidget {
   const AICOMMUNICATIONLandingWidget({
     super.key,
     bool? askingQuestion,
-  }) : askingQuestion = askingQuestion ?? false;
+  }) : this.askingQuestion = askingQuestion ?? false;
 
   final bool askingQuestion;
 
@@ -75,7 +79,7 @@ class _AICOMMUNICATIONLandingWidgetState
       logFirebaseEvent('AI_COMMUNICATION_Landing_scroll_to');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -98,18 +102,18 @@ class _AICOMMUNICATIONLandingWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(22.0),
         child: Container(
           width: double.infinity,
           height: MediaQuery.sizeOf(context).height * 0.8,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 1200.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xC5FFFFFF),
-            boxShadow: const [
+            color: Color(0xC5FFFFFF),
+            boxShadow: [
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
@@ -136,14 +140,14 @@ class _AICOMMUNICATIONLandingWidgetState
                         false,
                       ))
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 12.0, 12.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 12.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -157,7 +161,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                         _model.dropDownValue ??=
                                             'Reading Topic (thread)',
                                       ),
-                                      options: const ['Reading Topic (thread)'],
+                                      options: ['Reading Topic (thread)'],
                                       onChanged: (val) => setState(
                                           () => _model.dropDownValue = val),
                                       width: 300.0,
@@ -178,7 +182,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -223,9 +227,9 @@ class _AICOMMUNICATIONLandingWidgetState
                         ),
                       Expanded(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: StreamBuilder<List<FlowiseChatsRecord>>(
                               stream: queryFlowiseChatsRecord(
                                 queryBuilder: (flowiseChatsRecord) =>
@@ -269,7 +273,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                       columnChatsScrollableFlowiseChatsRecordList
                                           .length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 8.0),
+                                      SizedBox(height: 8.0),
                                   itemBuilder:
                                       (context, columnChatsScrollableIndex) {
                                     final columnChatsScrollableFlowiseChatsRecord =
@@ -290,11 +294,11 @@ class _AICOMMUNICATIONLandingWidgetState
                                             children: [
                                               Flexible(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           33.0, 0.0, 0.0, 0.0),
                                                   child: Container(
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       color: Color(0xFFE6EDFB),
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -314,7 +318,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(4.0),
+                                                          EdgeInsets.all(4.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.min,
@@ -325,7 +329,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                           Flexible(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(9.0),
                                                               child: Text(
                                                                 columnChatsScrollableFlowiseChatsRecord
@@ -368,7 +372,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                         if (columnChatsScrollableFlowiseChatsRecord
                                                 .role ==
                                             'ai')
-                                          SizedBox(
+                                          Container(
                                             width: double.infinity,
                                             child: Stack(
                                               children: [
@@ -393,17 +397,17 @@ class _AICOMMUNICATIONLandingWidgetState
                                                             MainAxisSize.max,
                                                         children: [
                                                           AnimatedContainer(
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves
                                                                 .easeInOut,
                                                             constraints:
-                                                                const BoxConstraints(
+                                                                BoxConstraints(
                                                               maxWidth: 600.0,
                                                             ),
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFEEEEEE),
                                                               borderRadius:
@@ -424,11 +428,11 @@ class _AICOMMUNICATIONLandingWidgetState
                                                               ),
                                                             ),
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 1.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -447,7 +451,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                                 children: [
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             4.0),
                                                                     child: Row(
                                                                       mainAxisSize:
@@ -469,7 +473,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                                         ))
                                                                           Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(6.0),
+                                                                                EdgeInsets.all(6.0),
                                                                             child:
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(8.0),
@@ -497,7 +501,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(6.0),
+                                                                                      padding: EdgeInsets.all(6.0),
                                                                                       child: MarkdownBody(
                                                                                         data: valueOrDefault<String>(
                                                                                           columnChatsScrollableFlowiseChatsRecord.text,
@@ -531,7 +535,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                 ))
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.all(6.0),
+                                                        EdgeInsets.all(6.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -557,8 +561,8 @@ class _AICOMMUNICATIONLandingWidgetState
                           ),
                         ),
                       ),
-                      if (FFAppState().flowiseMessages.isNotEmpty)
-                        SizedBox(
+                      if (FFAppState().flowiseMessages.length > 0)
+                        Container(
                           width: double.infinity,
                           child: Stack(
                             children: [
@@ -579,12 +583,12 @@ class _AICOMMUNICATIONLandingWidgetState
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         AnimatedContainer(
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.easeInOut,
-                                          constraints: const BoxConstraints(
+                                          constraints: BoxConstraints(
                                             maxWidth: 600.0,
                                           ),
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             color: Color(0xFFEEEEEE),
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(8.0),
@@ -594,10 +598,10 @@ class _AICOMMUNICATIONLandingWidgetState
                                             ),
                                           ),
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 1.0),
+                                              AlignmentDirectional(-1.0, 1.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 9.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
@@ -607,7 +611,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.all(4.0),
+                                                  padding: EdgeInsets.all(4.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.min,
@@ -646,7 +650,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                                   children: [
                                                                     Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               6.0),
                                                                       child:
                                                                           MarkdownBody(
@@ -690,7 +694,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                 phone: false,
                               ))
                                 Padding(
-                                  padding: const EdgeInsets.all(6.0),
+                                  padding: EdgeInsets.all(6.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
@@ -704,13 +708,13 @@ class _AICOMMUNICATIONLandingWidgetState
                             ],
                           ),
                         ),
-                      if ((FFAppState().flowiseMessages.isNotEmpty) &&
+                      if ((FFAppState().flowiseMessages.length > 0) &&
                           responsiveVisibility(
                             context: context,
                             desktop: false,
                           ))
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -720,9 +724,9 @@ class _AICOMMUNICATIONLandingWidgetState
                                 phone: false,
                               ))
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(6.0),
+                                    padding: EdgeInsets.all(6.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.asset(
@@ -736,17 +740,17 @@ class _AICOMMUNICATIONLandingWidgetState
                                 ),
                               Expanded(
                                 child: Container(
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 600.0,
                                     maxHeight: 600.0,
                                   ),
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: MarkdownBody(
                                           data: valueOrDefault<String>(
                                             FFAppState()
@@ -768,13 +772,13 @@ class _AICOMMUNICATIONLandingWidgetState
                           ),
                         ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             if (_model.questionReady == false)
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -804,7 +808,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                 size: 24.0,
                                               ).animateOnPageLoad(animationsMap[
                                                   'iconOnPageLoadAnimation']!),
-                                            ].divide(const SizedBox(width: 9.0)),
+                                            ].divide(SizedBox(width: 9.0)),
                                           ),
                                           Container(
                                             width: 100.0,
@@ -814,14 +818,14 @@ class _AICOMMUNICATIONLandingWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                             ),
-                                            child: const Row(
+                                            child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [],
                                             ),
                                           ),
-                                          const Divider(
+                                          Divider(
                                             thickness: 1.0,
                                             color: Color(0xFF505050),
                                           ),
@@ -834,8 +838,8 @@ class _AICOMMUNICATIONLandingWidgetState
                                       borderRadius: 5.0,
                                       borderWidth: 1.0,
                                       buttonSize: 55.0,
-                                      fillColor: const Color(0xFFCDCDCD),
-                                      icon: const Icon(
+                                      fillColor: Color(0xFFCDCDCD),
+                                      icon: Icon(
                                         Icons.send_sharp,
                                         color: Color(0xFFA6A6A6),
                                         size: 24.0,
@@ -850,13 +854,13 @@ class _AICOMMUNICATIONLandingWidgetState
                               ),
                             if (_model.questionReady == true)
                               Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 8.0),
                                         child: TextFormField(
                                           controller:
@@ -897,7 +901,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                   BorderRadius.circular(8.0),
                                             ),
                                             focusedBorder: UnderlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFF464646),
                                                 width: 2.0,
                                               ),
@@ -926,7 +930,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                                   BorderRadius.circular(8.0),
                                             ),
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -982,6 +986,8 @@ class _AICOMMUNICATIONLandingWidgetState
                                           ),
                                         );
                                         if (FFAppState().nonLoggedInSessionId ==
+                                                null ||
+                                            FFAppState().nonLoggedInSessionId ==
                                                 '') {}
                                         // flowise chat document
                                         logFirebaseEvent(
@@ -1006,7 +1012,9 @@ class _AICOMMUNICATIONLandingWidgetState
                                                 'no thread id was passed',
                                               ),
                                             ));
-                                        if (!(FFAppState().activeThread != '')) {
+                                        if (!(FFAppState().activeThread !=
+                                                null &&
+                                            FFAppState().activeThread != '')) {
                                           // generate active thread id
                                           logFirebaseEvent(
                                               'IconButton_generateactivethreadid');
@@ -1033,7 +1041,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
                                         logFirebaseEvent(
@@ -1041,33 +1049,33 @@ class _AICOMMUNICATIONLandingWidgetState
                                         await actions.callFlowiseStreamingChat(
                                           _model.askTheQuestionController.text,
                                           _model.companyQueryByCode?.first
-                                              .userGatherDataPrompt,
+                                              ?.userGatherDataPrompt,
                                           '1',
                                           FFAppState().nonLoggedInSessionId,
                                           FFAppState().nonLoggedInSessionId,
                                           valueOrDefault<String>(
                                             _model.companyQueryByCode?.first
-                                                .supabaseProjUrl,
+                                                ?.supabaseProjUrl,
                                             'https://efdipbnxemvehcjbxekx.supabase.co',
                                           ),
                                           valueOrDefault<String>(
                                             _model.companyQueryByCode?.first
-                                                .tableName,
+                                                ?.tableName,
                                             'table_name',
                                           ),
                                           valueOrDefault<String>(
                                             _model.companyQueryByCode?.first
-                                                .supabaseApiKey,
+                                                ?.supabaseApiKey,
                                             'apikey',
                                           ),
                                           valueOrDefault<String>(
                                             _model.companyQueryByCode?.first
-                                                .queryName,
+                                                ?.queryName,
                                             'queryName',
                                           ),
                                           valueOrDefault<bool>(
                                             _model.companyQueryByCode?.first
-                                                .isLearnCards,
+                                                ?.isLearnCards,
                                             false,
                                           ),
                                           () async {
@@ -1079,7 +1087,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                               _model.columnChatsScrollable!
                                                   .position.maxScrollExtent,
                                               duration:
-                                                  const Duration(milliseconds: 100),
+                                                  Duration(milliseconds: 100),
                                               curve: Curves.ease,
                                             );
                                             // scroll streaming
@@ -1091,7 +1099,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                               _model.columnMarkdownScrollable!
                                                   .position.maxScrollExtent,
                                               duration:
-                                                  const Duration(milliseconds: 100),
+                                                  Duration(milliseconds: 100),
                                               curve: Curves.ease,
                                             );
                                           },
@@ -1104,7 +1112,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                               _model.columnChatsScrollable!
                                                   .position.maxScrollExtent,
                                               duration:
-                                                  const Duration(milliseconds: 100),
+                                                  Duration(milliseconds: 100),
                                               curve: Curves.ease,
                                             );
                                             // scroll streaming
@@ -1116,7 +1124,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                               _model.columnMarkdownScrollable!
                                                   .position.maxScrollExtent,
                                               duration:
-                                                  const Duration(milliseconds: 100),
+                                                  Duration(milliseconds: 100),
                                               curve: Curves.ease,
                                             );
                                           },
@@ -1173,7 +1181,7 @@ class _AICOMMUNICATIONLandingWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
 
@@ -1195,7 +1203,7 @@ class _AICOMMUNICATIONLandingWidgetState
                 false,
               ))
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                   child: PinCodeTextField(
                     autoDisposeControllers: false,
                     appContext: context,
@@ -1215,7 +1223,7 @@ class _AICOMMUNICATIONLandingWidgetState
                       fieldHeight: 44.0,
                       fieldWidth: 44.0,
                       borderWidth: 2.0,
-                      borderRadius: const BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(12.0),
                         bottomRight: Radius.circular(12.0),
                         topLeft: Radius.circular(12.0),
@@ -1242,20 +1250,20 @@ class _AICOMMUNICATIONLandingWidgetState
                                   e.companyCode ==
                                   _model.pinCodeController!.text)
                               .toList()
-                              .first
-                              .companyCode) {
+                              ?.first
+                              ?.companyCode) {
                         logFirebaseEvent('PinCode_alert_dialog');
                         await showDialog(
                           context: context,
                           builder: (alertDialogContext) {
                             return WebViewAware(
                               child: AlertDialog(
-                                title: const Text('ok'),
+                                title: Text('ok'),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: const Text('Ok'),
+                                    child: Text('Ok'),
                                   ),
                                 ],
                               ),
@@ -1274,12 +1282,12 @@ class _AICOMMUNICATIONLandingWidgetState
                           builder: (alertDialogContext) {
                             return WebViewAware(
                               child: AlertDialog(
-                                title: const Text('no match found'),
+                                title: Text('no match found'),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: const Text('Ok'),
+                                    child: Text('Ok'),
                                   ),
                                 ],
                               ),
@@ -1296,13 +1304,13 @@ class _AICOMMUNICATIONLandingWidgetState
                           builder: (alertDialogContext) {
                             return WebViewAware(
                               child: AlertDialog(
-                                title: const Text('Reverted back to default '),
-                                content: const Text('LearnCards'),
+                                title: Text('Reverted back to default '),
+                                content: Text('LearnCards'),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: const Text('Ok'),
+                                    child: Text('Ok'),
                                   ),
                                 ],
                               ),
@@ -1316,7 +1324,7 @@ class _AICOMMUNICATIONLandingWidgetState
                       context.goNamed(
                         'landing',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
+                          kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),

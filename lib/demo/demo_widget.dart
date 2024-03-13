@@ -1,3 +1,4 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/d_e_b_u_g_panel_widget.dart';
@@ -7,6 +8,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,13 +52,15 @@ class _DemoWidgetState extends State<DemoWidget> {
           ),
         ),
       );
-      if (FFAppState().companySecretCode == '') {
+      if (FFAppState().companySecretCode == null ||
+          FFAppState().companySecretCode == '') {
         logFirebaseEvent('demo_update_app_state');
         setState(() {
           FFAppState().companySecretCode = '22335555';
         });
       }
-      if (!(FFAppState().nonLoggedInSessionId != '')) {
+      if (!(FFAppState().nonLoggedInSessionId != null &&
+          FFAppState().nonLoggedInSessionId != '')) {
         logFirebaseEvent('demo_backend_call');
 
         var sessionsRecordReference = SessionsRecord.collection.doc();
@@ -80,7 +85,8 @@ class _DemoWidgetState extends State<DemoWidget> {
               _model.sessionsCreated!.reference.id;
         });
       }
-      if (!(FFAppState().activeThread != '')) {
+      if (!(FFAppState().activeThread != null &&
+          FFAppState().activeThread != '')) {
         logFirebaseEvent('demo_update_app_state');
         setState(() {
           FFAppState().activeThread = random_data.randomString(
@@ -111,7 +117,7 @@ class _DemoWidgetState extends State<DemoWidget> {
             : FFAppState().nonLoggedInSessionId,
         role: 'ai',
         text: valueOrDefault<String>(
-          _model.companyQueryOnPageLoad?.first.welcomeMessage,
+          _model.companyQueryOnPageLoad?.first?.welcomeMessage,
           'Welcome',
         ),
         createdTime: getCurrentTimestamp,
@@ -131,7 +137,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                 : FFAppState().nonLoggedInSessionId,
             role: 'ai',
             text: valueOrDefault<String>(
-              _model.companyQueryOnPageLoad?.first.welcomeMessage,
+              _model.companyQueryOnPageLoad?.first?.welcomeMessage,
               'Welcome',
             ),
             createdTime: getCurrentTimestamp,
@@ -223,9 +229,9 @@ class _DemoWidgetState extends State<DemoWidget> {
                       ),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -253,7 +259,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 150.0,
@@ -273,7 +279,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -320,14 +326,14 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                             children: [
                                                               Container(
                                                                 constraints:
-                                                                    const BoxConstraints(
+                                                                    BoxConstraints(
                                                                   maxWidth:
                                                                       400.0,
                                                                 ),
                                                                 decoration:
-                                                                    const BoxDecoration(),
+                                                                    BoxDecoration(),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           15.0,
                                                                           0.0,
@@ -375,7 +381,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                       borderWidth:
                                                                           2.0,
                                                                       borderRadius:
-                                                                          const BorderRadius
+                                                                          BorderRadius
                                                                               .only(
                                                                         bottomLeft:
                                                                             Radius.circular(12.0),
@@ -427,8 +433,8 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                               .allCompanies
                                                                               ?.where((e) => e.companyCode == _model.pinCodeController!.text)
                                                                               .toList()
-                                                                              .first
-                                                                              .companyCode) {
+                                                                              ?.first
+                                                                              ?.companyCode) {
                                                                         logFirebaseEvent(
                                                                             'PinCode_alert_dialog');
                                                                         await showDialog(
@@ -438,11 +444,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                               (alertDialogContext) {
                                                                             return WebViewAware(
                                                                               child: AlertDialog(
-                                                                                title: const Text('ok'),
+                                                                                title: Text('ok'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -467,11 +473,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                               (alertDialogContext) {
                                                                             return WebViewAware(
                                                                               child: AlertDialog(
-                                                                                title: const Text('no match found'),
+                                                                                title: Text('no match found'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -494,12 +500,12 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                               (alertDialogContext) {
                                                                             return WebViewAware(
                                                                               child: AlertDialog(
-                                                                                title: const Text('Reverted back to default '),
-                                                                                content: const Text('LearnCards'),
+                                                                                title: Text('Reverted back to default '),
+                                                                                content: Text('LearnCards'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -517,7 +523,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                         extra: <String,
                                                                             dynamic>{
                                                                           kTransitionInfoKey:
-                                                                              const TransitionInfo(
+                                                                              TransitionInfo(
                                                                             hasTransition:
                                                                                 true,
                                                                             transitionType:
@@ -573,7 +579,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 0.0),
                                               child: FFButtonWidget(
@@ -587,7 +593,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Library-fixed',
                                                     extra: <String, dynamic>{
                                                       kTransitionInfoKey:
-                                                          const TransitionInfo(
+                                                          TransitionInfo(
                                                         hasTransition: true,
                                                         transitionType:
                                                             PageTransitionType
@@ -602,11 +608,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Launch : ${containerCompaniesRecordList.where((e) => e.companyCode == FFAppState().companySecretCode).toList().first.companyname}',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -632,7 +638,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -643,7 +649,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 0.0),
                                               child: FFButtonWidget(
@@ -657,7 +663,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Library-fixed',
                                                     extra: <String, dynamic>{
                                                       kTransitionInfoKey:
-                                                          const TransitionInfo(
+                                                          TransitionInfo(
                                                         hasTransition: true,
                                                         transitionType:
                                                             PageTransitionType
@@ -672,11 +678,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Launch : ${containerCompaniesRecordList.where((e) => e.companyCode == FFAppState().companySecretCode).toList().first.companyname}',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -702,7 +708,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -713,7 +719,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 0.0),
                                               child: FFButtonWidget(
@@ -738,7 +744,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                           containerCompaniesRecordList
                                                               .first,
                                                       kTransitionInfoKey:
-                                                          const TransitionInfo(
+                                                          TransitionInfo(
                                                         hasTransition: true,
                                                         transitionType:
                                                             PageTransitionType
@@ -753,11 +759,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Launch : ${containerCompaniesRecordList.where((e) => e.companyCode == FFAppState().companySecretCode).toList().first.companyname}',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -783,7 +789,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -798,7 +804,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                               false,
                                             ))
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 15.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -820,11 +826,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -850,7 +856,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -864,15 +870,15 @@ class _DemoWidgetState extends State<DemoWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, -1.0),
+                                              AlignmentDirectional(0.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 15.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 600.0,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: SingleChildScrollView(
                                                 child: Column(
                                                   mainAxisSize:
@@ -926,7 +932,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                         wrapWithModel(
                                           model: _model.dEBUGPanelModel,
                                           updateCallback: () => setState(() {}),
-                                          child: const DEBUGPanelWidget(),
+                                          child: DEBUGPanelWidget(),
                                         ),
                                       ],
                                     ),

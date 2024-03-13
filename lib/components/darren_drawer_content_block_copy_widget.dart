@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/edit_text_block_widget.dart';
 import '/components/image_gallery_widget.dart';
@@ -7,10 +8,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'darren_drawer_content_block_copy_model.dart';
 export 'darren_drawer_content_block_copy_model.dart';
 
@@ -113,7 +116,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 24.0, 16.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -132,18 +135,18 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                                       .secondaryBackground,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Container(
                                                 width: 32.0,
                                                 height: 32.0,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   color: Color(0xFF1AADF9),
                                                   shape: BoxShape.circle,
                                                 ),
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Text(
                                                   '1',
@@ -170,7 +173,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Label',
@@ -185,7 +188,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 8.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.blockTitleController ??=
@@ -195,7 +198,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                     focusNode: _model.blockTitleFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.blockTitleController',
-                                      const Duration(milliseconds: 2000),
+                                      Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
                                     autofocus: true,
@@ -216,7 +219,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0xFF1AADF9),
                                           width: 2.0,
                                         ),
@@ -252,7 +255,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 24.0, 16.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -270,19 +273,19 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                               .secondaryBackground,
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: 32.0,
                                             height: 32.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFF1AADF9),
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '2',
                                               style:
@@ -307,7 +310,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -337,7 +340,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                   ),
                                 ],
                               ),
@@ -347,7 +350,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller:
@@ -356,7 +359,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                         _model.blockTypeValue ??=
                                             columnTileBlocksRecord?.blockType,
                                       ),
-                                      options: const [
+                                      options: [
                                         'Text',
                                         'Image',
                                         'Video',
@@ -380,10 +383,10 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       elevation: 2.0,
-                                      borderColor: const Color(0xFF1AADF9),
+                                      borderColor: Color(0xFF1AADF9),
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isSearchable: false,
@@ -397,7 +400,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
@@ -459,7 +462,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                                       .secondaryBackground,
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 'Audio Coming Soon...',
@@ -483,7 +486,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                                       .secondaryBackground,
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 'Links Coming Soon...',
@@ -507,7 +510,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                                       .secondaryBackground,
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 'Files Coming Soon...',
@@ -530,7 +533,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                                 size: 48.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 24.0, 0.0, 0.0),
                                                 child: InkWell(
@@ -583,7 +586,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                       color: FlutterFlowTheme.of(context).accent3,
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           16.0, 24.0, 16.0, 24.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -601,9 +604,9 @@ class _DarrenDrawerContentBlockCopyWidgetState
                             text: 'Cancel',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -643,9 +646,9 @@ class _DarrenDrawerContentBlockCopyWidgetState
                             text: 'DELETE',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).error,
                               textStyle: FlutterFlowTheme.of(context)
@@ -660,7 +663,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 0.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -770,11 +773,11 @@ class _DarrenDrawerContentBlockCopyWidgetState
                             text: 'Save',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: const Color(0xFF1AADF9),
+                              color: Color(0xFF1AADF9),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -787,7 +790,7 @@ class _DarrenDrawerContentBlockCopyWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 0.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -814,8 +817,8 @@ class _DarrenDrawerContentBlockCopyWidgetState
               text: 'Select a Block',
               options: FFButtonOptions(
                 height: 40.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
