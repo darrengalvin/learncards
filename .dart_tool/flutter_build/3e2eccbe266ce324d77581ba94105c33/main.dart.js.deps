@@ -208,12 +208,14 @@ file:///home/runner/work/learncards/learncards/lib/backend/supabase/database/tab
 file:///home/runner/work/learncards/learncards/lib/backend/supabase/database/tables/watermill_poison_queue.dart
 file:///home/runner/work/learncards/learncards/lib/backend/supabase/storage/storage.dart
 file:///home/runner/work/learncards/learncards/lib/backend/supabase/supabase.dart
+file:///home/runner/work/learncards/learncards/lib/chat_page/chat_page_model.dart
+file:///home/runner/work/learncards/learncards/lib/chat_page/chat_page_widget.dart
 file:///home/runner/work/learncards/learncards/lib/cloudinary_upload_test/cloudinary_upload_test_model.dart
 file:///home/runner/work/learncards/learncards/lib/cloudinary_upload_test/cloudinary_upload_test_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_landing_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_landing_widget.dart
-file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_new_mentor_model.dart
-file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_new_mentor_widget.dart
+file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_copy_model.dart
+file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_copy_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_my_mentor_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_my_mentor_widget.dart
