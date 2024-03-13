@@ -327,10 +327,12 @@ class _AICOMMUNICATIONOnPageWidgetState
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: Image.network(
-                                  valueOrDefault<String>(
-                                    widget.companiesDoc?.backgroundImage,
-                                    'https://res.cloudinary.com/dplpckpbm/image/upload/v1703535226/learningPathwaysBright_b3strj.webp',
-                                  ),
+                                  containerMyTeamRecord != null
+                                      ? containerMyTeamRecord.image
+                                      : valueOrDefault<String>(
+                                          widget.companiesDoc?.backgroundImage,
+                                          'https://res.cloudinary.com/dplpckpbm/image/upload/v1703535226/learningPathwaysBright_b3strj.webp',
+                                        ),
                                 ).image,
                               ),
                               borderRadius: BorderRadius.circular(17.0),
@@ -1363,7 +1365,14 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       ],
                                     ),
                                   ),
-                                if (FFAppState().flowiseMessages.isNotEmpty)
+                                if ((FFAppState().flowiseMessages.isNotEmpty) &&
+                                    responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                      tablet: false,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
                                   Align(
                                     alignment: const AlignmentDirectional(0.0, 1.0),
                                     child: Row(
@@ -1531,7 +1540,11 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     decoration: InputDecoration(
                                                       labelText: valueOrDefault<
                                                           String>(
-                                                        'Chat with ${containerMyTeamRecord?.memberName}',
+                                                        'Chat with ${valueOrDefault<String>(
+                                                          containerMyTeamRecord
+                                                              ?.memberName,
+                                                          'us',
+                                                        )}',
                                                         '...',
                                                       ),
                                                       labelStyle:
@@ -2224,9 +2237,11 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                   'newSession')) {
                                                             return 'This weeks topic is : ${widget.companiesDoc?.companyAiData.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
                                                           } else {
-                                                            return widget
-                                                                .companiesDoc
-                                                                ?.youAreMyCoachPrompt;
+                                                            return 'You are ${containerMyTeamRecord?.memberName} you are the users  ${containerMyTeamRecord?.role} your summary is ${containerMyTeamRecord?.memberSummary}your persona is ${containerMyTeamRecord?.persona} Words and phrases you use in your vocalabary are ${containerMyTeamRecord?.buzzWordsPhrases.take(15).toList().first}: ${widget.companiesDoc?.youAreMyCoachPrompt}ai instruction not to be shared with user:sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
+                                                              widget.sessionsDoc
+                                                                  ?.aiQuestionAsked,
+                                                              'not set',
+                                                            )}';
                                                           }
                                                         }(),
                                                         'my prompt is ',
