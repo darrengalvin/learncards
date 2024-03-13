@@ -1196,6 +1196,10 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                         );
                                                                                       },
                                                                                     );
+                                                                                    logFirebaseEvent('Column_update_app_state');
+                                                                                    setState(() {
+                                                                                      FFAppState().selectedThreadId = myTeamItem.positionId == 1 ? _model.sessionQueryOnPageLoad!.defaultThreadId : '${myTeamItem.reference.id}+${_model.checkingMentorChat?.reference.id}';
+                                                                                    });
                                                                                   } else {
                                                                                     logFirebaseEvent('Column_update_app_state');
                                                                                     setState(() {

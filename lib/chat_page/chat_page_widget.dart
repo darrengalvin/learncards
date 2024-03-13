@@ -163,6 +163,24 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                             );
                                           },
                                         );
+                                        logFirebaseEvent(
+                                            'Column_update_app_state');
+                                        setState(() {
+                                          FFAppState()
+                                              .selectedThreadId = teamMembersItem
+                                                      .positionId ==
+                                                  1
+                                              ? valueOrDefault<String>(
+                                                  widget.sessionsDoc
+                                                      ?.defaultThreadId,
+                                                  '-',
+                                                )
+                                              : '${teamMembersItem.reference.id}+${valueOrDefault<String>(
+                                                  widget.sessionsDoc?.reference
+                                                      .id,
+                                                  '0',
+                                                )}';
+                                        });
                                       } else {
                                         logFirebaseEvent(
                                             'Column_update_app_state');
