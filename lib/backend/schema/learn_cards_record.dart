@@ -105,6 +105,16 @@ class LearnCardsRecord extends FirestoreRecord {
   List<String> get mentorMessages => _mentorMessages ?? const [];
   bool hasMentorMessages() => _mentorMessages != null;
 
+  // "usersId" field.
+  List<String>? _usersId;
+  List<String> get usersId => _usersId ?? const [];
+  bool hasUsersId() => _usersId != null;
+
+  // "sessionsActiveId" field.
+  List<String>? _sessionsActiveId;
+  List<String> get sessionsActiveId => _sessionsActiveId ?? const [];
+  bool hasSessionsActiveId() => _sessionsActiveId != null;
+
   void _initializeFields() {
     _learnCardsRemaining = castToType<int>(snapshotData['learnCardsRemaining']);
     _sessionId = snapshotData['sessionId'] as String?;
@@ -124,6 +134,8 @@ class LearnCardsRecord extends FirestoreRecord {
     _description = snapshotData['description'] as String?;
     _isWeeklyTopic = snapshotData['isWeeklyTopic'] as bool?;
     _mentorMessages = getDataList(snapshotData['mentorMessages']);
+    _usersId = getDataList(snapshotData['usersId']);
+    _sessionsActiveId = getDataList(snapshotData['sessionsActiveId']);
   }
 
   static CollectionReference get collection =>
@@ -227,7 +239,9 @@ class LearnCardsRecordDocumentEquality implements Equality<LearnCardsRecord> {
         e1?.companyDocId == e2?.companyDocId &&
         e1?.description == e2?.description &&
         e1?.isWeeklyTopic == e2?.isWeeklyTopic &&
-        listEquality.equals(e1?.mentorMessages, e2?.mentorMessages);
+        listEquality.equals(e1?.mentorMessages, e2?.mentorMessages) &&
+        listEquality.equals(e1?.usersId, e2?.usersId) &&
+        listEquality.equals(e1?.sessionsActiveId, e2?.sessionsActiveId);
   }
 
   @override
@@ -249,7 +263,9 @@ class LearnCardsRecordDocumentEquality implements Equality<LearnCardsRecord> {
         e?.companyDocId,
         e?.description,
         e?.isWeeklyTopic,
-        e?.mentorMessages
+        e?.mentorMessages,
+        e?.usersId,
+        e?.sessionsActiveId
       ]);
 
   @override

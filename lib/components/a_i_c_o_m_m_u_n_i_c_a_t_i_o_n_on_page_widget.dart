@@ -738,6 +738,16 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   'noidset',
                                                 ),
                                               )
+                                              .where(
+                                                'companyDocId',
+                                                isEqualTo: FFAppState()
+                                                    .selectedCompanyId,
+                                              )
+                                              .where(
+                                                'session_id',
+                                                isEqualTo: FFAppState()
+                                                    .nonLoggedInSessionId,
+                                              )
                                               .orderBy('created_time'),
                                     ),
                                     builder: (context, snapshot) {
@@ -1522,7 +1532,15 @@ class _AICOMMUNICATIONOnPageWidgetState
                                           FlutterFlowTheme.of(context).primary,
                                     ),
                                     child: Visibility(
-                                      visible: _model.questionReady == true,
+                                      visible: valueOrDefault<bool>(
+                                            _model.questionReady == true,
+                                            true,
+                                          ) &&
+                                          valueOrDefault<bool>(
+                                            widget.sessionsDoc?.showReply !=
+                                                false,
+                                            true,
+                                          ),
                                       child: Padding(
                                         padding: const EdgeInsets.all(12.0),
                                         child: Row(
@@ -2174,17 +2192,12 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       .text,
                                                   valueOrDefault<String>(
                                                     () {
-                                                      if ((widget.sessionsDoc
-                                                                      ?.currentNavJourney ==
-                                                                  null ||
-                                                              widget.sessionsDoc
-                                                                      ?.currentNavJourney ==
-                                                                  '') &&
-                                                          ((widget.isLearnCard !=
-                                                                  true) ||
-                                                              (FFAppState()
-                                                                      .IsLearnCard !=
-                                                                  true))) {
+                                                      if (_model.sessionForFlowise
+                                                                  ?.currentNavJourney ==
+                                                              null ||
+                                                          _model.sessionForFlowise
+                                                                  ?.currentNavJourney ==
+                                                              '') {
                                                         return 'This weeks focus topic is${widget.companiesDoc?.userGatherDataPrompt}';
                                                       } else if ((widget
                                                                   .isLearnCard ==
@@ -2195,19 +2208,41 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         return widget
                                                             .companiesDoc
                                                             ?.continueLearnCardPrompt;
-                                                      } else if ((widget
-                                                                  .sessionsDoc
+                                                      } else if ((_model
+                                                                  .sessionForFlowise
                                                                   ?.currentNavJourney ==
                                                               'newUser') ||
-                                                          (widget.sessionsDoc
+                                                          (_model.sessionForFlowise
                                                                   ?.currentNavJourney ==
                                                               'newSession')) {
                                                         return 'This weeks topic is : ${widget.companiesDoc?.companyAiData.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
                                                       } else {
-                                                        return 'You are ${widget.teamDoc?.memberName} you are the users  ${widget.teamDoc?.role} your summary is ${widget.teamDoc?.memberSummary}your persona is ${widget.teamDoc?.persona} Words and phrases you use in your vocalabary are ${widget.teamDoc?.buzzWordsPhrases.take(15).toList().first}: ${widget.companiesDoc?.youAreMyCoachPrompt}ai instruction not to be shared with user:sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
+                                                        return 'You are ${widget.teamDoc?.memberName} you are the users  ${widget.teamDoc?.role} your summary is ${widget.teamDoc?.memberSummary}your persona is ${widget.teamDoc?.persona} Words and phrases you use in your vocalabary are ${widget.teamDoc?.buzzWordsPhrases.take(15).toList().first}: ${widget.companiesDoc?.youAreMyCoachPrompt}ai instruction not to be shared with user: This app has weekly focus topics and THIS WEEK is ${widget.companiesDoc?.companyAiData.thisWeeksTopic}  the user is currently looking at the SUBJECT  ${valueOrDefault<String>(
+                                                          _model
+                                                              .sessionForFlowise
+                                                              ?.activeDailyTopic,
+                                                          'NOT SET',
+                                                        )} The LearnCard activity that I am working on is  ${valueOrDefault<String>(
+                                                          _model
+                                                              .sessionForFlowise
+                                                              ?.activeLearnCard,
+                                                          'LEARN CARD NOT SET ',
+                                                        )}I would like you to help me navigate this. here is some information about the activity, the user already has this information so you should help them work through it saking one step at a time in a conversational style.  ${widget.learnCardDoc?.description} sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
                                                           widget.sessionsDoc
                                                               ?.aiQuestionAsked,
                                                           'not set',
+                                                        )}ask me do I want to discuss something about todays subject  note for ai:  it is ok if the the user is allowed to discusss things outside of the weekly topic providing they are related to the company  ${valueOrDefault<String>(
+                                                          widget
+                                                              .companiesDoc
+                                                              ?.companyAiData
+                                                              .companySummary,
+                                                          'summary',
+                                                        )} and industry,${valueOrDefault<String>(
+                                                          widget
+                                                              .companiesDoc
+                                                              ?.companyAiData
+                                                              .companyIndustry,
+                                                          'summary',
                                                         )}';
                                                       }
                                                     }(),

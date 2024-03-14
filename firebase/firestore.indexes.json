@@ -263,6 +263,28 @@
       ]
     },
     {
+      "collectionGroup": "flowiseChats",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "thread_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "companyDocId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "session_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "tileblocks",
       "queryScope": "COLLECTION",
       "fields": [

@@ -94,6 +94,35 @@ class _LearningCardWidgetState extends State<LearningCardWidget> {
                     FFAppState().middlePane = 'learnCardsContent';
                     FFAppState().middleColumnShow = true;
                   });
+                  logFirebaseEvent('Column_backend_call');
+
+                  await widget.learnCard!.reference.update({
+                    ...mapToFirestore(
+                      {
+                        'usersId': FieldValue.arrayUnion([
+                          valueOrDefault<String>(
+                            widget.sessionsDoc?.username,
+                            'email missing',
+                          )
+                        ]),
+                        'sessionsActiveId': FieldValue.arrayUnion([
+                          valueOrDefault<String>(
+                            widget.sessionsDoc?.reference.id,
+                            'sessionid',
+                          )
+                        ]),
+                      },
+                    ),
+                  });
+                  logFirebaseEvent('Column_backend_call');
+
+                  await widget.sessionsDoc!.reference
+                      .update(createSessionsRecordData(
+                    activeLearnCard: valueOrDefault<String>(
+                      widget.learnCard?.title,
+                      'NOTSET',
+                    ),
+                  ));
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.max,

@@ -530,6 +530,11 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                               singleRecord: true,
                                                                                             ).then((s) => s.firstOrNull);
                                                                                             shouldSetState = true;
+                                                                                            logFirebaseEvent('tile_backend_call');
+
+                                                                                            await widget.sessionDoc!.reference.update(createSessionsRecordData(
+                                                                                              activeDailyTopic: tileTier2Item.title,
+                                                                                            ));
                                                                                             logFirebaseEvent('tile_update_app_state');
                                                                                             _model.updatePage(() {
                                                                                               FFAppState().viewTileContentId = navTile1DesktopItem.reference.id;

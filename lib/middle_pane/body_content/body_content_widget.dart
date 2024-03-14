@@ -692,15 +692,54 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 6.0),
-                              child: wrapWithModel(
-                                model: _model.learningCardModel2,
-                                updateCallback: () => setState(() {}),
-                                updateOnChange: true,
-                                child: LearningCardWidget(
-                                  learnCard: containerLearnCardsRecord,
-                                  companyDoc: widget.companyDoc!,
-                                  sessionsDoc: widget.sessionId!,
-                                  showLearnCard: FFAppState().showLearnCard,
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  logFirebaseEvent(
+                                      'BODY_CONTENT_Container_zt7ril1p_ON_TAP');
+                                  logFirebaseEvent('learningCard_backend_call');
+
+                                  await containerLearnCardsRecord.reference
+                                      .update({
+                                    ...mapToFirestore(
+                                      {
+                                        'usersId': FieldValue.arrayUnion([
+                                          valueOrDefault<String>(
+                                            widget.sessionId?.userEmail,
+                                            'userIdNotSet',
+                                          )
+                                        ]),
+                                        'sessionsActiveId':
+                                            FieldValue.arrayUnion([
+                                          valueOrDefault<String>(
+                                            widget.sessionId?.reference.id,
+                                            'userIdNotSet',
+                                          )
+                                        ]),
+                                      },
+                                    ),
+                                  });
+                                  logFirebaseEvent('learningCard_backend_call');
+
+                                  await widget.sessionId!.reference
+                                      .update(createSessionsRecordData(
+                                    activeLearnCard:
+                                        containerLearnCardsRecord.title,
+                                  ));
+                                },
+                                child: wrapWithModel(
+                                  model: _model.learningCardModel2,
+                                  updateCallback: () => setState(() {}),
+                                  updateOnChange: true,
+                                  child: LearningCardWidget(
+                                    learnCard: containerLearnCardsRecord,
+                                    companyDoc: widget.companyDoc!,
+                                    sessionsDoc: widget.sessionId!,
+                                    showLearnCard: FFAppState().showLearnCard,
+                                  ),
                                 ),
                               ),
                             ),

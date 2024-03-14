@@ -91,27 +91,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      logFirebaseEvent('Library-fixed_alert_dialog');
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              title: const Text('Company Docs Found'),
-              content: Text(valueOrDefault<String>(
-                _model.companyByUrl?.companyname,
-                'notFound',
-              )),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
       if (_model.companyByUrl?.landingUrls
               .contains(FFAppState().selectedCompanyUrl) ==
           true) {
@@ -548,14 +527,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
               _model.companyByUrl,
               ParamType.Document,
             ),
-            'sessionsDoc': serializeParam(
-              _model.sessionQueryOnPageLoad,
-              ParamType.Document,
-            ),
           }.withoutNulls,
           extra: <String, dynamic>{
             'companiesDoc': _model.companyByUrl,
-            'sessionsDoc': _model.sessionQueryOnPageLoad,
           },
         );
       } else {
@@ -580,14 +554,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                 _model.companyByUrl,
                 ParamType.Document,
               ),
-              'sessionsDoc': serializeParam(
-                _model.sessionQueryOnPageLoad,
-                ParamType.Document,
-              ),
             }.withoutNulls,
             extra: <String, dynamic>{
               'companiesDoc': _model.companyByUrl,
-              'sessionsDoc': _model.sessionQueryOnPageLoad,
             },
           );
         }
@@ -1227,25 +1196,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                     setState(() {
                                                                                       FFAppState().selectedTeam = myTeamItem.reference.id;
                                                                                     });
-                                                                                    logFirebaseEvent('Column_navigate_to');
-
-                                                                                    context.pushNamed(
-                                                                                      'chatPage',
-                                                                                      queryParameters: {
-                                                                                        'companiesDoc': serializeParam(
-                                                                                          _model.companyByUrl,
-                                                                                          ParamType.Document,
-                                                                                        ),
-                                                                                        'sessionsDoc': serializeParam(
-                                                                                          _model.checkingMentorChat,
-                                                                                          ParamType.Document,
-                                                                                        ),
-                                                                                      }.withoutNulls,
-                                                                                      extra: <String, dynamic>{
-                                                                                        'companiesDoc': _model.companyByUrl,
-                                                                                        'sessionsDoc': _model.checkingMentorChat,
-                                                                                      },
-                                                                                    );
                                                                                   } else {
                                                                                     logFirebaseEvent('Column_update_app_state');
                                                                                     setState(() {
@@ -1267,14 +1217,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                           _model.companyByUrl,
                                                                                           ParamType.Document,
                                                                                         ),
-                                                                                        'sessionsDoc': serializeParam(
-                                                                                          _model.checkingMentorChat,
-                                                                                          ParamType.Document,
-                                                                                        ),
                                                                                       }.withoutNulls,
                                                                                       extra: <String, dynamic>{
                                                                                         'companiesDoc': _model.companyByUrl,
-                                                                                        'sessionsDoc': _model.checkingMentorChat,
                                                                                       },
                                                                                     );
                                                                                   }

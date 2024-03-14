@@ -162,6 +162,21 @@ class SessionsRecord extends FirestoreRecord {
   String get aiQuestionAsked => _aiQuestionAsked ?? '';
   bool hasAiQuestionAsked() => _aiQuestionAsked != null;
 
+  // "showReply" field.
+  bool? _showReply;
+  bool get showReply => _showReply ?? false;
+  bool hasShowReply() => _showReply != null;
+
+  // "activeDailyTopic" field.
+  String? _activeDailyTopic;
+  String get activeDailyTopic => _activeDailyTopic ?? '';
+  bool hasActiveDailyTopic() => _activeDailyTopic != null;
+
+  // "activeLearnCard" field.
+  String? _activeLearnCard;
+  String get activeLearnCard => _activeLearnCard ?? '';
+  bool hasActiveLearnCard() => _activeLearnCard != null;
+
   void _initializeFields() {
     _dateTime = snapshotData['dateTime'] as DateTime?;
     _backgroundImage = snapshotData['backgroundImage'] as String?;
@@ -202,6 +217,9 @@ class SessionsRecord extends FirestoreRecord {
       ThreadsStruct.fromMap,
     );
     _aiQuestionAsked = snapshotData['aiQuestionAsked'] as String?;
+    _showReply = snapshotData['showReply'] as bool?;
+    _activeDailyTopic = snapshotData['activeDailyTopic'] as String?;
+    _activeLearnCard = snapshotData['activeLearnCard'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -263,6 +281,9 @@ Map<String, dynamic> createSessionsRecordData({
   String? companyId,
   DateTime? lastActive,
   String? aiQuestionAsked,
+  bool? showReply,
+  String? activeDailyTopic,
+  String? activeLearnCard,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -290,6 +311,9 @@ Map<String, dynamic> createSessionsRecordData({
       'companyId': companyId,
       'lastActive': lastActive,
       'aiQuestionAsked': aiQuestionAsked,
+      'showReply': showReply,
+      'activeDailyTopic': activeDailyTopic,
+      'activeLearnCard': activeLearnCard,
     }.withoutNulls,
   );
 
@@ -334,7 +358,10 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e1?.companyId == e2?.companyId &&
         e1?.lastActive == e2?.lastActive &&
         listEquality.equals(e1?.threads, e2?.threads) &&
-        e1?.aiQuestionAsked == e2?.aiQuestionAsked;
+        e1?.aiQuestionAsked == e2?.aiQuestionAsked &&
+        e1?.showReply == e2?.showReply &&
+        e1?.activeDailyTopic == e2?.activeDailyTopic &&
+        e1?.activeLearnCard == e2?.activeLearnCard;
   }
 
   @override
@@ -367,7 +394,10 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e?.companyId,
         e?.lastActive,
         e?.threads,
-        e?.aiQuestionAsked
+        e?.aiQuestionAsked,
+        e?.showReply,
+        e?.activeDailyTopic,
+        e?.activeLearnCard
       ]);
 
   @override
