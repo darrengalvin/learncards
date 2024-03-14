@@ -27,7 +27,6 @@ class AICOMMUNICATIONOnPageWidget extends StatefulWidget {
     bool? askingQuestion,
     required this.companiesDoc,
     bool? isLearnCard,
-    this.learnCardDoc,
     this.sessionsDoc,
     required this.teamDoc,
   })  : askingQuestion = askingQuestion ?? false,
@@ -36,7 +35,6 @@ class AICOMMUNICATIONOnPageWidget extends StatefulWidget {
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
   final bool isLearnCard;
-  final LearnCardsRecord? learnCardDoc;
   final SessionsRecord? sessionsDoc;
   final MyTeamRecord? teamDoc;
 
@@ -749,7 +747,48 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     .nonLoggedInSessionId,
                                               )
                                               .orderBy('created_time'),
-                                    ),
+                                    )..listen((snapshot) async {
+                                        List<FlowiseChatsRecord>
+                                            columnChatsScrollableFlowiseChatsRecordList =
+                                            snapshot;
+                                        if (_model.columnChatsScrollablePreviousSnapshot !=
+                                                null &&
+                                            !const ListEquality(
+                                                    FlowiseChatsRecordDocumentEquality())
+                                                .equals(
+                                                    columnChatsScrollableFlowiseChatsRecordList,
+                                                    _model
+                                                        .columnChatsScrollablePreviousSnapshot)) {
+                                          logFirebaseEvent(
+                                              'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_Column-');
+                                          // scroll non streaming column
+                                          logFirebaseEvent(
+                                              'Column-chats-scrollable_scrollnonstreami');
+                                          await _model.columnChatsScrollable
+                                              ?.animateTo(
+                                            _model.columnChatsScrollable!
+                                                .position.maxScrollExtent,
+                                            duration:
+                                                const Duration(milliseconds: 100),
+                                            curve: Curves.ease,
+                                          );
+                                          // scroll streaming
+                                          logFirebaseEvent(
+                                              'Column-chats-scrollable_scrollstreaming');
+                                          await _model.columnMarkdownScrollable
+                                              ?.animateTo(
+                                            _model.columnMarkdownScrollable!
+                                                .position.maxScrollExtent,
+                                            duration:
+                                                const Duration(milliseconds: 100),
+                                            curve: Curves.ease,
+                                          );
+
+                                          setState(() {});
+                                        }
+                                        _model.columnChatsScrollablePreviousSnapshot =
+                                            snapshot;
+                                      }),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -2227,7 +2266,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                               .sessionForFlowise
                                                               ?.activeLearnCard,
                                                           'LEARN CARD NOT SET ',
-                                                        )}I would like you to help me navigate this. here is some information about the activity, the user already has this information so you should help them work through it saking one step at a time in a conversational style.  ${widget.learnCardDoc?.description} sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
+                                                        )}I would like you to help me navigate this. here is some information about the activity, the user already has this information so you should help them work through it saking one step at a time in a conversational style.  FILL LATER sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
                                                           widget.sessionsDoc
                                                               ?.aiQuestionAsked,
                                                           'not set',

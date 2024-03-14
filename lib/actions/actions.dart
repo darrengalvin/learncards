@@ -664,3 +664,5 @@ Future buildingChatMessages(BuildContext context) async {
         userId: FFAppState().nonLoggedInSessionId,
       ));
 }
+
+Future scroll(BuildContext context) async {}

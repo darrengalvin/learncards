@@ -22,6 +22,7 @@ class AICOMMUNICATIONOnPageModel
   FlowiseChatsRecord? initialchatCreated;
   // State field(s) for Column-chats-scrollable widget.
   ScrollController? columnChatsScrollable;
+  List<FlowiseChatsRecord>? columnChatsScrollablePreviousSnapshot;
   // State field(s) for Column-markdown-scrollable widget.
   ScrollController? columnMarkdownScrollable;
   // State field(s) for AskTheQuestion widget.
