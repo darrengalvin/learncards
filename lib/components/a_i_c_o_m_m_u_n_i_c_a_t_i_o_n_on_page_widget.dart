@@ -446,38 +446,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             ],
                                           ),
                                         ),
-                                        Row(
+                                        const Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  borderRadius: 20.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 40.0,
-                                                  icon: Icon(
-                                                    Icons.close_sharp,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    logFirebaseEvent(
-                                                        'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_close_s');
-                                                    logFirebaseEvent(
-                                                        'IconButton_navigate_back');
-                                                    context.pop();
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                          children: [],
                                         ),
                                       ],
                                     ),

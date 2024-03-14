@@ -10,7 +10,12 @@ import 'middle_body_all_model.dart';
 export 'middle_body_all_model.dart';
 
 class MiddleBodyAllWidget extends StatefulWidget {
-  const MiddleBodyAllWidget({super.key});
+  const MiddleBodyAllWidget({
+    super.key,
+    this.companyDocId,
+  });
+
+  final String? companyDocId;
 
   @override
   State<MiddleBodyAllWidget> createState() => _MiddleBodyAllWidgetState();
@@ -72,8 +77,11 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
           child: StreamBuilder<List<CompaniesRecord>>(
             stream: queryCompaniesRecord(
               queryBuilder: (companiesRecord) => companiesRecord.where(
-                'companyCode',
-                isEqualTo: FFAppState().companySecretCode,
+                'companyDocId',
+                isEqualTo: valueOrDefault<String>(
+                  FFAppState().selectedCompanyId,
+                  'notset',
+                ),
               ),
             ),
             builder: (context, snapshot) {

@@ -13,7 +13,7 @@ export 'chat_page_model.dart';
 class ChatPageWidget extends StatefulWidget {
   const ChatPageWidget({
     super.key,
-    required this.companiesDoc,
+    this.companiesDoc,
     this.sessionsDoc,
   });
 

@@ -12,22 +12,51 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> onPageLoadCheckUrl() async {
   String pageUrl;
 
   if (kIsWeb) {
     // Execute web-only logic
-    // Since we can't use dart:html, let's workaround by using Uri.base for web environments
     pageUrl = Uri.base.toString();
   } else {
     // Mobile or other platforms logic
-    // Since there's no direct URL in mobile apps, use a placeholder or relevant action
     pageUrl = "Non-web platform context information";
   }
 
   debugPrint('Current context information: $pageUrl');
-  FFAppState().selectedCompanyUrl = pageUrl;
 
-  // No need for setState(), relying on FlutterFlow's state management
+  final collection = FirebaseFirestore.instance.collection('companies');
+  final querySnapshot = await collection.get();
+  String? foundDocId;
+
+  for (var doc in querySnapshot.docs) {
+    if (pageUrl.contains(doc.id)) {
+      foundDocId = doc.id;
+      break; // Stop the loop once we've found a matching document ID
+    }
+  }
+
+  if (foundDocId != null) {
+    // A document ID from the 'companies' collection is found in the URL
+    FFAppState().selectedCompanyId =
+        foundDocId; // Update the AppState with the found document ID
+    debugPrint("Document ID found and AppState updated: $foundDocId");
+
+    FFAppState().companyDocId =
+        foundDocId; // Update the AppState with the found document ID
+    debugPrint("CompanyDocId found and AppState updated: $foundDocId");
+
+    // Additional debug line to log the updated value of FFAppState
+    debugPrint(
+        "FFAppState.selectedCompanyId after update: ${FFAppState().selectedCompanyId}");
+
+    debugPrint(
+        "FFAppState.companyDocId after update: ${FFAppState().companyDocId}");
+  } else {
+    // No document ID from the 'companies' collection is found in the URL
+    debugPrint(
+        "No document ID from the 'companies' collection is found in the URL");
+  }
 }

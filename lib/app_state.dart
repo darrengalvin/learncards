@@ -344,6 +344,9 @@ class FFAppState extends ChangeNotifier {
       _selectedParentName =
           prefs.getString('ff_selectedParentName') ?? _selectedParentName;
     });
+    _safeInit(() {
+      _companyDocId = prefs.getString('ff_companyDocId') ?? _companyDocId;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -2154,6 +2157,13 @@ class FFAppState extends ChangeNotifier {
   bool get debugMode => _debugMode;
   set debugMode(bool value) {
     _debugMode = value;
+  }
+
+  String _companyDocId = '';
+  String get companyDocId => _companyDocId;
+  set companyDocId(String value) {
+    _companyDocId = value;
+    prefs.setString('ff_companyDocId', value);
   }
 
   final _querynameManager = StreamRequestManager<List<CategoriesRecord>>();

@@ -83,15 +83,35 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       logFirebaseEvent('Library-fixed_firestore_query');
       _model.companyByUrl = await queryCompaniesRecordOnce(
         queryBuilder: (companiesRecord) => companiesRecord.where(
-          'landingUrls',
-          arrayContains: FFAppState().selectedCompanyUrl,
+          'companyDocId',
+          isEqualTo: valueOrDefault<String>(
+            FFAppState().companyDocId,
+            'nocompanydocid',
+          ),
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      logFirebaseEvent('Library-fixed_update_app_state');
-      setState(() {
-        FFAppState().selectedCompanyId = _model.companyByUrl!.reference.id;
-      });
+      logFirebaseEvent('Library-fixed_alert_dialog');
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              title: const Text('Company Docs Found'),
+              content: Text(valueOrDefault<String>(
+                _model.companyByUrl?.companyname,
+                'notFound',
+              )),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
       if (_model.companyByUrl?.landingUrls
               .contains(FFAppState().selectedCompanyUrl) ==
           true) {
@@ -830,8 +850,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                 Image.network(
                                                               valueOrDefault<
                                                                   String>(
-                                                                FFAppState()
-                                                                    .companyBackgroundImage,
+                                                                _model
+                                                                    .companyByUrl
+                                                                    ?.backgroundImage,
                                                                 'https://res.cloudinary.com/dplpckpbm/image/upload/v1703535226/learningPathwaysBright_b3strj.webp',
                                                               ),
                                                               width: double
@@ -966,10 +987,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                   myTeamRecord
                                                                       .where(
                                                                         'company',
-                                                                        isEqualTo: widget
-                                                                            .companiesDoc
-                                                                            ?.reference
-                                                                            .id,
+                                                                        isEqualTo:
+                                                                            valueOrDefault<String>(
+                                                                          FFAppState()
+                                                                              .selectedCompanyId,
+                                                                          '0',
+                                                                        ),
                                                                       )
                                                                       .orderBy(
                                                                           'positionId'),
@@ -1200,10 +1223,36 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                     setState(() {
                                                                                       FFAppState().selectedThreadId = myTeamItem.positionId == 1 ? _model.sessionQueryOnPageLoad!.defaultThreadId : '${myTeamItem.reference.id}+${_model.checkingMentorChat?.reference.id}';
                                                                                     });
+                                                                                    logFirebaseEvent('Column_update_app_state');
+                                                                                    setState(() {
+                                                                                      FFAppState().selectedTeam = myTeamItem.reference.id;
+                                                                                    });
+                                                                                    logFirebaseEvent('Column_navigate_to');
+
+                                                                                    context.pushNamed(
+                                                                                      'chatPage',
+                                                                                      queryParameters: {
+                                                                                        'companiesDoc': serializeParam(
+                                                                                          _model.companyByUrl,
+                                                                                          ParamType.Document,
+                                                                                        ),
+                                                                                        'sessionsDoc': serializeParam(
+                                                                                          _model.checkingMentorChat,
+                                                                                          ParamType.Document,
+                                                                                        ),
+                                                                                      }.withoutNulls,
+                                                                                      extra: <String, dynamic>{
+                                                                                        'companiesDoc': _model.companyByUrl,
+                                                                                        'sessionsDoc': _model.checkingMentorChat,
+                                                                                      },
+                                                                                    );
                                                                                   } else {
                                                                                     logFirebaseEvent('Column_update_app_state');
                                                                                     setState(() {
-                                                                                      FFAppState().selectedThreadId = myTeamItem.positionId == 1 ? _model.sessionQueryOnPageLoad!.defaultThreadId : '${myTeamItem.reference.id}+${_model.checkingMentorChat?.reference.id}';
+                                                                                      FFAppState().selectedThreadId = valueOrDefault<String>(
+                                                                                        myTeamItem.positionId == 1 ? _model.sessionQueryOnPageLoad?.defaultThreadId : '${myTeamItem.reference.id}+${_model.checkingMentorChat?.reference.id}',
+                                                                                        'o',
+                                                                                      );
                                                                                     });
                                                                                     logFirebaseEvent('Column_update_app_state');
                                                                                     setState(() {
@@ -1219,13 +1268,13 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                           ParamType.Document,
                                                                                         ),
                                                                                         'sessionsDoc': serializeParam(
-                                                                                          _model.sessionQueryOnPageLoad,
+                                                                                          _model.checkingMentorChat,
                                                                                           ParamType.Document,
                                                                                         ),
                                                                                       }.withoutNulls,
                                                                                       extra: <String, dynamic>{
                                                                                         'companiesDoc': _model.companyByUrl,
-                                                                                        'sessionsDoc': _model.sessionQueryOnPageLoad,
+                                                                                        'sessionsDoc': _model.checkingMentorChat,
                                                                                       },
                                                                                     );
                                                                                   }
@@ -2279,6 +2328,76 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
+                                                                  FFButtonWidget(
+                                                                    onPressed:
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'LIBRARY_FIXED_PAGE_BUTTON_BTN_ON_TAP');
+                                                                      logFirebaseEvent(
+                                                                          'Button_navigate_to');
+
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'chatPage',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'companiesDoc':
+                                                                              serializeParam(
+                                                                            _model.companyByUrl,
+                                                                            ParamType.Document,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                        extra: <String,
+                                                                            dynamic>{
+                                                                          'companiesDoc':
+                                                                              _model.companyByUrl,
+                                                                        },
+                                                                      );
+                                                                    },
+                                                                    text:
+                                                                        'Button',
+                                                                    options:
+                                                                        FFButtonOptions(
+                                                                      height:
+                                                                          40.0,
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      textStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                            color:
+                                                                                Colors.white,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                          ),
+                                                                      elevation:
+                                                                          3.0,
+                                                                      borderSide:
+                                                                          const BorderSide(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                  ),
                                                                 ],
                                                               ),
                                                             ),
