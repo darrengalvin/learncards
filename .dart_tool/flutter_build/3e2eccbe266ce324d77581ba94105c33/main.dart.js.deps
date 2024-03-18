@@ -83,6 +83,7 @@ file:///home/runner/work/learncards/learncards/lib/backend/schema/deeper_comment
 file:///home/runner/work/learncards/learncards/lib/backend/schema/documents_record.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/documentsandlinks_record.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/enquiries_record.dart
+file:///home/runner/work/learncards/learncards/lib/backend/schema/error_checks_record.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/error_log_record.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/events_record.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/featuredpages_record.dart
@@ -132,6 +133,7 @@ file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/block_
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/button_shows_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/buttons_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/chat_response_struct.dart
+file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/checks_completed_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/colors_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/company_data_for_ai_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/config_struct.dart
@@ -276,6 +278,8 @@ file:///home/runner/work/learncards/learncards/lib/components/not_today_model.da
 file:///home/runner/work/learncards/learncards/lib/components/not_today_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/respond_to_activity_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/respond_to_activity_widget.dart
+file:///home/runner/work/learncards/learncards/lib/components/session_checks_model.dart
+file:///home/runner/work/learncards/learncards/lib/components/session_checks_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/side_menu_copy_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/side_menu_copy_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/side_menu_model.dart
@@ -372,6 +376,8 @@ file:///home/runner/work/learncards/learncards/lib/left_pane/main_app_tiles/main
 file:///home/runner/work/learncards/learncards/lib/left_pane/main_app_tiles/main_app_tiles_widget.dart
 file:///home/runner/work/learncards/learncards/lib/library_fixed/library_fixed_model.dart
 file:///home/runner/work/learncards/learncards/lib/library_fixed/library_fixed_widget.dart
+file:///home/runner/work/learncards/learncards/lib/login/login_model.dart
+file:///home/runner/work/learncards/learncards/lib/login/login_widget.dart
 file:///home/runner/work/learncards/learncards/lib/main.dart
 file:///home/runner/work/learncards/learncards/lib/main_pages/edit_tile_block/edit_tile_block_model.dart
 file:///home/runner/work/learncards/learncards/lib/main_pages/edit_tile_block/edit_tile_block_widget.dart

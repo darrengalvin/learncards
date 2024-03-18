@@ -1263,9 +1263,9 @@
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite_common-2.5.3",
+      "rootUri": "file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite_common-2.5.4",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "stack_trace",
@@ -1586,7 +1586,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-03-14T17:13:12.594978Z",
+  "generated": "2024-03-18T12:47:55.917341Z",
   "generator": "pub",
   "generatorVersion": "3.3.1"
 }

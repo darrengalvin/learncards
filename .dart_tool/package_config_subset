@@ -823,9 +823,9 @@ sqflite
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite-2.2.6/
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite-2.2.6/lib/
 sqflite_common
-3.0
-file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite_common-2.5.3/
-file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite_common-2.5.3/lib/
+3.3
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite_common-2.5.4/
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/sqflite_common-2.5.4/lib/
 stack_trace
 2.18
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/stack_trace-1.11.1/
