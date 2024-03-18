@@ -1,11 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'empty_image_model.dart';
 export 'empty_image_model.dart';
@@ -58,7 +61,7 @@ class _EmptyImageWidgetState extends State<EmptyImageWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: Container(
         width: double.infinity,
         height: 100.0,
@@ -145,7 +148,7 @@ class _EmptyImageWidgetState extends State<EmptyImageWidget> {
           child: Container(
             width: 100.0,
             height: 100.0,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Color(0x121AADF9),
             ),
             child: Column(
@@ -153,7 +156,7 @@ class _EmptyImageWidgetState extends State<EmptyImageWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: FlutterFlowIconButton(
                     borderColor: FlutterFlowTheme.of(context).btnBk,
                     borderRadius: 8.0,

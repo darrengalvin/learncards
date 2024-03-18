@@ -373,6 +373,20 @@
       ]
     },
     {
+      "collectionGroup": "errorChecks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "checkSession",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "checkDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "flowiseChats",
       "queryScope": "COLLECTION",
       "fields": [

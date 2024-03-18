@@ -14,6 +14,7 @@ import 'dart:io' show Platform;
 import 'package:apivideo_live_stream/apivideo_live_stream.dart';
 import 'package:flutter/services.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -146,7 +147,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -248,7 +249,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                         !_isFrontCamSelected);
                                   },
                                   startButtonText: 'Start Stream',
-                                  startButtonIcon: const Icon(
+                                  startButtonIcon: Icon(
                                     Icons.play_arrow_rounded,
                                     color: Colors.white,
                                     size: 24.0,
@@ -270,13 +271,13 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 0.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
-                                  liveIcon: const FaIcon(
+                                  liveIcon: FaIcon(
                                     FontAwesomeIcons.solidCircle,
                                     color: Colors.red,
                                     size: 10.0,
@@ -293,7 +294,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmallFamily),
                                       ),
-                                  liveTextBackgroundColor: const Color(0x8A000000),
+                                  liveTextBackgroundColor: Color(0x8A000000),
                                   durationTextStyle:
                                       FlutterFlowTheme.of(context)
                                           .titleSmall
@@ -308,18 +309,18 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                         .titleSmallFamily),
                                           ),
                                   durationTextBackgroundColor:
-                                      const Color(0x8A000000),
+                                      Color(0x8A000000),
                                   liveContainerBorderRadius:
                                       BorderRadius.circular(8.0),
                                   durationContainerBorderRadius:
                                       BorderRadius.circular(8.0),
-                                  rotateButtonColor: const Color(0x8A000000),
-                                  rotateButtonIcon: const Icon(
+                                  rotateButtonColor: Color(0x8A000000),
+                                  rotateButtonIcon: Icon(
                                     Icons.flip_camera_android,
                                     color: Colors.white,
                                     size: 24.0,
                                   ),
-                                  stopButtonIcon: const Icon(
+                                  stopButtonIcon: Icon(
                                     Icons.stop_rounded,
                                     color: Colors.white,
                                     size: 30.0,
@@ -417,7 +418,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                         'MuxBroadcast_trigger_push_notification');
                                     triggerPushNotification(
                                       notificationTitle:
-                                          '$currentUserDisplayName Is going live',
+                                          '${currentUserDisplayName} Is going live',
                                       notificationText: 'Come and join in',
                                       notificationImageUrl: currentUserPhoto,
                                       notificationSound: 'default',
@@ -466,7 +467,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                         ),
                         if (FFAppState().commentson == true)
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 400.0, 0.0, 0.0),
                             child: StreamBuilder<List<BroadcastcommentsRecord>>(
                               stream: queryBroadcastcommentsRecord(
@@ -534,7 +535,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Container(
@@ -551,7 +552,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 8.0,
                                                                 12.0, 8.0),
                                                     child: Column(
@@ -570,7 +571,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF14181B),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -591,7 +592,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -605,10 +606,13 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                         ),
                                                         if (listViewBroadcastcommentsRecord
                                                                     .imagecomment !=
+                                                                null &&
+                                                            listViewBroadcastcommentsRecord
+                                                                    .imagecomment !=
                                                                 '')
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         6.0,
@@ -626,10 +630,13 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                           ),
                                                         if (listViewBroadcastcommentsRecord
                                                                     .videocomment !=
+                                                                null &&
+                                                            listViewBroadcastcommentsRecord
+                                                                    .videocomment !=
                                                                 '')
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         6.0,
@@ -658,7 +665,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 4.0, 0.0, 0.0),
                                                 child: Text(
@@ -669,7 +676,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
-                                                            const Color(0xFF57636C),
+                                                            Color(0xFF57636C),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.normal,
@@ -691,11 +698,11 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                             ),
                           ),
                         Align(
-                          alignment: const AlignmentDirectional(-0.05, -1.0),
+                          alignment: AlignmentDirectional(-0.05, -1.0),
                           child: Container(
                             width: 200.0,
                             height: 100.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                           ),
                         ),
                         Column(
@@ -703,14 +710,14 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.04, -0.9),
+                              alignment: AlignmentDirectional(0.04, -0.9),
                               child: Container(
                                 width: double.infinity,
                                 height: 100.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
-                            const SingleChildScrollView(
+                            SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -775,7 +782,7 @@ class _StartBroadcastWidgetState extends State<StartBroadcastWidget> {
     final LiveStreamController? liveStreamController = muxBroadcastController;
     if (liveStreamController == null) return;
     const streamBaseURL = 'rtmps://global-live.mux.com:443/app/';
-    const callName = 'createLiveStream';
+    final callName = 'createLiveStream';
     final response =
         await makeCloudCall(callName, {'latency_mode': 'standard'});
     final streamKey = response['stream_key'];

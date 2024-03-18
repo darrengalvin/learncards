@@ -1,9 +1,15 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/api_requests/api_manager.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
@@ -44,11 +50,11 @@ Future checkQuizStatus(
       builder: (alertDialogContext) {
         return WebViewAware(
           child: AlertDialog(
-            title: const Text('Incorrect answer given'),
+            title: Text('Incorrect answer given'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
+                child: Text('Ok'),
               ),
             ],
           ),
@@ -66,11 +72,11 @@ Future checkQuizStatus(
       builder: (alertDialogContext) {
         return WebViewAware(
           child: AlertDialog(
-            title: const Text('correct answer given'),
+            title: Text('correct answer given'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
+                child: Text('Ok'),
               ),
             ],
           ),
@@ -105,11 +111,11 @@ Future timerEnded(
         builder: (alertDialogContext) {
           return WebViewAware(
             child: AlertDialog(
-              title: const Text('Timer Ended Chain'),
+              title: Text('Timer Ended Chain'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
+                  child: Text('Ok'),
                 ),
               ],
             ),
@@ -139,11 +145,11 @@ Future onTimerStop(BuildContext context) async {
         builder: (alertDialogContext) {
           return WebViewAware(
             child: AlertDialog(
-              title: const Text('Timer has stopped'),
+              title: Text('Timer has stopped'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
+                  child: Text('Ok'),
                 ),
               ],
             ),
@@ -288,11 +294,11 @@ Future getSomeTileNames(
       builder: (alertDialogContext) {
         return WebViewAware(
           child: AlertDialog(
-            title: const Text('Tile Names Completed '),
+            title: Text('Tile Names Completed '),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
+                child: Text('Ok'),
               ),
             ],
           ),
@@ -351,11 +357,11 @@ Future welcomeUserInitialContent(
     builder: (alertDialogContext) {
       return WebViewAware(
         child: AlertDialog(
-          title: const Text('Welcome Tile Created'),
+          title: Text('Welcome Tile Created'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
-              child: const Text('Ok'),
+              child: Text('Ok'),
             ),
           ],
         ),
@@ -369,7 +375,7 @@ Future welcomeUserInitialContent(
     createdTime: getCurrentTimestamp,
     updatedTime: getCurrentTimestamp,
     blockIndex: 0,
-    tileId: createdTile.reference.id,
+    tileId: createdTile?.reference.id,
     htmlContent:
         '<!DOCTYPE html> <html> <head>     <title>Content Generation in Progress</title>     <style>         body {             font-family: Arial, sans-serif;             background-color: #f2f2f2;             text-align: center;             padding: 50px;         }         .message-box {             background-color: #fff;             margin: auto;             padding: 20px;             border-radius: 8px;             box-shadow: 0 4px 8px rgba(0,0,0,0.1);             max-width: 400px;         }         .message-header {             font-size: 24px;             color: #333;             margin-bottom: 10px;         }         .message-body {             font-size: 16px;             color: #666;         }         .loader {             border: 4px solid #f3f3f3;             border-radius: 50%;             border-top: 4px solid #3498db;             width: 30px;             height: 30px;             -webkit-animation: spin 2s linear infinite;             animation: spin 2s linear infinite;             margin: 10px auto;         }         @-webkit-keyframes spin {             0% { -webkit-transform: rotate(0deg); }             100% { -webkit-transform: rotate(360deg); }         }         @keyframes spin {             0% { transform: rotate(0deg); }             100% { transform: rotate(360deg); }         }     </style> </head> <body>     <div class=\"message-box\">         <div class=\"message-header\">Generating Your Content</div>         <div class=\"loader\"></div>         <div class=\"message-body\">             We are still generating your content, it should take no more than a minute or two. Hang tight!         </div>     </div> </body> </html>',
   ));
@@ -378,7 +384,7 @@ Future welcomeUserInitialContent(
         createdTime: getCurrentTimestamp,
         updatedTime: getCurrentTimestamp,
         blockIndex: 0,
-        tileId: createdTile.reference.id,
+        tileId: createdTile?.reference.id,
         htmlContent:
             '<!DOCTYPE html> <html> <head>     <title>Content Generation in Progress</title>     <style>         body {             font-family: Arial, sans-serif;             background-color: #f2f2f2;             text-align: center;             padding: 50px;         }         .message-box {             background-color: #fff;             margin: auto;             padding: 20px;             border-radius: 8px;             box-shadow: 0 4px 8px rgba(0,0,0,0.1);             max-width: 400px;         }         .message-header {             font-size: 24px;             color: #333;             margin-bottom: 10px;         }         .message-body {             font-size: 16px;             color: #666;         }         .loader {             border: 4px solid #f3f3f3;             border-radius: 50%;             border-top: 4px solid #3498db;             width: 30px;             height: 30px;             -webkit-animation: spin 2s linear infinite;             animation: spin 2s linear infinite;             margin: 10px auto;         }         @-webkit-keyframes spin {             0% { -webkit-transform: rotate(0deg); }             100% { -webkit-transform: rotate(360deg); }         }         @keyframes spin {             0% { transform: rotate(0deg); }             100% { transform: rotate(360deg); }         }     </style> </head> <body>     <div class=\"message-box\">         <div class=\"message-header\">Generating Your Content</div>         <div class=\"loader\"></div>         <div class=\"message-body\">             We are still generating your content, it should take no more than a minute or two. Hang tight!         </div>     </div> </body> </html>',
       ),
@@ -389,11 +395,11 @@ Future welcomeUserInitialContent(
     builder: (alertDialogContext) {
       return WebViewAware(
         child: AlertDialog(
-          title: const Text('Tile Block Created'),
+          title: Text('Tile Block Created'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
-              child: const Text('Ok'),
+              child: Text('Ok'),
             ),
           ],
         ),
@@ -407,11 +413,11 @@ Future welcomeUserInitialContent(
     supabaseMetadataFilter: 'unknown',
   );
   while (FlowiseGroup.flowiseAPICallCall.text(
-            (welcomeLetter.jsonBody ?? ''),
+            (welcomeLetter?.jsonBody ?? ''),
           ) ==
           null ||
       FlowiseGroup.flowiseAPICallCall.text(
-            (welcomeLetter.jsonBody ?? ''),
+            (welcomeLetter?.jsonBody ?? ''),
           ) ==
           '') {
     logFirebaseEvent('welcomeUserInitialContent_wait__delay');
@@ -423,11 +429,11 @@ Future welcomeUserInitialContent(
     builder: (alertDialogContext) {
       return WebViewAware(
         child: AlertDialog(
-          title: const Text('API Completed swith content '),
+          title: Text('API Completed swith content '),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
-              child: const Text('Ok'),
+              child: Text('Ok'),
             ),
           ],
         ),
@@ -436,9 +442,9 @@ Future welcomeUserInitialContent(
   );
   logFirebaseEvent('welcomeUserInitialContent_backend_call');
 
-  await createdTileBlock.reference.update(createTileBlocksRecordData(
+  await createdTileBlock!.reference.update(createTileBlocksRecordData(
     htmlContent: FlowiseGroup.flowiseAPICallCall.text(
-      (welcomeLetter.jsonBody ?? ''),
+      (welcomeLetter?.jsonBody ?? ''),
     ),
   ));
   logFirebaseEvent('welcomeUserInitialContent_alert_dialog');
@@ -447,11 +453,11 @@ Future welcomeUserInitialContent(
     builder: (alertDialogContext) {
       return WebViewAware(
         child: AlertDialog(
-          title: const Text('API Content Updated on Welcome Tile'),
+          title: Text('API Content Updated on Welcome Tile'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
-              child: const Text('Ok'),
+              child: Text('Ok'),
             ),
           ],
         ),
@@ -531,7 +537,7 @@ Future tempStreamingBlocks(
   context.pushNamed(
     'Library-fixed',
     extra: <String, dynamic>{
-      kTransitionInfoKey: const TransitionInfo(
+      kTransitionInfoKey: TransitionInfo(
         hasTransition: true,
         transitionType: PageTransitionType.fade,
         duration: Duration(milliseconds: 0),

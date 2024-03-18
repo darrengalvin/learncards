@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'block_setup_model.dart';
 export 'block_setup_model.dart';
 
@@ -55,7 +56,7 @@ class _BlockSetupWidgetState extends State<BlockSetupWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -77,21 +78,21 @@ class _BlockSetupWidgetState extends State<BlockSetupWidget> {
             ],
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 100),
+              duration: Duration(milliseconds: 100),
               curve: Curves.easeInOut,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -119,10 +120,10 @@ class _BlockSetupWidgetState extends State<BlockSetupWidget> {
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            SizedBox(
+                            Container(
                               width: 200.0,
                               child: FlutterFlowCheckboxGroup(
-                                options: const ['Subscriptions', 'Premium Content'],
+                                options: ['Subscriptions', 'Premium Content'],
                                 onChanged: (val) => setState(
                                     () => _model.checkboxGroupValues = val),
                                 controller:
@@ -130,7 +131,7 @@ class _BlockSetupWidgetState extends State<BlockSetupWidget> {
                                         FormFieldController<List<String>>(
                                   [],
                                 ),
-                                activeColor: const Color(0xFF1AADF9),
+                                activeColor: Color(0xFF1AADF9),
                                 checkColor:
                                     FlutterFlowTheme.of(context).primary,
                                 checkboxBorderColor:

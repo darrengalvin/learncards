@@ -1,9 +1,12 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -72,24 +75,24 @@ class _NonLoggedInWarningCopyWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
         child: Container(
           width: double.infinity,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 550.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x25090F13),
                 offset: Offset(0.0, 2.0),
               )
             ],
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(12.0),
@@ -97,7 +100,7 @@ class _NonLoggedInWarningCopyWidgetState
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -119,14 +122,14 @@ class _NonLoggedInWarningCopyWidgetState
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
                       'Important - Save Your Progress',
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 8.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 8.0),
                     child: Text(
                       'To save your progress, enter your email below. We\'ll preserve your learning journey and gift you 5 free learn cards as a bonus! 🎁📚',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -151,7 +154,7 @@ class _NonLoggedInWarningCopyWidgetState
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -171,7 +174,7 @@ class _NonLoggedInWarningCopyWidgetState
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
                                       child: TextFormField(
                                         controller: _model.firstNameController,
@@ -238,7 +241,7 @@ class _NonLoggedInWarningCopyWidgetState
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
                                       child: TextFormField(
                                         controller: _model.lastNameController,
@@ -306,7 +309,7 @@ class _NonLoggedInWarningCopyWidgetState
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 8.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.emailController,
@@ -359,7 +362,7 @@ class _NonLoggedInWarningCopyWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 8.0),
                                 child: Text(
                                   'Choose a password to access your account in future.',
@@ -377,7 +380,7 @@ class _NonLoggedInWarningCopyWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 8.0, 15.0),
                                 child: TextFormField(
                                   controller: _model.passwordController,
@@ -444,7 +447,7 @@ class _NonLoggedInWarningCopyWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 8.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.confirmPassController,
@@ -517,7 +520,7 @@ class _NonLoggedInWarningCopyWidgetState
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Container(
                           width: double.infinity,
                           height: 60.0,
@@ -539,7 +542,7 @@ class _NonLoggedInWarningCopyWidgetState
                               if (_model.passwordController.text !=
                                   _model.confirmPassController.text) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
+                                  SnackBar(
                                     content: Text(
                                       'Passwords don\'t match!',
                                     ),
@@ -579,9 +582,9 @@ class _NonLoggedInWarningCopyWidgetState
                             text: 'Save My Progress',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -598,7 +601,7 @@ class _NonLoggedInWarningCopyWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -615,7 +618,7 @@ class _NonLoggedInWarningCopyWidgetState
                         true,
                       ))
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 8.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => Text(
@@ -636,7 +639,7 @@ class _NonLoggedInWarningCopyWidgetState
                         ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Container(
                           width: double.infinity,
                           height: 60.0,
@@ -705,12 +708,12 @@ class _NonLoggedInWarningCopyWidgetState
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: const Text('All Items processed '),
+                                          title: Text('All Items processed '),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -723,11 +726,11 @@ class _NonLoggedInWarningCopyWidgetState
                                 text: 'Merge My Progress',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0xFFAE1528),
+                                  color: Color(0xFFAE1528),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
@@ -741,7 +744,7 @@ class _NonLoggedInWarningCopyWidgetState
                                                     .titleSmallFamily),
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -754,7 +757,7 @@ class _NonLoggedInWarningCopyWidgetState
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -763,9 +766,9 @@ class _NonLoggedInWarningCopyWidgetState
                           options: FFButtonOptions(
                             width: 230.0,
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).customColor7,
                             textStyle: FlutterFlowTheme.of(context)
@@ -778,7 +781,7 @@ class _NonLoggedInWarningCopyWidgetState
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey('Lexend Deca'),
                                 ),
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -790,7 +793,7 @@ class _NonLoggedInWarningCopyWidgetState
                         children: [
                           Container(
                             height: 200.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: StreamBuilder<List<Tilesv2Record>>(
                               stream: queryTilesv2Record(
                                 queryBuilder: (tilesv2Record) => tilesv2Record
@@ -834,7 +837,7 @@ class _NonLoggedInWarningCopyWidgetState
                                         listViewTilesv2RecordList[
                                             listViewIndex];
                                     return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 8.0),
                                       child: Container(
                                         width: double.infinity,
@@ -852,7 +855,7 @@ class _NonLoggedInWarningCopyWidgetState
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 8.0, 12.0, 8.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -869,7 +872,7 @@ class _NonLoggedInWarningCopyWidgetState
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Column(
@@ -905,7 +908,7 @@ class _NonLoggedInWarningCopyWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 16.0, 24.0, 4.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -931,7 +934,7 @@ class _NonLoggedInWarningCopyWidgetState
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Container(
                           width: double.infinity,
                           height: 60.0,
@@ -945,7 +948,7 @@ class _NonLoggedInWarningCopyWidgetState
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 8.0, 12.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -961,7 +964,7 @@ class _NonLoggedInWarningCopyWidgetState
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -988,7 +991,7 @@ class _NonLoggedInWarningCopyWidgetState
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -1005,7 +1008,7 @@ class _NonLoggedInWarningCopyWidgetState
                             Navigator.pop(context);
                           },
                           child: Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Text(
                               'It is ok, I will lose my progress.',
                               style: FlutterFlowTheme.of(context)

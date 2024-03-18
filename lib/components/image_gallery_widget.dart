@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/dynamic_text_field_widget.dart';
@@ -9,11 +10,14 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'image_gallery_model.dart';
 export 'image_gallery_model.dart';
 
@@ -86,12 +90,12 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: EdgeInsets.all(12.0),
                 child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 100),
+                  duration: Duration(milliseconds: 100),
                   curve: Curves.easeInOut,
                   width: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxHeight: 300.0,
                   ),
                   decoration: BoxDecoration(
@@ -104,19 +108,19 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Icon(
                                   Icons.add_photo_alternate_outlined,
                                   color: FlutterFlowTheme.of(context)
@@ -125,7 +129,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Add one of more images ',
@@ -137,10 +141,10 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 12.0),
                           child: FlutterFlowChoiceChips(
-                            options: const [
+                            options: [
                               ChipData('Library'),
                               ChipData('Upload'),
                               ChipData('URL')
@@ -148,7 +152,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                             onChanged: (val) => setState(() =>
                                 _model.imageOptionsValue = val?.firstOrNull),
                             selectedChipStyle: ChipStyle(
-                              backgroundColor: const Color(0xFF1AADF9),
+                              backgroundColor: Color(0xFF1AADF9),
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -206,7 +210,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 8.0, 0.0),
                               child: PagedGridView<DocumentSnapshot<Object?>?,
                                   ImagesRecord>(
@@ -215,7 +219,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                 ),
                                 padding: EdgeInsets.zero,
                                 gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                    SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 4,
                                   crossAxisSpacing: 10.0,
                                   mainAxisSpacing: 10.0,
@@ -259,14 +263,14 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                         .gridViewPagingController!
                                         .itemList![gridViewIndex];
                                     return Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: SizedBox(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Container(
                                         width: 70.0,
                                         height: 75.0,
                                         child: Stack(
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, -1.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
@@ -324,7 +328,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                                 gridViewImagesRecord
                                                     .uploadedimage))
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.2, -1.25),
                                                 child: InkWell(
                                                   splashColor:
@@ -359,7 +363,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                                 gridViewImagesRecord
                                                     .uploadedimage))
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 1.0),
                                                 child: InkWell(
                                                   splashColor:
@@ -399,15 +403,15 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           child: TextFormField(
-                            key: const ValueKey('images-field'),
+                            key: ValueKey('images-field'),
                             controller: _model.imageLinkController,
                             focusNode: _model.imageLinkFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.imageLinkController',
-                              const Duration(milliseconds: 2000),
+                              Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
                             obscureText: false,
@@ -425,7 +429,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0xFF1AADF9),
                                   width: 2.0,
                                 ),
@@ -452,7 +456,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -614,9 +618,9 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                 text: 'Add',
                                 options: FFButtonOptions(
                                   height: 32.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: valueOrDefault<Color>(
                                     () {
@@ -653,7 +657,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                                     .titleSmallFamily),
                                       ),
                                   elevation: 0.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -690,9 +694,9 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                 text: 'Submit',
                                 options: FFButtonOptions(
                                   height: 32.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: valueOrDefault<Color>(
                                     () {
@@ -729,7 +733,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                                     .titleSmallFamily),
                                       ),
                                   elevation: 0.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -749,13 +753,13 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Icon(
                         Icons.photo_library_outlined,
                         color: FlutterFlowTheme.of(context).secondaryText,
@@ -764,7 +768,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Block Images',
                         style: FlutterFlowTheme.of(context).bodyMedium,
@@ -774,7 +778,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                 child: Builder(
                   builder: (context) {
                     final galleryImage = _model.imageGallery.toList();
@@ -787,18 +791,19 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                         final galleryImageItem =
                             galleryImage[galleryImageIndex];
                         return Container(
-                          key: ValueKey("ListView_gdlp9fsl" '_' +
+                          key: ValueKey("ListView_gdlp9fsl" +
+                              '_' +
                               galleryImageIndex.toString()),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 32.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 8.0, 0.0),
-                                  child: SizedBox(
+                                  child: Container(
                                     width: 70.0,
                                     height: 50.0,
                                     child: Stack(
@@ -847,7 +852,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.15, -1.0),
+                                              AlignmentDirectional(1.15, -1.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -878,7 +883,7 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 16.0, 0.0),
                                     child: wrapWithModel(
                                       model: _model.dynamicTextFieldModels

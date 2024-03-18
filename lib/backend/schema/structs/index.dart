@@ -10,6 +10,7 @@ export 'block_type_struct.dart';
 export 'button_shows_struct.dart';
 export 'buttons_struct.dart';
 export 'chat_response_struct.dart';
+export 'checks_completed_struct.dart';
 export 'colors_struct.dart';
 export 'company_data_for_ai_struct.dart';
 export 'config_struct.dart';

@@ -1,8 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'questions_model.dart';
 export 'questions_model.dart';
 
@@ -70,7 +72,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 24.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -83,7 +85,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 24.0, 24.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 24.0, 24.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -107,14 +109,14 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                           children: List.generate(test.length, (testIndex) {
                             final testItem = test[testIndex];
                             return Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 12.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -142,7 +144,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
@@ -169,7 +171,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall,
                                               ),
-                                              const Icon(
+                                              Icon(
                                                 Icons.chevron_right_rounded,
                                                 color: Color(0xFF95A1AC),
                                                 size: 24.0,
@@ -186,7 +188,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                                         .titleSmall,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -219,7 +221,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -230,7 +232,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                                   width: 30.0,
                                                   height: 30.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.network(
@@ -238,7 +240,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -271,7 +273,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   23.0, 0.0, 0.0, 0.0),
                               child: Container(
                                 width: 2.0,
@@ -285,7 +287,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 26.0, 0.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
@@ -297,13 +299,13 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                   blurRadius: 0.0,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  offset: const Offset(0.0, 1.0),
+                                  offset: Offset(0.0, 1.0),
                                 )
                               ],
                               borderRadius: BorderRadius.circular(0.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: EdgeInsets.all(12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -323,7 +325,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: Text(
                         'Beginning of Activity',
                         style: FlutterFlowTheme.of(context).titleMedium,

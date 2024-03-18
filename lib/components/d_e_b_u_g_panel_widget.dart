@@ -1,3 +1,4 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/social_feed_bottoms_h_e_e_t_widget.dart';
@@ -6,6 +7,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/middle_pane/middle_column/middle_column_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -71,14 +75,14 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 4.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 4.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -128,7 +132,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: EdgeInsets.all(20.0),
                             child: Text(
                               valueOrDefault<String>(
                                 FFAppState().debugMessage,
@@ -153,7 +157,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             color: FlutterFlowTheme.of(context).alternate,
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -177,7 +181,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 25.0, 0.0),
                                                 child: Text(
@@ -201,7 +205,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 25.0, 0.0),
                                                 child: Text(
@@ -244,7 +248,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 1.0, 0.0, 10.0),
                                                 child: FFButtonWidget(
@@ -270,7 +274,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                       'Library-fixed',
                                                       extra: <String, dynamic>{
                                                         kTransitionInfoKey:
-                                                            const TransitionInfo(
+                                                            TransitionInfo(
                                                           hasTransition: true,
                                                           transitionType:
                                                               PageTransitionType
@@ -285,11 +289,11 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   options: FFButtonOptions(
                                                     height: 50.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 4.0,
                                                                 24.0, 4.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -316,7 +320,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 1.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -327,7 +331,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 1.0, 0.0, 10.0),
                                                 child: FFButtonWidget(
@@ -345,11 +349,11 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   options: FFButtonOptions(
                                                     height: 50.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 4.0,
                                                                 24.0, 4.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -376,7 +380,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 1.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -387,7 +391,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -409,11 +413,11 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -439,7 +443,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -450,7 +454,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -477,11 +481,11 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -507,7 +511,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -518,7 +522,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -573,11 +577,11 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -603,7 +607,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -622,7 +626,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 25.0, 0.0),
                                                 child: Text(
@@ -648,7 +652,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 25.0, 0.0),
                                                 child: Text(
@@ -707,7 +711,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -723,15 +727,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'LEFT OFF',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -753,7 +757,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -761,7 +765,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -777,15 +781,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: ' RIGHT OFF',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -807,7 +811,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -815,7 +819,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -831,15 +835,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'MIDDLE OFF',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -861,7 +865,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -881,7 +885,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -898,15 +902,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'TOGGLE LEFT',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -928,7 +932,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -936,7 +940,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -953,15 +957,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'TOGGLE MIDDLE',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -983,7 +987,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -991,7 +995,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1008,15 +1012,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'TOGGLE RIGHT',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1038,7 +1042,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1046,7 +1050,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1062,15 +1066,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'LEFT ON',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1092,7 +1096,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1100,7 +1104,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1116,15 +1120,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: ' RIGHT ON',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1146,7 +1150,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1154,7 +1158,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1170,15 +1174,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'MIDDLE ON',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1200,7 +1204,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1220,7 +1224,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1253,15 +1257,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                         safeSetState(() {}));
                                                   },
                                                   text: 'social',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.wechat_sharp,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1283,7 +1287,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1291,7 +1295,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1299,15 +1303,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     print('Button pressed ...');
                                                   },
                                                   text: 'Welcome Chat',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.wechat_sharp,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1329,7 +1333,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1337,7 +1341,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1361,6 +1365,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                             kBreakpointMedium) {
                                                           return (FFAppState()
                                                                           .middlePane ==
+                                                                      null ||
+                                                                  FFAppState()
+                                                                          .middlePane ==
                                                                       ''
                                                               ? 'preparing'
                                                               : FFAppState()
@@ -1372,12 +1379,18 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                             kBreakpointLarge) {
                                                           return (FFAppState()
                                                                           .middlePane ==
+                                                                      null ||
+                                                                  FFAppState()
+                                                                          .middlePane ==
                                                                       ''
                                                               ? 'preparing'
                                                               : FFAppState()
                                                                   .middlePane);
                                                         } else {
                                                           return (FFAppState()
+                                                                          .middlePane ==
+                                                                      null ||
+                                                                  FFAppState()
                                                                           .middlePane ==
                                                                       ''
                                                               ? 'preparing'
@@ -1441,15 +1454,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'Preparing',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.read_more_sharp,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1471,7 +1484,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1479,7 +1492,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1550,15 +1563,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'Topics',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.toc_rounded,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1580,7 +1593,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1589,9 +1602,12 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                               ),
                                               if (FFAppState()
                                                           .viewTileContentId !=
+                                                      null &&
+                                                  FFAppState()
+                                                          .viewTileContentId !=
                                                       '')
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           7.0, 0.0, 7.0, 0.0),
                                                   child: FFButtonWidget(
@@ -1618,146 +1634,8 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                               kBreakpointMedium) {
                                                             return (FFAppState()
                                                                             .leftPane ==
-                                                                        ''
-                                                                ? 'chat'
-                                                                : FFAppState()
-                                                                    .leftPane);
-                                                          } else if (MediaQuery
-                                                                      .sizeOf(
-                                                                          context)
-                                                                  .width <
-                                                              kBreakpointLarge) {
-                                                            return FFAppState()
-                                                                .leftPane;
-                                                          } else {
-                                                            return FFAppState()
-                                                                .leftPane;
-                                                          }
-                                                        }();
-                                                        FFAppState().rightPane =
-                                                            valueOrDefault<
-                                                                String>(
-                                                          () {
-                                                            if (MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width <
-                                                                kBreakpointSmall) {
-                                                              return '-';
-                                                            } else if (MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width <
-                                                                kBreakpointMedium) {
-                                                              return (FFAppState()
-                                                                              .rightPane ==
-                                                                          ''
-                                                                  ? 'learncards'
-                                                                  : FFAppState()
-                                                                      .rightPane);
-                                                            } else if (MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width <
-                                                                kBreakpointLarge) {
-                                                              return (FFAppState()
-                                                                              .rightPane ==
-                                                                          ''
-                                                                  ? 'learncards'
-                                                                  : FFAppState()
-                                                                      .rightPane);
-                                                            } else {
-                                                              return '-';
-                                                            }
-                                                          }(),
-                                                          '-',
-                                                        );
-                                                      });
-                                                    },
-                                                    text: 'content',
-                                                    icon: const Icon(
-                                                      Icons.crop_din,
-                                                      size: 15.0,
-                                                    ),
-                                                    options: FFButtonOptions(
-                                                      padding:
-                                                          const EdgeInsets.all(10.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color: widget.parameter1,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                fontSize: 16.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        'Lexend Deca'),
-                                                              ),
-                                                      borderSide: const BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                            ],
-                                          ),
-                                        ),
-                                        SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              if (FFAppState()
-                                                          .viewTileContentId !=
-                                                      '')
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          7.0, 0.0, 7.0, 0.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      logFirebaseEvent(
-                                                          'D_E_B_U_G_PANEL_CONTENT_MAIN_BTN_ON_TAP');
-                                                      logFirebaseEvent(
-                                                          'Button_update_app_state');
-                                                      _model.updatePage(() {
-                                                        FFAppState()
-                                                                .middlePane =
-                                                            'bodyContentMainTiles';
-                                                        FFAppState().leftPane =
-                                                            () {
-                                                          if (MediaQuery.sizeOf(
-                                                                      context)
-                                                                  .width <
-                                                              kBreakpointSmall) {
-                                                            return '-';
-                                                          } else if (MediaQuery
-                                                                      .sizeOf(
-                                                                          context)
-                                                                  .width <
-                                                              kBreakpointMedium) {
-                                                            return (FFAppState()
+                                                                        null ||
+                                                                    FFAppState()
                                                                             .leftPane ==
                                                                         ''
                                                                 ? 'chat'
@@ -1791,6 +1669,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                 kBreakpointMedium) {
                                                               return (FFAppState()
                                                                               .rightPane ==
+                                                                          null ||
+                                                                      FFAppState()
+                                                                              .rightPane ==
                                                                           ''
                                                                   ? 'learncards'
                                                                   : FFAppState()
@@ -1801,6 +1682,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                     .width <
                                                                 kBreakpointLarge) {
                                                               return (FFAppState()
+                                                                              .rightPane ==
+                                                                          null ||
+                                                                      FFAppState()
                                                                               .rightPane ==
                                                                           ''
                                                                   ? 'learncards'
@@ -1814,16 +1698,16 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                         );
                                                       });
                                                     },
-                                                    text: 'content main',
-                                                    icon: const Icon(
+                                                    text: 'content',
+                                                    icon: Icon(
                                                       Icons.crop_din,
                                                       size: 15.0,
                                                     ),
                                                     options: FFButtonOptions(
                                                       padding:
-                                                          const EdgeInsets.all(10.0),
+                                                          EdgeInsets.all(10.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1849,7 +1733,160 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                     .containsKey(
                                                                         'Lexend Deca'),
                                                               ),
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                        SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              if (FFAppState()
+                                                          .viewTileContentId !=
+                                                      null &&
+                                                  FFAppState()
+                                                          .viewTileContentId !=
+                                                      '')
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          7.0, 0.0, 7.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'D_E_B_U_G_PANEL_CONTENT_MAIN_BTN_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'Button_update_app_state');
+                                                      _model.updatePage(() {
+                                                        FFAppState()
+                                                                .middlePane =
+                                                            'bodyContentMainTiles';
+                                                        FFAppState().leftPane =
+                                                            () {
+                                                          if (MediaQuery.sizeOf(
+                                                                      context)
+                                                                  .width <
+                                                              kBreakpointSmall) {
+                                                            return '-';
+                                                          } else if (MediaQuery
+                                                                      .sizeOf(
+                                                                          context)
+                                                                  .width <
+                                                              kBreakpointMedium) {
+                                                            return (FFAppState()
+                                                                            .leftPane ==
+                                                                        null ||
+                                                                    FFAppState()
+                                                                            .leftPane ==
+                                                                        ''
+                                                                ? 'chat'
+                                                                : FFAppState()
+                                                                    .leftPane);
+                                                          } else if (MediaQuery
+                                                                      .sizeOf(
+                                                                          context)
+                                                                  .width <
+                                                              kBreakpointLarge) {
+                                                            return FFAppState()
+                                                                .leftPane;
+                                                          } else {
+                                                            return FFAppState()
+                                                                .leftPane;
+                                                          }
+                                                        }();
+                                                        FFAppState().rightPane =
+                                                            valueOrDefault<
+                                                                String>(
+                                                          () {
+                                                            if (MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width <
+                                                                kBreakpointSmall) {
+                                                              return '-';
+                                                            } else if (MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width <
+                                                                kBreakpointMedium) {
+                                                              return (FFAppState()
+                                                                              .rightPane ==
+                                                                          null ||
+                                                                      FFAppState()
+                                                                              .rightPane ==
+                                                                          ''
+                                                                  ? 'learncards'
+                                                                  : FFAppState()
+                                                                      .rightPane);
+                                                            } else if (MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width <
+                                                                kBreakpointLarge) {
+                                                              return (FFAppState()
+                                                                              .rightPane ==
+                                                                          null ||
+                                                                      FFAppState()
+                                                                              .rightPane ==
+                                                                          ''
+                                                                  ? 'learncards'
+                                                                  : FFAppState()
+                                                                      .rightPane);
+                                                            } else {
+                                                              return '-';
+                                                            }
+                                                          }(),
+                                                          '-',
+                                                        );
+                                                      });
+                                                    },
+                                                    text: 'content main',
+                                                    icon: Icon(
+                                                      Icons.crop_din,
+                                                      size: 15.0,
+                                                    ),
+                                                    options: FFButtonOptions(
+                                                      padding:
+                                                          EdgeInsets.all(10.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: widget.parameter1,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend Deca',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 16.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        'Lexend Deca'),
+                                                              ),
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,
@@ -1858,7 +1895,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   ),
                                                 ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1928,15 +1965,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'APP CONTENT',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -1958,7 +1995,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1966,7 +2003,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1992,6 +2029,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                             kBreakpointMedium) {
                                                           return (FFAppState()
                                                                           .middlePane ==
+                                                                      null ||
+                                                                  FFAppState()
+                                                                          .middlePane ==
                                                                       ''
                                                               ? 'bodyContent'
                                                               : FFAppState()
@@ -2004,12 +2044,18 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                             kBreakpointLarge) {
                                                           return (FFAppState()
                                                                           .middlePane ==
+                                                                      null ||
+                                                                  FFAppState()
+                                                                          .middlePane ==
                                                                       ''
                                                               ? 'bodyContent'
                                                               : FFAppState()
                                                                   .middlePane);
                                                         } else {
                                                           return (FFAppState()
+                                                                          .middlePane ==
+                                                                      null ||
+                                                                  FFAppState()
                                                                           .middlePane ==
                                                                       ''
                                                               ? 'bodyContent'
@@ -2031,6 +2077,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                             kBreakpointMedium) {
                                                           return (FFAppState()
                                                                           .leftPane ==
+                                                                      null ||
+                                                                  FFAppState()
+                                                                          .leftPane ==
                                                                       ''
                                                               ? 'aiChat'
                                                               : FFAppState()
@@ -2042,12 +2091,18 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                             kBreakpointLarge) {
                                                           return (FFAppState()
                                                                           .leftPane ==
+                                                                      null ||
+                                                                  FFAppState()
+                                                                          .leftPane ==
                                                                       ''
                                                               ? 'aiChat'
                                                               : FFAppState()
                                                                   .leftPane);
                                                         } else {
                                                           return (FFAppState()
+                                                                          .leftPane ==
+                                                                      null ||
+                                                                  FFAppState()
                                                                           .leftPane ==
                                                                       ''
                                                               ? 'aiChat'
@@ -2058,15 +2113,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     });
                                                   },
                                                   text: 'learncards',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.crop_din,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -2088,7 +2143,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -2096,7 +2151,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         7.0, 0.0, 7.0, 0.0),
                                                 child: FFButtonWidget(
@@ -2104,15 +2159,15 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     print('Button pressed ...');
                                                   },
                                                   text: 'Learn Pilot',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.wechat_sharp,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     padding:
-                                                        const EdgeInsets.all(10.0),
+                                                        EdgeInsets.all(10.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: widget.parameter1,
@@ -2134,7 +2189,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                   .containsKey(
                                                                       'Lexend Deca'),
                                                         ),
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -2151,7 +2206,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2204,7 +2259,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           builder: (context) {
                                             final hasAccess =
                                                 (currentUserDocument?.hasaccess
-                                                            .toList() ??
+                                                            ?.toList() ??
                                                         [])
                                                     .toList();
                                             return Column(
@@ -2233,7 +2288,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2265,7 +2320,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                       ),
                                       TextSpan(
                                         text: FFAppState().rightPane,
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2276,7 +2331,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2308,7 +2363,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                       ),
                                       TextSpan(
                                         text: FFAppState().rightPane,
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2319,7 +2374,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2351,7 +2406,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                       ),
                                       TextSpan(
                                         text: FFAppState().selectedLearnCardId,
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2362,7 +2417,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2397,7 +2452,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           FFAppState().selectedThreadId,
                                           'not set',
                                         ),
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2408,7 +2463,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2440,7 +2495,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                       ),
                                       TextSpan(
                                         text: FFAppState().companySecretCode,
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2451,7 +2506,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2486,7 +2541,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           FFAppState().selectedThreadId,
                                           'not set',
                                         ),
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2497,7 +2552,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2532,7 +2587,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           FFAppState().tileNav.tier0Id,
                                           'unset',
                                         ),
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2543,7 +2598,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2578,7 +2633,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           FFAppState().tileNav.tier1Id,
                                           'unset',
                                         ),
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2589,7 +2644,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2624,7 +2679,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           FFAppState().tileNav.tier2Id,
                                           'unset',
                                         ),
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2635,7 +2690,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2670,7 +2725,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           FFAppState().tileNav.tier3Id,
                                           'unset',
                                         ),
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2681,7 +2736,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2713,7 +2768,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                       ),
                                       TextSpan(
                                         text: FFAppState().selectedcategory,
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2724,7 +2779,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2756,7 +2811,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                       ),
                                       TextSpan(
                                         text: FFAppState().selectedcategory,
-                                        style: const TextStyle(),
+                                        style: TextStyle(),
                                       )
                                     ],
                                     style:
@@ -2787,9 +2842,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                   containerCategoriesRecordList =
                                   snapshot.data!;
                               return Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 12.0),
                                   child: Builder(
                                     builder: (context) {
@@ -2822,10 +2877,10 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 .categoryname,
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -2850,7 +2905,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -2878,9 +2933,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             text: 'Leave debug',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -2896,7 +2951,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -2915,9 +2970,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             text: 'Clear Temp Message',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -2933,7 +2988,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -2952,9 +3007,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             text: 'Clear Debug Message',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -2970,7 +3025,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -2989,9 +3044,9 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                             text: 'Clear Temp Message',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -3007,7 +3062,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3022,14 +3077,14 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 4.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3068,7 +3123,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                         FlutterFlowTheme.of(context).alternate,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3108,7 +3163,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   FFAppState().debugMessage,
                                                   'notSet',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3119,7 +3174,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3158,7 +3213,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                               TextSpan(
                                                 text: FFAppState()
                                                     .selectedCategoryName,
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3169,7 +3224,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3210,7 +3265,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                       .selectedMemberLevel,
                                                   'no member level is set',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3221,7 +3276,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3263,7 +3318,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                       .selectedMemberLevelName,
                                                   'selected member level name',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3274,7 +3329,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3312,7 +3367,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                               TextSpan(
                                                 text: FFAppState()
                                                     .selectedcategory,
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3323,7 +3378,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3365,7 +3420,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                       .selectedCategoryName,
                                                   'SELECTED CATEGORY NAME MOT SET',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3376,7 +3431,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3417,7 +3472,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                       .nonLoggedInSessionId,
                                                   'not set',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3428,7 +3483,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3468,7 +3523,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   FFAppState().selectedThreadId,
                                                   'not set',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3479,7 +3534,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3519,7 +3574,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   FFAppState().tileNav.tier0Id,
                                                   'unset',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3530,7 +3585,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3570,7 +3625,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   FFAppState().tileNav.tier1Id,
                                                   'unset',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3581,7 +3636,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3621,7 +3676,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   FFAppState().tileNav.tier2Id,
                                                   'unset',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3632,7 +3687,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3672,7 +3727,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                   FFAppState().tileNav.tier3Id,
                                                   'unset',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3683,7 +3738,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3721,7 +3776,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                               TextSpan(
                                                 text: FFAppState()
                                                     .selectedcategory,
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3732,7 +3787,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -3770,7 +3825,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                               TextSpan(
                                                 text: FFAppState()
                                                     .selectedcategory,
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -3803,10 +3858,10 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           containerCategoriesRecordList =
                                           snapshot.data!;
                                       return Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 12.0),
                                           child: Builder(
                                             builder: (context) {
@@ -3842,14 +3897,14 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     options: FFButtonOptions(
                                                       height: 40.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -3877,7 +3932,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                                             .titleSmallFamily),
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,
@@ -3908,10 +3963,10 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     text: 'Leave debug',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -3929,7 +3984,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -3949,10 +4004,10 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     text: 'Clear Temp Message',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -3970,7 +4025,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -3990,10 +4045,10 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     text: 'Clear Debug Message',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -4011,7 +4066,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -4031,10 +4086,10 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                     text: 'Clear Temp Message',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -4052,7 +4107,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),

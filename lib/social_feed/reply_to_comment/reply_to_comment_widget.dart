@@ -6,9 +6,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'reply_to_comment_model.dart';
 export 'reply_to_comment_model.dart';
 
@@ -56,12 +58,12 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 5.0,
               color: Color(0x162D3A21),
@@ -74,7 +76,7 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +85,7 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                     width: 50.0,
                     height: 50.0,
                     clipBehavior: Clip.antiAlias,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
                     ),
                     child: Image.network(
@@ -94,13 +96,13 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.textController,
                         focusNode: _model.textFieldFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
                           '_model.textController',
-                          const Duration(milliseconds: 2000),
+                          Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
                         autofocus: true,
@@ -111,58 +113,58 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                               .bodySmall
                               .override(
                                 fontFamily: 'Outfit',
-                                color: const Color(0xFF57636C),
+                                color: Color(0xFF57636C),
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts:
                                     GoogleFonts.asMap().containsKey('Outfit'),
                               ),
-                          enabledBorder: const UnderlineInputBorder(
+                          enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          focusedBorder: const UnderlineInputBorder(
+                          focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          errorBorder: const UnderlineInputBorder(
+                          errorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          focusedErrorBorder: const UnderlineInputBorder(
+                          focusedErrorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 8.0, 12.0),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Outfit',
-                              color: const Color(0xFF101213),
+                              color: Color(0xFF101213),
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                               useGoogleFonts:
@@ -177,13 +179,13 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                 ],
               ),
             ),
-            const Divider(
+            Divider(
               height: 12.0,
               thickness: 2.0,
               color: Color(0xFFF1F4F8),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,13 +195,13 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
                           borderWidth: 1.0,
                           buttonSize: 40.0,
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.photo_outlined,
                             color: Color(0xFF57636C),
                             size: 20.0,
@@ -272,13 +274,13 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
                           borderWidth: 1.0,
                           buttonSize: 40.0,
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.video_call,
                             color: Color(0xFF57636C),
                             size: 20.0,
@@ -371,10 +373,10 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                       width: 90.0,
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF4B39EF),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0xFF4B39EF),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Outfit',
@@ -385,7 +387,7 @@ class _ReplyToCommentWidgetState extends State<ReplyToCommentWidget> {
                                     GoogleFonts.asMap().containsKey('Outfit'),
                               ),
                       elevation: 2.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

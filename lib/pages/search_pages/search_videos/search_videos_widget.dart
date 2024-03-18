@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/testpage/components/loading/loading_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -93,7 +94,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -109,7 +110,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                       'Videos',
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
-                    actions: const [],
+                    actions: [],
                     centerTitle: true,
                     elevation: 2.0,
                   )
@@ -131,7 +132,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
@@ -146,7 +147,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -163,11 +164,11 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -200,7 +201,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -217,11 +218,11 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -254,7 +255,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -271,11 +272,11 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -335,7 +336,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           12.0,
@@ -351,7 +352,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                     EasyDebounce
                                                                         .debounce(
                                                                   '_model.textFieldVideosController',
-                                                                  const Duration(
+                                                                  Duration(
                                                                       milliseconds:
                                                                           2000),
                                                                   () async {
@@ -366,8 +367,8 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                             records
                                                                                 .map(
                                                                                   (record) => TextSearchItem.fromTerms(record, [
-                                                                                    record.title,
-                                                                                    record.videosummary
+                                                                                    record.title!,
+                                                                                    record.videosummary!
                                                                                   ]),
                                                                                 )
                                                                                 .toList(),
@@ -405,7 +406,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                   enabledBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -418,7 +419,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                   focusedBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -431,7 +432,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                   errorBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -444,7 +445,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                   focusedErrorBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -505,14 +506,14 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.all(10.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: Builder(
                                         builder: (context) {
                                           final searchVideos = _model
                                               .simpleSearchResults
                                               .toList();
                                           if (searchVideos.isEmpty) {
-                                            return const LoadingWidget();
+                                            return LoadingWidget();
                                           }
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
@@ -526,7 +527,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                   searchVideos[
                                                       searchVideosIndex];
                                               return Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 0.0),
                                                 child: Container(
@@ -536,7 +537,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                           1.0,
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 3.0,
                                                         color:
@@ -551,14 +552,14 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 8.0,
                                                                 16.0, 4.0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       decoration: BoxDecoration(
                                                         color: Colors.white,
-                                                        boxShadow: const [
+                                                        boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -590,7 +591,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         12.0,
@@ -618,7 +619,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                           fontFamily:
                                                                               'Outfit',
                                                                           color:
-                                                                              const Color(0xFF101213),
+                                                                              Color(0xFF101213),
                                                                           fontSize:
                                                                               20.0,
                                                                           fontWeight:
@@ -633,7 +634,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
@@ -661,7 +662,7 @@ class _SearchVideosWidgetState extends State<SearchVideosWidget> {
                                                                           fontFamily:
                                                                               'Outfit',
                                                                           color:
-                                                                              const Color(0xFF57636C),
+                                                                              Color(0xFF57636C),
                                                                           fontSize:
                                                                               14.0,
                                                                           fontWeight:

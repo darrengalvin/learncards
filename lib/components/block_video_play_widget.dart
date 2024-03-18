@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'block_video_play_model.dart';
 export 'block_video_play_model.dart';
 
@@ -40,13 +41,13 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
       child: Container(
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           maxWidth: 300.0,
         ),
         decoration: BoxDecoration(
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 5.0,
               color: Color(0x230E151B),
@@ -58,9 +59,9 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
               FlutterFlowTheme.of(context).primaryBackground,
               FlutterFlowTheme.of(context).secondary
             ],
-            stops: const [0.0, 1.0],
-            begin: const AlignmentDirectional(0.0, -1.0),
-            end: const AlignmentDirectional(0, 1.0),
+            stops: [0.0, 1.0],
+            begin: AlignmentDirectional(0.0, -1.0),
+            end: AlignmentDirectional(0, 1.0),
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
@@ -73,7 +74,7 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
               children: [
                 Container(
                   height: 32.0,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 1200.0,
                   ),
                   decoration: BoxDecoration(
@@ -82,33 +83,33 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
                         FlutterFlowTheme.of(context).primaryBackground,
                         FlutterFlowTheme.of(context).secondary
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(16.0),
                       topRight: Radius.circular(16.0),
                     ),
                   ),
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                 ),
                 Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Container(
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxWidth: 1200.0,
                     ),
-                    decoration: const BoxDecoration(),
-                    child: const Column(
+                    decoration: BoxDecoration(),
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        SizedBox(
+                        Container(
                           width: 1700.0,
                           height: 300.0,
                           child: custom_widgets.VideoWithPlay(
@@ -125,7 +126,7 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
                       bottomRight: Radius.circular(16.0),
                       topLeft: Radius.circular(0.0),
@@ -136,7 +137,7 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,7 +159,7 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
                                   ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 '\"There are souls in this world who have the gift of finding joy everywhere, and leaving it behind them when they go.\"',
@@ -178,7 +179,7 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(7.0),
+                              padding: EdgeInsets.all(7.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -192,7 +193,7 @@ class _BlockVideoPlayWidgetState extends State<BlockVideoPlayWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Gordon Burcham',

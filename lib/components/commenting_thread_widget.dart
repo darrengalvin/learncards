@@ -5,7 +5,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'commenting_thread_model.dart';
 export 'commenting_thread_model.dart';
@@ -36,8 +38,8 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 80.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 80.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -76,7 +78,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
       child: StreamBuilder<List<LearnCardEntriesRecord>>(
         stream: queryLearnCardEntriesRecord(),
         builder: (context, snapshot) {
@@ -98,7 +100,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
               contentCommentsLearnCardEntriesRecordList = snapshot.data!;
           return Container(
             width: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Builder(
               builder: (context) {
                 final listOfLearnCardEntries =
@@ -121,7 +123,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                     return Opacity(
                       opacity: 0.9,
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(16.0),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
@@ -162,7 +164,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                           borderRadius: 20.0,
                                           borderWidth: 1.0,
                                           buttonSize: 40.0,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.lock_person,
                                             color: Color(0xFFCEBB57),
                                             size: 24.0,
@@ -175,7 +177,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -197,14 +199,14 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge,
                                               ),
-                                              const Column(
+                                              Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [],
                                               ),
                                               AlignedTooltip(
                                                 content: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(4.0),
+                                                        EdgeInsets.all(4.0),
                                                     child: Text(
                                                       'This will show you your hidden comment but will not make it visible to all users.',
                                                       style:
@@ -224,8 +226,8 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                 tailBaseWidth: 24.0,
                                                 tailLength: 12.0,
                                                 waitDuration:
-                                                    const Duration(milliseconds: 100),
-                                                showDuration: const Duration(
+                                                    Duration(milliseconds: 100),
+                                                showDuration: Duration(
                                                     milliseconds: 1500),
                                                 triggerMode:
                                                     TooltipTriggerMode.tap,
@@ -251,7 +253,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                   },
                                                   child: Container(
                                                     width: 100.0,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Visibility(
                                                       visible:
                                                           listOfLearnCardEntriesItem
@@ -293,7 +295,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
                                               dateTimeFormat(
@@ -333,7 +335,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child: Text(
@@ -356,7 +358,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                     false,
                                   ))
                                     Container(
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -364,7 +366,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child: Text(
@@ -390,7 +392,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                 desktop: false,
                               ))
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -402,7 +404,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                         size: 24.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           valueOrDefault<String>(
@@ -416,7 +418,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'likes',
@@ -425,7 +427,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 0.0, 0.0),
                                         child: Icon(
                                           Icons.mode_comment_outlined,
@@ -435,7 +437,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           '8',
@@ -444,7 +446,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Comments',
@@ -456,7 +458,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 12.0),
                                 child: StreamBuilder<
                                     List<LearnCardEntryCommentsRecord>>(
@@ -510,7 +512,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                 listViewIndex];
                                         return Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -550,7 +552,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                       borderRadius: 20.0,
                                                       borderWidth: 1.0,
                                                       buttonSize: 40.0,
-                                                      icon: const Icon(
+                                                      icon: Icon(
                                                         Icons.lock_person,
                                                         color:
                                                             Color(0xFFCEBB57),
@@ -570,7 +572,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Container(
@@ -599,7 +601,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         8.0,
@@ -636,7 +638,7 @@ class _CommentingThreadWidgetState extends State<CommentingThreadWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(

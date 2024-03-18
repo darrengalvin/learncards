@@ -3,15 +3,16 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class SessionsRecord extends FirestoreRecord {
   SessionsRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -177,6 +178,31 @@ class SessionsRecord extends FirestoreRecord {
   String get activeLearnCard => _activeLearnCard ?? '';
   bool hasActiveLearnCard() => _activeLearnCard != null;
 
+  // "showPassword" field.
+  bool? _showPassword;
+  bool get showPassword => _showPassword ?? false;
+  bool hasShowPassword() => _showPassword != null;
+
+  // "firebaseAccount" field.
+  bool? _firebaseAccount;
+  bool get firebaseAccount => _firebaseAccount ?? false;
+  bool hasFirebaseAccount() => _firebaseAccount != null;
+
+  // "checkedForFireBaseAccount" field.
+  bool? _checkedForFireBaseAccount;
+  bool get checkedForFireBaseAccount => _checkedForFireBaseAccount ?? false;
+  bool hasCheckedForFireBaseAccount() => _checkedForFireBaseAccount != null;
+
+  // "checks" field.
+  List<ChecksCompletedStruct>? _checks;
+  List<ChecksCompletedStruct> get checks => _checks ?? const [];
+  bool hasChecks() => _checks != null;
+
+  // "ispUserFound" field.
+  bool? _ispUserFound;
+  bool get ispUserFound => _ispUserFound ?? false;
+  bool hasIspUserFound() => _ispUserFound != null;
+
   void _initializeFields() {
     _dateTime = snapshotData['dateTime'] as DateTime?;
     _backgroundImage = snapshotData['backgroundImage'] as String?;
@@ -220,6 +246,15 @@ class SessionsRecord extends FirestoreRecord {
     _showReply = snapshotData['showReply'] as bool?;
     _activeDailyTopic = snapshotData['activeDailyTopic'] as String?;
     _activeLearnCard = snapshotData['activeLearnCard'] as String?;
+    _showPassword = snapshotData['showPassword'] as bool?;
+    _firebaseAccount = snapshotData['firebaseAccount'] as bool?;
+    _checkedForFireBaseAccount =
+        snapshotData['checkedForFireBaseAccount'] as bool?;
+    _checks = getStructList(
+      snapshotData['checks'],
+      ChecksCompletedStruct.fromMap,
+    );
+    _ispUserFound = snapshotData['ispUserFound'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -284,6 +319,10 @@ Map<String, dynamic> createSessionsRecordData({
   bool? showReply,
   String? activeDailyTopic,
   String? activeLearnCard,
+  bool? showPassword,
+  bool? firebaseAccount,
+  bool? checkedForFireBaseAccount,
+  bool? ispUserFound,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -314,6 +353,10 @@ Map<String, dynamic> createSessionsRecordData({
       'showReply': showReply,
       'activeDailyTopic': activeDailyTopic,
       'activeLearnCard': activeLearnCard,
+      'showPassword': showPassword,
+      'firebaseAccount': firebaseAccount,
+      'checkedForFireBaseAccount': checkedForFireBaseAccount,
+      'ispUserFound': ispUserFound,
     }.withoutNulls,
   );
 
@@ -361,7 +404,12 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e1?.aiQuestionAsked == e2?.aiQuestionAsked &&
         e1?.showReply == e2?.showReply &&
         e1?.activeDailyTopic == e2?.activeDailyTopic &&
-        e1?.activeLearnCard == e2?.activeLearnCard;
+        e1?.activeLearnCard == e2?.activeLearnCard &&
+        e1?.showPassword == e2?.showPassword &&
+        e1?.firebaseAccount == e2?.firebaseAccount &&
+        e1?.checkedForFireBaseAccount == e2?.checkedForFireBaseAccount &&
+        listEquality.equals(e1?.checks, e2?.checks) &&
+        e1?.ispUserFound == e2?.ispUserFound;
   }
 
   @override
@@ -397,7 +445,12 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e?.aiQuestionAsked,
         e?.showReply,
         e?.activeDailyTopic,
-        e?.activeLearnCard
+        e?.activeLearnCard,
+        e?.showPassword,
+        e?.firebaseAccount,
+        e?.checkedForFireBaseAccount,
+        e?.checks,
+        e?.ispUserFound
       ]);
 
   @override

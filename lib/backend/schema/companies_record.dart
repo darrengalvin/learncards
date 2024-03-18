@@ -3,15 +3,16 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class CompaniesRecord extends FirestoreRecord {
   CompaniesRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -283,6 +284,11 @@ class CompaniesRecord extends FirestoreRecord {
   String get startingMemberLevelName => _startingMemberLevelName ?? '';
   bool hasStartingMemberLevelName() => _startingMemberLevelName != null;
 
+  // "backgroundImageFilter" field.
+  double? _backgroundImageFilter;
+  double get backgroundImageFilter => _backgroundImageFilter ?? 0.0;
+  bool hasBackgroundImageFilter() => _backgroundImageFilter != null;
+
   void _initializeFields() {
     _companylogo = snapshotData['companylogo'] as String?;
     _companyname = snapshotData['companyname'] as String?;
@@ -344,6 +350,8 @@ class CompaniesRecord extends FirestoreRecord {
     _startingMemberLevel = snapshotData['startingMemberLevel'] as String?;
     _startingMemberLevelName =
         snapshotData['startingMemberLevelName'] as String?;
+    _backgroundImageFilter =
+        castToType<double>(snapshotData['backgroundImageFilter']);
   }
 
   static CollectionReference get collection =>
@@ -433,6 +441,7 @@ Map<String, dynamic> createCompaniesRecordData({
   String? companyDocId,
   String? startingMemberLevel,
   String? startingMemberLevelName,
+  double? backgroundImageFilter,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -488,6 +497,7 @@ Map<String, dynamic> createCompaniesRecordData({
       'companyDocId': companyDocId,
       'startingMemberLevel': startingMemberLevel,
       'startingMemberLevelName': startingMemberLevelName,
+      'backgroundImageFilter': backgroundImageFilter,
     }.withoutNulls,
   );
 
@@ -558,7 +568,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e1?.updatedTime == e2?.updatedTime &&
         e1?.companyDocId == e2?.companyDocId &&
         e1?.startingMemberLevel == e2?.startingMemberLevel &&
-        e1?.startingMemberLevelName == e2?.startingMemberLevelName;
+        e1?.startingMemberLevelName == e2?.startingMemberLevelName &&
+        e1?.backgroundImageFilter == e2?.backgroundImageFilter;
   }
 
   @override
@@ -615,7 +626,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e?.updatedTime,
         e?.companyDocId,
         e?.startingMemberLevel,
-        e?.startingMemberLevelName
+        e?.startingMemberLevelName,
+        e?.backgroundImageFilter
       ]);
 
   @override

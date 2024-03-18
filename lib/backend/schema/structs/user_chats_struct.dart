@@ -105,7 +105,7 @@ class UserChatsStruct extends FFFirebaseStruct {
           ParamType.DateTime,
           false,
         ),
-        firestoreUtilData: const FirestoreUtilData(
+        firestoreUtilData: FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
         ),

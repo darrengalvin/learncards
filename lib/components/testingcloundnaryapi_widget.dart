@@ -1,8 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -76,11 +78,11 @@ class _TestingcloundnaryapiWidgetState
                   builder: (alertDialogContext) {
                     return WebViewAware(
                       child: AlertDialog(
-                        title: const Text('trying now'),
+                        title: Text('trying now'),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(alertDialogContext),
-                            child: const Text('Ok'),
+                            child: Text('Ok'),
                           ),
                         ],
                       ),
@@ -97,11 +99,11 @@ class _TestingcloundnaryapiWidgetState
                   builder: (alertDialogContext) {
                     return WebViewAware(
                       child: AlertDialog(
-                        title: const Text('tried'),
+                        title: Text('tried'),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(alertDialogContext),
-                            child: const Text('Ok'),
+                            child: Text('Ok'),
                           ),
                         ],
                       ),
@@ -119,7 +121,7 @@ class _TestingcloundnaryapiWidgetState
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(alertDialogContext),
-                            child: const Text('Ok'),
+                            child: Text('Ok'),
                           ),
                         ],
                       ),
@@ -148,7 +150,7 @@ class _TestingcloundnaryapiWidgetState
                       builder: (alertDialogContext) {
                         return WebViewAware(
                           child: AlertDialog(
-                            title: const Text('Got Public ID'),
+                            title: Text('Got Public ID'),
                             content: Text(CloudinaryTranscribeCall.publicid(
                               (_model.transcribe?.jsonBody ?? ''),
                             )!),
@@ -156,7 +158,7 @@ class _TestingcloundnaryapiWidgetState
                               TextButton(
                                 onPressed: () =>
                                     Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
+                                child: Text('Ok'),
                               ),
                             ],
                           ),
@@ -187,7 +189,7 @@ class _TestingcloundnaryapiWidgetState
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -203,7 +205,7 @@ class _TestingcloundnaryapiWidgetState
                       builder: (alertDialogContext) {
                         return WebViewAware(
                           child: AlertDialog(
-                            title: const Text('Loop Finished '),
+                            title: Text('Loop Finished '),
                             content: Text(
                                 'PublicID. : ${CloudinaryTranscribeCall.publicid(
                               (_model.transcribe?.jsonBody ?? ''),
@@ -214,7 +216,7 @@ class _TestingcloundnaryapiWidgetState
                               TextButton(
                                 onPressed: () =>
                                     Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
+                                child: Text('Ok'),
                               ),
                             ],
                           ),
@@ -240,12 +242,12 @@ class _TestingcloundnaryapiWidgetState
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              title: const Text('TRANSCRIBE Obtained '),
+                              title: Text('TRANSCRIBE Obtained '),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -287,12 +289,12 @@ class _TestingcloundnaryapiWidgetState
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              title: const Text('ready to send json to AI'),
+                              title: Text('ready to send json to AI'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -306,12 +308,12 @@ class _TestingcloundnaryapiWidgetState
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              title: const Text('failed to get transcription'),
+                              title: Text('failed to get transcription'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -331,7 +333,7 @@ class _TestingcloundnaryapiWidgetState
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -351,7 +353,7 @@ class _TestingcloundnaryapiWidgetState
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -370,7 +372,7 @@ class _TestingcloundnaryapiWidgetState
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -385,14 +387,14 @@ class _TestingcloundnaryapiWidgetState
                       builder: (alertDialogContext) {
                         return WebViewAware(
                           child: AlertDialog(
-                            title: const Text('FAILED'),
+                            title: Text('FAILED'),
                             content: Text((_model.transcribe?.succeeded ?? true)
                                 .toString()),
                             actions: [
                               TextButton(
                                 onPressed: () =>
                                     Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
+                                child: Text('Ok'),
                               ),
                             ],
                           ),
@@ -405,14 +407,14 @@ class _TestingcloundnaryapiWidgetState
                       builder: (alertDialogContext) {
                         return WebViewAware(
                           child: AlertDialog(
-                            title: const Text('FAILED'),
+                            title: Text('FAILED'),
                             content: Text(
                                 (_model.transcribe?.jsonBody ?? '').toString()),
                             actions: [
                               TextButton(
                                 onPressed: () =>
                                     Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
+                                child: Text('Ok'),
                               ),
                             ],
                           ),
@@ -425,13 +427,13 @@ class _TestingcloundnaryapiWidgetState
                       builder: (alertDialogContext) {
                         return WebViewAware(
                           child: AlertDialog(
-                            title: const Text('FAILED'),
+                            title: Text('FAILED'),
                             content: Text((_model.transcribe?.bodyText ?? '')),
                             actions: [
                               TextButton(
                                 onPressed: () =>
                                     Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
+                                child: Text('Ok'),
                               ),
                             ],
                           ),
@@ -446,12 +448,12 @@ class _TestingcloundnaryapiWidgetState
                     builder: (alertDialogContext) {
                       return WebViewAware(
                         child: AlertDialog(
-                          title: const Text('sign failed'),
+                          title: Text('sign failed'),
                           actions: [
                             TextButton(
                               onPressed: () =>
                                   Navigator.pop(alertDialogContext),
-                              child: const Text('Ok'),
+                              child: Text('Ok'),
                             ),
                           ],
                         ),
@@ -465,8 +467,8 @@ class _TestingcloundnaryapiWidgetState
               text: 'Button',
               options: FFButtonOptions(
                 height: 40.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -475,7 +477,7 @@ class _TestingcloundnaryapiWidgetState
                           FlutterFlowTheme.of(context).titleSmallFamily),
                     ),
                 elevation: 3.0,
-                borderSide: const BorderSide(
+                borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 1.0,
                 ),

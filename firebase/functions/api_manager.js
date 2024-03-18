@@ -161,6 +161,82 @@ async function _getTopicsCall(context, ffVariables) {
   });
 }
 
+async function _getISPDataCall(context, ffVariables) {
+  var username = ffVariables["username"];
+  var password = ffVariables["password"];
+  var companyDocId = ffVariables["companyDocId"];
+  var email = ffVariables["email"];
+  var companyName = ffVariables["companyName"];
+  var sessionId = ffVariables["sessionId"];
+  var threadDetails = ffVariables["threadDetails"];
+  var threadId = ffVariables["threadId"];
+  var userId = ffVariables["userId"];
+
+  var url = `${cloudFunctionsGroup.baseUrl}ispGetData`;
+  var headers = { "Content-Type": `application/json` };
+  var params = {};
+  var ffApiRequestBody = `
+{
+  "username": "${username}",
+  "password": "${password}",
+  "companyDocId": "${companyDocId}",
+  "email": "${email}",
+  "companyName": "${companyName} ",
+  "session_id": "${sessionId}",
+  "thread_id": "${threadId}",
+  "user_id": "${sessionId}"
+}`;
+
+  return makeApiRequest({
+    method: "post",
+    url,
+    headers,
+    params,
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
+    returnBody: true,
+  });
+}
+
+async function _getISPDataCopyCall(context, ffVariables) {
+  var username = ffVariables["username"];
+  var password = ffVariables["password"];
+  var companyDocId = ffVariables["companyDocId"];
+  var email = ffVariables["email"];
+  var companyName = ffVariables["companyName"];
+  var sessionId = ffVariables["sessionId"];
+  var threadDetails = ffVariables["threadDetails"];
+  var threadId = ffVariables["threadId"];
+  var userId = ffVariables["userId"];
+
+  var url = `${cloudFunctionsGroup.baseUrl}ispGetData`;
+  var headers = { "Content-Type": `application/json` };
+  var params = {};
+  var ffApiRequestBody = `
+{
+  "username": "${username}",
+  "password": "${password}"
+}`;
+
+  return makeApiRequest({
+    method: "post",
+    url,
+    headers,
+    params,
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
+    returnBody: true,
+  });
+}
+
 /// End cloudFunctions Group Code
 
 async function _newMuxGetLiveStreamIDCall(context, ffVariables) {
@@ -636,6 +712,45 @@ async function _cloudinaryPresetCreateCall(context, ffVariables) {
     returnBody: true,
   });
 }
+async function _iSPDataLookupCall(context, ffVariables) {
+  var username = ffVariables["username"];
+  var password = ffVariables["password"];
+  var companyDocId = ffVariables["companyDocId"];
+  var companyName = ffVariables["companyName"];
+  var sessionId = ffVariables["sessionId"];
+  var threadId = ffVariables["threadId"];
+  var userId = ffVariables["userId"];
+  var threadDetails = ffVariables["threadDetails"];
+
+  var url = `https://us-central1-yourcaio-c75b4.cloudfunctions.net/ispGetData`;
+  var headers = { "Content-Type": `application/json` };
+  var params = {};
+  var ffApiRequestBody = `
+{
+  "username": "${username}",
+  "password": "${password}",
+  "companyDocId": "${companyDocId}",
+  "companyName": "${companyName}",
+  "session_id": "${sessionId}",
+  "threadDetails": ${threadDetails},
+  "thread_id": "${threadId}",
+  "user_id": "${userId}"
+}`;
+
+  return makeApiRequest({
+    method: "post",
+    url,
+    headers,
+    params,
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
+    returnBody: true,
+  });
+}
 
 /// Helper functions to route to the appropriate API Call.
 
@@ -661,9 +776,12 @@ async function makeApiCall(context, data) {
     LearningActivityCall: _learningActivityCall,
     CallLearnCardChatCall: _callLearnCardChatCall,
     CloudinaryPresetCreateCall: _cloudinaryPresetCreateCall,
+    ISPDataLookupCall: _iSPDataLookupCall,
     NewGetLiveStreamIDCall: _newGetLiveStreamIDCall,
     NewGetPastLiveStreamCall: _newGetPastLiveStreamCall,
     GetTopicsCall: _getTopicsCall,
+    GetISPDataCall: _getISPDataCall,
+    GetISPDataCopyCall: _getISPDataCopyCall,
   };
 
   if (!(callName in callMap)) {

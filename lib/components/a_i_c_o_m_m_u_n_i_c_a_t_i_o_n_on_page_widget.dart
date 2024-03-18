@@ -1,5 +1,9 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/components/session_checks_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -11,6 +15,7 @@ import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -18,6 +23,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_model.dart';
 export 'a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_model.dart';
 
@@ -27,16 +33,16 @@ class AICOMMUNICATIONOnPageWidget extends StatefulWidget {
     bool? askingQuestion,
     required this.companiesDoc,
     bool? isLearnCard,
-    this.sessionsDoc,
     required this.teamDoc,
-  })  : askingQuestion = askingQuestion ?? false,
-        isLearnCard = isLearnCard ?? false;
+    required this.sessionsDoc,
+  })  : this.askingQuestion = askingQuestion ?? false,
+        this.isLearnCard = isLearnCard ?? false;
 
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
   final bool isLearnCard;
-  final SessionsRecord? sessionsDoc;
   final MyTeamRecord? teamDoc;
+  final SessionsRecord? sessionsDoc;
 
   @override
   State<AICOMMUNICATIONOnPageWidget> createState() =>
@@ -178,6 +184,7 @@ class _AICOMMUNICATIONOnPageWidgetState
       logFirebaseEvent('AI_COMMUNICATION-OnPage_update_component');
       setState(() {
         _model.questionReady = true;
+        _model.flowiseChatDocsCount = 0;
       });
       logFirebaseEvent('AI_COMMUNICATION-OnPage_update_app_state');
       _model.updatePage(() {
@@ -209,13 +216,16 @@ class _AICOMMUNICATIONOnPageWidgetState
       logFirebaseEvent('AI_COMMUNICATION-OnPage_scroll_to');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
 
     _model.askTheQuestionController ??= TextEditingController();
     _model.askTheQuestionFocusNode ??= FocusNode();
+
+    _model.passwordController ??= TextEditingController();
+    _model.passwordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -237,7 +247,7 @@ class _AICOMMUNICATIONOnPageWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(22.0),
               child: Container(
@@ -259,7 +269,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                   maxHeight: MediaQuery.sizeOf(context).height * 0.8,
                 ),
                 decoration: BoxDecoration(
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
                       blurRadius: 4.0,
                       color: Color(0x33000000),
@@ -311,52 +321,67 @@ class _AICOMMUNICATIONOnPageWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 12.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              if (valueOrDefault<bool>(
-                                                widget.teamDoc != null,
-                                                false,
-                                              ))
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          25.0, 0.0, 25.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      widget
-                                                          .teamDoc?.memberName,
-                                                      '-',
-                                                    ),
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmallFamily,
-                                                          fontSize: 16.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .displaySmallFamily),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            controller: _model.rowController,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    if (valueOrDefault<bool>(
+                                                      widget.teamDoc != null,
+                                                      false,
+                                                    ))
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    25.0,
+                                                                    0.0,
+                                                                    25.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            widget.teamDoc
+                                                                ?.memberName,
+                                                            '-',
+                                                          ),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .displaySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .displaySmallFamily,
+                                                                fontSize: 16.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .displaySmallFamily),
+                                                              ),
                                                         ),
-                                                  ),
+                                                      ),
+                                                  ],
                                                 ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                         Row(
@@ -396,7 +421,8 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -407,13 +433,15 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               if (valueOrDefault<bool>(
-                                                FFAppState()
+                                                FFAppState().tempStreamingMessage !=
+                                                        null &&
+                                                    FFAppState()
                                                             .tempStreamingMessage !=
                                                         '',
                                                 false,
                                               ))
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           25.0, 0.0, 25.0, 0.0),
                                                   child: Text(
@@ -444,57 +472,6 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             ],
                                           ),
                                         ),
-                                        const Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        if (FFAppState().debugCount >= 3)
-                                          Expanded(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          25.0, 0.0, 25.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      FFAppState()
-                                                          .selectedThreadId,
-                                                      'notset',
-                                                    ),
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmallFamily,
-                                                          fontSize: 18.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .displaySmallFamily),
-                                                        ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
                                       ],
                                     ),
                                   ),
@@ -506,7 +483,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                               false,
                             ))
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 12.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -514,7 +491,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 12.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -528,7 +505,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                               _model.dropDownValue ??=
                                                   'Reading Topic (thread)',
                                             ),
-                                            options: const ['Reading Topic (thread)'],
+                                            options: ['Reading Topic (thread)'],
                                             onChanged: (val) => setState(() =>
                                                 _model.dropDownValue = val),
                                             width: 300.0,
@@ -554,7 +531,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             borderWidth: 2.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isOverButton: true,
@@ -645,10 +622,10 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             text: 'New Thread',
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -673,7 +650,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                     .titleSmallFamily),
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -720,9 +697,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                               ),
                             Expanded(
                               child: Align(
-                                alignment: const AlignmentDirectional(-1.0, 1.0),
+                                alignment: AlignmentDirectional(-1.0, 1.0),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child:
                                       StreamBuilder<List<FlowiseChatsRecord>>(
                                     stream: queryFlowiseChatsRecord(
@@ -769,7 +746,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             _model.columnChatsScrollable!
                                                 .position.maxScrollExtent,
                                             duration:
-                                                const Duration(milliseconds: 100),
+                                                Duration(milliseconds: 100),
                                             curve: Curves.ease,
                                           );
                                           // scroll streaming
@@ -780,9 +757,12 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             _model.columnMarkdownScrollable!
                                                 .position.maxScrollExtent,
                                             duration:
-                                                const Duration(milliseconds: 100),
+                                                Duration(milliseconds: 100),
                                             curve: Curves.ease,
                                           );
+                                          logFirebaseEvent(
+                                              'Column-chats-scrollable_update_app_state');
+                                          FFAppState().update(() {});
 
                                           setState(() {});
                                         }
@@ -816,7 +796,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             columnChatsScrollableFlowiseChatsRecordList
                                                 .length,
                                         separatorBuilder: (_, __) =>
-                                            const SizedBox(height: 8.0),
+                                            SizedBox(height: 8.0),
                                         itemBuilder: (context,
                                             columnChatsScrollableIndex) {
                                           final columnChatsScrollableFlowiseChatsRecord =
@@ -839,7 +819,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     Flexible(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     33.0,
                                                                     0.0,
@@ -872,7 +852,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             }(),
                                                           ),
                                                           decoration:
-                                                              const BoxDecoration(
+                                                              BoxDecoration(
                                                             color: Color(
                                                                 0xFFE6EDFB),
                                                             borderRadius:
@@ -895,7 +875,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     4.0),
                                                             child: Row(
                                                               mainAxisSize:
@@ -909,7 +889,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             9.0),
                                                                     child: Text(
                                                                       columnChatsScrollableFlowiseChatsRecord
@@ -953,7 +933,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   (columnChatsScrollableFlowiseChatsRecord
                                                           .role ==
                                                       'system'))
-                                                SizedBox(
+                                                Container(
                                                   width: double.infinity,
                                                   child: Stack(
                                                     children: [
@@ -977,7 +957,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         .role ==
                                                                     'ai')
                                                                   AnimatedContainer(
-                                                                    duration: const Duration(
+                                                                    duration: Duration(
                                                                         milliseconds:
                                                                             100),
                                                                     curve: Curves
@@ -1001,7 +981,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                       }(),
                                                                     ),
                                                                     decoration:
-                                                                        const BoxDecoration(
+                                                                        BoxDecoration(
                                                                       color: Color(
                                                                           0xFFF5F5F5),
                                                                       borderRadius:
@@ -1016,14 +996,24 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         topRight:
                                                                             Radius.circular(8.0),
                                                                       ),
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: columnChatsScrollableFlowiseChatsRecord.style ==
+                                                                                'notification'
+                                                                            ? FlutterFlowTheme.of(context).customColor3
+                                                                            : Color(0x00000000),
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
                                                                     ),
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             -1.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1039,7 +1029,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         children: [
                                                                           Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(4.0),
+                                                                                EdgeInsets.all(4.0),
                                                                             child:
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.min,
@@ -1052,7 +1042,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                   desktop: false,
                                                                                 ))
                                                                                   Padding(
-                                                                                    padding: const EdgeInsets.all(3.0),
+                                                                                    padding: EdgeInsets.all(3.0),
                                                                                     child: ClipRRect(
                                                                                       borderRadius: BorderRadius.circular(8.0),
                                                                                       child: Image.network(
@@ -1077,7 +1067,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                                                           children: [
                                                                                             Padding(
-                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                               child: MarkdownBody(
                                                                                                 data: valueOrDefault<String>(
                                                                                                   columnChatsScrollableFlowiseChatsRecord.text,
@@ -1104,7 +1094,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         .role ==
                                                                     'system')
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             15.0,
@@ -1112,7 +1102,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                             0.0),
                                                                     child:
                                                                         AnimatedContainer(
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -1140,7 +1130,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .customColor3,
                                                                         borderRadius:
-                                                                            const BorderRadius.only(
+                                                                            BorderRadius.only(
                                                                           bottomLeft:
                                                                               Radius.circular(8.0),
                                                                           bottomRight:
@@ -1152,12 +1142,12 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         ),
                                                                       ),
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               -1.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -1172,7 +1162,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsets.all(4.0),
+                                                                              padding: EdgeInsets.all(4.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1184,7 +1174,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                     desktop: false,
                                                                                   ))
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(3.0),
+                                                                                      padding: EdgeInsets.all(3.0),
                                                                                       child: ClipRRect(
                                                                                         borderRadius: BorderRadius.circular(8.0),
                                                                                         child: Image.network(
@@ -1209,7 +1199,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: const EdgeInsets.all(6.0),
+                                                                                                padding: EdgeInsets.all(6.0),
                                                                                                 child: MarkdownBody(
                                                                                                   data: valueOrDefault<String>(
                                                                                                     columnChatsScrollableFlowiseChatsRecord.text,
@@ -1244,7 +1234,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       ))
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   6.0),
                                                           child: ClipRRect(
                                                             borderRadius:
@@ -1274,14 +1264,14 @@ class _AICOMMUNICATIONOnPageWidgetState
                                 ),
                               ),
                             ),
-                            if (FFAppState().flowiseMessages.isNotEmpty)
-                              SizedBox(
+                            if (FFAppState().flowiseMessages.length > 0)
+                              Container(
                                 width: double.infinity,
                                 child: Stack(
                                   children: [
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(0.0, -429.57),
+                                          AlignmentDirectional(0.0, -429.57),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -1292,13 +1282,13 @@ class _AICOMMUNICATIONOnPageWidgetState
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 AnimatedContainer(
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.easeInOut,
-                                                  constraints: const BoxConstraints(
+                                                  constraints: BoxConstraints(
                                                     maxWidth: 600.0,
                                                   ),
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0xFFEEEEEE),
                                                     borderRadius:
                                                         BorderRadius.only(
@@ -1313,11 +1303,11 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ),
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 9.0),
                                                     child: Column(
@@ -1331,7 +1321,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   4.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -1368,7 +1358,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                               child: MarkdownBody(
                                                                                 data: valueOrDefault<String>(
                                                                                   FFAppState().flowiseMessages.first.message,
@@ -1403,7 +1393,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       phone: false,
                                     ))
                                       Padding(
-                                        padding: const EdgeInsets.all(6.0),
+                                        padding: EdgeInsets.all(6.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -1418,7 +1408,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                   ],
                                 ),
                               ),
-                            if ((FFAppState().flowiseMessages.isNotEmpty) &&
+                            if ((FFAppState().flowiseMessages.length > 0) &&
                                 responsiveVisibility(
                                   context: context,
                                   phone: false,
@@ -1427,7 +1417,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                   desktop: false,
                                 ))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1438,9 +1428,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     ))
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
+                                            AlignmentDirectional(-1.0, -1.0),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(6.0),
+                                          padding: EdgeInsets.all(6.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
@@ -1455,11 +1445,11 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       ),
                                     Expanded(
                                       child: Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 600.0,
                                           maxHeight: 600.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
@@ -1471,7 +1461,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                               desktop: false,
                                             ))
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: MarkdownBody(
                                                   data: valueOrDefault<String>(
@@ -1494,13 +1484,13 @@ class _AICOMMUNICATIONOnPageWidgetState
                                 ),
                               ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   if (_model.questionReady == false)
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1535,9 +1525,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         animationsMap[
                                                             'iconOnPageLoadAnimation']!),
                                                   ].divide(
-                                                      const SizedBox(width: 9.0)),
+                                                      SizedBox(width: 9.0)),
                                                 ),
-                                                const Divider(
+                                                Divider(
                                                   thickness: 1.0,
                                                   color: Color(0xFF505050),
                                                 ),
@@ -1551,8 +1541,8 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             borderRadius: 5.0,
                                             borderWidth: 1.0,
                                             buttonSize: 55.0,
-                                            fillColor: const Color(0xFFCDCDCD),
-                                            icon: const Icon(
+                                            fillColor: Color(0xFFCDCDCD),
+                                            icon: Icon(
                                               Icons.send_sharp,
                                               color: Color(0xFFA6A6A6),
                                               size: 24.0,
@@ -1565,23 +1555,22 @@ class _AICOMMUNICATIONOnPageWidgetState
                                         ],
                                       ),
                                     ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                    ),
-                                    child: Visibility(
-                                      visible: valueOrDefault<bool>(
-                                            _model.questionReady == true,
+                                  if (valueOrDefault<bool>(
+                                        _model.questionReady == true,
+                                        true,
+                                      ) &&
+                                      valueOrDefault<bool>(
+                                        widget.sessionsDoc?.ispUserFound !=
                                             true,
-                                          ) &&
-                                          valueOrDefault<bool>(
-                                            widget.sessionsDoc?.showReply !=
-                                                false,
-                                            true,
-                                          ),
+                                        false,
+                                      ))
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                      ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
+                                        padding: EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -1634,7 +1623,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   ),
                                                   focusedBorder:
                                                       UnderlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFF464646),
                                                       width: 2.0,
                                                     ),
@@ -1669,7 +1658,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             8.0),
                                                   ),
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 0.0,
                                                               0.0, 0.0),
                                                 ),
@@ -1743,6 +1732,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   );
                                                   if (FFAppState()
                                                               .nonLoggedInSessionId ==
+                                                          null ||
+                                                      FFAppState()
+                                                              .nonLoggedInSessionId ==
                                                           '') {}
                                                   // flowise chat document
                                                   logFirebaseEvent(
@@ -1770,6 +1762,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .selectedThreadId,
                                                       ));
                                                   if (!(FFAppState()
+                                                              .selectedThreadId !=
+                                                          null &&
+                                                      FFAppState()
                                                               .selectedThreadId !=
                                                           '')) {
                                                     // generate active thread id
@@ -1814,7 +1809,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -1836,29 +1831,29 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       _model
                                                           .companyQueryByCode
                                                           ?.first
-                                                          .supabaseProjUrl,
+                                                          ?.supabaseProjUrl,
                                                       'https://efdipbnxemvehcjbxekx.supabase.co',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode
-                                                          ?.first.tableName,
+                                                          ?.first?.tableName,
                                                       'table_name',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model
                                                           .companyQueryByCode
                                                           ?.first
-                                                          .supabaseApiKey,
+                                                          ?.supabaseApiKey,
                                                       'apikey',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode
-                                                          ?.first.queryName,
+                                                          ?.first?.queryName,
                                                       'queryName',
                                                     ),
                                                     valueOrDefault<bool>(
                                                       _model.companyQueryByCode
-                                                          ?.first.isLearnCards,
+                                                          ?.first?.isLearnCards,
                                                       false,
                                                     ),
                                                     () async {
@@ -1872,7 +1867,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -1886,7 +1881,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -1902,7 +1897,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -1916,7 +1911,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -1963,7 +1958,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2000,7 +1995,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2205,7 +2200,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ?.animateTo(
                                                   _model.columnChatsScrollable!
                                                       .position.maxScrollExtent,
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.ease,
                                                 );
@@ -2223,6 +2218,19 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   singleRecord: true,
                                                 ).then((s) => s.firstOrNull);
                                                 logFirebaseEvent(
+                                                    'IconButton_firestore_query');
+                                                _model.learncardsQ =
+                                                    await queryLearnCardsRecordOnce(
+                                                  queryBuilder:
+                                                      (learnCardsRecord) =>
+                                                          learnCardsRecord
+                                                              .where(
+                                                    'learnCardId',
+                                                    isEqualTo: FFAppState()
+                                                        .selectedLearnCardId,
+                                                  ),
+                                                );
+                                                logFirebaseEvent(
                                                     'IconButton_custom_action');
                                                 await actions
                                                     .callFlowiseStreamingChat(
@@ -2231,61 +2239,113 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       .text,
                                                   valueOrDefault<String>(
                                                     () {
-                                                      if (_model.sessionForFlowise
-                                                                  ?.currentNavJourney ==
-                                                              null ||
-                                                          _model.sessionForFlowise
-                                                                  ?.currentNavJourney ==
-                                                              '') {
-                                                        return 'This weeks focus topic is${widget.companiesDoc?.userGatherDataPrompt}';
-                                                      } else if ((widget
-                                                                  .isLearnCard ==
-                                                              true) ||
-                                                          (FFAppState()
-                                                                  .IsLearnCard ==
-                                                              true)) {
-                                                        return widget
-                                                            .companiesDoc
-                                                            ?.continueLearnCardPrompt;
-                                                      } else if ((_model
-                                                                  .sessionForFlowise
-                                                                  ?.currentNavJourney ==
-                                                              'newUser') ||
-                                                          (_model.sessionForFlowise
-                                                                  ?.currentNavJourney ==
-                                                              'newSession')) {
-                                                        return 'This weeks topic is : ${widget.companiesDoc?.companyAiData.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
+                                                      if (_model
+                                                              .sessionForFlowise
+                                                              ?.currentNavJourney ==
+                                                          'newSession') {
+                                                        return 'This weeks topic is : ${widget.companiesDoc?.companyAiData?.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
+                                                      } else if (_model
+                                                              .sessionForFlowise
+                                                              ?.currentNavJourney ==
+                                                          'learnCard') {
+                                                        return valueOrDefault<
+                                                            String>(
+                                                          'You are ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.memberName,
+                                                            'memberName is NOT SET',
+                                                          )} you are the users  ${valueOrDefault<String>(
+                                                            widget
+                                                                .teamDoc?.role,
+                                                            'ROLE IS NOT SET',
+                                                          )} your summary is ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.memberSummary,
+                                                            'MEMBER SUMMARY IS NOT SET',
+                                                          )}your persona is ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.persona,
+                                                            'PERSONA IS NOT SET',
+                                                          )} Words and phrases you use in your vocalabary are ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.buzzWordsPhrases
+                                                                ?.take(15)
+                                                                .toList()
+                                                                ?.first,
+                                                            'NOT SET',
+                                                          )}: ${valueOrDefault<String>(
+                                                            widget.companiesDoc
+                                                                ?.youAreMyCoachPrompt,
+                                                            'NOT SET',
+                                                          )}ai instruction not to be shared with user: This app has weekly focus topics and THIS WEEK is ${valueOrDefault<String>(
+                                                            widget
+                                                                .companiesDoc
+                                                                ?.companyAiData
+                                                                ?.thisWeeksTopic,
+                                                            'THIS WEEKS TOPIC IS NOT SET',
+                                                          )} the user is currently looking at the SUBJECT  ${valueOrDefault<String>(
+                                                            _model
+                                                                .sessionForFlowise
+                                                                ?.activeDailyTopic,
+                                                            'DAILY SUBJUST NOT SET',
+                                                          )} The activity the user is currently working on is ${valueOrDefault<String>(
+                                                            FFAppState()
+                                                                .learnCardDescription,
+                                                            'learn card activity has not been chosen yet, the user will need to chose one if they wish to learn more about todays activity. ',
+                                                          )}it is your job to guide the user through the activity, please start the learn card by asking them a question diectly relating to the activities first step.',
+                                                          'This is a placeholder as nothing was set ',
+                                                        );
                                                       } else {
-                                                        return 'You are ${widget.teamDoc?.memberName} you are the users  ${widget.teamDoc?.role} your summary is ${widget.teamDoc?.memberSummary}your persona is ${widget.teamDoc?.persona} Words and phrases you use in your vocalabary are ${widget.teamDoc?.buzzWordsPhrases.take(15).toList().first}: ${widget.companiesDoc?.youAreMyCoachPrompt}ai instruction not to be shared with user: This app has weekly focus topics and THIS WEEK is ${widget.companiesDoc?.companyAiData.thisWeeksTopic}  the user is currently looking at the SUBJECT  ${valueOrDefault<String>(
-                                                          _model
-                                                              .sessionForFlowise
-                                                              ?.activeDailyTopic,
-                                                          'NOT SET',
-                                                        )} The LearnCard activity that I am working on is  ${valueOrDefault<String>(
-                                                          _model
-                                                              .sessionForFlowise
-                                                              ?.activeLearnCard,
-                                                          'LEARN CARD NOT SET ',
-                                                        )}I would like you to help me navigate this. here is some information about the activity, the user already has this information so you should help them work through it saking one step at a time in a conversational style.  FILL LATER sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
-                                                          widget.sessionsDoc
-                                                              ?.aiQuestionAsked,
-                                                          'not set',
-                                                        )}ask me do I want to discuss something about todays subject  note for ai:  it is ok if the the user is allowed to discusss things outside of the weekly topic providing they are related to the company  ${valueOrDefault<String>(
-                                                          widget
-                                                              .companiesDoc
-                                                              ?.companyAiData
-                                                              .companySummary,
-                                                          'summary',
-                                                        )} and industry,${valueOrDefault<String>(
-                                                          widget
-                                                              .companiesDoc
-                                                              ?.companyAiData
-                                                              .companyIndustry,
-                                                          'summary',
-                                                        )}';
+                                                        return valueOrDefault<
+                                                            String>(
+                                                          'You are ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.memberName,
+                                                            'memberName is NOT SET',
+                                                          )} you are the users  ${valueOrDefault<String>(
+                                                            widget
+                                                                .teamDoc?.role,
+                                                            'ROLE IS NOT SET',
+                                                          )} your summary is ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.memberSummary,
+                                                            'MEMBER SUMMARY IS NOT SET',
+                                                          )}your persona is ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.persona,
+                                                            'PERSONA IS NOT SET',
+                                                          )} Words and phrases you use in your vocalabary are ${valueOrDefault<String>(
+                                                            widget.teamDoc
+                                                                ?.buzzWordsPhrases
+                                                                ?.take(15)
+                                                                .toList()
+                                                                ?.first,
+                                                            'NOT SET',
+                                                          )}: ${valueOrDefault<String>(
+                                                            widget.companiesDoc
+                                                                ?.youAreMyCoachPrompt,
+                                                            'NOT SET',
+                                                          )}ai instruction not to be shared with user: This app has weekly focus topics and THIS WEEK is ${valueOrDefault<String>(
+                                                            widget
+                                                                .companiesDoc
+                                                                ?.companyAiData
+                                                                ?.thisWeeksTopic,
+                                                            'THIS WEEKS TOPIC IS NOT SET',
+                                                          )} the user is currently looking at the SUBJECT  ${valueOrDefault<String>(
+                                                            _model
+                                                                .sessionForFlowise
+                                                                ?.activeDailyTopic,
+                                                            'DAILY SUBJUST NOT SET',
+                                                          )} The activity the user is currently working on isis ${valueOrDefault<String>(
+                                                            FFAppState()
+                                                                .learnCardDescription,
+                                                            'learn card activity has not been chosen yet, the user will need to chose one if they wish to learn more about todays activity. ',
+                                                          )}',
+                                                          'This is a placeholder as nothing was set ',
+                                                        );
                                                       }
                                                     }(),
-                                                    'my prompt is ',
+                                                    'prompt ill formatted',
                                                   ),
                                                   '1',
                                                   FFAppState()
@@ -2321,7 +2381,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnChatsScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2335,7 +2395,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnMarkdownScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2351,7 +2411,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnChatsScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2365,7 +2425,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnMarkdownScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2451,7 +2511,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ?.animateTo(
                                                   _model.columnChatsScrollable!
                                                       .position.maxScrollExtent,
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.ease,
                                                 );
@@ -2486,7 +2546,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ?.animateTo(
                                                   _model.columnChatsScrollable!
                                                       .position.maxScrollExtent,
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.ease,
                                                 );
@@ -2541,6 +2601,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   );
                                                   if (FFAppState()
                                                               .nonLoggedInSessionId ==
+                                                          null ||
+                                                      FFAppState()
+                                                              .nonLoggedInSessionId ==
                                                           '') {}
                                                   // flowise chat document
                                                   logFirebaseEvent(
@@ -2568,6 +2631,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .selectedThreadId,
                                                       ));
                                                   if (!(FFAppState()
+                                                              .selectedThreadId !=
+                                                          null &&
+                                                      FFAppState()
                                                               .selectedThreadId !=
                                                           '')) {
                                                     // generate active thread id
@@ -2612,7 +2678,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2634,29 +2700,29 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       _model
                                                           .companyQueryByCode1
                                                           ?.first
-                                                          .supabaseProjUrl,
+                                                          ?.supabaseProjUrl,
                                                       'https://efdipbnxemvehcjbxekx.supabase.co',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode1
-                                                          ?.first.tableName,
+                                                          ?.first?.tableName,
                                                       'table_name',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model
                                                           .companyQueryByCode1
                                                           ?.first
-                                                          .supabaseApiKey,
+                                                          ?.supabaseApiKey,
                                                       'apikey',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode1
-                                                          ?.first.queryName,
+                                                          ?.first?.queryName,
                                                       'queryName',
                                                     ),
                                                     valueOrDefault<bool>(
                                                       _model.companyQueryByCode1
-                                                          ?.first.isLearnCards,
+                                                          ?.first?.isLearnCards,
                                                       false,
                                                     ),
                                                     () async {
@@ -2670,7 +2736,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2684,7 +2750,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2700,7 +2766,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2714,7 +2780,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2790,7 +2856,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2827,7 +2893,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2839,6 +2905,359 @@ class _AICOMMUNICATIONOnPageWidgetState
                                         ),
                                       ),
                                     ),
+                                  if (valueOrDefault<bool>(
+                                    (FFAppState().companyDocId ==
+                                            '0fXG0CVY9h92isp') &&
+                                        valueOrDefault<bool>(
+                                          widget.sessionsDoc?.ispUserFound ==
+                                              true,
+                                          false,
+                                        ),
+                                    false,
+                                  ))
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(12.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.passwordController,
+                                                focusNode:
+                                                    _model.passwordFocusNode,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelText:
+                                                      'Enter Your ISP Password here',
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            fontSize: 18.0,
+                                                            useGoogleFonts: GoogleFonts
+                                                                    .asMap()
+                                                                .containsKey(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumFamily),
+                                                          ),
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  enabledBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0xFF464646),
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  contentPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(12.0, 0.0,
+                                                              0.0, 0.0),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                validator: _model
+                                                    .passwordControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                            FlutterFlowIconButton(
+                                              borderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              borderRadius: 5.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 55.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              icon: Icon(
+                                                Icons.send_sharp,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 24.0,
+                                              ),
+                                              showLoadingIndicator: true,
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_send_sh');
+                                                logFirebaseEvent(
+                                                    'IconButton_firestore_query');
+                                                _model.sessionsQueryForApiCall =
+                                                    await querySessionsRecordOnce(
+                                                  queryBuilder:
+                                                      (sessionsRecord) =>
+                                                          sessionsRecord.where(
+                                                    'sessionId',
+                                                    isEqualTo: FFAppState()
+                                                        .nonLoggedInSessionId,
+                                                  ),
+                                                  singleRecord: true,
+                                                ).then((s) => s.firstOrNull);
+                                                logFirebaseEvent(
+                                                    'IconButton_bottom_sheet');
+                                                showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  enableDrag: false,
+                                                  useSafeArea: true,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return WebViewAware(
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.7,
+                                                          child:
+                                                              SessionChecksWidget(
+                                                            email:
+                                                                valueOrDefault<
+                                                                    String>(
+                                                              widget.sessionsDoc
+                                                                  ?.userEmail,
+                                                              'userEmail',
+                                                            ),
+                                                            password:
+                                                                valueOrDefault<
+                                                                    String>(
+                                                              _model
+                                                                  .passwordController
+                                                                  .text,
+                                                              'userPass',
+                                                            ),
+                                                            sessionDoc: _model
+                                                                .sessionsQueryForApiCall!,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then((value) =>
+                                                    safeSetState(() {}));
+
+                                                logFirebaseEvent(
+                                                    'IconButton_backend_call');
+                                                _model.apiResultpd1 =
+                                                    await ISPDataLookupCall
+                                                        .call(
+                                                  username: _model
+                                                      .sessionsQueryForApiCall
+                                                      ?.userEmail,
+                                                  password: _model
+                                                      .passwordController.text,
+                                                  companyDocId: widget
+                                                      .companiesDoc
+                                                      ?.reference
+                                                      .id,
+                                                  companyName: widget
+                                                      .companiesDoc
+                                                      ?.companyname,
+                                                  sessionId: FFAppState()
+                                                      .nonLoggedInSessionId,
+                                                  threadId: _model
+                                                      .sessionsQueryForApiCall
+                                                      ?.defaultThreadId,
+                                                  userId: FFAppState()
+                                                      .nonLoggedInSessionId,
+                                                  threadDetailsJson: <String,
+                                                      String?>{
+                                                    'threadId': _model
+                                                        .sessionsQueryForApiCall
+                                                        ?.defaultThreadId,
+                                                    'threadName':
+                                                        'Initial Welcome Chat',
+                                                  },
+                                                );
+                                                if ((_model.apiResultpd1
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  logFirebaseEvent(
+                                                      'IconButton_alert_dialog');
+                                                  unawaited(
+                                                    () async {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              title:
+                                                                  Text('PASS'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    }(),
+                                                  );
+                                                } else {
+                                                  logFirebaseEvent(
+                                                      'IconButton_alert_dialog');
+                                                  unawaited(
+                                                    () async {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              title:
+                                                                  Text('FAIL'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    }(),
+                                                  );
+                                                }
+
+                                                logFirebaseEvent(
+                                                    'IconButton_backend_call');
+
+                                                await _model
+                                                    .sessionsQueryForApiCall!
+                                                    .reference
+                                                    .update({
+                                                  ...createSessionsRecordData(
+                                                    lastActive:
+                                                        getCurrentTimestamp,
+                                                  ),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'checks': FieldValue
+                                                          .arrayUnion([
+                                                        getChecksCompletedFirestoreData(
+                                                          createChecksCompletedStruct(
+                                                            checkName:
+                                                                'Starting Checks',
+                                                            checkDescription:
+                                                                'This is just to start the process, we will delete it when all other checks are in place ',
+                                                            checkPassed: true,
+                                                            checkCategory:
+                                                                'welcomeChat',
+                                                            dateChecked:
+                                                                getCurrentTimestamp,
+                                                            timeChecked:
+                                                                getCurrentTimestamp,
+                                                            clearUnsetFields:
+                                                                false,
+                                                          ),
+                                                          true,
+                                                        )
+                                                      ]),
+                                                    },
+                                                  ),
+                                                });
+
+                                                setState(() {});
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [],
                                   ),
                                 ],
                               ),
@@ -2856,7 +3275,8 @@ class _AICOMMUNICATIONOnPageWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               if (valueOrDefault<bool>(
-                FFAppState().tempStreamingMessage != '',
+                FFAppState().tempStreamingMessage != null &&
+                    FFAppState().tempStreamingMessage != '',
                 false,
               ))
                 Container(
@@ -2867,7 +3287,7 @@ class _AICOMMUNICATIONOnPageWidgetState
             ],
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -2886,12 +3306,12 @@ class _AICOMMUNICATIONOnPageWidgetState
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    const Row(
+                    Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [],
                     ),
-                    const Row(
+                    Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [],
@@ -2918,9 +3338,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Continue',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -2938,7 +3358,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -2976,9 +3396,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Get Tiles',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).customColor3,
                               textStyle: FlutterFlowTheme.of(context)
@@ -2995,7 +3415,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3038,9 +3458,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Create Chat',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3058,7 +3478,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3101,9 +3521,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Update Learn Count and NavPath',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3121,7 +3541,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3162,9 +3582,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Columns States',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3182,7 +3602,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3216,7 +3636,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     text:
                                         'I\'m here to assist and navigate you through your learning journey. With the invaluable guidance and knowledge imparted by ${valueOrDefault<String>(
                                       widget.companiesDoc?.companyAiData
-                                          .ownerName,
+                                          ?.ownerName,
                                       'the app owner ',
                                     )} and the team, I am equipped to serve as your mentor. My role is to generate content, address your queries, and ensure your educational journey remains engaging. I kindly ask for your patience as I am currently analysing our recent dialogue to identify a suitable topic that will effectively address your challenges and facilitate your progress. I will add this to your learning plan when I am finished.  In the meantime, why not check out a learnCard?',
                                     threadId: FFAppState().selectedThreadId,
@@ -3227,9 +3647,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Chat Doc',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3247,7 +3667,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3357,7 +3777,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     text:
                                         'I\'m here to assist and navigate you through your learning journey. With the invaluable guidance and knowledge imparted by ${valueOrDefault<String>(
                                       widget.companiesDoc?.companyAiData
-                                          .ownerName,
+                                          ?.ownerName,
                                       'the app owner ',
                                     )} and the team, I am equipped to serve as your mentor. My role is to generate content, address your queries, and ensure your educational journey remains engaging. I kindly ask for your patience as I am currently analysing our recent dialogue to identify a suitable topic that will effectively address your challenges and facilitate your progress. I will add this to your learning plan when I am finished.  In the meantime, why not check out a learnCard?',
                                     threadId: FFAppState().selectedThreadId,
@@ -3368,9 +3788,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: '2. Start my learning journey',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3388,7 +3808,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

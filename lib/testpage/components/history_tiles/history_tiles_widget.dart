@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -58,14 +59,14 @@ class _HistoryTilesWidgetState extends State<HistoryTilesWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'History',
                   style: FlutterFlowTheme.of(context).headlineSmall,
@@ -74,7 +75,7 @@ class _HistoryTilesWidgetState extends State<HistoryTilesWidget> {
               Container(
                 width: 1200.0,
                 height: 40.0,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: StreamBuilder<List<HistoryRecord>>(
                   stream: queryHistoryRecord(
                     parent: currentUserReference,
@@ -108,7 +109,7 @@ class _HistoryTilesWidgetState extends State<HistoryTilesWidget> {
                             listViewHistoryRecordList[listViewIndex];
                         return Container(
                           height: 100.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -170,7 +171,7 @@ class _HistoryTilesWidgetState extends State<HistoryTilesWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 0.0),
                                         child: Text(
                                           listViewHistoryRecord.tilename,

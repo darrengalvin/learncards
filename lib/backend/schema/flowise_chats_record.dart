@@ -3,14 +3,16 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class FlowiseChatsRecord extends FirestoreRecord {
   FlowiseChatsRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -114,6 +116,11 @@ class FlowiseChatsRecord extends FirestoreRecord {
   List<String> get showToMembersId => _showToMembersId ?? const [];
   bool hasShowToMembersId() => _showToMembersId != null;
 
+  // "style" field.
+  String? _style;
+  String get style => _style ?? '';
+  bool hasStyle() => _style != null;
+
   void _initializeFields() {
     _userId = snapshotData['user_id'] as String?;
     _userRef = snapshotData['user_ref'] as DocumentReference?;
@@ -135,6 +142,7 @@ class FlowiseChatsRecord extends FirestoreRecord {
     _threadDetails = ThreadsStruct.maybeFromMap(snapshotData['threadDetails']);
     _showToAll = snapshotData['showToAll'] as bool?;
     _showToMembersId = getDataList(snapshotData['showToMembersId']);
+    _style = snapshotData['style'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -190,6 +198,7 @@ Map<String, dynamic> createFlowiseChatsRecordData({
   String? companyDocId,
   ThreadsStruct? threadDetails,
   bool? showToAll,
+  String? style,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -211,6 +220,7 @@ Map<String, dynamic> createFlowiseChatsRecordData({
       'companyDocId': companyDocId,
       'threadDetails': ThreadsStruct().toMap(),
       'showToAll': showToAll,
+      'style': style,
     }.withoutNulls,
   );
 
@@ -246,7 +256,8 @@ class FlowiseChatsRecordDocumentEquality
         e1?.companyDocId == e2?.companyDocId &&
         e1?.threadDetails == e2?.threadDetails &&
         e1?.showToAll == e2?.showToAll &&
-        listEquality.equals(e1?.showToMembersId, e2?.showToMembersId);
+        listEquality.equals(e1?.showToMembersId, e2?.showToMembersId) &&
+        e1?.style == e2?.style;
   }
 
   @override
@@ -270,7 +281,8 @@ class FlowiseChatsRecordDocumentEquality
         e?.companyDocId,
         e?.threadDetails,
         e?.showToAll,
-        e?.showToMembersId
+        e?.showToMembersId,
+        e?.style
       ]);
 
   @override

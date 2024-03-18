@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,7 @@ class DocumentWidget extends StatefulWidget {
     super.key,
     required this.tileBlock,
     bool? isEditPassed,
-  }) : isEditPassed = isEditPassed ?? false;
+  }) : this.isEditPassed = isEditPassed ?? false;
 
   final TileBlocksRecord? tileBlock;
   final bool isEditPassed;
@@ -82,13 +83,13 @@ class _DocumentWidgetState extends State<DocumentWidget> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(3.0),
+              padding: EdgeInsets.all(3.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 14.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 14.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -101,9 +102,9 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                             color: FlutterFlowTheme.of(context).btnBk,
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FaIcon(
                               FontAwesomeIcons.book,
                               color: FlutterFlowTheme.of(context).secondary,
@@ -117,7 +118,7 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -125,14 +126,14 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                         children: [
                           Text(
                             valueOrDefault<String>(
-                              widget.tileBlock?.documents.documentTitle,
+                              widget.tileBlock?.documents?.documentTitle,
                               'title',
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
                                   fontFamily: 'Outfit',
-                                  color: const Color(0xFF090F13),
+                                  color: Color(0xFF090F13),
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts:
@@ -140,21 +141,21 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                                 ),
                           ),
                           if (valueOrDefault<bool>(
-                            widget.tileBlock?.documents.documentDescription !=
+                            widget.tileBlock?.documents?.documentDescription !=
                                     null &&
                                 widget.tileBlock?.documents
-                                        .documentDescription !=
+                                        ?.documentDescription !=
                                     '',
                             false,
                           ))
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 8.0, 0.0),
                                 child: AutoSizeText(
                                   valueOrDefault<String>(
                                     widget.tileBlock?.documents
-                                        .documentDescription,
+                                        ?.documentDescription,
                                     'description',
                                   ).maybeHandleOverflow(
                                     maxChars: 70,
@@ -165,7 +166,7 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                                       .bodySmall
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color: const Color(0xFF7C8791),
+                                        color: Color(0xFF7C8791),
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                         useGoogleFonts: GoogleFonts.asMap()
@@ -204,13 +205,13 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(3.0),
+                padding: EdgeInsets.all(3.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 14.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 14.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -223,7 +224,7 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                               color: FlutterFlowTheme.of(context).btnBk,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                           ),
                         ],
                       ),
@@ -231,14 +232,14 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: TextFormField(
                                 controller: _model.docTitleController,
                                 focusNode: _model.docTitleFocusNode,
@@ -288,15 +289,15 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                             ),
                             if (valueOrDefault<bool>(
                               widget.tileBlock?.documents
-                                          .documentDescription !=
+                                          ?.documentDescription !=
                                       null &&
                                   widget.tileBlock?.documents
-                                          .documentDescription !=
+                                          ?.documentDescription !=
                                       '',
                               false,
                             ))
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: TextFormField(
                                   controller: _model.docDescriptionController,
                                   focusNode: _model.docDescriptionFocusNode,
@@ -350,7 +351,7 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                                 ),
                               ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: TextFormField(
                                 controller: _model.docLinkController,
                                 focusNode: _model.docLinkFocusNode,
@@ -419,9 +420,9 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                               text: 'Create',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -436,7 +437,7 @@ class _DocumentWidgetState extends State<DocumentWidget> {
                                                   .titleSmallFamily),
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),

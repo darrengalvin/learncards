@@ -2,13 +2,17 @@ import '/add_items/add_document_to_tile/add_document_to_tile_widget.dart';
 import '/add_items/add_link_in_tile/add_link_in_tile_widget.dart';
 import '/add_items/add_text_block_to_tile/add_text_block_to_tile_widget.dart';
 import '/add_items/create_new_tilea_inside/create_new_tilea_inside_widget.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/testpage/components/add_video_to_existing_tile/add_video_to_existing_tile_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'admin_standard_model.dart';
 export 'admin_standard_model.dart';
@@ -78,7 +82,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -86,7 +90,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Add / Manage Standard',
                         style: FlutterFlowTheme.of(context).headlineSmall,
@@ -97,7 +101,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: TextFormField(
                               controller: _model.linkplaceController,
@@ -108,42 +112,42 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                                 hintText: 'Page URL',
                                 hintStyle:
                                     FlutterFlowTheme.of(context).bodySmall,
-                                enabledBorder: const UnderlineInputBorder(
+                                enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                focusedBorder: const UnderlineInputBorder(
+                                focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                errorBorder: const UnderlineInputBorder(
+                                errorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                focusedErrorBorder: const UnderlineInputBorder(
+                                focusedErrorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -201,13 +205,13 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 0.0, 8.0),
                             child: Text(
                               'Show/Hide',
@@ -235,7 +239,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.video_settings,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -250,7 +254,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Video Slider',
                         style: FlutterFlowTheme.of(context).titleSmall,
@@ -261,7 +265,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -287,14 +291,14 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                                   isScrollControlled: true,
                                   backgroundColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  barrierColor: const Color(0x00000000),
+                                  barrierColor: Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
+                                        child: Container(
                                           height: 600.0,
                                           child: AddVideoToExistingTileWidget(
                                             tileref: widget.tileref,
@@ -316,8 +320,8 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                               value: _model.switchValue1 ??=
                                   widget.tiledoc!.showvideoslider,
                               onChanged: (newValue) async {
-                                setState(() => _model.switchValue1 = newValue);
-                                if (newValue) {
+                                setState(() => _model.switchValue1 = newValue!);
+                                if (newValue!) {
                                   logFirebaseEvent(
                                       'ADMIN_STANDARD_Switch_l0e5bqia_ON_TOGGLE');
                                   logFirebaseEvent('Switch_backend_call');
@@ -372,7 +376,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.dock,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -387,7 +391,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Document Area',
                         style: FlutterFlowTheme.of(context).titleSmall,
@@ -398,7 +402,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -424,14 +428,14 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                                   isScrollControlled: true,
                                   backgroundColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  barrierColor: const Color(0x00000000),
+                                  barrierColor: Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
+                                        child: Container(
                                           height: 600.0,
                                           child: AddDocumentToTileWidget(
                                             tileref: widget.tileref,
@@ -452,8 +456,8 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                               value: _model.switchValue2 ??=
                                   widget.tiledoc!.showdocs,
                               onChanged: (newValue) async {
-                                setState(() => _model.switchValue2 = newValue);
-                                if (newValue) {
+                                setState(() => _model.switchValue2 = newValue!);
+                                if (newValue!) {
                                   logFirebaseEvent(
                                       'ADMIN_STANDARD_Switch_6rtfrdmv_ON_TOGGLE');
                                   logFirebaseEvent('Switch_backend_call');
@@ -508,7 +512,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.link,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -523,7 +527,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Links Area',
                         style: FlutterFlowTheme.of(context).titleSmall,
@@ -534,7 +538,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -559,7 +563,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Colors.transparent,
-                                  barrierColor: const Color(0x00000000),
+                                  barrierColor: Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
@@ -584,8 +588,8 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                               value: _model.switchValue3 ??=
                                   widget.tiledoc!.showLinks,
                               onChanged: (newValue) async {
-                                setState(() => _model.switchValue3 = newValue);
-                                if (newValue) {
+                                setState(() => _model.switchValue3 = newValue!);
+                                if (newValue!) {
                                   logFirebaseEvent(
                                       'ADMIN_STANDARD_Switch_colwzycc_ON_TOGGLE');
                                   logFirebaseEvent('Switch_backend_call');
@@ -640,7 +644,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.text_snippet_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -662,7 +666,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -688,14 +692,14 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                                   isScrollControlled: true,
                                   backgroundColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  barrierColor: const Color(0x00000000),
+                                  barrierColor: Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
+                                        child: Container(
                                           height: 600.0,
                                           child: AddTextBlockToTileWidget(
                                             tileref: widget.tileref,
@@ -716,8 +720,8 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                               value: _model.switchValue4 ??=
                                   widget.tiledoc!.showtextblocks,
                               onChanged: (newValue) async {
-                                setState(() => _model.switchValue4 = newValue);
-                                if (newValue) {
+                                setState(() => _model.switchValue4 = newValue!);
+                                if (newValue!) {
                                   logFirebaseEvent(
                                       'ADMIN_STANDARD_Switch_tc75joyc_ON_TOGGLE');
                                   logFirebaseEvent('Switch_backend_call');
@@ -766,7 +770,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.layers_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -788,7 +792,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -813,7 +817,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Colors.transparent,
-                                  barrierColor: const Color(0x00000000),
+                                  barrierColor: Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
@@ -838,8 +842,8 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                               value: _model.switchValue5 ??=
                                   widget.tiledoc!.showsubtiles,
                               onChanged: (newValue) async {
-                                setState(() => _model.switchValue5 = newValue);
-                                if (newValue) {
+                                setState(() => _model.switchValue5 = newValue!);
+                                if (newValue!) {
                                   logFirebaseEvent(
                                       'ADMIN_STANDARD_Switch_3rj2rh0q_ON_TOGGLE');
                                   logFirebaseEvent('Switch_backend_call');
@@ -882,7 +886,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.smart_button_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -904,12 +908,12 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const Column(
+                        Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [],
                         ),
@@ -920,8 +924,8 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                               value: _model.switchValue6 ??=
                                   widget.tiledoc!.showbuttons,
                               onChanged: (newValue) async {
-                                setState(() => _model.switchValue6 = newValue);
-                                if (newValue) {
+                                setState(() => _model.switchValue6 = newValue!);
+                                if (newValue!) {
                                   logFirebaseEvent(
                                       'ADMIN_STANDARD_Switch_v86vhssy_ON_TOGGLE');
                                   logFirebaseEvent('Switch_backend_call');
@@ -964,7 +968,7 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.smart_button_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -986,12 +990,12 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const Column(
+                        Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [],
                         ),
@@ -1002,8 +1006,8 @@ class _AdminStandardWidgetState extends State<AdminStandardWidget> {
                               value: _model.switchValue7 ??=
                                   widget.tiledoc!.showtilesintiles,
                               onChanged: (newValue) async {
-                                setState(() => _model.switchValue7 = newValue);
-                                if (newValue) {
+                                setState(() => _model.switchValue7 = newValue!);
+                                if (newValue!) {
                                   logFirebaseEvent(
                                       'ADMIN_STANDARD_Switch_2mqtcfm4_ON_TOGGLE');
                                   logFirebaseEvent('Switch_backend_call');

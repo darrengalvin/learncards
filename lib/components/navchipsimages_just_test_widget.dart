@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class NavchipsimagesJustTestWidget extends StatefulWidget {
     super.key,
     this.tileDocs,
     int? initialTileIndex,
-  }) : initialTileIndex = initialTileIndex ?? 0;
+  }) : this.initialTileIndex = initialTileIndex ?? 0;
 
   final List<Tilesv2Record>? tileDocs;
   final int initialTileIndex;
@@ -43,18 +44,18 @@ class _NavchipsimagesJustTestWidgetState
       logFirebaseEvent('NAVCHIPSIMAGES_JUST_TEST_navchipsimagesJ');
       logFirebaseEvent('navchipsimagesJustTest_update_app_state');
       FFAppState().navPath = [];
-      if (widget.tileDocs!.isNotEmpty) {
+      if (widget.tileDocs!.length >= 1) {
         logFirebaseEvent('navchipsimagesJustTest_update_app_state');
         FFAppState().addToNavPath(valueOrDefault<String>(
-          widget.tileDocs?[widget.initialTileIndex].reference.id,
+          widget.tileDocs?[widget.initialTileIndex]?.reference.id,
           '0',
         ));
         FFAppState().viewTileContentId = valueOrDefault<String>(
-          widget.tileDocs?[widget.initialTileIndex].reference.id,
+          widget.tileDocs?[widget.initialTileIndex]?.reference.id,
           '0',
         );
         FFAppState().updateTileNavStruct(
-          (e) => e..tier0Id = widget.tileDocs?.first.reference.id,
+          (e) => e..tier0Id = widget.tileDocs?.first?.reference.id,
         );
       }
     });
@@ -76,8 +77,8 @@ class _NavchipsimagesJustTestWidgetState
     return ClipRRect(
       child: Container(
         height: 40.0,
-        decoration: const BoxDecoration(),
-        alignment: const AlignmentDirectional(0.0, 0.0),
+        decoration: BoxDecoration(),
+        alignment: AlignmentDirectional(0.0, 0.0),
         child: Builder(
           builder: (context) {
             final tile = widget.tileDocs?.toList() ?? [];
@@ -90,11 +91,11 @@ class _NavchipsimagesJustTestWidgetState
                   final tileItem = tile[tileIndex];
                   return Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(17.0),
                       child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 100),
+                        duration: Duration(milliseconds: 100),
                         curve: Curves.easeIn,
                         width: 340.0,
                         height: 40.0,
@@ -103,14 +104,15 @@ class _NavchipsimagesJustTestWidgetState
                             () {
                               if (FFAppState().tileNav.tier0Id ==
                                   tileItem.reference.id) {
-                                return const Color(0xFF1AADF9);
-                              } else if (tileItem.image != '') {
+                                return Color(0xFF1AADF9);
+                              } else if (tileItem.image != null &&
+                                  tileItem.image != '') {
                                 return FlutterFlowTheme.of(context).primary;
                               } else {
-                                return const Color(0xFFF4FDFF);
+                                return Color(0xFFF4FDFF);
                               }
                             }(),
-                            const Color(0xFFF4FDFF),
+                            Color(0xFFF4FDFF),
                           ),
                           borderRadius: BorderRadius.circular(17.0),
                           border: Border.all(
@@ -119,7 +121,7 @@ class _NavchipsimagesJustTestWidgetState
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: EdgeInsets.all(4.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -161,14 +163,14 @@ class _NavchipsimagesJustTestWidgetState
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(17.0),
                               child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 100),
+                                duration: Duration(milliseconds: 100),
                                 curve: Curves.easeIn,
                                 width: 180.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     image: Image.network(
                                       'a',
                                     ).image,
@@ -179,11 +181,12 @@ class _NavchipsimagesJustTestWidgetState
                                   ),
                                 ),
                                 child: Visibility(
-                                  visible: tileItem.image != ''
+                                  visible: tileItem.image != null &&
+                                          tileItem.image != ''
                                       ? false
                                       : true,
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       tileItem.title,
                                       textAlign: TextAlign.center,
