@@ -150,6 +150,7 @@ file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/key_va
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/learn_cards_complete_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/metadata_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/page_content_struct.dart
+file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/page_info_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/page_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/permissions_struct.dart
 file:///home/runner/work/learncards/learncards/lib/backend/schema/structs/responses_struct.dart
@@ -276,6 +277,8 @@ file:///home/runner/work/learncards/learncards/lib/components/noaccesspopup_mode
 file:///home/runner/work/learncards/learncards/lib/components/noaccesspopup_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/not_today_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/not_today_widget.dart
+file:///home/runner/work/learncards/learncards/lib/components/page_info_model.dart
+file:///home/runner/work/learncards/learncards/lib/components/page_info_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/respond_to_activity_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/respond_to_activity_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/session_checks_model.dart
@@ -296,6 +299,8 @@ file:///home/runner/work/learncards/learncards/lib/components/video_viewer_model
 file:///home/runner/work/learncards/learncards/lib/components/video_viewer_widget.dart
 file:///home/runner/work/learncards/learncards/lib/components/viewbroadcast_model.dart
 file:///home/runner/work/learncards/learncards/lib/components/viewbroadcast_widget.dart
+file:///home/runner/work/learncards/learncards/lib/components/walk_through_explainer_model.dart
+file:///home/runner/work/learncards/learncards/lib/components/walk_through_explainer_widget.dart
 file:///home/runner/work/learncards/learncards/lib/create_r_e_e_l/create_r_e_e_l_model.dart
 file:///home/runner/work/learncards/learncards/lib/create_r_e_e_l/create_r_e_e_l_widget.dart
 file:///home/runner/work/learncards/learncards/lib/custom_code/actions/call_flowise_streaming.dart
@@ -465,6 +470,8 @@ file:///home/runner/work/learncards/learncards/lib/social_feed/social_feed_model
 file:///home/runner/work/learncards/learncards/lib/social_feed/social_feed_widget.dart
 file:///home/runner/work/learncards/learncards/lib/social_feed/socialfeedslist/socialfeedslist_model.dart
 file:///home/runner/work/learncards/learncards/lib/social_feed/socialfeedslist/socialfeedslist_widget.dart
+file:///home/runner/work/learncards/learncards/lib/subjects_covered/subjects_covered_model.dart
+file:///home/runner/work/learncards/learncards/lib/subjects_covered/subjects_covered_widget.dart
 file:///home/runner/work/learncards/learncards/lib/testpage/components/add_video_to_existing_tile/add_video_to_existing_tile_model.dart
 file:///home/runner/work/learncards/learncards/lib/testpage/components/add_video_to_existing_tile/add_video_to_existing_tile_widget.dart
 file:///home/runner/work/learncards/learncards/lib/testpage/components/detailedcomment/detailedcomment_model.dart
@@ -493,6 +500,7 @@ file:///home/runner/work/learncards/learncards/lib/video/video_model.dart
 file:///home/runner/work/learncards/learncards/lib/video/video_widget.dart
 file:///home/runner/work/learncards/learncards/lib/video_page/video_page_model.dart
 file:///home/runner/work/learncards/learncards/lib/video_page/video_page_widget.dart
+file:///home/runner/work/learncards/learncards/lib/walkthroughs/info_button.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.24/lib/_flutterfire_internals.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.24/lib/src/exception.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/algolia-1.1.1/lib/algolia.dart
@@ -3072,6 +3080,17 @@ file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/timeago-3.2.2/lib/src/timeago.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/timeago-3.2.2/lib/timeago.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tuple-2.0.2/lib/tuple.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/clipper/circle_clipper.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/clipper/rect_clipper.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/paint/light_paint.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/paint/light_paint_rect.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/target/target_content.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/target/target_focus.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/target/target_position.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/util.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/widgets/animated_focus_light.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/src/widgets/tutorial_coach_mark_widget.dart
+file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/tutorial_coach_mark-1.2.11/lib/tutorial_coach_mark.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/typed_data-1.3.2/lib/src/typed_buffer.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/typed_data-1.3.2/lib/src/typed_queue.dart
 file:///opt/hostedtoolcache/flutter/3.19.3-stable/x64/.pub-cache/hosted/pub.dev/typed_data-1.3.2/lib/typed_buffers.dart
