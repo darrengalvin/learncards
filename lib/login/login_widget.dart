@@ -1,10 +1,8 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -50,12 +48,12 @@ class _LoginWidgetState extends State<LoginWidget> {
         builder: (alertDialogContext) {
           return WebViewAware(
             child: AlertDialog(
-              title: Text('Username is '),
+              title: const Text('Username is '),
               content: Text(widget.email!),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
+                  child: const Text('Ok'),
                 ),
               ],
             ),
@@ -68,12 +66,12 @@ class _LoginWidgetState extends State<LoginWidget> {
         builder: (alertDialogContext) {
           return WebViewAware(
             child: AlertDialog(
-              title: Text('Username is '),
+              title: const Text('Username is '),
               content: Text(widget.password!),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
+                  child: const Text('Ok'),
                 ),
               ],
             ),
@@ -104,11 +102,11 @@ class _LoginWidgetState extends State<LoginWidget> {
             builder: (alertDialogContext) {
               return WebViewAware(
                 child: AlertDialog(
-                  title: Text('You are logged in'),
+                  title: const Text('You are logged in'),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: Text('Ok'),
+                      child: const Text('Ok'),
                     ),
                   ],
                 ),
@@ -173,7 +171,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             body: SafeArea(
               top: true,
               child: Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Visibility(
                   visible: valueOrDefault<bool>(
                     _model.loginCheckFailed == true,
@@ -183,7 +181,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxWidth: 600.0,
                         ),
                         decoration: BoxDecoration(
@@ -191,7 +189,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               44.0, 0.0, 44.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -214,7 +212,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(7.0),
+                                              padding: const EdgeInsets.all(7.0),
                                               child: Text(
                                                 'The password you are using for your ISP account does not match the password you signed up to the app with. Maybe you have changed it. Please try entering your app password here instead.   Or use the format password facility.',
                                                 style:
@@ -229,7 +227,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -300,7 +298,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       filled: true,
                                       fillColor: Colors.white,
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -323,7 +321,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.passwordLoginController,
@@ -364,7 +362,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -372,7 +370,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -380,7 +378,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -390,7 +388,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       filled: true,
                                       fillColor: Colors.white,
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                       suffixIcon: InkWell(
                                         onTap: () => setState(
@@ -403,7 +401,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           _model.passwordLoginVisibility
                                               ? Icons.visibility_outlined
                                               : Icons.visibility_off_outlined,
-                                          color: Color(0xFF95A1AC),
+                                          color: const Color(0xFF95A1AC),
                                           size: 20.0,
                                         ),
                                       ),
@@ -414,7 +412,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmallFamily,
-                                          color: Color(0xFF0F1113),
+                                          color: const Color(0xFF0F1113),
                                           fontWeight: FontWeight.normal,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
@@ -427,7 +425,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -481,10 +479,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     options: FFButtonOptions(
                                       width: 230.0,
                                       height: 50.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
@@ -500,7 +498,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                 .containsKey('Lexend Deca'),
                                           ),
                                       elevation: 0.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -508,7 +506,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 15.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -521,10 +519,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     text: 'Forgot Password',
                                     options: FFButtonOptions(
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -542,7 +540,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),

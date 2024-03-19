@@ -46,7 +46,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
           logFirebaseEvent('_scroll_to');
           await _model.listViewController?.animateTo(
             _model.listViewController!.position.maxScrollExtent,
-            duration: Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 100),
             curve: Curves.ease,
           );
         },
@@ -54,7 +54,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
       logFirebaseEvent('apiStreamChats_scroll_to');
       await _model.listViewController?.animateTo(
         _model.listViewController!.position.maxScrollExtent,
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -98,7 +98,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -123,7 +123,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                         .headlineMediumFamily),
                               ),
                     ),
-                    actions: [],
+                    actions: const [],
                     centerTitle: false,
                     elevation: 2.0,
                   )
@@ -164,9 +164,9 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                             text: 'clear',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).error,
                               textStyle: FlutterFlowTheme.of(context)
@@ -181,7 +181,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -201,9 +201,9 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                             text: 'add',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).warning,
                               textStyle: FlutterFlowTheme.of(context)
@@ -218,7 +218,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -307,7 +307,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                       },
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: const AlignmentDirectional(0.0, 1.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -334,13 +334,13 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                         if (chatHistoryItem.role == 'user') {
                                           return Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.all(17.0),
+                                                  padding: const EdgeInsets.all(17.0),
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -367,13 +367,13 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                         } else {
                                           return Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.all(17.0),
+                                                  padding: const EdgeInsets.all(17.0),
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -442,13 +442,13 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 8.0),
                                   child: TextFormField(
                                     controller: _model.askTheQuestionController,
@@ -481,7 +481,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF464646),
                                           width: 2.0,
                                         ),
@@ -507,7 +507,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               12.0, 0.0, 0.0, 0.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -575,7 +575,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                               .primaryText,
                                         ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
+                                      duration: const Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
@@ -608,7 +608,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                             ),
                                           ),
                                           duration:
-                                              Duration(milliseconds: 4000),
+                                              const Duration(milliseconds: 4000),
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
                                                   .customColor3,
@@ -619,7 +619,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                           ?.animateTo(
                                         _model.listViewController!.position
                                             .maxScrollExtent,
-                                        duration: Duration(milliseconds: 100),
+                                        duration: const Duration(milliseconds: 100),
                                         curve: Curves.ease,
                                       );
                                     },
@@ -628,7 +628,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                                   await _model.listViewController?.animateTo(
                                     _model.listViewController!.position
                                         .maxScrollExtent,
-                                    duration: Duration(milliseconds: 100),
+                                    duration: const Duration(milliseconds: 100),
                                     curve: Curves.ease,
                                   );
 
@@ -640,7 +640,7 @@ class _ApiStreamChatsWidgetState extends State<ApiStreamChatsWidget> {
                         ),
                       ],
                     ),
-                    Column(
+                    const Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [],
                     ),

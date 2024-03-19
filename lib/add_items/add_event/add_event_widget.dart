@@ -1,16 +1,13 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'add_event_model.dart';
 export 'add_event_model.dart';
 
@@ -67,14 +64,14 @@ class _AddEventWidgetState extends State<AddEventWidget>
     return Column(
       children: [
         Align(
-          alignment: Alignment(0.0, 0),
+          alignment: const Alignment(0.0, 0),
           child: TabBar(
             isScrollable: true,
             labelColor: FlutterFlowTheme.of(context).primary,
             labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-            unselectedLabelStyle: TextStyle(),
+            unselectedLabelStyle: const TextStyle(),
             indicatorColor: FlutterFlowTheme.of(context).secondary,
-            tabs: [
+            tabs: const [
               Tab(
                 text: 'Event',
               ),
@@ -104,7 +101,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
                         controller: _model.eventTitleController,
                         focusNode: _model.eventTitleFocusNode,
@@ -121,21 +118,21 @@ class _AddEventWidgetState extends State<AddEventWidget>
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
@@ -148,7 +145,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
                         controller: _model.eventLocationController,
                         focusNode: _model.eventLocationFocusNode,
@@ -165,21 +162,21 @@ class _AddEventWidgetState extends State<AddEventWidget>
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
@@ -193,26 +190,26 @@ class _AddEventWidgetState extends State<AddEventWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
                               'ADD_EVENT_CLICK_TO_ADD_DATE_&_TIME_OF_EV');
                           logFirebaseEvent('Button_date_time_picker');
                           if (kIsWeb) {
-                            final _datePickedDate = await showDatePicker(
+                            final datePickedDate = await showDatePicker(
                               context: context,
                               initialDate: getCurrentTimestamp,
                               firstDate: DateTime(1900),
                               lastDate: DateTime(2050),
                             );
 
-                            if (_datePickedDate != null) {
+                            if (datePickedDate != null) {
                               safeSetState(() {
                                 _model.datePicked = DateTime(
-                                  _datePickedDate.year,
-                                  _datePickedDate.month,
-                                  _datePickedDate.day,
+                                  datePickedDate.year,
+                                  datePickedDate.month,
+                                  datePickedDate.day,
                                 );
                               });
                             }
@@ -234,9 +231,9 @@ class _AddEventWidgetState extends State<AddEventWidget>
                         options: FFButtonOptions(
                           width: 310.0,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: FlutterFlowTheme.of(context)
@@ -250,7 +247,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         .titleSmallFamily),
                               ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -260,7 +257,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: SelectionArea(
                           child: Text(
                         dateTimeFormat('MMMMEEEEd', _model.datePicked),
@@ -269,11 +266,11 @@ class _AddEventWidgetState extends State<AddEventWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: FlutterFlowDropDown<String>(
                         controller: _model.eventTypeValueController ??=
                             FormFieldController<String>(null),
-                        options: ['Mastermind', 'Training Day'],
+                        options: const ['Mastermind', 'Training Day'],
                         onChanged: (val) =>
                             setState(() => _model.eventTypeValue = val),
                         width: 310.0,
@@ -294,7 +291,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                         borderColor: Colors.transparent,
                         borderWidth: 0.0,
                         borderRadius: 0.0,
-                        margin: EdgeInsetsDirectional.fromSTEB(
+                        margin: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 4.0, 12.0, 4.0),
                         hidesUnderline: true,
                         isSearchable: false,
@@ -308,7 +305,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Text(
                       'Choose where you would like to show this tile.',
                       textAlign: TextAlign.center,
@@ -357,14 +354,14 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                     catagoryListViewCategoriesRecordList[
                                         catagoryListViewIndex];
                                 return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 2.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 70.0,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 0.0,
                                           color: Color(0xFFDBE2E7),
@@ -374,7 +371,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                       borderRadius: BorderRadius.circular(0.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -382,18 +379,18 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                           Card(
                                             clipBehavior:
                                                 Clip.antiAliasWithSaveLayer,
-                                            color: Color(0xFF4B39EF),
+                                            color: const Color(0xFF4B39EF),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(40.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(2.0),
+                                              padding: const EdgeInsets.all(2.0),
                                               child: Container(
                                                 width: 50.0,
                                                 height: 50.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.network(
@@ -405,7 +402,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(2.0, 0.0, 0.0, 0.0),
                                               child: Theme(
                                                 data: ThemeData(
@@ -419,7 +416,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                     ),
                                                   ),
                                                   unselectedWidgetColor:
-                                                      Color(0xFF7C8791),
+                                                      const Color(0xFF7C8791),
                                                 ),
                                                 child: CheckboxListTile(
                                                   value: _model
@@ -440,7 +437,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
-                                                              Color(0xFF090F13),
+                                                              const Color(0xFF090F13),
                                                           fontSize: 20.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -459,7 +456,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
-                                                              Color(0xFF7C8791),
+                                                              const Color(0xFF7C8791),
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -470,10 +467,10 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                                       'Outfit'),
                                                         ),
                                                   ),
-                                                  tileColor: Color(0xFFF5F5F5),
+                                                  tileColor: const Color(0xFFF5F5F5),
                                                   activeColor:
-                                                      Color(0xFF4B39EF),
-                                                  checkColor: Color(0xFF090F13),
+                                                      const Color(0xFF4B39EF),
+                                                  checkColor: const Color(0xFF090F13),
                                                   dense: false,
                                                   controlAffinity:
                                                       ListTileControlAffinity
@@ -501,7 +498,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Text(
                         'Which Tile are you wanting to add this video to?',
                         textAlign: TextAlign.center,
@@ -549,14 +546,14 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                       tileListViewTilesRecordList[
                                           tileListViewIndex];
                                   return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 2.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 70.0,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 0.0,
                                             color: Color(0xFFDBE2E7),
@@ -567,7 +564,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             BorderRadius.circular(0.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -575,18 +572,18 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             Card(
                                               clipBehavior:
                                                   Clip.antiAliasWithSaveLayer,
-                                              color: Color(0xFF4B39EF),
+                                              color: const Color(0xFF4B39EF),
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(40.0),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(2.0),
+                                                padding: const EdgeInsets.all(2.0),
                                                 child: Container(
                                                   width: 50.0,
                                                   height: 50.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.network(
@@ -599,7 +596,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         2.0, 0.0, 0.0, 0.0),
                                                 child: Theme(
@@ -614,7 +611,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                       ),
                                                     ),
                                                     unselectedWidgetColor:
-                                                        Color(0xFF7C8791),
+                                                        const Color(0xFF7C8791),
                                                   ),
                                                   child: CheckboxListTile(
                                                     value: _model
@@ -636,7 +633,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Outfit',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF090F13),
                                                             fontSize: 20.0,
                                                             fontWeight:
@@ -658,7 +655,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF7C8791),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -671,11 +668,11 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                               ),
                                                     ),
                                                     tileColor:
-                                                        Color(0xFFF5F5F5),
+                                                        const Color(0xFFF5F5F5),
                                                     activeColor:
-                                                        Color(0xFF4B39EF),
+                                                        const Color(0xFF4B39EF),
                                                     checkColor:
-                                                        Color(0xFF090F13),
+                                                        const Color(0xFF090F13),
                                                     dense: false,
                                                     controlAffinity:
                                                         ListTileControlAffinity
@@ -698,7 +695,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent('ADD_EVENT_COMP_CREATE_BTN_ON_TAP');
@@ -728,9 +725,9 @@ class _AddEventWidgetState extends State<AddEventWidget>
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 30.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: FlutterFlowTheme.of(context)
@@ -744,7 +741,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         .titleSmallFamily),
                               ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

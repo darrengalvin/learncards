@@ -3,7 +3,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/no_access_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -19,11 +18,8 @@ import '/testpage/components/detailedcomment/detailedcomment_widget.dart';
 import '/testpage/components/post_comment_functions/post_comment_functions_widget.dart';
 import '/testpage/components/post_functions/post_functions_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -82,7 +78,7 @@ class _SocialFeedNewComponantWidgetState
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 500.0,
             ),
             decoration: BoxDecoration(
@@ -104,7 +100,7 @@ class _SocialFeedNewComponantWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 5.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
@@ -131,7 +127,7 @@ class _SocialFeedNewComponantWidgetState
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +137,7 @@ class _SocialFeedNewComponantWidgetState
                               width: 50.0,
                               height: 50.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -152,14 +148,14 @@ class _SocialFeedNewComponantWidgetState
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 0.0, 0.0),
                               child: TextFormField(
                                 controller: _model.socialPostTextController,
                                 focusNode: _model.socialPostTextFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.socialPostTextController',
-                                  Duration(milliseconds: 2000),
+                                  const Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
                                 autofocus: true,
@@ -170,54 +166,54 @@ class _SocialFeedNewComponantWidgetState
                                       .bodySmall
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color: Color(0xFF57636C),
+                                        color: const Color(0xFF57636C),
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey('Outfit'),
                                       ),
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
-                                  errorBorder: UnderlineInputBorder(
+                                  errorBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
-                                  focusedErrorBorder: UnderlineInputBorder(
+                                  focusedErrorBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
                                   contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
+                                      const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 8.0, 12.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -243,7 +239,7 @@ class _SocialFeedNewComponantWidgetState
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -257,7 +253,7 @@ class _SocialFeedNewComponantWidgetState
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 20.0, 0.0),
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
@@ -298,9 +294,7 @@ class _SocialFeedNewComponantWidgetState
                                           postdescription: _model
                                               .socialPostTextController.text,
                                           video2: valueOrDefault<String>(
-                                            _model.clouDinaryController.text !=
-                                                        null &&
-                                                    _model.clouDinaryController
+                                            _model.clouDinaryController
                                                             .text !=
                                                         ''
                                                 ? _model
@@ -329,9 +323,7 @@ class _SocialFeedNewComponantWidgetState
                                           postdescription: _model
                                               .socialPostTextController.text,
                                           video2: valueOrDefault<String>(
-                                            _model.clouDinaryController.text !=
-                                                        null &&
-                                                    _model.clouDinaryController
+                                            _model.clouDinaryController
                                                             .text !=
                                                         ''
                                                 ? _model
@@ -378,10 +370,10 @@ class _SocialFeedNewComponantWidgetState
                                     options: FFButtonOptions(
                                       width: 70.0,
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -396,7 +388,7 @@ class _SocialFeedNewComponantWidgetState
                                                 .containsKey('Outfit'),
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -408,7 +400,7 @@ class _SocialFeedNewComponantWidgetState
                                           false) ==
                                       true)
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => FFButtonWidget(
@@ -422,7 +414,7 @@ class _SocialFeedNewComponantWidgetState
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              barrierColor: Color(0x00000000),
+                                              barrierColor: const Color(0x00000000),
                                               context: context,
                                               builder: (context) {
                                                 return WebViewAware(
@@ -430,7 +422,7 @@ class _SocialFeedNewComponantWidgetState
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: Container(
+                                                    child: const SizedBox(
                                                       height: 650.0,
                                                       child:
                                                           BroadcastNameInputWidget(),
@@ -442,7 +434,7 @@ class _SocialFeedNewComponantWidgetState
                                                 (value) => safeSetState(() {}));
                                           },
                                           text: 'Go Live',
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.settings_input_antenna,
                                             size: 15.0,
                                           ),
@@ -450,10 +442,10 @@ class _SocialFeedNewComponantWidgetState
                                             width: 120.0,
                                             height: 30.0,
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
@@ -477,7 +469,7 @@ class _SocialFeedNewComponantWidgetState
                                                                   .titleSmallFamily),
                                                     ),
                                             elevation: 2.0,
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -488,14 +480,14 @@ class _SocialFeedNewComponantWidgetState
                                       ),
                                     ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 4.0, 0.0),
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 40.0,
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.photo_outlined,
                                         color: Color(0xFF57636C),
                                         size: 20.0,
@@ -578,14 +570,14 @@ class _SocialFeedNewComponantWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 4.0, 0.0),
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 40.0,
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.video_call,
                                         color: Color(0xFF57636C),
                                         size: 20.0,
@@ -681,12 +673,12 @@ class _SocialFeedNewComponantWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Container(
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 700.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
                                       child: TextFormField(
                                         controller: _model.clouDinaryController,
@@ -761,7 +753,7 @@ class _SocialFeedNewComponantWidgetState
                     AuthUserStreamWidget(
                       builder: (context) => FlutterFlowRadioButton(
                         options:
-                            (currentUserDocument?.hasaccess?.toList() ?? [])
+                            (currentUserDocument?.hasaccess.toList() ?? [])
                                 .toList(),
                         onChanged: (val) async {
                           setState(() {});
@@ -790,38 +782,36 @@ class _SocialFeedNewComponantWidgetState
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             child: Stack(
-                              alignment: AlignmentDirectional(
+                              alignment: const AlignmentDirectional(
                                   0.050000000000000044, 0.0),
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       30.0, 0.0, 30.0, 0.0),
                                   child: Container(
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 1000.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: Visibility(
                                       visible: valueOrDefault<bool>(
-                                        (_model.uploadedFileUrl1 != null &&
-                                                _model.uploadedFileUrl1 !=
+                                        (_model.uploadedFileUrl1 !=
                                                     '') ||
                                             valueOrDefault<bool>(
-                                              _model.uploadedFileUrl2 != null &&
-                                                  _model.uploadedFileUrl2 != '',
+                                              _model.uploadedFileUrl2 != '',
                                               false,
                                             ),
                                         false,
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, -1.67),
+                                            const AlignmentDirectional(0.0, -1.67),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 30.0),
                                           child: Image.network(
                                             _model.uploadedFileUrl1,
@@ -834,12 +824,11 @@ class _SocialFeedNewComponantWidgetState
                                   ),
                                 ),
                                 if (valueOrDefault<bool>(
-                                  _model.uploadedFileUrl2 != null &&
-                                      _model.uploadedFileUrl2 != '',
+                                  _model.uploadedFileUrl2 != '',
                                   false,
                                 ))
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: FlutterFlowVideoPlayer(
                                       path: _model.uploadedFileUrl2,
                                       videoType: VideoType.network,
@@ -853,11 +842,11 @@ class _SocialFeedNewComponantWidgetState
                                     ),
                                   ),
                                 Container(
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 900.0,
                                     maxHeight: 1500.0,
                                   ),
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -865,7 +854,7 @@ class _SocialFeedNewComponantWidgetState
                                       children: [
                                         Container(
                                           width: double.infinity,
-                                          constraints: BoxConstraints(
+                                          constraints: const BoxConstraints(
                                             maxHeight: 700.0,
                                           ),
                                           decoration: BoxDecoration(
@@ -874,7 +863,7 @@ class _SocialFeedNewComponantWidgetState
                                           ),
                                           child: Stack(
                                             children: [
-                                              Align(
+                                              const Align(
                                                 alignment: AlignmentDirectional(
                                                     0.0, -0.88),
                                                 child: FlutterFlowVideoPlayer(
@@ -895,13 +884,13 @@ class _SocialFeedNewComponantWidgetState
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.1),
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 300.0,
                                                       decoration:
-                                                          BoxDecoration(),
+                                                          const BoxDecoration(),
                                                       child:
                                                           SingleChildScrollView(
                                                         child: Column(
@@ -954,7 +943,7 @@ class _SocialFeedNewComponantWidgetState
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -965,11 +954,11 @@ class _SocialFeedNewComponantWidgetState
                                                                                 maxWidth: MediaQuery.sizeOf(context).width * 0.75,
                                                                               ),
                                                                               decoration: BoxDecoration(
-                                                                                color: Color(0xFFDBE2E7),
+                                                                                color: const Color(0xFFDBE2E7),
                                                                                 borderRadius: BorderRadius.circular(12.0),
                                                                               ),
                                                                               child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -978,7 +967,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                       'Randy Alcorn',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Outfit',
-                                                                                            color: Color(0xFF14181B),
+                                                                                            color: const Color(0xFF14181B),
                                                                                             fontSize: 14.0,
                                                                                             fontWeight: FontWeight.normal,
                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -988,14 +977,14 @@ class _SocialFeedNewComponantWidgetState
                                                                                       'I\'m not really sure about this section here aI think you should do soemthing cool!',
                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: 'Outfit',
-                                                                                            color: Color(0xFF57636C),
+                                                                                            color: const Color(0xFF57636C),
                                                                                             fontSize: 14.0,
                                                                                             fontWeight: FontWeight.normal,
                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                           ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
                                                                                       child: Image.network(
                                                                                         'https://picsum.photos/seed/217/600',
                                                                                         width: double.infinity,
@@ -1003,7 +992,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                         fit: BoxFit.cover,
                                                                                       ),
                                                                                     ),
-                                                                                    Padding(
+                                                                                    const Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
                                                                                       child: FlutterFlowVideoPlayer(
                                                                                         path: 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
@@ -1022,7 +1011,7 @@ class _SocialFeedNewComponantWidgetState
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 4.0,
                                                                                 0.0,
@@ -1032,7 +1021,7 @@ class _SocialFeedNewComponantWidgetState
                                                                               'a min ago',
                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                     fontFamily: 'Outfit',
-                                                                                    color: Color(0xFF57636C),
+                                                                                    color: const Color(0xFF57636C),
                                                                                     fontSize: 14.0,
                                                                                     fontWeight: FontWeight.normal,
                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1058,7 +1047,7 @@ class _SocialFeedNewComponantWidgetState
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.5),
+                                              const AlignmentDirectional(0.0, 0.5),
                                           child: Container(
                                             width: double.infinity,
                                             height: 60.0,
@@ -1079,7 +1068,7 @@ class _SocialFeedNewComponantWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     13.0,
                                                                     0.0,
@@ -1101,7 +1090,7 @@ class _SocialFeedNewComponantWidgetState
                                                                         context)
                                                                     .bodySmall,
                                                             enabledBorder:
-                                                                UnderlineInputBorder(
+                                                                const UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: Color(
@@ -1109,7 +1098,7 @@ class _SocialFeedNewComponantWidgetState
                                                                 width: 1.0,
                                                               ),
                                                               borderRadius:
-                                                                  const BorderRadius
+                                                                  BorderRadius
                                                                       .only(
                                                                 topLeft: Radius
                                                                     .circular(
@@ -1120,7 +1109,7 @@ class _SocialFeedNewComponantWidgetState
                                                               ),
                                                             ),
                                                             focusedBorder:
-                                                                UnderlineInputBorder(
+                                                                const UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: Color(
@@ -1128,7 +1117,7 @@ class _SocialFeedNewComponantWidgetState
                                                                 width: 1.0,
                                                               ),
                                                               borderRadius:
-                                                                  const BorderRadius
+                                                                  BorderRadius
                                                                       .only(
                                                                 topLeft: Radius
                                                                     .circular(
@@ -1139,7 +1128,7 @@ class _SocialFeedNewComponantWidgetState
                                                               ),
                                                             ),
                                                             errorBorder:
-                                                                UnderlineInputBorder(
+                                                                const UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: Color(
@@ -1147,7 +1136,7 @@ class _SocialFeedNewComponantWidgetState
                                                                 width: 1.0,
                                                               ),
                                                               borderRadius:
-                                                                  const BorderRadius
+                                                                  BorderRadius
                                                                       .only(
                                                                 topLeft: Radius
                                                                     .circular(
@@ -1158,7 +1147,7 @@ class _SocialFeedNewComponantWidgetState
                                                               ),
                                                             ),
                                                             focusedErrorBorder:
-                                                                UnderlineInputBorder(
+                                                                const UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: Color(
@@ -1166,7 +1155,7 @@ class _SocialFeedNewComponantWidgetState
                                                                 width: 1.0,
                                                               ),
                                                               borderRadius:
-                                                                  const BorderRadius
+                                                                  BorderRadius
                                                                       .only(
                                                                 topLeft: Radius
                                                                     .circular(
@@ -1214,7 +1203,7 @@ class _SocialFeedNewComponantWidgetState
                                                                       context)
                                                                   .white,
                                                           barrierColor:
-                                                              Color(0x00000000),
+                                                              const Color(0x00000000),
                                                           context: context,
                                                           builder: (context) {
                                                             return WebViewAware(
@@ -1223,7 +1212,7 @@ class _SocialFeedNewComponantWidgetState
                                                                     .viewInsetsOf(
                                                                         context),
                                                                 child:
-                                                                    DetailedcommentWidget(),
+                                                                    const DetailedcommentWidget(),
                                                               ),
                                                             );
                                                           },
@@ -1266,7 +1255,7 @@ class _SocialFeedNewComponantWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 15.0, 0.0),
                                           child: Container(
                                             constraints: BoxConstraints(
@@ -1275,7 +1264,7 @@ class _SocialFeedNewComponantWidgetState
                                                           .width *
                                                       1.0,
                                             ),
-                                            decoration: BoxDecoration(),
+                                            decoration: const BoxDecoration(),
                                             child: SingleChildScrollView(
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1372,7 +1361,7 @@ class _SocialFeedNewComponantWidgetState
                                                                       () async {
                                                                     logFirebaseEvent(
                                                                         'SOCIAL_FEED_NEW_COMPONANT_Card_1n1nxmqh_');
-                                                                    if (listViewBroadcastsRecord!
+                                                                    if (listViewBroadcastsRecord
                                                                         .isLive) {
                                                                       logFirebaseEvent(
                                                                           'Card_update_app_state');
@@ -1386,7 +1375,7 @@ class _SocialFeedNewComponantWidgetState
                                                                           .newGetLiveStreamIDCall
                                                                           .call(
                                                                         playbackIds:
-                                                                            functions.getPlaybackIdFromUrl(listViewBroadcastsRecord!.url),
+                                                                            functions.getPlaybackIdFromUrl(listViewBroadcastsRecord.url),
                                                                       );
                                                                       logFirebaseEvent(
                                                                           'Card_update_app_state');
@@ -1438,7 +1427,7 @@ class _SocialFeedNewComponantWidgetState
                                                                               mainAxisAlignment: MainAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                   child: Container(
                                                                                     height: 100.0,
                                                                                     decoration: BoxDecoration(
@@ -1447,19 +1436,19 @@ class _SocialFeedNewComponantWidgetState
                                                                                           FlutterFlowTheme.of(context).primaryBackground,
                                                                                           FlutterFlowTheme.of(context).secondary
                                                                                         ],
-                                                                                        stops: [0.0, 1.0],
-                                                                                        begin: AlignmentDirectional(0.0, -1.0),
-                                                                                        end: AlignmentDirectional(0, 1.0),
+                                                                                        stops: const [0.0, 1.0],
+                                                                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                                                                        end: const AlignmentDirectional(0, 1.0),
                                                                                       ),
                                                                                       borderRadius: BorderRadius.circular(16.0),
                                                                                     ),
                                                                                     child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
                                                                                       child: Row(
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         children: [
                                                                                           ClipRRect(
-                                                                                            borderRadius: BorderRadius.only(
+                                                                                            borderRadius: const BorderRadius.only(
                                                                                               bottomLeft: Radius.circular(8.0),
                                                                                               bottomRight: Radius.circular(0.0),
                                                                                               topLeft: Radius.circular(8.0),
@@ -1474,7 +1463,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                           ),
                                                                                           Expanded(
                                                                                             child: Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                               child: Column(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1505,14 +1494,14 @@ class _SocialFeedNewComponantWidgetState
                                                                                                         ),
                                                                                                       if (listViewBroadcastsRecord?.isLive ?? true)
                                                                                                         Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                           child: Text(
                                                                                                             'Live Now',
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                           ),
                                                                                                         ),
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                                                                                                         child: FlutterFlowIconButton(
                                                                                                           borderColor: Colors.transparent,
                                                                                                           borderRadius: 30.0,
@@ -1538,7 +1527,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                       children: [
                                                                                                         Expanded(
                                                                                                           child: Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                             child: Text(
                                                                                                               listViewBroadcastsRecord!.name,
                                                                                                               style: FlutterFlowTheme.of(context).bodySmall,
@@ -1552,9 +1541,9 @@ class _SocialFeedNewComponantWidgetState
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                         child: Text(
-                                                                                                          dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord!.time!),
+                                                                                                          dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord.time!),
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                         ),
                                                                                                       ),
@@ -1608,11 +1597,11 @@ class _SocialFeedNewComponantWidgetState
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             10.0, 0.0, 10.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: AuthUserStreamWidget(
                             builder: (context) =>
                                 StreamBuilder<List<SocialpostsRecord>>(
@@ -1622,12 +1611,12 @@ class _SocialFeedNewComponantWidgetState
                                         .whereArrayContainsAny(
                                             'memberlevel',
                                             (currentUserDocument?.hasaccess
-                                                            ?.toList() ??
+                                                            .toList() ??
                                                         []) !=
                                                     ''
                                                 ? (currentUserDocument
                                                         ?.hasaccess
-                                                        ?.toList() ??
+                                                        .toList() ??
                                                     [])
                                                 : null)
                                         .orderBy('datetime', descending: true),
@@ -1635,7 +1624,7 @@ class _SocialFeedNewComponantWidgetState
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
-                                  return NoAccessWidget();
+                                  return const NoAccessWidget();
                                 }
                                 List<SocialpostsRecord>
                                     listViewSocialPostsSocialpostsRecordList =
@@ -1654,7 +1643,7 @@ class _SocialFeedNewComponantWidgetState
                                         listViewSocialPostsSocialpostsRecordList[
                                             listViewSocialPostsIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 9.0, 0.0, 9.0),
                                       child: Container(
                                         width: double.infinity,
@@ -1666,10 +1655,10 @@ class _SocialFeedNewComponantWidgetState
                                               FlutterFlowTheme.of(context)
                                                   .secondary
                                             ],
-                                            stops: [0.0, 1.0],
+                                            stops: const [0.0, 1.0],
                                             begin:
-                                                AlignmentDirectional(0.0, -1.0),
-                                            end: AlignmentDirectional(0, 1.0),
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            end: const AlignmentDirectional(0, 1.0),
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -1694,7 +1683,7 @@ class _SocialFeedNewComponantWidgetState
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.all(7.0),
+                                                        const EdgeInsets.all(7.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1718,7 +1707,7 @@ class _SocialFeedNewComponantWidgetState
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -1802,7 +1791,7 @@ class _SocialFeedNewComponantWidgetState
                                                             borderRadius: 30.0,
                                                             borderWidth: 1.0,
                                                             buttonSize: 40.0,
-                                                            icon: Icon(
+                                                            icon: const Icon(
                                                               Icons
                                                                   .keyboard_control_rounded,
                                                               color: Color(
@@ -1822,7 +1811,7 @@ class _SocialFeedNewComponantWidgetState
                                                                     FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
-                                                                barrierColor: Color(
+                                                                barrierColor: const Color(
                                                                     0x00000000),
                                                                 context:
                                                                     context,
@@ -1835,7 +1824,7 @@ class _SocialFeedNewComponantWidgetState
                                                                           .viewInsetsOf(
                                                                               context),
                                                                       child:
-                                                                          Container(
+                                                                          SizedBox(
                                                                         height:
                                                                             200.0,
                                                                         child:
@@ -1861,7 +1850,7 @@ class _SocialFeedNewComponantWidgetState
                                                 ],
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         17.0, 7.0, 7.0, 7.0),
                                                 child: Text(
@@ -1889,7 +1878,7 @@ class _SocialFeedNewComponantWidgetState
                                                       ),
                                                 ),
                                               ),
-                                              Padding(
+                                              const Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
@@ -1906,7 +1895,7 @@ class _SocialFeedNewComponantWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child: SingleChildScrollView(
@@ -1921,7 +1910,7 @@ class _SocialFeedNewComponantWidgetState
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -2003,7 +1992,7 @@ class _SocialFeedNewComponantWidgetState
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -2035,7 +2024,7 @@ class _SocialFeedNewComponantWidgetState
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -2065,7 +2054,7 @@ class _SocialFeedNewComponantWidgetState
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
@@ -2082,7 +2071,7 @@ class _SocialFeedNewComponantWidgetState
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -2114,11 +2103,11 @@ class _SocialFeedNewComponantWidgetState
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       25.0,
                                                                       0.0,
@@ -2165,7 +2154,7 @@ class _SocialFeedNewComponantWidgetState
                                                                       ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -2190,10 +2179,10 @@ class _SocialFeedNewComponantWidgetState
                                                 ),
                                               ),
                                               Container(
-                                                constraints: BoxConstraints(
+                                                constraints: const BoxConstraints(
                                                   maxWidth: 1000.0,
                                                 ),
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -2203,13 +2192,10 @@ class _SocialFeedNewComponantWidgetState
                                                   children: [
                                                     if (listViewSocialPostsSocialpostsRecord
                                                                 .photo !=
-                                                            null &&
-                                                        listViewSocialPostsSocialpostsRecord
-                                                                .photo !=
                                                             '')
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     2.0,
@@ -2231,7 +2217,7 @@ class _SocialFeedNewComponantWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 20.0, 0.0, 20.0),
                                                 child: StreamBuilder<
@@ -2278,7 +2264,7 @@ class _SocialFeedNewComponantWidgetState
                                                                 listViewCommentsIndex];
                                                         return Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -2310,7 +2296,7 @@ class _SocialFeedNewComponantWidgetState
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
@@ -2339,7 +2325,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                 CrossAxisAlignment.start,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: EdgeInsets.all(7.0),
+                                                                                padding: const EdgeInsets.all(7.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -2352,7 +2338,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           children: [
                                                                                             Padding(
-                                                                                              padding: EdgeInsets.all(5.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: ClipRRect(
                                                                                                 borderRadius: BorderRadius.circular(40.0),
                                                                                                 child: Image.network(
@@ -2366,7 +2352,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                           ],
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             listViewSocialPostsSocialpostsRecord.username,
                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -2379,7 +2365,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                           ),
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             dateTimeFormat('relative', getCurrentTimestamp),
                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -2396,7 +2382,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                           borderRadius: 30.0,
                                                                                           borderWidth: 1.0,
                                                                                           buttonSize: 40.0,
-                                                                                          icon: Icon(
+                                                                                          icon: const Icon(
                                                                                             Icons.keyboard_control_rounded,
                                                                                             color: Color(0xFF57636C),
                                                                                             size: 20.0,
@@ -2407,13 +2393,13 @@ class _SocialFeedNewComponantWidgetState
                                                                                             await showModalBottomSheet(
                                                                                               isScrollControlled: true,
                                                                                               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              barrierColor: Color(0x00000000),
+                                                                                              barrierColor: const Color(0x00000000),
                                                                                               context: context,
                                                                                               builder: (context) {
                                                                                                 return WebViewAware(
                                                                                                   child: Padding(
                                                                                                     padding: MediaQuery.viewInsetsOf(context),
-                                                                                                    child: Container(
+                                                                                                    child: const SizedBox(
                                                                                                       height: 200.0,
                                                                                                       child: PostCommentFunctionsWidget(),
                                                                                                     ),
@@ -2426,7 +2412,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                       ],
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: EdgeInsets.all(15.0),
+                                                                                      padding: const EdgeInsets.all(15.0),
                                                                                       child: Column(
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -2447,11 +2433,11 @@ class _SocialFeedNewComponantWidgetState
                                                                                     Stack(
                                                                                       children: [
                                                                                         if (valueOrDefault<bool>(
-                                                                                          listViewSocialPostsSocialpostsRecord.video != null && listViewSocialPostsSocialpostsRecord.video != '',
+                                                                                          listViewSocialPostsSocialpostsRecord.video != '',
                                                                                           false,
                                                                                         ))
                                                                                           Align(
-                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                            alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                             child: FlutterFlowVideoPlayer(
                                                                                               path: listViewSocialPostsSocialpostsRecord.video,
                                                                                               videoType: VideoType.network,
@@ -2463,13 +2449,13 @@ class _SocialFeedNewComponantWidgetState
                                                                                             ),
                                                                                           ),
                                                                                         if (valueOrDefault<bool>(
-                                                                                          listViewSocialPostsSocialpostsRecord.photo != null && listViewSocialPostsSocialpostsRecord.photo != '',
+                                                                                          listViewSocialPostsSocialpostsRecord.photo != '',
                                                                                           false,
                                                                                         ))
                                                                                           Align(
-                                                                                            alignment: AlignmentDirectional(0.0, -1.67),
+                                                                                            alignment: const AlignmentDirectional(0.0, -1.67),
                                                                                             child: Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
                                                                                               child: Image.network(
                                                                                                 listViewSocialPostsSocialpostsRecord.photo,
                                                                                                 width: double.infinity,
@@ -2483,7 +2469,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
                                                                                 child: InkWell(
                                                                                   splashColor: Colors.transparent,
                                                                                   focusColor: Colors.transparent,
@@ -2495,13 +2481,13 @@ class _SocialFeedNewComponantWidgetState
                                                                                     await showModalBottomSheet(
                                                                                       isScrollControlled: true,
                                                                                       backgroundColor: FlutterFlowTheme.of(context).primary,
-                                                                                      barrierColor: Color(0x00000000),
+                                                                                      barrierColor: const Color(0x00000000),
                                                                                       context: context,
                                                                                       builder: (context) {
                                                                                         return WebViewAware(
                                                                                           child: Padding(
                                                                                             padding: MediaQuery.viewInsetsOf(context),
-                                                                                            child: Container(
+                                                                                            child: const SizedBox(
                                                                                               height: 300.0,
                                                                                               child: ReplyToCommentWidget(),
                                                                                             ),
@@ -2525,7 +2511,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                             ),
                                                                                       ),
-                                                                                      Padding(
+                                                                                      const Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                         child: Icon(
                                                                                           Icons.reply_sharp,
@@ -2544,7 +2530,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                   Opacity(
                                                                                     opacity: 0.9,
                                                                                     child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 20.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 20.0),
                                                                                       child: StreamBuilder<List<DeeperCommentsNewRecord>>(
                                                                                         stream: queryDeeperCommentsNewRecord(
                                                                                           queryBuilder: (deeperCommentsNewRecord) => deeperCommentsNewRecord.orderBy('datePosted', descending: true),
@@ -2575,7 +2561,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                               ),
                                                                                             ),
                                                                                             child: Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                                                                                               child: Builder(
                                                                                                 builder: (context) {
                                                                                                   final deeperComments = deeperCommentsDeeperCommentsNewRecordList.toList();
@@ -2585,7 +2571,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                     children: List.generate(deeperComments.length, (deeperCommentsIndex) {
                                                                                                       final deeperCommentsItem = deeperComments[deeperCommentsIndex];
                                                                                                       return Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 7.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 7.0),
                                                                                                         child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2598,7 +2584,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                                   children: [
                                                                                                                     Padding(
-                                                                                                                      padding: EdgeInsets.all(5.0),
+                                                                                                                      padding: const EdgeInsets.all(5.0),
                                                                                                                       child: ClipRRect(
                                                                                                                         borderRadius: BorderRadius.circular(40.0),
                                                                                                                         child: Image.network(
@@ -2612,7 +2598,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                                   ],
                                                                                                                 ),
                                                                                                                 Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                                                   child: Text(
                                                                                                                     'a min ago',
                                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -2625,7 +2611,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                                   ),
                                                                                                                 ),
                                                                                                                 Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                                                   child: Text(
                                                                                                                     'a min ago',
                                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -2642,7 +2628,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                                   borderRadius: 30.0,
                                                                                                                   borderWidth: 1.0,
                                                                                                                   buttonSize: 40.0,
-                                                                                                                  icon: Icon(
+                                                                                                                  icon: const Icon(
                                                                                                                     Icons.keyboard_control_rounded,
                                                                                                                     color: Color(0xFF57636C),
                                                                                                                     size: 20.0,
@@ -2654,7 +2640,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                               ],
                                                                                                             ),
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsets.all(15.0),
+                                                                                                              padding: const EdgeInsets.all(15.0),
                                                                                                               child: Column(
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -2674,7 +2660,7 @@ class _SocialFeedNewComponantWidgetState
                                                                                                             ),
                                                                                                             Stack(
                                                                                                               children: [
-                                                                                                                Align(
+                                                                                                                const Align(
                                                                                                                   alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                   child: FlutterFlowVideoPlayer(
                                                                                                                     path: 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
@@ -2687,9 +2673,9 @@ class _SocialFeedNewComponantWidgetState
                                                                                                                   ),
                                                                                                                 ),
                                                                                                                 Align(
-                                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                                   child: Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
                                                                                                                     child: Image.network(
                                                                                                                       'https://picsum.photos/seed/177/600',
                                                                                                                       width: double.infinity,

@@ -7,13 +7,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_tile_block_copy_model.dart';
 export 'edit_tile_block_copy_model.dart';
 
@@ -24,7 +22,7 @@ class EditTileBlockCopyWidget extends StatefulWidget {
     this.tiles,
     this.blocks,
     this.iniitalBlockId,
-  }) : this.initialTileId = initialTileId ?? '';
+  }) : initialTileId = initialTileId ?? '';
 
   final String initialTileId;
   final List<Tilesv2Record>? tiles;
@@ -56,7 +54,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
       logFirebaseEvent('EditTileBlockCopy_update_component_state');
       setState(() {
         _model.selectedTileId =
-            widget.initialTileId != null && widget.initialTileId != ''
+            widget.initialTileId != ''
                 ? widget.initialTileId
                 : '';
         _model.selectedBlockId =
@@ -82,7 +80,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<List<Tilesv2Record>>(
         stream: queryTilesv2Record(
           queryBuilder: (tilesv2Record) => tilesv2Record.orderBy('tile_index'),
@@ -105,15 +103,15 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
           List<Tilesv2Record> containerTilesv2RecordList = snapshot.data!;
           return Container(
             height: MediaQuery.sizeOf(context).height * 1.0,
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 700.0,
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0x35000000),
             ),
-            alignment: AlignmentDirectional(-1.0, 0.0),
+            alignment: const AlignmentDirectional(-1.0, 0.0),
             child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +120,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                   Flexible(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: StreamBuilder<List<TileBlocksRecord>>(
                         stream: queryTileBlocksRecord(
                           queryBuilder: (tileBlocksRecord) =>
@@ -155,7 +153,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                               ),
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).primary,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 7.0,
                                     color: Color(0x32171717),
@@ -165,16 +163,16 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(24.0),
+                                padding: const EdgeInsets.all(24.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     AnimatedContainer(
-                                      duration: Duration(milliseconds: 240),
+                                      duration: const Duration(milliseconds: 240),
                                       curve: Curves.easeInOut,
                                       width: 400.0,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         minWidth: 60.0,
                                       ),
                                       decoration: BoxDecoration(
@@ -231,11 +229,11 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     60.0,
@@ -243,13 +241,13 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                     0.0),
                                                         child: Transform.rotate(
                                                           angle: -1.5708,
-                                                          alignment: Alignment(
+                                                          alignment: const Alignment(
                                                               -1.0, 0.0),
                                                           origin:
-                                                              Offset(30.0, 0.0),
+                                                              const Offset(30.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         30.0,
                                                                         0.0,
@@ -295,7 +293,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -307,7 +305,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                       borderRadius: 30.0,
                                                       borderWidth: 1.0,
                                                       buttonSize: 60.0,
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                         Icons.arrow_forward_ios,
                                                         color:
                                                             Color(0xFF1AADF9),
@@ -372,14 +370,14 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 18.0,
                                                           12.0, 12.0),
                                                   child: Container(
                                                     width: 300.0,
                                                     height: 600.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0x4CD0E5FF),
+                                                      color: const Color(0x4CD0E5FF),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
@@ -390,7 +388,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -435,8 +433,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                 false,
                                                                               ))
                                                                           .toList()
-                                                                          ?.first
-                                                                          ?.parentId,
+                                                                          .first
+                                                                          .parentId,
                                                                       '0',
                                                                     );
                                                                   });
@@ -586,8 +584,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                               false,
                                                                                             ))
                                                                                         .toList()
-                                                                                        ?.first
-                                                                                        ?.tileTier,
+                                                                                        .first
+                                                                                        .tileTier,
                                                                                     0,
                                                                                   ) ??
                                                                                   0 + 1,
@@ -611,7 +609,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                         false,
                                                                                       ))
                                                                                   .toList()
-                                                                                  ?.length,
+                                                                                  .length,
                                                                               0,
                                                                             ) ??
                                                                             0,
@@ -636,8 +634,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                                       false,
                                                                                                     ))
                                                                                                 .toList()
-                                                                                                ?.first
-                                                                                                ?.tileTier,
+                                                                                                .first
+                                                                                                .tileTier,
                                                                                             0,
                                                                                           ) ??
                                                                                           0 + 1,
@@ -677,8 +675,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                                 false,
                                                                                               ))
                                                                                           .toList()
-                                                                                          ?.first
-                                                                                          ?.tileTier,
+                                                                                          .first
+                                                                                          .tileTier,
                                                                                       0,
                                                                                     ) ??
                                                                                     0 + 1,
@@ -700,7 +698,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                               false,
                                                                                             ))
                                                                                         .toList()
-                                                                                        ?.length,
+                                                                                        .length,
                                                                                     0,
                                                                                   ) ??
                                                                                   0)
@@ -729,9 +727,9 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                         false,
                                                                                       ))
                                                                                   .toList()
-                                                                                  ?.first
-                                                                                  ?.accessGroups
-                                                                                  ?.first
+                                                                                  .first
+                                                                                  .accessGroups
+                                                                                  .first
                                                                               : ''
                                                                         ],
                                                                         'admin_users':
@@ -807,8 +805,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                               false,
                                                                                             ))
                                                                                         .toList()
-                                                                                        ?.first
-                                                                                        ?.tileTier,
+                                                                                        .first
+                                                                                        .tileTier,
                                                                                     0,
                                                                                   ) ??
                                                                                   0 + 1,
@@ -832,7 +830,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                         false,
                                                                                       ))
                                                                                   .toList()
-                                                                                  ?.length,
+                                                                                  .length,
                                                                               0,
                                                                             ) ??
                                                                             0,
@@ -857,8 +855,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                                       false,
                                                                                                     ))
                                                                                                 .toList()
-                                                                                                ?.first
-                                                                                                ?.tileTier,
+                                                                                                .first
+                                                                                                .tileTier,
                                                                                             0,
                                                                                           ) ??
                                                                                           0 + 1,
@@ -898,8 +896,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                                 false,
                                                                                               ))
                                                                                           .toList()
-                                                                                          ?.first
-                                                                                          ?.tileTier,
+                                                                                          .first
+                                                                                          .tileTier,
                                                                                       0,
                                                                                     ) ??
                                                                                     0 + 1,
@@ -921,7 +919,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                               false,
                                                                                             ))
                                                                                         .toList()
-                                                                                        ?.length,
+                                                                                        .length,
                                                                                     0,
                                                                                   ) ??
                                                                                   0)
@@ -950,9 +948,9 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                         false,
                                                                                       ))
                                                                                   .toList()
-                                                                                  ?.first
-                                                                                  ?.accessGroups
-                                                                                  ?.first
+                                                                                  .first
+                                                                                  .accessGroups
+                                                                                  .first
                                                                               : ''
                                                                         ],
                                                                         'admin_users':
@@ -986,7 +984,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         4.0,
                                                                         12.0,
@@ -1052,13 +1050,12 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                         tile[
                                                                             tileIndex];
                                                                     return Container(
-                                                                      key: ValueKey("ListView_p4yknspy" +
-                                                                          '_' +
+                                                                      key: ValueKey("ListView_p4yknspy" '_' +
                                                                           tileIndex
                                                                               .toString()),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             3.0,
                                                                             0.0,
@@ -1076,7 +1073,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                           ),
                                                                           child:
                                                                               Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 16.0,
                                                                                 0.0,
                                                                                 48.0,
@@ -1103,7 +1100,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                 ),
                                                                                 Expanded(
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                     child: InkWell(
                                                                                       splashColor: Colors.transparent,
                                                                                       focusColor: Colors.transparent,
@@ -1252,7 +1249,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                       ),
                                     ),
                                     AnimatedContainer(
-                                      duration: Duration(milliseconds: 240),
+                                      duration: const Duration(milliseconds: 240),
                                       curve: Curves.easeInOut,
                                       width: valueOrDefault<double>(
                                         _model.selectedTileId != null &&
@@ -1261,7 +1258,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                             : 60.0,
                                         400.0,
                                       ),
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         minWidth: 60.0,
                                       ),
                                       decoration: BoxDecoration(
@@ -1318,11 +1315,11 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     80.0,
@@ -1330,13 +1327,13 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                     0.0),
                                                         child: Transform.rotate(
                                                           angle: -1.5708,
-                                                          alignment: Alignment(
+                                                          alignment: const Alignment(
                                                               -1.0, 0.0),
                                                           origin:
-                                                              Offset(30.0, 0.0),
+                                                              const Offset(30.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         30.0,
                                                                         0.0,
@@ -1389,7 +1386,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                       .secondaryBackground,
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 12.0, 0.0),
                                                   child: Row(
@@ -1402,7 +1399,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                         borderRadius: 30.0,
                                                         borderWidth: 1.0,
                                                         buttonSize: 60.0,
-                                                        icon: Icon(
+                                                        icon: const Icon(
                                                           Icons
                                                               .arrow_forward_ios,
                                                           color:
@@ -1471,7 +1468,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                         borderRadius: 30.0,
                                                         borderWidth: 1.0,
                                                         buttonSize: 60.0,
-                                                        icon: Icon(
+                                                        icon: const Icon(
                                                           Icons.add,
                                                           color:
                                                               Color(0xFF1AADF9),
@@ -1499,14 +1496,14 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 18.0,
                                                           12.0, 12.0),
                                                   child: Container(
                                                     width: 300.0,
                                                     height: 600.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0x4CD0E5FF),
+                                                      color: const Color(0x4CD0E5FF),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
@@ -1517,7 +1514,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -1559,8 +1556,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                               false,
                                                                             ))
                                                                         .toList()
-                                                                        ?.first
-                                                                        ?.parentId;
+                                                                        .first
+                                                                        .parentId;
                                                                   });
                                                                 },
                                                               ),
@@ -1674,7 +1671,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                   false,
                                                                                 ))
                                                                             .toList()
-                                                                            ?.length,
+                                                                            .length,
                                                                         0,
                                                                       ),
                                                                       blockName:
@@ -1692,8 +1689,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                   false,
                                                                                 ))
                                                                             .toList()
-                                                                            ?.length
-                                                                            ?.toString(),
+                                                                            .length
+                                                                            .toString(),
                                                                         '0',
                                                                       )}',
                                                                       blockStatus:
@@ -1722,8 +1719,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                   false,
                                                                                 ))
                                                                             .toList()
-                                                                            ?.length
-                                                                            ?.toString(),
+                                                                            .length
+                                                                            .toString(),
                                                                         '0',
                                                                       )}',
                                                                       blockSubtitle:
@@ -1782,7 +1779,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                   false,
                                                                                 ))
                                                                             .toList()
-                                                                            ?.length,
+                                                                            .length,
                                                                         0,
                                                                       ),
                                                                       blockName:
@@ -1800,8 +1797,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                   false,
                                                                                 ))
                                                                             .toList()
-                                                                            ?.length
-                                                                            ?.toString(),
+                                                                            .length
+                                                                            .toString(),
                                                                         '0',
                                                                       )}',
                                                                       blockStatus:
@@ -1830,8 +1827,8 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                   false,
                                                                                 ))
                                                                             .toList()
-                                                                            ?.length
-                                                                            ?.toString(),
+                                                                            .length
+                                                                            .toString(),
                                                                         '0',
                                                                       )}',
                                                                       blockSubtitle:
@@ -1890,7 +1887,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         4.0,
                                                                         12.0,
@@ -1912,7 +1909,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                               false,
                                                                             ))
                                                                         .toList()
-                                                                        ?.toList() ??
+                                                                        .toList() ??
                                                                     [];
                                                                 return ReorderableListView
                                                                     .builder(
@@ -1934,13 +1931,12 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                         block[
                                                                             blockIndex];
                                                                     return Container(
-                                                                      key: ValueKey("ListView_d4tvtjt4" +
-                                                                          '_' +
+                                                                      key: ValueKey("ListView_d4tvtjt4" '_' +
                                                                           blockIndex
                                                                               .toString()),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             3.0,
                                                                             0.0,
@@ -1958,7 +1954,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                           ),
                                                                           child:
                                                                               Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 16.0,
                                                                                 0.0,
                                                                                 48.0,
@@ -1989,7 +1985,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                                 ),
                                                                                 Expanded(
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                     child: InkWell(
                                                                                       splashColor: Colors.transparent,
                                                                                       focusColor: Colors.transparent,
@@ -2107,7 +2103,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                   },
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 18.0, 0.0, 0.0),
                                                   child: Row(
@@ -2116,11 +2112,11 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                     children: [
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       80.0,
@@ -2130,13 +2126,13 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                               Transform.rotate(
                                                             angle: -1.5708,
                                                             alignment:
-                                                                Alignment(
+                                                                const Alignment(
                                                                     -1.0, 0.0),
-                                                            origin: Offset(
+                                                            origin: const Offset(
                                                                 30.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           30.0,
                                                                           0.0,
@@ -2200,7 +2196,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                       .secondaryBackground,
                                             ),
                                             child: Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -2211,7 +2207,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                     borderRadius: 30.0,
                                                     borderWidth: 1.0,
                                                     buttonSize: 60.0,
-                                                    icon: Icon(
+                                                    icon: const Icon(
                                                       Icons.arrow_forward_ios,
                                                       color: Color(0xFF1AADF9),
                                                       size: 30.0,
@@ -2273,7 +2269,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 18.0, 12.0, 12.0),
                                               child: ClipRRect(
@@ -2310,7 +2306,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                       ))
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -2325,7 +2321,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -2337,7 +2333,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -2371,7 +2367,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                         ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -2397,7 +2393,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                     .first
                                                                     .blockType,
                                                           ),
-                                                          options: [
+                                                          options: const [
                                                             'Text',
                                                             'Image',
                                                             'Video',
@@ -2455,11 +2451,11 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                               .secondaryBackground,
                                                           elevation: 2.0,
                                                           borderColor:
-                                                              Color(0xFF1AADF9),
+                                                              const Color(0xFF1AADF9),
                                                           borderWidth: 2.0,
                                                           borderRadius: 8.0,
                                                           margin:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       4.0,
@@ -2480,7 +2476,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           24.0,
@@ -2509,12 +2505,12 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                         child:
                                                                             Align(
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                           child:
@@ -2524,12 +2520,12 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                             height:
                                                                                 32.0,
                                                                             decoration:
-                                                                                BoxDecoration(
+                                                                                const BoxDecoration(
                                                                               color: Color(0xFF1AADF9),
                                                                               shape: BoxShape.circle,
                                                                             ),
                                                                             alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                                const AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Text(
                                                                               '1',
@@ -2544,7 +2540,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             12.0,
                                                                             0.0,
                                                                             0.0,
@@ -2563,7 +2559,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           8.0,
@@ -2579,7 +2575,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                     EasyDebounce
                                                                         .debounce(
                                                                   '_model.textController',
-                                                                  Duration(
+                                                                  const Duration(
                                                                       milliseconds:
                                                                           2000),
                                                                   () => setState(
@@ -2615,7 +2611,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                   focusedBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        BorderSide(
+                                                                        const BorderSide(
                                                                       color: Color(
                                                                           0xFF1AADF9),
                                                                       width:
@@ -2675,7 +2671,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         32.0,
@@ -2698,14 +2694,14 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                               options:
                                                                   FFButtonOptions(
                                                                 height: 40.0,
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                                 iconPadding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -2730,7 +2726,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                     ),
                                                                 elevation: 0.0,
                                                                 borderSide:
-                                                                    BorderSide(
+                                                                    const BorderSide(
                                                                   color: Colors
                                                                       .transparent,
                                                                   width: 1.0,
@@ -2744,7 +2740,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         32.0,
@@ -2862,20 +2858,20 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                               options:
                                                                   FFButtonOptions(
                                                                 height: 40.0,
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                                 iconPadding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF1AADF9),
                                                                 textStyle: FlutterFlowTheme.of(
                                                                         context)
@@ -2893,7 +2889,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                                     ),
                                                                 elevation: 0.0,
                                                                 borderSide:
-                                                                    BorderSide(
+                                                                    const BorderSide(
                                                                   color: Colors
                                                                       .transparent,
                                                                   width: 1.0,
@@ -2972,7 +2968,7 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 18.0, 12.0, 12.0),
                                               child: ClipRRect(
@@ -2982,18 +2978,18 @@ class _EditTileBlockCopyWidgetState extends State<EditTileBlockCopyWidget> {
                                                   width: 300.0,
                                                   height: 600.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x8ED0E5FF),
+                                                    color: const Color(0x8ED0E5FF),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   4.0,
                                                                   12.0,

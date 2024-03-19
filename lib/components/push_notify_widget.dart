@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -6,10 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'push_notify_model.dart';
 export 'push_notify_model.dart';
 
@@ -62,7 +59,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xB20B191E),
       ),
       child: StreamBuilder<List<CategoriesRecord>>(
@@ -102,16 +99,16 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
             scrollDirection: Axis.vertical,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: const AlignmentDirectional(0.0, 1.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
+                        alignment: const AlignmentDirectional(1.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 16.0),
                           child: FlutterFlowIconButton(
                             borderColor: Colors.transparent,
@@ -137,7 +134,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                       Material(
                         color: Colors.transparent,
                         elevation: 5.0,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
@@ -150,7 +147,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
                               bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(16.0),
@@ -162,7 +159,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -170,7 +167,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Send A Push',
@@ -179,7 +176,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 16.0, 0.0),
                                       child:
                                           StreamBuilder<List<CategoriesRecord>>(
@@ -234,11 +231,11 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             elevation: 2.0,
-                                            borderColor: Color(0xFFE0E3E7),
+                                            borderColor: const Color(0xFFE0E3E7),
                                             borderWidth: 2.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 4.0, 12.0, 4.0),
                                             hidesUnderline: true,
                                             isSearchable: false,
@@ -250,7 +247,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 4.0,
                                 thickness: 1.0,
                                 color: Color(0xFFE0E3E7),
@@ -296,7 +293,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                               BorderRadius.circular(4.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -304,7 +301,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                               BorderRadius.circular(4.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -312,7 +309,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                               BorderRadius.circular(4.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -323,7 +320,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                         fillColor: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 24.0, 20.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -365,7 +362,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                               BorderRadius.circular(4.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -373,7 +370,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                               BorderRadius.circular(4.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -381,7 +378,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                               BorderRadius.circular(4.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -392,7 +389,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                         fillColor: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 24.0, 20.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -406,7 +403,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 4.0,
                                 thickness: 1.0,
                                 color: Color(0xFFE0E3E7),
@@ -448,9 +445,9 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                 text: 'Push',
                 options: FFButtonOptions(
                   height: 40.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily:
@@ -460,7 +457,7 @@ class _PushNotifyWidgetState extends State<PushNotifyWidget> {
                             FlutterFlowTheme.of(context).titleSmallFamily),
                       ),
                   elevation: 3.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

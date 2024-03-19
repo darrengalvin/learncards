@@ -12,7 +12,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'tile_block_model.dart';
 export 'tile_block_model.dart';
@@ -88,10 +87,10 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
           List<ContentBlocksRecord> mainBodyContentBlocksRecordList =
               snapshot.data!;
           return Container(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 870.0,
             ),
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,10 +112,10 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                             final contentBlockItem =
                                 contentBlock[contentBlockIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Builder(
                                   builder: (context) {
                                     if (valueOrDefault<bool>(
@@ -127,7 +126,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                         height: 100.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x411D2429),
@@ -138,12 +137,12 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               BorderRadius.circular(16.0),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(3.0),
+                                          padding: const EdgeInsets.all(3.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 8.0, 14.0, 0.0),
                                                 child: Column(
@@ -167,7 +166,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 .circular(8.0),
                                                       ),
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: FaIcon(
                                                         FontAwesomeIcons.book,
@@ -183,7 +182,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 8.0, 4.0, 0.0),
                                                   child: Column(
@@ -204,7 +203,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Outfit',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF090F13),
                                                               fontSize: 18.0,
                                                               fontWeight:
@@ -219,7 +218,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -235,7 +234,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF7C8791),
                                                                   fontSize:
                                                                       14.0,
@@ -254,7 +253,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -270,7 +269,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                               children: [
                                                                 Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               4.0),
                                                                   child:
@@ -292,7 +291,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                       logFirebaseEvent(
                                                                           'TILE_BLOCK_COMP_Icon_hk3viowo_ON_TAP');
                                                                     },
-                                                                    child: Icon(
+                                                                    child: const Icon(
                                                                       Icons
                                                                           .download_outlined,
                                                                       color: Color(
@@ -304,7 +303,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 ),
                                                                 Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               4.0),
                                                                   child:
@@ -326,7 +325,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                       logFirebaseEvent(
                                                                           'TILE_BLOCK_COMP_Icon_edl1vzw5_ON_TAP');
                                                                     },
-                                                                    child: Icon(
+                                                                    child: const Icon(
                                                                       Icons
                                                                           .upload_sharp,
                                                                       color: Color(
@@ -338,7 +337,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -400,11 +399,11 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                       false,
                                     )) {
                                       return Container(
-                                        constraints: BoxConstraints(
+                                        constraints: const BoxConstraints(
                                           maxWidth: 300.0,
                                         ),
                                         decoration: BoxDecoration(
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 5.0,
                                               color: Color(0x230E151B),
@@ -418,10 +417,10 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .secondary
                                             ],
-                                            stops: [0.0, 1.0],
+                                            stops: const [0.0, 1.0],
                                             begin:
-                                                AlignmentDirectional(0.0, -1.0),
-                                            end: AlignmentDirectional(0, 1.0),
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            end: const AlignmentDirectional(0, 1.0),
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(16.0),
@@ -436,7 +435,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               children: [
                                                 Container(
                                                   height: 32.0,
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     maxWidth: 1200.0,
                                                   ),
                                                   decoration: BoxDecoration(
@@ -449,15 +448,15 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 context)
                                                             .secondary
                                                       ],
-                                                      stops: [0.0, 1.0],
+                                                      stops: const [0.0, 1.0],
                                                       begin:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, -1.0),
-                                                      end: AlignmentDirectional(
+                                                      end: const AlignmentDirectional(
                                                           0, 1.0),
                                                     ),
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(0.0),
                                                       bottomRight:
@@ -469,24 +468,24 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                     ),
                                                   ),
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                 ),
                                                 Container(
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     maxWidth: 600.0,
                                                   ),
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Container(
-                                                    constraints: BoxConstraints(
+                                                    constraints: const BoxConstraints(
                                                       maxWidth: 1200.0,
                                                     ),
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        Container(
+                                                        SizedBox(
                                                           width: 1700.0,
                                                           height: 300.0,
                                                           child: custom_widgets
@@ -511,7 +510,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                             context)
                                                         .secondaryBackground,
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(16.0),
                                                       bottomRight:
@@ -527,7 +526,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Padding(
-                                                        padding: EdgeInsets.all(
+                                                        padding: const EdgeInsets.all(
                                                             12.0),
                                                         child: Column(
                                                           mainAxisSize:
@@ -559,7 +558,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -590,7 +589,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsets
+                                                                  const EdgeInsets
                                                                       .all(7.0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -615,7 +614,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -656,11 +655,11 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                       false,
                                     )) {
                                       return Container(
-                                        constraints: BoxConstraints(
+                                        constraints: const BoxConstraints(
                                           maxWidth: 300.0,
                                         ),
                                         decoration: BoxDecoration(
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 5.0,
                                               color: Color(0x230E151B),
@@ -674,10 +673,10 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .secondary
                                             ],
-                                            stops: [0.0, 1.0],
+                                            stops: const [0.0, 1.0],
                                             begin:
-                                                AlignmentDirectional(0.0, -1.0),
-                                            end: AlignmentDirectional(0, 1.0),
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            end: const AlignmentDirectional(0, 1.0),
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(16.0),
@@ -692,7 +691,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               children: [
                                                 Container(
                                                   height: 32.0,
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     maxWidth: 1200.0,
                                                   ),
                                                   decoration: BoxDecoration(
@@ -705,15 +704,15 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 context)
                                                             .secondary
                                                       ],
-                                                      stops: [0.0, 1.0],
+                                                      stops: const [0.0, 1.0],
                                                       begin:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, -1.0),
-                                                      end: AlignmentDirectional(
+                                                      end: const AlignmentDirectional(
                                                           0, 1.0),
                                                     ),
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(0.0),
                                                       bottomRight:
@@ -725,19 +724,19 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                     ),
                                                   ),
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                 ),
                                                 Container(
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     maxWidth: 600.0,
                                                   ),
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Container(
-                                                    constraints: BoxConstraints(
+                                                    constraints: const BoxConstraints(
                                                       maxWidth: 1200.0,
                                                     ),
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child:
                                                         FlutterFlowVideoPlayer(
                                                       path: contentBlockItem
@@ -767,15 +766,15 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 context)
                                                             .secondary
                                                       ],
-                                                      stops: [0.0, 1.0],
+                                                      stops: const [0.0, 1.0],
                                                       begin:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, -1.0),
-                                                      end: AlignmentDirectional(
+                                                      end: const AlignmentDirectional(
                                                           0, 1.0),
                                                     ),
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(16.0),
                                                       bottomRight:
@@ -791,7 +790,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Padding(
-                                                        padding: EdgeInsets.all(
+                                                        padding: const EdgeInsets.all(
                                                             12.0),
                                                         child: Column(
                                                           mainAxisSize:
@@ -823,7 +822,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -854,7 +853,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsets
+                                                                  const EdgeInsets
                                                                       .all(7.0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -879,7 +878,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -922,7 +921,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                       false,
                                     )) {
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 3.0, 16.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -944,7 +943,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                             height: 100.0,
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 3.0,
                                                   color: Color(0x411D2429),
@@ -955,14 +954,14 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                   BorderRadius.circular(16.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(3.0),
+                                              padding: const EdgeInsets.all(3.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   8.0,
@@ -987,7 +986,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF090F13),
                                                                   fontSize:
                                                                       18.0,
@@ -1003,7 +1002,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -1027,7 +1026,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Outfit',
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFF7C8791),
                                                                       fontSize:
                                                                           14.0,
@@ -1054,7 +1053,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                       false) ==
                                                                   true)
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -1072,7 +1071,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                           [
                                                                         Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(4.0),
+                                                                              const EdgeInsets.all(4.0),
                                                                           child:
                                                                               InkWell(
                                                                             splashColor:
@@ -1092,16 +1091,16 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                                     builder: (alertDialogContext) {
                                                                                       return WebViewAware(
                                                                                         child: AlertDialog(
-                                                                                          title: Text('Delete Link'),
-                                                                                          content: Text('Are you sure you wish to delete this link block?'),
+                                                                                          title: const Text('Delete Link'),
+                                                                                          content: const Text('Are you sure you wish to delete this link block?'),
                                                                                           actions: [
                                                                                             TextButton(
                                                                                               onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                              child: Text('Cancel'),
+                                                                                              child: const Text('Cancel'),
                                                                                             ),
                                                                                             TextButton(
                                                                                               onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                              child: Text('Confirm '),
+                                                                                              child: const Text('Confirm '),
                                                                                             ),
                                                                                           ],
                                                                                         ),
@@ -1115,14 +1114,14 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                               }
                                                                             },
                                                                             child:
-                                                                                Icon(
+                                                                                const Icon(
                                                                               Icons.delete_forever_outlined,
                                                                               color: Color(0xFF57636C),
                                                                               size: 24.0,
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        Padding(
+                                                                        const Padding(
                                                                           padding:
                                                                               EdgeInsets.all(4.0),
                                                                           child:
@@ -1136,7 +1135,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                         ),
                                                                         Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(4.0),
+                                                                              const EdgeInsets.all(4.0),
                                                                           child:
                                                                               InkWell(
                                                                             splashColor:
@@ -1152,7 +1151,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                               logFirebaseEvent('TILE_BLOCK_COMP_Icon_6ze7wya0_ON_TAP');
                                                                             },
                                                                             child:
-                                                                                Icon(
+                                                                                const Icon(
                                                                               Icons.download_outlined,
                                                                               color: Color(0xFF57636C),
                                                                               size: 24.0,
@@ -1160,7 +1159,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                           ),
                                                                         ),
                                                                       ].addToStart(
-                                                                              SizedBox(width: 12.0)),
+                                                                              const SizedBox(width: 12.0)),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1204,7 +1203,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).secondaryBackground,
                                                                         barrierColor:
-                                                                            Color(0x00000000),
+                                                                            const Color(0x00000000),
                                                                         context:
                                                                             context,
                                                                         builder:
@@ -1213,7 +1212,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                             child:
                                                                                 Padding(
                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: Container(
+                                                                              child: const SizedBox(
                                                                                 height: 600.0,
                                                                                 child: EditLinkInTileWidget(),
                                                                               ),
@@ -1262,7 +1261,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                       return Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
@@ -1276,10 +1275,10 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .secondary
                                             ],
-                                            stops: [0.0, 1.0],
+                                            stops: const [0.0, 1.0],
                                             begin:
-                                                AlignmentDirectional(0.0, -1.0),
-                                            end: AlignmentDirectional(0, 1.0),
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            end: const AlignmentDirectional(0, 1.0),
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(17.0),
@@ -1297,7 +1296,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                     true)
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: AuthUserStreamWidget(
@@ -1307,7 +1306,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     4.0),
                                                             child: InkWell(
                                                               splashColor: Colors
@@ -1333,16 +1332,16 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                               (alertDialogContext) {
                                                                             return WebViewAware(
                                                                               child: AlertDialog(
-                                                                                title: Text('Delete Tile Block'),
-                                                                                content: Text('Are you sure you wish to delete this tile block?'),
+                                                                                title: const Text('Delete Tile Block'),
+                                                                                content: const Text('Are you sure you wish to delete this tile block?'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                    child: Text('Cancel'),
+                                                                                    child: const Text('Cancel'),
                                                                                   ),
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                    child: Text('Confirm '),
+                                                                                    child: const Text('Confirm '),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -1358,7 +1357,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                       .delete();
                                                                 }
                                                               },
-                                                              child: Icon(
+                                                              child: const Icon(
                                                                 Icons
                                                                     .delete_forever_outlined,
                                                                 color: Color(
@@ -1375,7 +1374,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     4.0),
                                                             child: InkWell(
                                                               splashColor: Colors
@@ -1391,7 +1390,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 logFirebaseEvent(
                                                                     'TILE_BLOCK_COMP_Icon_n73ibt0g_ON_TAP');
                                                               },
-                                                              child: Icon(
+                                                              child: const Icon(
                                                                 Icons
                                                                     .upload_sharp,
                                                                 color: Color(
@@ -1402,7 +1401,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     4.0),
                                                             child: InkWell(
                                                               splashColor: Colors
@@ -1418,7 +1417,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 logFirebaseEvent(
                                                                     'TILE_BLOCK_COMP_Icon_4sbeuv6v_ON_TAP');
                                                               },
-                                                              child: Icon(
+                                                              child: const Icon(
                                                                 Icons
                                                                     .download_outlined,
                                                                 color: Color(
@@ -1467,7 +1466,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(2.0),
+                                              padding: const EdgeInsets.all(2.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -1482,15 +1481,15 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                     children: [
                                                       Container(
                                                         constraints:
-                                                            BoxConstraints(
+                                                            const BoxConstraints(
                                                           maxWidth: 340.0,
                                                           maxHeight: 300.0,
                                                         ),
                                                         decoration:
-                                                            BoxDecoration(),
+                                                            const BoxDecoration(),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       3.0,
@@ -1516,7 +1515,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.all(5.0),
+                                                        const EdgeInsets.all(5.0),
                                                     child: Text(
                                                       contentBlockItem.text,
                                                       style:
@@ -1527,7 +1526,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 7.0,
                                                                 0.0, 7.0),
                                                     child: Row(
@@ -1537,7 +1536,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     5.0),
                                                             child: Text(
                                                               contentBlockItem
@@ -1569,12 +1568,12 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Container(
                                                       constraints:
-                                                          BoxConstraints(
+                                                          const BoxConstraints(
                                                         maxWidth: 1200.0,
                                                       ),
                                                       decoration: BoxDecoration(
@@ -1588,12 +1587,12 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                     context)
                                                                 .secondary
                                                           ],
-                                                          stops: [0.0, 1.0],
+                                                          stops: const [0.0, 1.0],
                                                           begin:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, -1.0),
                                                           end:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0, 1.0),
                                                         ),
                                                       ),
@@ -1608,7 +1607,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     8.0,
@@ -1629,10 +1628,10 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                           options:
                                                               FFButtonOptions(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     20.0),
                                                             iconPadding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         0.0,
@@ -1691,7 +1690,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                         height: 100.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x411D2429),
@@ -1702,13 +1701,13 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                               BorderRadius.circular(16.0),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 8.0, 4.0, 0.0),
                                                   child: Column(
@@ -1729,7 +1728,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Outfit',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF090F13),
                                                               fontSize: 18.0,
                                                               fontWeight:
@@ -1744,7 +1743,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -1765,7 +1764,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF7C8791),
                                                                   fontSize:
                                                                       14.0,
@@ -1805,7 +1804,7 @@ class _TileBlockWidgetState extends State<TileBlockWidget> {
                                                       logFirebaseEvent(
                                                           'TILE_BLOCK_COMP_Icon_lbnr45cr_ON_TAP');
                                                     },
-                                                    child: Icon(
+                                                    child: const Icon(
                                                       Icons.cancel_outlined,
                                                       color: Colors.black,
                                                       size: 27.0,

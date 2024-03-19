@@ -9,7 +9,7 @@ class SessionTable extends SupabaseTable<SessionRow> {
 }
 
 class SessionRow extends SupabaseDataRow {
-  SessionRow(Map<String, dynamic> data) : super(data);
+  SessionRow(super.data);
 
   @override
   SupabaseTable get table => SessionTable();
@@ -32,8 +32,8 @@ class SessionRow extends SupabaseDataRow {
   DateTime? get deletedAt => getField<DateTime>('deleted_at');
   set deletedAt(DateTime? value) => setField<DateTime>('deleted_at', value);
 
-  dynamic? get metadata => getField<dynamic>('metadata');
-  set metadata(dynamic? value) => setField<dynamic>('metadata', value);
+  dynamic get metadata => getField<dynamic>('metadata');
+  set metadata(dynamic value) => setField<dynamic>('metadata', value);
 
   String? get userId => getField<String>('user_id');
   set userId(String? value) => setField<String>('user_id', value);

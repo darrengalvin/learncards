@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,10 +5,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'add_video_model.dart';
 export 'add_video_model.dart';
 
@@ -69,18 +66,18 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: TextStyle(),
+              unselectedLabelStyle: const TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Page',
                 ),
@@ -111,7 +108,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -124,7 +121,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                               logFirebaseEvent('Icon_bottom_sheet');
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.cancel_outlined,
                               color: Colors.black,
                               size: 24.0,
@@ -132,7 +129,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.videotitleController,
                             focusNode: _model.videotitleFocusNode,
@@ -149,21 +146,21 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -176,7 +173,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.featuredsummaryController,
                             focusNode: _model.featuredsummaryFocusNode,
@@ -193,21 +190,21 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -222,7 +219,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.videoURLController,
                             focusNode: _model.videoURLFocusNode,
@@ -239,21 +236,21 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -274,7 +271,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: Image.asset(
                                     'assets/images/video.png',
@@ -289,7 +286,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -370,10 +367,10 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                     options: FFButtonOptions(
                                       width: 230.0,
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -390,7 +387,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -402,8 +399,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                             ),
                           ],
                         ),
-                        if (_model.uploadedFileUrl != null &&
-                            _model.uploadedFileUrl != '')
+                        if (_model.uploadedFileUrl != '')
                           FlutterFlowVideoPlayer(
                             path: _model.uploadedFileUrl,
                             videoType: VideoType.network,
@@ -428,7 +424,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'This will be important when a user is using the search facility, if you do not select a user level then it the item will be made avliable to all on search. ',
                             textAlign: TextAlign.center,
@@ -446,7 +442,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -474,9 +470,9 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                             options: FFButtonOptions(
                               width: 150.0,
                               height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -491,7 +487,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -539,14 +535,14 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                           memberListViewCategoriesRecordList[
                                               memberListViewIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 2.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 70.0,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 0.0,
                                                 color: Color(0xFFDBE2E7),
@@ -558,7 +554,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -566,7 +562,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: Color(0xFF4B39EF),
+                                                  color: const Color(0xFF4B39EF),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -574,13 +570,13 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(2.0),
+                                                        const EdgeInsets.all(2.0),
                                                     child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -593,7 +589,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Theme(
@@ -609,7 +605,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                           ),
                                                         ),
                                                         unselectedWidgetColor:
-                                                            Color(0xFF7C8791),
+                                                            const Color(0xFF7C8791),
                                                       ),
                                                       child: CheckboxListTile(
                                                         value: _model
@@ -631,7 +627,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF090F13),
                                                                 fontSize: 20.0,
                                                                 fontWeight:
@@ -651,7 +647,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF7C8791),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -664,11 +660,11 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                               ),
                                                         ),
                                                         tileColor:
-                                                            Color(0xFFF5F5F5),
+                                                            const Color(0xFFF5F5F5),
                                                         activeColor:
-                                                            Color(0xFF4B39EF),
+                                                            const Color(0xFF4B39EF),
                                                         checkColor:
-                                                            Color(0xFF090F13),
+                                                            const Color(0xFF090F13),
                                                         dense: false,
                                                         controlAffinity:
                                                             ListTileControlAffinity
@@ -703,7 +699,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'You can add this item to additional tiles if you wish to save you having to duplicate the work. Simply select the aditional tile here.  \n\nIf you do not require this just hit create and we will add it to the tile you are on ONLY.  ',
                             textAlign: TextAlign.center,
@@ -721,7 +717,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -754,9 +750,9 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                             options: FFButtonOptions(
                               width: 150.0,
                               height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -771,7 +767,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -817,14 +813,14 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                           tileListViewTilesRecordList[
                                               tileListViewIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 2.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 70.0,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 0.0,
                                                 color: Color(0xFFDBE2E7),
@@ -836,7 +832,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -844,7 +840,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: Color(0xFF4B39EF),
+                                                  color: const Color(0xFF4B39EF),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -852,13 +848,13 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(2.0),
+                                                        const EdgeInsets.all(2.0),
                                                     child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -872,7 +868,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Theme(
@@ -888,7 +884,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                           ),
                                                         ),
                                                         unselectedWidgetColor:
-                                                            Color(0xFF7C8791),
+                                                            const Color(0xFF7C8791),
                                                       ),
                                                       child: CheckboxListTile(
                                                         value: _model
@@ -910,7 +906,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF090F13),
                                                                 fontSize: 20.0,
                                                                 fontWeight:
@@ -931,7 +927,7 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF7C8791),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -944,11 +940,11 @@ class _AddVideoWidgetState extends State<AddVideoWidget>
                                                               ),
                                                         ),
                                                         tileColor:
-                                                            Color(0xFFF5F5F5),
+                                                            const Color(0xFFF5F5F5),
                                                         activeColor:
-                                                            Color(0xFF4B39EF),
+                                                            const Color(0xFF4B39EF),
                                                         checkColor:
-                                                            Color(0xFF090F13),
+                                                            const Color(0xFF090F13),
                                                         dense: false,
                                                         controlAffinity:
                                                             ListTileControlAffinity

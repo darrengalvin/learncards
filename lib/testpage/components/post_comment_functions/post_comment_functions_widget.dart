@@ -3,10 +3,8 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/testpage/components/edit_comment_on_post/edit_comment_on_post_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'post_comment_functions_model.dart';
 export 'post_comment_functions_model.dart';
@@ -60,7 +58,7 @@ class _PostCommentFunctionsWidgetState
     return Material(
       color: Colors.transparent,
       elevation: 5.0,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
@@ -73,7 +71,7 @@ class _PostCommentFunctionsWidgetState
         height: 400.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(16.0),
@@ -104,7 +102,7 @@ class _PostCommentFunctionsWidgetState
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: 50.0,
                       height: 4.0,
@@ -116,14 +114,14 @@ class _PostCommentFunctionsWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         if (columnSocialCommentsRecord.uid ==
                             currentUserReference)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -151,7 +149,7 @@ class _PostCommentFunctionsWidgetState
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -185,7 +183,7 @@ class _PostCommentFunctionsWidgetState
                         if (columnSocialCommentsRecord.uid ==
                             currentUserReference)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -199,7 +197,7 @@ class _PostCommentFunctionsWidgetState
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Colors.transparent,
-                                  barrierColor: Color(0x00000000),
+                                  barrierColor: const Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
@@ -231,7 +229,7 @@ class _PostCommentFunctionsWidgetState
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -263,7 +261,7 @@ class _PostCommentFunctionsWidgetState
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -286,12 +284,12 @@ class _PostCommentFunctionsWidgetState
                                   return WebViewAware(
                                     child: AlertDialog(
                                       title:
-                                          Text('Thank you for your feedback'),
+                                          const Text('Thank you for your feedback'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                          child: const Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -312,7 +310,7 @@ class _PostCommentFunctionsWidgetState
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,

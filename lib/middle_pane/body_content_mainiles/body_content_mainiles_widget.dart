@@ -1,9 +1,8 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/drawer_empty_list_tiles_widget.dart';
 import '/components/editing_a_tile_widget.dart';
+import '/components/noaccesspopup_widget.dart';
 import '/components/video_viewer_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,7 +10,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/testpage/components/edit_document_tile/edit_document_tile_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -67,7 +65,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Row(
+        const Row(
           mainAxisSize: MainAxisSize.max,
           children: [],
         ),
@@ -79,7 +77,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderColor: FlutterFlowTheme.of(context).primary,
                     borderRadius: 20.0,
@@ -140,7 +138,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                 }
                 List<TilesRecord> containerTilesRecordList = snapshot.data!;
                 return Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       final childTilesInside =
@@ -156,9 +154,9 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                             return Container(
                               width: 360.0,
                               height: 100.0,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 12.0, 12.0, 12.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -207,17 +205,13 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                           } else if (MediaQuery.sizeOf(context)
                                                   .width <
                                               kBreakpointMedium) {
-                                            return (FFAppState().leftPane ==
-                                                        null ||
-                                                    FFAppState().leftPane == ''
+                                            return (FFAppState().leftPane == ''
                                                 ? 'appMenu'
                                                 : FFAppState().leftPane);
                                           } else if (MediaQuery.sizeOf(context)
                                                   .width <
                                               kBreakpointLarge) {
-                                            return (FFAppState().leftPane ==
-                                                        null ||
-                                                    FFAppState().leftPane == ''
+                                            return (FFAppState().leftPane == ''
                                                 ? 'appMenu'
                                                 : FFAppState().leftPane);
                                           } else {
@@ -235,17 +229,13 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                           } else if (MediaQuery.sizeOf(context)
                                                   .width <
                                               kBreakpointMedium) {
-                                            return (FFAppState().rightPane ==
-                                                        null ||
-                                                    FFAppState().rightPane == ''
+                                            return (FFAppState().rightPane == ''
                                                 ? 'learnCards'
                                                 : FFAppState().rightPane);
                                           } else if (MediaQuery.sizeOf(context)
                                                   .width <
                                               kBreakpointLarge) {
-                                            return (FFAppState().rightPane ==
-                                                        null ||
-                                                    FFAppState().rightPane == ''
+                                            return (FFAppState().rightPane == ''
                                                 ? 'learnCards'
                                                 : FFAppState().rightPane);
                                           } else {
@@ -258,7 +248,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0xB2FAFAFA),
+                                      color: const Color(0xB2FAFAFA),
                                       borderRadius: BorderRadius.circular(16.0),
                                       border: Border.all(
                                         color: valueOrDefault<Color>(
@@ -275,7 +265,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -283,7 +273,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 4.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -312,7 +302,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 4.0, 0.0),
                                               child: Column(
@@ -358,7 +348,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                             desktop: false,
                                           ))
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 8.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -368,7 +358,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 4.0),
                                                     child: Icon(
@@ -387,7 +377,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                   ))
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -418,17 +408,17 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                         child:
                                                                             AlertDialog(
                                                                           title:
-                                                                              Text('Delete Tile?'),
+                                                                              const Text('Delete Tile?'),
                                                                           content:
-                                                                              Text('If you continue this tile will be deleted forever'),
+                                                                              const Text('If you continue this tile will be deleted forever'),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                              child: Text('Cancel'),
+                                                                              child: const Text('Cancel'),
                                                                             ),
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                              child: Text('Confirm'),
+                                                                              child: const Text('Confirm'),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -485,9 +475,9 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -526,10 +516,10 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                         containerTileblocksRecordList =
                                         snapshot.data!;
                                     return Container(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxHeight: 1400.0,
                                       ),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xB2F6F6F6),
                                       ),
                                       child: Column(
@@ -550,7 +540,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                 if (tileBlocksFilteredBySelecxted
                                                     .isEmpty) {
                                                   return Center(
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: 640.0,
                                                       child:
                                                           DrawerEmptyListTilesWidget(
@@ -574,7 +564,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                             tileBlocksFilteredBySelecxtedIndex];
                                                     return Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, -1.0),
                                                       child:
                                                           SingleChildScrollView(
@@ -654,7 +644,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                   children: [
                                                                     Padding(
                                                                       padding:
-                                                                          EdgeInsets.all(
+                                                                          const EdgeInsets.all(
                                                                               15.0),
                                                                       child:
                                                                           Container(
@@ -677,12 +667,12 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                           }(),
                                                                         ),
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                       ),
                                                                     ),
                                                                     Padding(
                                                                       padding:
-                                                                          EdgeInsets.all(
+                                                                          const EdgeInsets.all(
                                                                               15.0),
                                                                       child:
                                                                           Container(
@@ -705,7 +695,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                           }(),
                                                                         ),
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                       ),
                                                                     ),
                                                                   ],
@@ -720,7 +710,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                   children: [
                                                                     Padding(
                                                                       padding:
-                                                                          EdgeInsets.all(
+                                                                          const EdgeInsets.all(
                                                                               15.0),
                                                                       child:
                                                                           Container(
@@ -743,7 +733,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                           }(),
                                                                         ),
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Text(
                                                                           tileBlocksFilteredBySelecxtedItem
@@ -760,7 +750,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                     ),
                                                                     Padding(
                                                                       padding:
-                                                                          EdgeInsets.all(
+                                                                          const EdgeInsets.all(
                                                                               15.0),
                                                                       child:
                                                                           Container(
@@ -783,7 +773,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                           }(),
                                                                         ),
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Text(
                                                                           tileBlocksFilteredBySelecxtedItem
@@ -865,9 +855,9 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                 children: [
                                                                                   Align(
-                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                     child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 48.0, 0.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 48.0, 0.0),
                                                                                       child: FlutterFlowIconButton(
                                                                                         borderColor: FlutterFlowTheme.of(context).error,
                                                                                         borderRadius: 30.0,
@@ -888,16 +878,16 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                 builder: (alertDialogContext) {
                                                                                                   return WebViewAware(
                                                                                                     child: AlertDialog(
-                                                                                                      title: Text('Delete this content?'),
-                                                                                                      content: Text('Are you sure'),
+                                                                                                      title: const Text('Delete this content?'),
+                                                                                                      content: const Text('Are you sure'),
                                                                                                       actions: [
                                                                                                         TextButton(
                                                                                                           onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                          child: Text('Cancel'),
+                                                                                                          child: const Text('Cancel'),
                                                                                                         ),
                                                                                                         TextButton(
                                                                                                           onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                          child: Text('Confirm'),
+                                                                                                          child: const Text('Confirm'),
                                                                                                         ),
                                                                                                       ],
                                                                                                     ),
@@ -920,11 +910,6 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                     children: [
                                                                                       if (valueOrDefault<bool>(
                                                                                         valueOrDefault<String>(
-                                                                                                  tileBlockItemsItem.theText.theText,
-                                                                                                  'theText',
-                                                                                                ) !=
-                                                                                                null &&
-                                                                                            valueOrDefault<String>(
                                                                                                   tileBlockItemsItem.theText.theText,
                                                                                                   'theText',
                                                                                                 ) !=
@@ -1073,7 +1058,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                               ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsets
+                                                                  const EdgeInsets
                                                                       .all(
                                                                           15.0),
                                                               child: Column(
@@ -1099,7 +1084,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                             children: [
                                                                               Container(
                                                                                 width: 200.0,
-                                                                                decoration: BoxDecoration(),
+                                                                                decoration: const BoxDecoration(),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -1109,7 +1094,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                             children: [
                                                                               Container(
                                                                                 width: 200.0,
-                                                                                decoration: BoxDecoration(),
+                                                                                decoration: const BoxDecoration(),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -1128,8 +1113,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                         children: [
                                                                           if (valueOrDefault<
                                                                               bool>(
-                                                                            tileBlocksFilteredBySelecxtedItem.image != null &&
-                                                                                tileBlocksFilteredBySelecxtedItem.image != '',
+                                                                            tileBlocksFilteredBySelecxtedItem.image != '',
                                                                             false,
                                                                           ))
                                                                             ClipRRect(
@@ -1147,34 +1131,34 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                   ),
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Container(
                                                                       constraints:
-                                                                          BoxConstraints(
+                                                                          const BoxConstraints(
                                                                         maxWidth:
                                                                             800.0,
                                                                       ),
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                     ),
                                                                   ),
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
                                                                         Container(
                                                                       constraints:
-                                                                          BoxConstraints(
+                                                                          const BoxConstraints(
                                                                         maxWidth:
                                                                             800.0,
                                                                       ),
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -1204,7 +1188,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                           children: [
                                                                             Container(
                                                                               width: 200.0,
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -1214,7 +1198,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                           children: [
                                                                             Container(
                                                                               width: 200.0,
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -1256,7 +1240,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                             snapshot.data!;
                                                                         return Container(
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Column(
                                                                             mainAxisSize:
@@ -1275,7 +1259,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                           false,
                                                                                         ),
                                                                                         child: Padding(
-                                                                                          padding: EdgeInsets.all(15.0),
+                                                                                          padding: const EdgeInsets.all(15.0),
                                                                                           child: InkWell(
                                                                                             splashColor: Colors.transparent,
                                                                                             focusColor: Colors.transparent,
@@ -1348,7 +1332,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                 ),
                                                                                                               ),
                                                                                                               Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                                                                                                                 child: Text(
                                                                                                                   valueOrDefault<String>(
                                                                                                                     videoTitleItem.title,
@@ -1368,7 +1352,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                     ],
                                                                                                   ),
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                                                                                                   child: Column(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1384,7 +1368,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                               children: [
                                                                                                                 Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                                                                                                                   child: Text(
                                                                                                                     valueOrDefault<String>(
                                                                                                                       videoTitleItem.reference.id,
@@ -1405,7 +1389,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                               children: [
                                                                                                                 Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                                                                                                                   child: Text(
                                                                                                                     valueOrDefault<String>(
                                                                                                                       videoTitleItem.pageRef?.id,
@@ -1437,7 +1421,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                     ),
                                                                   ],
                                                                 ),
-                                                                Column(
+                                                                const Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
@@ -1481,7 +1465,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                             snapshot.data!;
                                                                         return Container(
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Builder(
                                                                             builder:
@@ -1492,9 +1476,9 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                 children: List.generate(tileBlockDocs.length, (tileBlockDocsIndex) {
                                                                                   final tileBlockDocsItem = tileBlockDocs[tileBlockDocsIndex];
                                                                                   return Visibility(
-                                                                                    visible: tileBlocksFilteredBySelecxtedItem.doclistitle.length > 0,
+                                                                                    visible: tileBlocksFilteredBySelecxtedItem.doclistitle.isNotEmpty,
                                                                                     child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(26.0, 6.0, 26.0, 6.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(26.0, 6.0, 26.0, 6.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -1502,10 +1486,10 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                         highlightColor: Colors.transparent,
                                                                                         onTap: () async {
                                                                                           logFirebaseEvent('BODY_CONTENT_MAINILES_COMP_tile_ON_TAP');
-                                                                                          if (tileBlockDocsItem.documenturl != null && tileBlockDocsItem.documenturl != '') {
+                                                                                          if (tileBlockDocsItem.documenturl != '') {
                                                                                             logFirebaseEvent('tile_launch_u_r_l');
                                                                                             await launchURL(tileBlockDocsItem.documenturl);
-                                                                                          } else if (tileBlockDocsItem.documentupload != null && tileBlockDocsItem.documentupload != '') {
+                                                                                          } else if (tileBlockDocsItem.documentupload != '') {
                                                                                             logFirebaseEvent('tile_launch_u_r_l');
                                                                                             await launchURL(tileBlockDocsItem.documentupload);
                                                                                           }
@@ -1514,7 +1498,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                           height: 100.0,
                                                                                           decoration: BoxDecoration(
                                                                                             color: Colors.white,
-                                                                                            boxShadow: [
+                                                                                            boxShadow: const [
                                                                                               BoxShadow(
                                                                                                 blurRadius: 3.0,
                                                                                                 color: Color(0x411D2429),
@@ -1524,12 +1508,12 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                             borderRadius: BorderRadius.circular(16.0),
                                                                                           ),
                                                                                           child: Padding(
-                                                                                            padding: EdgeInsets.all(3.0),
+                                                                                            padding: const EdgeInsets.all(3.0),
                                                                                             child: Row(
                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                               children: [
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 14.0, 0.0),
+                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 14.0, 0.0),
                                                                                                   child: Column(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -1545,7 +1529,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                 ),
                                                                                                 Expanded(
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                                                                                                     child: Column(
                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -1556,7 +1540,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                           tileBlockDocsItem.documenttitle,
                                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                 fontFamily: 'Outfit',
-                                                                                                                color: Color(0xFF090F13),
+                                                                                                                color: const Color(0xFF090F13),
                                                                                                                 fontSize: 18.0,
                                                                                                                 fontWeight: FontWeight.w500,
                                                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1564,7 +1548,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                         )),
                                                                                                         Expanded(
                                                                                                           child: Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 8.0, 0.0),
+                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 8.0, 0.0),
                                                                                                             child: AutoSizeText(
                                                                                                               tileBlockDocsItem.documenttitle.maybeHandleOverflow(
                                                                                                                 maxChars: 70,
@@ -1573,7 +1557,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                               textAlign: TextAlign.start,
                                                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                     fontFamily: 'Outfit',
-                                                                                                                    color: Color(0xFF7C8791),
+                                                                                                                    color: const Color(0xFF7C8791),
                                                                                                                     fontSize: 14.0,
                                                                                                                     fontWeight: FontWeight.normal,
                                                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1591,12 +1575,12 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                               children: [
                                                                                                                 if (valueOrDefault<bool>(currentUserDocument?.isadmin, false) == true)
                                                                                                                   Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                     child: Row(
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       children: [
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsets.all(4.0),
+                                                                                                                          padding: const EdgeInsets.all(4.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1610,16 +1594,16 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                                     builder: (alertDialogContext) {
                                                                                                                                       return WebViewAware(
                                                                                                                                         child: AlertDialog(
-                                                                                                                                          title: Text('Are you sure you wish to delete this Document ?'),
-                                                                                                                                          content: Text('This will delete the document, if you are just loooking to remove it from this tile block then use. the edit button on the tile block instead.'),
+                                                                                                                                          title: const Text('Are you sure you wish to delete this Document ?'),
+                                                                                                                                          content: const Text('This will delete the document, if you are just loooking to remove it from this tile block then use. the edit button on the tile block instead.'),
                                                                                                                                           actions: [
                                                                                                                                             TextButton(
                                                                                                                                               onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                              child: Text('Cancel'),
+                                                                                                                                              child: const Text('Cancel'),
                                                                                                                                             ),
                                                                                                                                             TextButton(
                                                                                                                                               onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                              child: Text('Confirm '),
+                                                                                                                                              child: const Text('Confirm '),
                                                                                                                                             ),
                                                                                                                                           ],
                                                                                                                                         ),
@@ -1632,7 +1616,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                                 await tileBlockDocsItem.reference.delete();
                                                                                                                               }
                                                                                                                             },
-                                                                                                                            child: Icon(
+                                                                                                                            child: const Icon(
                                                                                                                               Icons.delete_forever_outlined,
                                                                                                                               color: Color(0xFF57636C),
                                                                                                                               size: 24.0,
@@ -1640,7 +1624,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                           ),
                                                                                                                         ),
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsets.all(4.0),
+                                                                                                                          padding: const EdgeInsets.all(4.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1658,7 +1642,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                                 ),
                                                                                                                               });
                                                                                                                             },
-                                                                                                                            child: Icon(
+                                                                                                                            child: const Icon(
                                                                                                                               Icons.upload_sharp,
                                                                                                                               color: Color(0xFF57636C),
                                                                                                                               size: 24.0,
@@ -1666,7 +1650,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                           ),
                                                                                                                         ),
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsets.all(4.0),
+                                                                                                                          padding: const EdgeInsets.all(4.0),
                                                                                                                           child: InkWell(
                                                                                                                             splashColor: Colors.transparent,
                                                                                                                             focusColor: Colors.transparent,
@@ -1684,7 +1668,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                                 ),
                                                                                                                               });
                                                                                                                             },
-                                                                                                                            child: Icon(
+                                                                                                                            child: const Icon(
                                                                                                                               Icons.download_outlined,
                                                                                                                               color: Color(0xFF57636C),
                                                                                                                               size: 24.0,
@@ -1711,13 +1695,13 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                                                                       await showModalBottomSheet(
                                                                                                                         isScrollControlled: true,
                                                                                                                         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                        barrierColor: Color(0x00000000),
+                                                                                                                        barrierColor: const Color(0x00000000),
                                                                                                                         context: context,
                                                                                                                         builder: (context) {
                                                                                                                           return WebViewAware(
                                                                                                                             child: Padding(
                                                                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                              child: Container(
+                                                                                                                              child: SizedBox(
                                                                                                                                 height: 600.0,
                                                                                                                                 child: EditDocumentTileWidget(
                                                                                                                                   document: tileBlockDocsItem,
@@ -1755,34 +1739,34 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Container(
                                                                     constraints:
-                                                                        BoxConstraints(
+                                                                        const BoxConstraints(
                                                                       maxWidth:
                                                                           800.0,
                                                                     ),
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                   ),
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Container(
                                                                     constraints:
-                                                                        BoxConstraints(
+                                                                        const BoxConstraints(
                                                                       maxWidth:
                                                                           800.0,
                                                                     ),
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                   ),
                                                                 ),
                                                               ],
@@ -1797,7 +1781,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           -1.0,
                                                                           -1.0),
                                                                   child:
@@ -1821,7 +1805,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                                                       }(),
                                                                     ),
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                   ),
                                                                 ),
                                                               ],
@@ -1844,7 +1828,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                             ),
                           ),
                         ),
-                        Column(
+                        const Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [],
                         ),
@@ -1858,7 +1842,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                 false,
                               ) &&
                               !valueOrDefault<bool>(
-                                (currentUserDocument?.hasaccess?.toList() ?? [])
+                                (currentUserDocument?.hasaccess.toList() ?? [])
                                     .contains(
                                         FFAppState().selectedCategoryName),
                                 false,
@@ -1894,7 +1878,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                               valueOrDefault<bool>(
                                 !valueOrDefault<bool>(
                                       (currentUserDocument?.hasaccess
-                                                  ?.toList() ??
+                                                  .toList() ??
                                               [])
                                           .contains(FFAppState()
                                               .selectedCategoryName),
@@ -1903,13 +1887,13 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                     valueOrDefault<bool>(
                                       valueOrDefault<bool>(
                                             widget.sessionId?.hasAccess
-                                                ?.contains(FFAppState()
+                                                .contains(FFAppState()
                                                     .selectedcategory),
                                             false,
                                           ) ||
                                           valueOrDefault<bool>(
                                             widget.sessionId?.hasAccess
-                                                ?.contains(FFAppState()
+                                                .contains(FFAppState()
                                                     .selectedCategoryName),
                                             false,
                                           ),
@@ -1932,69 +1916,21 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
+                            wrapWithModel(
+                              model: _model.noaccesspopupModel,
+                              updateCallback: () => setState(() {}),
+                              child: const NoaccesspopupWidget(),
+                            ),
                             Opacity(
                               opacity: 0.95,
                               child: Container(
                                 width: 100.0,
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                   maxHeight: 3000.0,
                                 ),
                                 decoration: BoxDecoration(
                                   color:
                                       FlutterFlowTheme.of(context).customColor5,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            25.0, 200.0, 25.0, 0.0),
-                                        child: Text(
-                                          'You do not have access to this content',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                fontSize:
-                                                    valueOrDefault<double>(
-                                                  () {
-                                                    if (MediaQuery.sizeOf(
-                                                                context)
-                                                            .width <
-                                                        kBreakpointSmall) {
-                                                      return 16.0;
-                                                    } else if (MediaQuery
-                                                                .sizeOf(context)
-                                                            .width <
-                                                        kBreakpointMedium) {
-                                                      return 30.0;
-                                                    } else if (MediaQuery
-                                                                .sizeOf(context)
-                                                            .width <
-                                                        kBreakpointLarge) {
-                                                      return 50.0;
-                                                    } else {
-                                                      return 50.0;
-                                                    }
-                                                  }(),
-                                                  50.0,
-                                                ),
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               ),
                             ),

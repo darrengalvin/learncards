@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/testpage/components/edit_tile/edit_tile_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -72,7 +71,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Visibility(
-                visible: (currentUserDocument?.hasaccess?.toList() ?? [])
+                visible: (currentUserDocument?.hasaccess.toList() ?? [])
                     .contains(FFAppState().selectedcategory),
                 child: AuthUserStreamWidget(
                   builder: (context) => StreamBuilder<List<TilesRecord>>(
@@ -123,14 +122,14 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 8.0),
                                 child: Container(
                                   width: 300.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x32000000),
@@ -296,7 +295,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                       .primaryBackground
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 3.0,
                                                   color: Color(0x411D2429),
@@ -319,14 +318,14 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   8.0,
@@ -351,7 +350,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF090F13),
                                                                   fontSize:
                                                                       18.0,
@@ -367,7 +366,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -391,7 +390,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Outfit',
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFF7C8791),
                                                                       fontSize:
                                                                           14.0,
@@ -431,7 +430,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -462,16 +461,16 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: Text('Delete Tile'),
-                                                                                  content: Text('Are you sure you wish to delete this tile?'),
+                                                                                  title: const Text('Delete Tile'),
+                                                                                  content: const Text('Are you sure you wish to delete this tile?'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                      child: Text('Cancel'),
+                                                                                      child: const Text('Cancel'),
                                                                                     ),
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                      child: Text('Confirm '),
+                                                                                      child: const Text('Confirm '),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -487,7 +486,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                         .delete();
                                                                   }
                                                                 },
-                                                                child: Icon(
+                                                                child: const Icon(
                                                                   Icons
                                                                       .delete_forever_outlined,
                                                                   color: Color(
@@ -498,7 +497,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -527,7 +526,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .secondary,
                                                                     barrierColor:
-                                                                        Color(
+                                                                        const Color(
                                                                             0x00000000),
                                                                     context:
                                                                         context,
@@ -539,7 +538,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                           padding:
                                                                               MediaQuery.viewInsetsOf(context),
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             height:
                                                                                 600.0,
                                                                             child:
@@ -554,7 +553,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                       safeSetState(
                                                                           () {}));
                                                                 },
-                                                                child: Icon(
+                                                                child: const Icon(
                                                                   Icons
                                                                       .edit_outlined,
                                                                   color: Color(
@@ -571,7 +570,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -605,7 +604,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                     ),
                                                                   });
                                                                 },
-                                                                child: Icon(
+                                                                child: const Icon(
                                                                   Icons
                                                                       .upload_sharp,
                                                                   color: Color(
@@ -616,7 +615,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -650,7 +649,7 @@ class _PrimaryTilesColoursWidgetState extends State<PrimaryTilesColoursWidget> {
                                                                     ),
                                                                   });
                                                                 },
-                                                                child: Icon(
+                                                                child: const Icon(
                                                                   Icons
                                                                       .download_outlined,
                                                                   color: Color(

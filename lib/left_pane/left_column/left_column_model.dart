@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/components/learn_cards_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/left_pane/desktop_tile_nav_a_your_saved/desktop_tile_nav_a_your_saved_widget.dart';
 import '/left_pane/desktop_tile_nav_ai_this_week/desktop_tile_nav_ai_this_week_widget.dart';
@@ -8,8 +7,6 @@ import '/left_pane/event_app_tiles/event_app_tiles_widget.dart';
 import '/left_pane/main_app_tiles/main_app_tiles_widget.dart';
 import 'left_column_widget.dart' show LeftColumnWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class LeftColumnModel extends FlutterFlowModel<LeftColumnWidget> {
   ///  Local state fields for this component.
@@ -29,6 +26,8 @@ class LeftColumnModel extends FlutterFlowModel<LeftColumnWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
+  CompaniesRecord? companycheckforbottomchat;
   // Model for DesktopTileNavAi-ThisWeek component.
   late DesktopTileNavAiThisWeekModel desktopTileNavAiThisWeekModel;
   // Model for DesktopTileNavA-YourSaved component.

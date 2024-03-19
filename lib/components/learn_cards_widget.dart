@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/right_pane/chata_c_t_i_v_i_t_y/chata_c_t_i_v_i_t_y_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'learn_cards_model.dart';
 export 'learn_cards_model.dart';
@@ -15,7 +14,7 @@ class LearnCardsWidget extends StatefulWidget {
     required this.sessionsDoc,
     required this.companyDoc,
     bool? showRight,
-  }) : this.showRight = showRight ?? false;
+  }) : showRight = showRight ?? false;
 
   final Color? color;
   final SessionsRecord? sessionsDoc;
@@ -60,7 +59,7 @@ class _LearnCardsWidgetState extends State<LearnCardsWidget> {
         false,
       ),
       child: Container(
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Stack(
           children: [
             SingleChildScrollView(
@@ -68,7 +67,7 @@ class _LearnCardsWidgetState extends State<LearnCardsWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       constraints: BoxConstraints(
                         maxWidth: () {
@@ -86,7 +85,7 @@ class _LearnCardsWidgetState extends State<LearnCardsWidget> {
                           }
                         }(),
                       ),
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: StreamBuilder<List<LearnCardsRecord>>(
                         stream: queryLearnCardsRecord(
                           queryBuilder: (learnCardsRecord) =>
@@ -135,7 +134,7 @@ class _LearnCardsWidgetState extends State<LearnCardsWidget> {
                                     false,
                                   ))
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 15.0),
                                       child: ChataCTIVITYWidget(
                                         key: Key(

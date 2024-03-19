@@ -3,8 +3,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'traffic_lights_model.dart';
 export 'traffic_lights_model.dart';
 
@@ -71,14 +69,14 @@ class _TrafficLightsWidgetState extends State<TrafficLightsWidget> {
             color: FlutterFlowTheme.of(context).primary,
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 8.0),
                     child: Builder(
                       builder: (context) {
                         final trafficLights =
@@ -93,7 +91,7 @@ class _TrafficLightsWidgetState extends State<TrafficLightsWidget> {
                               final trafficLightsItem =
                                   trafficLights[trafficLightsIndex];
                               return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 10.0, 0.0),
                                 child: Container(
                                   width: 25.0,

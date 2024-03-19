@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class CategoriesRecord extends FirestoreRecord {
   CategoriesRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -147,6 +146,21 @@ class CategoriesRecord extends FirestoreRecord {
   String get parentIdName => _parentIdName ?? '';
   bool hasParentIdName() => _parentIdName != null;
 
+  // "pageInfo" field.
+  PageInfoStruct? _pageInfo;
+  PageInfoStruct get pageInfo => _pageInfo ?? PageInfoStruct();
+  bool hasPageInfo() => _pageInfo != null;
+
+  // "categoryDocId" field.
+  String? _categoryDocId;
+  String get categoryDocId => _categoryDocId ?? '';
+  bool hasCategoryDocId() => _categoryDocId != null;
+
+  // "showToMemberLevelsId" field.
+  List<String>? _showToMemberLevelsId;
+  List<String> get showToMemberLevelsId => _showToMemberLevelsId ?? const [];
+  bool hasShowToMemberLevelsId() => _showToMemberLevelsId != null;
+
   void _initializeFields() {
     _categoryname = snapshotData['categoryname'] as String?;
     _categorylist = getDataList(snapshotData['categorylist']);
@@ -174,6 +188,9 @@ class CategoriesRecord extends FirestoreRecord {
     _accessToMemberLevelsId =
         getDataList(snapshotData['accessToMemberLevelsId']);
     _parentIdName = snapshotData['parent_id_name'] as String?;
+    _pageInfo = PageInfoStruct.maybeFromMap(snapshotData['pageInfo']);
+    _categoryDocId = snapshotData['categoryDocId'] as String?;
+    _showToMemberLevelsId = getDataList(snapshotData['showToMemberLevelsId']);
   }
 
   static CollectionReference get collection =>
@@ -226,6 +243,8 @@ Map<String, dynamic> createCategoriesRecordData({
   bool? isDefaultOnLoad,
   String? categoryOwnerId,
   String? parentIdName,
+  PageInfoStruct? pageInfo,
+  String? categoryDocId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -244,8 +263,13 @@ Map<String, dynamic> createCategoriesRecordData({
       'isDefaultOnLoad': isDefaultOnLoad,
       'categoryOwnerId': categoryOwnerId,
       'parent_id_name': parentIdName,
+      'pageInfo': PageInfoStruct().toMap(),
+      'categoryDocId': categoryDocId,
     }.withoutNulls,
   );
+
+  // Handle nested data for "pageInfo" field.
+  addPageInfoStructData(firestoreData, pageInfo, 'pageInfo');
 
   return firestoreData;
 }
@@ -284,7 +308,10 @@ class CategoriesRecordDocumentEquality implements Equality<CategoriesRecord> {
             e1?.accessToMemberLevels, e2?.accessToMemberLevels) &&
         listEquality.equals(
             e1?.accessToMemberLevelsId, e2?.accessToMemberLevelsId) &&
-        e1?.parentIdName == e2?.parentIdName;
+        e1?.parentIdName == e2?.parentIdName &&
+        e1?.pageInfo == e2?.pageInfo &&
+        e1?.categoryDocId == e2?.categoryDocId &&
+        listEquality.equals(e1?.showToMemberLevelsId, e2?.showToMemberLevelsId);
   }
 
   @override
@@ -313,7 +340,10 @@ class CategoriesRecordDocumentEquality implements Equality<CategoriesRecord> {
         e?.categoryOwnerId,
         e?.accessToMemberLevels,
         e?.accessToMemberLevelsId,
-        e?.parentIdName
+        e?.parentIdName,
+        e?.pageInfo,
+        e?.categoryDocId,
+        e?.showToMemberLevelsId
       ]);
 
   @override

@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'video_viewer_model.dart';
 export 'video_viewer_model.dart';
 
@@ -66,7 +64,7 @@ class _VideoViewerWidgetState extends State<VideoViewerWidget> {
                   buttonSize: 40.0,
                   icon: Icon(
                     Icons.close_sharp,
-                    color: FlutterFlowTheme.of(context).primaryText,
+                    color: FlutterFlowTheme.of(context).primary,
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -80,18 +78,23 @@ class _VideoViewerWidgetState extends State<VideoViewerWidget> {
             ),
           ],
         ),
-        Expanded(
-          child: FlutterFlowVideoPlayer(
-            path: widget.tileBlockVideo!.videofromurl,
-            videoType: VideoType.network,
-            height: MediaQuery.sizeOf(context).height * 0.5,
-            aspectRatio: 3.00,
-            autoPlay: true,
-            looping: true,
-            showControls: true,
-            allowFullScreen: true,
-            allowPlaybackSpeedMenu: true,
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: FlutterFlowVideoPlayer(
+                path: widget.tileBlockVideo!.videofromurl,
+                videoType: VideoType.network,
+                autoPlay: true,
+                looping: true,
+                showControls: true,
+                allowFullScreen: true,
+                allowPlaybackSpeedMenu: true,
+              ),
+            ),
+          ],
         ),
       ],
     );

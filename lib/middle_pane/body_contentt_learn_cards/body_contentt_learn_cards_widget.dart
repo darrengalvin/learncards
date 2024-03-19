@@ -17,7 +17,7 @@ class BodyContenttLearnCardsWidget extends StatefulWidget {
     required this.companyDoc,
     required this.sessionId,
     bool? rightColumnShow,
-  }) : this.rightColumnShow = rightColumnShow ?? false;
+  }) : rightColumnShow = rightColumnShow ?? false;
 
   final CompaniesRecord? companyDoc;
   final SessionsRecord? sessionId;
@@ -90,7 +90,7 @@ class _BodyContenttLearnCardsWidgetState
                   }
                   List<MyTeamRecord> containerMyTeamRecordList = snapshot.data!;
                   return Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: StreamBuilder<List<LearnCardsRecord>>(
                       stream: queryLearnCardsRecord(
                         queryBuilder: (learnCardsRecord) =>
@@ -117,7 +117,7 @@ class _BodyContenttLearnCardsWidgetState
                         List<LearnCardsRecord> containerLearnCardsRecordList =
                             snapshot.data!;
                         return Container(
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,19 +211,19 @@ class _BodyContenttLearnCardsWidgetState
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 6.0,
                                                                 0.0, 6.0),
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xB2FAFAFA),
+                                                            const Color(0xB2FAFAFA),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(8.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFFE0E3E7),
+                                                              const Color(0xFFE0E3E7),
                                                           width: 1.0,
                                                         ),
                                                       ),
@@ -238,7 +238,7 @@ class _BodyContenttLearnCardsWidgetState
                                                             opacity: 0.9,
                                                             child: Container(
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 color: Color(
                                                                     0xFFF5F5F5),
                                                               ),
@@ -259,7 +259,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                             .start,
                                                                     children: [
                                                                       Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             -1.0,
                                                                             -1.0),
                                                                         child:
@@ -280,7 +280,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                             }(),
                                                                           ),
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Column(
                                                                             mainAxisSize:
@@ -330,7 +330,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                     }
                                                                                     final containerLearnCardsRecord = containerLearnCardsRecordList.isNotEmpty ? containerLearnCardsRecordList.first : null;
                                                                                     return Container(
-                                                                                      decoration: BoxDecoration(
+                                                                                      decoration: const BoxDecoration(
                                                                                         color: Color(0xFFF5F5F5),
                                                                                         borderRadius: BorderRadius.only(
                                                                                           bottomLeft: Radius.circular(0.0),
@@ -345,9 +345,9 @@ class _BodyContenttLearnCardsWidgetState
                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                                                         children: [
                                                                                           Align(
-                                                                                            alignment: AlignmentDirectional(0.0, -1.0),
+                                                                                            alignment: const AlignmentDirectional(0.0, -1.0),
                                                                                             child: Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                                                                                               child: Column(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -355,7 +355,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                 children: [
                                                                                                   Container(
                                                                                                     width: 0.0,
-                                                                                                    decoration: BoxDecoration(),
+                                                                                                    decoration: const BoxDecoration(),
                                                                                                     child: Column(
                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -364,10 +364,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
                                                                                                             Container(
-                                                                                                              constraints: BoxConstraints(
+                                                                                                              constraints: const BoxConstraints(
                                                                                                                 maxWidth: 500.0,
                                                                                                               ),
-                                                                                                              decoration: BoxDecoration(),
+                                                                                                              decoration: const BoxDecoration(),
                                                                                                               child: Column(
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -423,7 +423,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                         });
                                                                                                                       },
                                                                                                                       child: Container(
-                                                                                                                        constraints: BoxConstraints(
+                                                                                                                        constraints: const BoxConstraints(
                                                                                                                           maxWidth: 370.0,
                                                                                                                         ),
                                                                                                                         decoration: BoxDecoration(
@@ -441,17 +441,17 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                               children: [
                                                                                                                                 Container(
-                                                                                                                                  constraints: BoxConstraints(
+                                                                                                                                  constraints: const BoxConstraints(
                                                                                                                                     maxWidth: 500.0,
                                                                                                                                   ),
-                                                                                                                                  decoration: BoxDecoration(),
+                                                                                                                                  decoration: const BoxDecoration(),
                                                                                                                                   child: Padding(
-                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 7.0, 0.0),
+                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 7.0, 0.0),
                                                                                                                                     child: Container(
                                                                                                                                       width: 50.0,
                                                                                                                                       height: 50.0,
                                                                                                                                       clipBehavior: Clip.antiAlias,
-                                                                                                                                      decoration: BoxDecoration(
+                                                                                                                                      decoration: const BoxDecoration(
                                                                                                                                         shape: BoxShape.circle,
                                                                                                                                       ),
                                                                                                                                       child: Image.network(
@@ -486,10 +486,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                             ),
                                                                                                                                             Container(
-                                                                                                                                              constraints: BoxConstraints(
+                                                                                                                                              constraints: const BoxConstraints(
                                                                                                                                                 maxWidth: 500.0,
                                                                                                                                               ),
-                                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                                             ),
                                                                                                                                           ],
                                                                                                                                         ),
@@ -516,10 +516,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                                   ),
                                                                                                                                             ),
                                                                                                                                             Container(
-                                                                                                                                              constraints: BoxConstraints(
+                                                                                                                                              constraints: const BoxConstraints(
                                                                                                                                                 maxWidth: 500.0,
                                                                                                                                               ),
-                                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                                             ),
                                                                                                                                           ],
                                                                                                                                         ),
@@ -545,7 +545,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                     false,
                                                                                                                   ))
                                                                                                                     Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                                                                                                                       child: InkWell(
                                                                                                                         splashColor: Colors.transparent,
                                                                                                                         focusColor: Colors.transparent,
@@ -586,7 +586,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                           });
                                                                                                                         },
                                                                                                                         child: Container(
-                                                                                                                          constraints: BoxConstraints(
+                                                                                                                          constraints: const BoxConstraints(
                                                                                                                             maxWidth: 370.0,
                                                                                                                           ),
                                                                                                                           decoration: BoxDecoration(
@@ -604,17 +604,17 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                                 children: [
                                                                                                                                   Container(
-                                                                                                                                    constraints: BoxConstraints(
+                                                                                                                                    constraints: const BoxConstraints(
                                                                                                                                       maxWidth: 500.0,
                                                                                                                                     ),
-                                                                                                                                    decoration: BoxDecoration(),
+                                                                                                                                    decoration: const BoxDecoration(),
                                                                                                                                     child: Padding(
-                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 7.0, 0.0),
+                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 7.0, 0.0),
                                                                                                                                       child: Container(
                                                                                                                                         width: 50.0,
                                                                                                                                         height: 50.0,
                                                                                                                                         clipBehavior: Clip.antiAlias,
-                                                                                                                                        decoration: BoxDecoration(
+                                                                                                                                        decoration: const BoxDecoration(
                                                                                                                                           shape: BoxShape.circle,
                                                                                                                                         ),
                                                                                                                                         child: Image.network(
@@ -653,10 +653,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                               ),
                                                                                                                                               Container(
-                                                                                                                                                constraints: BoxConstraints(
+                                                                                                                                                constraints: const BoxConstraints(
                                                                                                                                                   maxWidth: 500.0,
                                                                                                                                                 ),
-                                                                                                                                                decoration: BoxDecoration(),
+                                                                                                                                                decoration: const BoxDecoration(),
                                                                                                                                               ),
                                                                                                                                             ],
                                                                                                                                           ),
@@ -683,10 +683,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                                     ),
                                                                                                                                               ),
                                                                                                                                               Container(
-                                                                                                                                                constraints: BoxConstraints(
+                                                                                                                                                constraints: const BoxConstraints(
                                                                                                                                                   maxWidth: 500.0,
                                                                                                                                                 ),
-                                                                                                                                                decoration: BoxDecoration(),
+                                                                                                                                                decoration: const BoxDecoration(),
                                                                                                                                               ),
                                                                                                                                             ],
                                                                                                                                           ),
@@ -702,7 +702,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                   Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                                                                                                                     child: InkWell(
                                                                                                                       splashColor: Colors.transparent,
                                                                                                                       focusColor: Colors.transparent,
@@ -735,7 +735,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                         ).then((value) => safeSetState(() {}));
                                                                                                                       },
                                                                                                                       child: Container(
-                                                                                                                        constraints: BoxConstraints(
+                                                                                                                        constraints: const BoxConstraints(
                                                                                                                           maxWidth: 370.0,
                                                                                                                         ),
                                                                                                                         decoration: BoxDecoration(
@@ -753,17 +753,17 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                               children: [
                                                                                                                                 Container(
-                                                                                                                                  constraints: BoxConstraints(
+                                                                                                                                  constraints: const BoxConstraints(
                                                                                                                                     maxWidth: 500.0,
                                                                                                                                   ),
-                                                                                                                                  decoration: BoxDecoration(),
+                                                                                                                                  decoration: const BoxDecoration(),
                                                                                                                                   child: Padding(
-                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 7.0, 0.0),
+                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 7.0, 0.0),
                                                                                                                                     child: Container(
                                                                                                                                       width: 50.0,
                                                                                                                                       height: 50.0,
                                                                                                                                       clipBehavior: Clip.antiAlias,
-                                                                                                                                      decoration: BoxDecoration(
+                                                                                                                                      decoration: const BoxDecoration(
                                                                                                                                         shape: BoxShape.circle,
                                                                                                                                       ),
                                                                                                                                       child: Image.network(
@@ -789,10 +789,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                   ),
                                                                                                                                   Container(
-                                                                                                                                    constraints: BoxConstraints(
+                                                                                                                                    constraints: const BoxConstraints(
                                                                                                                                       maxWidth: 500.0,
                                                                                                                                     ),
-                                                                                                                                    decoration: BoxDecoration(),
+                                                                                                                                    decoration: const BoxDecoration(),
                                                                                                                                   ),
                                                                                                                                 ],
                                                                                                                               ),
@@ -811,7 +811,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                           Expanded(
                                                                                                                             child: Container(
                                                                                                                               width: 300.0,
-                                                                                                                              decoration: BoxDecoration(),
+                                                                                                                              decoration: const BoxDecoration(),
                                                                                                                               child: Column(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 children: [
@@ -830,10 +830,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                         children: [
                                                                                                                           Container(
                                                                                                                             width: 300.0,
-                                                                                                                            decoration: BoxDecoration(),
+                                                                                                                            decoration: const BoxDecoration(),
                                                                                                                             child: Builder(
                                                                                                                               builder: (context) {
-                                                                                                                                final mentoMessages = containerLearnCardsRecord?.mentorMessages?.toList() ?? [];
+                                                                                                                                final mentoMessages = containerLearnCardsRecord?.mentorMessages.toList() ?? [];
                                                                                                                                 return Column(
                                                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -844,7 +844,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                                                       children: [
                                                                                                                                         Expanded(
                                                                                                                                           child: Padding(
-                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                                                                             child: Column(
                                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -884,9 +884,9 @@ class _BodyContenttLearnCardsWidgetState
                                                                                             ),
                                                                                           ),
                                                                                           Align(
-                                                                                            alignment: AlignmentDirectional(0.0, -1.0),
+                                                                                            alignment: const AlignmentDirectional(0.0, -1.0),
                                                                                             child: Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
                                                                                               child: Column(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -931,7 +931,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                       }
                                                                                                       final containerLearnCardEntriesRecord = containerLearnCardEntriesRecordList.isNotEmpty ? containerLearnCardEntriesRecordList.first : null;
                                                                                                       return Container(
-                                                                                                        decoration: BoxDecoration(),
+                                                                                                        decoration: const BoxDecoration(),
                                                                                                         child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -940,22 +940,22 @@ class _BodyContenttLearnCardsWidgetState
                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                               children: [
                                                                                                                 Container(
-                                                                                                                  constraints: BoxConstraints(
+                                                                                                                  constraints: const BoxConstraints(
                                                                                                                     maxHeight: 1000.0,
                                                                                                                   ),
-                                                                                                                  decoration: BoxDecoration(),
+                                                                                                                  decoration: const BoxDecoration(),
                                                                                                                   child: Column(
                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                     children: [
                                                                                                                       Container(
-                                                                                                                        constraints: BoxConstraints(
+                                                                                                                        constraints: const BoxConstraints(
                                                                                                                           maxWidth: 550.0,
                                                                                                                         ),
-                                                                                                                        decoration: BoxDecoration(),
+                                                                                                                        decoration: const BoxDecoration(),
                                                                                                                         child: wrapWithModel(
                                                                                                                           model: _model.commentingThreadModel,
                                                                                                                           updateCallback: () => setState(() {}),
-                                                                                                                          child: CommentingThreadWidget(),
+                                                                                                                          child: const CommentingThreadWidget(),
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     ],
@@ -990,7 +990,7 @@ class _BodyContenttLearnCardsWidgetState
                                                           ),
                                                           Container(
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                             child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -1010,7 +1010,7 @@ class _BodyContenttLearnCardsWidgetState
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1030,10 +1030,10 @@ class _BodyContenttLearnCardsWidgetState
                                                                                 children: [
                                                                                   Container(
                                                                                     width: double.infinity,
-                                                                                    constraints: BoxConstraints(
+                                                                                    constraints: const BoxConstraints(
                                                                                       maxWidth: 400.0,
                                                                                     ),
-                                                                                    decoration: BoxDecoration(),
+                                                                                    decoration: const BoxDecoration(),
                                                                                   ),
                                                                                 ],
                                                                               ),

@@ -11,7 +11,7 @@ class WatermillOffsetsMessageIntentTable
 }
 
 class WatermillOffsetsMessageIntentRow extends SupabaseDataRow {
-  WatermillOffsetsMessageIntentRow(Map<String, dynamic> data) : super(data);
+  WatermillOffsetsMessageIntentRow(super.data);
 
   @override
   SupabaseTable get table => WatermillOffsetsMessageIntentTable();

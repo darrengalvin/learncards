@@ -7,11 +7,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'a_p_p_setup_model.dart';
 export 'a_p_p_setup_model.dart';
 
@@ -70,7 +68,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minHeight: 800.0,
                       maxHeight: 1000.0,
                     ),
@@ -115,13 +113,13 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                   pageViewCompaniesRecordList.isNotEmpty
                                       ? pageViewCompaniesRecordList.first
                                       : null;
-                              return Container(
+                              return SizedBox(
                                 width: double.infinity,
                                 height: 500.0,
                                 child: Stack(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 50.0),
                                       child: PageView(
                                         controller:
@@ -130,14 +128,14 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                         scrollDirection: Axis.horizontal,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(12.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 8.0, 16.0, 0.0),
                                                   child: Row(
@@ -155,7 +153,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 8.0, 16.0, 0.0),
                                                   child: Row(
@@ -174,7 +172,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 12.0,
                                                           16.0, 0.0),
                                                   child: Container(
@@ -183,7 +181,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: [
+                                                      boxShadow: const [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -198,7 +196,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(12.0),
+                                                          const EdgeInsets.all(12.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -234,8 +232,6 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                                       .cover,
                                                                 ),
                                                               if (_model.uploadedFileUrl !=
-                                                                      null &&
-                                                                  _model.uploadedFileUrl !=
                                                                       '')
                                                                 Image.network(
                                                                   _model
@@ -253,7 +249,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           25.0, 0.0, 25.0, 0.0),
                                                   child: Row(
@@ -360,7 +356,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                           ));
                                                         },
                                                         text: 'Upload',
-                                                        icon: Icon(
+                                                        icon: const Icon(
                                                           Icons
                                                               .cloud_download_rounded,
                                                           size: 15.0,
@@ -370,21 +366,21 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                           width: 130.0,
                                                           height: 40.0,
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
                                                           color:
-                                                              Color(0x004B39EF),
+                                                              const Color(0x004B39EF),
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -404,7 +400,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                                             FlutterFlowTheme.of(context).titleSmallFamily),
                                                                   ),
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -415,7 +411,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 20.0, 0.0),
                                                   child: TextFormField(
@@ -431,7 +427,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.textController1',
-                                                      Duration(
+                                                      const Duration(
                                                           milliseconds: 2000),
                                                       () async {
                                                         logFirebaseEvent(
@@ -445,7 +441,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                                 createCompaniesRecordData(
                                                           companyname:
                                                               pageViewCompaniesRecord
-                                                                  ?.companyname,
+                                                                  .companyname,
                                                         ));
                                                       },
                                                     ),
@@ -471,7 +467,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -482,7 +478,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -493,7 +489,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -521,7 +517,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 8.0, 16.0, 0.0),
                                                   child: Row(
@@ -539,7 +535,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 8.0, 16.0, 0.0),
                                                   child: Row(
@@ -557,7 +553,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.all(10.0),
+                                                  padding: const EdgeInsets.all(10.0),
                                                   child: TextFormField(
                                                     controller:
                                                         _model.textController2,
@@ -585,7 +581,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -596,7 +592,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -607,7 +603,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -640,7 +636,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 30.0, 0.0, 0.0),
                                                   child: Column(
@@ -649,7 +645,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     0.0,
@@ -669,7 +665,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                         ),
                                                       ),
                                                       Padding(
-                                                        padding: EdgeInsets.all(
+                                                        padding: const EdgeInsets.all(
                                                             10.0),
                                                         child: TextFormField(
                                                           controller: _model
@@ -702,7 +698,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                             focusedBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Color(
                                                                     0x00000000),
                                                                 width: 1.0,
@@ -715,7 +711,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                             errorBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Color(
                                                                     0x00000000),
                                                                 width: 1.0,
@@ -728,7 +724,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                             focusedErrorBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Color(
                                                                     0x00000000),
                                                                 width: 1.0,
@@ -774,7 +770,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   25.0,
@@ -833,14 +829,14 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                           width: 100.0,
                                                           height: 30.0,
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -867,7 +863,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                                   ),
                                                           elevation: 2.0,
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -878,7 +874,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ],
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           25.0, 0.0, 25.0, 0.0),
                                                   child: StreamBuilder<
@@ -925,7 +921,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                                   listViewIndex];
                                                           return Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         20.0,
@@ -948,7 +944,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                                       width:
                                                                           200.0,
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                       child:
                                                                           ListView(
                                                                         padding:
@@ -997,7 +993,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                                         .reference
                                                                         .delete();
                                                                   },
-                                                                  child: Icon(
+                                                                  child: const Icon(
                                                                     Icons
                                                                         .delete_forever,
                                                                     color: Colors
@@ -1017,7 +1013,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(12.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1030,7 +1026,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 8.0, 16.0, 0.0),
                                                   child: Row(
@@ -1048,7 +1044,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 8.0, 16.0, 0.0),
                                                   child: Row(
@@ -1073,9 +1069,9 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 10.0),
                                         child: smooth_page_indicator
                                             .SmoothPageIndicator(
@@ -1089,7 +1085,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                 .animateToPage(
                                               i,
                                               duration:
-                                                  Duration(milliseconds: 500),
+                                                  const Duration(milliseconds: 500),
                                               curve: Curves.ease,
                                             );
                                           },
@@ -1118,7 +1114,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 15.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -1131,7 +1127,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               25.0, 0.0, 25.0, 0.0),
                           child: StreamBuilder<List<UsersRecord>>(
                             stream: queryUsersRecord(),
@@ -1161,7 +1157,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                   final listViewUsersRecord =
                                       listViewUsersRecordList[listViewIndex];
                                   return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1173,7 +1169,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                           children: [
                                             Container(
                                               width: 200.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: ListView(
                                                 padding: EdgeInsets.zero,
                                                 shrinkWrap: true,
@@ -1193,7 +1189,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                         ),
                                         Theme(
                                           data: ThemeData(
-                                            checkboxTheme: CheckboxThemeData(
+                                            checkboxTheme: const CheckboxThemeData(
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
                                                   bottomLeft:
@@ -1233,7 +1229,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 16.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -1241,7 +1237,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                   'A_P_P_SETUP_PAGE_NEXT_BTN_ON_TAP');
                               logFirebaseEvent('Button_page_view');
                               await _model.pageViewController?.nextPage(
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.ease,
                               );
                             },
@@ -1249,9 +1245,9 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                             options: FFButtonOptions(
                               width: 300.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -1268,7 +1264,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -1276,7 +1272,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 24.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -1284,7 +1280,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                   'A_P_P_SETUP_PAGE_BACK_BTN_ON_TAP');
                               logFirebaseEvent('Button_page_view');
                               await _model.pageViewController?.previousPage(
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.ease,
                               );
                             },
@@ -1292,9 +1288,9 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                             options: FFButtonOptions(
                               width: 300.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primaryText,
                               textStyle: FlutterFlowTheme.of(context)
@@ -1310,7 +1306,7 @@ class _APPSetupWidgetState extends State<APPSetupWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

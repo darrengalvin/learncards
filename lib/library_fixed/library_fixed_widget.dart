@@ -8,14 +8,17 @@ import '/components/drawer_tile_tree_widget.dart';
 import '/components/header_container_widget.dart';
 import '/components/left_menu_widget.dart';
 import '/components/middle_body_all_widget.dart';
+import '/components/page_info_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/info_button.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +60,18 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('LIBRARY_FIXED_Library-fixed_ON_INIT_STAT');
+      if (FFAppState().walkthroughComplete == true) {
+        logFirebaseEvent('Library-fixed_start_walkthrough');
+        safeSetState(
+            () => _model.infoButtonController = createPageWalkthrough(context));
+        _model.infoButtonController?.show(context: context);
+      } else {
+        logFirebaseEvent('Library-fixed_start_walkthrough');
+        safeSetState(
+            () => _model.infoButtonController = createPageWalkthrough(context));
+        _model.infoButtonController?.show(context: context);
+      }
+
       if (kDebugMode == true) {
         logFirebaseEvent('Library-fixed_bottom_sheet');
         await showModalBottomSheet(
@@ -72,7 +87,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                     : FocusScope.of(context).unfocus(),
                 child: Padding(
                   padding: MediaQuery.viewInsetsOf(context),
-                  child: DeveloperDebugModeWidget(),
+                  child: const DeveloperDebugModeWidget(),
                 ),
               ),
             );
@@ -93,7 +108,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       if (_model.companyByUrl?.landingUrls
-              ?.contains(FFAppState().selectedCompanyUrl) ==
+              .contains(FFAppState().selectedCompanyUrl) ==
           true) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -128,8 +143,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         ).then((s) => s.firstOrNull);
       }
 
-      if (FFAppState().nonLoggedInSessionId == null ||
-          FFAppState().nonLoggedInSessionId == '') {
+      if (FFAppState().nonLoggedInSessionId == '') {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
           FFAppState().debugMessage = valueOrDefault<String>(
@@ -275,21 +289,21 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         logFirebaseEvent('Library-fixed_update_app_state');
         FFAppState().selectedcategory = valueOrDefault<String>(
           _model.companyByUrl?.startingCategory,
-          'starting category is not set in companies doc',
+          'Starting category is not set in companies doc',
         );
         FFAppState().selectedCategoryName = valueOrDefault<String>(
           _model.companyByUrl?.startingCategory,
-          'starting category is not set in companies doc',
+          'Starting category is not set in companies doc',
         );
         logFirebaseEvent('Library-fixed_update_app_state');
         FFAppState().update(() {
           FFAppState().selectedMemberLevel = valueOrDefault<String>(
             _model.companyByUrl?.startingMemberLevel,
-            'starting member level is not set in company doc',
+            'Starting member level is not set in company doc',
           );
           FFAppState().selectedMemberLevelName = valueOrDefault<String>(
             _model.companyByUrl?.startingMemberLevelName,
-            'starting member level name is not set in compay doc',
+            'Starting member level name is not set in company doc',
           );
         });
         logFirebaseEvent('Library-fixed_update_app_state');
@@ -301,7 +315,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       setState(() {
         FFAppState().debugMessage = 'person 1 set';
       });
-      if ((FFAppState().leftPane == null || FFAppState().leftPane == '') ||
+      if ((FFAppState().leftPane == '') ||
           (FFAppState().leftPane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -325,7 +339,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         });
       }
 
-      if ((FFAppState().middlePane == null || FFAppState().middlePane == '') ||
+      if ((FFAppState().middlePane == '') ||
           (FFAppState().middlePane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -345,7 +359,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           );
         });
       }
-      if ((FFAppState().rightPane == null || FFAppState().rightPane == '') ||
+      if ((FFAppState().rightPane == '') ||
           (FFAppState().rightPane == '-')) {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -440,7 +454,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           FFAppState().selectedThreadId =
               _model.sessionQueryOnPageLoad!.defaultThreadId;
         });
-        if (_model.queryFlowiseChats!.length >= 1) {
+        if (_model.queryFlowiseChats!.isNotEmpty) {
           logFirebaseEvent('Library-fixed_update_app_state');
           setState(() {
             FFAppState().debugMessage = valueOrDefault<String>(
@@ -622,7 +636,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 50.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -646,9 +660,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                             text: 'Admin Dash',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -675,7 +689,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                     ),
                   ),
                 ),
-                endDrawer: Container(
+                endDrawer: SizedBox(
                   width: 450.0,
                   child: Drawer(
                     elevation: 16.0,
@@ -699,6 +713,20 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                   child: MouseRegion(
                     opaque: false,
                     cursor: MouseCursor.defer ?? MouseCursor.defer,
+                    onEnter: ((event) async {
+                      setState(() => _model.mouseRegionHovered = true);
+                      logFirebaseEvent(
+                          'LIBRARY_FIXED_MouseRegion_tgmjc0s6_ON_TO');
+                      logFirebaseEvent('MouseRegion_backend_call');
+
+                      await _model.sessionQueryOnPageLoad!.reference
+                          .update(createSessionsRecordData(
+                        lastActive: getCurrentTimestamp,
+                      ));
+                    }),
+                    onExit: ((event) async {
+                      setState(() => _model.mouseRegionHovered = false);
+                    }),
                     child: StreamBuilder<List<MemberLevelsRecord>>(
                       stream: queryMemberLevelsRecord(),
                       builder: (context, snapshot) {
@@ -732,28 +760,28 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                             });
                           },
                           child: Container(
-                            decoration: BoxDecoration(),
-                            alignment: AlignmentDirectional(-1.0, -1.0),
+                            decoration: const BoxDecoration(),
+                            alignment: const AlignmentDirectional(-1.0, -1.0),
                             child: Align(
-                              alignment: AlignmentDirectional(-1.0, -1.0),
+                              alignment: const AlignmentDirectional(-1.0, -1.0),
                               child: Container(
-                                decoration: BoxDecoration(),
-                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                decoration: const BoxDecoration(),
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
                                 child: Stack(
                                   children: [
                                     Container(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxHeight: double.infinity,
                                       ),
                                       decoration: BoxDecoration(
                                         color: _model
-                                            .companyByUrl?.colors?.primaryColor,
+                                            .companyByUrl?.colors.primaryColor,
                                       ),
                                       alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
+                                          const AlignmentDirectional(-1.0, -1.0),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(0.0),
@@ -765,12 +793,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                             child: Opacity(
                                               opacity: 0.8,
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: double.infinity,
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     minWidth: 900.0,
                                                     minHeight: 350.0,
                                                   ),
@@ -783,20 +811,20 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                     ),
                                                   ),
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, -1.0),
                                                     child: Stack(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, -1.0),
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: ClipRRect(
                                                             borderRadius:
@@ -858,7 +886,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                       ),
                                     ),
                                     Container(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -870,6 +898,8 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment
                                                       .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Column(
                                                   mainAxisSize:
@@ -877,81 +907,284 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Container(
-                                                      constraints:
-                                                          BoxConstraints(
-                                                        maxHeight:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
-                                                                0.27,
-                                                      ),
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .headerContainerModel,
-                                                        updateCallback: () =>
-                                                            setState(() {}),
-                                                        child:
-                                                            HeaderContainerWidget(
-                                                          companiesDoc: _model
-                                                              .companyByUrl,
-                                                          memberLevels:
-                                                              containerMemberLevelsRecordList,
-                                                          sessionsDoc: _model
-                                                              .sessionQueryOnPageLoad,
-                                                          action: () async {},
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                logFirebaseEvent(
+                                                                    'LIBRARY_FIXED_Container_ue62lygk_ON_TAP');
+                                                                logFirebaseEvent(
+                                                                    'Container_update_app_state');
+                                                                FFAppState()
+                                                                    .update(() {
+                                                                  FFAppState()
+                                                                          .showmenuopen =
+                                                                      true;
+                                                                });
+                                                              },
+                                                              child: Container(
+                                                                decoration:
+                                                                    const BoxDecoration(),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          FlutterFlowIconButton(
+                                                                        borderColor:
+                                                                            Colors.transparent,
+                                                                        borderRadius:
+                                                                            0.0,
+                                                                        buttonSize:
+                                                                            37.0,
+                                                                        icon:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .menu_sharp,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                          size:
+                                                                              34.0,
+                                                                        ),
+                                                                        onPressed:
+                                                                            () {
+                                                                          print(
+                                                                              'IconButton pressed ...');
+                                                                        },
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            const Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [],
+                                                            ),
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      FlutterFlowIconButton(
+                                                                    borderColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    borderRadius:
+                                                                        0.0,
+                                                                    buttonSize:
+                                                                        37.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .info_outline,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      size:
+                                                                          34.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'LIBRARY_FIXED_info_outline_ICN_ON_TAP');
+                                                                      logFirebaseEvent(
+                                                                          'IconButton_bottom_sheet');
+                                                                      await showModalBottomSheet(
+                                                                        isScrollControlled:
+                                                                            true,
+                                                                        backgroundColor:
+                                                                            FlutterFlowTheme.of(context).primary,
+                                                                        enableDrag:
+                                                                            false,
+                                                                        useSafeArea:
+                                                                            true,
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (context) {
+                                                                          return WebViewAware(
+                                                                            child:
+                                                                                GestureDetector(
+                                                                              onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                              child: Padding(
+                                                                                padding: MediaQuery.viewInsetsOf(context),
+                                                                                child: SizedBox(
+                                                                                  height: MediaQuery.sizeOf(context).height * 0.87,
+                                                                                  child: PageInfoWidget(
+                                                                                    companyDoc: _model.companyByUrl!,
+                                                                                    sessiondDoc: _model.sessionQueryOnPageLoad!,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      ).then((value) =>
+                                                                          safeSetState(
+                                                                              () {}));
+                                                                    },
+                                                                  ).addWalkthrough(
+                                                                    iconButtonVup35iwy,
+                                                                    _model
+                                                                        .infoButtonController,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SingleChildScrollView(
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxHeight:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .height *
-                                                                  0.57,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child:
-                                                            SingleChildScrollView(
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              wrapWithModel(
+                                                        Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Container(
+                                                              constraints:
+                                                                  BoxConstraints(
+                                                                maxHeight: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .height *
+                                                                    0.18,
+                                                              ),
+                                                              decoration:
+                                                                  const BoxDecoration(),
+                                                              child:
+                                                                  wrapWithModel(
                                                                 model: _model
-                                                                    .middleBodyAllModel,
+                                                                    .headerContainerModel,
                                                                 updateCallback:
                                                                     () => setState(
                                                                         () {}),
-                                                                updateOnChange:
-                                                                    true,
                                                                 child:
-                                                                    MiddleBodyAllWidget(),
+                                                                    HeaderContainerWidget(
+                                                                  companiesDoc:
+                                                                      _model
+                                                                          .companyByUrl,
+                                                                  memberLevels:
+                                                                      containerMemberLevelsRecordList,
+                                                                  sessionsDoc:
+                                                                      _model
+                                                                          .sessionQueryOnPageLoad,
+                                                                  action:
+                                                                      () async {},
+                                                                ),
                                                               ),
-                                                            ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        const Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                                Expanded(
+                                                  child: SingleChildScrollView(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            maxHeight: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                1.0,
+                                                          ),
+                                                          decoration:
+                                                              const BoxDecoration(),
+                                                          child:
+                                                              SingleChildScrollView(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                wrapWithModel(
+                                                                  model: _model
+                                                                      .middleBodyAllModel,
+                                                                  updateCallback:
+                                                                      () => setState(
+                                                                          () {}),
+                                                                  updateOnChange:
+                                                                      true,
+                                                                  child:
+                                                                      MiddleBodyAllWidget(
+                                                                    companyDocId: _model
+                                                                        .companyByUrl
+                                                                        ?.reference
+                                                                        .id,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                                 Column(
@@ -1009,14 +1242,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                           return Container(
                                                             width:
                                                                 double.infinity,
-                                                            constraints:
-                                                                BoxConstraints(
-                                                              maxHeight: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .height *
-                                                                  0.14,
-                                                            ),
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
@@ -1103,22 +1328,22 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           borderColor:
                                                                               FlutterFlowTheme.of(context).primary,
                                                                           borderRadius:
-                                                                              20.0,
+                                                                              0.0,
                                                                           borderWidth:
                                                                               1.0,
                                                                           buttonSize:
-                                                                              40.0,
+                                                                              37.0,
                                                                           icon:
                                                                               Icon(
-                                                                            Icons.arrow_back_ios,
+                                                                            Icons.arrow_back_ios_outlined,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             size:
-                                                                                24.0,
+                                                                                34.0,
                                                                           ),
                                                                           onPressed:
                                                                               () async {
-                                                                            logFirebaseEvent('LIBRARY_FIXED_arrow_back_ios_ICN_ON_TAP');
+                                                                            logFirebaseEvent('LIBRARY_FIXED_arrow_back_ios_outlined_IC');
                                                                             logFirebaseEvent('IconButton_update_app_state');
                                                                             setState(() {
                                                                               FFAppState().showLearnCard = false;
@@ -1193,11 +1418,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                       builder: (alertDialogContext) {
                                                                                         return WebViewAware(
                                                                                           child: AlertDialog(
-                                                                                            title: Text('You must complete the welcome chat first.'),
+                                                                                            title: const Text('You must complete the welcome chat first.'),
                                                                                             actions: [
                                                                                               TextButton(
                                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                child: Text('Ok'),
+                                                                                                child: const Text('Ok'),
                                                                                               ),
                                                                                             ],
                                                                                           ),
@@ -1246,18 +1471,18 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                                       child: Container(
                                                                                         width: 100.0,
                                                                                         height: 100.0,
-                                                                                        decoration: BoxDecoration(),
+                                                                                        decoration: const BoxDecoration(),
                                                                                         child: Stack(
                                                                                           children: [
                                                                                             Container(
                                                                                               width: 90.0,
                                                                                               height: 90.0,
                                                                                               clipBehavior: Clip.antiAlias,
-                                                                                              decoration: BoxDecoration(
+                                                                                              decoration: const BoxDecoration(
                                                                                                 shape: BoxShape.circle,
                                                                                               ),
                                                                                               child: Image.network(
@@ -1268,44 +1493,58 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                                 fit: BoxFit.cover,
                                                                                               ),
                                                                                             ),
-                                                                                            Container(
-                                                                                              width: 40.0,
-                                                                                              height: 40.0,
-                                                                                              clipBehavior: Clip.antiAlias,
-                                                                                              decoration: BoxDecoration(
-                                                                                                shape: BoxShape.circle,
-                                                                                              ),
-                                                                                              child: Image.network(
-                                                                                                valueOrDefault<String>(
-                                                                                                  myTeamItem.image,
-                                                                                                  'https://res.cloudinary.com/dplpckpbm/image/upload/v1708824869/dg0865_Chief_AI_Officer_Taylor_Jordan_Leads_AI_strategy_and_imp_3be63b10-fc84-4fb8-815c-db58d2530086_dlybur.png',
+                                                                                            if (responsiveVisibility(
+                                                                                              context: context,
+                                                                                              phone: false,
+                                                                                              tablet: false,
+                                                                                              tabletLandscape: false,
+                                                                                              desktop: false,
+                                                                                            ))
+                                                                                              Container(
+                                                                                                width: 40.0,
+                                                                                                height: 40.0,
+                                                                                                clipBehavior: Clip.antiAlias,
+                                                                                                decoration: const BoxDecoration(
+                                                                                                  shape: BoxShape.circle,
                                                                                                 ),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                            Container(
-                                                                                              width: 26.0,
-                                                                                              height: 26.0,
-                                                                                              decoration: BoxDecoration(
-                                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                borderRadius: BorderRadius.circular(90.0),
-                                                                                              ),
-                                                                                              child: Column(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  Text(
-                                                                                                    '1',
-                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                          color: FlutterFlowTheme.of(context).customColor3,
-                                                                                                          fontSize: 18.0,
-                                                                                                          fontWeight: FontWeight.w800,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                        ),
+                                                                                                child: Image.network(
+                                                                                                  valueOrDefault<String>(
+                                                                                                    myTeamItem.image,
+                                                                                                    'https://res.cloudinary.com/dplpckpbm/image/upload/v1708824869/dg0865_Chief_AI_Officer_Taylor_Jordan_Leads_AI_strategy_and_imp_3be63b10-fc84-4fb8-815c-db58d2530086_dlybur.png',
                                                                                                   ),
-                                                                                                ],
+                                                                                                  fit: BoxFit.cover,
+                                                                                                ),
                                                                                               ),
-                                                                                            ),
+                                                                                            if (responsiveVisibility(
+                                                                                              context: context,
+                                                                                              phone: false,
+                                                                                              tablet: false,
+                                                                                              tabletLandscape: false,
+                                                                                              desktop: false,
+                                                                                            ))
+                                                                                              Container(
+                                                                                                width: 26.0,
+                                                                                                height: 26.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(90.0),
+                                                                                                ),
+                                                                                                child: Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      '1',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                            color: FlutterFlowTheme.of(context).customColor3,
+                                                                                                            fontSize: 18.0,
+                                                                                                            fontWeight: FontWeight.w800,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ),
                                                                                           ],
                                                                                         ),
                                                                                       ),
@@ -1332,7 +1571,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -1362,7 +1601,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'OnLoad',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -1372,12 +1611,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1395,7 +1634,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -1419,7 +1658,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -1478,7 +1717,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'welcome',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -1488,12 +1727,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1511,7 +1750,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -1546,7 +1785,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           false,
                                                                         ))
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 20.0,
                                                                                 1.0,
                                                                                 20.0,
@@ -1580,7 +1819,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   initialLearnCards: 10,
                                                                                   aiLearnCardsPrompt: '',
                                                                                   companyDetails: '',
-                                                                                  backgroundImage: _model.textController.text != null && _model.textController.text != '' ? _model.textController.text : null,
+                                                                                  backgroundImage: _model.textController.text != '' ? _model.textController.text : null,
                                                                                   companyAiData: createCompanyDataForAiStruct(
                                                                                     companyName: 'Random Nsme ${random_data.randomString(
                                                                                       5,
@@ -1650,7 +1889,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                       initialLearnCards: 10,
                                                                                       aiLearnCardsPrompt: '',
                                                                                       companyDetails: '',
-                                                                                      backgroundImage: _model.textController.text != null && _model.textController.text != '' ? _model.textController.text : null,
+                                                                                      backgroundImage: _model.textController.text != '' ? _model.textController.text : null,
                                                                                       companyAiData: createCompanyDataForAiStruct(
                                                                                         companyName: 'Random Nsme ${random_data.randomString(
                                                                                           5,
@@ -1832,11 +2071,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                   builder: (alertDialogContext) {
                                                                                     return WebViewAware(
                                                                                       child: AlertDialog(
-                                                                                        title: Text('Getting Topics'),
+                                                                                        title: const Text('Getting Topics'),
                                                                                         actions: [
                                                                                           TextButton(
                                                                                             onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
+                                                                                            child: const Text('Ok'),
                                                                                           ),
                                                                                         ],
                                                                                       ),
@@ -1847,7 +2086,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 _model.apiResult939 = await CloudFunctionsGroup.getTopicsCall.call(
                                                                                   sessionId: _model.sessionQueryOnPageLoad?.reference.id,
                                                                                   systemMessagePrompt: valueOrDefault<String>(
-                                                                                    'As a business that${_model.createdCompany?.companyAiData?.companySummary}in ${_model.createdCompany?.companyAiData?.companyIndustry}lean on some famous frameworks if it helps.Each topic should  have a unique name and have 5 days of activities, these activities are delivered via an interactive ai chat in an app, so they can either be designed to get immediate responses or for the individual to take an action and then share their actions, either way the ai must get a response back of the activity that was completed.  The activity should be designed to last only 6-8 minutes, they are bite size.  The 5 days  must have a conclusion, whereby the person who has completed 1-5 activities feels satisfied and complete with a learning outcome that will move them forward. Please return JSON in the following format. Id increment by 1, start at 1 pillarCategory weeklyTopicName dailyActivity (list of 1-5 days of activities)  just the activity name a showAdminDate which is always on a Monday and each item will increase by one week and a showUsersDate which is on the friday following the monday.todays date is  ${dateTimeFormat('MMMMEEEEd', getCurrentTimestamp)} so the first date will be ${getCurrentTimestamp.toString()}nd will increase by a week per item  Always Use English UK Locale and Spelling',
+                                                                                    'As a business that${_model.createdCompany?.companyAiData.companySummary}in ${_model.createdCompany?.companyAiData.companyIndustry}lean on some famous frameworks if it helps.Each topic should  have a unique name and have 5 days of activities, these activities are delivered via an interactive ai chat in an app, so they can either be designed to get immediate responses or for the individual to take an action and then share their actions, either way the ai must get a response back of the activity that was completed.  The activity should be designed to last only 6-8 minutes, they are bite size.  The 5 days  must have a conclusion, whereby the person who has completed 1-5 activities feels satisfied and complete with a learning outcome that will move them forward. Please return JSON in the following format. Id increment by 1, start at 1 pillarCategory weeklyTopicName dailyActivity (list of 1-5 days of activities)  just the activity name a showAdminDate which is always on a Monday and each item will increase by one week and a showUsersDate which is on the friday following the monday.todays date is  ${dateTimeFormat('MMMMEEEEd', getCurrentTimestamp)} so the first date will be ${getCurrentTimestamp.toString()}nd will increase by a week per item  Always Use English UK Locale and Spelling',
                                                                                     'notset',
                                                                                   ),
                                                                                   learnCardId: 'notset',
@@ -1874,12 +2113,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                     builder: (alertDialogContext) {
                                                                                       return WebViewAware(
                                                                                         child: AlertDialog(
-                                                                                          title: Text('GOT  TOPICS'),
+                                                                                          title: const Text('GOT  TOPICS'),
                                                                                           content: Text((_model.apiResult939?.bodyText ?? '')),
                                                                                           actions: [
                                                                                             TextButton(
                                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                              child: Text('Ok'),
+                                                                                              child: const Text('Ok'),
                                                                                             ),
                                                                                           ],
                                                                                         ),
@@ -1893,11 +2132,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                     builder: (alertDialogContext) {
                                                                                       return WebViewAware(
                                                                                         child: AlertDialog(
-                                                                                          title: Text('get topics failed'),
+                                                                                          title: const Text('get topics failed'),
                                                                                           actions: [
                                                                                             TextButton(
                                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                              child: Text('Ok'),
+                                                                                              child: const Text('Ok'),
                                                                                             ),
                                                                                           ],
                                                                                         ),
@@ -1909,14 +2148,14 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 setState(() {});
                                                                               },
                                                                               text: 'Simulated Company',
-                                                                              icon: Icon(
+                                                                              icon: const Icon(
                                                                                 Icons.location_history,
                                                                                 size: 15.0,
                                                                               ),
                                                                               options: FFButtonOptions(
                                                                                 height: 50.0,
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
-                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                                                                                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                 color: FlutterFlowTheme.of(context).selectedButton,
                                                                                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -1925,7 +2164,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                     ),
                                                                                 elevation: 1.0,
-                                                                                borderSide: BorderSide(
+                                                                                borderSide: const BorderSide(
                                                                                   color: Colors.transparent,
                                                                                   width: 1.0,
                                                                                 ),
@@ -1962,7 +2201,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             ),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                               child: TextFormField(
                                                                                 controller: _model.textController,
                                                                                 focusNode: _model.textFieldFocusNode,
@@ -2022,7 +2261,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         false,
                                                                   ))
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           1.0,
                                                                           20.0,
@@ -2043,11 +2282,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: Text('ready to read '),
+                                                                                  title: const Text('ready to read '),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
+                                                                                      child: const Text('Ok'),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -2068,11 +2307,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: Text('read on page load doc'),
+                                                                                  title: const Text('read on page load doc'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
+                                                                                      child: const Text('Ok'),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -2087,12 +2326,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: Text('The tread is '),
+                                                                                    title: const Text('The tread is '),
                                                                                     content: Text(_model.sessionQueryOnPageLoad!.coachMeThreadID),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: Text('Ok'),
+                                                                                        child: const Text('Ok'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -2107,11 +2346,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 builder: (alertDialogContext) {
                                                                                   return WebViewAware(
                                                                                     child: AlertDialog(
-                                                                                      title: Text('they match'),
+                                                                                      title: const Text('they match'),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
+                                                                                          child: const Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -2125,11 +2364,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 builder: (alertDialogContext) {
                                                                                   return WebViewAware(
                                                                                     child: AlertDialog(
-                                                                                      title: Text('they dont match'),
+                                                                                      title: const Text('they dont match'),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
+                                                                                          child: const Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -2147,12 +2386,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                                 builder: (alertDialogContext) {
                                                                                   return WebViewAware(
                                                                                     child: AlertDialog(
-                                                                                      title: Text('they dont match'),
+                                                                                      title: const Text('they dont match'),
                                                                                       content: Text(FFAppState().tempCoachMeThreadId == _model.readDocQuery?.coachMeThreadID ? 'they match now' : 'still no match'),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
+                                                                                          child: const Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -2167,11 +2406,11 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: Text('The tread is empty'),
+                                                                                    title: const Text('The tread is empty'),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: Text('Ok'),
+                                                                                        child: const Text('Ok'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -2245,7 +2484,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         text:
                                                                             'Coach/Mentor Test',
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .location_history,
                                                                           size:
@@ -2255,12 +2494,12 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               50.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               4.0,
                                                                               24.0,
                                                                               4.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -2278,7 +2517,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                           elevation:
                                                                               1.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -2289,76 +2528,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  FFButtonWidget(
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'LIBRARY_FIXED_PAGE_BUTTON_BTN_ON_TAP');
-                                                                      logFirebaseEvent(
-                                                                          'Button_navigate_to');
-
-                                                                      context
-                                                                          .pushNamed(
-                                                                        'chatPage',
-                                                                        queryParameters:
-                                                                            {
-                                                                          'companiesDoc':
-                                                                              serializeParam(
-                                                                            _model.companyByUrl,
-                                                                            ParamType.Document,
-                                                                          ),
-                                                                        }.withoutNulls,
-                                                                        extra: <String,
-                                                                            dynamic>{
-                                                                          'companiesDoc':
-                                                                              _model.companyByUrl,
-                                                                        },
-                                                                      );
-                                                                    },
-                                                                    text:
-                                                                        'Button',
-                                                                    options:
-                                                                        FFButtonOptions(
-                                                                      height:
-                                                                          40.0,
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          24.0,
-                                                                          0.0,
-                                                                          24.0,
-                                                                          0.0),
-                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      textStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                            color:
-                                                                                Colors.white,
-                                                                            useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                          ),
-                                                                      elevation:
-                                                                          3.0,
-                                                                      borderSide:
-                                                                          BorderSide(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                  ),
                                                                 ],
                                                               ),
                                                             ),
@@ -2378,7 +2547,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                       model: _model.leftMenuModel,
                                       updateCallback: () => setState(() {}),
                                       updateOnChange: true,
-                                      child: LeftMenuWidget(),
+                                      child: const LeftMenuWidget(),
                                     ),
                                   ],
                                 ),
@@ -2388,20 +2557,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                         );
                       },
                     ),
-                    onEnter: ((event) async {
-                      setState(() => _model.mouseRegionHovered = true);
-                      logFirebaseEvent(
-                          'LIBRARY_FIXED_MouseRegion_tgmjc0s6_ON_TO');
-                      logFirebaseEvent('MouseRegion_backend_call');
-
-                      await _model.sessionQueryOnPageLoad!.reference
-                          .update(createSessionsRecordData(
-                        lastActive: getCurrentTimestamp,
-                      ));
-                    }),
-                    onExit: ((event) async {
-                      setState(() => _model.mouseRegionHovered = false);
-                    }),
                   ),
                 ),
               ),
@@ -2409,4 +2564,20 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       },
     );
   }
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onFinish: () {
+          safeSetState(() => _model.infoButtonController = null);
+          logFirebaseEvent('LIBRARY_FIXED_Library-fixed_ON_WALKTHROU');
+          logFirebaseEvent('Library-fixed_update_app_state');
+          setState(() {
+            FFAppState().walkthroughComplete = true;
+          });
+        },
+        onSkip: () {
+          return true;
+        },
+      );
 }

@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'button_block_model.dart';
 export 'button_block_model.dart';
 
@@ -52,16 +51,16 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
                 color: Color(0x33000000),
@@ -73,25 +72,25 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
                 FlutterFlowTheme.of(context).primaryBackground,
                 FlutterFlowTheme.of(context).secondary
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: Color(0xFFEFF7F5),
+              color: const Color(0xFFEFF7F5),
               width: 1.0,
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +111,7 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Text(
                           'You can add a button, either to an external link make sure you add https:// or if you would like an existing page just use the page name block below.',
                           style: FlutterFlowTheme.of(context)
@@ -127,20 +126,20 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
                               ),
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 1.0,
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: TextFormField(
                     controller: _model.linktextController,
                     focusNode: _model.linktextFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.linktextController',
-                      Duration(milliseconds: 2000),
+                      const Duration(milliseconds: 2000),
                       () async {
                         logFirebaseEvent(
                             'BUTTON_BLOCK_linktext_ON_TEXTFIELD_CHANG');
@@ -159,21 +158,21 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -188,13 +187,13 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: TextFormField(
                     controller: _model.buttonlinkController,
                     focusNode: _model.buttonlinkFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.buttonlinkController',
-                      Duration(milliseconds: 2000),
+                      const Duration(milliseconds: 2000),
                       () async {
                         logFirebaseEvent(
                             'BUTTON_BLOCK_buttonlink_ON_TEXTFIELD_CHA');
@@ -214,21 +213,21 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -242,7 +241,7 @@ class _ButtonBlockWidgetState extends State<ButtonBlockWidget> {
                         .asValidator(context),
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 1.0,
                 ),
               ],

@@ -3,10 +3,8 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/social_feed/social_edit_posts/social_edit_posts_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'post_functions_model.dart';
 export 'post_functions_model.dart';
@@ -54,7 +52,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
     return Material(
       color: Colors.transparent,
       elevation: 5.0,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
@@ -67,7 +65,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
         height: 400.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(16.0),
@@ -98,7 +96,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: 50.0,
                       height: 4.0,
@@ -110,7 +108,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -120,7 +118,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                     currentUserDocument?.isadmin, false) ==
                                 true))
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: AuthUserStreamWidget(
                               builder: (context) => InkWell(
@@ -149,7 +147,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -188,7 +186,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                     currentUserDocument?.isadmin, false) ==
                                 true))
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: AuthUserStreamWidget(
                               builder: (context) => InkWell(
@@ -205,14 +203,14 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                    barrierColor: Color(0x00000000),
+                                    barrierColor: const Color(0x00000000),
                                     context: context,
                                     builder: (context) {
                                       return WebViewAware(
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: Container(
+                                          child: SizedBox(
                                             height: 300.0,
                                             child: SocialEditPostsWidget(
                                               postdetails:
@@ -240,7 +238,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -274,7 +272,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -291,9 +289,9 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                         builder: (alertDialogContext) {
                                           return WebViewAware(
                                             child: AlertDialog(
-                                              title: Text(
+                                              title: const Text(
                                                   'You are about to REPORT this post'),
-                                              content: Text(
+                                              content: const Text(
                                                   'In doing so admin will be made aware so please only do so if there is something wrong with it. '),
                                               actions: [
                                                 TextButton(
@@ -301,14 +299,14 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                                       Navigator.pop(
                                                           alertDialogContext,
                                                           false),
-                                                  child: Text('Cancel'),
+                                                  child: const Text('Cancel'),
                                                 ),
                                                 TextButton(
                                                   onPressed: () =>
                                                       Navigator.pop(
                                                           alertDialogContext,
                                                           true),
-                                                  child: Text('Confirm'),
+                                                  child: const Text('Confirm'),
                                                 ),
                                               ],
                                             ),
@@ -347,7 +345,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
@@ -366,7 +364,7 @@ class _PostFunctionsWidgetState extends State<PostFunctionsWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,

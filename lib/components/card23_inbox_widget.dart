@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'card23_inbox_model.dart';
 export 'card23_inbox_model.dart';
 
@@ -41,12 +39,12 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 32.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 32.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7.0,
               color: Color(0x2F1D2429),
@@ -56,7 +54,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +66,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -80,17 +78,17 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                       ),
                     ),
                     Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                         child: ListView(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
                               child: Container(
                                 width: double.infinity,
@@ -101,7 +99,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 8.0, 12.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -110,7 +108,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                         width: 32.0,
                                         height: 32.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -121,7 +119,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -137,7 +135,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                                         .bodyLarge,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: Text(
@@ -163,7 +161,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
                               child: Container(
                                 width: double.infinity,
@@ -174,7 +172,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 8.0, 12.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -183,7 +181,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                         width: 32.0,
                                         height: 32.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -194,7 +192,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -210,7 +208,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                                         .bodyLarge,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: Text(
@@ -236,7 +234,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
                               child: Container(
                                 width: double.infinity,
@@ -247,7 +245,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 8.0, 12.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -256,7 +254,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                         width: 32.0,
                                         height: 32.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -267,7 +265,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -283,7 +281,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                                                         .bodyLarge,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: Text(
@@ -319,14 +317,14 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                     child: FlutterFlowIconButton(
                       borderColor: FlutterFlowTheme.of(context).primary,
                       borderRadius: 8.0,
                       borderWidth: 1.0,
                       buttonSize: 40.0,
                       fillColor: FlutterFlowTheme.of(context).primary,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.edit_outlined,
                         color: Colors.white,
                         size: 20.0,
@@ -337,7 +335,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                     child: FlutterFlowIconButton(
                       borderColor: FlutterFlowTheme.of(context).alternate,
                       borderRadius: 8.0,
@@ -354,7 +352,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                     child: FlutterFlowIconButton(
                       borderColor: FlutterFlowTheme.of(context).alternate,
                       borderRadius: 8.0,
@@ -371,7 +369,7 @@ class _Card23InboxWidgetState extends State<Card23InboxWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                     child: FlutterFlowIconButton(
                       borderColor: FlutterFlowTheme.of(context).alternate,
                       borderRadius: 8.0,

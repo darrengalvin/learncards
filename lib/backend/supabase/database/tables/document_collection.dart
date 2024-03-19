@@ -10,7 +10,7 @@ class DocumentCollectionTable extends SupabaseTable<DocumentCollectionRow> {
 }
 
 class DocumentCollectionRow extends SupabaseDataRow {
-  DocumentCollectionRow(Map<String, dynamic> data) : super(data);
+  DocumentCollectionRow(super.data);
 
   @override
   SupabaseTable get table => DocumentCollectionTable();
@@ -30,8 +30,8 @@ class DocumentCollectionRow extends SupabaseDataRow {
   String get description => getField<String>('description')!;
   set description(String value) => setField<String>('description', value);
 
-  dynamic? get metadata => getField<dynamic>('metadata');
-  set metadata(dynamic? value) => setField<dynamic>('metadata', value);
+  dynamic get metadata => getField<dynamic>('metadata');
+  set metadata(dynamic value) => setField<dynamic>('metadata', value);
 
   String get tableNameField => getField<String>('table_name')!;
   set tableNameField(String value) => setField<String>('table_name', value);

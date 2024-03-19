@@ -77,3 +77,5 @@ export '/dash/dash_widget.dart' show DashWidget;
 export '/sessions/sessions_widget.dart' show SessionsWidget;
 export '/chat_page/chat_page_widget.dart' show ChatPageWidget;
 export '/login/login_widget.dart' show LoginWidget;
+export '/subjects_covered/subjects_covered_widget.dart'
+    show SubjectsCoveredWidget;

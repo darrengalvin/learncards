@@ -1,15 +1,12 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/blockv3_widget.dart';
 import '/components/drawer_empty_list_tiles_widget.dart';
 import '/components/learning_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'body_content_model.dart';
 export 'body_content_model.dart';
@@ -66,13 +63,13 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
             child: StreamBuilder<List<LearnCardsRecord>>(
               stream: queryLearnCardsRecord(
                 queryBuilder: (learnCardsRecord) => learnCardsRecord.where(
@@ -107,14 +104,14 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                         ? containerLearnCardsRecordList.first
                         : null;
                 return Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,14 +122,14 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   AnimatedContainer(
-                                    duration: Duration(milliseconds: 100),
+                                    duration: const Duration(milliseconds: 100),
                                     curve: Curves.easeInOut,
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 600.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 6.0),
                                       child: wrapWithModel(
                                         model: _model.learningCardModel1,
@@ -248,19 +245,19 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 6.0,
                                                                 0.0, 6.0),
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xB2FAFAFA),
+                                                            const Color(0xB2FAFAFA),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(8.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFFE0E3E7),
+                                                              const Color(0xFFE0E3E7),
                                                           width: 1.0,
                                                         ),
                                                       ),
@@ -275,7 +272,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                             opacity: 0.9,
                                                             child: Container(
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 color: Color(
                                                                     0xFFF5F5F5),
                                                               ),
@@ -296,7 +293,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             -1.0,
                                                                             -1.0),
                                                                         child:
@@ -317,7 +314,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                                             }(),
                                                                           ),
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Column(
                                                                             mainAxisSize:
@@ -344,7 +341,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                           ),
                                                           Container(
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                             child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -359,7 +356,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -381,10 +378,10 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                                             children: [
                                                                               Container(
                                                                                 width: double.infinity,
-                                                                                constraints: BoxConstraints(
+                                                                                constraints: const BoxConstraints(
                                                                                   maxWidth: 400.0,
                                                                                 ),
-                                                                                decoration: BoxDecoration(),
+                                                                                decoration: const BoxDecoration(),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -505,9 +502,9 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
+                                alignment: const AlignmentDirectional(0.0, -1.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 15.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -547,11 +544,11 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                               containerTileBlocksRecordList =
                                               snapshot.data!;
                                           return Container(
-                                            constraints: BoxConstraints(
+                                            constraints: const BoxConstraints(
                                               maxWidth: 550.0,
                                               maxHeight: 1400.0,
                                             ),
-                                            decoration: BoxDecoration(),
+                                            decoration: const BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -575,7 +572,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                               .toList();
                                                       if (tileContent.isEmpty) {
                                                         return Center(
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 640.0,
                                                             child:
                                                                 DrawerEmptyListTilesWidget(
@@ -600,7 +597,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                                   tileContentIndex];
                                                           return Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, -1.0),
                                                             child: Column(
                                                               mainAxisSize:
@@ -686,14 +683,14 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           AnimatedContainer(
-                            duration: Duration(milliseconds: 100),
+                            duration: const Duration(milliseconds: 100),
                             curve: Curves.easeInOut,
-                            constraints: BoxConstraints(
+                            constraints: const BoxConstraints(
                               maxWidth: 600.0,
                             ),
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 6.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -705,7 +702,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                       'BODY_CONTENT_Container_zt7ril1p_ON_TAP');
                                   logFirebaseEvent('learningCard_backend_call');
 
-                                  await containerLearnCardsRecord!.reference
+                                  await containerLearnCardsRecord.reference
                                       .update({
                                     ...mapToFirestore(
                                       {
@@ -730,7 +727,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                   await widget.sessionId!.reference
                                       .update(createSessionsRecordData(
                                     activeLearnCard:
-                                        containerLearnCardsRecord?.title,
+                                        containerLearnCardsRecord.title,
                                   ));
                                 },
                                 child: wrapWithModel(
@@ -738,7 +735,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                   updateCallback: () => setState(() {}),
                                   updateOnChange: true,
                                   child: LearningCardWidget(
-                                    learnCard: containerLearnCardsRecord!,
+                                    learnCard: containerLearnCardsRecord,
                                     companyDoc: widget.companyDoc!,
                                     sessionsDoc: widget.sessionId!,
                                     showLearnCard: FFAppState().showLearnCard,

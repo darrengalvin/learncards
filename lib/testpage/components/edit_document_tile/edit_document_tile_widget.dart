@@ -1,15 +1,12 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 import 'edit_document_tile_model.dart';
 export 'edit_document_tile_model.dart';
 
@@ -73,18 +70,18 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: TextStyle(),
+              unselectedLabelStyle: const TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Page',
                 ),
@@ -112,7 +109,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -125,7 +122,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                               logFirebaseEvent('Icon_bottom_sheet');
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.cancel_outlined,
                               color: Colors.black,
                               size: 24.0,
@@ -133,7 +130,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.docTitleController,
                             focusNode: _model.docTitleFocusNode,
@@ -150,21 +147,21 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -177,7 +174,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.docSummaryController,
                             focusNode: _model.docSummaryFocusNode,
@@ -194,21 +191,21 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -230,7 +227,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: Image.network(
                                     '',
@@ -245,7 +242,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -321,10 +318,10 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                     options: FFButtonOptions(
                                       width: 230.0,
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -342,7 +339,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -351,7 +348,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 4.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -368,10 +365,10 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                     options: FFButtonOptions(
                                       width: 230.0,
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -389,7 +386,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -401,14 +398,13 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                             ),
                           ],
                         ),
-                        if (_model.uploadedFileUrl != null &&
-                            _model.uploadedFileUrl != '')
+                        if (_model.uploadedFileUrl != '')
                           Text(
                             'PDF Uploaded',
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.docURLController,
                             focusNode: _model.docURLFocusNode,
@@ -425,21 +421,21 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -453,7 +449,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                         ),
                         if (_model.isDataUploading)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 20.0),
                             child: Lottie.network(
                               'https://assets1.lottiefiles.com/packages/lf20_umoglgxj.json',
@@ -464,7 +460,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 20.0, 0.0, 10.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -483,9 +479,9 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                             options: FFButtonOptions(
                               width: 150.0,
                               height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -500,7 +496,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -523,7 +519,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'Choose where you would like to show this tile.',
                             textAlign: TextAlign.center,
@@ -580,14 +576,14 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                           catagoryListViewCategoriesRecordList[
                                               catagoryListViewIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 2.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 70.0,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 0.0,
                                                 color: Color(0xFFDBE2E7),
@@ -599,7 +595,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -607,7 +603,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: Color(0xFF4B39EF),
+                                                  color: const Color(0xFF4B39EF),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -615,13 +611,13 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(2.0),
+                                                        const EdgeInsets.all(2.0),
                                                     child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -634,7 +630,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Theme(
@@ -650,7 +646,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                           ),
                                                         ),
                                                         unselectedWidgetColor:
-                                                            Color(0xFF7C8791),
+                                                            const Color(0xFF7C8791),
                                                       ),
                                                       child: CheckboxListTile(
                                                         value: _model
@@ -672,7 +668,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF090F13),
                                                                 fontSize: 20.0,
                                                                 fontWeight:
@@ -692,7 +688,7 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF7C8791),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -705,11 +701,11 @@ class _EditDocumentTileWidgetState extends State<EditDocumentTileWidget>
                                                               ),
                                                         ),
                                                         tileColor:
-                                                            Color(0xFFF5F5F5),
+                                                            const Color(0xFFF5F5F5),
                                                         activeColor:
-                                                            Color(0xFF4B39EF),
+                                                            const Color(0xFF4B39EF),
                                                         checkColor:
-                                                            Color(0xFF090F13),
+                                                            const Color(0xFF090F13),
                                                         dense: false,
                                                         controlAffinity:
                                                             ListTileControlAffinity

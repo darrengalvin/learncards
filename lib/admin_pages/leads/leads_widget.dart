@@ -1,14 +1,8 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'leads_model.dart';
 export 'leads_model.dart';
 
@@ -78,7 +72,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                         context.pop();
                       },
                     ),
-                    actions: [],
+                    actions: const [],
                     centerTitle: true,
                     elevation: 0.0,
                   )
@@ -91,7 +85,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +95,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                           style: FlutterFlowTheme.of(context).displaySmall,
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'People that have enquired',
@@ -114,7 +108,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                           color: FlutterFlowTheme.of(context).lineColor,
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Text(
                             'App Members',
@@ -152,14 +146,14 @@ class _LeadsWidgetState extends State<LeadsWidget>
                                 final listViewEnquiriesRecord =
                                     listViewEnquiriesRecordList[listViewIndex];
                                 return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 7.0,
                                           color: Color(0x32171717),
@@ -169,7 +163,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(12.0),
+                                      padding: const EdgeInsets.all(12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -187,7 +181,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -206,7 +200,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -220,7 +214,7 @@ class _LeadsWidgetState extends State<LeadsWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(

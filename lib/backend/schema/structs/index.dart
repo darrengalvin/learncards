@@ -27,6 +27,7 @@ export 'learn_cards_complete_struct.dart';
 export 'metadata_struct.dart';
 export 'page_struct.dart';
 export 'page_content_struct.dart';
+export 'page_info_struct.dart';
 export 'permissions_struct.dart';
 export 'responses_struct.dart';
 export 'text_settings_struct.dart';

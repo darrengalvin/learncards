@@ -1,17 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/components/blockv3_widget.dart';
-import '/components/drawer_empty_list_tiles_widget.dart';
 import '/components/learning_card_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'body_content_widget.dart' show BodyContentWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class BodyContentModel extends FlutterFlowModel<BodyContentWidget> {
   ///  State fields for stateful widgets in this component.

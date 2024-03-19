@@ -146,6 +146,7 @@ dependencies:
   supabase_flutter: 1.10.24
   text_search: 1.0.1
   timeago: 3.2.2
+  tutorial_coach_mark: 1.2.11
   universal_io: 2.2.2
   url_launcher: 6.2.5
   url_launcher_android: 6.3.0

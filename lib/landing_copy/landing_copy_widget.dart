@@ -75,7 +75,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                   Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
                           child: BackdropFilter(
@@ -84,9 +84,9 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                               sigmaY: 2.0,
                             ),
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Stack(
                                   children: [
                                     ClipRRect(
@@ -137,10 +137,10 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Container(
-                                                    constraints: BoxConstraints(
+                                                    constraints: const BoxConstraints(
                                                       minWidth: 500.0,
                                                     ),
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -166,13 +166,13 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                             Container(
                                                               height: 360.0,
                                                               decoration:
-                                                                  BoxDecoration(),
+                                                                  const BoxDecoration(),
                                                               child: Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  Padding(
+                                                                  const Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             200.0,
@@ -233,11 +233,11 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                           updateCallback: () =>
                                                               setState(() {}),
                                                           child:
-                                                              LearnTopicWidget(),
+                                                              const LearnTopicWidget(),
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       30.0,
@@ -279,12 +279,12 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                           150.0,
                                                                       height:
                                                                           50.0,
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           24.0,
                                                                           4.0,
                                                                           24.0,
                                                                           4.0),
-                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -308,7 +308,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                       elevation:
                                                                           1.0,
                                                                       borderSide:
-                                                                          BorderSide(
+                                                                          const BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -323,10 +323,10 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                     height:
                                                                         60.0,
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -360,8 +360,8 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                   options: FFButtonOptions(
                                                                                     width: 150.0,
                                                                                     height: 50.0,
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
-                                                                                    iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                                                                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                     color: FlutterFlowTheme.of(context).selectedButton,
                                                                                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -370,7 +370,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                           useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                         ),
                                                                                     elevation: 1.0,
-                                                                                    borderSide: BorderSide(
+                                                                                    borderSide: const BorderSide(
                                                                                       color: Colors.transparent,
                                                                                       width: 1.0,
                                                                                     ),
@@ -388,16 +388,16 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                     height:
                                                                         60.0,
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                   ),
                                                                   Container(
                                                                     height:
                                                                         60.0,
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           200.0,
                                                                           0.0,
                                                                           200.0,
@@ -439,7 +439,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                               actions: [
                                                                                                 TextButton(
                                                                                                   onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                  child: Text('Ok'),
+                                                                                                  child: const Text('Ok'),
                                                                                                 ),
                                                                                               ],
                                                                                             ),
@@ -461,7 +461,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                               actions: [
                                                                                                 TextButton(
                                                                                                   onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                  child: Text('Ok'),
+                                                                                                  child: const Text('Ok'),
                                                                                                 ),
                                                                                               ],
                                                                                             ),
@@ -476,8 +476,8 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                   options: FFButtonOptions(
                                                                                     width: 150.0,
                                                                                     height: 50.0,
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
-                                                                                    iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                                                                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                     color: FlutterFlowTheme.of(context).selectedButton,
                                                                                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -486,7 +486,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                           useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                         ),
                                                                                     elevation: 1.0,
-                                                                                    borderSide: BorderSide(
+                                                                                    borderSide: const BorderSide(
                                                                                       color: Colors.transparent,
                                                                                       width: 1.0,
                                                                                     ),
@@ -505,14 +505,14 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                               Container(
                                                                 height: 60.0,
                                                                 decoration:
-                                                                    BoxDecoration(),
+                                                                    const BoxDecoration(),
                                                               ),
                                                               Container(
                                                                 height: 60.0,
                                                                 decoration:
-                                                                    BoxDecoration(),
+                                                                    const BoxDecoration(),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           200.0,
                                                                           0.0,
@@ -540,7 +540,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                               child: Container(
                                                                                 width: 200.0,
                                                                                 height: 40.0,
@@ -549,7 +549,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                   borderRadius: BorderRadius.circular(17.0),
                                                                                 ),
                                                                                 child: Align(
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Python Programming',
                                                                                     textAlign: TextAlign.center,
@@ -567,7 +567,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                               child: Container(
                                                                                 width: 240.0,
                                                                                 height: 40.0,
@@ -576,7 +576,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                   borderRadius: BorderRadius.circular(17.0),
                                                                                 ),
                                                                                 child: Align(
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Working with Elephants',
                                                                                     textAlign: TextAlign.center,
@@ -594,7 +594,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                               child: Container(
                                                                                 width: 200.0,
                                                                                 height: 40.0,
@@ -603,7 +603,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                                   borderRadius: BorderRadius.circular(17.0),
                                                                                 ),
                                                                                 child: Align(
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Marketing',
                                                                                     textAlign: TextAlign.center,
@@ -635,9 +635,6 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                             });
                                                             if (FFAppState()
                                                                         .backgroundImageUrl !=
-                                                                    null &&
-                                                                FFAppState()
-                                                                        .backgroundImageUrl !=
                                                                     '') {
                                                               logFirebaseEvent(
                                                                   'Button_update_app_state');
@@ -660,14 +657,14 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                               FFButtonOptions(
                                                             height: 40.0,
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -694,7 +691,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -731,7 +728,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                             Opacity(
                               opacity: 0.9,
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   height:
@@ -742,7 +739,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                     borderRadius: BorderRadius.circular(4.0),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Container(
                                       width: 500.0,
                                       height: 500.0,
@@ -757,7 +754,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -765,7 +762,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                               children: [
                                                 Expanded(
                                                   child: Container(
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -776,7 +773,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           30.0,
@@ -817,7 +814,7 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           30.0,

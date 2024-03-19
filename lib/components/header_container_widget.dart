@@ -1,16 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/learning_card_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'header_container_model.dart';
 export 'header_container_model.dart';
 
@@ -23,8 +17,8 @@ class HeaderContainerWidget extends StatefulWidget {
     this.companiesDoc,
     this.memberLevels,
     this.sessionsDoc,
-  })  : this.title = title ?? 'Library',
-        this.currentTier = currentTier ?? 0;
+  })  : title = title ?? 'Library',
+        currentTier = currentTier ?? 0;
 
   final Future Function()? action;
   final String title;
@@ -65,487 +59,197 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<Tilesv2Record>>(
-      stream: queryTilesv2Record(
-        queryBuilder: (tilesv2Record) => tilesv2Record
-            .where(
-              'companyDocId',
-              isEqualTo: widget.companiesDoc?.reference.id,
-            )
-            .orderBy('tile_index'),
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  FlutterFlowTheme.of(context).primary,
-                ),
-              ),
-            ),
-          );
-        }
-        List<Tilesv2Record> containerTilesv2RecordList = snapshot.data!;
-        return Container(
-          constraints: BoxConstraints(
-            maxWidth: 850.0,
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        StreamBuilder<List<Tilesv2Record>>(
+          stream: queryTilesv2Record(
+            queryBuilder: (tilesv2Record) => tilesv2Record
+                .where(
+                  'companyDocId',
+                  isEqualTo: widget.companiesDoc?.reference.id,
+                )
+                .orderBy('tile_index'),
           ),
-          decoration: BoxDecoration(),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (responsiveVisibility(
-                                context: context,
-                                tablet: false,
-                                tabletLandscape: false,
-                                desktop: false,
-                              ))
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 7.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'HEADER_CONTAINER_Column_07u6du22_ON_TAP');
-                                      logFirebaseEvent(
-                                          'Column_update_app_state');
-                                      FFAppState().update(() {
-                                        FFAppState().showmenuopen = true;
-                                      });
-                                    },
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 0.0),
-                                          child: FlutterFlowIconButton(
-                                            borderRadius: 0.0,
-                                            buttonSize: 37.0,
-                                            icon: Icon(
-                                              Icons.menu_sharp,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              size: 34.0,
-                                            ),
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'HEADER_CONTAINER_menu_sharp_ICN_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'IconButton_update_app_state');
-                                              FFAppState().update(() {
-                                                FFAppState().showmenuopen =
-                                                    true;
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                                tablet: false,
-                                tabletLandscape: false,
-                                desktop: false,
-                              ))
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(
+                child: SizedBox(
+                  width: 50.0,
+                  height: 50.0,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      FlutterFlowTheme.of(context).primary,
+                    ),
+                  ),
+                ),
+              );
+            }
+            List<Tilesv2Record> containerTilesv2RecordList = snapshot.data!;
+            return Container(
+              constraints: const BoxConstraints(
+                maxWidth: 850.0,
+              ),
+              decoration: const BoxDecoration(),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 0.0, 0.0),
-                                      child:
-                                          StreamBuilder<List<LearnCardsRecord>>(
-                                        stream: queryLearnCardsRecord(
-                                          queryBuilder: (learnCardsRecord) =>
-                                              learnCardsRecord.where(
-                                            'tile_id',
-                                            isEqualTo:
-                                                FFAppState().viewTileContentId,
-                                          ),
-                                          singleRecord: true,
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<LearnCardsRecord>
-                                              containerLearnCardsRecordList =
-                                              snapshot.data!;
-                                          // Return an empty Container when the item does not exist.
-                                          if (snapshot.data!.isEmpty) {
-                                            return Container();
-                                          }
-                                          final containerLearnCardsRecord =
-                                              containerLearnCardsRecordList
-                                                      .isNotEmpty
-                                                  ? containerLearnCardsRecordList
-                                                      .first
-                                                  : null;
-                                          return Container(
-                                            decoration: BoxDecoration(),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 7.0, 0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      AnimatedContainer(
-                                                        duration: Duration(
-                                                            milliseconds: 100),
-                                                        curve: Curves.easeInOut,
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 600.0,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      6.0),
-                                                          child: wrapWithModel(
-                                                            model: _model
-                                                                .learningCardModel,
-                                                            updateCallback:
-                                                                () => setState(
-                                                                    () {}),
-                                                            updateOnChange:
-                                                                true,
-                                                            child:
-                                                                LearningCardWidget(
-                                                              learnCard:
-                                                                  containerLearnCardsRecord!,
-                                                              companyDoc: widget
-                                                                  .companiesDoc!,
-                                                              sessionsDoc: widget
-                                                                  .sessionsDoc!,
-                                                              showLearnCard:
-                                                                  FFAppState()
-                                                                      .showLearnCard,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
+                                    Container(
+                                      constraints: BoxConstraints(
+                                        maxWidth:
+                                            MediaQuery.sizeOf(context).width *
+                                                1.0,
+                                        maxHeight:
+                                            MediaQuery.sizeOf(context).height *
+                                                1.0,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    constraints: BoxConstraints(
-                                      maxWidth:
-                                          MediaQuery.sizeOf(context).width *
-                                              1.0,
-                                      maxHeight: 130.0,
-                                    ),
-                                    decoration: BoxDecoration(),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Builder(
-                                        builder: (context) {
-                                          final membeeLevelaFromPassed = widget
-                                                  .memberLevels
-                                                  ?.where((e) =>
-                                                      valueOrDefault<bool>(
+                                      decoration: const BoxDecoration(),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Builder(
+                                          builder: (context) {
+                                            final membeeLevelaFromPassed = widget
+                                                    .memberLevels
+                                                    ?.where((e) =>
                                                         valueOrDefault<bool>(
-                                                              (currentUserDocument
-                                                                              ?.hasaccess
-                                                                              ?.toList() ??
-                                                                          [])
+                                                          valueOrDefault<bool>(
+                                                                (currentUserDocument?.hasaccess.toList() ??
+                                                                            [])
+                                                                        .contains(e
+                                                                            .reference
+                                                                            .id) ==
+                                                                    false,
+                                                                false,
+                                                              ) ||
+                                                              valueOrDefault<
+                                                                      bool>(
+                                                                  currentUserDocument
+                                                                      ?.isadmin,
+                                                                  false) ||
+                                                              (widget.sessionsDoc
+                                                                      ?.hasAccess
                                                                       .contains(e
                                                                           .reference
                                                                           .id) ==
-                                                                  false,
-                                                              false,
-                                                            ) ||
-                                                            valueOrDefault<
-                                                                    bool>(
-                                                                currentUserDocument
-                                                                    ?.isadmin,
-                                                                false) ||
-                                                            (widget.sessionsDoc
-                                                                    ?.hasAccess
-                                                                    ?.contains(e
-                                                                        .reference
-                                                                        .id) ==
-                                                                false) ||
-                                                            (FFAppState()
-                                                                    .debugCount >=
-                                                                5),
-                                                        false,
-                                                      ) &&
-                                                      (e.companyDocId ==
-                                                          widget.companiesDoc
-                                                              ?.reference.id))
-                                                  .toList()
-                                                  ?.toList() ??
-                                              [];
-                                          return ListView.builder(
-                                            padding: EdgeInsets.zero,
-                                            primary: false,
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount:
-                                                membeeLevelaFromPassed.length,
-                                            itemBuilder: (context,
-                                                membeeLevelaFromPassedIndex) {
-                                              final membeeLevelaFromPassedItem =
-                                                  membeeLevelaFromPassed[
-                                                      membeeLevelaFromPassedIndex];
-                                              return InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'HEADER_CONTAINER_Column_i8lgm4oj_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Column_update_app_state');
-                                                  FFAppState().update(() {
-                                                    FFAppState()
-                                                            .selectedMemberLevel =
+                                                                  false) ||
+                                                              (FFAppState()
+                                                                      .debugCount >=
+                                                                  5),
+                                                          false,
+                                                        ) &&
+                                                        (e.companyDocId ==
+                                                            widget.companiesDoc
+                                                                ?.reference.id))
+                                                    .toList()
+                                                    .toList() ??
+                                                [];
+                                            return ListView.builder(
+                                              padding: EdgeInsets.zero,
+                                              primary: false,
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount:
+                                                  membeeLevelaFromPassed.length,
+                                              itemBuilder: (context,
+                                                  membeeLevelaFromPassedIndex) {
+                                                final membeeLevelaFromPassedItem =
+                                                    membeeLevelaFromPassed[
+                                                        membeeLevelaFromPassedIndex];
+                                                return InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'HEADER_CONTAINER_Column_i8lgm4oj_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Column_update_app_state');
+                                                    FFAppState().update(() {
+                                                      FFAppState()
+                                                              .selectedMemberLevel =
+                                                          membeeLevelaFromPassedItem
+                                                              .reference.id;
+                                                      FFAppState()
+                                                              .selectedMemberLevelName =
+                                                          valueOrDefault<
+                                                              String>(
                                                         membeeLevelaFromPassedItem
-                                                            .reference.id;
-                                                    FFAppState()
-                                                            .selectedMemberLevelName =
-                                                        valueOrDefault<String>(
-                                                      membeeLevelaFromPassedItem
-                                                          .memberLevelName,
-                                                      'namenotset',
-                                                    );
-                                                  });
-                                                  logFirebaseEvent(
-                                                      'Column_haptic_feedback');
-                                                  HapticFeedback.heavyImpact();
-                                                },
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.all(5.0),
-                                                      child: Container(
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 300.0,
-                                                          maxHeight: 150.0,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      17.0),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent1,
-                                                            width: 1.0,
+                                                            .memberLevelName,
+                                                        'namenotset',
+                                                      );
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'Column_haptic_feedback');
+                                                    HapticFeedback
+                                                        .heavyImpact();
+                                                  },
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(5.0),
+                                                        child: Container(
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            maxWidth: 300.0,
+                                                            maxHeight: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.46,
                                                           ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0,
-                                                                      0.0),
-                                                          child: ClipRRect(
+                                                          decoration:
+                                                              BoxDecoration(
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
                                                                         17.0),
-                                                            child:
-                                                                Image.network(
-                                                              membeeLevelaFromPassedItem
-                                                                  .shield,
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  1.0,
-                                                              height: 100.0,
-                                                              fit: BoxFit.cover,
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent1,
+                                                              width: 1.0,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(-1.0, -1.0),
-                                child: StreamBuilder<List<CategoriesRecord>>(
-                                  stream: queryCategoriesRecord(),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<CategoriesRecord>
-                                        containerCategoriesRecordList =
-                                        snapshot.data!;
-                                    return ClipRRect(
-                                      child: AnimatedContainer(
-                                        duration: Duration(milliseconds: 100),
-                                        curve: Curves.easeInOut,
-                                        decoration: BoxDecoration(),
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Builder(
-                                                builder: (context) {
-                                                  final categoriesMemberLevel =
-                                                      containerCategoriesRecordList
-                                                          .toList();
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: List.generate(
-                                                          categoriesMemberLevel
-                                                              .length,
-                                                          (categoriesMemberLevelIndex) {
-                                                        final categoriesMemberLevelItem =
-                                                            categoriesMemberLevel[
-                                                                categoriesMemberLevelIndex];
-                                                        return Visibility(
-                                                          visible: categoriesMemberLevelItem
-                                                                  .accessToMemberLevelsId
-                                                                  .contains(
-                                                                      FFAppState()
-                                                                          .selectedMemberLevel) ==
-                                                              true,
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        10.0,
+                                                                        5.0,
+                                                                        5.0,
+                                                                        5.0,
                                                                         0.0),
                                                             child: ClipRRect(
                                                               borderRadius:
@@ -553,305 +257,150 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                       .circular(
                                                                           17.0),
                                                               child:
-                                                                  AnimatedContainer(
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        100),
-                                                                curve: Curves
-                                                                    .easeIn,
-                                                                width: 270.0,
-                                                                height: 40.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              17.0),
-                                                                  border: Border
-                                                                      .all(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    width: 1.0,
-                                                                  ),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          0.0,
-                                                                          4.0,
-                                                                          4.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'HEADER_CONTAINER_Container_3zakymkg_ON_T');
-                                                                      logFirebaseEvent(
-                                                                          'Container_update_app_state');
-                                                                      FFAppState()
-                                                                          .update(
-                                                                              () {
-                                                                        FFAppState().showLearnCard =
-                                                                            false;
-                                                                      });
-                                                                      if (categoriesMemberLevelItem
-                                                                              .categoryname ==
-                                                                          'Learning Journeys') {
-                                                                        logFirebaseEvent(
-                                                                            'Container_update_app_state');
-                                                                        FFAppState()
-                                                                            .update(() {
-                                                                          FFAppState().leftPane =
-                                                                              'aiMenu';
-                                                                          FFAppState().leftColumnShow =
-                                                                              true;
-                                                                          FFAppState().middlePane =
-                                                                              'bodyContent';
-                                                                          FFAppState().middleColumnShow =
-                                                                              valueOrDefault<bool>(
-                                                                            () {
-                                                                              if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-                                                                                return false;
-                                                                              } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-                                                                                return true;
-                                                                              } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-                                                                                return true;
-                                                                              } else {
-                                                                                return true;
-                                                                              }
-                                                                            }(),
-                                                                            true,
-                                                                          );
-                                                                        });
-                                                                      } else if (categoriesMemberLevelItem
-                                                                              .categoryname ==
-                                                                          'Vault') {
-                                                                        logFirebaseEvent(
-                                                                            'Container_update_app_state');
-                                                                        _model.updatePage(
-                                                                            () {
-                                                                          FFAppState().leftPane =
-                                                                              'appMenu';
-                                                                          FFAppState().leftColumnShow =
-                                                                              true;
-                                                                          FFAppState().middleColumnShow =
-                                                                              valueOrDefault<bool>(
-                                                                            () {
-                                                                              if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-                                                                                return false;
-                                                                              } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-                                                                                return true;
-                                                                              } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-                                                                                return true;
-                                                                              } else {
-                                                                                return true;
-                                                                              }
-                                                                            }(),
-                                                                            true,
-                                                                          );
-                                                                          FFAppState().middlePane =
-                                                                              'bodyContentMainTiles';
-                                                                        });
-                                                                      } else if (categoriesMemberLevelItem
-                                                                              .categoryname ==
-                                                                          'Events') {
-                                                                        logFirebaseEvent(
-                                                                            'Container_update_app_state');
-                                                                        _model.updatePage(
-                                                                            () {
-                                                                          FFAppState().leftPane =
-                                                                              'events';
-                                                                          FFAppState().leftColumnShow =
-                                                                              true;
-                                                                          FFAppState().middleColumnShow =
-                                                                              valueOrDefault<bool>(
-                                                                            () {
-                                                                              if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-                                                                                return false;
-                                                                              } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-                                                                                return true;
-                                                                              } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-                                                                                return true;
-                                                                              } else {
-                                                                                return true;
-                                                                              }
-                                                                            }(),
-                                                                            true,
-                                                                          );
-                                                                          FFAppState().middlePane =
-                                                                              'bodyContentMainTiles';
-                                                                          FFAppState().selectedParentId =
-                                                                              'Events';
-                                                                          FFAppState().selectedcategory =
-                                                                              'Events';
-                                                                          FFAppState().selectedCategoryName =
-                                                                              'Events';
-                                                                        });
-                                                                      } else if (categoriesMemberLevelItem
-                                                                              .categoryname ==
-                                                                          'Chat') {
-                                                                        logFirebaseEvent(
-                                                                            'Container_firestore_query');
-                                                                        _model.companycheckforbottomchat =
-                                                                            await queryCompaniesRecordOnce(
-                                                                          queryBuilder: (companiesRecord) =>
-                                                                              companiesRecord.where(
-                                                                            'companyCode',
-                                                                            isEqualTo:
-                                                                                FFAppState().companySecretCode,
-                                                                          ),
-                                                                          singleRecord:
-                                                                              true,
-                                                                        ).then((s) =>
-                                                                                s.firstOrNull);
-                                                                      } else {
-                                                                        logFirebaseEvent(
-                                                                            'Container_alert_dialog');
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (alertDialogContext) {
-                                                                            return WebViewAware(
-                                                                              child: AlertDialog(
-                                                                                title: Text('conditions not met '),
-                                                                                actions: [
-                                                                                  TextButton(
-                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        );
-                                                                      }
-
-                                                                      if ((FFAppState().selectedcategory ==
-                                                                              '') ||
-                                                                          valueOrDefault<
-                                                                              bool>(
-                                                                            FFAppState().selectedCategoryName == null ||
-                                                                                FFAppState().selectedCategoryName == '',
-                                                                            false,
-                                                                          )) {
-                                                                        logFirebaseEvent(
-                                                                            'Container_update_app_state');
-                                                                        _model.updatePage(
-                                                                            () {
-                                                                          FFAppState().selectedcategory =
-                                                                              'Community';
-                                                                          FFAppState().selectedCategoryName =
-                                                                              'Community';
-                                                                        });
-                                                                      }
-
-                                                                      setState(
-                                                                          () {});
-                                                                    },
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              17.0),
-                                                                      child:
-                                                                          AnimatedContainer(
-                                                                        duration:
-                                                                            Duration(milliseconds: 100),
-                                                                        curve: Curves
-                                                                            .easeIn,
-                                                                        height:
-                                                                            50.0,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).tertiary,
-                                                                          image:
-                                                                              DecorationImage(
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                            alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
-                                                                            image:
-                                                                                Image.network(
-                                                                              '',
-                                                                            ).image,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(17.0),
-                                                                          border:
-                                                                              Border.all(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                          ),
-                                                                        ),
-                                                                        child:
-                                                                            Align(
-                                                                          alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            categoriesMemberLevelItem.categoryname,
-                                                                            textAlign:
-                                                                                TextAlign.center,
-                                                                            maxLines:
-                                                                                2,
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                  fontSize: 14.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
+                                                                  Image.network(
+                                                                membeeLevelaFromPassedItem
+                                                                    .shield,
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.75,
+                                                                height: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .height *
+                                                                    0.75,
+                                                                fit: BoxFit
+                                                                    .cover,
                                                               ),
                                                             ),
                                                           ),
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ],
-                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
                                       ),
-                                    );
-                                  },
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        StreamBuilder<List<Tilesv2Record>>(
+          stream: queryTilesv2Record(
+            queryBuilder: (tilesv2Record) => tilesv2Record
+                .where(
+                  'companyDocId',
+                  isEqualTo: widget.companiesDoc?.reference.id,
+                )
+                .orderBy('tile_index'),
           ),
-        );
-      },
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(
+                child: SizedBox(
+                  width: 50.0,
+                  height: 50.0,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      FlutterFlowTheme.of(context).primary,
+                    ),
+                  ),
+                ),
+              );
+            }
+            List<Tilesv2Record> containerTilesv2RecordList = snapshot.data!;
+            return Container(
+              constraints: const BoxConstraints(
+                maxWidth: 850.0,
+              ),
+              decoration: const BoxDecoration(),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    StreamBuilder<List<CategoriesRecord>>(
+                                      stream: queryCategoriesRecord(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<CategoriesRecord>
+                                            containerCatCategoriesRecordList =
+                                            snapshot.data!;
+                                        return Container(
+                                          constraints: BoxConstraints(
+                                            maxWidth: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            maxHeight: 130.0,
+                                          ),
+                                          decoration: const BoxDecoration(),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

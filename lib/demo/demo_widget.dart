@@ -1,19 +1,13 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/d_e_b_u_g_panel_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'demo_model.dart';
 export 'demo_model.dart';
 
@@ -37,9 +31,6 @@ class _DemoWidgetState extends State<DemoWidget> {
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'demo'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (RootPageContext.isInactiveRootPage(context)) {
-        return;
-      }
       logFirebaseEvent('DEMO_PAGE_demo_ON_INIT_STATE');
       logFirebaseEvent('demo_firestore_query');
       _model.companyQueryOnPageLoad = await queryCompaniesRecordOnce(
@@ -51,15 +42,13 @@ class _DemoWidgetState extends State<DemoWidget> {
           ),
         ),
       );
-      if (FFAppState().companySecretCode == null ||
-          FFAppState().companySecretCode == '') {
+      if (FFAppState().companySecretCode == '') {
         logFirebaseEvent('demo_update_app_state');
         setState(() {
           FFAppState().companySecretCode = '22335555';
         });
       }
-      if (!(FFAppState().nonLoggedInSessionId != null &&
-          FFAppState().nonLoggedInSessionId != '')) {
+      if (!(FFAppState().nonLoggedInSessionId != '')) {
         logFirebaseEvent('demo_backend_call');
 
         var sessionsRecordReference = SessionsRecord.collection.doc();
@@ -84,8 +73,7 @@ class _DemoWidgetState extends State<DemoWidget> {
               _model.sessionsCreated!.reference.id;
         });
       }
-      if (!(FFAppState().activeThread != null &&
-          FFAppState().activeThread != '')) {
+      if (!(FFAppState().activeThread != '')) {
         logFirebaseEvent('demo_update_app_state');
         setState(() {
           FFAppState().activeThread = random_data.randomString(
@@ -116,7 +104,7 @@ class _DemoWidgetState extends State<DemoWidget> {
             : FFAppState().nonLoggedInSessionId,
         role: 'ai',
         text: valueOrDefault<String>(
-          _model.companyQueryOnPageLoad?.first?.welcomeMessage,
+          _model.companyQueryOnPageLoad?.first.welcomeMessage,
           'Welcome',
         ),
         createdTime: getCurrentTimestamp,
@@ -136,7 +124,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                 : FFAppState().nonLoggedInSessionId,
             role: 'ai',
             text: valueOrDefault<String>(
-              _model.companyQueryOnPageLoad?.first?.welcomeMessage,
+              _model.companyQueryOnPageLoad?.first.welcomeMessage,
               'Welcome',
             ),
             createdTime: getCurrentTimestamp,
@@ -228,9 +216,9 @@ class _DemoWidgetState extends State<DemoWidget> {
                       ),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: const AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -258,7 +246,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, -1.0),
+                                                const AlignmentDirectional(0.0, -1.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 150.0,
@@ -275,38 +263,6 @@ class _DemoWidgetState extends State<DemoWidget> {
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  15.0,
-                                                                  10.0),
-                                                      child: Text(
-                                                        'Have a Company Code? \nEnter it Here!',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLarge
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily,
-                                                                  fontSize:
-                                                                      22.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineLargeFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
                                                   Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -325,226 +281,12 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                             children: [
                                                               Container(
                                                                 constraints:
-                                                                    BoxConstraints(
+                                                                    const BoxConstraints(
                                                                   maxWidth:
                                                                       400.0,
                                                                 ),
                                                                 decoration:
-                                                                    BoxDecoration(),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          15.0,
-                                                                          0.0,
-                                                                          15.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      PinCodeTextField(
-                                                                    autoDisposeControllers:
-                                                                        false,
-                                                                    appContext:
-                                                                        context,
-                                                                    length: 8,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceEvenly,
-                                                                    enableActiveFill:
-                                                                        false,
-                                                                    autoFocus:
-                                                                        true,
-                                                                    enablePinAutofill:
-                                                                        false,
-                                                                    errorTextSpace:
-                                                                        16.0,
-                                                                    showCursor:
-                                                                        true,
-                                                                    cursorColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    obscureText:
-                                                                        false,
-                                                                    hintCharacter:
-                                                                        '?',
-                                                                    keyboardType:
-                                                                        TextInputType
-                                                                            .number,
-                                                                    pinTheme:
-                                                                        PinTheme(
-                                                                      fieldHeight:
-                                                                          44.0,
-                                                                      fieldWidth:
-                                                                          44.0,
-                                                                      borderWidth:
-                                                                          2.0,
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(12.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(12.0),
-                                                                        topLeft:
-                                                                            Radius.circular(12.0),
-                                                                        topRight:
-                                                                            Radius.circular(12.0),
-                                                                      ),
-                                                                      shape: PinCodeFieldShape
-                                                                          .box,
-                                                                      activeColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primaryText,
-                                                                      inactiveColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .alternate,
-                                                                      selectedColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                      activeFillColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primaryText,
-                                                                      inactiveFillColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .alternate,
-                                                                      selectedFillColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                    ),
-                                                                    controller:
-                                                                        _model
-                                                                            .pinCodeController,
-                                                                    onChanged:
-                                                                        (_) {},
-                                                                    onCompleted:
-                                                                        (_) async {
-                                                                      logFirebaseEvent(
-                                                                          'DEMO_PinCode_tte7hcrq_ON_PINCODE_COMPLET');
-                                                                      logFirebaseEvent(
-                                                                          'PinCode_firestore_query');
-                                                                      _model.allCompanies =
-                                                                          await queryCompaniesRecordOnce();
-                                                                      if (_model
-                                                                              .pinCodeController!
-                                                                              .text ==
-                                                                          _model
-                                                                              .allCompanies
-                                                                              ?.where((e) => e.companyCode == _model.pinCodeController!.text)
-                                                                              .toList()
-                                                                              ?.first
-                                                                              ?.companyCode) {
-                                                                        logFirebaseEvent(
-                                                                            'PinCode_alert_dialog');
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (alertDialogContext) {
-                                                                            return WebViewAware(
-                                                                              child: AlertDialog(
-                                                                                title: Text('ok'),
-                                                                                actions: [
-                                                                                  TextButton(
-                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        );
-                                                                        logFirebaseEvent(
-                                                                            'PinCode_update_app_state');
-                                                                        setState(
-                                                                            () {
-                                                                          FFAppState().companySecretCode = _model
-                                                                              .pinCodeController!
-                                                                              .text;
-                                                                        });
-                                                                      } else {
-                                                                        logFirebaseEvent(
-                                                                            'PinCode_alert_dialog');
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (alertDialogContext) {
-                                                                            return WebViewAware(
-                                                                              child: AlertDialog(
-                                                                                title: Text('no match found'),
-                                                                                actions: [
-                                                                                  TextButton(
-                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        );
-                                                                        logFirebaseEvent(
-                                                                            'PinCode_update_app_state');
-                                                                        setState(
-                                                                            () {
-                                                                          FFAppState().companySecretCode =
-                                                                              '22335555';
-                                                                        });
-                                                                        logFirebaseEvent(
-                                                                            'PinCode_alert_dialog');
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (alertDialogContext) {
-                                                                            return WebViewAware(
-                                                                              child: AlertDialog(
-                                                                                title: Text('Reverted back to default '),
-                                                                                content: Text('LearnCards'),
-                                                                                actions: [
-                                                                                  TextButton(
-                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        );
-                                                                      }
-
-                                                                      logFirebaseEvent(
-                                                                          'PinCode_navigate_to');
-
-                                                                      context
-                                                                          .goNamed(
-                                                                        'Library-fixed',
-                                                                        extra: <String,
-                                                                            dynamic>{
-                                                                          kTransitionInfoKey:
-                                                                              TransitionInfo(
-                                                                            hasTransition:
-                                                                                true,
-                                                                            transitionType:
-                                                                                PageTransitionType.fade,
-                                                                            duration:
-                                                                                Duration(milliseconds: 0),
-                                                                          ),
-                                                                        },
-                                                                      );
-
-                                                                      setState(
-                                                                          () {});
-                                                                    },
-                                                                    autovalidateMode:
-                                                                        AutovalidateMode
-                                                                            .onUserInteraction,
-                                                                    validator: _model
-                                                                        .pinCodeControllerValidator
-                                                                        .asValidator(
-                                                                            context),
-                                                                  ),
-                                                                ),
+                                                                    const BoxDecoration(),
                                                               ),
                                                             ],
                                                           ),
@@ -578,7 +320,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 0.0),
                                               child: FFButtonWidget(
@@ -592,7 +334,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Library-fixed',
                                                     extra: <String, dynamic>{
                                                       kTransitionInfoKey:
-                                                          TransitionInfo(
+                                                          const TransitionInfo(
                                                         hasTransition: true,
                                                         transitionType:
                                                             PageTransitionType
@@ -607,81 +349,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Launch : ${containerCompaniesRecordList.where((e) => e.companyCode == FFAppState().companySecretCode).toList().first.companyname}',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallFamily),
-                                                      ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 15.0, 0.0, 0.0),
-                                              child: FFButtonWidget(
-                                                onPressed: () async {
-                                                  logFirebaseEvent(
-                                                      'DEMO_PAGE_GO_TO_BTN_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Button_navigate_to');
-
-                                                  context.pushNamed(
-                                                    'Library-fixed',
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey:
-                                                          TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .fade,
-                                                        duration: Duration(
-                                                            milliseconds: 0),
-                                                      ),
-                                                    },
-                                                  );
-                                                },
-                                                text:
-                                                    'Launch : ${containerCompaniesRecordList.where((e) => e.companyCode == FFAppState().companySecretCode).toList().first.companyname}',
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 0.0, 24.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -707,7 +379,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -717,168 +389,19 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 15.0, 0.0, 0.0),
-                                              child: FFButtonWidget(
-                                                onPressed: () async {
-                                                  logFirebaseEvent(
-                                                      'DEMO_PAGE_GO_TO_BTN_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Button_navigate_to');
-
-                                                  context.pushNamed(
-                                                    'Library-fixed',
-                                                    queryParameters: {
-                                                      'companiesDoc':
-                                                          serializeParam(
-                                                        containerCompaniesRecordList
-                                                            .first,
-                                                        ParamType.Document,
-                                                      ),
-                                                    }.withoutNulls,
-                                                    extra: <String, dynamic>{
-                                                      'companiesDoc':
-                                                          containerCompaniesRecordList
-                                                              .first,
-                                                      kTransitionInfoKey:
-                                                          TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .fade,
-                                                        duration: Duration(
-                                                            milliseconds: 0),
-                                                      ),
-                                                    },
-                                                  );
-                                                },
-                                                text:
-                                                    'Launch : ${containerCompaniesRecordList.where((e) => e.companyCode == FFAppState().companySecretCode).toList().first.companyname}',
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 0.0, 24.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallFamily),
-                                                      ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
-                                            ),
-                                            if (valueOrDefault<bool>(
-                                              loggedIn,
-                                              false,
-                                            ))
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 15.0, 0.0, 0.0),
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    logFirebaseEvent(
-                                                        'DEMO_PAGE_LOGOUT_BTN_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Button_auth');
-                                                    GoRouter.of(context)
-                                                        .prepareAuthEvent();
-                                                    await authManager.signOut();
-                                                    GoRouter.of(context)
-                                                        .clearRedirectLocation();
-
-                                                    context.goNamedAuth(
-                                                        'Library-fixed',
-                                                        context.mounted);
-                                                  },
-                                                  text: 'Logout ',
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    textStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              useGoogleFonts: GoogleFonts
-                                                                      .asMap()
-                                                                  .containsKey(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmallFamily),
-                                                            ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                ),
-                                              ),
                                           ],
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                              const AlignmentDirectional(0.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 15.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 600.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: SingleChildScrollView(
                                                 child: Column(
                                                   mainAxisSize:
@@ -929,11 +452,6 @@ class _DemoWidgetState extends State<DemoWidget> {
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.dEBUGPanelModel,
-                                          updateCallback: () => setState(() {}),
-                                          child: DEBUGPanelWidget(),
                                         ),
                                       ],
                                     ),

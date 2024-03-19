@@ -1,14 +1,11 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'app_updates_model.dart';
 export 'app_updates_model.dart';
 
@@ -67,18 +64,18 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: TextStyle(),
+              unselectedLabelStyle: const TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Update',
                 ),
@@ -103,7 +100,7 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.versionController,
                             focusNode: _model.versionFocusNode,
@@ -120,21 +117,21 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -147,7 +144,7 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.featuredsummaryController,
                             focusNode: _model.featuredsummaryFocusNode,
@@ -164,21 +161,21 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -200,7 +197,7 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 10.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -270,10 +267,10 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                                     options: FFButtonOptions(
                                       width: 230.0,
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -290,7 +287,7 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -299,7 +296,7 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 20.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -330,10 +327,10 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                                     options: FFButtonOptions(
                                       width: 230.0,
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -350,7 +347,7 @@ class _AppUpdatesWidgetState extends State<AppUpdatesWidget>
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
