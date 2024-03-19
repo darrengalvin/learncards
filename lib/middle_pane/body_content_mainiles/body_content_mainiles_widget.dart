@@ -65,43 +65,6 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        const Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [],
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
-                  child: FlutterFlowIconButton(
-                    borderColor: FlutterFlowTheme.of(context).primary,
-                    borderRadius: 20.0,
-                    borderWidth: 1.0,
-                    buttonSize: 40.0,
-                    icon: Icon(
-                      Icons.chevron_left,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
-                    ),
-                    onPressed: () async {
-                      logFirebaseEvent(
-                          'BODY_CONTENT_MAINILES_chevron_left_ICN_O');
-                      logFirebaseEvent('IconButton_update_app_state');
-                      setState(() {
-                        FFAppState().leftColumnShow = true;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
         Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -525,7 +488,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Expanded(
                                             child: Builder(

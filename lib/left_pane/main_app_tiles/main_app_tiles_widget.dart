@@ -234,56 +234,6 @@ class _MainAppTilesWidgetState extends State<MainAppTilesWidget> {
                                                       false;
                                                 });
                                               }
-
-                                              if (!() {
-                                                if ((loggedIn == true) &&
-                                                    valueOrDefault<bool>(
-                                                      (currentUserDocument
-                                                                  ?.hasaccess
-                                                                  .toList() ??
-                                                              [])
-                                                          .contains(widget
-                                                              .categorySelected),
-                                                      false,
-                                                    )) {
-                                                  return true;
-                                                } else if ((loggedIn != true) &&
-                                                    (widget.categorySelected ==
-                                                        'Community')) {
-                                                  return true;
-                                                } else if (valueOrDefault<bool>(
-                                                      loggedIn == true,
-                                                      false,
-                                                    ) &&
-                                                    (widget.categorySelected ==
-                                                        'Community')) {
-                                                  return true;
-                                                } else {
-                                                  return false;
-                                                }
-                                              }()) {
-                                                logFirebaseEvent(
-                                                    'tileTier_bottom_sheet');
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  enableDrag: false,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return WebViewAware(
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child:
-                                                            const NoaccesspopupWidget(),
-                                                      ),
-                                                    );
-                                                  },
-                                                ).then((value) =>
-                                                    safeSetState(() {}));
-                                              }
                                             },
                                             child: Container(
                                               width: MediaQuery.sizeOf(context)

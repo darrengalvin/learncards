@@ -221,6 +221,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                         padding:
                                                             const EdgeInsets.all(5.0),
                                                         child: Container(
+                                                          height: 100.0,
                                                           constraints:
                                                               BoxConstraints(
                                                             maxWidth: 300.0,

@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/components/social_feed_bottoms_h_e_e_t_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/middle_pane/body_content/body_content_widget.dart';
@@ -126,417 +127,419 @@ class _MiddleColumnWidgetState extends State<MiddleColumnWidget> {
                                   children: [
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            borderRadius: 20.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 40.0,
+                                            icon: Icon(
+                                              Icons.chevron_left,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
+                                            onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'MIDDLE_COLUMN_chevron_left_ICN_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'IconButton_update_app_state');
+                                              setState(() {
+                                                FFAppState().leftColumnShow =
+                                                    true;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        StreamBuilder<List<CategoriesRecord>>(
-                                          stream: queryCategoriesRecord(
-                                            queryBuilder: (categoriesRecord) =>
-                                                categoriesRecord.where(
-                                              'showToMemberLevelsId',
-                                              arrayContains: FFAppState()
-                                                  .selectedMemberLevel,
-                                            ),
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                    ),
-                                                  ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            StreamBuilder<
+                                                List<CategoriesRecord>>(
+                                              stream: queryCategoriesRecord(
+                                                queryBuilder:
+                                                    (categoriesRecord) =>
+                                                        categoriesRecord.where(
+                                                  'showToMemberLevelsId',
+                                                  arrayContains: FFAppState()
+                                                      .selectedMemberLevel,
                                                 ),
-                                              );
-                                            }
-                                            List<CategoriesRecord>
-                                                containerCatCategoriesRecordList =
-                                                snapshot.data!;
-                                            return Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth:
-                                                    MediaQuery.sizeOf(context)
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<CategoriesRecord>
+                                                    containerCatCategoriesRecordList =
+                                                    snapshot.data!;
+                                                return Container(
+                                                  constraints: BoxConstraints(
+                                                    maxWidth: MediaQuery.sizeOf(
+                                                                context)
                                                             .width *
                                                         1.0,
-                                              ),
-                                              decoration: const BoxDecoration(),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final categoriesMemberLevel =
-                                                      containerCatCategoriesRecordList
-                                                          .toList();
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: List.generate(
-                                                          categoriesMemberLevel
-                                                              .length,
-                                                          (categoriesMemberLevelIndex) {
-                                                        final categoriesMemberLevelItem =
-                                                            categoriesMemberLevel[
-                                                                categoriesMemberLevelIndex];
-                                                        return Column(
+                                                  ),
+                                                  decoration: const BoxDecoration(),
+                                                  child: Builder(
+                                                    builder: (context) {
+                                                      final categoriesMemberLevel =
+                                                          containerCatCategoriesRecordList
+                                                              .toList();
+                                                      return SingleChildScrollView(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
                                                                   .start,
-                                                          children: [
-                                                            if (valueOrDefault<
-                                                                bool>(
-                                                              categoriesMemberLevelItem
-                                                                      .accessToMemberLevelsId
-                                                                      .contains(
-                                                                          FFAppState()
-                                                                              .selectedMemberLevel) ==
-                                                                  true,
-                                                              false,
-                                                            ))
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
+                                                          children: List.generate(
+                                                              categoriesMemberLevel
+                                                                  .length,
+                                                              (categoriesMemberLevelIndex) {
+                                                            final categoriesMemberLevelItem =
+                                                                categoriesMemberLevel[
+                                                                    categoriesMemberLevelIndex];
+                                                            return Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                if (valueOrDefault<
+                                                                    bool>(
+                                                                  categoriesMemberLevelItem
+                                                                          .accessToMemberLevelsId
+                                                                          .contains(
+                                                                              FFAppState().selectedMemberLevel) ==
+                                                                      true,
+                                                                  false,
+                                                                ))
+                                                                  Padding(
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             7.0,
                                                                             0.0,
                                                                             7.0,
                                                                             4.0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    logFirebaseEvent(
-                                                                        'MIDDLE_COLUMN_Container_8jp7s07i_ON_TAP');
-                                                                    logFirebaseEvent(
-                                                                        'Container_update_app_state');
-                                                                    FFAppState()
-                                                                        .update(
-                                                                            () {
-                                                                      FFAppState()
-                                                                              .showLearnCard =
-                                                                          false;
-                                                                      FFAppState()
-                                                                              .selectedCategoryId =
-                                                                          categoriesMemberLevelItem
+                                                                    child:
+                                                                        InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'MIDDLE_COLUMN_Container_8jp7s07i_ON_TAP');
+                                                                        logFirebaseEvent(
+                                                                            'Container_update_app_state');
+                                                                        FFAppState()
+                                                                            .update(() {
+                                                                          FFAppState().showLearnCard =
+                                                                              false;
+                                                                          FFAppState().selectedCategoryId = categoriesMemberLevelItem
                                                                               .reference
                                                                               .id;
-                                                                      FFAppState()
-                                                                              .selectedCategoryName =
-                                                                          categoriesMemberLevelItem
-                                                                              .categoryname;
-                                                                    });
-                                                                    if ((categoriesMemberLevelItem.categoryname ==
-                                                                            'Learning Journeys') ||
-                                                                        (categoriesMemberLevelItem.categoryname ==
-                                                                            'Group Journeys')) {
-                                                                      logFirebaseEvent(
-                                                                          'Container_update_app_state');
-                                                                      FFAppState()
-                                                                          .update(
+                                                                          FFAppState().selectedCategoryName =
+                                                                              categoriesMemberLevelItem.categoryname;
+                                                                        });
+                                                                        if ((categoriesMemberLevelItem.categoryname ==
+                                                                                'Learning Journeys') ||
+                                                                            (categoriesMemberLevelItem.categoryname ==
+                                                                                'Group Journeys')) {
+                                                                          logFirebaseEvent(
+                                                                              'Container_update_app_state');
+                                                                          FFAppState()
+                                                                              .update(() {
+                                                                            FFAppState().leftPane =
+                                                                                'aiMenu';
+                                                                            FFAppState().leftColumnShow =
+                                                                                true;
+                                                                            FFAppState().middlePane =
+                                                                                'bodyContent';
+                                                                            FFAppState().middleColumnShow =
+                                                                                valueOrDefault<bool>(
                                                                               () {
-                                                                        FFAppState().leftPane =
-                                                                            'aiMenu';
-                                                                        FFAppState().leftColumnShow =
-                                                                            true;
-                                                                        FFAppState().middlePane =
-                                                                            'bodyContent';
-                                                                        FFAppState().middleColumnShow =
-                                                                            valueOrDefault<bool>(
-                                                                          () {
-                                                                            if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointSmall) {
-                                                                              return false;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointMedium) {
-                                                                              return true;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointLarge) {
-                                                                              return true;
-                                                                            } else {
-                                                                              return true;
-                                                                            }
-                                                                          }(),
-                                                                          true,
-                                                                        );
-                                                                      });
-                                                                    } else if ((categoriesMemberLevelItem.categoryname ==
-                                                                            'Vault') ||
-                                                                        (categoriesMemberLevelItem.categoryname ==
-                                                                            'Info')) {
-                                                                      logFirebaseEvent(
-                                                                          'Container_update_app_state');
-                                                                      _model.updatePage(
-                                                                          () {
-                                                                        FFAppState().leftPane =
-                                                                            'appMenu';
-                                                                        FFAppState().leftColumnShow =
-                                                                            true;
-                                                                        FFAppState().middleColumnShow =
-                                                                            valueOrDefault<bool>(
-                                                                          () {
-                                                                            if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointSmall) {
-                                                                              return false;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointMedium) {
-                                                                              return true;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointLarge) {
-                                                                              return true;
-                                                                            } else {
-                                                                              return true;
-                                                                            }
-                                                                          }(),
-                                                                          true,
-                                                                        );
-                                                                        FFAppState().middlePane =
-                                                                            'bodyContentMainTiles';
-                                                                      });
-                                                                    } else if (categoriesMemberLevelItem
-                                                                            .categoryname ==
-                                                                        'Events') {
-                                                                      logFirebaseEvent(
-                                                                          'Container_update_app_state');
-                                                                      _model.updatePage(
-                                                                          () {
-                                                                        FFAppState().leftPane =
-                                                                            'events';
-                                                                        FFAppState().leftColumnShow =
-                                                                            true;
-                                                                        FFAppState().middleColumnShow =
-                                                                            valueOrDefault<bool>(
-                                                                          () {
-                                                                            if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointSmall) {
-                                                                              return false;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointMedium) {
-                                                                              return true;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointLarge) {
-                                                                              return true;
-                                                                            } else {
-                                                                              return true;
-                                                                            }
-                                                                          }(),
-                                                                          true,
-                                                                        );
-                                                                        FFAppState().middlePane =
-                                                                            'bodyContentMainTiles';
-                                                                        FFAppState().selectedParentId =
-                                                                            'Events';
-                                                                        FFAppState().selectedcategory =
-                                                                            'Events';
-                                                                        FFAppState().selectedCategoryName =
-                                                                            'Events';
-                                                                      });
-                                                                    } else if (categoriesMemberLevelItem
-                                                                            .categoryname ==
-                                                                        'Chat') {
-                                                                      logFirebaseEvent(
-                                                                          'Container_firestore_query');
-                                                                      _model.companycheckforbottomchat =
-                                                                          await queryCompaniesRecordOnce(
-                                                                        queryBuilder:
-                                                                            (companiesRecord) =>
+                                                                                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                  return false;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                  return true;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                  return true;
+                                                                                } else {
+                                                                                  return true;
+                                                                                }
+                                                                              }(),
+                                                                              true,
+                                                                            );
+                                                                          });
+                                                                        } else if ((categoriesMemberLevelItem.categoryname ==
+                                                                                'Vault') ||
+                                                                            (categoriesMemberLevelItem.categoryname ==
+                                                                                'Info')) {
+                                                                          logFirebaseEvent(
+                                                                              'Container_update_app_state');
+                                                                          _model
+                                                                              .updatePage(() {
+                                                                            FFAppState().leftPane =
+                                                                                'appMenu';
+                                                                            FFAppState().leftColumnShow =
+                                                                                true;
+                                                                            FFAppState().middleColumnShow =
+                                                                                valueOrDefault<bool>(
+                                                                              () {
+                                                                                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                  return false;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                  return true;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                  return true;
+                                                                                } else {
+                                                                                  return true;
+                                                                                }
+                                                                              }(),
+                                                                              true,
+                                                                            );
+                                                                            FFAppState().middlePane =
+                                                                                'bodyContentMainTiles';
+                                                                          });
+                                                                        } else if (categoriesMemberLevelItem.categoryname ==
+                                                                            'Events') {
+                                                                          logFirebaseEvent(
+                                                                              'Container_update_app_state');
+                                                                          _model
+                                                                              .updatePage(() {
+                                                                            FFAppState().leftPane =
+                                                                                'events';
+                                                                            FFAppState().leftColumnShow =
+                                                                                true;
+                                                                            FFAppState().middleColumnShow =
+                                                                                valueOrDefault<bool>(
+                                                                              () {
+                                                                                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                  return false;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                  return true;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                  return true;
+                                                                                } else {
+                                                                                  return true;
+                                                                                }
+                                                                              }(),
+                                                                              true,
+                                                                            );
+                                                                            FFAppState().middlePane =
+                                                                                'bodyContentMainTiles';
+                                                                            FFAppState().selectedParentId =
+                                                                                'Events';
+                                                                            FFAppState().selectedcategory =
+                                                                                'Events';
+                                                                            FFAppState().selectedCategoryName =
+                                                                                'Events';
+                                                                          });
+                                                                        } else if (categoriesMemberLevelItem.categoryname ==
+                                                                            'Chat') {
+                                                                          logFirebaseEvent(
+                                                                              'Container_firestore_query');
+                                                                          _model.companycheckforbottomchat =
+                                                                              await queryCompaniesRecordOnce(
+                                                                            queryBuilder: (companiesRecord) =>
                                                                                 companiesRecord.where(
-                                                                          'companyCode',
-                                                                          isEqualTo:
-                                                                              FFAppState().companySecretCode,
-                                                                        ),
-                                                                        singleRecord:
-                                                                            true,
-                                                                      ).then((s) =>
-                                                                              s.firstOrNull);
-                                                                    } else if (categoriesMemberLevelItem
-                                                                            .categoryname ==
-                                                                        'Personalised Journeys') {
-                                                                      logFirebaseEvent(
-                                                                          'Container_update_app_state');
-                                                                      FFAppState()
-                                                                          .update(
-                                                                              () {
-                                                                        FFAppState().leftPane =
-                                                                            'aiMenu';
-                                                                        FFAppState().leftColumnShow =
-                                                                            true;
-                                                                        FFAppState().middlePane =
-                                                                            'bodyContent';
-                                                                        FFAppState().middleColumnShow =
-                                                                            valueOrDefault<bool>(
-                                                                          () {
-                                                                            if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointSmall) {
-                                                                              return false;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointMedium) {
-                                                                              return true;
-                                                                            } else if (MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointLarge) {
-                                                                              return true;
-                                                                            } else {
-                                                                              return true;
-                                                                            }
-                                                                          }(),
-                                                                          true,
-                                                                        );
-                                                                      });
-                                                                    } else {
-                                                                      logFirebaseEvent(
-                                                                          'Container_alert_dialog');
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (alertDialogContext) {
-                                                                          return WebViewAware(
-                                                                            child:
-                                                                                AlertDialog(
-                                                                              title: const Text('Coming Soon... '),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                  child: const Text('Ok'),
-                                                                                ),
-                                                                              ],
+                                                                              'companyCode',
+                                                                              isEqualTo: FFAppState().companySecretCode,
                                                                             ),
+                                                                            singleRecord:
+                                                                                true,
+                                                                          ).then((s) => s.firstOrNull);
+                                                                        } else if (categoriesMemberLevelItem.categoryname ==
+                                                                            'Personalised Journeys') {
+                                                                          logFirebaseEvent(
+                                                                              'Container_update_app_state');
+                                                                          FFAppState()
+                                                                              .update(() {
+                                                                            FFAppState().leftPane =
+                                                                                'aiMenu';
+                                                                            FFAppState().leftColumnShow =
+                                                                                true;
+                                                                            FFAppState().middlePane =
+                                                                                'bodyContent';
+                                                                            FFAppState().middleColumnShow =
+                                                                                valueOrDefault<bool>(
+                                                                              () {
+                                                                                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                  return false;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                  return true;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                  return true;
+                                                                                } else {
+                                                                                  return true;
+                                                                                }
+                                                                              }(),
+                                                                              true,
+                                                                            );
+                                                                          });
+                                                                        } else {
+                                                                          logFirebaseEvent(
+                                                                              'Container_alert_dialog');
+                                                                          await showDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (alertDialogContext) {
+                                                                              return WebViewAware(
+                                                                                child: AlertDialog(
+                                                                                  title: const Text('Coming Soon... '),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                      child: const Text('Ok'),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              );
+                                                                            },
                                                                           );
-                                                                        },
-                                                                      );
-                                                                    }
+                                                                        }
 
-                                                                    if ((FFAppState().selectedcategory ==
-                                                                            '') ||
-                                                                        valueOrDefault<
-                                                                            bool>(
-                                                                          FFAppState().selectedCategoryName == '',
-                                                                          false,
-                                                                        )) {
-                                                                      logFirebaseEvent(
-                                                                          'Container_update_app_state');
-                                                                      _model.updatePage(
-                                                                          () {
-                                                                        FFAppState().selectedcategory =
-                                                                            'Community';
-                                                                        FFAppState().selectedCategoryName =
-                                                                            'Community';
-                                                                        FFAppState().selectedCategoryId = categoriesMemberLevelItem
-                                                                            .reference
-                                                                            .id;
-                                                                      });
-                                                                    }
+                                                                        if ((FFAppState().selectedcategory ==
+                                                                                '') ||
+                                                                            valueOrDefault<bool>(
+                                                                              FFAppState().selectedCategoryName == '',
+                                                                              false,
+                                                                            )) {
+                                                                          logFirebaseEvent(
+                                                                              'Container_update_app_state');
+                                                                          _model
+                                                                              .updatePage(() {
+                                                                            FFAppState().selectedcategory =
+                                                                                'Community';
+                                                                            FFAppState().selectedCategoryName =
+                                                                                'Community';
+                                                                            FFAppState().selectedCategoryId =
+                                                                                categoriesMemberLevelItem.reference.id;
+                                                                          });
+                                                                        }
 
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            17.0),
-                                                                    child:
-                                                                        AnimatedContainer(
-                                                                      duration: const Duration(
-                                                                          milliseconds:
-                                                                              100),
-                                                                      curve: Curves
-                                                                          .easeIn,
-                                                                      height:
-                                                                          35.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .tertiary,
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                          alignment: const AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                          image:
-                                                                              Image.network(
-                                                                            '',
-                                                                          ).image,
-                                                                        ),
+                                                                        setState(
+                                                                            () {});
+                                                                      },
+                                                                      child:
+                                                                          ClipRRect(
                                                                         borderRadius:
                                                                             BorderRadius.circular(17.0),
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              Colors.transparent,
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          Align(
-                                                                        alignment: const AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0),
+                                                                            AnimatedContainer(
+                                                                          duration:
+                                                                              const Duration(milliseconds: 100),
+                                                                          curve:
+                                                                              Curves.easeIn,
+                                                                          height:
+                                                                              35.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).tertiary,
+                                                                            image:
+                                                                                DecorationImage(
+                                                                              fit: BoxFit.cover,
+                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                              image: Image.network(
+                                                                                '',
+                                                                              ).image,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(17.0),
+                                                                            border:
+                                                                                Border.all(
+                                                                              color: Colors.transparent,
+                                                                            ),
+                                                                          ),
                                                                           child:
-                                                                              Text(
-                                                                            categoriesMemberLevelItem.categoryname,
-                                                                            textAlign:
-                                                                                TextAlign.center,
-                                                                            maxLines:
-                                                                                2,
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                  fontSize: 14.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
+                                                                              Align(
+                                                                            alignment:
+                                                                                const AlignmentDirectional(0.0, 0.0),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                                                                              child: Text(
+                                                                                categoriesMemberLevelItem.categoryname,
+                                                                                textAlign: TextAlign.center,
+                                                                                maxLines: 2,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      fontSize: 14.0,
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                    ),
+                                                                              ),
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ),
-                                                          ],
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            );
-                                          },
+                                                              ],
+                                                            );
+                                                          }),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
