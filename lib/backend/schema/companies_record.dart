@@ -293,6 +293,11 @@ class CompaniesRecord extends FirestoreRecord {
   List<TabsStruct> get tabNames => _tabNames ?? const [];
   bool hasTabNames() => _tabNames != null;
 
+  // "redirectUrl" field.
+  String? _redirectUrl;
+  String get redirectUrl => _redirectUrl ?? '';
+  bool hasRedirectUrl() => _redirectUrl != null;
+
   void _initializeFields() {
     _companylogo = snapshotData['companylogo'] as String?;
     _companyname = snapshotData['companyname'] as String?;
@@ -360,6 +365,7 @@ class CompaniesRecord extends FirestoreRecord {
       snapshotData['tabNames'],
       TabsStruct.fromMap,
     );
+    _redirectUrl = snapshotData['redirectUrl'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -450,6 +456,7 @@ Map<String, dynamic> createCompaniesRecordData({
   String? startingMemberLevel,
   String? startingMemberLevelName,
   double? backgroundImageFilter,
+  String? redirectUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -506,6 +513,7 @@ Map<String, dynamic> createCompaniesRecordData({
       'startingMemberLevel': startingMemberLevel,
       'startingMemberLevelName': startingMemberLevelName,
       'backgroundImageFilter': backgroundImageFilter,
+      'redirectUrl': redirectUrl,
     }.withoutNulls,
   );
 
@@ -578,7 +586,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e1?.startingMemberLevel == e2?.startingMemberLevel &&
         e1?.startingMemberLevelName == e2?.startingMemberLevelName &&
         e1?.backgroundImageFilter == e2?.backgroundImageFilter &&
-        listEquality.equals(e1?.tabNames, e2?.tabNames);
+        listEquality.equals(e1?.tabNames, e2?.tabNames) &&
+        e1?.redirectUrl == e2?.redirectUrl;
   }
 
   @override
@@ -637,7 +646,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e?.startingMemberLevel,
         e?.startingMemberLevelName,
         e?.backgroundImageFilter,
-        e?.tabNames
+        e?.tabNames,
+        e?.redirectUrl
       ]);
 
   @override
