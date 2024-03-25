@@ -12,9 +12,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        package-name: ["com.goappy.journeyforward", "com.goappy.learncards"]
 
     steps:
       - name: Checkout repository
@@ -24,7 +21,7 @@ jobs:
         uses: subosito/flutter-action@v1
 
       - name: Update package name
-        run: sed -i 's/name: .*/name: ${{ matrix.package-name }}/' pubspec.yaml
+        run: sed -i 's/name: .*/name: com.goappy.journeyforward/' pubspec.yaml
 
       - name: Update intl package version
         run: |
