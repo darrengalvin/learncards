@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package-name: [com.goappy.journeyforward, com.goappy.learncards]
+        package-name: ["com.goappy.journeyforward", "com.goappy.learncards"]
 
     steps:
       - name: Checkout repository
