@@ -7,8 +7,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class LearncardsFirebaseUser extends BaseAuthUser {
-  LearncardsFirebaseUser(this.user);
+class JourneyForwardFirebaseUser extends BaseAuthUser {
+  JourneyForwardFirebaseUser(this.user);
   User? user;
   @override
   bool get loggedIn => user != null;
@@ -57,17 +57,17 @@ class LearncardsFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      LearncardsFirebaseUser(user);
+      JourneyForwardFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> learncardsFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> journeyForwardFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = LearncardsFirebaseUser(user);
+        currentUser = JourneyForwardFirebaseUser(user);
         if (!kIsWeb) {
           FirebaseCrashlytics.instance.setUserIdentifier(user?.uid ?? '');
         }

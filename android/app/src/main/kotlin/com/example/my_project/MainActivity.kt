@@ -1,4 +1,4 @@
-package com.goappy.learncards
+package com.goappy.journeyforward
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 

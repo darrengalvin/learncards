@@ -4,9 +4,9 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 
-const _kDynamicLinksUrl = 'https://yourcaio.page.link';
-const _kAppBundleId = 'com.goappy.learncards';
-const _kIosAppId = '6477305706';
+const _kDynamicLinksUrl = 'https://journeyforward.app';
+const _kAppBundleId = 'com.goappy.journeyforward';
+const _kIosAppId = '6480002288';
 
 Future<String> generateCurrentPageLink(
   BuildContext context, {

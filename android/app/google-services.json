@@ -8,6 +8,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:506919437259:android:9610813d304e9aa7256c4e",
+        "android_client_info": {
+          "package_name": "com.goappy.journeyforward"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506919437259-2b130oejb57g5eveh9hiamgei9tvvsm1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGMDSaDa7KswgjeNpDD5mX5bmTbHKKB0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506919437259-2b130oejb57g5eveh9hiamgei9tvvsm1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "506919437259-1nlhuf9l9gleci9f12bgvb8sutlrs8jt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.goappy.yourcaio"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:506919437259:android:77223a56c2d0d524256c4e",
         "android_client_info": {
           "package_name": "com.goappy.learncards"
