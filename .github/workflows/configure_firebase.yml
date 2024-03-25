@@ -1,4 +1,4 @@
-name: Deploy to Firebase CAIO updated
+name: Deploy to Firebase CAIO
 
 on:
   push:
@@ -27,7 +27,8 @@ jobs:
         run: sed -i 's/name: .*/name: ${{ matrix.package-name }}/' pubspec.yaml
 
       - name: Update intl package version
-        run: sed -i 's/intl: 0.18.0/intl: ^0.18.1/' pubspec.yaml
+        run: |
+          sed -i 's/intl: 0.18.0/intl: ^0.18.1/' pubspec.yaml
 
       - name: Upgrade Dependencies
         run: flutter pub upgrade
@@ -43,7 +44,6 @@ jobs:
           if [ -f web/index.html ]; then
             echo "index.html exists"
           fi
-
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
@@ -55,6 +55,35 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
           git diff --quiet && git diff --staged --quiet || (git commit -m 'Update index.html' && git pull --rebase origin flutterflow && git push git@github.com:darrengalvin/learncards.git)
+
+      - name: Remove existing redirect script from index.html
+        run: |
+          sed -i '/<!-- Redirect Script Start -->/,/<!-- Redirect Script End -->/d' web/index.html
+
+      - name: Add redirect script to index.html and output the file
+        run: |
+          echo '
+          <!-- Redirect Script Start -->
+          <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            var currentUrl = window.location.href;
+            var targetUrl = "https://journeyforward.app/library?companiesDoc=0fXG0CVY9h92MjpurneyForward";
+
+            console.log("Current URL:", currentUrl);
+            console.log("Target URL:", targetUrl);
+
+            if (currentUrl !== targetUrl) {
+              console.log("Redirecting to target URL.");
+              window.location.href = targetUrl;
+            } else {
+              console.log("Already at the target URL. No redirection performed.");
+            }
+          });
+          </script>
+          <!-- Redirect Script End -->
+          ' >> web/index.html
+          # Output the file to verify the script was added
+          cat web/index.html
 
       - name: Create firebase.json
         run: |
@@ -75,7 +104,15 @@ jobs:
             }
           }' > firebase.json
 
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update index.html'
+          git push git@github.com:darrengalvin/learncards.git
+
       - name: Deploy to Firebase
+        run: firebase deploy --only hosting --project yourcaio-c75b4 --token ${{ secrets.FIREBASE_TOKEN }}
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: firebase deploy --only hosting --project yourcaio-c75b4 --token "$FIREBASE_TOKEN"
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
