@@ -288,6 +288,11 @@ class CompaniesRecord extends FirestoreRecord {
   double get backgroundImageFilter => _backgroundImageFilter ?? 0.0;
   bool hasBackgroundImageFilter() => _backgroundImageFilter != null;
 
+  // "tabNames" field.
+  List<TabsStruct>? _tabNames;
+  List<TabsStruct> get tabNames => _tabNames ?? const [];
+  bool hasTabNames() => _tabNames != null;
+
   void _initializeFields() {
     _companylogo = snapshotData['companylogo'] as String?;
     _companyname = snapshotData['companyname'] as String?;
@@ -351,6 +356,10 @@ class CompaniesRecord extends FirestoreRecord {
         snapshotData['startingMemberLevelName'] as String?;
     _backgroundImageFilter =
         castToType<double>(snapshotData['backgroundImageFilter']);
+    _tabNames = getStructList(
+      snapshotData['tabNames'],
+      TabsStruct.fromMap,
+    );
   }
 
   static CollectionReference get collection =>
@@ -568,7 +577,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e1?.companyDocId == e2?.companyDocId &&
         e1?.startingMemberLevel == e2?.startingMemberLevel &&
         e1?.startingMemberLevelName == e2?.startingMemberLevelName &&
-        e1?.backgroundImageFilter == e2?.backgroundImageFilter;
+        e1?.backgroundImageFilter == e2?.backgroundImageFilter &&
+        listEquality.equals(e1?.tabNames, e2?.tabNames);
   }
 
   @override
@@ -626,7 +636,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e?.companyDocId,
         e?.startingMemberLevel,
         e?.startingMemberLevelName,
-        e?.backgroundImageFilter
+        e?.backgroundImageFilter,
+        e?.tabNames
       ]);
 
   @override

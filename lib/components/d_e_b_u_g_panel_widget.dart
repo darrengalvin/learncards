@@ -3389,7 +3389,7 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                           text: TextSpan(
                                             children: [
                                               TextSpan(
-                                                text: 'SessionID',
+                                                text: 'nON loGGED inSessionID',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

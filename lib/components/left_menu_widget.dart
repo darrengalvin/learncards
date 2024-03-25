@@ -15,7 +15,12 @@ import 'left_menu_model.dart';
 export 'left_menu_model.dart';
 
 class LeftMenuWidget extends StatefulWidget {
-  const LeftMenuWidget({super.key});
+  const LeftMenuWidget({
+    super.key,
+    this.sessions,
+  });
+
+  final SessionsRecord? sessions;
 
   @override
   State<LeftMenuWidget> createState() => _LeftMenuWidgetState();
@@ -51,15 +56,9 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
 
     return Visibility(
       visible: valueOrDefault<bool>(
-            FFAppState().showmenuopen == true,
-            false,
-          ) &&
-          responsiveVisibility(
-            context: context,
-            tablet: false,
-            tabletLandscape: false,
-            desktop: false,
-          ),
+        FFAppState().showmenuopen == true,
+        false,
+      ),
       child: InkWell(
         splashColor: Colors.transparent,
         focusColor: Colors.transparent,
@@ -73,7 +72,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
           });
         },
         child: Container(
-          width: 280.0,
+          width: 330.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
@@ -99,7 +98,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                         onPressed: () async {
                           logFirebaseEvent('LEFT_MENU_COMP_close_ICN_ON_TAP');
                           logFirebaseEvent('IconButton_update_app_state');
-                          setState(() {
+                          FFAppState().update(() {
                             FFAppState().showmenuopen = false;
                           });
                         },
@@ -294,7 +293,18 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                       logFirebaseEvent('LEFT_MENU_COMP_LOGIN_BTN_ON_TAP');
                       logFirebaseEvent('Button_navigate_to');
 
-                      context.pushNamed('signup');
+                      context.pushNamed(
+                        'signup',
+                        queryParameters: {
+                          'sessionsDoc': serializeParam(
+                            widget.sessions,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'sessionsDoc': widget.sessions,
+                        },
+                      );
                     },
                     text: 'Login',
                     options: FFButtonOptions(

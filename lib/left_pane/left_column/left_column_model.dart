@@ -26,8 +26,6 @@ class LeftColumnModel extends FlutterFlowModel<LeftColumnWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
-  CompaniesRecord? companycheckforbottomchat;
   // Model for DesktopTileNavAi-ThisWeek component.
   late DesktopTileNavAiThisWeekModel desktopTileNavAiThisWeekModel;
   // Model for DesktopTileNavA-YourSaved component.

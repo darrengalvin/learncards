@@ -40,8 +40,6 @@ class SignupModel extends FlutterFlowModel<SignupWidget> {
   late bool nonMemmberpasswordConfirmVisibility;
   String? Function(BuildContext, String?)?
       nonMemmberpasswordConfirmControllerValidator;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  SessionsRecord? sessionsOnSignup;
 
   /// Initialization and disposal methods.
 

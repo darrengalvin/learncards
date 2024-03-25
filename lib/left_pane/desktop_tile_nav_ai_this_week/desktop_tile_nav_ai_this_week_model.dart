@@ -25,8 +25,15 @@ class DesktopTileNavAiThisWeekModel
 
   ///  State fields for stateful widgets in this component.
 
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+
   // Stores action output result for [Firestore Query - Query a collection] action in tile widget.
   CompaniesRecord? companyQuery;
+  // Stores action output result for [Firestore Query - Query a collection] action in tile widget.
+  CompaniesRecord? companyQuery11;
 
   /// Initialization and disposal methods.
 
@@ -34,7 +41,9 @@ class DesktopTileNavAiThisWeekModel
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {}
+  void dispose() {
+    tabBarController?.dispose();
+  }
 
   /// Action blocks are added here.
 

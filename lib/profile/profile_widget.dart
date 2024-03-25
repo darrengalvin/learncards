@@ -4,7 +4,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -700,67 +699,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       ),
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                  const Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 45.0, 0.0, 20.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 24.0, 0.0, 0.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'PROFILE_PAGE_LOG_OUT_BTN_ON_TAP');
-                                              logFirebaseEvent('Button_auth');
-                                              GoRouter.of(context)
-                                                  .prepareAuthEvent();
-                                              await authManager.signOut();
-                                              GoRouter.of(context)
-                                                  .clearRedirectLocation();
-
-                                              logFirebaseEvent(
-                                                  'Button_navigate_to');
-
-                                              context.pushNamedAuth(
-                                                  'signup', context.mounted);
-                                            },
-                                            text: 'Log Out',
-                                            options: FFButtonOptions(
-                                              width: 90.0,
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Colors.white,
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: const Color(0xFF4B39EF),
-                                                    fontSize: 14.0,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    useGoogleFonts:
-                                                        GoogleFonts.asMap()
-                                                            .containsKey(
-                                                                'Lexend Deca'),
-                                                  ),
-                                              elevation: 3.0,
-                                              borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                      children: [],
                                     ),
                                   ),
                                 ],

@@ -108,7 +108,12 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
-  'signup': ParameterData.none(),
+  'signup': (data) async => ParameterData(
+        allParams: {
+          'sessionsDoc': await getDocumentParameter<SessionsRecord>(
+              data, 'sessionsDoc', SessionsRecord.fromSnapshot),
+        },
+      ),
   'CreateProfile': ParameterData.none(),
   'EditProfile': (data) async => ParameterData(
         allParams: {
@@ -459,6 +464,7 @@ final parametersBuilderMap =
         },
       ),
   'subjectsCovered': ParameterData.none(),
+  'createcompany': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

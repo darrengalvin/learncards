@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/drawer_empty_list_tiles_widget.dart';
 import '/components/editing_a_tile_widget.dart';
-import '/components/noaccesspopup_widget.dart';
 import '/components/video_viewer_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -110,6 +109,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(childTilesInside.length,
                               (childTilesInsideIndex) {
                             final childTilesInsideItem =
@@ -444,7 +444,7 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                                 15.0, 0.0, 15.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 StreamBuilder<List<TileblocksRecord>>(
@@ -1876,14 +1876,9 @@ class _BodyContentMainilesWidgetState extends State<BodyContentMainilesWidget> {
                       AuthUserStreamWidget(
                         builder: (context) => Column(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            wrapWithModel(
-                              model: _model.noaccesspopupModel,
-                              updateCallback: () => setState(() {}),
-                              child: const NoaccesspopupWidget(),
-                            ),
                             Opacity(
                               opacity: 0.95,
                               child: Container(

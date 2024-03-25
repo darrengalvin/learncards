@@ -136,55 +136,6 @@ class _NoaccesspopupWidgetState extends State<NoaccesspopupWidget>
                                 size: 90.0,
                               ),
                             ),
-                            if (_model.tellMeMorePressed != true)
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 22.0, 0.0, 22.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    logFirebaseEvent(
-                                        'NOACCESSPOPUP_TELL_ME_MORE_BTN_ON_TAP');
-                                    logFirebaseEvent('Button_update_app_state');
-                                    FFAppState().update(() {
-                                      FFAppState().showtellmemore = true;
-                                    });
-                                    logFirebaseEvent(
-                                        'Button_update_component_state');
-                                    setState(() {});
-                                  },
-                                  text: 'Tell me more',
-                                  icon: const Icon(
-                                    Icons.perm_device_info,
-                                    size: 15.0,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 190.0,
-                                    height: 50.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.normal,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey('Lexend Deca'),
-                                        ),
-                                    elevation: 2.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),

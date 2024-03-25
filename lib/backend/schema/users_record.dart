@@ -200,6 +200,16 @@ class UsersRecord extends FirestoreRecord {
   String get coachMeThreadID => _coachMeThreadID ?? '';
   bool hasCoachMeThreadID() => _coachMeThreadID != null;
 
+  // "companyId" field.
+  String? _companyId;
+  String get companyId => _companyId ?? '';
+  bool hasCompanyId() => _companyId != null;
+
+  // "lastSessionId" field.
+  String? _lastSessionId;
+  String get lastSessionId => _lastSessionId ?? '';
+  bool hasLastSessionId() => _lastSessionId != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -238,6 +248,8 @@ class UsersRecord extends FirestoreRecord {
     _hasSyncedProgress = snapshotData['hasSyncedProgress'] as bool?;
     _totalLearnCards = castToType<int>(snapshotData['totalLearnCards']);
     _coachMeThreadID = snapshotData['coachMeThreadID'] as String?;
+    _companyId = snapshotData['companyId'] as String?;
+    _lastSessionId = snapshotData['lastSessionId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -301,6 +313,8 @@ Map<String, dynamic> createUsersRecordData({
   bool? hasSyncedProgress,
   int? totalLearnCards,
   String? coachMeThreadID,
+  String? companyId,
+  String? lastSessionId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -331,6 +345,8 @@ Map<String, dynamic> createUsersRecordData({
       'hasSyncedProgress': hasSyncedProgress,
       'totalLearnCards': totalLearnCards,
       'coachMeThreadID': coachMeThreadID,
+      'companyId': companyId,
+      'lastSessionId': lastSessionId,
     }.withoutNulls,
   );
 
@@ -379,7 +395,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.mySessions, e2?.mySessions) &&
         e1?.hasSyncedProgress == e2?.hasSyncedProgress &&
         e1?.totalLearnCards == e2?.totalLearnCards &&
-        e1?.coachMeThreadID == e2?.coachMeThreadID;
+        e1?.coachMeThreadID == e2?.coachMeThreadID &&
+        e1?.companyId == e2?.companyId &&
+        e1?.lastSessionId == e2?.lastSessionId;
   }
 
   @override
@@ -420,7 +438,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.mySessions,
         e?.hasSyncedProgress,
         e?.totalLearnCards,
-        e?.coachMeThreadID
+        e?.coachMeThreadID,
+        e?.companyId,
+        e?.lastSessionId
       ]);
 
   @override

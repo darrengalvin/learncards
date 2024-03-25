@@ -217,6 +217,42 @@
       ]
     },
     {
+      "collectionGroup": "tilesv2",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "triggerWeekly",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "companyDocId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "showToAll",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "tilesv2",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "companyDocId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sessionIdUser",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "tile_index",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "flowiseChats",
       "queryScope": "COLLECTION",
       "fields": [

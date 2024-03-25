@@ -140,6 +140,21 @@ class MemberLevelsRecord extends FirestoreRecord {
   String get companyDocId => _companyDocId ?? '';
   bool hasCompanyDocId() => _companyDocId != null;
 
+  // "leftColumn" field.
+  String? _leftColumn;
+  String get leftColumn => _leftColumn ?? '';
+  bool hasLeftColumn() => _leftColumn != null;
+
+  // "middleColumn" field.
+  String? _middleColumn;
+  String get middleColumn => _middleColumn ?? '';
+  bool hasMiddleColumn() => _middleColumn != null;
+
+  // "rightColumn" field.
+  String? _rightColumn;
+  String get rightColumn => _rightColumn ?? '';
+  bool hasRightColumn() => _rightColumn != null;
+
   void _initializeFields() {
     _categorylist = getDataList(snapshotData['categorylist']);
     _index = castToType<int>(snapshotData['index']);
@@ -166,6 +181,9 @@ class MemberLevelsRecord extends FirestoreRecord {
     _categoriesInMemberLevel =
         getDataList(snapshotData['categoriesInMemberLevel']);
     _companyDocId = snapshotData['companyDocId'] as String?;
+    _leftColumn = snapshotData['leftColumn'] as String?;
+    _middleColumn = snapshotData['middleColumn'] as String?;
+    _rightColumn = snapshotData['rightColumn'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -218,6 +236,9 @@ Map<String, dynamic> createMemberLevelsRecordData({
   String? categoryOwnerId,
   String? memberLevelName,
   String? companyDocId,
+  String? leftColumn,
+  String? middleColumn,
+  String? rightColumn,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -236,6 +257,9 @@ Map<String, dynamic> createMemberLevelsRecordData({
       'categoryOwnerId': categoryOwnerId,
       'memberLevelName': memberLevelName,
       'companyDocId': companyDocId,
+      'leftColumn': leftColumn,
+      'middleColumn': middleColumn,
+      'rightColumn': rightColumn,
     }.withoutNulls,
   );
 
@@ -275,7 +299,10 @@ class MemberLevelsRecordDocumentEquality
         e1?.memberLevelName == e2?.memberLevelName &&
         listEquality.equals(
             e1?.categoriesInMemberLevel, e2?.categoriesInMemberLevel) &&
-        e1?.companyDocId == e2?.companyDocId;
+        e1?.companyDocId == e2?.companyDocId &&
+        e1?.leftColumn == e2?.leftColumn &&
+        e1?.middleColumn == e2?.middleColumn &&
+        e1?.rightColumn == e2?.rightColumn;
   }
 
   @override
@@ -303,7 +330,10 @@ class MemberLevelsRecordDocumentEquality
         e?.categoryOwnerId,
         e?.memberLevelName,
         e?.categoriesInMemberLevel,
-        e?.companyDocId
+        e?.companyDocId,
+        e?.leftColumn,
+        e?.middleColumn,
+        e?.rightColumn
       ]);
 
   @override

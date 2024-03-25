@@ -202,6 +202,9 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                             .memberLevelName,
                                                         'namenotset',
                                                       );
+                                                      FFAppState().leftPane =
+                                                          membeeLevelaFromPassedItem
+                                                              .leftColumn;
                                                     });
                                                     logFirebaseEvent(
                                                         'Column_haptic_feedback');

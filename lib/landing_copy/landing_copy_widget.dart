@@ -350,11 +350,8 @@ class _LandingCopyWidgetState extends State<LandingCopyWidget> {
                                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                                               children: [
                                                                                 FFButtonWidget(
-                                                                                  onPressed: () async {
-                                                                                    logFirebaseEvent('LANDING_COPY_PAGE_LET\'S_GO_BTN_ON_TAP');
-                                                                                    logFirebaseEvent('Button_navigate_to');
-
-                                                                                    context.pushNamed('signup');
+                                                                                  onPressed: () {
+                                                                                    print('Button pressed ...');
                                                                                   },
                                                                                   text: 'Let\'s go',
                                                                                   options: FFButtonOptions(

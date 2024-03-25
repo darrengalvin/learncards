@@ -2205,6 +2205,12 @@ class FFAppState extends ChangeNotifier {
     prefs.setBool('ff_walkthroughComplete', value);
   }
 
+  bool _wantsToLogin = false;
+  bool get wantsToLogin => _wantsToLogin;
+  set wantsToLogin(bool value) {
+    _wantsToLogin = value;
+  }
+
   final _querynameManager = StreamRequestManager<List<CategoriesRecord>>();
   Stream<List<CategoriesRecord>> queryname({
     String? uniqueQueryKey,

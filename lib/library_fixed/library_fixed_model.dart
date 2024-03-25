@@ -6,8 +6,6 @@ import '/components/left_menu_widget.dart';
 import '/components/middle_body_all_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'library_fixed_widget.dart' show LibraryFixedWidget;
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:flutter/material.dart';
 
 class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
@@ -49,16 +47,17 @@ class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  TutorialCoachMark? infoButtonController;
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - Create Document] action in Library-fixed widget.
+  LogsRecord? userLog;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
   CompaniesRecord? companyByUrl;
-  // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
-  CompaniesRecord? companyByUrl2;
   // Stores action output result for [Backend Call - Create Document] action in Library-fixed widget.
   SessionsRecord? sessionsCreated;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
   SessionsRecord? sessionQueryOnPageLoad;
+  // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
+  CompaniesRecord? companyByUrl2;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
   MyTeamRecord? loadingcHATmENTOR;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
@@ -106,7 +105,6 @@ class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
 
   @override
   void dispose() {
-    infoButtonController?.finish();
     unfocusNode.dispose();
     drawerTileTreeModel.dispose();
     headerContainerModel.dispose();

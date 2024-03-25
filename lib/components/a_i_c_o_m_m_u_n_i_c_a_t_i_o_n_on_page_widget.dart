@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/important_not_logged_in_widget.dart';
 import '/components/session_checks_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -408,6 +409,36 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     logFirebaseEvent(
                                                         'IconButton_navigate_back');
                                                     context.pop();
+                                                    if ((loggedIn != true) &&
+                                                        (widget.sessionsDoc
+                                                                ?.dismissedTheSignUp !=
+                                                            true)) {
+                                                      logFirebaseEvent(
+                                                          'IconButton_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  ImportantNotLoggedInWidget(
+                                                                sessionsDoc: widget
+                                                                    .sessionsDoc!,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    }
                                                   },
                                                 ),
                                               ],

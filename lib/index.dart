@@ -79,3 +79,4 @@ export '/chat_page/chat_page_widget.dart' show ChatPageWidget;
 export '/login/login_widget.dart' show LoginWidget;
 export '/subjects_covered/subjects_covered_widget.dart'
     show SubjectsCoveredWidget;
+export '/createcompany/createcompany_widget.dart' show CreatecompanyWidget;

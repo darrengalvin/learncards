@@ -3,24 +3,19 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_my_mentor_widget.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_welcome_widget.dart';
-import '/components/developer_debug_mode_widget.dart';
 import '/components/drawer_tile_tree_widget.dart';
 import '/components/header_container_widget.dart';
+import '/components/important_not_logged_in_widget.dart';
 import '/components/left_menu_widget.dart';
 import '/components/middle_body_all_widget.dart';
-import '/components/page_info_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/walkthroughs/info_button.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,40 +55,26 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('LIBRARY_FIXED_Library-fixed_ON_INIT_STAT');
-      if (FFAppState().walkthroughComplete == true) {
-        logFirebaseEvent('Library-fixed_start_walkthrough');
-        safeSetState(
-            () => _model.infoButtonController = createPageWalkthrough(context));
-        _model.infoButtonController?.show(context: context);
-      } else {
-        logFirebaseEvent('Library-fixed_start_walkthrough');
-        safeSetState(
-            () => _model.infoButtonController = createPageWalkthrough(context));
-        _model.infoButtonController?.show(context: context);
-      }
+      // Start a user log
+      logFirebaseEvent('Library-fixed_Startauserlog');
 
-      if (kDebugMode == true) {
-        logFirebaseEvent('Library-fixed_bottom_sheet');
-        await showModalBottomSheet(
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          enableDrag: false,
-          context: context,
-          builder: (context) {
-            return WebViewAware(
-              child: GestureDetector(
-                onTap: () => _model.unfocusNode.canRequestFocus
-                    ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                    : FocusScope.of(context).unfocus(),
-                child: Padding(
-                  padding: MediaQuery.viewInsetsOf(context),
-                  child: const DeveloperDebugModeWidget(),
-                ),
-              ),
-            );
-          },
-        ).then((value) => safeSetState(() {}));
-      }
+      var logsRecordReference = LogsRecord.collection.doc();
+      await logsRecordReference.set(createLogsRecordData(
+        uid: currentUserDocument?.userref?.id,
+        time: getCurrentTimestamp,
+        sessionId: FFAppState().nonLoggedInSessionId != ''
+            ? FFAppState().nonLoggedInSessionId
+            : 'unset',
+      ));
+      _model.userLog = LogsRecord.getDocumentFromData(
+          createLogsRecordData(
+            uid: currentUserDocument?.userref?.id,
+            time: getCurrentTimestamp,
+            sessionId: FFAppState().nonLoggedInSessionId != ''
+                ? FFAppState().nonLoggedInSessionId
+                : 'unset',
+          ),
+          logsRecordReference);
       logFirebaseEvent('Library-fixed_custom_action');
       await actions.onPageLoadCheckUrl();
       logFirebaseEvent('Library-fixed_firestore_query');
@@ -107,42 +88,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      if (_model.companyByUrl?.landingUrls
-              .contains(FFAppState().selectedCompanyUrl) ==
-          true) {
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage =
-              'URL Matches company${valueOrDefault<String>(
-            widget.companiesDoc?.companyname,
-            '-',
-          )}';
-        });
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().companySecretCode = _model.companyByUrl!.companyCode;
-          FFAppState().companyBackgroundImage =
-              _model.companyByUrl!.backgroundImage;
-        });
-      } else {
-        logFirebaseEvent('Library-fixed_update_app_state');
-        setState(() {
-          FFAppState().debugMessage =
-              'URL Does Not Matche Company${valueOrDefault<String>(
-            widget.companiesDoc?.companyname,
-            '-',
-          )}';
-        });
-        logFirebaseEvent('Library-fixed_firestore_query');
-        _model.companyByUrl2 = await queryCompaniesRecordOnce(
-          queryBuilder: (companiesRecord) => companiesRecord.where(
-            'landingUrls',
-            arrayContains: FFAppState().selectedCompanyUrl,
-          ),
-          singleRecord: true,
-        ).then((s) => s.firstOrNull);
-      }
-
       if (FFAppState().nonLoggedInSessionId == '') {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -242,6 +187,31 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           FFAppState().nonLoggedInSessionId =
               _model.sessionsCreated!.reference.id;
         });
+        logFirebaseEvent('Library-fixed_backend_call');
+
+        await _model.userLog!.reference.update({
+          ...mapToFirestore(
+            {
+              'logDetail': FieldValue.arrayUnion([
+                getLogsFirestoreData(
+                  createLogsStruct(
+                    logDetail: valueOrDefault<String>(
+                      'nonLoggedInSession id was not found so session created is  ${valueOrDefault<String>(
+                        _model.sessionsCreated?.reference.id,
+                        '-',
+                      )}',
+                      '-',
+                    ),
+                    logTime: getCurrentTimestamp,
+                    logResult: '200',
+                    clearUnsetFields: false,
+                  ),
+                  true,
+                )
+              ]),
+            },
+          ),
+        });
       } else {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -250,12 +220,33 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
             '-',
           );
         });
+        logFirebaseEvent('Library-fixed_backend_call');
+
+        await _model.userLog!.reference.update({
+          ...mapToFirestore(
+            {
+              'logDetail': FieldValue.arrayUnion([
+                getLogsFirestoreData(
+                  createLogsStruct(
+                    logDetail: valueOrDefault<String>(
+                      'nonLoggedInSession id was  found so session id is ${valueOrDefault<String>(
+                        FFAppState().nonLoggedInSessionId,
+                        '-',
+                      )}',
+                      '-',
+                    ),
+                    logTime: getCurrentTimestamp,
+                    logResult: '200',
+                    clearUnsetFields: false,
+                  ),
+                  true,
+                )
+              ]),
+            },
+          ),
+        });
       }
 
-      logFirebaseEvent('Library-fixed_update_app_state');
-      setState(() {
-        FFAppState().debugMessage = 'team queried';
-      });
       // sessions query for later
       logFirebaseEvent('Library-fixed_sessionsqueryforlater');
       _model.sessionQueryOnPageLoad = await querySessionsRecordOnce(
@@ -265,6 +256,105 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      if (loggedIn) {
+        logFirebaseEvent('Library-fixed_update_app_state');
+        setState(() {
+          FFAppState().nonLoggedInSessionId = valueOrDefault<String>(
+            valueOrDefault(currentUserDocument?.lastSessionId, ''),
+            'not set on page load ',
+          );
+        });
+        logFirebaseEvent('Library-fixed_backend_call');
+
+        await _model.userLog!.reference.update({
+          ...mapToFirestore(
+            {
+              'logDetail': FieldValue.arrayUnion([
+                getLogsFirestoreData(
+                  createLogsStruct(
+                    logTime: getCurrentTimestamp,
+                    logResult: '200',
+                    clearUnsetFields: false,
+                  ),
+                  true,
+                )
+              ]),
+            },
+          ),
+        });
+      } else {
+        logFirebaseEvent('Library-fixed_backend_call');
+
+        await _model.userLog!.reference.update({
+          ...mapToFirestore(
+            {
+              'logDetail': FieldValue.arrayUnion([
+                getLogsFirestoreData(
+                  createLogsStruct(
+                    logDetail: valueOrDefault<String>(
+                      'new user not logged in ',
+                      '-',
+                    ),
+                    logTime: getCurrentTimestamp,
+                    logResult: '200',
+                    clearUnsetFields: false,
+                  ),
+                  true,
+                )
+              ]),
+            },
+          ),
+        });
+        if (_model.sessionQueryOnPageLoad?.currentNavJourney != null &&
+            _model.sessionQueryOnPageLoad?.currentNavJourney != '') {
+          logFirebaseEvent('Library-fixed_bottom_sheet');
+          await showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            enableDrag: false,
+            context: context,
+            builder: (context) {
+              return WebViewAware(
+                child: GestureDetector(
+                  onTap: () => _model.unfocusNode.canRequestFocus
+                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                      : FocusScope.of(context).unfocus(),
+                  child: Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: SizedBox(
+                      height: MediaQuery.sizeOf(context).height * 0.85,
+                      child: ImportantNotLoggedInWidget(
+                        sessionsDoc: _model.sessionQueryOnPageLoad!,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ).then((value) => safeSetState(() {}));
+        }
+      }
+
+      if (_model.companyByUrl?.landingUrls
+              .contains(FFAppState().selectedCompanyUrl) ==
+          true) {
+        logFirebaseEvent('Library-fixed_update_app_state');
+        setState(() {
+          FFAppState().companySecretCode = _model.companyByUrl!.companyCode;
+          FFAppState().companyBackgroundImage =
+              _model.companyByUrl!.backgroundImage;
+        });
+      } else {
+        logFirebaseEvent('Library-fixed_firestore_query');
+        _model.companyByUrl2 = await queryCompaniesRecordOnce(
+          queryBuilder: (companiesRecord) => companiesRecord.where(
+            'landingUrls',
+            arrayContains: FFAppState().selectedCompanyUrl,
+          ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
+      }
+
       if (_model.sessionQueryOnPageLoad?.currentNavJourney == 'newSession') {
         logFirebaseEvent('Library-fixed_update_app_state');
         FFAppState().update(() {
@@ -285,6 +375,28 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
             }(),
             true,
           );
+        });
+        logFirebaseEvent('Library-fixed_backend_call');
+
+        await _model.userLog!.reference.update({
+          ...mapToFirestore(
+            {
+              'logDetail': FieldValue.arrayUnion([
+                getLogsFirestoreData(
+                  createLogsStruct(
+                    logDetail: valueOrDefault<String>(
+                      'Current Nav Journey is ${_model.sessionQueryOnPageLoad?.currentNavJourney}which will take them to Welcome Chat',
+                      '-',
+                    ),
+                    logTime: getCurrentTimestamp,
+                    logResult: '200',
+                    clearUnsetFields: false,
+                  ),
+                  true,
+                )
+              ]),
+            },
+          ),
         });
         logFirebaseEvent('Library-fixed_update_app_state');
         FFAppState().selectedcategory = valueOrDefault<String>(
@@ -310,7 +422,31 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         setState(() {
           FFAppState().rightPane = 'learnCards';
         });
+      } else {
+        logFirebaseEvent('Library-fixed_backend_call');
+
+        await _model.userLog!.reference.update({
+          ...mapToFirestore(
+            {
+              'logDetail': FieldValue.arrayUnion([
+                getLogsFirestoreData(
+                  createLogsStruct(
+                    logDetail: valueOrDefault<String>(
+                      'Current Nav Journey is ${_model.sessionQueryOnPageLoad?.currentNavJourney}',
+                      '-',
+                    ),
+                    logTime: getCurrentTimestamp,
+                    logResult: '200',
+                    clearUnsetFields: false,
+                  ),
+                  true,
+                )
+              ]),
+            },
+          ),
+        });
       }
+
       logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().debugMessage = 'person 1 set';
@@ -425,6 +561,31 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().selectedTeam = _model.loadingcHATmENTOR!.reference.id;
+      });
+      logFirebaseEvent('Library-fixed_backend_call');
+
+      await _model.userLog!.reference.update({
+        ...mapToFirestore(
+          {
+            'logDetail': FieldValue.arrayUnion([
+              getLogsFirestoreData(
+                createLogsStruct(
+                  logDetail: valueOrDefault<String>(
+                    'Chat Menntor is ${valueOrDefault<String>(
+                      _model.loadingcHATmENTOR?.reference.id,
+                      '-',
+                    )}',
+                    '-',
+                  ),
+                  logTime: getCurrentTimestamp,
+                  logResult: '200',
+                  clearUnsetFields: false,
+                ),
+                true,
+              )
+            ]),
+          },
+        ),
       });
       if (valueOrDefault<bool>(
         (_model.sessionQueryOnPageLoad?.currentNavJourney == 'newSession') &&
@@ -917,168 +1078,111 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                logFirebaseEvent(
-                                                                    'LIBRARY_FIXED_Container_ue62lygk_ON_TAP');
-                                                                logFirebaseEvent(
-                                                                    'Container_update_app_state');
-                                                                FFAppState()
-                                                                    .update(() {
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      7.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  logFirebaseEvent(
+                                                                      'LIBRARY_FIXED_Container_ue62lygk_ON_TAP');
+                                                                  logFirebaseEvent(
+                                                                      'Container_update_app_state');
                                                                   FFAppState()
-                                                                          .showmenuopen =
-                                                                      true;
-                                                                });
-                                                              },
-                                                              child: Container(
-                                                                decoration:
-                                                                    const BoxDecoration(),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          FlutterFlowIconButton(
-                                                                        borderColor:
-                                                                            Colors.transparent,
-                                                                        borderRadius:
+                                                                      .update(
+                                                                          () {
+                                                                    FFAppState()
+                                                                            .showmenuopen =
+                                                                        true;
+                                                                  });
+                                                                },
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      const BoxDecoration(),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
-                                                                        buttonSize:
-                                                                            37.0,
-                                                                        icon:
-                                                                            Icon(
-                                                                          Icons
-                                                                              .menu_sharp,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).alternate,
-                                                                          size:
-                                                                              34.0,
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            FlutterFlowIconButton(
+                                                                          borderColor:
+                                                                              Colors.transparent,
+                                                                          borderRadius:
+                                                                              0.0,
+                                                                          buttonSize:
+                                                                              37.0,
+                                                                          icon:
+                                                                              Icon(
+                                                                            Icons.menu_sharp,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                            size:
+                                                                                34.0,
+                                                                          ),
+                                                                          onPressed:
+                                                                              () async {
+                                                                            logFirebaseEvent('LIBRARY_FIXED_PAGE_menu_sharp_ICN_ON_TAP');
+                                                                            logFirebaseEvent('IconButton_update_app_state');
+                                                                            FFAppState().update(() {
+                                                                              FFAppState().showmenuopen = true;
+                                                                            });
+                                                                          },
                                                                         ),
-                                                                        onPressed:
-                                                                            () {
-                                                                          print(
-                                                                              'IconButton pressed ...');
-                                                                        },
                                                                       ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            const Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [],
-                                                            ),
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      FlutterFlowIconButton(
-                                                                    borderColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    borderRadius:
-                                                                        0.0,
-                                                                    buttonSize:
-                                                                        37.0,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .info_outline,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .alternate,
-                                                                      size:
-                                                                          34.0,
-                                                                    ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'LIBRARY_FIXED_info_outline_ICN_ON_TAP');
-                                                                      logFirebaseEvent(
-                                                                          'IconButton_bottom_sheet');
-                                                                      await showModalBottomSheet(
-                                                                        isScrollControlled:
-                                                                            true,
-                                                                        backgroundColor:
-                                                                            FlutterFlowTheme.of(context).primary,
-                                                                        enableDrag:
-                                                                            false,
-                                                                        useSafeArea:
-                                                                            true,
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) {
-                                                                          return WebViewAware(
-                                                                            child:
-                                                                                GestureDetector(
-                                                                              onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: Padding(
-                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                child: SizedBox(
-                                                                                  height: MediaQuery.sizeOf(context).height * 0.87,
-                                                                                  child: PageInfoWidget(
-                                                                                    companyDoc: _model.companyByUrl!,
-                                                                                    sessiondDoc: _model.sessionQueryOnPageLoad!,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                      ).then((value) =>
-                                                                          safeSetState(
-                                                                              () {}));
-                                                                    },
-                                                                  ).addWalkthrough(
-                                                                    iconButtonVup35iwy,
-                                                                    _model
-                                                                        .infoButtonController,
+                                                                    ],
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                          ],
+                                                              ),
+                                                              const Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [],
+                                                              ),
+                                                              const Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [],
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                         Column(
                                                           mainAxisSize:
@@ -2543,12 +2647,20 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                         ],
                                       ),
                                     ),
-                                    wrapWithModel(
-                                      model: _model.leftMenuModel,
-                                      updateCallback: () => setState(() {}),
-                                      updateOnChange: true,
-                                      child: const LeftMenuWidget(),
-                                    ),
+                                    if (FFAppState().showmenuopen == true)
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.0, -1.0),
+                                        child: wrapWithModel(
+                                          model: _model.leftMenuModel,
+                                          updateCallback: () => setState(() {}),
+                                          updateOnChange: true,
+                                          child: LeftMenuWidget(
+                                            sessions:
+                                                _model.sessionQueryOnPageLoad,
+                                          ),
+                                        ),
+                                      ),
                                   ],
                                 ),
                               ),
@@ -2564,20 +2676,4 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       },
     );
   }
-
-  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
-      TutorialCoachMark(
-        targets: createWalkthroughTargets(context),
-        onFinish: () {
-          safeSetState(() => _model.infoButtonController = null);
-          logFirebaseEvent('LIBRARY_FIXED_Library-fixed_ON_WALKTHROU');
-          logFirebaseEvent('Library-fixed_update_app_state');
-          setState(() {
-            FFAppState().walkthroughComplete = true;
-          });
-        },
-        onSkip: () {
-          return true;
-        },
-      );
 }

@@ -59,13 +59,12 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
           child: StreamBuilder<List<CategoriesRecord>>(
             stream: queryCategoriesRecord(
               queryBuilder: (categoriesRecord) => categoriesRecord.where(
-                'categoryDocId',
+                'categoryname',
                 isEqualTo: valueOrDefault<String>(
-                  FFAppState().selectedCategoryId,
-                  '0',
+                  FFAppState().selectedCategoryName,
+                  'Group Journeys',
                 ),
               ),
-              singleRecord: true,
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
@@ -84,14 +83,6 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
               }
               List<CategoriesRecord> cardModalBasicCategoriesRecordList =
                   snapshot.data!;
-              // Return an empty Container when the item does not exist.
-              if (snapshot.data!.isEmpty) {
-                return Container();
-              }
-              final cardModalBasicCategoriesRecord =
-                  cardModalBasicCategoriesRecordList.isNotEmpty
-                      ? cardModalBasicCategoriesRecordList.first
-                      : null;
               return Container(
                 width: double.infinity,
                 constraints: const BoxConstraints(
@@ -119,8 +110,8 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
                                   0.0, 0.0, 12.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  cardModalBasicCategoriesRecord
-                                      ?.pageInfo.title,
+                                  cardModalBasicCategoriesRecordList
+                                      .first.pageInfo.title,
                                   'title',
                                 ),
                                 style:
@@ -148,9 +139,27 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
                           ),
                         ],
                       ),
-                      const Row(
+                      Row(
                         mainAxisSize: MainAxisSize.max,
-                        children: [],
+                        children: [
+                          Text(
+                            valueOrDefault<String>(
+                              cardModalBasicCategoriesRecordList
+                                  .first.pageInfo.themeIntro,
+                              'Description ',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  fontSize: 14.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
+                                ),
+                          ),
+                        ],
                       ),
                       Divider(
                         height: 24.0,
@@ -159,18 +168,9 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          'Welcome to the Learning Journeys section,  each week ${valueOrDefault<String>(
-                            widget.companyDoc?.companyname,
-                            'companyName',
-                          )} has a theme, designed to ${valueOrDefault<String>(
-                            cardModalBasicCategoriesRecord
-                                ?.pageInfo.themeIntro,
-                            'themeIntro',
-                          )} This weeks topic is ${valueOrDefault<String>(
-                            widget.companyDoc?.companyAiData.thisWeeksTopic,
-                            'not set',
-                          )} ',
-                          'not set',
+                          cardModalBasicCategoriesRecordList
+                              .first.pageInfo.description,
+                          'Description ',
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -191,12 +191,9 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
                       ))
                         Text(
                           valueOrDefault<String>(
-                            valueOrDefault<String>(
-                              cardModalBasicCategoriesRecord
-                                  ?.pageInfo.description,
-                              'description',
-                            ),
-                            'not set',
+                            cardModalBasicCategoriesRecordList
+                                .first.pageInfo.description,
+                            'Description',
                           ),
                           style: FlutterFlowTheme.of(context)
                               .labelMedium

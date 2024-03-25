@@ -202,6 +202,16 @@ class SessionsRecord extends FirestoreRecord {
   bool get ispUserFound => _ispUserFound ?? false;
   bool hasIspUserFound() => _ispUserFound != null;
 
+  // "dismissdTheSignUp" field.
+  bool? _dismissdTheSignUp;
+  bool get dismissdTheSignUp => _dismissdTheSignUp ?? false;
+  bool hasDismissdTheSignUp() => _dismissdTheSignUp != null;
+
+  // "dismissedTheSignUp" field.
+  bool? _dismissedTheSignUp;
+  bool get dismissedTheSignUp => _dismissedTheSignUp ?? false;
+  bool hasDismissedTheSignUp() => _dismissedTheSignUp != null;
+
   void _initializeFields() {
     _dateTime = snapshotData['dateTime'] as DateTime?;
     _backgroundImage = snapshotData['backgroundImage'] as String?;
@@ -254,6 +264,8 @@ class SessionsRecord extends FirestoreRecord {
       ChecksCompletedStruct.fromMap,
     );
     _ispUserFound = snapshotData['ispUserFound'] as bool?;
+    _dismissdTheSignUp = snapshotData['dismissdTheSignUp'] as bool?;
+    _dismissedTheSignUp = snapshotData['dismissedTheSignUp'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -322,6 +334,8 @@ Map<String, dynamic> createSessionsRecordData({
   bool? firebaseAccount,
   bool? checkedForFireBaseAccount,
   bool? ispUserFound,
+  bool? dismissdTheSignUp,
+  bool? dismissedTheSignUp,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -356,6 +370,8 @@ Map<String, dynamic> createSessionsRecordData({
       'firebaseAccount': firebaseAccount,
       'checkedForFireBaseAccount': checkedForFireBaseAccount,
       'ispUserFound': ispUserFound,
+      'dismissdTheSignUp': dismissdTheSignUp,
+      'dismissedTheSignUp': dismissedTheSignUp,
     }.withoutNulls,
   );
 
@@ -408,7 +424,9 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e1?.firebaseAccount == e2?.firebaseAccount &&
         e1?.checkedForFireBaseAccount == e2?.checkedForFireBaseAccount &&
         listEquality.equals(e1?.checks, e2?.checks) &&
-        e1?.ispUserFound == e2?.ispUserFound;
+        e1?.ispUserFound == e2?.ispUserFound &&
+        e1?.dismissdTheSignUp == e2?.dismissdTheSignUp &&
+        e1?.dismissedTheSignUp == e2?.dismissedTheSignUp;
   }
 
   @override
@@ -449,7 +467,9 @@ class SessionsRecordDocumentEquality implements Equality<SessionsRecord> {
         e?.firebaseAccount,
         e?.checkedForFireBaseAccount,
         e?.checks,
-        e?.ispUserFound
+        e?.ispUserFound,
+        e?.dismissdTheSignUp,
+        e?.dismissedTheSignUp
       ]);
 
   @override

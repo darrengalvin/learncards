@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'main_app_tiles_widget.dart' show MainAppTilesWidget;
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 class MainAppTilesModel extends FlutterFlowModel<MainAppTilesWidget> {
@@ -23,6 +24,21 @@ class MainAppTilesModel extends FlutterFlowModel<MainAppTilesWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in MainAppTiles widget.
   List<TilesRecord>? tilesOriginal;
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableController1;
+
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableController2;
+
+  // Stores action output result for [Backend Call - Create Document] action in Column widget.
+  TileBlocksRecord? createdBlock1Copy;
+  // Stores action output result for [Backend Call - Create Document] action in Icon widget.
+  TileBlocksRecord? createdBlock1;
 
   /// Initialization and disposal methods.
 
@@ -30,7 +46,11 @@ class MainAppTilesModel extends FlutterFlowModel<MainAppTilesWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {}
+  void dispose() {
+    tabBarController?.dispose();
+    expandableController1.dispose();
+    expandableController2.dispose();
+  }
 
   /// Action blocks are added here.
 

@@ -11,7 +11,12 @@ import 'signup_model.dart';
 export 'signup_model.dart';
 
 class SignupWidget extends StatefulWidget {
-  const SignupWidget({super.key});
+  const SignupWidget({
+    super.key,
+    required this.sessionsDoc,
+  });
+
+  final SessionsRecord? sessionsDoc;
 
   @override
   State<SignupWidget> createState() => _SignupWidgetState();
@@ -584,8 +589,10 @@ class _SignupWidgetState extends State<SignupWidget>
                                                                 isEqualTo:
                                                                     valueOrDefault<
                                                                         String>(
-                                                                  FFAppState()
-                                                                      .nonLoggedInSessionId,
+                                                                  widget
+                                                                      .sessionsDoc
+                                                                      ?.reference
+                                                                      .id,
                                                                   'nonLoggedInIdNotSet',
                                                                 ),
                                                               ),
@@ -1161,137 +1168,6 @@ class _SignupWidgetState extends State<SignupWidget>
                                                                         validator: _model
                                                                             .nonMemmberpasswordConfirmControllerValidator
                                                                             .asValidator(context),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          24.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          FFButtonWidget(
-                                                                        onPressed:
-                                                                            () async {
-                                                                          logFirebaseEvent(
-                                                                              'SIGNUP_PAGE_CREATE_ACCOUNT_BTN_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Button_auth');
-                                                                          GoRouter.of(context)
-                                                                              .prepareAuthEvent();
-                                                                          if (_model.noneMemberpasswordController.text !=
-                                                                              _model.nonMemmberpasswordConfirmController.text) {
-                                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                              const SnackBar(
-                                                                                content: Text(
-                                                                                  'Passwords don\'t match!',
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                            return;
-                                                                          }
-
-                                                                          final user =
-                                                                              await authManager.createAccountWithEmail(
-                                                                            context,
-                                                                            _model.nonMemberemailAddressController.text,
-                                                                            _model.noneMemberpasswordController.text,
-                                                                          );
-                                                                          if (user ==
-                                                                              null) {
-                                                                            return;
-                                                                          }
-
-                                                                          await UsersRecord
-                                                                              .collection
-                                                                              .doc(user.uid)
-                                                                              .update({
-                                                                            ...createUsersRecordData(
-                                                                              createdTime: getCurrentTimestamp,
-                                                                              aiId: 0,
-                                                                              email: '',
-                                                                              hasSyncedProgress: false,
-                                                                            ),
-                                                                            ...mapToFirestore(
-                                                                              {
-                                                                                'hasaccess': [
-                                                                                  'Community'
-                                                                                ],
-                                                                              },
-                                                                            ),
-                                                                          });
-
-                                                                          logFirebaseEvent(
-                                                                              'Button_firestore_query');
-                                                                          _model.sessionsOnSignup =
-                                                                              await querySessionsRecordOnce(
-                                                                            queryBuilder: (sessionsRecord) =>
-                                                                                sessionsRecord.where(
-                                                                              'sessionId',
-                                                                              isEqualTo: FFAppState().nonLoggedInSessionId,
-                                                                            ),
-                                                                            singleRecord:
-                                                                                true,
-                                                                          ).then((s) => s.firstOrNull);
-                                                                          logFirebaseEvent(
-                                                                              'Button_backend_call');
-
-                                                                          await _model
-                                                                              .sessionsOnSignup!
-                                                                              .reference
-                                                                              .update(createSessionsRecordData(
-                                                                            sessionOwnerId:
-                                                                                currentUserReference?.id,
-                                                                            sessionOwner:
-                                                                                currentUserReference,
-                                                                          ));
-                                                                          logFirebaseEvent(
-                                                                              'Button_navigate_to');
-
-                                                                          context.pushNamedAuth(
-                                                                              'Library-fixed',
-                                                                              context.mounted);
-
-                                                                          setState(
-                                                                              () {});
-                                                                        },
-                                                                        text:
-                                                                            'Create Account',
-                                                                        options:
-                                                                            FFButtonOptions(
-                                                                          width:
-                                                                              230.0,
-                                                                          height:
-                                                                              50.0,
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).customColor7,
-                                                                          textStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                fontFamily: 'Lexend Deca',
-                                                                                color: FlutterFlowTheme.of(context).primary,
-                                                                                fontSize: 16.0,
-                                                                                fontWeight: FontWeight.normal,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey('Lexend Deca'),
-                                                                              ),
-                                                                          borderSide:
-                                                                              const BorderSide(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ],

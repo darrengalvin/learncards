@@ -94,7 +94,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'signup',
               path: 'signup',
-              builder: (context, params) => const SignupWidget(),
+              asyncParams: {
+                'sessionsDoc':
+                    getDoc(['sessions'], SessionsRecord.fromSnapshot),
+              },
+              builder: (context, params) => SignupWidget(
+                sessionsDoc: params.getParam('sessionsDoc', ParamType.Document),
+              ),
             ),
             FFRoute(
               name: 'CreateProfile',
@@ -784,6 +790,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'subjectsCovered',
               path: 'subjectsCovered',
               builder: (context, params) => const SubjectsCoveredWidget(),
+            ),
+            FFRoute(
+              name: 'createcompany',
+              path: 'createcompany',
+              builder: (context, params) => const CreatecompanyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

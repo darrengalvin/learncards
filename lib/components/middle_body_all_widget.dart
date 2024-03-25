@@ -125,7 +125,7 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
                       children: [
                         Container(
                           constraints: const BoxConstraints(
-                            maxWidth: 550.0,
+                            maxWidth: 600.0,
                           ),
                           decoration: const BoxDecoration(),
                           child: Container(

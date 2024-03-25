@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/components/social_feed_bottoms_h_e_e_t_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/middle_pane/body_content/body_content_widget.dart';
@@ -12,8 +11,6 @@ import 'package:flutter/material.dart';
 class MiddleColumnModel extends FlutterFlowModel<MiddleColumnWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
-  CompaniesRecord? companycheckforbottomchat;
   // Model for Preparing component.
   late PreparingModel preparingModel;
   // Model for BodyContent component.
