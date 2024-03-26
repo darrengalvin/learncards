@@ -17,8 +17,14 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
 
-      - name: Upgrade Dependencies
-        run: flutter pub upgrade
+      - name: Update package name
+        run: sed -i 's/name: .*/name: com.goappy.journeyforward/' pubspec.yaml
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Clean build cache
+        run: flutter clean
 
       - name: Build Flutter Web
         run: flutter build web --no-tree-shake-icons
