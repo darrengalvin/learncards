@@ -20,11 +20,13 @@ class MiddleColumnWidget extends StatefulWidget {
     required this.companyDoc,
     required this.sessionsDoc,
     bool? isMiddleShow,
+    required this.tilev2doc,
   }) : isMiddleShow = isMiddleShow ?? false;
 
   final CompaniesRecord? companyDoc;
   final SessionsRecord? sessionsDoc;
   final bool isMiddleShow;
+  final Tilesv2Record? tilev2doc;
 
   @override
   State<MiddleColumnWidget> createState() => _MiddleColumnWidgetState();
@@ -269,6 +271,7 @@ class _MiddleColumnWidgetState extends State<MiddleColumnWidget> {
                           child: BodyContentWidget(
                             companyDoc: widget.companyDoc!,
                             sessionId: widget.sessionsDoc!,
+                            tilesv2Doc: widget.tilev2doc!,
                           ),
                         );
                       } else if (FFAppState().middlePane == 'social') {

@@ -1,6 +1,3 @@
-import '/components/edit_text_block_widget.dart';
-import '/components/image_gallery_widget.dart';
-import '/components/video_gallery_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'darren_drawer_content_block_copy_widget.dart'
@@ -22,30 +19,16 @@ class DarrenDrawerContentBlockCopyModel
   // State field(s) for BlockType widget.
   String? blockTypeValue;
   FormFieldController<String>? blockTypeValueController;
-  // Model for EditTextBlock component.
-  late EditTextBlockModel editTextBlockModel;
-  // Model for imageGallery component.
-  late ImageGalleryModel imageGalleryModel;
-  // Model for VideoGallery component.
-  late VideoGalleryModel videoGalleryModel;
 
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {
-    editTextBlockModel = createModel(context, () => EditTextBlockModel());
-    imageGalleryModel = createModel(context, () => ImageGalleryModel());
-    videoGalleryModel = createModel(context, () => VideoGalleryModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
     blockTitleFocusNode?.dispose();
     blockTitleController?.dispose();
-
-    editTextBlockModel.dispose();
-    imageGalleryModel.dispose();
-    videoGalleryModel.dispose();
   }
 
   /// Action blocks are added here.

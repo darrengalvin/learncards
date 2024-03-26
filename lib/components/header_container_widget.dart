@@ -115,6 +115,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                       constraints: BoxConstraints(

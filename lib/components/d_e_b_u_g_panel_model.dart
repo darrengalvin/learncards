@@ -8,8 +8,6 @@ class DEBUGPanelModel extends FlutterFlowModel<DEBUGPanelWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<SessionsRecord>? sessionsCopy;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  List<SessionsRecord>? sessions;
 
   /// Initialization and disposal methods.
 

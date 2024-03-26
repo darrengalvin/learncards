@@ -210,6 +210,11 @@ class UsersRecord extends FirestoreRecord {
   String get lastSessionId => _lastSessionId ?? '';
   bool hasLastSessionId() => _lastSessionId != null;
 
+  // "canEdit" field.
+  bool? _canEdit;
+  bool get canEdit => _canEdit ?? false;
+  bool hasCanEdit() => _canEdit != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -250,6 +255,7 @@ class UsersRecord extends FirestoreRecord {
     _coachMeThreadID = snapshotData['coachMeThreadID'] as String?;
     _companyId = snapshotData['companyId'] as String?;
     _lastSessionId = snapshotData['lastSessionId'] as String?;
+    _canEdit = snapshotData['canEdit'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -315,6 +321,7 @@ Map<String, dynamic> createUsersRecordData({
   String? coachMeThreadID,
   String? companyId,
   String? lastSessionId,
+  bool? canEdit,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -347,6 +354,7 @@ Map<String, dynamic> createUsersRecordData({
       'coachMeThreadID': coachMeThreadID,
       'companyId': companyId,
       'lastSessionId': lastSessionId,
+      'canEdit': canEdit,
     }.withoutNulls,
   );
 
@@ -397,7 +405,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.totalLearnCards == e2?.totalLearnCards &&
         e1?.coachMeThreadID == e2?.coachMeThreadID &&
         e1?.companyId == e2?.companyId &&
-        e1?.lastSessionId == e2?.lastSessionId;
+        e1?.lastSessionId == e2?.lastSessionId &&
+        e1?.canEdit == e2?.canEdit;
   }
 
   @override
@@ -440,7 +449,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.totalLearnCards,
         e?.coachMeThreadID,
         e?.companyId,
-        e?.lastSessionId
+        e?.lastSessionId,
+        e?.canEdit
       ]);
 
   @override

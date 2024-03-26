@@ -293,3 +293,8 @@ String? stringifyJSON(String? json) {
     return null;
   }
 }
+
+String? removeSpaceFromString(String? string) {
+  // remove space from string
+  return string?.replaceAll(' ', '');
+}

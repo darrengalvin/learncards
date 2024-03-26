@@ -110,7 +110,7 @@ class _NotTodayWidgetState extends State<NotTodayWidget> {
                     '${valueOrDefault<String>(
                       widget.tileDoc?.title,
                       '-',
-                    )} is not avaiaible until  ${dateTimeFormat('MMMEd', widget.tileDoc?.showDate)}',
+                    )} is not avaiaible until  ${dateTimeFormat('MMMEd', widget.tileDoc?.showUsersDate)}',
                     '-',
                   ),
                   style: FlutterFlowTheme.of(context).labelMedium.override(

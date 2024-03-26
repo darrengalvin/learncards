@@ -260,6 +260,11 @@ class Tilesv2Record extends FirestoreRecord {
   String get whyChosen => _whyChosen ?? '';
   bool hasWhyChosen() => _whyChosen != null;
 
+  // "showUsersDate" field.
+  DateTime? _showUsersDate;
+  DateTime? get showUsersDate => _showUsersDate;
+  bool hasShowUsersDate() => _showUsersDate != null;
+
   void _initializeFields() {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _updatedTime = snapshotData['updated_time'] as DateTime?;
@@ -310,6 +315,7 @@ class Tilesv2Record extends FirestoreRecord {
     _processed = snapshotData['processed'] as bool?;
     _dailyActivities = getDataList(snapshotData['dailyActivities']);
     _whyChosen = snapshotData['whyChosen'] as String?;
+    _showUsersDate = snapshotData['showUsersDate'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -388,6 +394,7 @@ Map<String, dynamic> createTilesv2RecordData({
   bool? tileToday,
   bool? processed,
   String? whyChosen,
+  DateTime? showUsersDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -432,6 +439,7 @@ Map<String, dynamic> createTilesv2RecordData({
       'tileToday': tileToday,
       'processed': processed,
       'whyChosen': whyChosen,
+      'showUsersDate': showUsersDate,
     }.withoutNulls,
   );
 
@@ -492,7 +500,8 @@ class Tilesv2RecordDocumentEquality implements Equality<Tilesv2Record> {
         e1?.tileToday == e2?.tileToday &&
         e1?.processed == e2?.processed &&
         listEquality.equals(e1?.dailyActivities, e2?.dailyActivities) &&
-        e1?.whyChosen == e2?.whyChosen;
+        e1?.whyChosen == e2?.whyChosen &&
+        e1?.showUsersDate == e2?.showUsersDate;
   }
 
   @override
@@ -545,7 +554,8 @@ class Tilesv2RecordDocumentEquality implements Equality<Tilesv2Record> {
         e?.tileToday,
         e?.processed,
         e?.dailyActivities,
-        e?.whyChosen
+        e?.whyChosen,
+        e?.showUsersDate
       ]);
 
   @override

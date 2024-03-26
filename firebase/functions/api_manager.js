@@ -130,6 +130,9 @@ async function _getTopicsCall(context, ffVariables) {
   var flowiseUrl = ffVariables["flowiseUrl"];
   var threadId = ffVariables["threadId"];
   var companyDocId = ffVariables["companyDocId"];
+  var tableName = ffVariables["tableName"];
+  var queryName = ffVariables["queryName"];
+  var supabaseProjUrl = ffVariables["supabaseProjUrl"];
 
   var url = `${cloudFunctionsGroup.baseUrl}/getTopics`;
   var headers = { "Content-Type": `application/json` };

@@ -40,7 +40,7 @@
         <string>journey_forward</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>com.goappy.journeyforward</string>
+        <string>com.goappy.learncards</string>
         </array>
         </dict>
     </array>

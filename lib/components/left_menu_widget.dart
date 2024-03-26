@@ -78,6 +78,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -114,11 +115,22 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                     Expanded(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
                               'You are attempting to enter developer mode, only do this if you have been instructed to do so.  Else press cancel below.',
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Company Doc ${valueOrDefault<String>(
+                                FFAppState().selectedCompanyId,
+                                '0',
+                              )}',
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
                           ),
@@ -185,29 +197,35 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                             child: FFButtonWidget(
                               onPressed: () async {
                                 logFirebaseEvent(
-                                    'LEFT_MENU_COMP_ENTER_DEBUG_BTN_ON_TAP');
-                                logFirebaseEvent('Button_update_app_state');
-                                setState(() {
-                                  FFAppState().debugMode = true;
-                                });
-                                logFirebaseEvent('Button_bottom_sheet');
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  enableDrag: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return WebViewAware(
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: const DeveloperDebugModeWidget(),
-                                      ),
-                                    );
+                                    'LEFT_MENU_COMP_SETUP_BTN_ON_TAP');
+                                logFirebaseEvent('Button_firestore_query');
+                                _model.companiesForSetup =
+                                    await queryCompaniesRecordOnce(
+                                  queryBuilder: (companiesRecord) =>
+                                      companiesRecord.where(
+                                    'companyDocId',
+                                    isEqualTo: FFAppState().selectedCompanyId,
+                                  ),
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(
+                                  'sETUPcOMPANY',
+                                  queryParameters: {
+                                    'companyDoc': serializeParam(
+                                      _model.companiesForSetup,
+                                      ParamType.Document,
+                                    ),
+                                  }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    'companyDoc': _model.companiesForSetup,
                                   },
-                                ).then((value) => safeSetState(() {}));
+                                );
+
+                                setState(() {});
                               },
-                              text: 'Enter Debug',
+                              text: 'Setup',
                               options: FFButtonOptions(
                                 height: 40.0,
                                 padding: const EdgeInsetsDirectional.fromSTEB(

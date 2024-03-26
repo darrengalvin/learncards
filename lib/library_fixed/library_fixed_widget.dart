@@ -88,6 +88,10 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      logFirebaseEvent('Library-fixed_update_app_state');
+      setState(() {
+        FFAppState().selectedCompanyId = _model.companyByUrl!.reference.id;
+      });
       if (FFAppState().nonLoggedInSessionId == '') {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -934,10 +938,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                       constraints: const BoxConstraints(
                                         maxHeight: double.infinity,
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: _model
-                                            .companyByUrl?.colors.primaryColor,
-                                      ),
+                                      decoration: const BoxDecoration(),
                                       alignment:
                                           const AlignmentDirectional(-1.0, -1.0),
                                       child: Align(
@@ -1281,6 +1282,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                                         .companyByUrl
                                                                         ?.reference
                                                                         .id,
+                                                                    tilesv2Doc:
+                                                                        libraryFixedTilesv2RecordList
+                                                                            .first,
                                                                   ),
                                                                 ),
                                                               ],

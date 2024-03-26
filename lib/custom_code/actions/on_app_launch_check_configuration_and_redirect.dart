@@ -19,10 +19,22 @@ import 'package:package_info_plus/package_info_plus.dart';
 // ...
 
 Future<void> onAppLaunchCheckConfigurationAndRedirect() async {
+  String pageUrl = '';
   if (kIsWeb) {
     // Web-specific logic
-    final pageUrl = Uri.base.toString();
+    pageUrl = Uri.base.toString();
     debugPrint('Current web URL: $pageUrl');
+
+    final uri = Uri.parse(pageUrl);
+    final companyDoc = uri.queryParameters['companiesDoc'];
+
+    if (companyDoc != null) {
+      FFAppState().selectedCompanyId = companyDoc;
+      FFAppState().companyDocId = companyDoc;
+      debugPrint("CompanyDoc found in URL and AppState updated: $companyDoc");
+    } else {
+      debugPrint("No companyDoc found in the URL");
+    }
 
     final collection = FirebaseFirestore.instance.collection('companies');
     final querySnapshot =

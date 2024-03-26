@@ -2538,6 +2538,9 @@ class GetTopicsCall {
     String? flowiseUrl = '',
     String? threadId = '',
     String? companyDocId = '',
+    String? tableName = '',
+    String? queryName = '',
+    String? supabaseProjUrl = '',
   }) async {
     final response = await makeCloudCall(
       _kPrivateApiFunctionName,
@@ -2551,6 +2554,9 @@ class GetTopicsCall {
           'flowiseUrl': flowiseUrl,
           'threadId': threadId,
           'companyDocId': companyDocId,
+          'tableName': tableName,
+          'queryName': queryName,
+          'supabaseProjUrl': supabaseProjUrl,
         },
       },
     );

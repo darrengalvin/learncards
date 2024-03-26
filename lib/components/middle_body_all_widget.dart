@@ -13,9 +13,11 @@ class MiddleBodyAllWidget extends StatefulWidget {
   const MiddleBodyAllWidget({
     super.key,
     this.companyDocId,
+    required this.tilesv2Doc,
   });
 
   final String? companyDocId;
+  final Tilesv2Record? tilesv2Doc;
 
   @override
   State<MiddleBodyAllWidget> createState() => _MiddleBodyAllWidgetState();
@@ -165,6 +167,7 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
                                 companyDoc: containerCompaniesRecord!,
                                 sessionsDoc: containerSessionsRecordList.first,
                                 isMiddleShow: FFAppState().middleColumnShow,
+                                tilev2doc: widget.tilesv2Doc!,
                               ),
                             ),
                           ),

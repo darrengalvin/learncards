@@ -568,8 +568,8 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                                   logFirebaseEvent('tile_firestore_query');
                                                                                                                   _model.companyQuery = await queryCompaniesRecordOnce(
                                                                                                                     queryBuilder: (companiesRecord) => companiesRecord.where(
-                                                                                                                      'companyCode',
-                                                                                                                      isEqualTo: FFAppState().companySecretCode,
+                                                                                                                      'companyDocId',
+                                                                                                                      isEqualTo: FFAppState().selectedCompanyId,
                                                                                                                     ),
                                                                                                                     singleRecord: true,
                                                                                                                   ).then((s) => s.firstOrNull);

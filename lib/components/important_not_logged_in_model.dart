@@ -20,13 +20,13 @@ class ImportantNotLoggedInModel
   String? passwordSelectedOption;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
-  // State field(s) for conformPassowrd widget.
-  final conformPassowrdKey = GlobalKey();
-  FocusNode? conformPassowrdFocusNode;
-  TextEditingController? conformPassowrdController;
-  String? conformPassowrdSelectedOption;
-  late bool conformPassowrdVisibility;
-  String? Function(BuildContext, String?)? conformPassowrdControllerValidator;
+  // State field(s) for confirmPassowrd widget.
+  final confirmPassowrdKey = GlobalKey();
+  FocusNode? confirmPassowrdFocusNode;
+  TextEditingController? confirmPassowrdController;
+  String? confirmPassowrdSelectedOption;
+  late bool confirmPassowrdVisibility;
+  String? Function(BuildContext, String?)? confirmPassowrdControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   LogsRecord? logsQuery;
 
@@ -35,7 +35,7 @@ class ImportantNotLoggedInModel
   @override
   void initState(BuildContext context) {
     passwordVisibility = false;
-    conformPassowrdVisibility = false;
+    confirmPassowrdVisibility = false;
   }
 
   @override
@@ -44,7 +44,7 @@ class ImportantNotLoggedInModel
 
     passwordFocusNode?.dispose();
 
-    conformPassowrdFocusNode?.dispose();
+    confirmPassowrdFocusNode?.dispose();
   }
 
   /// Action blocks are added here.

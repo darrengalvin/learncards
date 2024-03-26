@@ -795,6 +795,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'createcompany',
               path: 'createcompany',
               builder: (context, params) => const CreatecompanyWidget(),
+            ),
+            FFRoute(
+              name: 'sETUPcOMPANY',
+              path: 'sETUPcOMPANY',
+              asyncParams: {
+                'companyDoc':
+                    getDoc(['companies'], CompaniesRecord.fromSnapshot),
+              },
+              builder: (context, params) => SETUPcOMPANYWidget(
+                companyDoc: params.getParam('companyDoc', ParamType.Document),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

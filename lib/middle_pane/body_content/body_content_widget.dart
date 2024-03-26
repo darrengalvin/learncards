@@ -1,13 +1,18 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/blockv3_widget.dart';
 import '/components/drawer_empty_list_tiles_widget.dart';
+import '/components/edit_text_block_widget.dart';
 import '/components/learning_card_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'body_content_model.dart';
 export 'body_content_model.dart';
 
@@ -16,10 +21,12 @@ class BodyContentWidget extends StatefulWidget {
     super.key,
     required this.companyDoc,
     required this.sessionId,
+    required this.tilesv2Doc,
   });
 
   final CompaniesRecord? companyDoc;
   final SessionsRecord? sessionId;
+  final Tilesv2Record? tilesv2Doc;
 
   @override
   State<BodyContentWidget> createState() => _BodyContentWidgetState();
@@ -243,6 +250,122 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
+                                                  if (valueOrDefault<bool>(
+                                                    (loggedIn == true) &&
+                                                        (valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.canEdit,
+                                                                false) ==
+                                                            true),
+                                                    false,
+                                                  ))
+                                                    AuthUserStreamWidget(
+                                                      builder: (context) => Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child:
+                                                                FlutterFlowIconButton(
+                                                              borderColor: Colors
+                                                                  .transparent,
+                                                              borderRadius:
+                                                                  30.0,
+                                                              borderWidth: 1.0,
+                                                              buttonSize: 50.0,
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor7,
+                                                              hoverIconColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .edit_outlined,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .grayIcon,
+                                                                size: 20.0,
+                                                              ),
+                                                              onPressed:
+                                                                  () async {
+                                                                logFirebaseEvent(
+                                                                    'BODY_CONTENT_COMP_IconEdit_ON_TAP');
+                                                                logFirebaseEvent(
+                                                                    'IconEdit_bottom_sheet');
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return WebViewAware(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            SizedBox(
+                                                                          height:
+                                                                              MediaQuery.sizeOf(context).height * 0.75,
+                                                                          child:
+                                                                              EditTextBlockWidget(
+                                                                            blockDoc:
+                                                                                containerTileBlocksRecord,
+                                                                            tilesv2passedDoc:
+                                                                                widget.tilesv2Doc!,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+                                                              },
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        15.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Edit  ',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional

@@ -126,12 +126,10 @@ class CreatecompanyModel extends FlutterFlowModel<CreatecompanyWidget> {
   // State field(s) for TableName widget.
   FocusNode? tableNameFocusNode;
   TextEditingController? tableNameController;
-  final tableNameMask = MaskTextInputFormatter(mask: '##/##/####');
   String? Function(BuildContext, String?)? tableNameControllerValidator;
   // State field(s) for supabaseProjectURL widget.
   FocusNode? supabaseProjectURLFocusNode;
   TextEditingController? supabaseProjectURLController;
-  final supabaseProjectURLMask = MaskTextInputFormatter(mask: '##/##/####');
   String? Function(BuildContext, String?)?
       supabaseProjectURLControllerValidator;
   // State field(s) for TabBar widget.
@@ -177,6 +175,10 @@ class CreatecompanyModel extends FlutterFlowModel<CreatecompanyWidget> {
   String? Function(BuildContext, String?)? memberLevelsController3Validator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   CompaniesRecord? createdCompany;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  MemberLevelsRecord? createdMemberLevel;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  MyTeamRecord? welcomeGreeter;
 
   /// Initialization and disposal methods.
 

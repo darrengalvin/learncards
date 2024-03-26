@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/middle_pane/middle_column/middle_column_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -474,102 +473,6 @@ class _DEBUGPanelWidgetState extends State<DEBUGPanelWidget> {
                                                     setState(() {});
                                                   },
                                                   text: 'middle',
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    textStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                              useGoogleFonts: GoogleFonts
-                                                                      .asMap()
-                                                                  .containsKey(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmallFamily),
-                                                            ),
-                                                    elevation: 3.0,
-                                                    borderSide: const BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        25.0, 0.0, 0.0, 0.0),
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    logFirebaseEvent(
-                                                        'D_E_B_U_G_PANEL_COMP_CHAT_BTN_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Button_firestore_query');
-                                                    _model.sessions =
-                                                        await querySessionsRecordOnce(
-                                                      queryBuilder:
-                                                          (sessionsRecord) =>
-                                                              sessionsRecord
-                                                                  .where(
-                                                        'sessionId',
-                                                        isEqualTo: FFAppState()
-                                                            .nonLoggedInSessionId,
-                                                      ),
-                                                    );
-                                                    logFirebaseEvent(
-                                                        'Button_bottom_sheet');
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return WebViewAware(
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                MiddleColumnWidget(
-                                                              companyDoc: widget
-                                                                  .parameter2!,
-                                                              sessionsDoc:
-                                                                  _model
-                                                                      .sessions!
-                                                                      .first,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
-
-                                                    setState(() {});
-                                                  },
-                                                  text: 'chat',
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
