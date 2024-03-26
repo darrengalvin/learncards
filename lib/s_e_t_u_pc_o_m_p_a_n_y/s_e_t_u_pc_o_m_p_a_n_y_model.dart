@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SETUPcOMPANYModel extends FlutterFlowModel<SETUPcOMPANYWidget> {
+  ///  Local state fields for this page.
+
+  bool showCalendar = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

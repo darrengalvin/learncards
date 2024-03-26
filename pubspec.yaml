@@ -146,6 +146,7 @@ dependencies:
   substring_highlight: 1.0.33
   supabase: 1.11.11
   supabase_flutter: 1.10.24
+  table_calendar: 3.0.9
   text_search: 1.0.1
   timeago: 3.2.2
   universal_io: 2.2.2
