@@ -18,7 +18,8 @@ jobs:
         uses: subosito/flutter-action@v1
 
       - name: Update package name
-        run: sed -i "s/name: .*/name: com.goappy.journeyforward/" pubspec.yaml
+        run: |
+          sed -i 's/name: .*/name: com.goappy.journeyforward/' pubspec.yaml
 
       - name: Get dependencies
         run: flutter pub get
