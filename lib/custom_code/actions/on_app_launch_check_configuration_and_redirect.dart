@@ -63,7 +63,7 @@ Future<void> onAppLaunchCheckConfigurationAndRedirect(
             "No document with matching landingUrl found in the 'companies' collection");
       }
     } else {
-      // Mobile app-specific logic
+// Mobile app-specific logic
       final packageInfo = await PackageInfo.fromPlatform();
       final packageName = packageInfo.packageName;
       debugPrint('Current app package name: $packageName');

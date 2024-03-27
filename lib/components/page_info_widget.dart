@@ -51,11 +51,11 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
           child: StreamBuilder<List<CategoriesRecord>>(
             stream: queryCategoriesRecord(
               queryBuilder: (categoriesRecord) => categoriesRecord.where(
@@ -85,18 +85,18 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
                   snapshot.data!;
               return Container(
                 width: double.infinity,
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: 570.0,
                 ),
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                   borderRadius: BorderRadius.circular(12.0),
                   border: Border.all(
-                    color: Color(0xFFE0E3E7),
+                    color: const Color(0xFFE0E3E7),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.all(24.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +106,7 @@ class _PageInfoWidgetState extends State<PageInfoWidget> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(

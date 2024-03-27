@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'not_today_model.dart';
 export 'not_today_model.dart';
 
@@ -48,15 +47,15 @@ class _NotTodayWidgetState extends State<NotTodayWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
       child: Container(
         width: double.infinity,
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 470.0,
         ),
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 3.0,
               color: Color(0x33000000),
@@ -66,13 +65,13 @@ class _NotTodayWidgetState extends State<NotTodayWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                 child: Text(
                   valueOrDefault<String>(
                     widget.tileDoc?.title,
@@ -88,7 +87,7 @@ class _NotTodayWidgetState extends State<NotTodayWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                 child: Text(
                   valueOrDefault<String>(
                     'Today is ${dateTimeFormat('MMMMEEEEd', getCurrentTimestamp)} ',
@@ -105,7 +104,7 @@ class _NotTodayWidgetState extends State<NotTodayWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                 child: Text(
                   valueOrDefault<String>(
                     '${valueOrDefault<String>(
@@ -125,7 +124,7 @@ class _NotTodayWidgetState extends State<NotTodayWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -186,7 +185,7 @@ class _NotTodayWidgetState extends State<NotTodayWidget> {
                           value,
                           milliSecond: false),
                       controller: _model.timerController,
-                      updateStateInterval: Duration(milliseconds: 1000),
+                      updateStateInterval: const Duration(milliseconds: 1000),
                       onChanged: (value, displayTime, shouldUpdate) {
                         _model.timerMilliseconds = value;
                         _model.timerValue = displayTime;

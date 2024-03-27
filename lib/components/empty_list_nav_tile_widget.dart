@@ -1,9 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -19,12 +17,12 @@ class EmptyListNavTileWidget extends StatefulWidget {
     String? tileName,
     String? tileParent,
     String? hintText,
-  })  : this.tileIndex = tileIndex ?? 0,
-        this.tileTier = tileTier ?? 0,
-        this.tileType = tileType ?? 'Nav',
-        this.tileName = tileName ?? 'New Tile',
-        this.tileParent = tileParent ?? '0',
-        this.hintText = hintText ?? 'Get Started';
+  })  : tileIndex = tileIndex ?? 0,
+        tileTier = tileTier ?? 0,
+        tileType = tileType ?? 'Nav',
+        tileName = tileName ?? 'New Tile',
+        tileParent = tileParent ?? '0',
+        hintText = hintText ?? 'Get Started';
 
   final int tileIndex;
   final int tileTier;
@@ -66,7 +64,7 @@ class _EmptyListNavTileWidgetState extends State<EmptyListNavTileWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(4.0),
       child: InkWell(
         splashColor: Colors.transparent,
         focusColor: Colors.transparent,
@@ -177,7 +175,7 @@ class _EmptyListNavTileWidgetState extends State<EmptyListNavTileWidget> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(17.0),
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 100),
             curve: Curves.easeIn,
             width: 250.0,
             height: 120.0,
@@ -199,7 +197,7 @@ class _EmptyListNavTileWidgetState extends State<EmptyListNavTileWidget> {
                   size: 48.0,
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     valueOrDefault<String>(
                       widget.hintText,

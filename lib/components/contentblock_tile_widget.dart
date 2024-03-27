@@ -1,10 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'contentblock_tile_model.dart';
 export 'contentblock_tile_model.dart';
 
@@ -51,13 +49,13 @@ class _ContentblockTileWidgetState extends State<ContentblockTileWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 3.0, 16.0, 3.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 3.0, 16.0, 3.0),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
         height: 100.0,
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 3.0,
               color: Color(0x411D2429),
@@ -67,13 +65,13 @@ class _ContentblockTileWidgetState extends State<ContentblockTileWidget> {
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +82,7 @@ class _ContentblockTileWidgetState extends State<ContentblockTileWidget> {
                         style:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: 'Outfit',
-                                  color: Color(0xFF090F13),
+                                  color: const Color(0xFF090F13),
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts:
@@ -93,7 +91,7 @@ class _ContentblockTileWidgetState extends State<ContentblockTileWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 8.0, 0.0),
                           child: AutoSizeText(
                             widget.parameter2!.maybeHandleOverflow(
@@ -105,7 +103,7 @@ class _ContentblockTileWidgetState extends State<ContentblockTileWidget> {
                                 .bodySmall
                                 .override(
                                   fontFamily: 'Outfit',
-                                  color: Color(0xFF7C8791),
+                                  color: const Color(0xFF7C8791),
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts:
@@ -132,7 +130,7 @@ class _ContentblockTileWidgetState extends State<ContentblockTileWidget> {
                       logFirebaseEvent(
                           'CONTENTBLOCK_TILE_Icon_le6bntpl_ON_TAP');
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.cancel_outlined,
                       color: Colors.black,
                       size: 27.0,

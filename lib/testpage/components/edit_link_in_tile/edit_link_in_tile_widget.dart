@@ -1,12 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_link_in_tile_model.dart';
 export 'edit_link_in_tile_model.dart';
 
@@ -67,18 +64,18 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: TextStyle(),
+              unselectedLabelStyle: const TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Link Details',
                 ),
@@ -103,7 +100,7 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -116,7 +113,7 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                               logFirebaseEvent('Icon_bottom_sheet');
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.cancel_outlined,
                               color: Colors.black,
                               size: 24.0,
@@ -124,7 +121,7 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.linkTitleController,
                             focusNode: _model.linkTitleFocusNode,
@@ -141,21 +138,21 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -168,7 +165,7 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.linkURLController,
                             focusNode: _model.linkURLFocusNode,
@@ -185,21 +182,21 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -213,7 +210,7 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 10.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -233,9 +230,9 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                             options: FFButtonOptions(
                               width: 150.0,
                               height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -250,7 +247,7 @@ class _EditLinkInTileWidgetState extends State<EditLinkInTileWidget>
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

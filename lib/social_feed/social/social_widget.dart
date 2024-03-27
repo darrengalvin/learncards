@@ -13,10 +13,8 @@ import '/flutter_flow/upload_data.dart';
 import '/social_feed/reply_to_post/reply_to_post_widget.dart';
 import '/testpage/components/post_comment_functions/post_comment_functions_widget.dart';
 import '/testpage/components/post_functions/post_functions_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -55,8 +53,8 @@ class _SocialWidgetState extends State<SocialWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -174,7 +172,7 @@ class _SocialWidgetState extends State<SocialWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -194,7 +192,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     if ((currentUserDocument?.hasaccess
-                                                ?.toList() ??
+                                                .toList() ??
                                             [])
                                         .contains(
                                             FFAppState().selectedcategory))
@@ -283,7 +281,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                             .readytopost ==
                                                                         false)
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             10.0,
                                                                             5.0,
@@ -329,7 +327,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                             .readytopost ==
                                                                         true)
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             10.0,
                                                                             5.0,
@@ -378,7 +376,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                   children: [
                                                     if ((currentUserDocument
                                                                     ?.hasaccess
-                                                                    ?.toList() ??
+                                                                    .toList() ??
                                                                 [])
                                                             .contains(FFAppState()
                                                                 .selectedcategory) !=
@@ -388,7 +386,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             .noAccessModel,
                                                         updateCallback: () =>
                                                             setState(() {}),
-                                                        child: NoAccessWidget(),
+                                                        child: const NoAccessWidget(),
                                                       ),
                                                     if (FFAppState()
                                                             .readytopost ==
@@ -413,11 +411,11 @@ class _SocialWidgetState extends State<SocialWidget>
                                                           children: [
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.95,
                                                                       0.0),
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         30.0,
                                                                         20.0,
@@ -432,7 +430,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                           .stretch,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           12.0,
                                                                           12.0,
@@ -452,7 +450,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                             clipBehavior:
                                                                                 Clip.antiAlias,
                                                                             decoration:
-                                                                                BoxDecoration(
+                                                                                const BoxDecoration(
                                                                               shape: BoxShape.circle,
                                                                             ),
                                                                             child:
@@ -464,13 +462,13 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                           Expanded(
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                               child: TextFormField(
                                                                                 controller: _model.textController,
                                                                                 focusNode: _model.textFieldFocusNode,
                                                                                 onChanged: (_) => EasyDebounce.debounce(
                                                                                   '_model.textController',
-                                                                                  Duration(milliseconds: 2000),
+                                                                                  const Duration(milliseconds: 2000),
                                                                                   () => setState(() {}),
                                                                                 ),
                                                                                 autofocus: true,
@@ -479,52 +477,52 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                   hintText: 'Write something...',
                                                                                   hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: 'Outfit',
-                                                                                        color: Color(0xFF57636C),
+                                                                                        color: const Color(0xFF57636C),
                                                                                         fontSize: 14.0,
                                                                                         fontWeight: FontWeight.normal,
                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                       ),
-                                                                                  enabledBorder: UnderlineInputBorder(
+                                                                                  enabledBorder: const UnderlineInputBorder(
                                                                                     borderSide: BorderSide(
                                                                                       color: Color(0x00000000),
                                                                                       width: 1.0,
                                                                                     ),
-                                                                                    borderRadius: const BorderRadius.only(
+                                                                                    borderRadius: BorderRadius.only(
                                                                                       topLeft: Radius.circular(4.0),
                                                                                       topRight: Radius.circular(4.0),
                                                                                     ),
                                                                                   ),
-                                                                                  focusedBorder: UnderlineInputBorder(
+                                                                                  focusedBorder: const UnderlineInputBorder(
                                                                                     borderSide: BorderSide(
                                                                                       color: Color(0x00000000),
                                                                                       width: 1.0,
                                                                                     ),
-                                                                                    borderRadius: const BorderRadius.only(
+                                                                                    borderRadius: BorderRadius.only(
                                                                                       topLeft: Radius.circular(4.0),
                                                                                       topRight: Radius.circular(4.0),
                                                                                     ),
                                                                                   ),
-                                                                                  errorBorder: UnderlineInputBorder(
+                                                                                  errorBorder: const UnderlineInputBorder(
                                                                                     borderSide: BorderSide(
                                                                                       color: Color(0x00000000),
                                                                                       width: 1.0,
                                                                                     ),
-                                                                                    borderRadius: const BorderRadius.only(
+                                                                                    borderRadius: BorderRadius.only(
                                                                                       topLeft: Radius.circular(4.0),
                                                                                       topRight: Radius.circular(4.0),
                                                                                     ),
                                                                                   ),
-                                                                                  focusedErrorBorder: UnderlineInputBorder(
+                                                                                  focusedErrorBorder: const UnderlineInputBorder(
                                                                                     borderSide: BorderSide(
                                                                                       color: Color(0x00000000),
                                                                                       width: 1.0,
                                                                                     ),
-                                                                                    borderRadius: const BorderRadius.only(
+                                                                                    borderRadius: BorderRadius.only(
                                                                                       topLeft: Radius.circular(4.0),
                                                                                       topRight: Radius.circular(4.0),
                                                                                     ),
                                                                                   ),
-                                                                                  contentPadding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 8.0, 12.0),
+                                                                                  contentPadding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 8.0, 12.0),
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Outfit',
@@ -542,7 +540,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           4.0,
                                                                           12.0,
@@ -559,13 +557,13 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                 child: FlutterFlowIconButton(
                                                                                   borderColor: Colors.transparent,
                                                                                   borderRadius: 30.0,
                                                                                   borderWidth: 1.0,
                                                                                   buttonSize: 40.0,
-                                                                                  icon: Icon(
+                                                                                  icon: const Icon(
                                                                                     Icons.photo_outlined,
                                                                                     color: Color(0xFF57636C),
                                                                                     size: 20.0,
@@ -626,13 +624,13 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                 child: FlutterFlowIconButton(
                                                                                   borderColor: Colors.transparent,
                                                                                   borderRadius: 30.0,
                                                                                   borderWidth: 1.0,
                                                                                   buttonSize: 40.0,
-                                                                                  icon: Icon(
+                                                                                  icon: const Icon(
                                                                                     Icons.video_call,
                                                                                     color: Color(0xFF57636C),
                                                                                     size: 20.0,
@@ -696,7 +694,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                             ],
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 150.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -779,8 +777,8 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                 FFButtonOptions(
                                                                               width: 70.0,
                                                                               height: 30.0,
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: 'Outfit',
@@ -790,7 +788,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                   ),
                                                                               elevation: 2.0,
-                                                                              borderSide: BorderSide(
+                                                                              borderSide: const BorderSide(
                                                                                 color: Colors.transparent,
                                                                                 width: 1.0,
                                                                               ),
@@ -800,12 +798,8 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                       ),
                                                                     ),
                                                                     if ((_model.uploadedFileUrl2 !=
-                                                                                null &&
-                                                                            _model.uploadedFileUrl2 !=
                                                                                 '') ||
                                                                         (_model.uploadedFileUrl1 !=
-                                                                                null &&
-                                                                            _model.uploadedFileUrl1 !=
                                                                                 ''))
                                                                       Column(
                                                                         mainAxisSize:
@@ -813,23 +807,23 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                         crossAxisAlignment:
                                                                             CrossAxisAlignment.stretch,
                                                                         children: [
-                                                                          Container(
+                                                                          SizedBox(
                                                                             width:
                                                                                 double.infinity,
                                                                             child:
                                                                                 Stack(
-                                                                              alignment: AlignmentDirectional(0.050000000000000044, 0.0),
+                                                                              alignment: const AlignmentDirectional(0.050000000000000044, 0.0),
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
                                                                                   child: Container(
-                                                                                    decoration: BoxDecoration(),
+                                                                                    decoration: const BoxDecoration(),
                                                                                     child: Visibility(
-                                                                                      visible: _model.uploadedFileUrl1 != null && _model.uploadedFileUrl1 != '',
+                                                                                      visible: _model.uploadedFileUrl1 != '',
                                                                                       child: Align(
-                                                                                        alignment: AlignmentDirectional(0.0, -1.67),
+                                                                                        alignment: const AlignmentDirectional(0.0, -1.67),
                                                                                         child: Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
                                                                                           child: Image.network(
                                                                                             _model.uploadedFileUrl2,
                                                                                             width: double.infinity,
@@ -840,9 +834,9 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                                if (_model.uploadedFileUrl2 != null && _model.uploadedFileUrl2 != '')
+                                                                                if (_model.uploadedFileUrl2 != '')
                                                                                   Align(
-                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                     child: FlutterFlowVideoPlayer(
                                                                                       path: _model.uploadedFileUrl1,
                                                                                       videoType: VideoType.network,
@@ -889,14 +883,14 @@ class _SocialWidgetState extends State<SocialWidget>
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Visibility(
                                 visible: (currentUserDocument?.hasaccess
-                                            ?.toList() ??
+                                            .toList() ??
                                         [])
                                     .contains(FFAppState().selectedcategory),
                                 child: AuthUserStreamWidget(
@@ -952,7 +946,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                   listViewIndex];
                                           return Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 9.0, 0.0, 9.0),
                                             child: Container(
                                               width: double.infinity,
@@ -964,10 +958,10 @@ class _SocialWidgetState extends State<SocialWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .secondary
                                                   ],
-                                                  stops: [0.0, 1.0],
-                                                  begin: AlignmentDirectional(
+                                                  stops: const [0.0, 1.0],
+                                                  begin: const AlignmentDirectional(
                                                       0.0, -1.0),
-                                                  end: AlignmentDirectional(
+                                                  end: const AlignmentDirectional(
                                                       0, 1.0),
                                                 ),
                                                 borderRadius:
@@ -998,7 +992,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsets.all(
+                                                              const EdgeInsets.all(
                                                                   7.0),
                                                           child: ClipRRect(
                                                             borderRadius:
@@ -1025,7 +1019,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -1070,7 +1064,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                       1.0,
                                                                   buttonSize:
                                                                       40.0,
-                                                                  icon: Icon(
+                                                                  icon: const Icon(
                                                                     Icons
                                                                         .keyboard_control_rounded,
                                                                     color: Color(
@@ -1090,7 +1084,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                           FlutterFlowTheme.of(context)
                                                                               .secondaryBackground,
                                                                       barrierColor:
-                                                                          Color(
+                                                                          const Color(
                                                                               0x00000000),
                                                                       context:
                                                                           context,
@@ -1102,7 +1096,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                             padding:
                                                                                 MediaQuery.viewInsetsOf(context),
                                                                             child:
-                                                                                Container(
+                                                                                SizedBox(
                                                                               height: 200.0,
                                                                               child: PostFunctionsWidget(
                                                                                 postdetailsref: listViewSocialpostsRecord.reference,
@@ -1124,7 +1118,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   17.0,
                                                                   7.0,
@@ -1156,13 +1150,10 @@ class _SocialWidgetState extends State<SocialWidget>
                                                     ),
                                                     if (listViewSocialpostsRecord
                                                                 .video !=
-                                                            null &&
-                                                        listViewSocialpostsRecord
-                                                                .video !=
                                                             '')
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     10.0,
@@ -1186,7 +1177,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                       ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -1284,7 +1275,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -1318,7 +1309,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -1349,7 +1340,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
@@ -1366,7 +1357,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -1399,7 +1390,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           25.0,
                                                                           0.0,
@@ -1428,7 +1419,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                         FlutterFlowTheme.of(context)
                                                                             .primary,
                                                                     barrierColor:
-                                                                        Color(
+                                                                        const Color(
                                                                             0x00000000),
                                                                     context:
                                                                         context,
@@ -1440,7 +1431,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                           padding:
                                                                               MediaQuery.viewInsetsOf(context),
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             height:
                                                                                 300.0,
                                                                             child:
@@ -1483,7 +1474,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                           ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           4.0,
                                                                           0.0,
                                                                           0.0,
@@ -1508,13 +1499,10 @@ class _SocialWidgetState extends State<SocialWidget>
                                                     ),
                                                     if (listViewSocialpostsRecord
                                                                 .photo !=
-                                                            null &&
-                                                        listViewSocialpostsRecord
-                                                                .photo !=
                                                             '')
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     2.0,
@@ -1536,7 +1524,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                       ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -1604,7 +1592,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                       listViewCommentsIndex];
                                                               return Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1633,7 +1621,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                               .start,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               10.0,
                                                                               0.0,
                                                                               0.0,
@@ -1656,7 +1644,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsets.all(7.0),
+                                                                                  padding: const EdgeInsets.all(7.0),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1669,7 +1657,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: EdgeInsets.all(5.0),
+                                                                                                padding: const EdgeInsets.all(5.0),
                                                                                                 child: ClipRRect(
                                                                                                   borderRadius: BorderRadius.circular(40.0),
                                                                                                   child: Image.network(
@@ -1683,7 +1671,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                             ],
                                                                                           ),
                                                                                           Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                             child: Text(
                                                                                               listViewCommentsSocialCommentsRecord.username,
                                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -1696,7 +1684,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                             ),
                                                                                           ),
                                                                                           Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                             child: Text(
                                                                                               dateTimeFormat('relative', getCurrentTimestamp),
                                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -1713,7 +1701,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                             borderRadius: 30.0,
                                                                                             borderWidth: 1.0,
                                                                                             buttonSize: 40.0,
-                                                                                            icon: Icon(
+                                                                                            icon: const Icon(
                                                                                               Icons.keyboard_control_rounded,
                                                                                               color: Color(0xFF57636C),
                                                                                               size: 20.0,
@@ -1724,13 +1712,13 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                               await showModalBottomSheet(
                                                                                                 isScrollControlled: true,
                                                                                                 backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                barrierColor: Color(0x00000000),
+                                                                                                barrierColor: const Color(0x00000000),
                                                                                                 context: context,
                                                                                                 builder: (context) {
                                                                                                   return WebViewAware(
                                                                                                     child: Padding(
                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                      child: Container(
+                                                                                                      child: SizedBox(
                                                                                                         height: 200.0,
                                                                                                         child: PostCommentFunctionsWidget(
                                                                                                           commentposterref: listViewCommentsSocialCommentsRecord.reference,
@@ -1745,7 +1733,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                         ],
                                                                                       ),
                                                                                       Padding(
-                                                                                        padding: EdgeInsets.all(15.0),
+                                                                                        padding: const EdgeInsets.all(15.0),
                                                                                         child: Column(
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1767,7 +1755,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
                                                                                   child: InkWell(
                                                                                     splashColor: Colors.transparent,
                                                                                     focusColor: Colors.transparent,
@@ -1779,13 +1767,13 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                       await showModalBottomSheet(
                                                                                         isScrollControlled: true,
                                                                                         backgroundColor: FlutterFlowTheme.of(context).primary,
-                                                                                        barrierColor: Color(0x00000000),
+                                                                                        barrierColor: const Color(0x00000000),
                                                                                         context: context,
                                                                                         builder: (context) {
                                                                                           return WebViewAware(
                                                                                             child: Padding(
                                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                                              child: Container(
+                                                                                              child: SizedBox(
                                                                                                 height: 300.0,
                                                                                                 child: ReplyToPostWidget(
                                                                                                   postid: listViewSocialpostsRecord.reference,
@@ -1812,7 +1800,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                               ),
                                                                                         ),
-                                                                                        Padding(
+                                                                                        const Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                           child: Icon(
                                                                                             Icons.reply_sharp,

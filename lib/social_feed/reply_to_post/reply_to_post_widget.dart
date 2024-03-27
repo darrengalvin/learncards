@@ -4,11 +4,9 @@ import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'reply_to_post_model.dart';
 export 'reply_to_post_model.dart';
 
@@ -60,13 +58,13 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         height: 190.0,
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 5.0,
               color: Color(0x162D3A21),
@@ -79,7 +77,7 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +87,7 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
                       width: 50.0,
                       height: 50.0,
                       clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
                       child: Image.network(
@@ -101,13 +99,13 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.textController,
                         focusNode: _model.textFieldFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
                           '_model.textController',
-                          Duration(milliseconds: 2000),
+                          const Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
                         autofocus: true,
@@ -118,58 +116,58 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
                               .bodySmall
                               .override(
                                 fontFamily: 'Outfit',
-                                color: Color(0xFF57636C),
+                                color: const Color(0xFF57636C),
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts:
                                     GoogleFonts.asMap().containsKey('Outfit'),
                               ),
-                          enabledBorder: UnderlineInputBorder(
+                          enabledBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          errorBorder: UnderlineInputBorder(
+                          errorBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          focusedErrorBorder: UnderlineInputBorder(
+                          focusedErrorBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          contentPadding: EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 8.0, 12.0),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Outfit',
-                              color: Color(0xFF101213),
+                              color: const Color(0xFF101213),
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                               useGoogleFonts:
@@ -184,13 +182,13 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               height: 12.0,
               thickness: 2.0,
               color: Color(0xFFF1F4F8),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -227,7 +225,7 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
                       logFirebaseEvent('Button_trigger_push_notification');
                       triggerPushNotification(
                         notificationTitle:
-                            '${currentUserDisplayName} has just commented on your post ',
+                            '$currentUserDisplayName has just commented on your post ',
                         notificationText: widget.posterdetails!.postdescription,
                         notificationImageUrl: currentUserPhoto,
                         notificationSound: 'default',
@@ -241,10 +239,10 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
                       width: 90.0,
                       height: 40.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0xFF4B39EF),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: const Color(0xFF4B39EF),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Outfit',
@@ -255,7 +253,7 @@ class _ReplyToPostWidgetState extends State<ReplyToPostWidget> {
                                     GoogleFonts.asMap().containsKey('Outfit'),
                               ),
                       elevation: 2.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

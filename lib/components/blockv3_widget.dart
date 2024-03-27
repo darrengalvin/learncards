@@ -1,7 +1,5 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/document_widget.dart';
 import '/components/image_gallery_widget.dart';
 import '/components/video_gallery_widget.dart';
@@ -13,7 +11,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -32,7 +29,7 @@ class Blockv3Widget extends StatefulWidget {
     required this.sessionId,
     required this.companyDoc,
     this.tileDocOriginal,
-  }) : this.topicItem = topicItem ?? 'topicItem';
+  }) : topicItem = topicItem ?? 'topicItem';
 
   final TileBlocksRecord? tileBlock;
   final String topicItem;
@@ -69,23 +66,23 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
     });
 
     _model.textController1 ??=
-        TextEditingController(text: widget.tileBlock?.imageH?.toString());
+        TextEditingController(text: widget.tileBlock?.imageH.toString());
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textController2 ??=
-        TextEditingController(text: widget.tileBlock?.imageW?.toString());
+        TextEditingController(text: widget.tileBlock?.imageW.toString());
     _model.textFieldFocusNode2 ??= FocusNode();
 
     _model.textController3 ??=
-        TextEditingController(text: widget.tileBlock?.imageH?.toString());
+        TextEditingController(text: widget.tileBlock?.imageH.toString());
     _model.textFieldFocusNode3 ??= FocusNode();
 
     _model.textController4 ??=
-        TextEditingController(text: widget.tileBlock?.imageW?.toString());
+        TextEditingController(text: widget.tileBlock?.imageW.toString());
     _model.textFieldFocusNode4 ??= FocusNode();
 
     _model.tesitEditController ??= TextEditingController(
-        text: _model.changedText != null && _model.changedText != ''
+        text: _model.changedText != ''
             ? _model.changedText
             : valueOrDefault<String>(
                 widget.tileBlock?.text,
@@ -108,14 +105,14 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
     context.watch<FFAppState>();
 
     return Container(
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -126,7 +123,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,10 +145,10 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 48.0, 0.0),
                                                 child: FlutterFlowIconButton(
@@ -190,23 +187,23 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                 return WebViewAware(
                                                                   child:
                                                                       AlertDialog(
-                                                                    title: Text(
+                                                                    title: const Text(
                                                                         'Delete this block?'),
-                                                                    content: Text(
+                                                                    content: const Text(
                                                                         'Are you sure'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed: () => Navigator.pop(
                                                                             alertDialogContext,
                                                                             false),
-                                                                        child: Text(
+                                                                        child: const Text(
                                                                             'Cancel'),
                                                                       ),
                                                                       TextButton(
                                                                         onPressed: () => Navigator.pop(
                                                                             alertDialogContext,
                                                                             true),
-                                                                        child: Text(
+                                                                        child: const Text(
                                                                             'Confirm'),
                                                                       ),
                                                                     ],
@@ -229,7 +226,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: FlutterFlowIconButton(
                                                 borderColor: Colors.transparent,
@@ -296,7 +293,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 15.0, 0.0),
                                               child: Text(
@@ -326,9 +323,9 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                     ),
                                     Container(
                                       height: 50.0,
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: FlutterFlowChoiceChips(
-                                        options: [
+                                        options: const [
                                           ChipData('Text'),
                                           ChipData('Image'),
                                           ChipData('Video'),
@@ -451,19 +448,19 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 10.0),
                                           child: Container(
-                                            decoration: BoxDecoration(),
+                                            decoration: const BoxDecoration(),
                                             child: Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   1.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 10.0),
                                                     child: Row(
@@ -490,12 +487,12 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -735,12 +732,12 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -806,12 +803,12 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -861,7 +858,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                                     fontSizeDouble: _model.fontSettingsWidget?.fontSizeDouble,
                                                                                     clearUnsetFields: false,
                                                                                   ),
-                                                                                  text: _model.changedText != null && _model.changedText != '' ? _model.tesitEditController.text : widget.tileBlock?.text,
+                                                                                  text: _model.changedText != '' ? _model.tesitEditController.text : widget.tileBlock?.text,
                                                                                 ));
                                                                           } else if ((_model.blockTypeChipsValue == 'Image') ||
                                                                               (widget.tileBlock?.blockType ==
@@ -927,7 +924,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -977,7 +974,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                             child:
                                                                                 Padding(
                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: Container(
+                                                                              child: SizedBox(
                                                                                 height: 450.0,
                                                                                 child: ImageGalleryWidget(
                                                                                   blockDoc: widget.tileBlock,
@@ -994,7 +991,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -1044,7 +1041,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                             child:
                                                                                 Padding(
                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: Container(
+                                                                              child: SizedBox(
                                                                                 height: 450.0,
                                                                                 child: VideoGalleryWidget(
                                                                                   blockDoc: widget.tileBlock!,
@@ -1084,7 +1081,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                               currentUserDocument?.isadmin, false))
                         AuthUserStreamWidget(
                           builder: (context) => Container(
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                           ),
                         ),
                     ],
@@ -1145,7 +1142,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                     false,
                   ))
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           60.0, 30.0, 60.0, 30.0),
                       child: Container(
                         constraints: BoxConstraints(
@@ -1164,7 +1161,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                             }
                           }(),
                         ),
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Container(
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).primary,
@@ -1186,7 +1183,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 10.0, 0.0),
                                             child: FlutterFlowDropDown<String>(
                                               controller: _model
@@ -1195,10 +1192,10 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                 _model.dropDownValue ??= widget
                                                     .tileBlock
                                                     ?.fontSettings
-                                                    ?.fontSizeDouble
-                                                    ?.toString(),
+                                                    .fontSizeDouble
+                                                    .toString(),
                                               ),
-                                              options: [
+                                              options: const [
                                                 '12',
                                                 '14',
                                                 '16',
@@ -1258,7 +1255,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                       .alternate,
                                               borderWidth: 2.0,
                                               borderRadius: 8.0,
-                                              margin: EdgeInsetsDirectional
+                                              margin: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 4.0, 16.0, 4.0),
                                               hidesUnderline: true,
@@ -1274,7 +1271,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                 CrossAxisAlignment.end,
                                             children: [
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: FlutterFlowIconButton(
                                                   borderColor:
@@ -1314,7 +1311,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
                                                                     context),
-                                                            child: Container(
+                                                            child: SizedBox(
                                                               height: 450.0,
                                                               child:
                                                                   ImageGalleryWidget(
@@ -1337,7 +1334,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                     ],
                                   ),
                                 ),
-                              Column(
+                              const Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [],
                               ),
@@ -1361,7 +1358,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                   ),
                                 ],
                               ),
-                              Column(
+                              const Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [],
                               ),
@@ -1372,7 +1369,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                     ),
                   if (widget.tileBlock?.blockType == 'Image')
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           60.0, 20.0, 60.0, 20.0),
                       child: Container(
                         constraints: BoxConstraints(
@@ -1415,17 +1412,17 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 200.0,
                                               child: Visibility(
                                                 visible: widget
                                                         .tileBlock?.blockType ==
                                                     'Image',
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 75.0,
                                                     child: TextFormField(
                                                       controller: _model
@@ -1435,7 +1432,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.textController1',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 2000),
                                                         () async {
                                                           logFirebaseEvent(
@@ -1525,7 +1522,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsets.all(5.0),
+                                                            const EdgeInsets.all(5.0),
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -1544,17 +1541,17 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 200.0,
                                               child: Visibility(
                                                 visible: widget
                                                         .tileBlock?.blockType ==
                                                     'Image',
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 75.0,
                                                     child: TextFormField(
                                                       controller: _model
@@ -1564,7 +1561,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.textController2',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 2000),
                                                         () async {
                                                           logFirebaseEvent(
@@ -1654,7 +1651,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsets.all(5.0),
+                                                            const EdgeInsets.all(5.0),
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -1674,7 +1671,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                     ),
                                   ],
                                 ),
-                                Column(
+                                const Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [],
                                 ),
@@ -1701,26 +1698,26 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                     ),
                                   ],
                                 ),
-                                Column(
+                                const Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [],
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Container(
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 800.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Container(
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 800.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ],
@@ -1731,7 +1728,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                     ),
                   if (widget.tileBlock?.blockType == 'Video')
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           60.0, 20.0, 60.0, 20.0),
                       child: Container(
                         constraints: BoxConstraints(
@@ -1776,16 +1773,16 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                           children: [
                                             Container(
                                               width: 200.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Visibility(
                                                 visible: widget
                                                         .tileBlock?.blockType ==
                                                     'Image',
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 75.0,
                                                     child: TextFormField(
                                                       controller: _model
@@ -1795,7 +1792,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.textController3',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 2000),
                                                         () async {
                                                           logFirebaseEvent(
@@ -1885,7 +1882,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsets.all(5.0),
+                                                            const EdgeInsets.all(5.0),
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -1904,17 +1901,17 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 200.0,
                                               child: Visibility(
                                                 visible: widget
                                                         .tileBlock?.blockType ==
                                                     'Image',
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 75.0,
                                                     child: TextFormField(
                                                       controller: _model
@@ -1924,7 +1921,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.textController4',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 2000),
                                                         () async {
                                                           logFirebaseEvent(
@@ -2014,7 +2011,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsets.all(5.0),
+                                                            const EdgeInsets.all(5.0),
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -2034,7 +2031,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                     ),
                                   ],
                                 ),
-                                Column(
+                                const Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [],
                                 ),
@@ -2058,7 +2055,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       15.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -2101,26 +2098,26 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                     ),
                                   ],
                                 ),
-                                Column(
+                                const Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [],
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Container(
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 800.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Container(
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 800.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ],
@@ -2129,7 +2126,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                         ),
                       ),
                     ),
-                  Row(
+                  const Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [],
                   ),
@@ -2138,7 +2135,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxWidth: 600.0,
                         ),
                         decoration: BoxDecoration(
@@ -2175,12 +2172,12 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                   if (_model.showEdit == true)
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
+                                          const AlignmentDirectional(-1.0, -1.0),
                                       child: Container(
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 15.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -2189,7 +2186,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 12.0, 0.0),
                                                   child: TextFormField(
@@ -2200,7 +2197,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.tesitEditController',
-                                                      Duration(
+                                                      const Duration(
                                                           milliseconds: 2000),
                                                       () async {
                                                         logFirebaseEvent(
@@ -2227,7 +2224,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                               .labelMedium,
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0xFFE0E0E0),
                                                           width: 2.0,
@@ -2299,7 +2296,7 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                                                     widget
                                                                         .tileBlock
                                                                         ?.fontSettings
-                                                                        ?.fontSizeDouble,
+                                                                        .fontSizeDouble,
                                                                     14.0,
                                                                   ),
                                                             14.0,
@@ -2324,9 +2321,9 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                                       ),
                                     ),
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    alignment: const AlignmentDirectional(-1.0, -1.0),
                                     child: Container(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                     ),
                                   ),
                                 ],
@@ -2336,26 +2333,26 @@ class _Blockv3WidgetState extends State<Blockv3Widget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(-1.0, -1.0),
+                                  alignment: const AlignmentDirectional(-1.0, -1.0),
                                   child: Container(
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ],
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 constraints: BoxConstraints(
                                   maxWidth:
                                       MediaQuery.sizeOf(context).width * 1.0,
                                 ),
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Container(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Visibility(
                                         visible: valueOrDefault<bool>(
                                           () {

@@ -1,13 +1,10 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/drawer_tile_tree_widget.dart';
 import '/components/side_menu_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'dash_news_model.dart';
@@ -98,7 +95,7 @@ class _DashNewsWidgetState extends State<DashNewsWidget> {
                   backgroundColor: FlutterFlowTheme.of(context).customColor7,
                   elevation: 8.0,
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Icon(
                       Icons.keyboard_arrow_up,
                       color: FlutterFlowTheme.of(context).primary,
@@ -110,7 +107,7 @@ class _DashNewsWidgetState extends State<DashNewsWidget> {
                   elevation: 16.0,
                   child: WebViewAware(
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
@@ -119,7 +116,7 @@ class _DashNewsWidgetState extends State<DashNewsWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.sideMenuModel,
                             updateCallback: () => setState(() {}),
@@ -138,7 +135,7 @@ class _DashNewsWidgetState extends State<DashNewsWidget> {
                     ),
                   ),
                 ),
-                endDrawer: Container(
+                endDrawer: SizedBox(
                   width: 400.0,
                   child: Drawer(
                     elevation: 16.0,
@@ -206,7 +203,7 @@ class _DashNewsWidgetState extends State<DashNewsWidget> {
                           logFirebaseEvent(
                               'DASH_NEWS_PAGE_Row_fgnuala4_ON_TAP');
                         },
-                        child: Row(
+                        child: const Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(

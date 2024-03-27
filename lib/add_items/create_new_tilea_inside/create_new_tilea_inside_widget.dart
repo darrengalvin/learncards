@@ -1,11 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -72,18 +70,18 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: TextStyle(),
+              unselectedLabelStyle: const TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Tile Name',
                 ),
@@ -114,7 +112,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: SelectionArea(
                             child: Text(
                           'Create New Resource Area',
@@ -123,7 +121,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: SelectionArea(
                             child: Text(
                           'This is the tile that will show in the users area',
@@ -131,7 +129,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                         )),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.tileTitleController,
                           focusNode: _model.tileTitleFocusNode,
@@ -148,21 +146,21 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -175,7 +173,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.tileSummaryController,
                           focusNode: _model.tileSummaryFocusNode,
@@ -192,21 +190,21 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -221,7 +219,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.positionController,
                           focusNode: _model.positionFocusNode,
@@ -238,21 +236,21 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -266,7 +264,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -275,7 +273,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: Image.asset(
                                     'assets/images/red.png',
@@ -290,7 +288,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -370,10 +368,10 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                     options: FFButtonOptions(
                                       width: 150.0,
                                       height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -390,7 +388,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -417,7 +415,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'Choose where you would like to show this tile.',
                             textAlign: TextAlign.center,
@@ -473,7 +471,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                           catagoryListViewCategoriesRecordList[
                                               catagoryListViewIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 2.0),
                                         child: Container(
                                           width: double.infinity,
@@ -481,7 +479,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 0.0,
                                                 color: Color(0xFFDBE2E7),
@@ -493,7 +491,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -501,7 +499,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: Color(0xFF4B39EF),
+                                                  color: const Color(0xFF4B39EF),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -509,13 +507,13 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(2.0),
+                                                        const EdgeInsets.all(2.0),
                                                     child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -528,7 +526,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Theme(
@@ -544,7 +542,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                           ),
                                                         ),
                                                         unselectedWidgetColor:
-                                                            Color(0xFF7C8791),
+                                                            const Color(0xFF7C8791),
                                                       ),
                                                       child: CheckboxListTile(
                                                         value: _model
@@ -566,7 +564,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF090F13),
                                                                 fontSize: 20.0,
                                                                 fontWeight:
@@ -586,7 +584,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF7C8791),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -599,11 +597,11 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                               ),
                                                         ),
                                                         tileColor:
-                                                            Color(0xFFF5F5F5),
+                                                            const Color(0xFFF5F5F5),
                                                         activeColor:
-                                                            Color(0xFF4B39EF),
+                                                            const Color(0xFF4B39EF),
                                                         checkColor:
-                                                            Color(0xFF090F13),
+                                                            const Color(0xFF090F13),
                                                         dense: false,
                                                         controlAffinity:
                                                             ListTileControlAffinity
@@ -625,7 +623,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -635,7 +633,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -731,10 +729,10 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                       options: FFButtonOptions(
                                         width: 150.0,
                                         height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -753,7 +751,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -772,7 +770,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                           children: [
                             Theme(
                               data: ThemeData(
-                                checkboxTheme: CheckboxThemeData(
+                                checkboxTheme: const CheckboxThemeData(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0.0),
@@ -806,7 +804,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                           children: [
                             Theme(
                               data: ThemeData(
-                                checkboxTheme: CheckboxThemeData(
+                                checkboxTheme: const CheckboxThemeData(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0.0),
@@ -866,7 +864,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                         final listViewTilesRecord =
                             listViewTilesRecordList[listViewIndex];
                         return Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -892,14 +890,14 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                   builder: (alertDialogContext) {
                                     return WebViewAware(
                                       child: AlertDialog(
-                                        title: Text('Tile removed '),
+                                        title: const Text('Tile removed '),
                                         content: Text(
                                             FFAppState().SelectedTileRef!.id),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Ok'),
+                                            child: const Text('Ok'),
                                           ),
                                         ],
                                       ),
@@ -919,14 +917,14 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                   builder: (alertDialogContext) {
                                     return WebViewAware(
                                       child: AlertDialog(
-                                        title: Text('Tile Added to '),
+                                        title: const Text('Tile Added to '),
                                         content: Text(
                                             FFAppState().SelectedTileRef!.id),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Ok'),
+                                            child: const Text('Ok'),
                                           ),
                                         ],
                                       ),
@@ -943,7 +941,7 @@ class _CreateNewTileaInsideWidgetState extends State<CreateNewTileaInsideWidget>
                                 borderRadius: BorderRadius.circular(17.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     30.0, 30.0, 0.0, 30.0),
                                 child: Text(
                                   listViewTilesRecord.title,

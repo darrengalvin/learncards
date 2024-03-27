@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class Blockv31Widget extends StatefulWidget {
     required this.sessionId,
     required this.companyDoc,
     this.tileDocOriginal,
-  }) : this.topicItem = topicItem ?? 'topicItem';
+  }) : topicItem = topicItem ?? 'topicItem';
 
   final TileblocksRecord? tileBlock;
   final String topicItem;
@@ -69,7 +68,7 @@ class _Blockv31WidgetState extends State<Blockv31Widget> {
     context.watch<FFAppState>();
 
     return Container(
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
