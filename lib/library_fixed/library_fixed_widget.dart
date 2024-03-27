@@ -55,27 +55,21 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('LIBRARY_FIXED_Library-fixed_ON_INIT_STAT');
-      logFirebaseEvent('Library-fixed_alert_dialog');
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              title: const Text('page has loaded'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
       logFirebaseEvent('Library-fixed_custom_action');
       await actions.onAppLaunchCheckConfigurationAndRedirect(
         context,
       );
+      logFirebaseEvent('Library-fixed_firestore_query');
+      _model.companyByUrl = await queryCompaniesRecordOnce(
+        queryBuilder: (companiesRecord) => companiesRecord.where(
+          'companyDocId',
+          isEqualTo: valueOrDefault<String>(
+            FFAppState().companyDocId,
+            'nocompanydocid',
+          ),
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
       // Start a user log
       logFirebaseEvent('Library-fixed_Startauserlog');
 
@@ -102,63 +96,10 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                 : 'unset',
           ),
           logsRecordReference);
-      logFirebaseEvent('Library-fixed_alert_dialog');
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              title: const Text('Company Doc Id is '),
-              content: Text(valueOrDefault<String>(
-                FFAppState().companyDocId,
-                'not set',
-              )),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-      logFirebaseEvent('Library-fixed_firestore_query');
-      _model.companyByUrl = await queryCompaniesRecordOnce(
-        queryBuilder: (companiesRecord) => companiesRecord.where(
-          'companyDocId',
-          isEqualTo: valueOrDefault<String>(
-            FFAppState().companyDocId,
-            'nocompanydocid',
-          ),
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
       logFirebaseEvent('Library-fixed_update_app_state');
       setState(() {
         FFAppState().selectedCompanyId = _model.companyByUrl!.reference.id;
       });
-      logFirebaseEvent('Library-fixed_alert_dialog');
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              title: const Text('its now '),
-              content: Text(valueOrDefault<String>(
-                FFAppState().companyDocId,
-                'not set',
-              )),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
       if (FFAppState().nonLoggedInSessionId == '') {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
@@ -1141,7 +1082,7 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .spaceBetween,
+                                                              .start,
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
                                                               .start,

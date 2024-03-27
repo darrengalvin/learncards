@@ -48,10 +48,10 @@ class LibraryFixedModel extends FlutterFlowModel<LibraryFixedWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - Create Document] action in Library-fixed widget.
-  LogsRecord? userLog;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
   CompaniesRecord? companyByUrl;
+  // Stores action output result for [Backend Call - Create Document] action in Library-fixed widget.
+  LogsRecord? userLog;
   // Stores action output result for [Backend Call - Create Document] action in Library-fixed widget.
   SessionsRecord? sessionsCreated;
   // Stores action output result for [Firestore Query - Query a collection] action in Library-fixed widget.
