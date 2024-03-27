@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -7,8 +8,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'create_r_e_e_l_model.dart';
 export 'create_r_e_e_l_model.dart';
 
@@ -74,7 +77,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 16.0, 0.0),
                                 child: FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
@@ -98,7 +101,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 20.0, 0.0, 0.0),
                             child: SelectionArea(
                                 child: Text(
@@ -118,14 +121,14 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                             )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: EdgeInsets.all(20.0),
                             child: Text(
                               'Below is a list of categories please choose the category that the logged in user must have access to in order to progress to the linked tile.',
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: StreamBuilder<List<CategoriesRecord>>(
                               stream: queryCategoriesRecord(),
@@ -174,7 +177,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                       FlutterFlowTheme.of(context).alternate,
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
@@ -184,7 +187,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.titleTitleController,
@@ -234,7 +237,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context).headlineSmall,
@@ -244,7 +247,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.descriptionController,
@@ -285,7 +288,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -297,7 +300,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 80.0, 10.0, 80.0, 10.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -364,9 +367,9 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                               options: FFButtonOptions(
                                 width: 50.0,
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -381,7 +384,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmallFamily),
                                     ),
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -390,7 +393,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 80.0, 10.0, 80.0, 10.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -420,7 +423,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
@@ -432,9 +435,9 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                               options: FFButtonOptions(
                                 width: 50.0,
                                 height: 60.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -449,7 +452,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmallFamily),
                                     ),
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -496,7 +499,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                                 listViewIndex];
                                         return Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 0.0, 16.0, 8.0),
                                           child: Container(
                                             width: double.infinity,
@@ -505,7 +508,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              boxShadow: const [
+                                              boxShadow: [
                                                 BoxShadow(
                                                   blurRadius: 3.0,
                                                   color: Color(0x32000000),
@@ -529,7 +532,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Column(
@@ -596,7 +599,7 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                                                   Clip.none,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           4.0,
@@ -619,13 +622,13 @@ class _CreateREELWidgetState extends State<CreateREELWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(100.0,
                                                                 0.0, 0.0, 0.0),
                                                     child: Theme(
                                                       data: ThemeData(
                                                         checkboxTheme:
-                                                            const CheckboxThemeData(
+                                                            CheckboxThemeData(
                                                           shape:
                                                               RoundedRectangleBorder(
                                                             borderRadius:

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/testpage/components/loading/loading_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -92,7 +93,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -108,7 +109,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                       'Tiles',
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
-                    actions: const [],
+                    actions: [],
                     centerTitle: true,
                     elevation: 2.0,
                   )
@@ -130,7 +131,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
@@ -145,7 +146,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -162,11 +163,11 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -199,7 +200,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -216,11 +217,11 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -253,7 +254,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -270,11 +271,11 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -334,7 +335,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           12.0,
@@ -350,7 +351,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                     EasyDebounce
                                                                         .debounce(
                                                                   '_model.textFieldTilesController',
-                                                                  const Duration(
+                                                                  Duration(
                                                                       milliseconds:
                                                                           2000),
                                                                   () async {
@@ -365,8 +366,8 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                             records
                                                                                 .map(
                                                                                   (record) => TextSearchItem.fromTerms(record, [
-                                                                                    record.title,
-                                                                                    record.summary
+                                                                                    record.title!,
+                                                                                    record.summary!
                                                                                   ]),
                                                                                 )
                                                                                 .toList(),
@@ -404,7 +405,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                   enabledBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -417,7 +418,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                   focusedBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -430,7 +431,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                   errorBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -443,7 +444,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                   focusedErrorBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Color(
                                                                           0x00000000),
                                                                       width:
@@ -500,13 +501,13 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.all(10.0),
                                 child: Builder(
                                   builder: (context) {
                                     final tilesearch =
                                         _model.simpleSearchResults.toList();
                                     if (tilesearch.isEmpty) {
-                                      return const LoadingWidget();
+                                      return LoadingWidget();
                                     }
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -519,7 +520,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                             tilesearch[tilesearchIndex];
                                         return Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 3.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -545,7 +546,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                               height: 100.0,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                boxShadow: const [
+                                                boxShadow: [
                                                   BoxShadow(
                                                     blurRadius: 3.0,
                                                     color: Color(0x411D2429),
@@ -556,14 +557,14 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                     BorderRadius.circular(16.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(8.0),
+                                                padding: EdgeInsets.all(8.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   1.0,
@@ -584,7 +585,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     8.0,
@@ -609,7 +610,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Outfit',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF090F13),
                                                                     fontSize:
                                                                         18.0,
@@ -625,7 +626,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -650,7 +651,7 @@ class _SearchTilesWidgetState extends State<SearchTilesWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Outfit',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF7C8791),
                                                                         fontSize:
                                                                             14.0,

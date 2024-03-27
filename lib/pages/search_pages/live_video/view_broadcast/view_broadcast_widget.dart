@@ -5,7 +5,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/testpage/components/detailedcomment/detailedcomment_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,7 +64,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
             userimage: currentUserPhoto,
             broadcastID: widget.broadcastdocument?.reference,
             comments:
-                '$currentUserDisplayName has just joined the live video',
+                '${currentUserDisplayName} has just joined the live video',
           ));
       logFirebaseEvent('ViewBroadcast_backend_call');
 
@@ -114,7 +116,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -160,7 +162,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                   children: [
                     Container(
                       width: double.infinity,
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxHeight: 700.0,
                       ),
                       decoration: BoxDecoration(
@@ -169,7 +171,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, -0.88),
+                            alignment: AlignmentDirectional(0.0, -0.88),
                             child: FlutterFlowVideoPlayer(
                               path: widget.url!,
                               videoType: VideoType.network,
@@ -186,11 +188,11 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                             children: [
                               if (FFAppState().commentson == true)
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.1),
+                                  alignment: AlignmentDirectional(0.0, 0.1),
                                   child: Container(
                                     width: double.infinity,
                                     height: 300.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: SingleChildScrollView(
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -289,7 +291,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -305,7 +307,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                                   ),
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFFDBE2E7),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
@@ -313,7 +315,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                                   ),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             8.0,
@@ -335,7 +337,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Outfit',
-                                                                                color: const Color(0xFF14181B),
+                                                                                color: Color(0xFF14181B),
                                                                                 fontSize: 14.0,
                                                                                 fontWeight: FontWeight.normal,
                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -348,16 +350,18 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                                               .bodySmall
                                                                               .override(
                                                                                 fontFamily: 'Outfit',
-                                                                                color: const Color(0xFF57636C),
+                                                                                color: Color(0xFF57636C),
                                                                                 fontSize: 14.0,
                                                                                 fontWeight: FontWeight.normal,
                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                               ),
                                                                         ),
                                                                         if (listViewBroadcastcommentsRecord.imagecomment !=
+                                                                                null &&
+                                                                            listViewBroadcastcommentsRecord.imagecomment !=
                                                                                 '')
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 6.0,
                                                                                 0.0,
@@ -371,9 +375,11 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                                             ),
                                                                           ),
                                                                         if (listViewBroadcastcommentsRecord.videocomment !=
+                                                                                null &&
+                                                                            listViewBroadcastcommentsRecord.videocomment !=
                                                                                 '')
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 6.0,
                                                                                 0.0,
@@ -397,7 +403,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             4.0,
@@ -411,7 +417,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Outfit',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF57636C),
                                                                         fontSize:
                                                                             14.0,
@@ -443,7 +449,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.5),
+                      alignment: AlignmentDirectional(0.0, 0.5),
                       child: Container(
                         width: double.infinity,
                         height: 60.0,
@@ -460,7 +466,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         13.0, 0.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.commentController,
@@ -471,43 +477,43 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                         hintText: 'Quick Comment',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall,
-                                        enabledBorder: const UnderlineInputBorder(
+                                        enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(4.0),
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
-                                        focusedBorder: const UnderlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(4.0),
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
-                                        errorBorder: const UnderlineInputBorder(
+                                        errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(4.0),
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
                                         focusedErrorBorder:
-                                            const UnderlineInputBorder(
+                                            UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(4.0),
                                             topRight: Radius.circular(4.0),
                                           ),
@@ -540,7 +546,7 @@ class _ViewBroadcastWidgetState extends State<ViewBroadcastWidget> {
                                       isScrollControlled: true,
                                       backgroundColor:
                                           FlutterFlowTheme.of(context).white,
-                                      barrierColor: const Color(0x00000000),
+                                      barrierColor: Color(0x00000000),
                                       context: context,
                                       builder: (context) {
                                         return WebViewAware(

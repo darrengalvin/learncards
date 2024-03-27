@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'block_image_model.dart';
 export 'block_image_model.dart';
 
@@ -53,11 +54,11 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 6.0),
+      padding: EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 6.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x33000000),
@@ -69,9 +70,9 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
               FlutterFlowTheme.of(context).primaryBackground,
               FlutterFlowTheme.of(context).secondary
             ],
-            stops: const [0.0, 1.0],
-            begin: const AlignmentDirectional(0.0, -1.0),
-            end: const AlignmentDirectional(0, 1.0),
+            stops: [0.0, 1.0],
+            begin: AlignmentDirectional(0.0, -1.0),
+            end: AlignmentDirectional(0, 1.0),
           ),
           borderRadius: BorderRadius.circular(17.0),
         ),
@@ -85,12 +86,12 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                     true)
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: AuthUserStreamWidget(
                       builder: (context) => Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.all(4.0),
                             child: Icon(
                               Icons.delete_forever_outlined,
@@ -103,7 +104,7 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: EdgeInsets.all(4.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -113,7 +114,7 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                                 logFirebaseEvent(
                                     'BLOCK_IMAGE_COMP_Icon_z36r4v4h_ON_TAP');
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.upload_sharp,
                                 color: Color(0xFF57636C),
                                 size: 24.0,
@@ -121,7 +122,7 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: EdgeInsets.all(4.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -131,7 +132,7 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                                 logFirebaseEvent(
                                     'BLOCK_IMAGE_COMP_Icon_31l95x7h_ON_TAP');
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.download_outlined,
                                 color: Color(0xFF57636C),
                                 size: 24.0,
@@ -163,7 +164,7 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(2.0),
+              padding: EdgeInsets.all(2.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,13 +174,13 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 340.0,
                           maxHeight: 300.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 3.0, 0.0, 3.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20.0),
@@ -194,20 +195,20 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       widget.parameter3!,
                       style: FlutterFlowTheme.of(context).headlineMedium,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 7.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 7.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(5.0),
                             child: Text(
                               widget.parameter3!,
                               style: FlutterFlowTheme.of(context)
@@ -229,9 +230,9 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                     child: Container(
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 1200.0,
                       ),
                       decoration: BoxDecoration(
@@ -240,9 +241,9 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                             FlutterFlowTheme.of(context).primaryBackground,
                             FlutterFlowTheme.of(context).secondary
                           ],
-                          stops: const [0.0, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.0, -1.0),
+                          end: AlignmentDirectional(0, 1.0),
                         ),
                       ),
                     ),
@@ -253,7 +254,7 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
@@ -261,8 +262,8 @@ class _BlockImageWidgetState extends State<BlockImageWidget> {
                           },
                           text: 'Button',
                           options: FFButtonOptions(
-                            padding: const EdgeInsets.all(20.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(20.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)

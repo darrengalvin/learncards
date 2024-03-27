@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -9,10 +10,13 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 import 'createcompany_model.dart';
 export 'createcompany_model.dart';
 
@@ -164,12 +168,12 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                           'Please fill in the information below to continue.',
                           style: FlutterFlowTheme.of(context).labelMedium,
                         ),
-                      ].divide(const SizedBox(height: 4.0)),
+                      ].divide(SizedBox(height: 4.0)),
                     ),
                     actions: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                         child: FlutterFlowIconButton(
                           borderColor: FlutterFlowTheme.of(context).alternate,
                           borderRadius: 12.0,
@@ -198,7 +202,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
             body: SafeArea(
               top: true,
               child: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Form(
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
@@ -212,14 +216,14 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, -1.0),
+                                alignment: AlignmentDirectional(0.0, -1.0),
                                 child: Container(
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 770.0,
                                   ),
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -334,7 +338,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -441,7 +445,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 16.0, 16.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -540,7 +544,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -580,7 +584,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -672,14 +676,14 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                               FFButtonOptions(
                                                             height: 40.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -706,7 +710,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -726,10 +730,15 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                     children: [
                                                       if (valueOrDefault<bool>(
                                                         (_model.uploadedFileUrl1 !=
+                                                                    null &&
+                                                                _model.uploadedFileUrl1 !=
                                                                     '') ||
                                                             valueOrDefault<
                                                                 bool>(
                                                               _model.cloudinaryURLController1
+                                                                          .text !=
+                                                                      null &&
+                                                                  _model.cloudinaryURLController1
                                                                           .text !=
                                                                       '',
                                                               false,
@@ -745,11 +754,17 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                             () {
                                                               if (_model.cloudinaryURLController1
                                                                           .text !=
+                                                                      null &&
+                                                                  _model.cloudinaryURLController1
+                                                                          .text !=
                                                                       '') {
                                                                 return _model
                                                                     .cloudinaryURLController1
                                                                     .text;
-                                                              } else if (_model.uploadedFileUrl1 !=
+                                                              } else if (_model
+                                                                          .uploadedFileUrl1 !=
+                                                                      null &&
+                                                                  _model.uploadedFileUrl1 !=
                                                                       '') {
                                                                 return _model
                                                                     .uploadedFileUrl1;
@@ -870,7 +885,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                               context)
                                                           .secondaryBackground,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(16.0, 20.0,
                                                               16.0, 20.0),
                                                 ),
@@ -913,7 +928,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -1019,14 +1034,14 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                               FFButtonOptions(
                                                             height: 40.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1053,7 +1068,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -1073,10 +1088,15 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                     children: [
                                                       if (valueOrDefault<bool>(
                                                         (_model.uploadedFileUrl2 !=
+                                                                    null &&
+                                                                _model.uploadedFileUrl2 !=
                                                                     '') ||
                                                             valueOrDefault<
                                                                 bool>(
                                                               _model.cloudinaryURLController2
+                                                                          .text !=
+                                                                      null &&
+                                                                  _model.cloudinaryURLController2
                                                                           .text !=
                                                                       '',
                                                               false,
@@ -1092,11 +1112,17 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                             () {
                                                               if (_model.cloudinaryURLController2
                                                                           .text !=
+                                                                      null &&
+                                                                  _model.cloudinaryURLController2
+                                                                          .text !=
                                                                       '') {
                                                                 return _model
                                                                     .cloudinaryURLController2
                                                                     .text;
-                                                              } else if (_model.uploadedFileUrl2 !=
+                                                              } else if (_model
+                                                                          .uploadedFileUrl2 !=
+                                                                      null &&
+                                                                  _model.uploadedFileUrl2 !=
                                                                       '') {
                                                                 return _model
                                                                     .uploadedFileUrl2;
@@ -1217,7 +1243,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                               context)
                                                           .secondaryBackground,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(16.0, 20.0,
                                                               16.0, 20.0),
                                                 ),
@@ -1243,7 +1269,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                               .labelMedium,
                                         ),
                                         FlutterFlowChoiceChips(
-                                          options: const [
+                                          options: [
                                             ChipData('Female'),
                                             ChipData('Male'),
                                             ChipData('Other')
@@ -1367,7 +1393,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .primarycolourController,
@@ -1475,7 +1501,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -1495,7 +1521,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
                                             Expanded(
@@ -1511,7 +1537,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .secondaryColourController,
@@ -1619,7 +1645,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -1639,10 +1665,10 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(width: 12.0)),
+                                          ].divide(SizedBox(width: 12.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1662,7 +1688,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .primaryTextController,
@@ -1770,7 +1796,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -1790,7 +1816,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
                                             Expanded(
@@ -1806,7 +1832,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .secondaryTextController,
@@ -1914,7 +1940,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -1934,10 +1960,10 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(width: 12.0)),
+                                          ].divide(SizedBox(width: 12.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1957,7 +1983,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .teritorycolourController,
@@ -2065,7 +2091,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -2085,7 +2111,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
                                             Expanded(
@@ -2101,7 +2127,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .alternativecolourController,
@@ -2209,7 +2235,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -2229,10 +2255,10 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(width: 12.0)),
+                                          ].divide(SizedBox(width: 12.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -2252,7 +2278,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .companyemailController1,
@@ -2360,7 +2386,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -2380,7 +2406,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
                                             Expanded(
@@ -2396,7 +2422,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         .labelMedium,
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                           .companyindustyController,
@@ -2504,7 +2530,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     20.0,
@@ -2524,10 +2550,10 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(width: 12.0)),
+                                          ].divide(SizedBox(width: 12.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -2559,7 +2585,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                       logFirebaseEvent(
                                                           'Container_date_time_picker');
                                                       if (kIsWeb) {
-                                                        final datePickedDate =
+                                                        final _datePickedDate =
                                                             await showDatePicker(
                                                           context: context,
                                                           initialDate:
@@ -2621,10 +2647,10 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                         );
 
                                                         TimeOfDay?
-                                                            datePickedTime;
-                                                        if (datePickedDate !=
+                                                            _datePickedTime;
+                                                        if (_datePickedDate !=
                                                             null) {
-                                                          datePickedTime =
+                                                          _datePickedTime =
                                                               await showTimePicker(
                                                             context: context,
                                                             initialTime: TimeOfDay
@@ -2683,22 +2709,22 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                           );
                                                         }
 
-                                                        if (datePickedDate !=
+                                                        if (_datePickedDate !=
                                                                 null &&
-                                                            datePickedTime !=
+                                                            _datePickedTime !=
                                                                 null) {
                                                           safeSetState(() {
                                                             _model.datePicked =
                                                                 DateTime(
-                                                              datePickedDate
+                                                              _datePickedDate
                                                                   .year,
-                                                              datePickedDate
+                                                              _datePickedDate
                                                                   .month,
-                                                              datePickedDate
+                                                              _datePickedDate
                                                                   .day,
-                                                              datePickedTime!
+                                                              _datePickedTime!
                                                                   .hour,
-                                                              datePickedTime
+                                                              _datePickedTime
                                                                   .minute,
                                                             );
                                                           });
@@ -2741,7 +2767,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                       ),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
                                             Expanded(
@@ -2775,10 +2801,10 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                       ),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 4.0)),
+                                                ].divide(SizedBox(height: 4.0)),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(width: 12.0)),
+                                          ].divide(SizedBox(width: 12.0)),
                                         ),
                                         Text(
                                           'Company Email',
@@ -2873,7 +2899,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -2980,7 +3006,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -3084,7 +3110,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -3191,7 +3217,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -3295,7 +3321,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -3402,7 +3428,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                             context)
                                                         .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -3440,7 +3466,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                           child: Column(
                                             children: [
                                               Align(
-                                                alignment: const Alignment(-1.0, 0),
+                                                alignment: Alignment(-1.0, 0),
                                                 child: TabBar(
                                                   isScrollable: true,
                                                   labelColor:
@@ -3456,13 +3482,13 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                               context)
                                                           .titleMedium,
                                                   unselectedLabelStyle:
-                                                      const TextStyle(),
+                                                      TextStyle(),
                                                   indicatorColor:
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primary,
-                                                  padding: const EdgeInsets.all(4.0),
-                                                  tabs: const [
+                                                  padding: EdgeInsets.all(4.0),
+                                                  tabs: [
                                                     Tab(
                                                       text: 'Welcome Message',
                                                     ),
@@ -3604,7 +3630,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -3736,7 +3762,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -3868,7 +3894,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -4000,7 +4026,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -4137,7 +4163,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -4240,7 +4266,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -4360,7 +4386,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -4463,7 +4489,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -4479,8 +4505,8 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                           ],
                                         ),
                                       ]
-                                          .divide(const SizedBox(height: 12.0))
-                                          .addToEnd(const SizedBox(height: 32.0)),
+                                          .divide(SizedBox(height: 12.0))
+                                          .addToEnd(SizedBox(height: 32.0)),
                                     ),
                                   ),
                                 ),
@@ -4490,12 +4516,12 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                         ),
                       ),
                       Container(
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 770.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 12.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -4517,9 +4543,13 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                 companylogo: '',
                                 companyname: _model.companyNameController.text,
                                 backgroundImage: () {
-                                  if (_model.uploadedFileUrl1 != '') {
+                                  if (_model.uploadedFileUrl1 != null &&
+                                      _model.uploadedFileUrl1 != '') {
                                     return _model.uploadedFileUrl1;
-                                  } else if (_model.cloudinaryURLController1.text !=
+                                  } else if (_model
+                                              .cloudinaryURLController1.text !=
+                                          null &&
+                                      _model.cloudinaryURLController1.text !=
                                           '') {
                                     return _model.cloudinaryURLController1.text;
                                   } else {
@@ -4580,9 +4610,14 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                         companyname:
                                             _model.companyNameController.text,
                                         backgroundImage: () {
-                                          if (_model.uploadedFileUrl1 != '') {
+                                          if (_model.uploadedFileUrl1 != null &&
+                                              _model.uploadedFileUrl1 != '') {
                                             return _model.uploadedFileUrl1;
-                                          } else if (_model.cloudinaryURLController1
+                                          } else if (_model
+                                                      .cloudinaryURLController1
+                                                      .text !=
+                                                  null &&
+                                              _model.cloudinaryURLController1
                                                       .text !=
                                                   '') {
                                             return _model
@@ -4762,9 +4797,9 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -4780,7 +4815,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                                                 .titleSmallFamily),
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

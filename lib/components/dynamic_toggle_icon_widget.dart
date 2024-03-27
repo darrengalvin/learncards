@@ -2,6 +2,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'dynamic_toggle_icon_model.dart';
 export 'dynamic_toggle_icon_model.dart';
 
@@ -13,8 +15,8 @@ class DynamicToggleIconWidget extends StatefulWidget {
     required this.toggleOff,
     this.action,
     bool? onToggleAction,
-  })  : initalValue = initalValue ?? false,
-        onToggleAction = onToggleAction ?? false;
+  })  : this.initalValue = initalValue ?? false,
+        this.onToggleAction = onToggleAction ?? false;
 
   final bool initalValue;
   final Widget? toggleOn;
@@ -68,7 +70,7 @@ class _DynamicToggleIconWidgetState extends State<DynamicToggleIconWidget> {
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Builder(
         builder: (context) {
           if (_model.toggleValue) {

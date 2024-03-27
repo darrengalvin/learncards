@@ -2,7 +2,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'walk_through_explainer_model.dart';
 export 'walk_through_explainer_model.dart';
 
@@ -33,8 +36,8 @@ class _WalkThroughExplainerWidgetState extends State<WalkThroughExplainerWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 50.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 50.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -52,8 +55,8 @@ class _WalkThroughExplainerWidgetState extends State<WalkThroughExplainerWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(40.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(40.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -71,8 +74,8 @@ class _WalkThroughExplainerWidgetState extends State<WalkThroughExplainerWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 0.0),
-          end: const Offset(1.0, 1.0),
+          begin: Offset(0.0, 0.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -109,13 +112,13 @@ class _WalkThroughExplainerWidgetState extends State<WalkThroughExplainerWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         height: 170.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x33000000),
@@ -125,7 +128,7 @@ class _WalkThroughExplainerWidgetState extends State<WalkThroughExplainerWidget>
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -141,7 +144,7 @@ class _WalkThroughExplainerWidgetState extends State<WalkThroughExplainerWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
                         'At any point during your journey within the app, press the (i) button to access a detailed explanation of the current page. This feature is always available to help you understand its features and functionality, ensuring you get the most out of your experience.',
                         style: FlutterFlowTheme.of(context).labelMedium,
@@ -154,7 +157,7 @@ class _WalkThroughExplainerWidgetState extends State<WalkThroughExplainerWidget>
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.info_rounded,
                     color: Color(0xFF39D2C0),
                     size: 24.0,

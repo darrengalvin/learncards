@@ -16,6 +16,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
 import 'package:badges/badges.dart' as badges;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -75,8 +76,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: const Offset(81.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(81.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -95,8 +96,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 900.ms,
           duration: 600.ms,
-          begin: const Offset(81.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(81.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -115,8 +116,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(-31.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-31.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -135,8 +136,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -155,8 +156,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 150.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -175,8 +176,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -195,8 +196,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 250.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -215,8 +216,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -234,8 +235,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 700.ms,
-          begin: const Offset(-200.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-200.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -247,8 +248,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(-37.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-37.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -259,8 +260,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeInOut,
           delay: 50.ms,
           duration: 600.ms,
-          begin: const Offset(-43.99999999999999, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-43.99999999999999, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -271,8 +272,8 @@ class _SupportWidgetState extends State<SupportWidget>
           curve: Curves.easeOut,
           delay: 150.ms,
           duration: 700.ms,
-          begin: const Offset(-43.00000000000001, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-43.00000000000001, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -348,7 +349,7 @@ class _SupportWidgetState extends State<SupportWidget>
                           FFAppState().drawerMenu = false;
                         });
                       },
-                      child: SizedBox(
+                      child: Container(
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(
@@ -356,8 +357,8 @@ class _SupportWidgetState extends State<SupportWidget>
                             Container(
                               width: double.infinity,
                               height: double.infinity,
-                              decoration: const BoxDecoration(),
-                              child: const FlutterFlowVideoPlayer(
+                              decoration: BoxDecoration(),
+                              child: FlutterFlowVideoPlayer(
                                 path: '',
                                 videoType: VideoType.network,
                                 width: 800.0,
@@ -386,9 +387,9 @@ class _SupportWidgetState extends State<SupportWidget>
                                     FlutterFlowTheme.of(context)
                                         .secondaryBackground
                                   ],
-                                  stops: const [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
-                                  begin: const AlignmentDirectional(1.0, 0.0),
-                                  end: const AlignmentDirectional(-1.0, 0),
+                                  stops: [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
+                                  begin: AlignmentDirectional(1.0, 0.0),
+                                  end: AlignmentDirectional(-1.0, 0),
                                 ),
                               ),
                             ),
@@ -411,32 +412,6 @@ class _SupportWidgetState extends State<SupportWidget>
                                               opaque: false,
                                               cursor: MouseCursor.defer ??
                                                   MouseCursor.defer,
-                                              onEnter: ((event) async {
-                                                setState(() =>
-                                                    _model.mouseRegionHovered1 =
-                                                        true);
-                                                logFirebaseEvent(
-                                                    'SUPPORT_MouseRegion_vp7qsb9k_ON_TOGGLE_O');
-                                                logFirebaseEvent(
-                                                    'MouseRegion_update_app_state');
-                                                setState(() {
-                                                  FFAppState().showmenuopen =
-                                                      true;
-                                                });
-                                              }),
-                                              onExit: ((event) async {
-                                                setState(() =>
-                                                    _model.mouseRegionHovered1 =
-                                                        false);
-                                                logFirebaseEvent(
-                                                    'SUPPORT_MouseRegion_vp7qsb9k_ON_TOGGLE_O');
-                                                logFirebaseEvent(
-                                                    'MouseRegion_update_app_state');
-                                                setState(() {
-                                                  FFAppState().showmenuopen =
-                                                      false;
-                                                });
-                                              }),
                                               child: Visibility(
                                                 visible: responsiveVisibility(
                                                   context: context,
@@ -461,17 +436,77 @@ class _SupportWidgetState extends State<SupportWidget>
                                                         updateCallback: () =>
                                                             setState(() {}),
                                                         child:
-                                                            const SideMenuCopyWidget(),
+                                                            SideMenuCopyWidget(),
                                                       ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
+                                              onEnter: ((event) async {
+                                                setState(() =>
+                                                    _model.mouseRegionHovered1 =
+                                                        true);
+                                                logFirebaseEvent(
+                                                    'SUPPORT_MouseRegion_vp7qsb9k_ON_TOGGLE_O');
+                                                logFirebaseEvent(
+                                                    'MouseRegion_update_app_state');
+                                                setState(() {
+                                                  FFAppState().showmenuopen =
+                                                      true;
+                                                });
+                                              }),
+                                              onExit: ((event) async {
+                                                setState(() =>
+                                                    _model.mouseRegionHovered1 =
+                                                        false);
+                                                logFirebaseEvent(
+                                                    'SUPPORT_MouseRegion_vp7qsb9k_ON_TOGGLE_O');
+                                                logFirebaseEvent(
+                                                    'MouseRegion_update_app_state');
+                                                setState(() {
+                                                  FFAppState().showmenuopen =
+                                                      false;
+                                                });
+                                              }),
                                             ),
                                             MouseRegion(
                                               opaque: false,
                                               cursor: MouseCursor.defer ??
                                                   MouseCursor.defer,
+                                              child: Visibility(
+                                                visible:
+                                                    FFAppState().showmenuopen ==
+                                                        true,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: 230.0,
+                                                      height: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .sideMenuModel,
+                                                          updateCallback: () =>
+                                                              setState(() {}),
+                                                          child: SideMenuWidget(
+                                                            action: () async {},
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
                                               onEnter: ((event) async {
                                                 setState(() =>
                                                     _model.mouseRegionHovered2 =
@@ -502,40 +537,6 @@ class _SupportWidgetState extends State<SupportWidget>
                                                       false;
                                                 });
                                               }),
-                                              child: Visibility(
-                                                visible:
-                                                    FFAppState().showmenuopen ==
-                                                        true,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: 230.0,
-                                                      height: double.infinity,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: wrapWithModel(
-                                                          model: _model
-                                                              .sideMenuModel,
-                                                          updateCallback: () =>
-                                                              setState(() {}),
-                                                          child: SideMenuWidget(
-                                                            action: () async {},
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
                                             ),
                                           ],
                                         ),
@@ -557,12 +558,12 @@ class _SupportWidgetState extends State<SupportWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
                                         ),
-                                        child: SizedBox(
+                                        child: Container(
                                           width: double.infinity,
                                           height: double.infinity,
                                           child: Stack(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             children: [
                                               SingleChildScrollView(
                                                 child: Column(
@@ -572,7 +573,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                     Container(
                                                       width: double.infinity,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -588,7 +589,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                               children: [
                                                                 Expanded(
                                                                   child:
-                                                                      SizedBox(
+                                                                      Container(
                                                                     width: double
                                                                         .infinity,
                                                                     child:
@@ -627,7 +628,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       20.0,
                                                                       0.0,
@@ -643,11 +644,11 @@ class _SupportWidgetState extends State<SupportWidget>
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.3,
                                                                         0.1),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -680,7 +681,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       10.0,
@@ -702,7 +703,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -721,7 +722,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                 Container(
                                                                                   width: 500.0,
                                                                                   height: 1000.0,
-                                                                                  decoration: const BoxDecoration(),
+                                                                                  decoration: BoxDecoration(),
                                                                                   child: SingleChildScrollView(
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.max,
@@ -740,7 +741,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                               borderRadius: BorderRadius.circular(30.0),
                                                                                             ),
                                                                                             child: Padding(
-                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 20.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 20.0),
                                                                                               child: SingleChildScrollView(
                                                                                                 child: Column(
                                                                                                   mainAxisSize: MainAxisSize.max,
@@ -791,10 +792,10 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                       ],
                                                                                                     ),
                                                                                                     Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                                                                                       child: FlutterFlowDropDown<String>(
                                                                                                         controller: _model.typeValueController ??= FormFieldController<String>(null),
-                                                                                                        options: const [
+                                                                                                        options: [
                                                                                                           'Bug Report',
                                                                                                           'Feature Request',
                                                                                                           'Feedback (Other)'
@@ -814,14 +815,14 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                         borderColor: FlutterFlowTheme.of(context).primaryBackground,
                                                                                                         borderWidth: 2.0,
                                                                                                         borderRadius: 8.0,
-                                                                                                        margin: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 12.0, 20.0),
+                                                                                                        margin: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 12.0, 20.0),
                                                                                                         hidesUnderline: true,
                                                                                                         isSearchable: false,
                                                                                                         isMultiSelect: false,
                                                                                                       ),
                                                                                                     ),
                                                                                                     Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                                                                                       child: TextFormField(
                                                                                                         controller: _model.whichpageController,
                                                                                                         focusNode: _model.whichpageFocusNode,
@@ -837,21 +838,21 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           errorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedErrorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
@@ -859,7 +860,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                           ),
                                                                                                           filled: true,
                                                                                                           fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          contentPadding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 24.0, 24.0),
+                                                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 24.0, 24.0),
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall,
                                                                                                         maxLines: null,
@@ -867,7 +868,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                       ),
                                                                                                     ),
                                                                                                     Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                                                                                       child: TextFormField(
                                                                                                         controller: _model.toreplicateController,
                                                                                                         focusNode: _model.toreplicateFocusNode,
@@ -885,21 +886,21 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           errorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedErrorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
@@ -907,7 +908,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                           ),
                                                                                                           filled: true,
                                                                                                           fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          contentPadding: const EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 24.0, 0.0),
+                                                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 24.0, 0.0),
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                         textAlign: TextAlign.start,
@@ -916,7 +917,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                       ),
                                                                                                     ),
                                                                                                     Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                                                                                       child: TextFormField(
                                                                                                         controller: _model.feedbackController,
                                                                                                         focusNode: _model.feedbackFocusNode,
@@ -934,21 +935,21 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           errorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedErrorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
@@ -956,7 +957,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                           ),
                                                                                                           filled: true,
                                                                                                           fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          contentPadding: const EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 24.0, 0.0),
+                                                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 24.0, 0.0),
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                         textAlign: TextAlign.start,
@@ -965,7 +966,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                       ),
                                                                                                     ),
                                                                                                     Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                                                                                       child: TextFormField(
                                                                                                         controller: _model.improveController,
                                                                                                         focusNode: _model.improveFocusNode,
@@ -983,21 +984,21 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           errorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
                                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
                                                                                                           focusedErrorBorder: OutlineInputBorder(
-                                                                                                            borderSide: const BorderSide(
+                                                                                                            borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
                                                                                                             ),
@@ -1005,7 +1006,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                           ),
                                                                                                           filled: true,
                                                                                                           fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          contentPadding: const EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 24.0, 0.0),
+                                                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 24.0, 0.0),
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                         textAlign: TextAlign.start,
@@ -1013,9 +1014,9 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                         validator: _model.improveControllerValidator.asValidator(context),
                                                                                                       ),
                                                                                                     ),
-                                                                                                    if (_model.uploadedFileUrl != '')
+                                                                                                    if (_model.uploadedFileUrl != null && _model.uploadedFileUrl != '')
                                                                                                       Padding(
-                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                         child: Text(
                                                                                                           'Upload Complete, \ndon\'t forget to submit your enquiry',
                                                                                                           textAlign: TextAlign.center,
@@ -1135,8 +1136,8 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                       options: FFButtonOptions(
                                                                                                         width: 250.0,
                                                                                                         height: 40.0,
-                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                         color: FlutterFlowTheme.of(context).primary,
                                                                                                         textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -1184,15 +1185,15 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                 decoration: BoxDecoration(
                                                                                   gradient: LinearGradient(
                                                                                     colors: [
-                                                                                      const Color(0x003C89B9),
+                                                                                      Color(0x003C89B9),
                                                                                       FlutterFlowTheme.of(context).iconBorder
                                                                                     ],
-                                                                                    stops: const [
+                                                                                    stops: [
                                                                                       0.0,
                                                                                       1.0
                                                                                     ],
-                                                                                    begin: const AlignmentDirectional(1.0, 0.0),
-                                                                                    end: const AlignmentDirectional(-1.0, 0),
+                                                                                    begin: AlignmentDirectional(1.0, 0.0),
+                                                                                    end: AlignmentDirectional(-1.0, 0),
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -1215,7 +1216,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                   flex: 1,
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             15.0,
                                                                             75.0,
@@ -1228,7 +1229,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -1273,30 +1274,30 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                       scrollDirection: Axis.vertical,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                                                                                           child: Row(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 8.0),
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 8.0),
                                                                                                 child: Container(
                                                                                                   width: 4.0,
                                                                                                   height: 100.0,
                                                                                                   decoration: BoxDecoration(
-                                                                                                    color: const Color(0xFF4B39EF),
+                                                                                                    color: Color(0xFF4B39EF),
                                                                                                     borderRadius: BorderRadius.circular(4.0),
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
                                                                                               Expanded(
                                                                                                 child: Padding(
-                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
                                                                                                   child: Column(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                                                                                         child: Text(
                                                                                                           listViewAppupdatesRecord!.version.toString(),
                                                                                                           style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -1310,13 +1311,13 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                       ),
                                                                                                       Builder(
                                                                                                         builder: (context) {
-                                                                                                          final updates = listViewAppupdatesRecord.item.toList() ?? [];
+                                                                                                          final updates = listViewAppupdatesRecord?.item?.toList() ?? [];
                                                                                                           return Column(
                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                             children: List.generate(updates.length, (updatesIndex) {
                                                                                                               final updatesItem = updates[updatesIndex];
                                                                                                               return Padding(
-                                                                                                                padding: const EdgeInsets.all(10.0),
+                                                                                                                padding: EdgeInsets.all(10.0),
                                                                                                                 child: Text(
                                                                                                                   updatesItem,
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1332,9 +1333,9 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                           );
                                                                                                         },
                                                                                                       ),
-                                                                                                      if (listViewAppupdatesRecord.video != '')
+                                                                                                      if (listViewAppupdatesRecord?.video != null && listViewAppupdatesRecord?.video != '')
                                                                                                         FlutterFlowVideoPlayer(
-                                                                                                          path: listViewAppupdatesRecord.video,
+                                                                                                          path: listViewAppupdatesRecord!.video,
                                                                                                           videoType: VideoType.network,
                                                                                                           autoPlay: false,
                                                                                                           looping: true,
@@ -1343,16 +1344,16 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                           allowPlaybackSpeedMenu: false,
                                                                                                         ),
                                                                                                       Padding(
-                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                                         child: Row(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
                                                                                                             Expanded(
                                                                                                               child: Text(
-                                                                                                                listViewAppupdatesRecord.date!.toString(),
+                                                                                                                listViewAppupdatesRecord!.date!.toString(),
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                       fontFamily: 'Outfit',
-                                                                                                                      color: const Color(0xFF101213),
+                                                                                                                      color: Color(0xFF101213),
                                                                                                                       fontSize: 14.0,
                                                                                                                       fontWeight: FontWeight.normal,
                                                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1360,7 +1361,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                               ),
                                                                                                             ),
                                                                                                             Padding(
-                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                                                                               child: badges.Badge(
                                                                                                                 badgeContent: Text(
                                                                                                                   '1',
@@ -1374,19 +1375,19 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                                                 ),
                                                                                                                 showBadge: false,
                                                                                                                 shape: badges.BadgeShape.circle,
-                                                                                                                badgeColor: const Color(0xFF4B39EF),
+                                                                                                                badgeColor: Color(0xFF4B39EF),
                                                                                                                 elevation: 4.0,
-                                                                                                                padding: const EdgeInsets.all(8.0),
+                                                                                                                padding: EdgeInsets.all(8.0),
                                                                                                                 position: badges.BadgePosition.topStart(),
                                                                                                                 animationType: badges.BadgeAnimationType.scale,
                                                                                                                 toAnimate: true,
                                                                                                                 child: Padding(
-                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
+                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
                                                                                                                   child: Text(
                                                                                                                     'Update',
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: 'Outfit',
-                                                                                                                          color: const Color(0xFF4B39EF),
+                                                                                                                          color: Color(0xFF4B39EF),
                                                                                                                           fontSize: 14.0,
                                                                                                                           fontWeight: FontWeight.normal,
                                                                                                                           useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1410,7 +1411,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   },
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 4.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 4.0),
                                                                                   child: Text(
                                                                                     'Recent App Updates',
                                                                                     style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -1423,7 +1424,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'When the app is released you will find updates here to help you understand what has been changed',
                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -1436,7 +1437,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                   child: StreamBuilder<List<AppupdatesRecord>>(
                                                                                     stream: queryAppupdatesRecord(
                                                                                       queryBuilder: (appupdatesRecord) => appupdatesRecord.orderBy('date', descending: true),
@@ -1466,10 +1467,10 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                         itemBuilder: (context, listViewIndex) {
                                                                                           final listViewAppupdatesRecord = listViewAppupdatesRecordList[listViewIndex];
                                                                                           return Padding(
-                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                                                                                             child: Container(
                                                                                               width: 100.0,
-                                                                                              decoration: const BoxDecoration(
+                                                                                              decoration: BoxDecoration(
                                                                                                 color: Colors.white,
                                                                                                 boxShadow: [
                                                                                                   BoxShadow(
@@ -1505,16 +1506,16 @@ class _SupportWidgetState extends State<SupportWidget>
                                               if (FFAppState().drawerMenu)
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(40.0,
                                                                 80.0, 0.0, 0.0),
                                                     child: Container(
                                                       width: 300.0,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color:
                                                             Color(0xE6070814),
                                                         boxShadow: [
@@ -1540,7 +1541,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(
                                                                           20.0),
                                                               child: Column(
@@ -1549,7 +1550,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1588,7 +1589,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1605,7 +1606,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Stations',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1625,7 +1626,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             animationsMap['containerOnPageLoadAnimation3']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1664,7 +1665,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1681,7 +1682,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Car connect',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1701,7 +1702,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             animationsMap['containerOnPageLoadAnimation4']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1740,7 +1741,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1757,7 +1758,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Locker',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1777,7 +1778,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             animationsMap['containerOnPageLoadAnimation5']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1816,7 +1817,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1833,7 +1834,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Charge reports',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1853,7 +1854,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             animationsMap['containerOnPageLoadAnimation6']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1892,7 +1893,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1909,7 +1910,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Warnings',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1959,7 +1960,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                   ))
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 0.0),
                                                   child: Container(
                                                     width: 300.0,
@@ -1982,7 +1983,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -1999,9 +2000,9 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                     height:
                                                                         88.0,
                                                                     decoration:
-                                                                        const BoxDecoration(),
+                                                                        BoxDecoration(),
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
@@ -2020,7 +2021,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 0.0),
                                                                               child: Image.network(
                                                                                 '',
                                                                                 width: 180.0,
@@ -2037,7 +2038,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           36.0,
@@ -2049,7 +2050,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             40.0,
@@ -2062,7 +2063,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2074,11 +2075,11 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2090,7 +2091,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -2108,7 +2109,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'News',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2128,7 +2129,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2140,7 +2141,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -2158,7 +2159,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Tiles',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2178,7 +2179,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2190,7 +2191,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -2211,7 +2212,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Social ',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2231,7 +2232,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2243,7 +2244,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -2264,7 +2265,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Live Streams',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2284,7 +2285,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2296,7 +2297,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.max,
@@ -2306,7 +2307,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                       child: Text(
                                                                                         'Saved Items',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2327,7 +2328,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                     color: FlutterFlowTheme.of(context).customColor1,
                                                                                     shape: BoxShape.circle,
                                                                                   ),
-                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: SelectionArea(
                                                                                       child: Text(
                                                                                     '28',
@@ -2347,7 +2348,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2359,7 +2360,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -2377,7 +2378,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Messages',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2398,7 +2399,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                       color: FlutterFlowTheme.of(context).customColor1,
                                                                                       shape: BoxShape.circle,
                                                                                     ),
-                                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
                                                                                     child: SelectionArea(
                                                                                         child: Text(
                                                                                       '28',
@@ -2419,7 +2420,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2431,7 +2432,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                             height:
                                                                                 50.0,
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -2452,7 +2453,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Support',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2481,7 +2482,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       20.0,
                                                                       0.0,
@@ -2493,7 +2494,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                     .max,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         0.0,
@@ -2505,7 +2506,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                       .infinity,
                                                                   height: 50.0,
                                                                   decoration:
-                                                                      const BoxDecoration(),
+                                                                      BoxDecoration(),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -2526,7 +2527,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                 20.0,
                                                                           ),
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 16.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -2549,7 +2550,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         0.0,
@@ -2561,7 +2562,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                       .infinity,
                                                                   height: 50.0,
                                                                   decoration:
-                                                                      const BoxDecoration(),
+                                                                      BoxDecoration(),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -2582,7 +2583,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                                 20.0,
                                                                           ),
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 16.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -2592,7 +2593,7 @@ class _SupportWidgetState extends State<SupportWidget>
                                                                               'Logout',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                    color: const Color(0x7FFF4954),
+                                                                                    color: Color(0x7FFF4954),
                                                                                     fontWeight: FontWeight.normal,
                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                   ),

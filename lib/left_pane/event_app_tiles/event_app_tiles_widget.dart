@@ -1,9 +1,13 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/noaccesspopup_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,13 +71,13 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(-1.0, -1.0),
+      alignment: AlignmentDirectional(-1.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
-            alignment: const AlignmentDirectional(-1.0, -1.0),
+            alignment: AlignmentDirectional(-1.0, -1.0),
             child: StreamBuilder<List<TilesRecord>>(
               stream: queryTilesRecord(
                 queryBuilder: (tilesRecord) => tilesRecord
@@ -104,41 +108,41 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                 List<TilesRecord> desktopTileNavTilesRecordList =
                     snapshot.data!;
                 return AnimatedContainer(
-                  duration: const Duration(milliseconds: 100),
+                  duration: Duration(milliseconds: 100),
                   curve: Curves.easeInOut,
                   width: double.infinity,
                   height: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxHeight: 2000.0,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.0),
                   ),
-                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                  alignment: AlignmentDirectional(-1.0, -1.0),
                   child: Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                    alignment: AlignmentDirectional(-1.0, -1.0),
                     child: Container(
-                      decoration: const BoxDecoration(),
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      decoration: BoxDecoration(),
+                      alignment: AlignmentDirectional(-1.0, -1.0),
                       child: Align(
-                        alignment: const AlignmentDirectional(-1.0, -1.0),
+                        alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, -1.0),
+                              alignment: AlignmentDirectional(-1.0, -1.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
                                           topLeft: Radius.circular(16.0),
@@ -146,16 +150,16 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                         ),
                                       ),
                                       alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
+                                          AlignmentDirectional(-1.0, -1.0),
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
                                           topLeft: Radius.circular(16.0),
@@ -163,7 +167,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                         ),
                                       ),
                                       alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
+                                          AlignmentDirectional(-1.0, -1.0),
                                     ),
                                   ),
                                 ],
@@ -171,12 +175,12 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                             ),
                             Expanded(
                               child: Align(
-                                alignment: const AlignmentDirectional(-1.0, -1.0),
+                                alignment: AlignmentDirectional(-1.0, -1.0),
                                 child: Container(
-                                  decoration: const BoxDecoration(),
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  decoration: BoxDecoration(),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: Builder(
                                       builder: (context) {
                                         final tilesParents =
@@ -209,7 +213,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                   tilesParents[
                                                       tilesParentsIndex];
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: SingleChildScrollView(
                                                   child: Column(
@@ -221,7 +225,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                     children: [
                                                       Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 -1.0, -1.0),
                                                         child:
                                                             SingleChildScrollView(
@@ -232,20 +236,20 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.0,
                                                                         -1.0),
                                                                 child:
                                                                     Container(
                                                                   decoration:
-                                                                      const BoxDecoration(),
+                                                                      BoxDecoration(),
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           -1.0),
                                                                   child: Align(
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             -1.0,
                                                                             -1.0),
                                                                     child:
@@ -261,12 +265,12 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                           Axis.vertical,
                                                                       children: [
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               -1.0,
                                                                               -1.0),
                                                                           child:
                                                                               Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 4.0,
                                                                                 2.0,
                                                                                 4.0,
@@ -275,7 +279,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(16.0),
                                                                               child: AnimatedContainer(
-                                                                                duration: const Duration(milliseconds: 170),
+                                                                                duration: Duration(milliseconds: 170),
                                                                                 curve: Curves.easeInOut,
                                                                                 width: double.infinity,
                                                                                 decoration: BoxDecoration(
@@ -285,9 +289,9 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                     width: 2.0,
                                                                                   ),
                                                                                 ),
-                                                                                alignment: const AlignmentDirectional(-1.0, -1.0),
+                                                                                alignment: AlignmentDirectional(-1.0, -1.0),
                                                                                 child: Align(
-                                                                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                                                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                                                                   child: SingleChildScrollView(
                                                                                     primary: false,
                                                                                     child: Column(
@@ -295,7 +299,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 7.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 7.0),
                                                                                           child: InkWell(
                                                                                             splashColor: Colors.transparent,
                                                                                             focusColor: Colors.transparent,
@@ -325,7 +329,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                   builder: (alertDialogContext) {
                                                                                                     return WebViewAware(
                                                                                                       child: AlertDialog(
-                                                                                                        title: const Text('The tile is (trueline) '),
+                                                                                                        title: Text('The tile is (trueline) '),
                                                                                                         content: Text(valueOrDefault<String>(
                                                                                                           tilesParentsItem.reference.id,
                                                                                                           'notset',
@@ -333,7 +337,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                         actions: [
                                                                                                           TextButton(
                                                                                                             onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                            child: const Text('Ok'),
+                                                                                                            child: Text('Ok'),
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -365,7 +369,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                   builder: (alertDialogContext) {
                                                                                                     return WebViewAware(
                                                                                                       child: AlertDialog(
-                                                                                                        title: const Text('The tile is (falseLine) '),
+                                                                                                        title: Text('The tile is (falseLine) '),
                                                                                                         content: Text(valueOrDefault<String>(
                                                                                                           tilesParentsItem.reference.id,
                                                                                                           'notset',
@@ -373,7 +377,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                         actions: [
                                                                                                           TextButton(
                                                                                                             onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                            child: const Text('Ok'),
+                                                                                                            child: Text('Ok'),
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -416,8 +420,8 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                               width: MediaQuery.sizeOf(context).width * 1.0,
                                                                                               height: 110.0,
                                                                                               decoration: BoxDecoration(
-                                                                                                color: widget.companyDoc?.colors.primaryColor,
-                                                                                                borderRadius: const BorderRadius.only(
+                                                                                                color: widget.companyDoc?.colors?.primaryColor,
+                                                                                                borderRadius: BorderRadius.only(
                                                                                                   bottomLeft: Radius.circular(13.0),
                                                                                                   bottomRight: Radius.circular(13.0),
                                                                                                   topLeft: Radius.circular(13.0),
@@ -432,7 +436,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                 ),
                                                                                               ),
                                                                                               child: Padding(
-                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                                                                                                 child: Row(
                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -442,7 +446,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         children: [
                                                                                                           Padding(
-                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                                             child: Column(
                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -476,7 +480,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                           ),
                                                                                                           Expanded(
                                                                                                             child: Padding(
-                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                                                                                                               child: Column(
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -497,7 +501,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                             maxLines: 3,
                                                                                                                             style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                                                   fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                                                                                  color: widget.companyDoc?.colors.secondaryColor,
+                                                                                                                                  color: widget.companyDoc?.colors?.secondaryColor,
                                                                                                                                   fontSize: 12.0,
                                                                                                                                   fontWeight: FontWeight.w600,
                                                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
@@ -517,7 +521,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                             maxLines: 3,
                                                                                                                             style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                                                   fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                                                                                  color: widget.companyDoc?.colors.secondaryColor,
+                                                                                                                                  color: widget.companyDoc?.colors?.secondaryColor,
                                                                                                                                   fontSize: 12.0,
                                                                                                                                   fontWeight: FontWeight.w600,
                                                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
@@ -538,7 +542,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                               maxLines: 3,
                                                                                                                               style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                                                     fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                                                                                    color: widget.companyDoc?.colors.primaryTextColor,
+                                                                                                                                    color: widget.companyDoc?.colors?.primaryTextColor,
                                                                                                                                     fontSize: 12.0,
                                                                                                                                     fontWeight: FontWeight.w600,
                                                                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
@@ -549,7 +553,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                     ],
                                                                                                                   ),
                                                                                                                   Padding(
-                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                                     child: Column(
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       children: [
@@ -559,7 +563,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                           maxLines: 3,
                                                                                                                           style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                                                                                color: widget.companyDoc?.colors.secondaryColor,
+                                                                                                                                color: widget.companyDoc?.colors?.secondaryColor,
                                                                                                                                 fontSize: 16.0,
                                                                                                                                 fontWeight: FontWeight.w500,
                                                                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
@@ -576,7 +580,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                       ),
                                                                                                     ),
                                                                                                     Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                                                                       child: Column(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -628,16 +632,16 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                         builder: (alertDialogContext) {
                                                                                                                           return WebViewAware(
                                                                                                                             child: AlertDialog(
-                                                                                                                              title: const Text('Delete Tile?'),
-                                                                                                                              content: const Text('If you continue this tile will be deleted forever'),
+                                                                                                                              title: Text('Delete Tile?'),
+                                                                                                                              content: Text('If you continue this tile will be deleted forever'),
                                                                                                                               actions: [
                                                                                                                                 TextButton(
                                                                                                                                   onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                  child: const Text('Cancel'),
+                                                                                                                                  child: Text('Cancel'),
                                                                                                                                 ),
                                                                                                                                 TextButton(
                                                                                                                                   onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                  child: const Text('Confirm'),
+                                                                                                                                  child: Text('Confirm'),
                                                                                                                                 ),
                                                                                                                               ],
                                                                                                                             ),
@@ -669,22 +673,22 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                         Opacity(
                                                                                           opacity: 0.8,
                                                                                           child: Align(
-                                                                                            alignment: const AlignmentDirectional(-1.0, -1.0),
+                                                                                            alignment: AlignmentDirectional(-1.0, -1.0),
                                                                                             child: Padding(
-                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
                                                                                               child: AnimatedContainer(
-                                                                                                duration: const Duration(milliseconds: 100),
+                                                                                                duration: Duration(milliseconds: 100),
                                                                                                 curve: Curves.easeInOut,
                                                                                                 width: double.infinity,
                                                                                                 decoration: BoxDecoration(
-                                                                                                  color: widget.companyDoc?.colors.secondaryColor,
+                                                                                                  color: widget.companyDoc?.colors?.secondaryColor,
                                                                                                   borderRadius: BorderRadius.circular(17.0),
                                                                                                   border: Border.all(
                                                                                                     color: Colors.transparent,
                                                                                                   ),
                                                                                                 ),
                                                                                                 child: Padding(
-                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                                   child: Builder(
                                                                                                     builder: (context) {
                                                                                                       final tileTier2 = desktopTileNavTilesRecordList.where((e) => e.parentId == tilesParentsItem.reference.id).toList();
@@ -693,7 +697,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                         children: List.generate(tileTier2.length, (tileTier2Index) {
                                                                                                           final tileTier2Item = tileTier2[tileTier2Index];
                                                                                                           return Padding(
-                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                                                                                                             child: InkWell(
                                                                                                               splashColor: Colors.transparent,
                                                                                                               focusColor: Colors.transparent,
@@ -768,7 +772,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                 if (!() {
                                                                                                                   if ((loggedIn == true) &&
                                                                                                                       valueOrDefault<bool>(
-                                                                                                                        (currentUserDocument?.hasaccess.toList() ?? []).contains(widget.categorySelected),
+                                                                                                                        (currentUserDocument?.hasaccess?.toList() ?? []).contains(widget.categorySelected),
                                                                                                                         false,
                                                                                                                       )) {
                                                                                                                     return true;
@@ -794,7 +798,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                       return WebViewAware(
                                                                                                                         child: Padding(
                                                                                                                           padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                          child: const NoaccesspopupWidget(),
+                                                                                                                          child: NoaccesspopupWidget(),
                                                                                                                         ),
                                                                                                                       );
                                                                                                                     },
@@ -803,7 +807,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                               },
                                                                                                               child: Container(
                                                                                                                 decoration: BoxDecoration(
-                                                                                                                  color: const Color(0xB2FAFAFA),
+                                                                                                                  color: Color(0xB2FAFAFA),
                                                                                                                   borderRadius: BorderRadius.circular(16.0),
                                                                                                                   border: Border.all(
                                                                                                                     color: valueOrDefault<Color>(
@@ -814,17 +818,17 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                   ),
                                                                                                                 ),
                                                                                                                 child: Padding(
-                                                                                                                  padding: const EdgeInsets.all(8.0),
+                                                                                                                  padding: EdgeInsets.all(8.0),
                                                                                                                   child: Row(
                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                     children: [
                                                                                                                       if (valueOrDefault<bool>(
-                                                                                                                        tileTier2Item.image != '',
+                                                                                                                        tileTier2Item.image != null && tileTier2Item.image != '',
                                                                                                                         false,
                                                                                                                       ))
                                                                                                                         Padding(
-                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                                           child: Column(
                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -847,7 +851,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                         ),
                                                                                                                       Expanded(
                                                                                                                         child: Padding(
-                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                                                           child: Column(
                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -889,7 +893,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                       Padding(
-                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 8.0, 0.0),
+                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 8.0, 0.0),
                                                                                                                         child: Column(
                                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -899,7 +903,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                               false,
                                                                                                                             ))
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                                                                                                                 child: AuthUserStreamWidget(
                                                                                                                                   builder: (context) => InkWell(
                                                                                                                                     splashColor: Colors.transparent,
@@ -929,7 +933,7 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                               false,
                                                                                                                             ))
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                 child: AuthUserStreamWidget(
                                                                                                                                   builder: (context) => InkWell(
                                                                                                                                     splashColor: Colors.transparent,
@@ -944,16 +948,16 @@ class _EventAppTilesWidgetState extends State<EventAppTilesWidget> {
                                                                                                                                             builder: (alertDialogContext) {
                                                                                                                                               return WebViewAware(
                                                                                                                                                 child: AlertDialog(
-                                                                                                                                                  title: const Text('Delete Tile?'),
-                                                                                                                                                  content: const Text('If you continue this tile will be deleted forever'),
+                                                                                                                                                  title: Text('Delete Tile?'),
+                                                                                                                                                  content: Text('If you continue this tile will be deleted forever'),
                                                                                                                                                   actions: [
                                                                                                                                                     TextButton(
                                                                                                                                                       onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                                      child: const Text('Cancel'),
+                                                                                                                                                      child: Text('Cancel'),
                                                                                                                                                     ),
                                                                                                                                                     TextButton(
                                                                                                                                                       onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                                      child: const Text('Confirm'),
+                                                                                                                                                      child: Text('Confirm'),
                                                                                                                                                     ),
                                                                                                                                                   ],
                                                                                                                                                 ),

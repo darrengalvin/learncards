@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/blockv3_widget.dart';
 import '/components/chat_widget.dart';
 import '/components/drawer_tile_tree_widget.dart';
@@ -10,9 +11,11 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/edit_tile_block_copy/edit_tile_block_copy_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -46,8 +49,8 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: const Offset(81.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(81.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -139,14 +142,14 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                     logFirebaseEvent('FloatingActionButton_scroll_to');
                     await _model.mainBody?.animateTo(
                       0,
-                      duration: const Duration(milliseconds: 150),
+                      duration: Duration(milliseconds: 150),
                       curve: Curves.ease,
                     );
                   },
                   backgroundColor: FlutterFlowTheme.of(context).customColor7,
                   elevation: 8.0,
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Icon(
                       Icons.keyboard_arrow_up,
                       color: FlutterFlowTheme.of(context).primary,
@@ -158,7 +161,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                   elevation: 16.0,
                   child: WebViewAware(
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
@@ -167,7 +170,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.sideMenuModel,
                             updateCallback: () => setState(() {}),
@@ -186,7 +189,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                     ),
                   ),
                 ),
-                endDrawer: SizedBox(
+                endDrawer: Container(
                   width: 400.0,
                   child: Drawer(
                     elevation: 16.0,
@@ -237,7 +240,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                       List<SessionsRecord> containerSessionsRecordList =
                           snapshot.data!;
                       return Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: StreamBuilder<List<CompaniesRecord>>(
                           stream: queryCompaniesRecord(
                             queryBuilder: (companiesRecord) =>
@@ -264,7 +267,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                             List<CompaniesRecord> containerCompaniesRecordList =
                                 snapshot.data!;
                             return Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -396,7 +399,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             1.0,
@@ -412,7 +415,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                             .max,
                                                                     children: [
                                                                       Align(
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                         child:
@@ -420,37 +423,37 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                           width:
                                                                               double.infinity,
                                                                           decoration:
-                                                                              const BoxDecoration(
+                                                                              BoxDecoration(
                                                                             color:
                                                                                 Color(0xFFF4F7FC),
                                                                           ),
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                           child:
                                                                               Align(
                                                                             alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0),
+                                                                                AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                               child: Container(
                                                                                 width: double.infinity,
-                                                                                constraints: const BoxConstraints(
+                                                                                constraints: BoxConstraints(
                                                                                   maxWidth: 1200.0,
                                                                                 ),
                                                                                 decoration: BoxDecoration(
-                                                                                  color: const Color(0xFFF4F7FC),
+                                                                                  color: Color(0xFFF4F7FC),
                                                                                   borderRadius: BorderRadius.circular(8.0),
                                                                                 ),
-                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                alignment: AlignmentDirectional(0.0, 0.0),
                                                                               ),
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                       Align(
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                         child:
@@ -458,38 +461,37 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                           width:
                                                                               double.infinity,
                                                                           decoration:
-                                                                              const BoxDecoration(
+                                                                              BoxDecoration(
                                                                             color:
                                                                                 Color(0xFFF4F7FC),
                                                                           ),
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                           child:
                                                                               Align(
                                                                             alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0),
+                                                                                AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                               child: Container(
                                                                                 width: double.infinity,
                                                                                 height: 520.0,
-                                                                                constraints: const BoxConstraints(
+                                                                                constraints: BoxConstraints(
                                                                                   maxWidth: 1200.0,
                                                                                 ),
                                                                                 decoration: BoxDecoration(
-                                                                                  color: const Color(0xFFF4F7FC),
+                                                                                  color: Color(0xFFF4F7FC),
                                                                                   borderRadius: BorderRadius.circular(8.0),
                                                                                 ),
-                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                alignment: AlignmentDirectional(0.0, 0.0),
                                                                                 child: ListView(
                                                                                   padding: EdgeInsets.zero,
                                                                                   scrollDirection: Axis.horizontal,
-                                                                                  controller: _model.listViewController1,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(10.0),
+                                                                                      padding: EdgeInsets.all(10.0),
                                                                                       child: Container(
                                                                                         width: MediaQuery.sizeOf(context).width * 1.0,
                                                                                         height: 120.0,
@@ -512,7 +514,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                               itemBuilder: (context, featuredTilesIndex) {
                                                                                                 final featuredTilesItem = featuredTiles[featuredTilesIndex];
                                                                                                 return Padding(
-                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
                                                                                                   child: Material(
                                                                                                     color: Colors.transparent,
                                                                                                     elevation: 4.0,
@@ -522,7 +524,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                     child: Container(
                                                                                                       width: 320.0,
                                                                                                       decoration: BoxDecoration(
-                                                                                                        boxShadow: const [
+                                                                                                        boxShadow: [
                                                                                                           BoxShadow(
                                                                                                             blurRadius: 4.0,
                                                                                                             color: Color(0x33000000),
@@ -534,14 +536,14 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                             FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                             FlutterFlowTheme.of(context).alternate
                                                                                                           ],
-                                                                                                          stops: const [0.0, 1.0],
-                                                                                                          begin: const AlignmentDirectional(0.0, -1.0),
-                                                                                                          end: const AlignmentDirectional(0, 1.0),
+                                                                                                          stops: [0.0, 1.0],
+                                                                                                          begin: AlignmentDirectional(0.0, -1.0),
+                                                                                                          end: AlignmentDirectional(0, 1.0),
                                                                                                         ),
                                                                                                         borderRadius: BorderRadius.circular(15.0),
                                                                                                       ),
                                                                                                       child: Padding(
-                                                                                                        padding: const EdgeInsets.all(12.0),
+                                                                                                        padding: EdgeInsets.all(12.0),
                                                                                                         child: Row(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
@@ -552,7 +554,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                 children: [
                                                                                                                   Padding(
-                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                                                                                                                     child: Container(
                                                                                                                       width: double.infinity,
                                                                                                                       decoration: BoxDecoration(
@@ -563,9 +565,9 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                         children: [
                                                                                                                           Align(
-                                                                                                                            alignment: const AlignmentDirectional(0.0, 1.0),
+                                                                                                                            alignment: AlignmentDirectional(0.0, 1.0),
                                                                                                                             child: Padding(
-                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(6.0, 4.0, 24.0, 0.0),
+                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(6.0, 4.0, 24.0, 0.0),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -575,7 +577,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Padding(
-                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           featuredTilesItem.title,
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -593,7 +595,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Padding(
-                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           'Dismiss',
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -658,9 +660,9 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                             ),
                                                                                                                           ),
                                                                                                                           Align(
-                                                                                                                            alignment: const AlignmentDirectional(0.0, 1.0),
+                                                                                                                            alignment: AlignmentDirectional(0.0, 1.0),
                                                                                                                             child: Padding(
-                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(6.0, 4.0, 24.0, 0.0),
+                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(6.0, 4.0, 24.0, 0.0),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -670,7 +672,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Padding(
-                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: Text(
                                                                                                                                           'Date',
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -685,9 +687,9 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                     ],
                                                                                                                                   ),
                                                                                                                                   Align(
-                                                                                                                                    alignment: const AlignmentDirectional(0.0, 1.0),
+                                                                                                                                    alignment: AlignmentDirectional(0.0, 1.0),
                                                                                                                                     child: Padding(
-                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(6.0, 4.0, 6.0, 0.0),
+                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(6.0, 4.0, 6.0, 0.0),
                                                                                                                                       child: Row(
                                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -698,7 +700,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                                             children: [
                                                                                                                                               Padding(
-                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                                                                                 child: Text(
                                                                                                                                                   ' News',
                                                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -721,7 +723,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                             ),
                                                                                                                           ),
                                                                                                                           Padding(
-                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                                                                                                                             child: Text(
                                                                                                                               featuredTilesItem.details,
                                                                                                                               style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -734,7 +736,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                             ),
                                                                                                                           ),
                                                                                                                           Padding(
-                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 14.0, 16.0, 14.0),
+                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(16.0, 14.0, 16.0, 14.0),
                                                                                                                             child: Text(
                                                                                                                               featuredTilesItem.details.maybeHandleOverflow(
                                                                                                                                 maxChars: 250,
@@ -754,10 +756,10 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                     ),
                                                                                                                   ),
                                                                                                                   Stack(
-                                                                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                     children: [
                                                                                                                       Align(
-                                                                                                                        alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                        alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                         child: ClipRRect(
                                                                                                                           borderRadius: BorderRadius.circular(15.0),
                                                                                                                           child: Image.network(
@@ -767,7 +769,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                           ),
                                                                                                                         ),
                                                                                                                       ),
-                                                                                                                      const Align(
+                                                                                                                      Align(
                                                                                                                         alignment: AlignmentDirectional(0.15, 0.1),
                                                                                                                         child: FlutterFlowVideoPlayer(
                                                                                                                           path: 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
@@ -799,6 +801,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                       ),
                                                                                     ),
                                                                                   ],
+                                                                                  controller: _model.listViewController1,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -818,7 +821,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                             false,
                                                                       ))
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                           child:
@@ -826,31 +829,31 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                             width:
                                                                                 double.infinity,
                                                                             decoration:
-                                                                                const BoxDecoration(
+                                                                                BoxDecoration(
                                                                               color: Color(0xFFF4F7FC),
                                                                             ),
                                                                             alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0),
+                                                                                AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Align(
-                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
                                                                               child: ClipRRect(
                                                                                 borderRadius: BorderRadius.circular(8.0),
                                                                                 child: Container(
                                                                                   width: double.infinity,
                                                                                   height: 520.0,
-                                                                                  constraints: const BoxConstraints(
+                                                                                  constraints: BoxConstraints(
                                                                                     maxWidth: 1200.0,
                                                                                   ),
                                                                                   decoration: BoxDecoration(
-                                                                                    color: const Color(0xFFF4F7FC),
+                                                                                    color: Color(0xFFF4F7FC),
                                                                                     borderRadius: BorderRadius.circular(8.0),
                                                                                   ),
-                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: wrapWithModel(
                                                                                     model: _model.chatModel,
                                                                                     updateCallback: () => setState(() {}),
-                                                                                    child: const ChatWidget(),
+                                                                                    child: ChatWidget(),
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -902,7 +905,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                             ),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                                                                               child: Container(
                                                                                 constraints: BoxConstraints(
                                                                                   maxWidth: 960.0,
@@ -916,7 +919,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Align(
-                                                                                      alignment: const AlignmentDirectional(0.0, -1.0),
+                                                                                      alignment: AlignmentDirectional(0.0, -1.0),
                                                                                       child: Container(
                                                                                         width: MediaQuery.sizeOf(context).width * 0.9,
                                                                                         constraints: BoxConstraints(
@@ -952,14 +955,14 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                       children: List.generate(tileLevel1.length, (tileLevel1Index) {
                                                                                                         final tileLevel1Item = tileLevel1[tileLevel1Index];
                                                                                                         return Padding(
-                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                                                                                                           child: ClipRRect(
                                                                                                             borderRadius: BorderRadius.circular(16.0),
                                                                                                             child: AnimatedContainer(
-                                                                                                              duration: const Duration(milliseconds: 210),
+                                                                                                              duration: Duration(milliseconds: 210),
                                                                                                               curve: Curves.easeInOut,
                                                                                                               width: 250.0,
-                                                                                                              constraints: const BoxConstraints(
+                                                                                                              constraints: BoxConstraints(
                                                                                                                 maxHeight: 250.0,
                                                                                                               ),
                                                                                                               decoration: BoxDecoration(
@@ -1018,7 +1021,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                       children: [
                                                                                                                         Padding(
-                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                                           child: Column(
                                                                                                                             mainAxisSize: MainAxisSize.min,
                                                                                                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -1041,7 +1044,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                         ),
                                                                                                                         Expanded(
                                                                                                                           child: Padding(
-                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                             child: Column(
                                                                                                                               mainAxisSize: MainAxisSize.min,
                                                                                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1063,7 +1066,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                           ),
                                                                                                                         ),
                                                                                                                         Padding(
-                                                                                                                          padding: const EdgeInsets.all(12.0),
+                                                                                                                          padding: EdgeInsets.all(12.0),
                                                                                                                           child: Column(
                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -1089,8 +1092,8 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                 child: Icon(
                                                                                                                                   Icons.arrow_forward_ios,
                                                                                                                                   color: valueOrDefault<Color>(
-                                                                                                                                    FFAppState().tileNav.tier1Id == tileLevel1Item.reference.id ? FlutterFlowTheme.of(context).customColor7 : const Color(0xFF95A1AC),
-                                                                                                                                    const Color(0xFF95A1AC),
+                                                                                                                                    FFAppState().tileNav.tier1Id == tileLevel1Item.reference.id ? FlutterFlowTheme.of(context).customColor7 : Color(0xFF95A1AC),
+                                                                                                                                    Color(0xFF95A1AC),
                                                                                                                                   ),
                                                                                                                                   size: 24.0,
                                                                                                                                 ),
@@ -1106,7 +1109,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                     false,
                                                                                                                   ))
                                                                                                                     Padding(
-                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
+                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
                                                                                                                       child: Builder(
                                                                                                                         builder: (context) {
                                                                                                                           final tier2 = featuredPageTilesv2RecordList
@@ -1123,7 +1126,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                             itemBuilder: (context, tier2Index) {
                                                                                                                               final tier2Item = tier2[tier2Index];
                                                                                                                               return Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
                                                                                                                                 child: InkWell(
                                                                                                                                   splashColor: Colors.transparent,
                                                                                                                                   focusColor: Colors.transparent,
@@ -1229,7 +1232,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                           Expanded(
                                                                                                             child: Container(
                                                                                                               width: 370.0,
-                                                                                                              decoration: const BoxDecoration(),
+                                                                                                              decoration: BoxDecoration(),
                                                                                                               child: Builder(
                                                                                                                 builder: (context) {
                                                                                                                   final navTile1Desktop = featuredPageTilesv2RecordList
@@ -1247,13 +1250,13 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                     itemBuilder: (context, navTile1DesktopIndex) {
                                                                                                                       final navTile1DesktopItem = navTile1Desktop[navTile1DesktopIndex];
                                                                                                                       return Padding(
-                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
+                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
                                                                                                                         child: AnimatedContainer(
-                                                                                                                          duration: const Duration(milliseconds: 170),
+                                                                                                                          duration: Duration(milliseconds: 170),
                                                                                                                           curve: Curves.easeInOut,
                                                                                                                           width: double.infinity,
                                                                                                                           decoration: BoxDecoration(
-                                                                                                                            color: const Color(0xFFF4F7FC),
+                                                                                                                            color: Color(0xFFF4F7FC),
                                                                                                                             borderRadius: BorderRadius.circular(16.0),
                                                                                                                             border: Border.all(
                                                                                                                               color: FFAppState().tileNav.tier2Id == navTile1DesktopItem.reference.id ? FlutterFlowTheme.of(context).success : FlutterFlowTheme.of(context).primaryBackground,
@@ -1264,7 +1267,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                             children: [
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsets.all(10.0),
+                                                                                                                                padding: EdgeInsets.all(10.0),
                                                                                                                                 child: InkWell(
                                                                                                                                   splashColor: Colors.transparent,
                                                                                                                                   focusColor: Colors.transparent,
@@ -1327,7 +1330,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                       ),
                                                                                                                                     ),
                                                                                                                                     child: Padding(
-                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                                                                                                                                       child: Row(
                                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1337,7 +1340,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                                               children: [
                                                                                                                                                 Padding(
-                                                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                                                   child: Column(
                                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -1365,7 +1368,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                 ),
                                                                                                                                                 Expanded(
                                                                                                                                                   child: Padding(
-                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                                                     child: Column(
                                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1387,7 +1390,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                               ),
                                                                                                                                                         ),
                                                                                                                                                         Align(
-                                                                                                                                                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                                                                                                                                                          alignment: AlignmentDirectional(-1.0, 0.0),
                                                                                                                                                           child: AutoSizeText(
                                                                                                                                                             functions.splitText(1, ' - ', navTile1DesktopItem.title),
                                                                                                                                                             textAlign: TextAlign.start,
@@ -1417,7 +1420,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                             false,
                                                                                                                                           ))
                                                                                                                                             Padding(
-                                                                                                                                              padding: const EdgeInsets.all(8.0),
+                                                                                                                                              padding: EdgeInsets.all(8.0),
                                                                                                                                               child: AuthUserStreamWidget(
                                                                                                                                                 builder: (context) => Column(
                                                                                                                                                   mainAxisSize: MainAxisSize.max,
@@ -1433,7 +1436,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                         logFirebaseEvent('Icon_bottom_sheet');
                                                                                                                                                         await showModalBottomSheet(
                                                                                                                                                           isScrollControlled: true,
-                                                                                                                                                          backgroundColor: const Color(0x84000000),
+                                                                                                                                                          backgroundColor: Color(0x84000000),
                                                                                                                                                           enableDrag: false,
                                                                                                                                                           context: context,
                                                                                                                                                           builder: (context) {
@@ -1481,16 +1484,16 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                               builder: (alertDialogContext) {
                                                                                                                                                                 return WebViewAware(
                                                                                                                                                                   child: AlertDialog(
-                                                                                                                                                                    title: const Text('Delete Tile?'),
-                                                                                                                                                                    content: const Text('If you continue this tile will be deleted forever'),
+                                                                                                                                                                    title: Text('Delete Tile?'),
+                                                                                                                                                                    content: Text('If you continue this tile will be deleted forever'),
                                                                                                                                                                     actions: [
                                                                                                                                                                       TextButton(
                                                                                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                                                        child: const Text('Cancel'),
+                                                                                                                                                                        child: Text('Cancel'),
                                                                                                                                                                       ),
                                                                                                                                                                       TextButton(
                                                                                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                                                        child: const Text('Confirm'),
+                                                                                                                                                                        child: Text('Confirm'),
                                                                                                                                                                       ),
                                                                                                                                                                     ],
                                                                                                                                                                   ),
@@ -1541,7 +1544,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                                                   children: [
                                                                                                                                     Padding(
-                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                                                                                                                                       child: Builder(
                                                                                                                                         builder: (context) {
                                                                                                                                           final tileTier2 = featuredPageTilesv2RecordList.where((e) => e.parentId == navTile1DesktopItem.reference.id).toList();
@@ -1553,7 +1556,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                             itemBuilder: (context, tileTier2Index) {
                                                                                                                                               final tileTier2Item = tileTier2[tileTier2Index];
                                                                                                                                               return Padding(
-                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 10.0, 12.0),
+                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 10.0, 12.0),
                                                                                                                                                 child: InkWell(
                                                                                                                                                   splashColor: Colors.transparent,
                                                                                                                                                   focusColor: Colors.transparent,
@@ -1615,13 +1618,13 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                       ),
                                                                                                                                                     ),
                                                                                                                                                     child: Padding(
-                                                                                                                                                      padding: const EdgeInsets.all(8.0),
+                                                                                                                                                      padding: EdgeInsets.all(8.0),
                                                                                                                                                       child: Row(
                                                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                                                         children: [
                                                                                                                                                           Padding(
-                                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                                                                             child: Column(
                                                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1647,7 +1650,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                           ),
                                                                                                                                                           Expanded(
                                                                                                                                                             child: Padding(
-                                                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                                                               child: Column(
                                                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1676,14 +1679,14 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                             false,
                                                                                                                                                           ))
                                                                                                                                                             Padding(
-                                                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 2.0, 8.0, 2.0),
+                                                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 2.0, 8.0, 2.0),
                                                                                                                                                               child: AuthUserStreamWidget(
                                                                                                                                                                 builder: (context) => Column(
                                                                                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                                                                   children: [
                                                                                                                                                                     Padding(
-                                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                                                                                                                                                       child: InkWell(
                                                                                                                                                                         splashColor: Colors.transparent,
                                                                                                                                                                         focusColor: Colors.transparent,
@@ -1707,7 +1710,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                                       ),
                                                                                                                                                                     ),
                                                                                                                                                                     Padding(
-                                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                                                       child: InkWell(
                                                                                                                                                                         splashColor: Colors.transparent,
                                                                                                                                                                         focusColor: Colors.transparent,
@@ -1721,16 +1724,16 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                                                 builder: (alertDialogContext) {
                                                                                                                                                                                   return WebViewAware(
                                                                                                                                                                                     child: AlertDialog(
-                                                                                                                                                                                      title: const Text('Delete Tile?'),
-                                                                                                                                                                                      content: const Text('If you continue this tile will be deleted forever'),
+                                                                                                                                                                                      title: Text('Delete Tile?'),
+                                                                                                                                                                                      content: Text('If you continue this tile will be deleted forever'),
                                                                                                                                                                                       actions: [
                                                                                                                                                                                         TextButton(
                                                                                                                                                                                           onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                                                                          child: const Text('Cancel'),
+                                                                                                                                                                                          child: Text('Cancel'),
                                                                                                                                                                                         ),
                                                                                                                                                                                         TextButton(
                                                                                                                                                                                           onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                                                                          child: const Text('Confirm'),
+                                                                                                                                                                                          child: Text('Confirm'),
                                                                                                                                                                                         ),
                                                                                                                                                                                       ],
                                                                                                                                                                                     ),
@@ -1783,14 +1786,14 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                     ),
                                                                                                   Expanded(
                                                                                                     child: Padding(
-                                                                                                      padding: const EdgeInsets.all(24.0),
+                                                                                                      padding: EdgeInsets.all(24.0),
                                                                                                       child: SingleChildScrollView(
                                                                                                         controller: _model.columnController,
                                                                                                         child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
                                                                                                             if (valueOrDefault<bool>(
-                                                                                                              FFAppState().viewTileContentId != '',
+                                                                                                              FFAppState().viewTileContentId != null && FFAppState().viewTileContentId != '',
                                                                                                               false,
                                                                                                             ))
                                                                                                               Container(
@@ -1809,13 +1812,13 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                           phone: false,
                                                                                                                         ))
                                                                                                                       Padding(
-                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                                                         child: AuthUserStreamWidget(
                                                                                                                           builder: (context) => Row(
                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                             children: [
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
                                                                                                                                 child: FlutterFlowIconButton(
                                                                                                                                   borderColor: Colors.transparent,
                                                                                                                                   borderRadius: 30.0,
@@ -1840,7 +1843,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                             onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                             child: Padding(
                                                                                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                              child: SizedBox(
+                                                                                                                                              child: Container(
                                                                                                                                                 height: 150.0,
                                                                                                                                                 child: EditTileBlockCopyWidget(
                                                                                                                                                   initialTileId: FFAppState().viewTileContentId,
@@ -1858,7 +1861,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                 ),
                                                                                                                               ),
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
                                                                                                                                 child: FlutterFlowIconButton(
                                                                                                                                   borderColor: Colors.transparent,
                                                                                                                                   borderRadius: 30.0,
@@ -1899,7 +1902,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                     ),
                                                                                                                                   ),
                                                                                                                                   child: Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                                                                                                     child: Row(
                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                       children: [
@@ -1918,7 +1921,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                           },
                                                                                                                                         ),
                                                                                                                                         Padding(
-                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                                                                                                                                           child: Text(
                                                                                                                                             'Add Child Tile',
                                                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium,
@@ -1930,7 +1933,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                 ),
                                                                                                                               ),
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
                                                                                                                                 child: InkWell(
                                                                                                                                   splashColor: Colors.transparent,
                                                                                                                                   focusColor: Colors.transparent,
@@ -1953,7 +1956,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                       ),
                                                                                                                                     ),
                                                                                                                                     child: Padding(
-                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                                                                                                       child: Row(
                                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                                         children: [
@@ -1982,7 +1985,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                 ),
                                                                                                                               ),
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
                                                                                                                                 child: InkWell(
                                                                                                                                   splashColor: Colors.transparent,
                                                                                                                                   focusColor: Colors.transparent,
@@ -2007,7 +2010,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                       ),
                                                                                                                                     ),
                                                                                                                                     child: Padding(
-                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                                                                                                       child: Row(
                                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                                         children: [
@@ -2040,7 +2043,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     AnimatedContainer(
-                                                                                                                      duration: const Duration(milliseconds: 100),
+                                                                                                                      duration: Duration(milliseconds: 100),
                                                                                                                       curve: Curves.easeInOut,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -2059,7 +2062,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                               children: [
                                                                                                                                 Expanded(
                                                                                                                                   child: Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                                                                                                                                     child: Row(
                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2074,17 +2077,17 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                 decoration: BoxDecoration(
                                                                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                                                 ),
-                                                                                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                                 child: Align(
-                                                                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                                   child: Container(
                                                                                                                                                     width: 32.0,
                                                                                                                                                     height: 32.0,
-                                                                                                                                                    decoration: const BoxDecoration(
+                                                                                                                                                    decoration: BoxDecoration(
                                                                                                                                                       color: Color(0xFF1AADF9),
                                                                                                                                                       shape: BoxShape.circle,
                                                                                                                                                     ),
-                                                                                                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                                     child: Text(
                                                                                                                                                       '>',
                                                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2098,7 +2101,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                 ),
                                                                                                                                               ),
                                                                                                                                               Padding(
-                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                                                                 child: Text(
                                                                                                                                                   'Tile Name',
                                                                                                                                                   style: FlutterFlowTheme.of(context).titleMedium,
@@ -2113,7 +2116,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                           decoration: BoxDecoration(
                                                                                                                                             color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                                           ),
-                                                                                                                                          alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                          alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                           child: InkWell(
                                                                                                                                             splashColor: Colors.transparent,
                                                                                                                                             focusColor: Colors.transparent,
@@ -2145,7 +2148,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                               ],
                                                                                                                             ),
                                                                                                                             Padding(
-                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(25.0, 10.0, 0.0, 10.0),
+                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(25.0, 10.0, 0.0, 10.0),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 children: [
@@ -2155,7 +2158,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                       focusNode: _model.tileNameFocusNode,
                                                                                                                                       onChanged: (_) => EasyDebounce.debounce(
                                                                                                                                         '_model.tileNameController',
-                                                                                                                                        const Duration(milliseconds: 2000),
+                                                                                                                                        Duration(milliseconds: 2000),
                                                                                                                                         () => setState(() {}),
                                                                                                                                       ),
                                                                                                                                       obscureText: false,
@@ -2175,7 +2178,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                           borderRadius: BorderRadius.circular(8.0),
                                                                                                                                         ),
                                                                                                                                         focusedBorder: OutlineInputBorder(
-                                                                                                                                          borderSide: const BorderSide(
+                                                                                                                                          borderSide: BorderSide(
                                                                                                                                             color: Color(0xFF1AADF9),
                                                                                                                                             width: 2.0,
                                                                                                                                           ),
@@ -2202,7 +2205,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                     ),
                                                                                                                                   ),
                                                                                                                                   Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                                                                     child: InkWell(
                                                                                                                                       splashColor: Colors.transparent,
                                                                                                                                       focusColor: Colors.transparent,
@@ -2210,8 +2213,8 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                       highlightColor: Colors.transparent,
                                                                                                                                       onTap: () async {
                                                                                                                                         logFirebaseEvent('FEATURED_Container_6kzei3xo_ON_TAP');
-                                                                                                                                        var shouldSetState = false;
-                                                                                                                                        if (_model.tileNameController.text != '') {
+                                                                                                                                        var _shouldSetState = false;
+                                                                                                                                        if (_model.tileNameController.text != null && _model.tileNameController.text != '') {
                                                                                                                                           logFirebaseEvent('Container_backend_call');
 
                                                                                                                                           var tilesv2RecordReference = Tilesv2Record.collection.doc();
@@ -2359,7 +2362,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                               },
                                                                                                                                             ),
                                                                                                                                           }, tilesv2RecordReference);
-                                                                                                                                          shouldSetState = true;
+                                                                                                                                          _shouldSetState = true;
                                                                                                                                         } else {
                                                                                                                                           logFirebaseEvent('Container_show_snack_bar');
                                                                                                                                           ScaffoldMessenger.of(context).showSnackBar(
@@ -2372,11 +2375,11 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                                                                                     ),
                                                                                                                                               ),
-                                                                                                                                              duration: const Duration(milliseconds: 4000),
+                                                                                                                                              duration: Duration(milliseconds: 4000),
                                                                                                                                               backgroundColor: FlutterFlowTheme.of(context).error,
                                                                                                                                             ),
                                                                                                                                           );
-                                                                                                                                          if (shouldSetState) setState(() {});
+                                                                                                                                          if (_shouldSetState) setState(() {});
                                                                                                                                           return;
                                                                                                                                         }
 
@@ -2399,7 +2402,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                         setState(() {
                                                                                                                                           _model.showTileCreate = false;
                                                                                                                                         });
-                                                                                                                                        if (shouldSetState) setState(() {});
+                                                                                                                                        if (_shouldSetState) setState(() {});
                                                                                                                                       },
                                                                                                                                       child: Container(
                                                                                                                                         decoration: BoxDecoration(
@@ -2427,7 +2430,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                               },
                                                                                                                                             ),
                                                                                                                                             Padding(
-                                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                                                                                                                                               child: Text(
                                                                                                                                                 'Create ',
                                                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
@@ -2446,7 +2449,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                     AnimatedContainer(
-                                                                                                                      duration: const Duration(milliseconds: 100),
+                                                                                                                      duration: Duration(milliseconds: 100),
                                                                                                                       curve: Curves.easeInOut,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -2464,7 +2467,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                               children: [
                                                                                                                                 Expanded(
                                                                                                                                   child: Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                                                                                                                                     child: Row(
                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2479,17 +2482,17 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                 decoration: BoxDecoration(
                                                                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                                                 ),
-                                                                                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                                 child: Align(
-                                                                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                                   child: Container(
                                                                                                                                                     width: 32.0,
                                                                                                                                                     height: 32.0,
-                                                                                                                                                    decoration: const BoxDecoration(
+                                                                                                                                                    decoration: BoxDecoration(
                                                                                                                                                       color: Color(0xFF1AADF9),
                                                                                                                                                       shape: BoxShape.circle,
                                                                                                                                                     ),
-                                                                                                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                                     child: Text(
                                                                                                                                                       '>',
                                                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2503,7 +2506,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                 ),
                                                                                                                                               ),
                                                                                                                                               Padding(
-                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                                                                 child: Text(
                                                                                                                                                   'Block Name',
                                                                                                                                                   style: FlutterFlowTheme.of(context).titleMedium,
@@ -2518,7 +2521,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                           decoration: BoxDecoration(
                                                                                                                                             color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                                           ),
-                                                                                                                                          alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                          alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                           child: InkWell(
                                                                                                                                             splashColor: Colors.transparent,
                                                                                                                                             focusColor: Colors.transparent,
@@ -2551,20 +2554,20 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                             ),
                                                                                                                             if (valueOrDefault<bool>(currentUserDocument?.isadmin, false) == true)
                                                                                                                               Padding(
-                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(25.0, 10.0, 0.0, 10.0),
+                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(25.0, 10.0, 0.0, 10.0),
                                                                                                                                 child: AuthUserStreamWidget(
                                                                                                                                   builder: (context) => Row(
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Expanded(
                                                                                                                                         child: Padding(
-                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 0.0),
+                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 0.0),
                                                                                                                                           child: TextFormField(
                                                                                                                                             controller: _model.blockNameController,
                                                                                                                                             focusNode: _model.blockNameFocusNode,
                                                                                                                                             onChanged: (_) => EasyDebounce.debounce(
                                                                                                                                               '_model.blockNameController',
-                                                                                                                                              const Duration(milliseconds: 2000),
+                                                                                                                                              Duration(milliseconds: 2000),
                                                                                                                                               () => setState(() {}),
                                                                                                                                             ),
                                                                                                                                             autofocus: true,
@@ -2589,7 +2592,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                 borderRadius: BorderRadius.circular(8.0),
                                                                                                                                               ),
                                                                                                                                               focusedBorder: OutlineInputBorder(
-                                                                                                                                                borderSide: const BorderSide(
+                                                                                                                                                borderSide: BorderSide(
                                                                                                                                                   color: Color(0xFF1AADF9),
                                                                                                                                                   width: 2.0,
                                                                                                                                                 ),
@@ -2617,7 +2620,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                         ),
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                                                                                                                                         child: InkWell(
                                                                                                                                           splashColor: Colors.transparent,
                                                                                                                                           focusColor: Colors.transparent,
@@ -2625,8 +2628,8 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                           highlightColor: Colors.transparent,
                                                                                                                                           onTap: () async {
                                                                                                                                             logFirebaseEvent('FEATURED_Container_qo69taeb_ON_TAP');
-                                                                                                                                            var shouldSetState = false;
-                                                                                                                                            if (_model.blockNameController.text != '') {
+                                                                                                                                            var _shouldSetState = false;
+                                                                                                                                            if (_model.blockNameController.text != null && _model.blockNameController.text != '') {
                                                                                                                                               logFirebaseEvent('Container_backend_call');
 
                                                                                                                                               var tileBlocksRecordReference = TileBlocksRecord.collection.doc();
@@ -2758,7 +2761,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                   },
                                                                                                                                                 ),
                                                                                                                                               }, tileBlocksRecordReference);
-                                                                                                                                              shouldSetState = true;
+                                                                                                                                              _shouldSetState = true;
                                                                                                                                               logFirebaseEvent('Container_backend_call');
 
                                                                                                                                               await _model.newBlock!.reference.update(createTileBlocksRecordData(
@@ -2784,15 +2787,15 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                           useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                                                                                         ),
                                                                                                                                                   ),
-                                                                                                                                                  duration: const Duration(milliseconds: 4000),
+                                                                                                                                                  duration: Duration(milliseconds: 4000),
                                                                                                                                                   backgroundColor: FlutterFlowTheme.of(context).error,
                                                                                                                                                 ),
                                                                                                                                               );
-                                                                                                                                              if (shouldSetState) setState(() {});
+                                                                                                                                              if (_shouldSetState) setState(() {});
                                                                                                                                               return;
                                                                                                                                             }
 
-                                                                                                                                            if (shouldSetState) setState(() {});
+                                                                                                                                            if (_shouldSetState) setState(() {});
                                                                                                                                           },
                                                                                                                                           child: Container(
                                                                                                                                             decoration: BoxDecoration(
@@ -2820,7 +2823,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                   },
                                                                                                                                                 ),
                                                                                                                                                 Padding(
-                                                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                                                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                                                                                                                                                   child: Text(
                                                                                                                                                     'Create ',
                                                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium,
@@ -2840,12 +2843,12 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                     Padding(
-                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                                                       child: Row(
                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                         children: [
                                                                                                                           Padding(
-                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
                                                                                                                             child: FlutterFlowIconButton(
                                                                                                                               borderColor: Colors.transparent,
                                                                                                                               borderRadius: 30.0,
@@ -2868,9 +2871,9 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                               children: [
                                                                                                                                 if (valueOrDefault<bool>(
                                                                                                                                   () {
-                                                                                                                                    if (FFAppState().viewTileContentId == '') {
-                                                                                                                                      return (FFAppState().tileNav.tier2Id == '');
-                                                                                                                                    } else if (FFAppState().tileNav.tier2Id == '') {
+                                                                                                                                    if (FFAppState().viewTileContentId == null || FFAppState().viewTileContentId == '') {
+                                                                                                                                      return (FFAppState().tileNav.tier2Id == null || FFAppState().tileNav.tier2Id == '');
+                                                                                                                                    } else if (FFAppState().tileNav.tier2Id == null || FFAppState().tileNav.tier2Id == '') {
                                                                                                                                       return false;
                                                                                                                                     } else if (FFAppState().tileNav.tier2Id == '0') {
                                                                                                                                       return false;
@@ -2897,7 +2900,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                             children: List.generate(pathjTile.length, (pathjTileIndex) {
                                                                                                                                               final pathjTileItem = pathjTile[pathjTileIndex];
                                                                                                                                               return Padding(
-                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                                                                                                                                                 child: InkWell(
                                                                                                                                                   splashColor: Colors.transparent,
                                                                                                                                                   focusColor: Colors.transparent,
@@ -2926,13 +2929,13 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                     decoration: BoxDecoration(
                                                                                                                                                       borderRadius: BorderRadius.circular(8.0),
                                                                                                                                                       border: Border.all(
-                                                                                                                                                        color: const Color(0xFF1AADF9),
+                                                                                                                                                        color: Color(0xFF1AADF9),
                                                                                                                                                       ),
                                                                                                                                                     ),
                                                                                                                                                     child: Align(
-                                                                                                                                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                      alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                                                                       child: Padding(
-                                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 16.0, 0.0),
+                                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 16.0, 0.0),
                                                                                                                                                         child: Text(
                                                                                                                                                           pathjTileItem.title,
                                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium,
@@ -2950,9 +2953,9 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                   ),
                                                                                                                                 if (valueOrDefault<bool>(
                                                                                                                                       () {
-                                                                                                                                        if (FFAppState().viewTileContentId == '') {
-                                                                                                                                          return (FFAppState().tileNav.tier1Id == '');
-                                                                                                                                        } else if (FFAppState().tileNav.tier2Id == '') {
+                                                                                                                                        if (FFAppState().viewTileContentId == null || FFAppState().viewTileContentId == '') {
+                                                                                                                                          return (FFAppState().tileNav.tier1Id == null || FFAppState().tileNav.tier1Id == '');
+                                                                                                                                        } else if (FFAppState().tileNav.tier2Id == null || FFAppState().tileNav.tier2Id == '') {
                                                                                                                                           return false;
                                                                                                                                         } else if (FFAppState().tileNav.tier1Id == '0') {
                                                                                                                                           return false;
@@ -2986,7 +2989,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                       desktop: false,
                                                                                                                                     ))
                                                                                                                                   Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
                                                                                                                                     child: Container(
                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                         color: FlutterFlowTheme.of(context).customColor7,
@@ -2996,7 +2999,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                         ),
                                                                                                                                       ),
                                                                                                                                       child: Padding(
-                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                                                                                                         child: Row(
                                                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                                                           children: [
@@ -3038,7 +3041,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                       children: [
                                                                                                                         Expanded(
                                                                                                                           child: Padding(
-                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 20.0, 0.0),
+                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 20.0, 0.0),
                                                                                                                             child: Column(
                                                                                                                               mainAxisSize: MainAxisSize.min,
                                                                                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -3046,21 +3049,23 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                               children: [
                                                                                                                                 if (valueOrDefault<bool>(
                                                                                                                                   () {
-                                                                                                                                    if (FFAppState().navPath.isNotEmpty) {
-                                                                                                                                    return true;
-                                                                                                                                  } else {
-                                                                                                                                    return false;
-                                                                                                                                  }
+                                                                                                                                    if (FFAppState().navPath.length == null) {
+                                                                                                                                      return false;
+                                                                                                                                    } else if (FFAppState().navPath.length >= 1) {
+                                                                                                                                      return true;
+                                                                                                                                    } else {
+                                                                                                                                      return false;
+                                                                                                                                    }
                                                                                                                                   }(),
                                                                                                                                   false,
                                                                                                                                 ))
                                                                                                                                   Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                                                                                                                                     child: Row(
                                                                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                                                                       children: [
                                                                                                                                         Padding(
-                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
                                                                                                                                           child: FlutterFlowIconButton(
                                                                                                                                             borderColor: Colors.transparent,
                                                                                                                                             borderRadius: 30.0,
@@ -3087,7 +3092,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                                             ),
                                                                                                                                             child: Padding(
-                                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
                                                                                                                                               child: Builder(
                                                                                                                                                 builder: (context) {
                                                                                                                                                   final navPath = (FFAppState().navPath.length <= 3 ? FFAppState().navPath : functions.subStringList(FFAppState().navPath.toList(), 2, FFAppState().navPath.length)).toList();
@@ -3099,7 +3104,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                       children: List.generate(navPath.length, (navPathIndex) {
                                                                                                                                                         final navPathItem = navPath[navPathIndex];
                                                                                                                                                         return Padding(
-                                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                                                                                                                           child: InkWell(
                                                                                                                                                             splashColor: Colors.transparent,
                                                                                                                                                             focusColor: Colors.transparent,
@@ -3127,12 +3132,12 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                                 borderRadius: BorderRadius.circular(8.0),
                                                                                                                                                               ),
                                                                                                                                                               child: Padding(
-                                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                                                                                                 child: Row(
                                                                                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                                                                                   children: [
                                                                                                                                                                     Text(
-                                                                                                                                                                      navPathIndex == 0 ? featuredPageTilesv2RecordList.where((e) => e.reference.id == navPathItem).toList().first.title : '${featuredPageTilesv2RecordList.where((e) => e.reference.id == navPathItem).toList().first.tileTier.toString()} - ${featuredPageTilesv2RecordList.where((e) => e.reference.id == navPathItem).toList().first.title}',
+                                                                                                                                                                      navPathIndex == 0 ? '${featuredPageTilesv2RecordList.where((e) => e.reference.id == navPathItem).toList().first.title}' : '${featuredPageTilesv2RecordList.where((e) => e.reference.id == navPathItem).toList().first.tileTier.toString()} - ${featuredPageTilesv2RecordList.where((e) => e.reference.id == navPathItem).toList().first.title}',
                                                                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                                                             color: valueOrDefault<Color>(
@@ -3140,7 +3145,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                                                 FFAppState().navPath.last == navPathItem,
                                                                                                                                                                                 false,
                                                                                                                                                                               )
-                                                                                                                                                                                  ? const Color(0xFF1AADF9)
+                                                                                                                                                                                  ? Color(0xFF1AADF9)
                                                                                                                                                                                   : FlutterFlowTheme.of(context).secondaryText,
                                                                                                                                                                               FlutterFlowTheme.of(context).secondaryText,
                                                                                                                                                                             ),
@@ -3152,7 +3157,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                                       false,
                                                                                                                                                                     ))
                                                                                                                                                                       Padding(
-                                                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                                                                                                         child: Icon(
                                                                                                                                                                           Icons.keyboard_arrow_right,
                                                                                                                                                                           color: valueOrDefault<Color>(
@@ -3165,7 +3170,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                                                                                       0 - 1),
                                                                                                                                                                               false,
                                                                                                                                                                             )
-                                                                                                                                                                                ? const Color(0xFF1AADF9)
+                                                                                                                                                                                ? Color(0xFF1AADF9)
                                                                                                                                                                                 : FlutterFlowTheme.of(context).secondaryText,
                                                                                                                                                                             FlutterFlowTheme.of(context).secondaryText,
                                                                                                                                                                           ),
@@ -3199,7 +3204,7 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                 ),
                                                                                                               ),
                                                                                                             if (valueOrDefault<bool>(
-                                                                                                              FFAppState().viewTileContentId != '',
+                                                                                                              FFAppState().viewTileContentId != null && FFAppState().viewTileContentId != '',
                                                                                                               false,
                                                                                                             ))
                                                                                                               Builder(
@@ -3219,10 +3224,10 @@ class _FeaturedPageWidgetState extends State<FeaturedPageWidget>
                                                                                                                       final tileContentBlockItem = tileContentBlock[tileContentBlockIndex];
                                                                                                                       return Container(
                                                                                                                         width: double.infinity,
-                                                                                                                        constraints: const BoxConstraints(
+                                                                                                                        constraints: BoxConstraints(
                                                                                                                           maxWidth: 960.0,
                                                                                                                         ),
-                                                                                                                        decoration: const BoxDecoration(),
+                                                                                                                        decoration: BoxDecoration(),
                                                                                                                         child: wrapWithModel(
                                                                                                                           model: _model.blockv3Models.getModel(
                                                                                                                             tileContentBlockItem.reference.id,

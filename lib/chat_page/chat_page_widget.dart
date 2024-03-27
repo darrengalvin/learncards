@@ -1,7 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -103,7 +106,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                 ? containerSessionsRecordList.first
                                 : null;
                         return Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: StreamBuilder<List<MyTeamRecord>>(
                             stream: queryMyTeamRecord(
                               queryBuilder: (myTeamRecord) =>
@@ -130,7 +133,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                               List<MyTeamRecord> containerMyTeamRecordList =
                                   snapshot.data!;
                               return Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,7 +156,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                       ),
                                     ),
                                     Container(
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Builder(
                                         builder: (context) {
                                           final teamMembers =
@@ -222,7 +225,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -294,7 +297,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                       ))
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       20.0,
                                                                       0.0,
@@ -304,7 +307,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                             width: 100.0,
                                                             height: 100.0,
                                                             decoration:
-                                                                const BoxDecoration(),
+                                                                BoxDecoration(),
                                                             child: Stack(
                                                               children: [
                                                                 Container(
@@ -313,7 +316,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                                   clipBehavior:
                                                                       Clip.antiAlias,
                                                                   decoration:
-                                                                      const BoxDecoration(
+                                                                      BoxDecoration(
                                                                     shape: BoxShape
                                                                         .circle,
                                                                   ),
@@ -335,7 +338,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                                   clipBehavior:
                                                                       Clip.antiAlias,
                                                                   decoration:
-                                                                      const BoxDecoration(
+                                                                      BoxDecoration(
                                                                     shape: BoxShape
                                                                         .circle,
                                                                   ),

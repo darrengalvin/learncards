@@ -50,15 +50,15 @@ class _TypeChipsWidgetState extends State<TypeChipsWidget> {
           Container(
             width: double.infinity,
             height: 40.0,
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxHeight: 50.0,
             ),
-            decoration: const BoxDecoration(),
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            decoration: BoxDecoration(),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Align(
-              alignment: const AlignmentDirectional(0.0, 0.05),
+              alignment: AlignmentDirectional(0.0, 0.05),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 1.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(30.0, 1.0, 0.0, 0.0),
                 child: StreamBuilder<List<TypesRecord>>(
                   stream: queryTypesRecord(
                     queryBuilder: (typesRecord) => typesRecord.orderBy('id'),
@@ -107,7 +107,7 @@ class _TypeChipsWidgetState extends State<TypeChipsWidget> {
                               children: [
                                 Container(
                                   width: 100.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Visibility(
                                     visible: listViewNTypesRecord.show == true,
                                     child: Text(

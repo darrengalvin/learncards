@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'tileblock_video_model.dart';
 export 'tileblock_video_model.dart';
 
@@ -46,13 +47,13 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
       child: Container(
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           maxWidth: 300.0,
         ),
         decoration: BoxDecoration(
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 5.0,
               color: Color(0x230E151B),
@@ -64,9 +65,9 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
               FlutterFlowTheme.of(context).primaryBackground,
               FlutterFlowTheme.of(context).secondary
             ],
-            stops: const [0.0, 1.0],
-            begin: const AlignmentDirectional(0.0, -1.0),
-            end: const AlignmentDirectional(0, 1.0),
+            stops: [0.0, 1.0],
+            begin: AlignmentDirectional(0.0, -1.0),
+            end: AlignmentDirectional(0, 1.0),
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
@@ -79,7 +80,7 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
               children: [
                 Container(
                   height: 32.0,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 1200.0,
                   ),
                   decoration: BoxDecoration(
@@ -88,29 +89,29 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
                         FlutterFlowTheme.of(context).accent3,
                         FlutterFlowTheme.of(context).secondary
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(16.0),
                       topRight: Radius.circular(16.0),
                     ),
                   ),
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                 ),
                 Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Container(
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxWidth: 1200.0,
                     ),
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: FlutterFlowVideoPlayer(
                       path: widget.content!.videos.first,
                       videoType: VideoType.network,
@@ -132,11 +133,11 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
                         FlutterFlowTheme.of(context).primaryBackground,
                         FlutterFlowTheme.of(context).secondary
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
                       bottomRight: Radius.circular(16.0),
                       topLeft: Radius.circular(0.0),
@@ -147,7 +148,7 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,7 +170,7 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
                                   ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
@@ -192,7 +193,7 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(7.0),
+                              padding: EdgeInsets.all(7.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -206,7 +207,7 @@ class _TileblockVideoWidgetState extends State<TileblockVideoWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Gordon Burcham',

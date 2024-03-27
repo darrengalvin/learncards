@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'text_list_model.dart';
 export 'text_list_model.dart';
 
@@ -68,7 +69,7 @@ class _TextListWidgetState extends State<TextListWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 1.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 1.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +92,7 @@ class _TextListWidgetState extends State<TextListWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -127,10 +128,11 @@ class _TextListWidgetState extends State<TextListWidget> {
                     itemBuilder: (context, bulletPointIndex) {
                       final bulletPointItem = bulletPoint[bulletPointIndex];
                       return Container(
-                        key: ValueKey("ListView_kezpnalm" '_' +
+                        key: ValueKey("ListView_kezpnalm" +
+                            '_' +
                             bulletPointIndex.toString()),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: wrapWithModel(
                             model: _model.dynamicTextFieldModels.getModel(

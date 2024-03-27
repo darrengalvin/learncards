@@ -1,11 +1,15 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'generate_chat_model.dart';
 export 'generate_chat_model.dart';
@@ -59,7 +63,7 @@ class _GenerateChatWidgetState extends State<GenerateChatWidget> {
       showLoadingIndicator: true,
       onPressed: () async {
         logFirebaseEvent('GENERATE_CHAT_COMP_send_sharp_ICN_ON_TAP');
-        if (FFAppState().sessionId == '') {
+        if (FFAppState().sessionId == null || FFAppState().sessionId == '') {
           // generate app state
           logFirebaseEvent('IconButton_generateappstate');
           setState(() {
@@ -72,7 +76,8 @@ class _GenerateChatWidgetState extends State<GenerateChatWidget> {
             );
           });
         }
-        if (!(FFAppState().activeThread != '')) {
+        if (!(FFAppState().activeThread != null &&
+            FFAppState().activeThread != '')) {
           // generate active thread id
           logFirebaseEvent('IconButton_generateactivethreadid');
           setState(() {

@@ -1,9 +1,12 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,13 +45,15 @@ class _DemoWidgetState extends State<DemoWidget> {
           ),
         ),
       );
-      if (FFAppState().companySecretCode == '') {
+      if (FFAppState().companySecretCode == null ||
+          FFAppState().companySecretCode == '') {
         logFirebaseEvent('demo_update_app_state');
         setState(() {
           FFAppState().companySecretCode = '22335555';
         });
       }
-      if (!(FFAppState().nonLoggedInSessionId != '')) {
+      if (!(FFAppState().nonLoggedInSessionId != null &&
+          FFAppState().nonLoggedInSessionId != '')) {
         logFirebaseEvent('demo_backend_call');
 
         var sessionsRecordReference = SessionsRecord.collection.doc();
@@ -73,7 +78,8 @@ class _DemoWidgetState extends State<DemoWidget> {
               _model.sessionsCreated!.reference.id;
         });
       }
-      if (!(FFAppState().activeThread != '')) {
+      if (!(FFAppState().activeThread != null &&
+          FFAppState().activeThread != '')) {
         logFirebaseEvent('demo_update_app_state');
         setState(() {
           FFAppState().activeThread = random_data.randomString(
@@ -104,7 +110,7 @@ class _DemoWidgetState extends State<DemoWidget> {
             : FFAppState().nonLoggedInSessionId,
         role: 'ai',
         text: valueOrDefault<String>(
-          _model.companyQueryOnPageLoad?.first.welcomeMessage,
+          _model.companyQueryOnPageLoad?.first?.welcomeMessage,
           'Welcome',
         ),
         createdTime: getCurrentTimestamp,
@@ -124,7 +130,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                 : FFAppState().nonLoggedInSessionId,
             role: 'ai',
             text: valueOrDefault<String>(
-              _model.companyQueryOnPageLoad?.first.welcomeMessage,
+              _model.companyQueryOnPageLoad?.first?.welcomeMessage,
               'Welcome',
             ),
             createdTime: getCurrentTimestamp,
@@ -216,9 +222,9 @@ class _DemoWidgetState extends State<DemoWidget> {
                       ),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -246,7 +252,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 150.0,
@@ -281,12 +287,12 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                             children: [
                                                               Container(
                                                                 constraints:
-                                                                    const BoxConstraints(
+                                                                    BoxConstraints(
                                                                   maxWidth:
                                                                       400.0,
                                                                 ),
                                                                 decoration:
-                                                                    const BoxDecoration(),
+                                                                    BoxDecoration(),
                                                               ),
                                                             ],
                                                           ),
@@ -320,7 +326,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 0.0),
                                               child: FFButtonWidget(
@@ -334,7 +340,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Library-fixed',
                                                     extra: <String, dynamic>{
                                                       kTransitionInfoKey:
-                                                          const TransitionInfo(
+                                                          TransitionInfo(
                                                         hasTransition: true,
                                                         transitionType:
                                                             PageTransitionType
@@ -349,11 +355,11 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                     'Launch : ${containerCompaniesRecordList.where((e) => e.companyCode == FFAppState().companySecretCode).toList().first.companyname}',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -379,7 +385,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -393,15 +399,15 @@ class _DemoWidgetState extends State<DemoWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, -1.0),
+                                              AlignmentDirectional(0.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 15.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 600.0,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: SingleChildScrollView(
                                                 child: Column(
                                                   mainAxisSize:

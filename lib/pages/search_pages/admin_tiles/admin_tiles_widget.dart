@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/testpage/components/edit_tile/edit_tile_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -90,7 +91,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -106,7 +107,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                       'Tiles',
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
-                    actions: const [],
+                    actions: [],
                     centerTitle: true,
                     elevation: 2.0,
                   )
@@ -128,7 +129,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
@@ -143,7 +144,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         3.0, 0.0, 3.0, 0.0),
                                                 child: FFButtonWidget(
@@ -160,11 +161,11 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -261,14 +262,14 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                           listViewTilesRecordList[
                                               listViewIndex];
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 8.0),
                                         child: Container(
                                           width: double.infinity,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                            boxShadow: const [
+                                            boxShadow: [
                                               BoxShadow(
                                                 blurRadius: 3.0,
                                                 color: Color(0x32000000),
@@ -434,7 +435,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                   height: 100.0,
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 3.0,
                                                         color:
@@ -449,14 +450,14 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(8.0),
+                                                        EdgeInsets.all(8.0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       1.0,
@@ -480,7 +481,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         8.0,
@@ -506,7 +507,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Outfit',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF090F13),
                                                                         fontSize:
                                                                             18.0,
@@ -519,7 +520,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -545,7 +546,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                             fontFamily:
                                                                                 'Outfit',
                                                                             color:
-                                                                                const Color(0xFF7C8791),
+                                                                                Color(0xFF7C8791),
                                                                             fontSize:
                                                                                 14.0,
                                                                             fontWeight:
@@ -586,7 +587,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -612,16 +613,16 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                                 builder: (alertDialogContext) {
                                                                                   return WebViewAware(
                                                                                     child: AlertDialog(
-                                                                                      title: const Text('Delete Tile'),
-                                                                                      content: const Text('Are you sure you wish to delete this tile?'),
+                                                                                      title: Text('Delete Tile'),
+                                                                                      content: Text('Are you sure you wish to delete this tile?'),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                          child: const Text('Cancel'),
+                                                                                          child: Text('Cancel'),
                                                                                         ),
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                          child: const Text('Confirm '),
+                                                                                          child: Text('Confirm '),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -635,7 +636,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                           }
                                                                         },
                                                                         child:
-                                                                            const Icon(
+                                                                            Icon(
                                                                           Icons
                                                                               .delete_forever_outlined,
                                                                           color:
@@ -646,7 +647,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -673,7 +674,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                             backgroundColor:
                                                                                 FlutterFlowTheme.of(context).secondary,
                                                                             barrierColor:
-                                                                                const Color(0x00000000),
+                                                                                Color(0x00000000),
                                                                             context:
                                                                                 context,
                                                                             builder:
@@ -683,7 +684,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                                   onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                   child: Padding(
                                                                                     padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: SizedBox(
+                                                                                    child: Container(
                                                                                       height: 600.0,
                                                                                       child: EditTileWidget(
                                                                                         tilesdoc: listViewTilesRecord,
@@ -697,7 +698,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                               safeSetState(() {}));
                                                                         },
                                                                         child:
-                                                                            const Icon(
+                                                                            Icon(
                                                                           Icons
                                                                               .edit_outlined,
                                                                           color:
@@ -749,7 +750,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -782,7 +783,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                           });
                                                                         },
                                                                         child:
-                                                                            const Icon(
+                                                                            Icon(
                                                                           Icons
                                                                               .upload_sharp,
                                                                           color:
@@ -793,7 +794,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -826,7 +827,7 @@ class _AdminTilesWidgetState extends State<AdminTilesWidget> {
                                                                           });
                                                                         },
                                                                         child:
-                                                                            const Icon(
+                                                                            Icon(
                                                                           Icons
                                                                               .download_outlined,
                                                                           color:
