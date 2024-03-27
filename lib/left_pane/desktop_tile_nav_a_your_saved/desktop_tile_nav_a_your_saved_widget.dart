@@ -1,10 +1,13 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,7 +61,7 @@ class _DesktopTileNavAYourSavedWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: StreamBuilder<List<Tilesv2Record>>(
         stream: queryTilesv2Record(
           queryBuilder: (tilesv2Record) => tilesv2Record.orderBy('tile_index'),
@@ -80,11 +83,11 @@ class _DesktopTileNavAYourSavedWidgetState
           }
           List<Tilesv2Record> desktopTileNavTilesv2RecordList = snapshot.data!;
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 100),
             curve: Curves.easeInOut,
             width: double.infinity,
             height: double.infinity,
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxHeight: 1000.0,
             ),
             decoration: BoxDecoration(
@@ -118,7 +121,7 @@ class _DesktopTileNavAYourSavedWidgetState
                 List<CompaniesRecord> containerCompaniesRecordList =
                     snapshot.data!;
                 return Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,7 +161,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0.0),
                                     bottomRight: Radius.circular(0.0),
                                     topLeft: Radius.circular(16.0),
@@ -166,7 +169,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                   ),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -228,7 +231,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                           borderWidth: 2.0,
                                           borderRadius: 8.0,
                                           margin:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
                                           isOverButton: true,
@@ -244,9 +247,9 @@ class _DesktopTileNavAYourSavedWidgetState
                       ),
                       Expanded(
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -261,10 +264,10 @@ class _DesktopTileNavAYourSavedWidgetState
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Container(
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Builder(
                                                     builder: (context) {
@@ -344,12 +347,12 @@ class _DesktopTileNavAYourSavedWidgetState
                                                             ),
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.0,
                                                                       0.0),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             2.0,
@@ -365,7 +368,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                             16.0),
                                                                     child:
                                                                         AnimatedContainer(
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               170),
                                                                       curve: Curves
@@ -385,7 +388,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                         ),
                                                                       ),
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               -1.0,
                                                                               0.0),
                                                                       child:
@@ -398,7 +401,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                               MainAxisSize.max,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 7.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 7.0),
                                                                               child: InkWell(
                                                                                 splashColor: Colors.transparent,
                                                                                 focusColor: Colors.transparent,
@@ -476,7 +479,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                       containerCompaniesRecordList.first.colors.primaryColor,
                                                                                       FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
-                                                                                    borderRadius: const BorderRadius.only(
+                                                                                    borderRadius: BorderRadius.only(
                                                                                       bottomLeft: Radius.circular(13.0),
                                                                                       bottomRight: Radius.circular(13.0),
                                                                                       topLeft: Radius.circular(13.0),
@@ -491,7 +494,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                     ),
                                                                                   ),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                                                                                     child: Row(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -501,7 +504,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                                 child: Column(
                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -538,7 +541,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                               ),
                                                                                               Expanded(
                                                                                                 child: Padding(
-                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                                                                                                   child: Column(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -565,7 +568,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                                         ],
                                                                                                       ),
                                                                                                       Padding(
-                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                         child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
@@ -602,7 +605,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                               valueOrDefault<bool>(currentUserDocument?.isadmin, false),
                                                                                           false,
                                                                                         ))
-                                                                                          const Padding(
+                                                                                          Padding(
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                                                             child: Column(
                                                                                               mainAxisSize: MainAxisSize.max,
@@ -619,9 +622,9 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                             Opacity(
                                                                               opacity: 0.8,
                                                                               child: Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
                                                                                 child: AnimatedContainer(
-                                                                                  duration: const Duration(milliseconds: 100),
+                                                                                  duration: Duration(milliseconds: 100),
                                                                                   curve: Curves.easeInOut,
                                                                                   width: double.infinity,
                                                                                   decoration: BoxDecoration(
@@ -645,7 +648,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                       false,
                                                                                     ),
                                                                                     child: Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                       child: Builder(
                                                                                         builder: (context) {
                                                                                           final tileTier2 = desktopTileNavTilesv2RecordList
@@ -659,7 +662,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                             children: List.generate(tileTier2.length, (tileTier2Index) {
                                                                                               final tileTier2Item = tileTier2[tileTier2Index];
                                                                                               return Padding(
-                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                                                                                                 child: InkWell(
                                                                                                   splashColor: Colors.transparent,
                                                                                                   focusColor: Colors.transparent,
@@ -738,11 +741,11 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                                         builder: (alertDialogContext) {
                                                                                                           return WebViewAware(
                                                                                                             child: AlertDialog(
-                                                                                                              title: const Text('Already Generated'),
+                                                                                                              title: Text('Already Generated'),
                                                                                                               actions: [
                                                                                                                 TextButton(
                                                                                                                   onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                                  child: const Text('Ok'),
+                                                                                                                  child: Text('Ok'),
                                                                                                                 ),
                                                                                                               ],
                                                                                                             ),
@@ -755,7 +758,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                                   },
                                                                                                   child: Container(
                                                                                                     decoration: BoxDecoration(
-                                                                                                      color: const Color(0xB2FAFAFA),
+                                                                                                      color: Color(0xB2FAFAFA),
                                                                                                       borderRadius: BorderRadius.circular(16.0),
                                                                                                       border: Border.all(
                                                                                                         color: valueOrDefault<Color>(
@@ -766,17 +769,17 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                                       ),
                                                                                                     ),
                                                                                                     child: Padding(
-                                                                                                      padding: const EdgeInsets.all(8.0),
+                                                                                                      padding: EdgeInsets.all(8.0),
                                                                                                       child: Row(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                         children: [
                                                                                                           if (valueOrDefault<bool>(
-                                                                                                            tileTier2Item.image != '',
+                                                                                                            tileTier2Item.image != null && tileTier2Item.image != '',
                                                                                                             false,
                                                                                                           ))
                                                                                                             Padding(
-                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                               child: Column(
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -799,7 +802,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                                             ),
                                                                                                           Expanded(
                                                                                                             child: Padding(
-                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                                               child: Column(
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -827,7 +830,7 @@ class _DesktopTileNavAYourSavedWidgetState
                                                                                                                 valueOrDefault<bool>(currentUserDocument?.isadmin, false),
                                                                                                             false,
                                                                                                           ))
-                                                                                                            const Padding(
+                                                                                                            Padding(
                                                                                                               padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 8.0, 0.0),
                                                                                                               child: Column(
                                                                                                                 mainAxisSize: MainAxisSize.max,

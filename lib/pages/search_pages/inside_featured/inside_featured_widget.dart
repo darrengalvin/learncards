@@ -2,8 +2,11 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/testpage/components/edit_insid_featured/edit_insid_featured_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'inside_featured_model.dart';
 export 'inside_featured_model.dart';
@@ -80,14 +83,14 @@ class _InsideFeaturedWidgetState extends State<InsideFeaturedWidget> {
                   actions: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
                       child: Container(
                         height: 32.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).secondary,
                           borderRadius: BorderRadius.circular(24.0),
                         ),
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                       ),
                     ),
                     FlutterFlowIconButton(
@@ -107,7 +110,7 @@ class _InsideFeaturedWidgetState extends State<InsideFeaturedWidget> {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
-                          barrierColor: const Color(0x00000000),
+                          barrierColor: Color(0x00000000),
                           context: context,
                           builder: (context) {
                             return WebViewAware(
@@ -137,7 +140,7 @@ class _InsideFeaturedWidgetState extends State<InsideFeaturedWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -145,7 +148,7 @@ class _InsideFeaturedWidgetState extends State<InsideFeaturedWidget> {
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(16.0),
                             child: Image.network(
@@ -159,14 +162,14 @@ class _InsideFeaturedWidgetState extends State<InsideFeaturedWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                       child: Text(
                         widget.featuredpages!.title,
                         style: FlutterFlowTheme.of(context).displaySmall,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           16.0, 12.0, 12.0, 12.0),
                       child: Text(
                         widget.featuredpages!.bodytext,
@@ -180,7 +183,7 @@ class _InsideFeaturedWidgetState extends State<InsideFeaturedWidget> {
                         children: [
                           Container(
                             height: 200.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                           ),
                         ],
                       ),

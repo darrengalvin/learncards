@@ -11,7 +11,7 @@ class WatermillOffsetsMessageSummarizerTable
 }
 
 class WatermillOffsetsMessageSummarizerRow extends SupabaseDataRow {
-  WatermillOffsetsMessageSummarizerRow(super.data);
+  WatermillOffsetsMessageSummarizerRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => WatermillOffsetsMessageSummarizerTable();

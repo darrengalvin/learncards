@@ -7,6 +7,7 @@ import '/left_pane/desktop_tile_nav_a_your_saved/desktop_tile_nav_a_your_saved_w
 import '/left_pane/desktop_tile_nav_ai_this_week/desktop_tile_nav_ai_this_week_widget.dart';
 import '/left_pane/event_app_tiles/event_app_tiles_widget.dart';
 import '/left_pane/main_app_tiles/main_app_tiles_widget.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,7 @@ class LeftColumnWidget extends StatefulWidget {
     bool? isLeftShow,
     this.sessionsDoc,
     this.companiesDoc,
-  }) : isLeftShow = isLeftShow ?? false;
+  }) : this.isLeftShow = isLeftShow ?? false;
 
   final bool isLeftShow;
   final SessionsRecord? sessionsDoc;
@@ -60,7 +61,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
     return Visibility(
       visible: FFAppState().leftColumnShow == true,
       child: Align(
-        alignment: const AlignmentDirectional(-1.0, -1.0),
+        alignment: AlignmentDirectional(-1.0, -1.0),
         child: Container(
           constraints: BoxConstraints(
             maxWidth: () {
@@ -75,8 +76,8 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
               }
             }(),
           ),
-          decoration: const BoxDecoration(),
-          alignment: const AlignmentDirectional(-1.0, -1.0),
+          decoration: BoxDecoration(),
+          alignment: AlignmentDirectional(-1.0, -1.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +101,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodyMediumFamily,
                                       color: widget.companiesDoc?.colors
-                                          .primaryTextColor,
+                                          ?.primaryTextColor,
                                       fontSize: 22.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
@@ -116,7 +117,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                 ),
                                 style: TextStyle(
                                   color: widget
-                                      .companiesDoc?.colors.secondaryTextColor,
+                                      .companiesDoc?.colors?.secondaryTextColor,
                                   fontSize: 18.0,
                                 ),
                               )
@@ -137,7 +138,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodyMediumFamily,
                                       color: widget.companiesDoc?.colors
-                                          .primaryTextColor,
+                                          ?.primaryTextColor,
                                       fontSize: 22.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
@@ -153,7 +154,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                 ),
                                 style: TextStyle(
                                   color: widget
-                                      .companiesDoc?.colors.secondaryTextColor,
+                                      .companiesDoc?.colors?.secondaryTextColor,
                                   fontSize: 18.0,
                                 ),
                               )
@@ -162,7 +163,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                           ),
                         );
                       } else {
-                        return const Column(
+                        return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [],
                         );
@@ -172,7 +173,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                 ],
               ),
               Align(
-                alignment: const AlignmentDirectional(-1.0, -1.0),
+                alignment: AlignmentDirectional(-1.0, -1.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -210,10 +211,10 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                               List<Tilesv2Record> containerTilesv2RecordList =
                                   snapshot.data!;
                               return Container(
-                                constraints: const BoxConstraints(
+                                constraints: BoxConstraints(
                                   maxWidth: 850.0,
                                 ),
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -286,7 +287,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                                                   1.0,
                                                             ),
                                                             decoration:
-                                                                const BoxDecoration(),
+                                                                BoxDecoration(),
                                                           );
                                                         },
                                                       ),
@@ -318,10 +319,10 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 600.0,
                                     ),
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: SingleChildScrollView(
                                       primary: false,
                                       child: Column(
@@ -330,7 +331,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.0, -1.0),
                                             child: wrapWithModel(
                                               model: _model
@@ -354,7 +355,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                             desktop: false,
                                           ))
                                             Container(
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -424,7 +425,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                         }
                                       }(),
                                     ),
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: wrapWithModel(
                                       model: _model.mainAppTilesModel,
                                       updateCallback: () => setState(() {}),
@@ -443,7 +444,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 AnimatedContainer(
-                                  duration: const Duration(milliseconds: 100),
+                                  duration: Duration(milliseconds: 100),
                                   curve: Curves.easeInOut,
                                   constraints: BoxConstraints(
                                     maxWidth: () {
@@ -463,7 +464,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                                       }
                                     }(),
                                   ),
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: wrapWithModel(
                                     model: _model.learnCardsModel,
                                     updateCallback: () => setState(() {}),
@@ -516,7 +517,7 @@ class _LeftColumnWidgetState extends State<LeftColumnWidget> {
                               ],
                             );
                           } else {
-                            return const Column(
+                            return Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [],
                             );

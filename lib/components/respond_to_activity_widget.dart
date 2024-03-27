@@ -1,7 +1,9 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -63,21 +65,21 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxHeight: 450.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).customColor4,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'Journal Entry',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -90,14 +92,14 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -112,7 +114,7 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
                           child: Text(
                             dateTimeFormat('jms', getCurrentTimestamp),
@@ -125,7 +127,7 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 10.0),
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
@@ -176,7 +178,7 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 100.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 100.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -244,7 +246,7 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 20.0, 10.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 20.0, 10.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -279,16 +281,16 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
                         Navigator.pop(context);
                       },
                       text: 'Submit',
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.location_history,
                         size: 15.0,
                       ),
                       options: FFButtonOptions(
                         height: 50.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 4.0, 24.0, 4.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).selectedButton,
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
@@ -302,7 +304,7 @@ class _RespondToActivityWidgetState extends State<RespondToActivityWidget> {
                                       .titleSmallFamily),
                             ),
                         elevation: 1.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

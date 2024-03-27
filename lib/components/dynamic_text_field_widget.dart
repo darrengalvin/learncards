@@ -2,6 +2,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'dynamic_text_field_model.dart';
 export 'dynamic_text_field_model.dart';
 
@@ -11,7 +13,7 @@ class DynamicTextFieldWidget extends StatefulWidget {
     this.action,
     String? hint,
     this.initialValue,
-  }) : hint = hint ?? 'Some text here...';
+  }) : this.hint = hint ?? 'Some text here...';
 
   final Future Function()? action;
   final String hint;
@@ -51,12 +53,12 @@ class _DynamicTextFieldWidgetState extends State<DynamicTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      key: const ValueKey('bulletlist'),
+      key: ValueKey('bulletlist'),
       controller: _model.bulletListFieldController,
       focusNode: _model.bulletListFieldFocusNode,
       onChanged: (_) => EasyDebounce.debounce(
         '_model.bulletListFieldController',
-        const Duration(milliseconds: 2000),
+        Duration(milliseconds: 2000),
         () => setState(() {}),
       ),
       obscureText: false,
@@ -72,7 +74,7 @@ class _DynamicTextFieldWidgetState extends State<DynamicTextFieldWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
+          borderSide: BorderSide(
             color: Color(0xFF1AADF9),
             width: 2.0,
           ),
@@ -92,7 +94,7 @@ class _DynamicTextFieldWidgetState extends State<DynamicTextFieldWidget> {
           ),
           borderRadius: BorderRadius.circular(8.0),
         ),
-        prefixIcon: const Icon(
+        prefixIcon: Icon(
           Icons.radio_button_checked,
           color: Color(0xFF1AADF9),
         ),

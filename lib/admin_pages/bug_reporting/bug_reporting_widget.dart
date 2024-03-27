@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,9 +9,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'bug_reporting_model.dart';
 export 'bug_reporting_model.dart';
@@ -78,7 +83,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                     Material(
                       color: Colors.transparent,
                       elevation: 3.0,
-                      shape: const RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16.0),
                           bottomRight: Radius.circular(16.0),
@@ -91,7 +96,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(16.0),
                             bottomRight: Radius.circular(16.0),
                             topLeft: Radius.circular(0.0),
@@ -99,7 +104,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 44.0, 20.0, 20.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -162,12 +167,12 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
                                   child: FlutterFlowDropDown<String>(
                                     controller: _model.typeValueController ??=
                                         FormFieldController<String>(null),
-                                    options: const [
+                                    options: [
                                       'Bug Report',
                                       'Feature Request',
                                       'Feedback (Other)'
@@ -221,7 +226,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                         .primaryBackground,
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                    margin: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 20.0, 12.0, 20.0),
                                     hidesUnderline: true,
                                     isSearchable: false,
@@ -230,7 +235,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                 ),
                                 if (_model.selectedfeedback == true)
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.whichpageController,
@@ -250,7 +255,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -258,7 +263,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -266,7 +271,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -277,7 +282,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                         fillColor: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 24.0, 24.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -290,7 +295,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                   ),
                                 if (_model.selectedfeedback != true)
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.toreplicateController,
@@ -315,7 +320,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -323,7 +328,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -331,7 +336,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -342,7 +347,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                         fillColor: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 40.0, 24.0, 0.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -356,7 +361,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                   ),
                                 if (_model.selectedfeedback == true)
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.feedbackController,
@@ -379,7 +384,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -387,7 +392,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -395,7 +400,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -406,7 +411,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                         fillColor: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 40.0, 24.0, 0.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -420,7 +425,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                   ),
                                 if (_model.selectedfeedback == true)
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.improveController,
@@ -444,7 +449,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -452,7 +457,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -460,7 +465,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -471,7 +476,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                         fillColor: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 40.0, 24.0, 0.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -483,9 +488,10 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                           .asValidator(context),
                                     ),
                                   ),
-                                if (_model.uploadedFileUrl != '')
+                                if (_model.uploadedFileUrl != null &&
+                                    _model.uploadedFileUrl != '')
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
                                     child: Text(
                                       'Upload Complete, \ndon\'t forget to submit your enquiry',
@@ -610,13 +616,13 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                       builder: (alertDialogContext) {
                                         return WebViewAware(
                                           child: AlertDialog(
-                                            title: const Text(
+                                            title: Text(
                                                 'Thank you for your feedback'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext),
-                                                child: const Text('Ok'),
+                                                child: Text('Ok'),
                                               ),
                                             ],
                                           ),
@@ -628,9 +634,9 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                   options: FFButtonOptions(
                                     width: 250.0,
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -646,7 +652,7 @@ class _BugReportingWidgetState extends State<BugReportingWidget>
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 2.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),

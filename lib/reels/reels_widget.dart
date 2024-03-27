@@ -5,7 +5,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -42,8 +45,8 @@ class _ReelsWidgetState extends State<ReelsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 800.ms,
-          begin: const Offset(50.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(50.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -88,12 +91,12 @@ class _ReelsWidgetState extends State<ReelsWidget>
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.05, 0.0),
+                alignment: AlignmentDirectional(0.05, 0.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 700.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -124,7 +127,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                             }
                             List<ReelsRecord> pageViewReelsRecordList =
                                 snapshot.data!;
-                            return SizedBox(
+                            return Container(
                               width: double.infinity,
                               height: MediaQuery.sizeOf(context).height * 1.0,
                               child: PageView.builder(
@@ -188,7 +191,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(1.0, 0.0),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
@@ -213,7 +216,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(-0.1, 1.0),
+                                            AlignmentDirectional(-0.1, 1.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
@@ -232,10 +235,10 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                               },
                                               child: Container(
                                                 width: double.infinity,
-                                                constraints: const BoxConstraints(
+                                                constraints: BoxConstraints(
                                                   maxHeight: 140.0,
                                                 ),
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: StreamBuilder<
                                                     List<TilesRecord>>(
                                                   stream: queryTilesRecord(
@@ -291,7 +294,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       12.0,
@@ -312,7 +315,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                   'REELS_PAGE_videoCard_ON_TAP');
                                                               if ((currentUserDocument
                                                                               ?.hasaccess
-                                                                              .toList() ??
+                                                                              ?.toList() ??
                                                                           [])
                                                                       .contains(
                                                                           pageViewReelsRecord
@@ -325,24 +328,26 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                   FFAppState()
                                                                           .SelectedTileRef =
                                                                       listViewTilesRecord
-                                                                          .reference;
+                                                                          ?.reference;
                                                                   FFAppState()
                                                                           .historyActive =
                                                                       false;
                                                                   FFAppState()
                                                                           .selectedTile =
-                                                                      listViewTilesRecord
+                                                                      listViewTilesRecord!
                                                                           .title;
                                                                   FFAppState()
                                                                           .lasttiletouched =
                                                                       listViewTilesRecord
-                                                                          .reference;
+                                                                          ?.reference;
                                                                 });
                                                                 logFirebaseEvent(
                                                                     'videoCard_update_page_state');
                                                                 setState(() {});
-                                                                if (listViewTilesRecord
-                                                                        .children.isNotEmpty) {
+                                                                if (listViewTilesRecord!
+                                                                        .children
+                                                                        .length >
+                                                                    0) {
                                                                   logFirebaseEvent(
                                                                       'videoCard_update_app_state');
                                                                   setState(() {
@@ -361,33 +366,33 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                 }
 
                                                                 if (listViewTilesRecord
-                                                                        .tileref ==
+                                                                        ?.tileref ==
                                                                     null) {
                                                                   logFirebaseEvent(
                                                                       'videoCard_backend_call');
 
-                                                                  await listViewTilesRecord
+                                                                  await listViewTilesRecord!
                                                                       .reference
                                                                       .update(
                                                                           createTilesRecordData(
                                                                     tileref:
                                                                         listViewTilesRecord
-                                                                            .tileref,
+                                                                            ?.tileref,
                                                                   ));
                                                                 }
                                                                 if (listViewTilesRecord
-                                                                        .tileref ==
+                                                                        ?.tileref ==
                                                                     null) {
                                                                   logFirebaseEvent(
                                                                       'videoCard_backend_call');
 
-                                                                  await listViewTilesRecord
+                                                                  await listViewTilesRecord!
                                                                       .reference
                                                                       .update(
                                                                           createTilesRecordData(
                                                                     tileref:
                                                                         listViewTilesRecord
-                                                                            .tileref,
+                                                                            ?.tileref,
                                                                   ));
                                                                 }
                                                               } else {
@@ -416,7 +421,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                           padding:
                                                                               MediaQuery.viewInsetsOf(context),
                                                                           child:
-                                                                              const NoaccesspopupWidget(),
+                                                                              NoaccesspopupWidget(),
                                                                         ),
                                                                       ),
                                                                     );
@@ -432,7 +437,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                               height: 120.0,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                boxShadow: const [
+                                                                boxShadow: [
                                                                   BoxShadow(
                                                                     blurRadius:
                                                                         4.0,
@@ -454,16 +459,16 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                             context)
                                                                         .secondary
                                                                   ],
-                                                                  stops: const [
+                                                                  stops: [
                                                                     0.0,
                                                                     1.0
                                                                   ],
                                                                   begin:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
                                                                   end:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0,
                                                                           1.0),
                                                                 ),
@@ -474,7 +479,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -484,7 +489,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                   children: [
                                                                     ClipRRect(
                                                                       borderRadius:
-                                                                          const BorderRadius
+                                                                          BorderRadius
                                                                               .only(
                                                                         bottomLeft:
                                                                             Radius.circular(12.0),
@@ -507,7 +512,7 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           130.0,
                                                                           0.0,
                                                                           12.0,
@@ -532,14 +537,14 @@ class _ReelsWidgetState extends State<ReelsWidget>
                                                                                 ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 4.0,
                                                                                 0.0,
                                                                                 4.0),
                                                                             child:
                                                                                 Text(
-                                                                              listViewTilesRecord.summary,
+                                                                              listViewTilesRecord!.summary,
                                                                               style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                     fontFamily: 'Readex Pro',
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,

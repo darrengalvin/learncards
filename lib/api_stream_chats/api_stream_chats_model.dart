@@ -1,11 +1,19 @@
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'api_stream_chats_widget.dart' show ApiStreamChatsWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ApiStreamChatsModel extends FlutterFlowModel<ApiStreamChatsWidget> {
   ///  Local state fields for this page.
 
-  Color? pageColor = const Color(0xff1c4494);
+  Color? pageColor = Color(4280042644);
 
   ///  State fields for stateful widgets in this page.
 

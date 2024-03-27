@@ -10,6 +10,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ class _DrawerEmptyListTilesWidgetState
             }
             final containerTilesv2Record = snapshot.data!;
             return AnimatedContainer(
-              duration: const Duration(milliseconds: 100),
+              duration: Duration(milliseconds: 100),
               curve: Curves.easeInOut,
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.sizeOf(context).height * 7.0,
@@ -107,14 +108,14 @@ class _DrawerEmptyListTilesWidgetState
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -124,7 +125,7 @@ class _DrawerEmptyListTilesWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 100.0,
@@ -149,37 +150,11 @@ class _DrawerEmptyListTilesWidgetState
                                         opaque: false,
                                         cursor: MouseCursor.defer ??
                                             MouseCursor.defer,
-                                        onEnter: ((event) async {
-                                          setState(() =>
-                                              _model.mouseRegionHovered = true);
-                                          logFirebaseEvent(
-                                              'DRAWER_EMPTY_LIST_TILES_MouseRegion_4p7e');
-                                          if (containerTilesv2Record.image !=
-                                                  '') {
-                                            logFirebaseEvent(
-                                                'MouseRegion_update_component_state');
-                                            setState(() {
-                                              _model.imageOpacity = 100.0;
-                                            });
-                                          }
-                                        }),
-                                        onExit: ((event) async {
-                                          setState(() => _model
-                                              .mouseRegionHovered = false);
-                                          logFirebaseEvent(
-                                              'DRAWER_EMPTY_LIST_TILES_MouseRegion_4p7e');
-                                          if (containerTilesv2Record.image !=
-                                                  '') {
-                                            logFirebaseEvent(
-                                                'MouseRegion_update_component_state');
-                                            setState(() {
-                                              _model.imageOpacity = 0.0;
-                                            });
-                                          }
-                                        }),
                                         child: Visibility(
                                           visible: valueOrDefault<bool>(
                                             containerTilesv2Record.image ==
+                                                    null ||
+                                                containerTilesv2Record.image ==
                                                     '',
                                             true,
                                           ),
@@ -297,7 +272,7 @@ class _DrawerEmptyListTilesWidgetState
                                               child: Container(
                                                 width: 100.0,
                                                 height: 100.0,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   color: Color(0x121AADF9),
                                                 ),
                                                 child: Column(
@@ -308,7 +283,7 @@ class _DrawerEmptyListTilesWidgetState
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -342,6 +317,9 @@ class _DrawerEmptyListTilesWidgetState
                                                       child: Text(
                                                         containerTilesv2Record
                                                                         .image !=
+                                                                    null &&
+                                                                containerTilesv2Record
+                                                                        .image !=
                                                                     ''
                                                             ? 'Change Cover Image'
                                                             : 'Add a cover photo',
@@ -357,6 +335,38 @@ class _DrawerEmptyListTilesWidgetState
                                             ),
                                           ),
                                         ),
+                                        onEnter: ((event) async {
+                                          setState(() =>
+                                              _model.mouseRegionHovered = true);
+                                          logFirebaseEvent(
+                                              'DRAWER_EMPTY_LIST_TILES_MouseRegion_4p7e');
+                                          if (containerTilesv2Record.image !=
+                                                  null &&
+                                              containerTilesv2Record.image !=
+                                                  '') {
+                                            logFirebaseEvent(
+                                                'MouseRegion_update_component_state');
+                                            setState(() {
+                                              _model.imageOpacity = 100.0;
+                                            });
+                                          }
+                                        }),
+                                        onExit: ((event) async {
+                                          setState(() => _model
+                                              .mouseRegionHovered = false);
+                                          logFirebaseEvent(
+                                              'DRAWER_EMPTY_LIST_TILES_MouseRegion_4p7e');
+                                          if (containerTilesv2Record.image !=
+                                                  null &&
+                                              containerTilesv2Record.image !=
+                                                  '') {
+                                            logFirebaseEvent(
+                                                'MouseRegion_update_component_state');
+                                            setState(() {
+                                              _model.imageOpacity = 0.0;
+                                            });
+                                          }
+                                        }),
                                       ),
                                     ),
                                   ),
@@ -367,7 +377,7 @@ class _DrawerEmptyListTilesWidgetState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 24.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -385,20 +395,20 @@ class _DrawerEmptyListTilesWidgetState
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                               ),
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Container(
                                                   width: 32.0,
                                                   height: 32.0,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0xFF1AADF9),
                                                     shape: BoxShape.circle,
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
                                                     '1',
@@ -424,7 +434,7 @@ class _DrawerEmptyListTilesWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -444,7 +454,7 @@ class _DrawerEmptyListTilesWidgetState
                                                 .secondaryBackground,
                                           ),
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Icon(
                                             Icons.arrow_forward_outlined,
                                             color: FlutterFlowTheme.of(context)
@@ -456,9 +466,9 @@ class _DrawerEmptyListTilesWidgetState
                                     ),
                                   ),
                                   Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 8.0, 24.0, 0.0),
                                       child: TextFormField(
                                         controller:
@@ -467,7 +477,7 @@ class _DrawerEmptyListTilesWidgetState
                                             _model.textFieldNameFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.textFieldNameController',
-                                          const Duration(milliseconds: 2000),
+                                          Duration(milliseconds: 2000),
                                           () async {
                                             logFirebaseEvent(
                                                 'DRAWER_EMPTY_LIST_TILES_TextFieldName_ON');
@@ -545,7 +555,7 @@ class _DrawerEmptyListTilesWidgetState
                                                 BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFF1AADF9),
                                               width: 2.0,
                                             ),
@@ -604,7 +614,7 @@ class _DrawerEmptyListTilesWidgetState
                                     controller: _model.expandableController,
                                     child: ExpandablePanel(
                                       header: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 24.0, 16.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -623,22 +633,22 @@ class _DrawerEmptyListTilesWidgetState
                                                         .secondaryBackground,
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Container(
                                                       width: 32.0,
                                                       height: 32.0,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color:
                                                             Color(0xFF1AADF9),
                                                         shape: BoxShape.circle,
                                                       ),
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         '2',
@@ -665,7 +675,7 @@ class _DrawerEmptyListTilesWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -685,7 +695,7 @@ class _DrawerEmptyListTilesWidgetState
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                               ),
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Icon(
                                                 Icons.arrow_forward_outlined,
@@ -709,13 +719,13 @@ class _DrawerEmptyListTilesWidgetState
                                         ),
                                       ),
                                       expanded: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 24.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Row(
@@ -736,7 +746,7 @@ class _DrawerEmptyListTilesWidgetState
                                                           'Content',
                                                         ),
                                                       ),
-                                                      options: const [
+                                                      options: [
                                                         'Collection',
                                                         'Section',
                                                         'Content'
@@ -798,11 +808,11 @@ class _DrawerEmptyListTilesWidgetState
                                                           .secondaryBackground,
                                                       elevation: 2.0,
                                                       borderColor:
-                                                          const Color(0xFF1AADF9),
+                                                          Color(0xFF1AADF9),
                                                       borderWidth: 2.0,
                                                       borderRadius: 8.0,
                                                       margin:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   4.0,
@@ -820,7 +830,7 @@ class _DrawerEmptyListTilesWidgetState
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 12.0,
                                                           16.0, 0.0),
                                                   child:
@@ -833,8 +843,8 @@ class _DrawerEmptyListTilesWidgetState
                                                         (newValue) async {
                                                       setState(() => _model
                                                               .switchMembersValue =
-                                                          newValue);
-                                                      if (newValue) {
+                                                          newValue!);
+                                                      if (newValue!) {
                                                         logFirebaseEvent(
                                                             'DRAWER_EMPTY_LIST_TILES_SwitchMembers_ON');
                                                         logFirebaseEvent(
@@ -907,7 +917,7 @@ class _DrawerEmptyListTilesWidgetState
                                                             .of(context)
                                                         .secondaryBackground,
                                                     activeColor:
-                                                        const Color(0xFF1AADF9),
+                                                        Color(0xFF1AADF9),
                                                     activeTrackColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -917,7 +927,7 @@ class _DrawerEmptyListTilesWidgetState
                                                         ListTileControlAffinity
                                                             .trailing,
                                                     contentPadding:
-                                                        const EdgeInsets.all(8.0),
+                                                        EdgeInsets.all(8.0),
                                                   ),
                                                 ),
                                                 StreamBuilder<
@@ -960,7 +970,7 @@ class _DrawerEmptyListTilesWidgetState
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
@@ -1043,12 +1053,12 @@ class _DrawerEmptyListTilesWidgetState
                                                                             elevation:
                                                                                 2.0,
                                                                             borderColor:
-                                                                                const Color(0xFF1AADF9),
+                                                                                Color(0xFF1AADF9),
                                                                             borderWidth:
                                                                                 2.0,
                                                                             borderRadius:
                                                                                 8.0,
-                                                                            margin: const EdgeInsetsDirectional.fromSTEB(
+                                                                            margin: EdgeInsetsDirectional.fromSTEB(
                                                                                 16.0,
                                                                                 4.0,
                                                                                 16.0,
@@ -1065,7 +1075,7 @@ class _DrawerEmptyListTilesWidgetState
                                                                     ),
                                                                     Container(
                                                                       decoration:
-                                                                          const BoxDecoration(),
+                                                                          BoxDecoration(),
                                                                       child:
                                                                           Visibility(
                                                                         visible:
@@ -1080,13 +1090,13 @@ class _DrawerEmptyListTilesWidgetState
                                                                               MainAxisSize.max,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                                                                               child: TextFormField(
                                                                                 controller: _model.textFieldNewGroupController,
                                                                                 focusNode: _model.textFieldNewGroupFocusNode,
                                                                                 onChanged: (_) => EasyDebounce.debounce(
                                                                                   '_model.textFieldNewGroupController',
-                                                                                  const Duration(milliseconds: 2000),
+                                                                                  Duration(milliseconds: 2000),
                                                                                   () => setState(() {}),
                                                                                 ),
                                                                                 autofocus: true,
@@ -1111,7 +1121,7 @@ class _DrawerEmptyListTilesWidgetState
                                                                                     borderRadius: BorderRadius.circular(8.0),
                                                                                   ),
                                                                                   focusedBorder: OutlineInputBorder(
-                                                                                    borderSide: const BorderSide(
+                                                                                    borderSide: BorderSide(
                                                                                       color: Color(0xFF1AADF9),
                                                                                       width: 2.0,
                                                                                     ),
@@ -1137,7 +1147,7 @@ class _DrawerEmptyListTilesWidgetState
                                                                               ),
                                                                             ),
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -1153,8 +1163,8 @@ class _DrawerEmptyListTilesWidgetState
                                                                                     text: 'Cancel',
                                                                                     options: FFButtonOptions(
                                                                                       height: 40.0,
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                       color: FlutterFlowTheme.of(context).primary,
                                                                                       textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -1253,16 +1263,16 @@ class _DrawerEmptyListTilesWidgetState
                                                                                     text: 'Save',
                                                                                     options: FFButtonOptions(
                                                                                       height: 40.0,
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                      color: const Color(0xFF1AADF9),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                      color: Color(0xFF1AADF9),
                                                                                       textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                             color: Colors.white,
                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                           ),
                                                                                       elevation: 0.0,
-                                                                                      borderSide: const BorderSide(
+                                                                                      borderSide: BorderSide(
                                                                                         color: Colors.transparent,
                                                                                         width: 1.0,
                                                                                       ),
@@ -1281,7 +1291,7 @@ class _DrawerEmptyListTilesWidgetState
                                                                           (context) {
                                                                         final group = containerGroupsRecordList
                                                                             .where((e) => valueOrDefault<bool>(
-                                                                                  widget.tileDoc?.accessGroups.contains(e.reference.id),
+                                                                                  widget.tileDoc?.accessGroups?.contains(e.reference.id),
                                                                                   false,
                                                                                 ))
                                                                             .toList();
@@ -1294,7 +1304,7 @@ class _DrawerEmptyListTilesWidgetState
                                                                             final groupItem =
                                                                                 group[groupIndex];
                                                                             return Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 18.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 18.0, 0.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
@@ -1303,7 +1313,7 @@ class _DrawerEmptyListTilesWidgetState
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Align(
-                                                                                          alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                          alignment: AlignmentDirectional(0.0, 0.0),
                                                                                           child: Container(
                                                                                             width: 8.0,
                                                                                             height: 8.0,
@@ -1314,7 +1324,7 @@ class _DrawerEmptyListTilesWidgetState
                                                                                           ),
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             groupItem.name,
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium,
@@ -1367,7 +1377,7 @@ class _DrawerEmptyListTilesWidgetState
                                               ],
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 20.0, 16.0, 0.0),
                                               child: SwitchListTile.adaptive(
@@ -1378,7 +1388,7 @@ class _DrawerEmptyListTilesWidgetState
                                                 onChanged: (newValue) async {
                                                   setState(() => _model
                                                           .switchFeaturedValue =
-                                                      newValue);
+                                                      newValue!);
                                                 },
                                                 title: Text(
                                                   'Featured',
@@ -1389,7 +1399,7 @@ class _DrawerEmptyListTilesWidgetState
                                                 tileColor:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
-                                                activeColor: const Color(0xFF1AADF9),
+                                                activeColor: Color(0xFF1AADF9),
                                                 activeTrackColor:
                                                     FlutterFlowTheme.of(context)
                                                         .accent1,
@@ -1398,13 +1408,13 @@ class _DrawerEmptyListTilesWidgetState
                                                     ListTileControlAffinity
                                                         .trailing,
                                                 contentPadding:
-                                                    const EdgeInsets.all(8.0),
+                                                    EdgeInsets.all(8.0),
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      theme: const ExpandableThemeData(
+                                      theme: ExpandableThemeData(
                                         tapHeaderToExpand: true,
                                         tapBodyToExpand: false,
                                         tapBodyToCollapse: false,
@@ -1422,7 +1432,7 @@ class _DrawerEmptyListTilesWidgetState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 8.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -1600,21 +1610,21 @@ class _DrawerEmptyListTilesWidgetState
                                                           context)
                                                       .secondaryBackground,
                                                 ),
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Container(
                                                     width: 32.0,
                                                     height: 32.0,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       color: Color(0xFF1AADF9),
                                                       shape: BoxShape.circle,
                                                     ),
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
                                                       '3',
@@ -1640,7 +1650,7 @@ class _DrawerEmptyListTilesWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -1661,7 +1671,7 @@ class _DrawerEmptyListTilesWidgetState
                                                       .secondaryBackground,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Icon(
                                               Icons.arrow_forward_outlined,
                                               color:
@@ -1686,7 +1696,7 @@ class _DrawerEmptyListTilesWidgetState
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Container(
                           width: double.infinity,
                           height: 30.0,
@@ -1697,7 +1707,7 @@ class _DrawerEmptyListTilesWidgetState
                           child: Visibility(
                             visible: _model.isStatusTextVisible,
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 'Saved!',
                                 style: FlutterFlowTheme.of(context)

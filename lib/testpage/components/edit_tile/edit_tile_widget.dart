@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +57,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
     _model.tileSummaryFocusNode ??= FocusNode();
 
     _model.positionIDController ??=
-        TextEditingController(text: widget.tilesdoc?.id.toString());
+        TextEditingController(text: widget.tilesdoc?.id?.toString());
     _model.positionIDFocusNode ??= FocusNode();
 
     _model.aiIdController ??= TextEditingController();
@@ -76,19 +78,19 @@ class _EditTileWidgetState extends State<EditTileWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: const Alignment(0.0, 0),
+            alignment: Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).error,
               unselectedLabelColor: FlutterFlowTheme.of(context).tertiary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: const TextStyle(),
+              unselectedLabelStyle: TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: const [
+              tabs: [
                 Tab(
                   text: 'Tile Name',
                 ),
@@ -122,7 +124,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -143,7 +145,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: SelectionArea(
                               child: Text(
@@ -152,7 +154,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                           )),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.tileTitleController,
                             focusNode: _model.tileTitleFocusNode,
@@ -169,21 +171,21 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -196,7 +198,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.tileSummaryController,
                             focusNode: _model.tileSummaryFocusNode,
@@ -213,21 +215,21 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -242,7 +244,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.positionIDController,
                             focusNode: _model.positionIDFocusNode,
@@ -259,21 +261,21 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -287,7 +289,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 5.0, 0.0, 5.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -297,7 +299,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Image.asset(
                                       'assets/images/red.png',
@@ -312,7 +314,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -400,10 +402,10 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                       options: FFButtonOptions(
                                         width: 150.0,
                                         height: 30.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -424,7 +426,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -436,7 +438,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -504,9 +506,9 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                   options: FFButtonOptions(
                                     width: 150.0,
                                     height: 30.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -523,7 +525,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 2.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -535,7 +537,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -543,14 +545,16 @@ class _EditTileWidgetState extends State<EditTileWidget>
                             children: [
                               if ((widget.tilesdoc?.image != null &&
                                       widget.tilesdoc?.image != '') &&
-                                  (_model.uploadedFileUrl == ''))
+                                  (_model.uploadedFileUrl == null ||
+                                      _model.uploadedFileUrl == ''))
                                 Image.network(
                                   widget.tilesdoc!.image,
                                   width: 200.0,
                                   height: 200.0,
                                   fit: BoxFit.cover,
                                 ),
-                              if (_model.uploadedFileUrl != '')
+                              if (_model.uploadedFileUrl != null &&
+                                  _model.uploadedFileUrl != '')
                                 Image.network(
                                   _model.uploadedFileUrl,
                                   width: 200.0,
@@ -575,7 +579,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Text(
                             'Choose where you would like to show this tile.',
                             textAlign: TextAlign.center,
@@ -632,7 +636,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                           catagoryListViewCategoriesRecordList[
                                               catagoryListViewIndex];
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 2.0),
                                         child: Container(
                                           width: double.infinity,
@@ -640,7 +644,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
-                                            boxShadow: const [
+                                            boxShadow: [
                                               BoxShadow(
                                                 blurRadius: 0.0,
                                                 color: Color(0xFFDBE2E7),
@@ -652,7 +656,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -660,7 +664,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: const Color(0xFF4B39EF),
+                                                  color: Color(0xFF4B39EF),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -668,13 +672,13 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(2.0),
+                                                        EdgeInsets.all(2.0),
                                                     child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -687,7 +691,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Theme(
@@ -703,7 +707,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                           ),
                                                         ),
                                                         unselectedWidgetColor:
-                                                            const Color(0xFF7C8791),
+                                                            Color(0xFF7C8791),
                                                       ),
                                                       child: CheckboxListTile(
                                                         value: _model
@@ -711,7 +715,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                             catagoryListViewCategoriesRecord] ??= widget
                                                                 .tilesdoc
                                                                 ?.memberlevels
-                                                                .contains(
+                                                                ?.contains(
                                                                     catagoryListViewCategoriesRecord
                                                                         .categoryname) ==
                                                             true,
@@ -758,7 +762,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF090F13),
                                                                 fontSize: 20.0,
                                                                 fontWeight:
@@ -796,7 +800,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                                     context)
                                                                 .primaryText,
                                                         activeColor:
-                                                            const Color(0xFF4B39EF),
+                                                            Color(0xFF4B39EF),
                                                         checkColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -833,7 +837,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -844,7 +848,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                             children: [
                               Theme(
                                 data: ThemeData(
-                                  checkboxTheme: const CheckboxThemeData(
+                                  checkboxTheme: CheckboxThemeData(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
@@ -879,7 +883,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                             children: [
                               Theme(
                                 data: ThemeData(
-                                  checkboxTheme: const CheckboxThemeData(
+                                  checkboxTheme: CheckboxThemeData(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
@@ -914,7 +918,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                             children: [
                               Theme(
                                 data: ThemeData(
-                                  checkboxTheme: const CheckboxThemeData(
+                                  checkboxTheme: CheckboxThemeData(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
@@ -944,7 +948,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 15.0, 0.0, 0.0),
                             child: Text(
                               'AI - Button Type',
@@ -957,7 +961,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                               _model.dropDownValue ??=
                                   widget.tilesdoc?.buttonType,
                             ),
-                            options: const ['Next', 'Respond'],
+                            options: ['Next', 'Respond'],
                             onChanged: (val) =>
                                 setState(() => _model.dropDownValue = val),
                             width: 180.0,
@@ -970,14 +974,14 @@ class _EditTileWidgetState extends State<EditTileWidget>
                             borderColor: Colors.transparent,
                             borderWidth: 0.0,
                             borderRadius: 0.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 4.0, 12.0, 4.0),
                             hidesUnderline: true,
                             isSearchable: false,
                             isMultiSelect: false,
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: TextFormField(
                               controller: _model.aiIdController,
@@ -986,45 +990,45 @@ class _EditTileWidgetState extends State<EditTileWidget>
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'AI ID',
-                                hintText: widget.tilesdoc?.aiId.toString(),
+                                hintText: widget.tilesdoc?.aiId?.toString(),
                                 hintStyle:
                                     FlutterFlowTheme.of(context).bodySmall,
-                                enabledBorder: const UnderlineInputBorder(
+                                enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                focusedBorder: const UnderlineInputBorder(
+                                focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                errorBorder: const UnderlineInputBorder(
+                                errorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                focusedErrorBorder: const UnderlineInputBorder(
+                                focusedErrorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1051,7 +1055,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(40.0),
+                          padding: EdgeInsets.all(40.0),
                           child: Text(
                             'Pick which members should see this tile. Note if you pick any name from below NO ONE else will be able to see this tile so only use it if its soley for the people you pick.',
                             textAlign: TextAlign.center,
@@ -1107,7 +1111,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                           catagoryListViewUsersRecordList[
                                               catagoryListViewIndex];
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 2.0),
                                         child: Container(
                                           width: double.infinity,
@@ -1115,7 +1119,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
-                                            boxShadow: const [
+                                            boxShadow: [
                                               BoxShadow(
                                                 blurRadius: 0.0,
                                                 color: Color(0xFFDBE2E7),
@@ -1127,7 +1131,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1135,7 +1139,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: const Color(0xFF4B39EF),
+                                                  color: Color(0xFF4B39EF),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1143,13 +1147,13 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(2.0),
+                                                        EdgeInsets.all(2.0),
                                                     child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -1162,7 +1166,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Theme(
@@ -1178,7 +1182,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                           ),
                                                         ),
                                                         unselectedWidgetColor:
-                                                            const Color(0xFF7C8791),
+                                                            Color(0xFF7C8791),
                                                       ),
                                                       child: CheckboxListTile(
                                                         value: _model
@@ -1226,7 +1230,7 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF090F13),
                                                                 fontSize: 20.0,
                                                                 fontWeight:
@@ -1261,11 +1265,11 @@ class _EditTileWidgetState extends State<EditTileWidget>
                                                               ),
                                                         ),
                                                         tileColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            Color(0xFFF5F5F5),
                                                         activeColor:
-                                                            const Color(0xFF4B39EF),
+                                                            Color(0xFF4B39EF),
                                                         checkColor:
-                                                            const Color(0xFF090F13),
+                                                            Color(0xFF090F13),
                                                         dense: false,
                                                         controlAffinity:
                                                             ListTileControlAffinity

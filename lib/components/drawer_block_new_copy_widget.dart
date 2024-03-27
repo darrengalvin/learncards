@@ -9,9 +9,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'drawer_block_new_copy_model.dart';
 export 'drawer_block_new_copy_model.dart';
 
@@ -19,7 +21,7 @@ class DrawerBlockNewCopyWidget extends StatefulWidget {
   const DrawerBlockNewCopyWidget({
     super.key,
     bool? isNavBar,
-  }) : isNavBar = isNavBar ?? false;
+  }) : this.isNavBar = isNavBar ?? false;
 
   final bool isNavBar;
 
@@ -62,7 +64,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -71,7 +73,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
               false,
             ))
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +82,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 20.0, 0.0),
                           child: Container(
                             width: 50.0,
@@ -89,7 +91,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FlutterFlowIconButton(
                               borderColor: Colors.transparent,
                               borderRadius: 20.0,
@@ -122,7 +124,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Builder(
                         builder: (context) {
                           if (_model.isEdit) {
@@ -151,7 +153,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                               borderRadius: 20.0,
                               borderWidth: 1.0,
                               buttonSize: 40.0,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.add,
                                 color: Color(0xFF1AADF9),
                                 size: 24.0,
@@ -181,13 +183,13 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 20.0, 12.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 3.0,
                                   color: Color(0x411D2429),
@@ -197,19 +199,19 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Container(
                                     width: 60.0,
                                     height: 60.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Container(
                                       width: 60.0,
                                       height: 60.0,
                                       decoration: BoxDecoration(
-                                        gradient: const LinearGradient(
+                                        gradient: LinearGradient(
                                           colors: [
                                             Color(0xFF1AADF9),
                                             Color(0xA41A5AF9)
@@ -224,7 +226,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Icon(
                                           Icons.dashboard_customize_sharp,
                                           color: FlutterFlowTheme.of(context)
@@ -236,7 +238,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 4.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -247,16 +249,16 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
-                                                valueOrDefault<String>(
+                                                '${valueOrDefault<String>(
                                                   _model.currentId == ''
                                                       ? 'Edit Tile'
                                                       : 'New Tile',
                                                   'New Tile',
-                                                ),
+                                                )}',
                                                 'New Tile',
                                               ),
                                               textAlign: TextAlign.start,
@@ -266,7 +268,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                                   .titleMedium
                                                   .override(
                                                     fontFamily: 'Outfit',
-                                                    color: const Color(0xFF090F13),
+                                                    color: Color(0xFF090F13),
                                                     fontSize: 32.0,
                                                     fontWeight: FontWeight.w500,
                                                     useGoogleFonts:
@@ -311,7 +313,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 24.0, 16.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -329,19 +331,19 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                               .secondaryBackground,
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: 32.0,
                                             height: 32.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFF1AADF9),
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '1',
                                               style:
@@ -366,7 +368,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Tile Name',
@@ -383,7 +385,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
                                         if (true) {
@@ -410,7 +412,8 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                             ),
                                           );
                                         } else if (valueOrDefault<bool>(
-                                          _model.textController.text != '',
+                                          _model.textController.text != null &&
+                                              _model.textController.text != '',
                                           false,
                                         )) {
                                           return InkWell(
@@ -453,14 +456,14 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 8.0, 16.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController,
                                 focusNode: _model.textFieldFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.textController',
-                                  const Duration(milliseconds: 2000),
+                                  Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
                                 autofocus: true,
@@ -479,7 +482,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0xFF1AADF9),
                                       width: 2.0,
                                     ),
@@ -512,7 +515,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 24.0, 16.0, 8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -530,19 +533,19 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                               .secondaryBackground,
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: 32.0,
                                             height: 32.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFF1AADF9),
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '2',
                                               style:
@@ -567,7 +570,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Choose type',
@@ -584,18 +587,18 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.dropDownValueController ??=
                                     FormFieldController<String>(null),
-                                options: const ['Page', 'Section', 'Content'],
+                                options: ['Page', 'Section', 'Content'],
                                 onChanged: (val) =>
                                     setState(() => _model.dropDownValue = val),
                                 width: 300.0,
@@ -612,10 +615,10 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                 fillColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 elevation: 2.0,
-                                borderColor: const Color(0xFF1AADF9),
+                                borderColor: Color(0xFF1AADF9),
                                 borderWidth: 2.0,
                                 borderRadius: 8.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 4.0),
                                 hidesUnderline: true,
                                 isSearchable: false,
@@ -629,7 +632,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 24.0, 16.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -647,18 +650,18 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                                 .secondaryBackground,
                                           ),
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Container(
                                               width: 32.0,
                                               height: 32.0,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                 color: Color(0xFF1AADF9),
                                                 shape: BoxShape.circle,
                                               ),
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 '3',
@@ -685,7 +688,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Options',
@@ -702,7 +705,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                     ),
                                   ],
                                 ),
@@ -718,7 +721,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                           true,
                                       onChanged: (newValue) async {
                                         setState(() => _model
-                                            .switchListTileValue1 = newValue);
+                                            .switchListTileValue1 = newValue!);
                                       },
                                       title: Text(
                                         'Members',
@@ -727,7 +730,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                       ),
                                       tileColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      activeColor: const Color(0xFF1AADF9),
+                                      activeColor: Color(0xFF1AADF9),
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       dense: false,
@@ -739,7 +742,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                           false,
                                       onChanged: (newValue) async {
                                         setState(() => _model
-                                            .switchListTileValue2 = newValue);
+                                            .switchListTileValue2 = newValue!);
                                       },
                                       title: Text(
                                         'Subscriptions',
@@ -761,7 +764,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                           false,
                                       onChanged: (newValue) async {
                                         setState(() => _model
-                                            .switchListTileValue3 = newValue);
+                                            .switchListTileValue3 = newValue!);
                                       },
                                       title: Text(
                                         'Livestreams',
@@ -793,14 +796,14 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                       scrollDirection: Axis.vertical,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               4.0, 20.0, 4.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: 100.0,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 3.0,
                                   color: Color(0x411D2429),
@@ -810,12 +813,12 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 1.0, 1.0, 1.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(12.0),
@@ -829,7 +832,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 8.0, 4.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -844,7 +847,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                                 .titleMedium
                                                 .override(
                                                   fontFamily: 'Outfit',
-                                                  color: const Color(0xFF090F13),
+                                                  color: Color(0xFF090F13),
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.w500,
                                                   useGoogleFonts:
@@ -863,7 +866,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 8.0, 0.0),
                                                     child: AutoSizeText(
@@ -877,7 +880,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF7C8791),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -900,7 +903,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                                         .secondaryBackground,
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Builder(
                                                     builder: (context) {
@@ -993,7 +996,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent(
@@ -1007,9 +1010,9 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).selectedButton,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -1021,7 +1024,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 0.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -1032,7 +1035,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                 if (_model.isEdit)
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -1102,10 +1105,10 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                       text: 'DELETE',
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).error,
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
@@ -1118,7 +1121,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                       .titleSmallFamily),
                             ),
                         elevation: 0.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -1132,7 +1135,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                 ))
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -1202,11 +1205,11 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                       text: 'Save',
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: const Color(0xFF1AADF9),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF1AADF9),
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
                             .override(
@@ -1218,7 +1221,7 @@ class _DrawerBlockNewCopyWidgetState extends State<DrawerBlockNewCopyWidget> {
                                       .titleSmallFamily),
                             ),
                         elevation: 0.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

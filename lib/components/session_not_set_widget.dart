@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'session_not_set_model.dart';
 export 'session_not_set_model.dart';
 
@@ -47,17 +48,17 @@ class _SessionNotSetWidgetState extends State<SessionNotSetWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsets.all(55.0),
+        padding: EdgeInsets.all(55.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(22.0),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 100),
             curve: Curves.elasticOut,
             decoration: BoxDecoration(
-              color: const Color(0xC5FFFFFF),
-              boxShadow: const [
+              color: Color(0xC5FFFFFF),
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x33000000),
@@ -108,10 +109,10 @@ class _SessionNotSetWidgetState extends State<SessionNotSetWidget> {
                       text: 'RESET ',
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
@@ -124,7 +125,7 @@ class _SessionNotSetWidgetState extends State<SessionNotSetWidget> {
                                       .titleSmallFamily),
                             ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

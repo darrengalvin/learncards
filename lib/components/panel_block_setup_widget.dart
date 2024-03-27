@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/block_type_setup_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -62,7 +63,7 @@ class _PanelBlockSetupWidgetState extends State<PanelBlockSetupWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -71,7 +72,7 @@ class _PanelBlockSetupWidgetState extends State<PanelBlockSetupWidget> {
                     borderRadius: 30.0,
                     borderWidth: 1.0,
                     buttonSize: 60.0,
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_forward_ios,
                       color: Color(0xFF1AADF9),
                       size: 30.0,
@@ -119,7 +120,7 @@ class _PanelBlockSetupWidgetState extends State<PanelBlockSetupWidget> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 18.0, 12.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 18.0, 12.0, 12.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Container(

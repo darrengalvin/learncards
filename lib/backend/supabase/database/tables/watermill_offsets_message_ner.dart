@@ -11,7 +11,7 @@ class WatermillOffsetsMessageNerTable
 }
 
 class WatermillOffsetsMessageNerRow extends SupabaseDataRow {
-  WatermillOffsetsMessageNerRow(super.data);
+  WatermillOffsetsMessageNerRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => WatermillOffsetsMessageNerTable();

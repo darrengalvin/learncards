@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'transform_model.dart';
 export 'transform_model.dart';
 
@@ -39,12 +40,12 @@ class _TransformWidgetState extends State<TransformWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(-1.0, 0.0),
+      alignment: AlignmentDirectional(-1.0, 0.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Align(
-            alignment: const AlignmentDirectional(1.0, 0.0),
+            alignment: AlignmentDirectional(1.0, 0.0),
             child: Transform.rotate(
               angle: 4.7124,
               child: Text(

@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -83,11 +85,11 @@ class _SessionChecksWITHLOGINWidgetState
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: Builder(
             builder: (context) {
               final theSessionChecks =
-                  _model.checksQueriesSessions?.checks.toList() ?? [];
+                  _model.checksQueriesSessions?.checks?.toList() ?? [];
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
@@ -102,9 +104,9 @@ class _SessionChecksWITHLOGINWidgetState
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 1.0),
                             child: Container(
                               width: double.infinity,
@@ -116,7 +118,7 @@ class _SessionChecksWITHLOGINWidgetState
                                     blurRadius: 0.0,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                    offset: const Offset(0.0, 1.0),
+                                    offset: Offset(0.0, 1.0),
                                   )
                                 ],
                                 borderRadius: BorderRadius.circular(0.0),
@@ -127,7 +129,7 @@ class _SessionChecksWITHLOGINWidgetState
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -137,7 +139,7 @@ class _SessionChecksWITHLOGINWidgetState
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -154,7 +156,7 @@ class _SessionChecksWITHLOGINWidgetState
                                                       .bodyLarge,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
@@ -172,7 +174,7 @@ class _SessionChecksWITHLOGINWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 0.0, 0.0),
                                       child: Container(
                                         width: 44.0,
@@ -183,7 +185,7 @@ class _SessionChecksWITHLOGINWidgetState
                                           shape: BoxShape.circle,
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Stack(
                                           children: [
                                             if (valueOrDefault<bool>(
@@ -248,14 +250,14 @@ class _SessionChecksWITHLOGINWidgetState
           desktop: false,
         ))
           Container(
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 600.0,
             ),
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(44.0, 0.0, 44.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(44.0, 0.0, 44.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -276,7 +278,7 @@ class _SessionChecksWITHLOGINWidgetState
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(7.0),
+                                  padding: EdgeInsets.all(7.0),
                                   child: Text(
                                     'The password you are using for your ISP account does not match the password you signed up to the app with. Maybe you have changed it. Please try entering your app password here instead.   Or use the format password facility.',
                                     style:
@@ -291,7 +293,7 @@ class _SessionChecksWITHLOGINWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.emailAddressLoginController,
                         focusNode: _model.emailAddressLoginFocusNode,
@@ -350,7 +352,7 @@ class _SessionChecksWITHLOGINWidgetState
                           ),
                           filled: true,
                           fillColor: Colors.white,
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 24.0, 20.0, 24.0),
                         ),
                         style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -368,7 +370,7 @@ class _SessionChecksWITHLOGINWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.passwordLoginController,
                         focusNode: _model.passwordLoginFocusNode,
@@ -403,21 +405,21 @@ class _SessionChecksWITHLOGINWidgetState
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
@@ -425,7 +427,7 @@ class _SessionChecksWITHLOGINWidgetState
                           ),
                           filled: true,
                           fillColor: Colors.white,
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 24.0, 20.0, 24.0),
                           suffixIcon: InkWell(
                             onTap: () => setState(
@@ -437,7 +439,7 @@ class _SessionChecksWITHLOGINWidgetState
                               _model.passwordLoginVisibility
                                   ? Icons.visibility_outlined
                                   : Icons.visibility_off_outlined,
-                              color: const Color(0xFF95A1AC),
+                              color: Color(0xFF95A1AC),
                               size: 20.0,
                             ),
                           ),
@@ -445,7 +447,7 @@ class _SessionChecksWITHLOGINWidgetState
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).titleSmallFamily,
-                              color: const Color(0xFF0F1113),
+                              color: Color(0xFF0F1113),
                               fontWeight: FontWeight.normal,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
@@ -457,7 +459,7 @@ class _SessionChecksWITHLOGINWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
@@ -505,9 +507,9 @@ class _SessionChecksWITHLOGINWidgetState
                         options: FFButtonOptions(
                           width: 230.0,
                           height: 50.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).alternate,
                           textStyle:
@@ -520,7 +522,7 @@ class _SessionChecksWITHLOGINWidgetState
                                         .containsKey('Lexend Deca'),
                                   ),
                           elevation: 0.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -529,7 +531,7 @@ class _SessionChecksWITHLOGINWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
@@ -541,9 +543,9 @@ class _SessionChecksWITHLOGINWidgetState
                         text: 'Forgot Password',
                         options: FFButtonOptions(
                           height: 30.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: FlutterFlowTheme.of(context)
@@ -557,7 +559,7 @@ class _SessionChecksWITHLOGINWidgetState
                                         .titleSmallFamily),
                               ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
