@@ -120,12 +120,12 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                           'Please fill in the information below to continue.',
                           style: FlutterFlowTheme.of(context).labelMedium,
                         ),
-                      ].divide(SizedBox(height: 4.0)),
+                      ].divide(const SizedBox(height: 4.0)),
                     ),
                     actions: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                         child: FlutterFlowIconButton(
                           borderColor: FlutterFlowTheme.of(context).alternate,
                           borderRadius: 12.0,
@@ -154,7 +154,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
             body: SafeArea(
               top: true,
               child: Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Form(
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
@@ -168,14 +168,14 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
+                                alignment: const AlignmentDirectional(0.0, -1.0),
                                 child: Container(
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 770.0,
                                   ),
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -254,7 +254,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                               listViewIndex];
                                                       return Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     4.0,
@@ -263,7 +263,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                         child: Container(
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xB2FAFAFA),
                                                             borderRadius:
                                                                 BorderRadius
@@ -280,7 +280,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             8.0),
                                                                 child: Row(
@@ -294,13 +294,11 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                     if (valueOrDefault<
                                                                         bool>(
                                                                       listViewTilesv2Record.image !=
-                                                                              null &&
-                                                                          listViewTilesv2Record.image !=
                                                                               '',
                                                                       false,
                                                                     ))
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             4.0,
@@ -340,7 +338,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -368,7 +366,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
                                                                                           child: Column(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -398,7 +396,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           4.0,
                                                                           0.0,
                                                                           8.0,
@@ -415,10 +413,10 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                 child: Container(
                                                                                   width: 40.0,
-                                                                                  decoration: BoxDecoration(),
+                                                                                  decoration: const BoxDecoration(),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
@@ -462,7 +460,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  Row(
+                                                                  const Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
@@ -540,7 +538,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 12.0, 16.0, 12.0),
                                                 child: FFButtonWidget(
@@ -556,7 +554,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                       sessionId: FFAppState()
                                                           .nonLoggedInSessionId,
                                                       systemMessagePrompt:
-                                                          'As a business that ${widget.companyDoc?.companyAiData?.companySummary}${valueOrDefault<String>(
+                                                          'As a business that ${widget.companyDoc?.companyAiData.companySummary}${valueOrDefault<String>(
                                                         widget.companyDoc
                                                             ?.getTilesPrompt,
                                                         '|',
@@ -589,7 +587,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              title: Text(
+                                                              title: const Text(
                                                                   'Success '),
                                                               content: Text((_model
                                                                       .apiResultdkp
@@ -600,7 +598,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -617,7 +615,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              title: Text(
+                                                              title: const Text(
                                                                   'API Failed'),
                                                               content: Text((_model
                                                                       .apiResultdkp
@@ -628,7 +626,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -646,11 +644,11 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                     width: double.infinity,
                                                     height: 48.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -676,7 +674,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -813,7 +811,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -917,7 +915,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -1022,7 +1020,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -1148,7 +1146,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                             context)
                                                         .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -1186,7 +1184,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                           child: Column(
                                             children: [
                                               Align(
-                                                alignment: Alignment(-1.0, 0),
+                                                alignment: const Alignment(-1.0, 0),
                                                 child: TabBar(
                                                   isScrollable: true,
                                                   labelColor:
@@ -1202,13 +1200,13 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                               context)
                                                           .titleMedium,
                                                   unselectedLabelStyle:
-                                                      TextStyle(),
+                                                      const TextStyle(),
                                                   indicatorColor:
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primary,
-                                                  padding: EdgeInsets.all(4.0),
-                                                  tabs: [
+                                                  padding: const EdgeInsets.all(4.0),
+                                                  tabs: const [
                                                     Tab(
                                                       text: 'Welcome Message',
                                                     ),
@@ -1350,7 +1348,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -1482,7 +1480,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -1614,7 +1612,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -1746,7 +1744,7 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     16.0,
@@ -1779,8 +1777,8 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                                               .accent4,
                                         ),
                                       ]
-                                          .divide(SizedBox(height: 12.0))
-                                          .addToEnd(SizedBox(height: 32.0)),
+                                          .divide(const SizedBox(height: 12.0))
+                                          .addToEnd(const SizedBox(height: 32.0)),
                                     ),
                                   ),
                                 ),
@@ -1790,10 +1788,10 @@ class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
                         ),
                       ),
                       Container(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxWidth: 770.0,
                         ),
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                       ),
                     ],
                   ),

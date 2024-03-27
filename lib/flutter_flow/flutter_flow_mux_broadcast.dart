@@ -4,7 +4,7 @@ import 'flutter_flow_widgets.dart';
 
 class FlutterFlowMuxBroadcast extends StatefulWidget {
   const FlutterFlowMuxBroadcast({
-    Key? key,
+    super.key,
     required this.isCameraInitialized,
     required this.isStreaming,
     required this.durationString,
@@ -29,7 +29,7 @@ class FlutterFlowMuxBroadcast extends StatefulWidget {
     required this.rotateButtonColor,
     required this.stopButtonColor,
     required this.stopButtonIcon,
-  }) : super(key: key);
+  });
 
   final bool isCameraInitialized;
   final bool isStreaming;
@@ -164,7 +164,7 @@ class _FlutterFlowMuxBroadcastState extends State<FlutterFlowMuxBroadcast>
                                       widget.liveContainerBorderRadius,
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     horizontal: 16,
                                     vertical: 8,
                                   ),
@@ -188,7 +188,7 @@ class _FlutterFlowMuxBroadcastState extends State<FlutterFlowMuxBroadcast>
                                       widget.durationContainerBorderRadius,
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     horizontal: 16,
                                     vertical: 8,
                                   ),

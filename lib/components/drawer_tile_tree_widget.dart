@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -21,8 +20,8 @@ class DrawerTileTreeWidget extends StatefulWidget {
     bool? isHeader,
     int? startTab,
     required this.itemId,
-  })  : this.isHeader = isHeader ?? false,
-        this.startTab = startTab ?? 0;
+  })  : isHeader = isHeader ?? false,
+        startTab = startTab ?? 0;
 
   final bool isHeader;
   final int startTab;
@@ -108,7 +107,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<List<TilesRecord>>(
         stream: queryTilesRecord(
           queryBuilder: (tilesRecord) => tilesRecord.where(
@@ -153,7 +152,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                   ))
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,7 +176,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: FlutterFlowIconButton(
                               borderColor: Colors.transparent,
                               borderRadius: 20.0,
@@ -206,7 +205,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                     ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -230,7 +229,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                       setState(() {
                                         _model.tabBarController!.animateTo(
                                           0,
-                                          duration: Duration(milliseconds: 300),
+                                          duration: const Duration(milliseconds: 300),
                                           curve: Curves.ease,
                                         );
                                       });
@@ -239,7 +238,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                       setState(() {
                                         _model.tabBarController!.animateTo(
                                           1,
-                                          duration: Duration(milliseconds: 300),
+                                          duration: const Duration(milliseconds: 300),
                                           curve: Curves.ease,
                                         );
                                       });
@@ -275,7 +274,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -286,12 +285,12 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Column(
                                       children: [
                                         Align(
-                                          alignment: Alignment(0.0, 0),
+                                          alignment: const Alignment(0.0, 0),
                                           child: TabBar(
                                             labelColor:
                                                 FlutterFlowTheme.of(context)
@@ -302,12 +301,12 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium,
-                                            unselectedLabelStyle: TextStyle(),
+                                            unselectedLabelStyle: const TextStyle(),
                                             indicatorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .customColor7,
-                                            padding: EdgeInsets.all(4.0),
-                                            tabs: [
+                                            padding: const EdgeInsets.all(4.0),
+                                            tabs: const [
                                               Tab(
                                                 text: 'Tiles',
                                               ),
@@ -334,7 +333,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -367,7 +366,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -468,7 +467,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           8.0,
                                                                           0.0,
@@ -484,7 +483,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                     EasyDebounce
                                                                         .debounce(
                                                                   '_model.textFieldTilenameController',
-                                                                  Duration(
+                                                                  const Duration(
                                                                       milliseconds:
                                                                           2000),
                                                                   () async {
@@ -577,7 +576,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   8.0,
@@ -594,7 +593,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -708,7 +707,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -724,14 +723,14 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                             FFButtonOptions(
                                                           height: 40.0,
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -758,7 +757,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -825,14 +824,14 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                       FFButtonOptions(
                                                                     height:
                                                                         40.0,
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             24.0,
                                                                             0.0,
                                                                             24.0,
                                                                             0.0),
                                                                     iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                        const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -861,7 +860,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                     elevation:
                                                                         0.0,
                                                                     borderSide:
-                                                                        BorderSide(
+                                                                        const BorderSide(
                                                                       color: Colors
                                                                           .transparent,
                                                                       width:
@@ -878,13 +877,13 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                             ],
                                                           ),
                                                           AnimatedContainer(
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves
                                                                 .easeInOut,
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                             child: Visibility(
                                                               visible:
                                                                   valueOrDefault<
@@ -901,7 +900,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                   Expanded(
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           24.0,
                                                                           8.0,
                                                                           12.0,
@@ -916,7 +915,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                             (_) =>
                                                                                 EasyDebounce.debounce(
                                                                           '_model.tileNameController',
-                                                                          Duration(
+                                                                          const Duration(
                                                                               milliseconds: 2000),
                                                                           () =>
                                                                               setState(() {}),
@@ -946,7 +945,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                           focusedBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                BorderSide(
+                                                                                const BorderSide(
                                                                               color: Color(0xFF1AADF9),
                                                                               width: 2.0,
                                                                             ),
@@ -983,7 +982,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1105,7 +1104,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                             min(_model.tabBarController!.length - 1,
                                                                                 _model.tabBarController!.index + 1),
                                                                             duration:
-                                                                                Duration(milliseconds: 300),
+                                                                                const Duration(milliseconds: 300),
                                                                             curve:
                                                                                 Curves.ease,
                                                                           );
@@ -1176,14 +1175,14 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                 (context, tilesFromParentIndex) {
                                                                               final tilesFromParentItem = tilesFromParent[tilesFromParentIndex];
                                                                               return Container(
-                                                                                key: ValueKey("ListView_bf245p83" + '_' + tilesFromParentIndex.toString()),
+                                                                                key: ValueKey("ListView_bf245p83" '_' + tilesFromParentIndex.toString()),
                                                                                 child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 38.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 38.0, 0.0),
                                                                                         child: InkWell(
                                                                                           splashColor: Colors.transparent,
                                                                                           focusColor: Colors.transparent,
@@ -1206,7 +1205,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                 ),
                                                                                               ),
                                                                                               child: Padding(
-                                                                                                padding: EdgeInsets.all(8.0),
+                                                                                                padding: const EdgeInsets.all(8.0),
                                                                                                 child: Row(
                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -1223,7 +1222,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                         ),
                                                                                                       ),
                                                                                                       child: Align(
-                                                                                                        alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                        alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                         child: InkWell(
                                                                                                           splashColor: Colors.transparent,
                                                                                                           focusColor: Colors.transparent,
@@ -1232,7 +1231,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                           onTap: () async {
                                                                                                             logFirebaseEvent('DRAWER_TILE_TREE_Icon_6a4wq2qv_ON_TAP');
                                                                                                           },
-                                                                                                          child: Icon(
+                                                                                                          child: const Icon(
                                                                                                             Icons.dashboard_customize_sharp,
                                                                                                             color: Color(0x591AADF9),
                                                                                                             size: 48.0,
@@ -1242,7 +1241,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                     ),
                                                                                                     Expanded(
                                                                                                       child: Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 12.0, 0.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 12.0, 0.0),
                                                                                                         child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -1254,14 +1253,14 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                               children: [
                                                                                                                 Expanded(
                                                                                                                   child: Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                                                                                     child: AutoSizeText(
                                                                                                                       'A wonderfully delicious 2 patty melt that melts into your...movesfssfsdfsdfdsfsdfdsfsdfsdfsdfsdfsf\nyour...movesfssfsdfsdfdsfsdfdsfsdfsdfsdfsdfsfyour...movesfssfsdfsdfdsfsdfdsfsdfsdfsdfsdfsf',
                                                                                                                       textAlign: TextAlign.start,
                                                                                                                       maxLines: 2,
                                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                             fontFamily: 'Outfit',
-                                                                                                                            color: Color(0xFF7C8791),
+                                                                                                                            color: const Color(0xFF7C8791),
                                                                                                                             fontSize: 18.0,
                                                                                                                             fontWeight: FontWeight.normal,
                                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1285,18 +1284,18 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                                         maxLines: 1,
                                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                               fontFamily: 'Outfit',
-                                                                                                                              color: Color(0xFF090F13),
+                                                                                                                              color: const Color(0xFF090F13),
                                                                                                                               fontSize: 16.0,
                                                                                                                               fontWeight: FontWeight.w500,
                                                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                                                             ),
                                                                                                                       ),
                                                                                                                       Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                                                         child: Container(
                                                                                                                           width: 10.0,
                                                                                                                           height: 10.0,
-                                                                                                                          decoration: BoxDecoration(
+                                                                                                                          decoration: const BoxDecoration(
                                                                                                                             color: Color(0xFF1AADF9),
                                                                                                                             shape: BoxShape.circle,
                                                                                                                           ),
@@ -1310,18 +1309,18 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                                         maxLines: 1,
                                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                               fontFamily: 'Outfit',
-                                                                                                                              color: Color(0xFF090F13),
+                                                                                                                              color: const Color(0xFF090F13),
                                                                                                                               fontSize: 16.0,
                                                                                                                               fontWeight: FontWeight.w500,
                                                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                                                             ),
                                                                                                                       ),
                                                                                                                       Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                                                         child: Container(
                                                                                                                           width: 10.0,
                                                                                                                           height: 10.0,
-                                                                                                                          decoration: BoxDecoration(
+                                                                                                                          decoration: const BoxDecoration(
                                                                                                                             color: Color(0xFF1AADF9),
                                                                                                                             shape: BoxShape.circle,
                                                                                                                           ),
@@ -1332,7 +1331,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                                         maxLines: 1,
                                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                               fontFamily: 'Outfit',
-                                                                                                                              color: Color(0xFF090F13),
+                                                                                                                              color: const Color(0xFF090F13),
                                                                                                                               fontSize: 16.0,
                                                                                                                               fontWeight: FontWeight.w500,
                                                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1348,7 +1347,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                       ),
                                                                                                     ),
                                                                                                     Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
+                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
                                                                                                       child: Column(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1362,7 +1361,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                   ),
-                                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                                   child: InkWell(
                                                                                                                     splashColor: Colors.transparent,
                                                                                                                     focusColor: Colors.transparent,
@@ -1374,7 +1373,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                                       setState(() {
                                                                                                                         _model.tabBarController!.animateTo(
                                                                                                                           1,
-                                                                                                                          duration: Duration(milliseconds: 300),
+                                                                                                                          duration: const Duration(milliseconds: 300),
                                                                                                                           curve: Curves.ease,
                                                                                                                         );
                                                                                                                       });
@@ -1393,7 +1392,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                   ),
-                                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                                   child: InkWell(
                                                                                                                     splashColor: Colors.transparent,
                                                                                                                     focusColor: Colors.transparent,
@@ -1419,7 +1418,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                             decoration: BoxDecoration(
                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                             ),
-                                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                            alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                             child: InkWell(
                                                                                                               splashColor: Colors.transparent,
                                                                                                               focusColor: Colors.transparent,
@@ -1431,7 +1430,7 @@ class _DrawerTileTreeWidgetState extends State<DrawerTileTreeWidget>
                                                                                                                 setState(() {
                                                                                                                   _model.tabBarController!.animateTo(
                                                                                                                     1,
-                                                                                                                    duration: Duration(milliseconds: 300),
+                                                                                                                    duration: const Duration(milliseconds: 300),
                                                                                                                     curve: Curves.ease,
                                                                                                                   );
                                                                                                                 });

@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'content_add_tiles_model.dart';
 export 'content_add_tiles_model.dart';
@@ -57,15 +56,15 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: Container(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
                 color: Color(0x33000000),
@@ -77,25 +76,25 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                 FlutterFlowTheme.of(context).primaryBackground,
                 FlutterFlowTheme.of(context).secondary
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: Color(0xFFEFF7F5),
+              color: const Color(0xFFEFF7F5),
               width: 1.0,
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -129,24 +128,24 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                             FlutterFlowTheme.of(context).primaryBackground,
                             FlutterFlowTheme.of(context).secondary
                           ],
-                          stops: [0.0, 1.0],
-                          begin: AlignmentDirectional(0.0, -1.0),
-                          end: AlignmentDirectional(0, 1.0),
+                          stops: const [0.0, 1.0],
+                          begin: const AlignmentDirectional(0.0, -1.0),
+                          end: const AlignmentDirectional(0, 1.0),
                         ),
                       ),
                       child: Column(
                         children: [
                           Align(
-                            alignment: Alignment(0.0, 0),
+                            alignment: const Alignment(0.0, 0),
                             child: TabBar(
                               isScrollable: true,
                               labelColor: FlutterFlowTheme.of(context).primary,
                               labelStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,
-                              unselectedLabelStyle: TextStyle(),
+                              unselectedLabelStyle: const TextStyle(),
                               indicatorColor:
                                   FlutterFlowTheme.of(context).secondary,
-                              tabs: [
+                              tabs: const [
                                 Tab(
                                   text: 'From Existing',
                                 ),
@@ -219,7 +218,7 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                 .listViewPagingController!
                                                 .itemList![listViewIndex];
                                             return Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 8.0),
                                               child: Container(
@@ -232,7 +231,7 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                       : FlutterFlowTheme.of(
                                                               context)
                                                           .tertiary,
-                                                  boxShadow: [
+                                                  boxShadow: const [
                                                     BoxShadow(
                                                       blurRadius: 3.0,
                                                       color: Color(0x32000000),
@@ -267,7 +266,7 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                                 : FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiary,
-                                                            boxShadow: [
+                                                            boxShadow: const [
                                                               BoxShadow(
                                                                 blurRadius: 3.0,
                                                                 color: Color(
@@ -283,7 +282,7 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     8.0),
                                                             child: Row(
                                                               mainAxisSize:
@@ -293,7 +292,7 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             8.0,
@@ -318,7 +317,7 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                                               .titleMedium
                                                                               .override(
                                                                                 fontFamily: 'Outfit',
-                                                                                color: Color(0xFF090F13),
+                                                                                color: const Color(0xFF090F13),
                                                                                 fontSize: 18.0,
                                                                                 fontWeight: FontWeight.w500,
                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -362,7 +361,7 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                                             logFirebaseEvent('CONTENT_ADD_TILES_Icon_fqnt90nk_ON_TAP');
                                                                           },
                                                                           child:
-                                                                              Icon(
+                                                                              const Icon(
                                                                             Icons.cancel_outlined,
                                                                             color:
                                                                                 Colors.black,
@@ -394,14 +393,14 @@ class _ContentAddTilesWidgetState extends State<ContentAddTilesWidget>
                                                                             await showModalBottomSheet(
                                                                               isScrollControlled: true,
                                                                               backgroundColor: Colors.transparent,
-                                                                              barrierColor: Color(0x00000000),
+                                                                              barrierColor: const Color(0x00000000),
                                                                               enableDrag: false,
                                                                               context: context,
                                                                               builder: (context) {
                                                                                 return WebViewAware(
                                                                                   child: Padding(
                                                                                     padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: AddDocumentToTileWidget(),
+                                                                                    child: const AddDocumentToTileWidget(),
                                                                                   ),
                                                                                 );
                                                                               },

@@ -11,7 +11,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,8 +56,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
 
     _model.textController ??= TextEditingController(
         text: valueOrDefault<String>(
-      FFAppState().viewTileContentId != null &&
-              FFAppState().viewTileContentId != ''
+      FFAppState().viewTileContentId != ''
           ? widget.parameter2
           : valueOrDefault<String>(
               'New ${valueOrDefault<String>(
@@ -142,7 +140,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 50.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 50.0, 16.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,7 +149,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 20.0, 0.0),
                                 child: Container(
                                   width: 50.0,
@@ -160,7 +158,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                   ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
                                     borderRadius: 20.0,
@@ -194,12 +192,12 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 20.0, 12.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 20.0, 12.0, 0.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 3.0,
                               color: Color(0x411D2429),
@@ -209,16 +207,16 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Container(
                                 width: 70.0,
                                 height: 70.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
                                       if (valueOrDefault<bool>(
@@ -331,8 +329,6 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                             child: Image.network(
                                               valueOrDefault<String>(
                                                 _model.uploadedFileUrl !=
-                                                            null &&
-                                                        _model.uploadedFileUrl !=
                                                             ''
                                                     ? valueOrDefault<String>(
                                                         _model.uploadedFileUrl,
@@ -355,7 +351,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                           width: 80.0,
                                           height: 80.0,
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            gradient: const LinearGradient(
                                               colors: [
                                                 Color(0xFF1AADF9),
                                                 Color(0xA41A5AF9)
@@ -370,7 +366,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Icon(
                                               Icons.dashboard_customize_sharp,
                                               color:
@@ -388,7 +384,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                           width: 80.0,
                                           height: 80.0,
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            gradient: const LinearGradient(
                                               colors: [
                                                 Color(0xFF1AADF9),
                                                 Color(0xA41A5AF9)
@@ -403,7 +399,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Icon(
                                               Icons.featured_play_list_outlined,
                                               color:
@@ -418,7 +414,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                           width: 80.0,
                                           height: 80.0,
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            gradient: const LinearGradient(
                                               colors: [
                                                 Color(0xFF1AADF9),
                                                 Color(0xA41A5AF9)
@@ -433,7 +429,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Icon(
                                               Icons.dashboard_customize_sharp,
                                               color:
@@ -450,7 +446,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 4.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -459,17 +455,17 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           valueOrDefault<String>(
-                                            '${valueOrDefault<String>(
+                                            valueOrDefault<String>(
                                               widget.parameter1 != null &&
                                                       widget.parameter1 != ''
                                                   ? 'Edit Tile'
                                                   : 'New Tile',
                                               'New Tile',
-                                            )}',
+                                            ),
                                             'New Tile',
                                           ),
                                           textAlign: TextAlign.start,
@@ -478,7 +474,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                               .titleMedium
                                               .override(
                                                 fontFamily: 'Outfit',
-                                                color: Color(0xFF090F13),
+                                                color: const Color(0xFF090F13),
                                                 fontSize: 32.0,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts:
@@ -517,7 +513,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -539,7 +535,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                         model: _model.drawerContentModel,
                                         updateCallback: () => setState(() {}),
                                         updateOnChange: true,
-                                        child: DrawerContentWidget(),
+                                        child: const DrawerContentWidget(),
                                       );
                                     } else if (valueOrDefault<bool>(
                                       true,
@@ -558,7 +554,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 24.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -583,7 +579,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           24.0,
@@ -611,18 +607,18 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                             ),
                                                                             alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                                const AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Align(
-                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
                                                                               child: Container(
                                                                                 width: 32.0,
                                                                                 height: 32.0,
-                                                                                decoration: BoxDecoration(
+                                                                                decoration: const BoxDecoration(
                                                                                   color: Color(0xFF1AADF9),
                                                                                   shape: BoxShape.circle,
                                                                                 ),
-                                                                                alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                 child: Text(
                                                                                   '1',
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -636,7 +632,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -659,7 +655,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                         child:
@@ -680,7 +676,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                   logFirebaseEvent('Icon_reset_form_fields');
                                                                                   setState(() {
                                                                                     _model.textController?.text = valueOrDefault<String>(
-                                                                                      FFAppState().viewTileContentId != null && FFAppState().viewTileContentId != ''
+                                                                                      FFAppState().viewTileContentId != ''
                                                                                           ? widget.parameter2
                                                                                           : valueOrDefault<String>(
                                                                                               'New ${valueOrDefault<String>(
@@ -703,7 +699,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                 ),
                                                                               );
                                                                             } else if (valueOrDefault<bool>(
-                                                                              _model.textController.text != null && _model.textController.text != '',
+                                                                              _model.textController.text != '',
                                                                               false,
                                                                             )) {
                                                                               return InkWell(
@@ -738,7 +734,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           8.0,
@@ -756,7 +752,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                         EasyDebounce
                                                                             .debounce(
                                                                       '_model.textController',
-                                                                      Duration(
+                                                                      const Duration(
                                                                           milliseconds:
                                                                               2000),
                                                                       () => setState(
@@ -796,7 +792,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                       focusedBorder:
                                                                           OutlineInputBorder(
                                                                         borderSide:
-                                                                            BorderSide(
+                                                                            const BorderSide(
                                                                           color:
                                                                               Color(0xFF1AADF9),
                                                                           width:
@@ -850,7 +846,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           24.0,
@@ -878,18 +874,18 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                             ),
                                                                             alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                                const AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Align(
-                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
                                                                               child: Container(
                                                                                 width: 32.0,
                                                                                 height: 32.0,
-                                                                                decoration: BoxDecoration(
+                                                                                decoration: const BoxDecoration(
                                                                                   color: Color(0xFF1AADF9),
                                                                                   shape: BoxShape.circle,
                                                                                 ),
-                                                                                alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                 child: Text(
                                                                                   '2',
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -903,7 +899,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -926,7 +922,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                       ),
@@ -934,7 +930,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -950,8 +946,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                       _model.dropDownTypeValue ??=
                                                                           valueOrDefault<
                                                                               int>(
-                                                                        FFAppState().viewTileContentId != null &&
-                                                                                FFAppState().viewTileContentId != ''
+                                                                        FFAppState().viewTileContentId != ''
                                                                             ? widget.parameter5
                                                                             : 0,
                                                                         0,
@@ -963,7 +958,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                       1,
                                                                       2
                                                                     ]),
-                                                                    optionLabels: [
+                                                                    optionLabels: const [
                                                                       'Page',
                                                                       'Section',
                                                                       'Tie'
@@ -996,13 +991,13 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                     elevation:
                                                                         2.0,
                                                                     borderColor:
-                                                                        Color(
+                                                                        const Color(
                                                                             0xFF1AADF9),
                                                                     borderWidth:
                                                                         2.0,
                                                                     borderRadius:
                                                                         8.0,
-                                                                    margin: EdgeInsetsDirectional
+                                                                    margin: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             16.0,
                                                                             4.0,
@@ -1025,7 +1020,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             16.0,
                                                                             24.0,
@@ -1049,17 +1044,17 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               ),
-                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
                                                                               child: Align(
-                                                                                alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                 child: Container(
                                                                                   width: 32.0,
                                                                                   height: 32.0,
-                                                                                  decoration: BoxDecoration(
+                                                                                  decoration: const BoxDecoration(
                                                                                     color: Color(0xFF1AADF9),
                                                                                     shape: BoxShape.circle,
                                                                                   ),
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                   child: Text(
                                                                                     '3',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1073,7 +1068,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                               ),
                                                                             ),
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                               child: InkWell(
                                                                                 splashColor: Colors.transparent,
                                                                                 focusColor: Colors.transparent,
@@ -1102,7 +1097,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                           ),
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                         ),
@@ -1127,7 +1122,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                           onChanged:
                                                                               (newValue) async {
                                                                             setState(() =>
-                                                                                _model.switchListTileValue1 = newValue!);
+                                                                                _model.switchListTileValue1 = newValue);
                                                                           },
                                                                           title:
                                                                               Text(
@@ -1138,7 +1133,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                           tileColor:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                           activeColor:
-                                                                              Color(0xFF1AADF9),
+                                                                              const Color(0xFF1AADF9),
                                                                           activeTrackColor:
                                                                               FlutterFlowTheme.of(context).accent1,
                                                                           dense:
@@ -1148,7 +1143,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                         ),
                                                                         AnimatedContainer(
                                                                           duration:
-                                                                              Duration(milliseconds: 160),
+                                                                              const Duration(milliseconds: 160),
                                                                           curve:
                                                                               Curves.easeIn,
                                                                           width:
@@ -1166,7 +1161,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                               SwitchListTile.adaptive(
                                                                                 value: _model.switchListTileValue2 ??= false,
                                                                                 onChanged: (newValue) async {
-                                                                                  setState(() => _model.switchListTileValue2 = newValue!);
+                                                                                  setState(() => _model.switchListTileValue2 = newValue);
                                                                                 },
                                                                                 title: Text(
                                                                                   'Subscriptions',
@@ -1180,11 +1175,11 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                               ),
                                                                               if (_model.switchListTileValue2 ?? true)
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                                                                                   child: FlutterFlowDropDown<String>(
                                                                                     controller: _model.dropDownGroupValueController ??= FormFieldController<String>(
                                                                                       _model.dropDownGroupValue ??= valueOrDefault<String>(
-                                                                                        FFAppState().viewTileContentId != null && FFAppState().viewTileContentId != ''
+                                                                                        FFAppState().viewTileContentId != ''
                                                                                             ? widget.parameter4
                                                                                             : valueOrDefault<String>(
                                                                                                 'New ${valueOrDefault<String>(
@@ -1199,7 +1194,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                         'New Tile',
                                                                                       ),
                                                                                     ),
-                                                                                    options: [
+                                                                                    options: const [
                                                                                       'Basic',
                                                                                       'Pro',
                                                                                       'All Access'
@@ -1216,10 +1211,10 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                     ),
                                                                                     fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     elevation: 2.0,
-                                                                                    borderColor: Color(0xFF1AADF9),
+                                                                                    borderColor: const Color(0xFF1AADF9),
                                                                                     borderWidth: 2.0,
                                                                                     borderRadius: 8.0,
-                                                                                    margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                                                                                    margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                                                                                     hidesUnderline: true,
                                                                                     isSearchable: false,
                                                                                     isMultiSelect: false,
@@ -1235,7 +1230,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                           onChanged:
                                                                               (newValue) async {
                                                                             setState(() =>
-                                                                                _model.switchListTileValue3 = newValue!);
+                                                                                _model.switchListTileValue3 = newValue);
                                                                           },
                                                                           title:
                                                                               Text(
@@ -1290,7 +1285,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           8.0,
                                                                           20.0,
                                                                           8.0,
@@ -1318,7 +1313,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(8.0),
+                                                                              const EdgeInsets.all(8.0),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
@@ -1341,7 +1336,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                     width: 1.0,
                                                                                   ),
                                                                                 ),
-                                                                                child: Align(
+                                                                                child: const Align(
                                                                                   alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: Icon(
                                                                                     Icons.featured_video,
@@ -1352,7 +1347,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                               ),
                                                                               Expanded(
                                                                                 child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -1368,18 +1363,18 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                   fontFamily: 'Outfit',
-                                                                                                  color: Color(0xFF090F13),
+                                                                                                  color: const Color(0xFF090F13),
                                                                                                   fontSize: 18.0,
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                                 ),
                                                                                           ),
                                                                                           Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                             child: Container(
                                                                                               width: 10.0,
                                                                                               height: 10.0,
-                                                                                              decoration: BoxDecoration(
+                                                                                              decoration: const BoxDecoration(
                                                                                                 color: Color(0xFF1AADF9),
                                                                                                 shape: BoxShape.circle,
                                                                                               ),
@@ -1389,7 +1384,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                             tilesItem.title,
                                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                   fontFamily: 'Outfit',
-                                                                                                  color: Color(0xFF090F13),
+                                                                                                  color: const Color(0xFF090F13),
                                                                                                   fontSize: 18.0,
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1403,7 +1398,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                           children: [
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 8.0, 0.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 8.0, 0.0),
                                                                                               child: AutoSizeText(
                                                                                                 tilesItem.type.maybeHandleOverflow(
                                                                                                   maxChars: 70,
@@ -1421,10 +1416,10 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                                           } else if (tilesItem.isPublished == false) {
                                                                                                             return FlutterFlowTheme.of(context).error;
                                                                                                           } else {
-                                                                                                            return Color(0xFF7C8791);
+                                                                                                            return const Color(0xFF7C8791);
                                                                                                           }
                                                                                                         }(),
-                                                                                                        Color(0xFF7C8791),
+                                                                                                        const Color(0xFF7C8791),
                                                                                                       ),
                                                                                                       fontSize: 14.0,
                                                                                                       fontWeight: FontWeight.normal,
@@ -1438,7 +1433,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                                               decoration: BoxDecoration(
                                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               ),
-                                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                               child: Builder(
                                                                                                 builder: (context) {
                                                                                                   if (true) {
@@ -1501,7 +1496,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   32.0,
@@ -1528,14 +1523,14 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                             FFButtonOptions(
                                                           height: 40.0,
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1561,7 +1556,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                   ),
                                                           elevation: 0.0,
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -1575,7 +1570,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   32.0,
@@ -1618,9 +1613,6 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                               isPinned: false,
                                                               isFeatured: false,
                                                               parentId: FFAppState()
-                                                                              .drawerCurrentId !=
-                                                                          null &&
-                                                                      FFAppState()
                                                                               .drawerCurrentId !=
                                                                           ''
                                                                   ? FFAppState()
@@ -1671,9 +1663,6 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                               isFeatured: false,
                                                               parentId: FFAppState()
                                                                               .drawerCurrentId !=
-                                                                          null &&
-                                                                      FFAppState()
-                                                                              .drawerCurrentId !=
                                                                           ''
                                                                   ? FFAppState()
                                                                       .drawerCurrentId
@@ -1719,21 +1708,21 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                             FFButtonOptions(
                                                           height: 40.0,
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
                                                           color:
-                                                              Color(0xFF1AADF9),
+                                                              const Color(0xFF1AADF9),
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1751,7 +1740,7 @@ class _DrawerManageWidgetState extends State<DrawerManageWidget> {
                                                                   ),
                                                           elevation: 0.0,
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,

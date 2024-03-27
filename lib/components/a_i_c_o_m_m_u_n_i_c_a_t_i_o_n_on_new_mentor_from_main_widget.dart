@@ -1,13 +1,10 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -26,8 +23,8 @@ class AICOMMUNICATIONOnNewMentorFromMainWidget extends StatefulWidget {
     bool? isLearnCard,
     this.learnCardDoc,
     this.sessionsDoc,
-  })  : this.askingQuestion = askingQuestion ?? false,
-        this.isLearnCard = isLearnCard ?? false;
+  })  : askingQuestion = askingQuestion ?? false,
+        isLearnCard = isLearnCard ?? false;
 
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
@@ -110,7 +107,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
       logFirebaseEvent('AI_COMMUNICATION-On-newMentorFromMain_sc');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -139,7 +136,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Align(
-            alignment: AlignmentDirectional(0.0, 1.0),
+            alignment: const AlignmentDirectional(0.0, 1.0),
             child: StreamBuilder<List<MyTeamRecord>>(
               stream: queryMyTeamRecord(
                 queryBuilder: (myTeamRecord) => myTeamRecord.where(
@@ -183,7 +180,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                       maxHeight: MediaQuery.sizeOf(context).height * 0.9,
                     ),
                     decoration: BoxDecoration(
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x2CFFF6C4),
@@ -221,7 +218,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(12.0),
+                                        padding: const EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -232,16 +229,14 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   if (valueOrDefault<bool>(
-                                                    FFAppState().tempStreamingMessage !=
-                                                            null &&
-                                                        FFAppState()
+                                                    FFAppState()
                                                                 .tempStreamingMessage !=
                                                             '',
                                                     false,
                                                   ))
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   25.0,
                                                                   0.0,
@@ -357,9 +352,9 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                 ),
                                 Expanded(
                                   child: Align(
-                                    alignment: AlignmentDirectional(-1.0, 1.0),
+                                    alignment: const AlignmentDirectional(-1.0, 1.0),
                                     child: Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: StreamBuilder<
                                           List<FlowiseChatsRecord>>(
                                         stream: queryFlowiseChatsRecord(
@@ -405,7 +400,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                 columnChatsScrollableFlowiseChatsRecordList
                                                     .length,
                                             separatorBuilder: (_, __) =>
-                                                SizedBox(height: 8.0),
+                                                const SizedBox(height: 8.0),
                                             itemBuilder: (context,
                                                 columnChatsScrollableIndex) {
                                               final columnChatsScrollableFlowiseChatsRecord =
@@ -429,7 +424,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                         Flexible(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         33.0,
                                                                         0.0,
@@ -437,7 +432,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                         0.0),
                                                             child: Container(
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 color: Color(
                                                                     0xFFE6EDFB),
                                                                 borderRadius:
@@ -459,7 +454,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             4.0),
                                                                 child: Row(
@@ -474,7 +469,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            EdgeInsets.all(9.0),
+                                                                            const EdgeInsets.all(9.0),
                                                                         child:
                                                                             Text(
                                                                           columnChatsScrollableFlowiseChatsRecord
@@ -515,7 +510,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                             'system'),
                                                     false,
                                                   ))
-                                                    Container(
+                                                    SizedBox(
                                                       width: double.infinity,
                                                       child: Stack(
                                                         children: [
@@ -545,16 +540,16 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                     ))
                                                                       AnimatedContainer(
                                                                         duration:
-                                                                            Duration(milliseconds: 100),
+                                                                            const Duration(milliseconds: 100),
                                                                         curve: Curves
                                                                             .easeInOut,
                                                                         constraints:
-                                                                            BoxConstraints(
+                                                                            const BoxConstraints(
                                                                           maxWidth:
                                                                               600.0,
                                                                         ),
                                                                         decoration:
-                                                                            BoxDecoration(
+                                                                            const BoxDecoration(
                                                                           color:
                                                                               Color(0xFFF5F5F5),
                                                                           borderRadius:
@@ -569,12 +564,12 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                                 Radius.circular(8.0),
                                                                           ),
                                                                         ),
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             -1.0,
                                                                             0.0),
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -589,7 +584,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                                 CrossAxisAlignment.start,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: EdgeInsets.all(4.0),
+                                                                                padding: const EdgeInsets.all(4.0),
                                                                                 child: Row(
                                                                                   mainAxisSize: MainAxisSize.min,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -601,7 +596,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                                       desktop: false,
                                                                                     ))
                                                                                       Padding(
-                                                                                        padding: EdgeInsets.all(3.0),
+                                                                                        padding: const EdgeInsets.all(3.0),
                                                                                         child: ClipRRect(
                                                                                           borderRadius: BorderRadius.circular(8.0),
                                                                                           child: Image.network(
@@ -626,7 +621,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                                               children: [
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                                   child: MarkdownBody(
                                                                                                     data: valueOrDefault<String>(
                                                                                                       columnChatsScrollableFlowiseChatsRecord.text,
@@ -653,7 +648,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                             .role ==
                                                                         'system')
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             15.0,
                                                                             0.0,
@@ -661,11 +656,11 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                         child:
                                                                             AnimatedContainer(
                                                                           duration:
-                                                                              Duration(milliseconds: 100),
+                                                                              const Duration(milliseconds: 100),
                                                                           curve:
                                                                               Curves.easeInOut,
                                                                           constraints:
-                                                                              BoxConstraints(
+                                                                              const BoxConstraints(
                                                                             maxWidth:
                                                                                 600.0,
                                                                           ),
@@ -674,19 +669,19 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).customColor3,
                                                                             borderRadius:
-                                                                                BorderRadius.only(
+                                                                                const BorderRadius.only(
                                                                               bottomLeft: Radius.circular(8.0),
                                                                               bottomRight: Radius.circular(8.0),
                                                                               topLeft: Radius.circular(0.0),
                                                                               topRight: Radius.circular(8.0),
                                                                             ),
                                                                           ),
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               -1.0,
                                                                               0.0),
                                                                           child:
                                                                               Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -698,7 +693,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsets.all(4.0),
+                                                                                  padding: const EdgeInsets.all(4.0),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.min,
                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -710,7 +705,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                                         desktop: false,
                                                                                       ))
                                                                                         Padding(
-                                                                                          padding: EdgeInsets.all(3.0),
+                                                                                          padding: const EdgeInsets.all(3.0),
                                                                                           child: ClipRRect(
                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                             child: Image.network(
@@ -735,7 +730,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsets.all(6.0),
+                                                                                                    padding: const EdgeInsets.all(6.0),
                                                                                                     child: MarkdownBody(
                                                                                                       data: valueOrDefault<String>(
                                                                                                         columnChatsScrollableFlowiseChatsRecord.text,
@@ -770,7 +765,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                           ))
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsets
+                                                                  const EdgeInsets
                                                                       .all(6.0),
                                                               child: ClipRRect(
                                                                 borderRadius:
@@ -802,15 +797,15 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                   ),
                                 ),
                                 if (valueOrDefault<bool>(
-                                  FFAppState().flowiseMessages.length > 0,
+                                  FFAppState().flowiseMessages.isNotEmpty,
                                   false,
                                 ))
-                                  Container(
+                                  SizedBox(
                                     width: double.infinity,
                                     child: Stack(
                                       children: [
                                         Align(
-                                          alignment: AlignmentDirectional(
+                                          alignment: const AlignmentDirectional(
                                               0.0, -429.57),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -823,10 +818,10 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                       MainAxisSize.max,
                                                   children: [
                                                     AnimatedContainer(
-                                                      duration: Duration(
+                                                      duration: const Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.easeInOut,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         color:
                                                             Color(0xFFEEEEEE),
                                                         borderRadius:
@@ -846,11 +841,11 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                         ),
                                                       ),
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, 1.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -868,7 +863,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsets
+                                                                  const EdgeInsets
                                                                       .all(4.0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -903,7 +898,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                   child: MarkdownBody(
                                                                                     data: valueOrDefault<String>(
                                                                                       FFAppState().flowiseMessages.first.message,
@@ -938,7 +933,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                           phone: false,
                                         ))
                                           Padding(
-                                            padding: EdgeInsets.all(6.0),
+                                            padding: const EdgeInsets.all(6.0),
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
@@ -954,11 +949,11 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                     ),
                                   ),
                                 if (valueOrDefault<bool>(
-                                  FFAppState().flowiseMessages.length > 0,
+                                  FFAppState().flowiseMessages.isNotEmpty,
                                   false,
                                 ))
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
+                                    alignment: const AlignmentDirectional(0.0, 1.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       crossAxisAlignment:
@@ -969,10 +964,10 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                           phone: false,
                                         ))
                                           Align(
-                                            alignment: AlignmentDirectional(
+                                            alignment: const AlignmentDirectional(
                                                 -1.0, -1.0),
                                             child: Padding(
-                                              padding: EdgeInsets.all(6.0),
+                                              padding: const EdgeInsets.all(6.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -987,11 +982,11 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                           ),
                                         Expanded(
                                           child: Container(
-                                            constraints: BoxConstraints(
+                                            constraints: const BoxConstraints(
                                               maxWidth: 600.0,
                                               maxHeight: 600.0,
                                             ),
-                                            decoration: BoxDecoration(),
+                                            decoration: const BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -1004,7 +999,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                 ))
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: MarkdownBody(
                                                       data: valueOrDefault<
@@ -1028,7 +1023,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                     ),
                                   ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -1038,7 +1033,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                       ))
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1074,9 +1069,9 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                             animationsMap[
                                                                 'iconOnPageLoadAnimation']!),
                                                       ].divide(
-                                                          SizedBox(width: 9.0)),
+                                                          const SizedBox(width: 9.0)),
                                                     ),
-                                                    Divider(
+                                                    const Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFF505050),
                                                     ),
@@ -1090,8 +1085,8 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                 borderRadius: 5.0,
                                                 borderWidth: 1.0,
                                                 buttonSize: 55.0,
-                                                fillColor: Color(0xFFCDCDCD),
-                                                icon: Icon(
+                                                fillColor: const Color(0xFFCDCDCD),
+                                                icon: const Icon(
                                                   Icons.send_sharp,
                                                   color: Color(0xFFA6A6A6),
                                                   size: 24.0,
@@ -1121,7 +1116,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                               false,
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -1173,7 +1168,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                         focusedBorder:
                                                             UnderlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0xFF464646),
                                                             width: 2.0,
@@ -1212,7 +1207,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -1468,7 +1463,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -1532,7 +1527,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                 (widget.sessionsDoc
                                                                         ?.currentNavJourney ==
                                                                     'newSession')) {
-                                                              return 'This weeks topic is : ${widget.companiesDoc?.companyAiData?.thisWeeksTopic}  ${widget.companiesDoc?.userGatherDataPrompt}';
+                                                              return 'This weeks topic is : ${widget.companiesDoc?.companyAiData.thisWeeksTopic}  ${widget.companiesDoc?.userGatherDataPrompt}';
                                                             } else {
                                                               return widget
                                                                   .companiesDoc
@@ -1575,7 +1570,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                 .columnChatsScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -1590,7 +1585,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                 .columnMarkdownScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -1607,7 +1602,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                 .columnChatsScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -1622,7 +1617,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                                 .columnMarkdownScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -1728,7 +1723,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -1767,7 +1762,7 @@ class _AICOMMUNICATIONOnNewMentorFromMainWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );

@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'threads_drop_down_model.dart';
@@ -53,7 +52,7 @@ class _ThreadsDropDownWidgetState extends State<ThreadsDropDownWidget> {
     return FlutterFlowDropDown<String>(
       controller: _model.dropDownValueController ??=
           FormFieldController<String>(
-        _model.dropDownValue ??= widget.sessionDoc?.threads?.first?.threadName,
+        _model.dropDownValue ??= widget.sessionDoc?.threads.first.threadName,
       ),
       options: List<String>.from(widget.sessionDoc!.threads
           .map((e) => valueOrDefault<String>(
@@ -80,12 +79,12 @@ class _ThreadsDropDownWidgetState extends State<ThreadsDropDownWidget> {
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                title: Text('Thread Id set to '),
+                title: const Text('Thread Id set to '),
                 content: Text(FFAppState().selectedThreadId),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
+                    child: const Text('Ok'),
                   ),
                 ],
               ),
@@ -107,7 +106,7 @@ class _ThreadsDropDownWidgetState extends State<ThreadsDropDownWidget> {
       borderColor: FlutterFlowTheme.of(context).alternate,
       borderWidth: 2.0,
       borderRadius: 8.0,
-      margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+      margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
       hidesUnderline: true,
       isOverButton: true,
       isSearchable: false,

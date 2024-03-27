@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/right_pane/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_deletesoon/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_deletesoon_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'learn_card_chat_activity_model.dart';
 export 'learn_card_chat_activity_model.dart';
@@ -13,7 +12,7 @@ class LearnCardChatActivityWidget extends StatefulWidget {
     super.key,
     String? learcardId,
     required this.learningCardTitle,
-  }) : this.learcardId = learcardId ?? '1212121';
+  }) : learcardId = learcardId ?? '1212121';
 
   final String learcardId;
   final String? learningCardTitle;
@@ -77,24 +76,24 @@ class _LearnCardChatActivityWidgetState
         List<LearnCardsRecord> learnCardChatActivityLearnCardsRecordList =
             snapshot.data!;
         return Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
             child: Container(
               width: double.infinity,
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 550.0,
               ),
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     blurRadius: 4.0,
                     color: Color(0x25090F13),
                     offset: Offset(0.0, 2.0),
                   )
                 ],
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
                   bottomRight: Radius.circular(0.0),
                   topLeft: Radius.circular(12.0),
@@ -102,7 +101,7 @@ class _LearnCardChatActivityWidgetState
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -125,12 +124,11 @@ class _LearnCardChatActivityWidgetState
                         ],
                       ),
                       if (valueOrDefault<bool>(
-                        FFAppState().selectedLearnCardId != null &&
-                            FFAppState().selectedLearnCardId != '',
+                        FFAppState().selectedLearnCardId != '',
                         false,
                       ))
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: Text(
                             learnCardChatActivityLearnCardsRecordList
@@ -159,7 +157,7 @@ class _LearnCardChatActivityWidgetState
                               Navigator.pop(context);
                             },
                             child: Container(
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                             ),
                           ),
                         ],

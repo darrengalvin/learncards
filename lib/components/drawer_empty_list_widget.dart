@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -73,7 +72,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,17 +87,17 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               width: 32.0,
                               height: 32.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF1AADF9),
                                 shape: BoxShape.circle,
                               ),
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 '1',
                                 style: FlutterFlowTheme.of(context)
@@ -118,7 +117,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Label',
@@ -131,13 +130,13 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
                   onChanged: (_) => EasyDebounce.debounce(
                     '_model.textController',
-                    Duration(milliseconds: 2000),
+                    const Duration(milliseconds: 2000),
                     () => setState(() {}),
                   ),
                   autofocus: true,
@@ -154,7 +153,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0xFF1AADF9),
                         width: 2.0,
                       ),
@@ -187,7 +186,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 8.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 8.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,17 +201,17 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               width: 32.0,
                               height: 32.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF1AADF9),
                                 shape: BoxShape.circle,
                               ),
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 '2',
                                 style: FlutterFlowTheme.of(context)
@@ -232,7 +231,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Choose type',
@@ -247,7 +246,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                     ),
                   ],
                 ),
@@ -257,19 +256,19 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                     child: Text(
                       'Type',
                       style: FlutterFlowTheme.of(context).titleMedium,
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(1.0, 0.0),
+                    alignment: const AlignmentDirectional(1.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 8.0, 20.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 8.0, 20.0),
                       child: FlutterFlowChoiceChips(
-                        options: [
+                        options: const [
                           ChipData('Text'),
                           ChipData('Image'),
                           ChipData('Video'),
@@ -279,7 +278,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                         onChanged: (val) => setState(() =>
                             _model.choiceChipsTypeValue = val?.firstOrNull),
                         selectedChipStyle: ChipStyle(
-                          backgroundColor: Color(0xFF1AADF9),
+                          backgroundColor: const Color(0xFF1AADF9),
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
@@ -329,12 +328,12 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 20.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 20.0),
                   child: FlutterFlowChoiceChips(
-                    options: [
+                    options: const [
                       ChipData('Header'),
                       ChipData('Body'),
                       ChipData('List')
@@ -352,7 +351,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
-                      iconColor: Color(0x00000000),
+                      iconColor: const Color(0x00000000),
                       iconSize: 18.0,
                       elevation: 0.0,
                       borderColor: FlutterFlowTheme.of(context).customColor7,
@@ -395,7 +394,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -410,17 +409,17 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: 32.0,
                                 height: 32.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xFF1AADF9),
                                   shape: BoxShape.circle,
                                 ),
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '3',
                                   style: FlutterFlowTheme.of(context)
@@ -440,7 +439,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -468,7 +467,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                       ),
                     ],
                   ),
@@ -481,7 +480,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
             color: FlutterFlowTheme.of(context).accent3,
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -497,9 +496,9 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
@@ -611,10 +610,10 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0xFF1AADF9),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: const Color(0xFF1AADF9),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).titleSmallFamily,
@@ -623,7 +622,7 @@ class _DrawerEmptyListWidgetState extends State<DrawerEmptyListWidget> {
                               FlutterFlowTheme.of(context).titleSmallFamily),
                         ),
                     elevation: 0.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

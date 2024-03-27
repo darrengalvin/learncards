@@ -13,9 +13,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/search_pages/live_video/broadcast_name_input/broadcast_name_input_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -91,8 +89,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -111,8 +109,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 900.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -131,8 +129,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(-31.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-31.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -151,8 +149,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -171,8 +169,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 150.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -191,8 +189,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -211,8 +209,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 250.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -231,8 +229,8 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -289,7 +287,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                       isScrollControlled: true,
                       backgroundColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      barrierColor: Color(0x00000000),
+                      barrierColor: const Color(0x00000000),
                       context: context,
                       builder: (context) {
                         return WebViewAware(
@@ -300,7 +298,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                 : FocusScope.of(context).unfocus(),
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: Container(
+                              child: const SizedBox(
                                 height: 650.0,
                                 child: BroadcastNameInputWidget(),
                               ),
@@ -348,7 +346,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                           FFAppState().drawerMenu = false;
                         });
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(
@@ -356,7 +354,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                             Container(
                               width: double.infinity,
                               height: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                             ).animateOnPageLoad(animationsMap[
                                 'containerOnPageLoadAnimation1']!),
                             Container(
@@ -375,9 +373,9 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                     FlutterFlowTheme.of(context)
                                         .secondaryBackground
                                   ],
-                                  stops: [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
-                                  begin: AlignmentDirectional(1.0, 0.0),
-                                  end: AlignmentDirectional(-1.0, 0),
+                                  stops: const [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
+                                  begin: const AlignmentDirectional(1.0, 0.0),
+                                  end: const AlignmentDirectional(-1.0, 0),
                                 ),
                               ),
                             ),
@@ -404,15 +402,15 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                             decoration: BoxDecoration(
                                               gradient: LinearGradient(
                                                 colors: [
-                                                  Color(0x003C89B9),
+                                                  const Color(0x003C89B9),
                                                   FlutterFlowTheme.of(context)
                                                       .iconBorder,
-                                                  Color(0x003C89B9)
+                                                  const Color(0x003C89B9)
                                                 ],
-                                                stops: [0.0, 0.5, 1.0],
-                                                begin: AlignmentDirectional(
+                                                stops: const [0.0, 0.5, 1.0],
+                                                begin: const AlignmentDirectional(
                                                     0.0, -1.0),
-                                                end: AlignmentDirectional(
+                                                end: const AlignmentDirectional(
                                                     0, 1.0),
                                               ),
                                             ),
@@ -424,33 +422,6 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                 opaque: false,
                                                 cursor: MouseCursor.defer ??
                                                     MouseCursor.defer,
-                                                child: Visibility(
-                                                  visible: responsiveVisibility(
-                                                    context: context,
-                                                    phone: false,
-                                                    tablet: false,
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width: 40.0,
-                                                        height: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: wrapWithModel(
-                                                          model: _model
-                                                              .sideMenuCopyModel,
-                                                          updateCallback: () =>
-                                                              setState(() {}),
-                                                          child:
-                                                              SideMenuCopyWidget(),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
                                                 onEnter: ((event) async {
                                                   setState(() => _model
                                                           .mouseRegionHovered1 =
@@ -477,11 +448,68 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                         false;
                                                   });
                                                 }),
+                                                child: Visibility(
+                                                  visible: responsiveVisibility(
+                                                    context: context,
+                                                    phone: false,
+                                                    tablet: false,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width: 40.0,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            const BoxDecoration(),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .sideMenuCopyModel,
+                                                          updateCallback: () =>
+                                                              setState(() {}),
+                                                          child:
+                                                              const SideMenuCopyWidget(),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                               ),
                                               MouseRegion(
                                                 opaque: false,
                                                 cursor: MouseCursor.defer ??
                                                     MouseCursor.defer,
+                                                onEnter: ((event) async {
+                                                  setState(() => _model
+                                                          .mouseRegionHovered2 =
+                                                      true);
+                                                  logFirebaseEvent(
+                                                      'LIVE_VIDEOS_MouseRegion_63hwetei_ON_TOGG');
+                                                  logFirebaseEvent(
+                                                      'MouseRegion_update_app_state');
+                                                  setState(() {
+                                                    FFAppState().showmenuopen =
+                                                        true;
+                                                    FFAppState().drawerMenu =
+                                                        true;
+                                                  });
+                                                }),
+                                                onExit: ((event) async {
+                                                  setState(() => _model
+                                                          .mouseRegionHovered2 =
+                                                      false);
+                                                  logFirebaseEvent(
+                                                      'LIVE_VIDEOS_MouseRegion_63hwetei_ON_TOGG');
+                                                  logFirebaseEvent(
+                                                      'MouseRegion_update_app_state');
+                                                  setState(() {
+                                                    FFAppState().showmenuopen =
+                                                        false;
+                                                    FFAppState().drawerMenu =
+                                                        false;
+                                                  });
+                                                }),
                                                 child: Visibility(
                                                   visible: FFAppState()
                                                           .showmenuopen ==
@@ -494,10 +522,10 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                         width: 230.0,
                                                         height: double.infinity,
                                                         decoration:
-                                                            BoxDecoration(),
+                                                            const BoxDecoration(),
                                                         child: Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: wrapWithModel(
                                                             model: _model
@@ -516,36 +544,6 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                     ],
                                                   ),
                                                 ),
-                                                onEnter: ((event) async {
-                                                  setState(() => _model
-                                                          .mouseRegionHovered2 =
-                                                      true);
-                                                  logFirebaseEvent(
-                                                      'LIVE_VIDEOS_MouseRegion_63hwetei_ON_TOGG');
-                                                  logFirebaseEvent(
-                                                      'MouseRegion_update_app_state');
-                                                  setState(() {
-                                                    FFAppState().showmenuopen =
-                                                        true;
-                                                    FFAppState().drawerMenu =
-                                                        true;
-                                                  });
-                                                }),
-                                                onExit: ((event) async {
-                                                  setState(() => _model
-                                                          .mouseRegionHovered2 =
-                                                      false);
-                                                  logFirebaseEvent(
-                                                      'LIVE_VIDEOS_MouseRegion_63hwetei_ON_TOGG');
-                                                  logFirebaseEvent(
-                                                      'MouseRegion_update_app_state');
-                                                  setState(() {
-                                                    FFAppState().showmenuopen =
-                                                        false;
-                                                    FFAppState().drawerMenu =
-                                                        false;
-                                                  });
-                                                }),
                                               ),
                                             ],
                                           ),
@@ -583,11 +581,11 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                           ),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: double.infinity,
                                             height: double.infinity,
                                             child: Stack(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, -1.0),
                                               children: [
                                                 SingleChildScrollView(
@@ -599,7 +597,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                         width: double.infinity,
                                                         height: 88.0,
                                                         decoration:
-                                                            BoxDecoration(),
+                                                            const BoxDecoration(),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -615,7 +613,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                 children: [
                                                                   Expanded(
                                                                     child:
-                                                                        Container(
+                                                                        SizedBox(
                                                                       width: double
                                                                           .infinity,
                                                                       height:
@@ -625,7 +623,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                         children: [
                                                                           Align(
                                                                             alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                                const AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 wrapWithModel(
                                                                               model: _model.headerContainerModel,
@@ -652,7 +650,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -679,7 +677,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).secondaryBackground,
                                                                         barrierColor:
-                                                                            Color(0x00000000),
+                                                                            const Color(0x00000000),
                                                                         context:
                                                                             context,
                                                                         builder:
@@ -690,7 +688,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                               child: Padding(
                                                                                 padding: MediaQuery.viewInsetsOf(context),
-                                                                                child: Container(
+                                                                                child: const SizedBox(
                                                                                   height: 650.0,
                                                                                   child: BroadcastNameInputWidget(),
                                                                                 ),
@@ -704,7 +702,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                     },
                                                                     text:
                                                                         'Go Live',
-                                                                    icon: Icon(
+                                                                    icon: const Icon(
                                                                       Icons
                                                                           .settings_input_antenna,
                                                                       size:
@@ -716,12 +714,12 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                           120.0,
                                                                       height:
                                                                           40.0,
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -743,7 +741,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                       elevation:
                                                                           2.0,
                                                                       borderSide:
-                                                                          BorderSide(
+                                                                          const BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -756,12 +754,12 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                   ),
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.3,
                                                                             0.1),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           8.0,
@@ -787,7 +785,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           10.0,
@@ -811,7 +809,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -829,11 +827,11 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                         constraints: BoxConstraints(
                                                                                           maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                                                                                         ),
-                                                                                        decoration: BoxDecoration(),
+                                                                                        decoration: const BoxDecoration(),
                                                                                         child: wrapWithModel(
                                                                                           model: _model.navChipsModel,
                                                                                           updateCallback: () => setState(() {}),
-                                                                                          child: NavChipsWidget(),
+                                                                                          child: const NavChipsWidget(),
                                                                                         ),
                                                                                       ),
                                                                                     ],
@@ -843,12 +841,12 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                                                                                         child: Container(
                                                                                           constraints: BoxConstraints(
                                                                                             maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                                                                                           ),
-                                                                                          decoration: BoxDecoration(),
+                                                                                          decoration: const BoxDecoration(),
                                                                                           child: SingleChildScrollView(
                                                                                             child: Column(
                                                                                               mainAxisSize: MainAxisSize.max,
@@ -964,7 +962,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                                                             mainAxisAlignment: MainAxisAlignment.start,
                                                                                                                             children: [
                                                                                                                               Padding(
-                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                                                                 child: Container(
                                                                                                                                   height: 100.0,
                                                                                                                                   decoration: BoxDecoration(
@@ -973,19 +971,19 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                                                                         FlutterFlowTheme.of(context).primaryBackground,
                                                                                                                                         FlutterFlowTheme.of(context).secondary
                                                                                                                                       ],
-                                                                                                                                      stops: [0.0, 1.0],
-                                                                                                                                      begin: AlignmentDirectional(0.0, -1.0),
-                                                                                                                                      end: AlignmentDirectional(0, 1.0),
+                                                                                                                                      stops: const [0.0, 1.0],
+                                                                                                                                      begin: const AlignmentDirectional(0.0, -1.0),
+                                                                                                                                      end: const AlignmentDirectional(0, 1.0),
                                                                                                                                     ),
                                                                                                                                     borderRadius: BorderRadius.circular(16.0),
                                                                                                                                   ),
                                                                                                                                   child: Padding(
-                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
+                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
                                                                                                                                     child: Row(
                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                       children: [
                                                                                                                                         ClipRRect(
-                                                                                                                                          borderRadius: BorderRadius.only(
+                                                                                                                                          borderRadius: const BorderRadius.only(
                                                                                                                                             bottomLeft: Radius.circular(8.0),
                                                                                                                                             bottomRight: Radius.circular(0.0),
                                                                                                                                             topLeft: Radius.circular(8.0),
@@ -1000,7 +998,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                                                                         ),
                                                                                                                                         Expanded(
                                                                                                                                           child: Padding(
-                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                                                             child: Column(
                                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1031,14 +1029,14 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                                                                                       ),
                                                                                                                                                     if (listViewBroadcastsRecord.isLive)
                                                                                                                                                       Padding(
-                                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                                                         child: Text(
                                                                                                                                                           'Live Now',
                                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                                         ),
                                                                                                                                                       ),
                                                                                                                                                     Padding(
-                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                                                                                                                                                       child: FlutterFlowIconButton(
                                                                                                                                                         borderColor: Colors.transparent,
                                                                                                                                                         borderRadius: 30.0,
@@ -1064,7 +1062,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                                                                                     children: [
                                                                                                                                                       Expanded(
                                                                                                                                                         child: Padding(
-                                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                                           child: Text(
                                                                                                                                                             listViewBroadcastsRecord.name,
                                                                                                                                                             style: FlutterFlowTheme.of(context).bodySmall,
@@ -1078,7 +1076,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                                                                   children: [
                                                                                                                                                     Padding(
-                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                                       child: Text(
                                                                                                                                                         dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord.time!),
                                                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
@@ -1136,12 +1134,12 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                         decoration: BoxDecoration(
                                                                                           gradient: LinearGradient(
                                                                                             colors: [
-                                                                                              Color(0x003C89B9),
+                                                                                              const Color(0x003C89B9),
                                                                                               FlutterFlowTheme.of(context).iconBorder
                                                                                             ],
-                                                                                            stops: [0.0, 1.0],
-                                                                                            begin: AlignmentDirectional(1.0, 0.0),
-                                                                                            end: AlignmentDirectional(-1.0, 0),
+                                                                                            stops: const [0.0, 1.0],
+                                                                                            begin: const AlignmentDirectional(1.0, 0.0),
+                                                                                            end: const AlignmentDirectional(-1.0, 0),
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -1168,11 +1166,11 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                 if (FFAppState().drawerMenu)
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   40.0,
                                                                   80.0,
@@ -1181,7 +1179,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                       child: Container(
                                                         width: 300.0,
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           color:
                                                               Color(0xE6070814),
                                                           boxShadow: [
@@ -1208,7 +1206,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             20.0),
                                                                 child: Column(
@@ -1217,7 +1215,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -1251,7 +1249,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                           height:
                                                                               50.0,
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
@@ -1268,7 +1266,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                     size: 20.0,
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       'Stations',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1288,7 +1286,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                               animationsMap['containerOnPageLoadAnimation3']!),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -1322,7 +1320,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                           height:
                                                                               50.0,
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
@@ -1339,7 +1337,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                     size: 20.0,
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       'Car connect',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1359,7 +1357,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                               animationsMap['containerOnPageLoadAnimation4']!),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -1393,7 +1391,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                           height:
                                                                               50.0,
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
@@ -1410,7 +1408,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                     size: 20.0,
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       'Locker',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1430,7 +1428,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                               animationsMap['containerOnPageLoadAnimation5']!),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -1464,7 +1462,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                           height:
                                                                               50.0,
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
@@ -1481,7 +1479,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                     size: 20.0,
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       'Charge reports',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1501,7 +1499,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                               animationsMap['containerOnPageLoadAnimation6']!),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -1535,7 +1533,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                           height:
                                                                               50.0,
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
@@ -1552,7 +1550,7 @@ class _LiveVideosWidgetState extends State<LiveVideosWidget>
                                                                                     size: 20.0,
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       'Warnings',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(

@@ -11,7 +11,7 @@ class WatermillOffsetsDocumentEmbedderTable
 }
 
 class WatermillOffsetsDocumentEmbedderRow extends SupabaseDataRow {
-  WatermillOffsetsDocumentEmbedderRow(Map<String, dynamic> data) : super(data);
+  WatermillOffsetsDocumentEmbedderRow(super.data);
 
   @override
   SupabaseTable get table => WatermillOffsetsDocumentEmbedderTable();

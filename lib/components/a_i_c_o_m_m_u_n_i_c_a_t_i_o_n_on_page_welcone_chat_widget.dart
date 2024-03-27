@@ -1,7 +1,5 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -11,8 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -31,8 +27,8 @@ class AICOMMUNICATIONOnPageWelconeChatWidget extends StatefulWidget {
     bool? isLearnCard,
     this.learnCardDoc,
     this.sessionsDoc,
-  })  : this.askingQuestion = askingQuestion ?? false,
-        this.isLearnCard = isLearnCard ?? false;
+  })  : askingQuestion = askingQuestion ?? false,
+        isLearnCard = isLearnCard ?? false;
 
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
@@ -90,7 +86,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
       logFirebaseEvent('AI_COMMUNICATION-OnPage-WelconeChat_scro');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -118,7 +114,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: StreamBuilder<List<MyTeamRecord>>(
               stream: queryMyTeamRecord(
                 queryBuilder: (myTeamRecord) => myTeamRecord.where(
@@ -182,7 +178,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                         }(),
                       ),
                       decoration: BoxDecoration(
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x33000000),
@@ -230,7 +226,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.all(12.0),
+                                          padding: const EdgeInsets.all(12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -329,13 +325,13 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 7.0, 7.0, 0.0),
                                           child: Builder(
                                             builder: (context) {
                                               final skills =
                                                   containerMyTeamRecord?.skills
-                                                          ?.toList() ??
+                                                          .toList() ??
                                                       [];
                                               return Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -346,7 +342,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                       skills[skillsIndex];
                                                   return Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 7.0, 0.0),
                                                     child: Text(
@@ -367,7 +363,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -377,7 +373,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                               Expanded(
                                                 child: Container(
                                                   width: 650.0,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: SingleChildScrollView(
                                                     controller: _model
                                                         .columnController2,
@@ -448,7 +444,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                     clipBehavior:
                                                                         Clip.antiAlias,
                                                                     decoration:
-                                                                        BoxDecoration(
+                                                                        const BoxDecoration(
                                                                       shape: BoxShape
                                                                           .circle,
                                                                     ),
@@ -478,7 +474,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -513,7 +509,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                       children: [
                                                                         Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(6.0),
+                                                                              const EdgeInsets.all(6.0),
                                                                           child:
                                                                               FFButtonWidget(
                                                                             onPressed:
@@ -524,8 +520,8 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                                 'Help me with this LearnCard : ',
                                                                             options:
                                                                                 FFButtonOptions(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -533,7 +529,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                   ),
                                                                               elevation: 3.0,
-                                                                              borderSide: BorderSide(
+                                                                              borderSide: const BorderSide(
                                                                                 color: Colors.transparent,
                                                                                 width: 1.0,
                                                                               ),
@@ -572,7 +568,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                     false,
                                   ))
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 12.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -581,7 +577,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 12.0, 12.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -597,7 +593,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                     _model.dropDownValue ??=
                                                         'Reading Topic (thread)',
                                                   ),
-                                                  options: [
+                                                  options: const [
                                                     'Reading Topic (thread)'
                                                   ],
                                                   onChanged: (val) => setState(
@@ -629,7 +625,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                           .alternate,
                                                   borderWidth: 2.0,
                                                   borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
+                                                  margin: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 4.0, 16.0, 4.0),
                                                   hidesUnderline: true,
@@ -727,11 +723,11 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -757,7 +753,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -808,18 +804,18 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                   Expanded(
                                     child: Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, 1.0),
+                                          const AlignmentDirectional(-1.0, 1.0),
                                       child: Container(
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                             fit: BoxFit.cover,
                                             image: Image.network(
-                                              containerMyTeamRecord!.image,
+                                              containerMyTeamRecord.image,
                                             ).image,
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: StreamBuilder<
                                               List<FlowiseChatsRecord>>(
                                             stream: queryFlowiseChatsRecord(
@@ -876,7 +872,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                     columnChatsScrollableFlowiseChatsRecordList
                                                         .length,
                                                 separatorBuilder: (_, __) =>
-                                                    SizedBox(height: 8.0),
+                                                    const SizedBox(height: 8.0),
                                                 itemBuilder: (context,
                                                     columnChatsScrollableIndex) {
                                                   final columnChatsScrollableFlowiseChatsRecord =
@@ -905,7 +901,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             Flexible(
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             33.0,
                                                                             0.0,
@@ -935,7 +931,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                     }(),
                                                                   ),
                                                                   decoration:
-                                                                      BoxDecoration(
+                                                                      const BoxDecoration(
                                                                     color: Color(
                                                                         0xFFE6EDFB),
                                                                     borderRadius:
@@ -958,7 +954,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             4.0),
                                                                     child: Row(
                                                                       mainAxisSize:
@@ -972,7 +968,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                EdgeInsets.all(9.0),
+                                                                                const EdgeInsets.all(9.0),
                                                                             child:
                                                                                 Text(
                                                                               columnChatsScrollableFlowiseChatsRecord.text,
@@ -1006,7 +1002,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                           (columnChatsScrollableFlowiseChatsRecord
                                                                   .role ==
                                                               'system'))
-                                                        Container(
+                                                        SizedBox(
                                                           width:
                                                               double.infinity,
                                                           child: Stack(
@@ -1033,7 +1029,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                             'ai')
                                                                           AnimatedContainer(
                                                                             duration:
-                                                                                Duration(milliseconds: 100),
+                                                                                const Duration(milliseconds: 100),
                                                                             curve:
                                                                                 Curves.easeInOut,
                                                                             constraints:
@@ -1051,7 +1047,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                               }(),
                                                                             ),
                                                                             decoration:
-                                                                                BoxDecoration(
+                                                                                const BoxDecoration(
                                                                               color: Color(0xFFEEEEEE),
                                                                               borderRadius: BorderRadius.only(
                                                                                 bottomLeft: Radius.circular(8.0),
@@ -1061,17 +1057,17 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                               ),
                                                                             ),
                                                                             alignment:
-                                                                                AlignmentDirectional(-1.0, 0.0),
+                                                                                const AlignmentDirectional(-1.0, 0.0),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                 mainAxisAlignment: MainAxisAlignment.end,
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: EdgeInsets.all(4.0),
+                                                                                    padding: const EdgeInsets.all(4.0),
                                                                                     child: Row(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1083,11 +1079,11 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                                           desktop: false,
                                                                                         ))
                                                                                           Padding(
-                                                                                            padding: EdgeInsets.all(3.0),
+                                                                                            padding: const EdgeInsets.all(3.0),
                                                                                             child: ClipRRect(
                                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                                               child: Image.network(
-                                                                                                containerMyTeamRecord!.image,
+                                                                                                containerMyTeamRecord.image,
                                                                                                 width: 35.0,
                                                                                                 height: 35.0,
                                                                                                 fit: BoxFit.scaleDown,
@@ -1108,7 +1104,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                   children: [
                                                                                                     Padding(
-                                                                                                      padding: EdgeInsets.all(6.0),
+                                                                                                      padding: const EdgeInsets.all(6.0),
                                                                                                       child: MarkdownBody(
                                                                                                         data: valueOrDefault<String>(
                                                                                                           columnChatsScrollableFlowiseChatsRecord.text,
@@ -1134,14 +1130,14 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                         if (columnChatsScrollableFlowiseChatsRecord.role ==
                                                                             'system')
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 15.0,
                                                                                 0.0,
                                                                                 0.0),
                                                                             child:
                                                                                 AnimatedContainer(
-                                                                              duration: Duration(milliseconds: 100),
+                                                                              duration: const Duration(milliseconds: 100),
                                                                               curve: Curves.easeInOut,
                                                                               constraints: BoxConstraints(
                                                                                 maxWidth: () {
@@ -1158,23 +1154,23 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                               ),
                                                                               decoration: BoxDecoration(
                                                                                 color: FlutterFlowTheme.of(context).customColor3,
-                                                                                borderRadius: BorderRadius.only(
+                                                                                borderRadius: const BorderRadius.only(
                                                                                   bottomLeft: Radius.circular(8.0),
                                                                                   bottomRight: Radius.circular(8.0),
                                                                                   topLeft: Radius.circular(0.0),
                                                                                   topRight: Radius.circular(8.0),
                                                                                 ),
                                                                               ),
-                                                                              alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                              alignment: const AlignmentDirectional(-1.0, 0.0),
                                                                               child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.min,
                                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: EdgeInsets.all(4.0),
+                                                                                      padding: const EdgeInsets.all(4.0),
                                                                                       child: Row(
                                                                                         mainAxisSize: MainAxisSize.min,
                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1186,7 +1182,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                                             desktop: false,
                                                                                           ))
                                                                                             Padding(
-                                                                                              padding: EdgeInsets.all(3.0),
+                                                                                              padding: const EdgeInsets.all(3.0),
                                                                                               child: ClipRRect(
                                                                                                 borderRadius: BorderRadius.circular(8.0),
                                                                                                 child: Image.network(
@@ -1211,7 +1207,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsets.all(6.0),
+                                                                                                        padding: const EdgeInsets.all(6.0),
                                                                                                         child: MarkdownBody(
                                                                                                           data: valueOrDefault<String>(
                                                                                                             columnChatsScrollableFlowiseChatsRecord.text,
@@ -1247,7 +1243,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               ))
                                                                 Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               6.0),
                                                                   child:
@@ -1282,13 +1278,13 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                       ),
                                     ),
                                   ),
-                                  if (FFAppState().flowiseMessages.length > 0)
-                                    Container(
+                                  if (FFAppState().flowiseMessages.isNotEmpty)
+                                    SizedBox(
                                       width: double.infinity,
                                       child: Stack(
                                         children: [
                                           Align(
-                                            alignment: AlignmentDirectional(
+                                            alignment: const AlignmentDirectional(
                                                 0.0, -429.57),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1301,15 +1297,15 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                         MainAxisSize.max,
                                                     children: [
                                                       AnimatedContainer(
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.easeInOut,
                                                         constraints:
-                                                            BoxConstraints(
+                                                            const BoxConstraints(
                                                           maxWidth: 600.0,
                                                         ),
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           color:
                                                               Color(0xFFEEEEEE),
                                                           borderRadius:
@@ -1329,11 +1325,11 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                           ),
                                                         ),
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 1.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1352,7 +1348,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             4.0),
                                                                 child: Row(
@@ -1385,7 +1381,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: EdgeInsets.all(6.0),
+                                                                                      padding: const EdgeInsets.all(6.0),
                                                                                       child: MarkdownBody(
                                                                                         data: valueOrDefault<String>(
                                                                                           FFAppState().flowiseMessages.first.message,
@@ -1421,7 +1417,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                             phone: false,
                                           ))
                                             Padding(
-                                              padding: EdgeInsets.all(6.0),
+                                              padding: const EdgeInsets.all(6.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -1436,14 +1432,13 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                         ],
                                       ),
                                     ),
-                                  if ((FFAppState().flowiseMessages.length >
-                                          0) &&
+                                  if ((FFAppState().flowiseMessages.isNotEmpty) &&
                                       responsiveVisibility(
                                         context: context,
                                         desktop: false,
                                       ))
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
                                         crossAxisAlignment:
@@ -1454,10 +1449,10 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                             phone: false,
                                           ))
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   -1.0, -1.0),
                                               child: Padding(
-                                                padding: EdgeInsets.all(6.0),
+                                                padding: const EdgeInsets.all(6.0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -1473,17 +1468,17 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                             ),
                                           Expanded(
                                             child: Container(
-                                              constraints: BoxConstraints(
+                                              constraints: const BoxConstraints(
                                                 maxWidth: 600.0,
                                                 maxHeight: 600.0,
                                               ),
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: MarkdownBody(
                                                       data: valueOrDefault<
@@ -1507,14 +1502,14 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                       ),
                                     ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
+                                    alignment: const AlignmentDirectional(0.0, 1.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         if (_model.questionReady == false)
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1550,10 +1545,10 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                           ).animateOnPageLoad(
                                                               animationsMap[
                                                                   'iconOnPageLoadAnimation']!),
-                                                        ].divide(SizedBox(
+                                                        ].divide(const SizedBox(
                                                             width: 9.0)),
                                                       ),
-                                                      Divider(
+                                                      const Divider(
                                                         thickness: 1.0,
                                                         color:
                                                             Color(0xFF505050),
@@ -1569,8 +1564,8 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                   borderRadius: 5.0,
                                                   borderWidth: 1.0,
                                                   buttonSize: 55.0,
-                                                  fillColor: Color(0xFFCDCDCD),
-                                                  icon: Icon(
+                                                  fillColor: const Color(0xFFCDCDCD),
+                                                  icon: const Icon(
                                                     Icons.send_sharp,
                                                     color: Color(0xFFA6A6A6),
                                                     size: 24.0,
@@ -1593,7 +1588,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                             visible:
                                                 _model.questionReady == true,
                                             child: Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -1645,7 +1640,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                         focusedBorder:
                                                             UnderlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0xFF464646),
                                                             width: 2.0,
@@ -1684,7 +1679,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -1767,9 +1762,6 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                         );
                                                         if (FFAppState()
                                                                     .nonLoggedInSessionId ==
-                                                                null ||
-                                                            FFAppState()
-                                                                    .nonLoggedInSessionId ==
                                                                 '') {}
                                                         // flowise chat document
                                                         logFirebaseEvent(
@@ -1798,9 +1790,6 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .selectedThreadId,
                                                             ));
                                                         if (!(FFAppState()
-                                                                    .selectedThreadId !=
-                                                                null &&
-                                                            FFAppState()
                                                                     .selectedThreadId !=
                                                                 '')) {
                                                           // generate active thread id
@@ -1845,7 +1834,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: Duration(
+                                                          duration: const Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -1869,7 +1858,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode
                                                                 ?.first
-                                                                ?.supabaseProjUrl,
+                                                                .supabaseProjUrl,
                                                             'https://efdipbnxemvehcjbxekx.supabase.co',
                                                           ),
                                                           valueOrDefault<
@@ -1877,7 +1866,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode
                                                                 ?.first
-                                                                ?.tableName,
+                                                                .tableName,
                                                             'table_name',
                                                           ),
                                                           valueOrDefault<
@@ -1885,7 +1874,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode
                                                                 ?.first
-                                                                ?.supabaseApiKey,
+                                                                .supabaseApiKey,
                                                             'apikey',
                                                           ),
                                                           valueOrDefault<
@@ -1893,14 +1882,14 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode
                                                                 ?.first
-                                                                ?.queryName,
+                                                                .queryName,
                                                             'queryName',
                                                           ),
                                                           valueOrDefault<bool>(
                                                             _model
                                                                 .companyQueryByCode
                                                                 ?.first
-                                                                ?.isLearnCards,
+                                                                .isLearnCards,
                                                             false,
                                                           ),
                                                           () async {
@@ -1914,7 +1903,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnChatsScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -1930,7 +1919,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnMarkdownScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -1948,7 +1937,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnChatsScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -1964,7 +1953,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnMarkdownScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -2014,7 +2003,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: Duration(
+                                                          duration: const Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -2054,7 +2043,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: Duration(
+                                                          duration: const Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -2074,7 +2063,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                     fillColor: widget
                                                         .companiesDoc
                                                         ?.colors
-                                                        ?.primaryColor,
+                                                        .primaryColor,
                                                     icon: Icon(
                                                       Icons.send_sharp,
                                                       color:
@@ -2136,7 +2125,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                         companyDocId: _model
                                                             .companyQueryByCode2
                                                             ?.first
-                                                            ?.reference
+                                                            .reference
                                                             .id,
                                                         threadDetails:
                                                             createThreadsStruct(
@@ -2144,10 +2133,10 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               .selectedThreadId,
                                                           threadName:
                                                               containerMyTeamRecord
-                                                                  ?.memberName,
+                                                                  .memberName,
                                                           threadImage:
                                                               containerMyTeamRecord
-                                                                  ?.image,
+                                                                  .image,
                                                           clearUnsetFields:
                                                               false,
                                                           create: true,
@@ -2181,7 +2170,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                     companyDocId: _model
                                                                         .companyQueryByCode2
                                                                         ?.first
-                                                                        ?.reference
+                                                                        .reference
                                                                         .id,
                                                                     threadDetails:
                                                                         createThreadsStruct(
@@ -2190,10 +2179,10 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                               .selectedThreadId,
                                                                       threadName:
                                                                           containerMyTeamRecord
-                                                                              ?.memberName,
+                                                                              .memberName,
                                                                       threadImage:
                                                                           containerMyTeamRecord
-                                                                              ?.image,
+                                                                              .image,
                                                                       clearUnsetFields:
                                                                           false,
                                                                       create:
@@ -2202,9 +2191,6 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   ),
                                                                   flowiseChatsRecordReference1);
                                                       if (!(FFAppState()
-                                                                  .selectedThreadId !=
-                                                              null &&
-                                                          FFAppState()
                                                                   .selectedThreadId !=
                                                               '')) {}
                                                       // question ready false
@@ -2223,7 +2209,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2235,14 +2221,14 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              title: Text(
+                                                              title: const Text(
                                                                   'about to call flo'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -2258,14 +2244,14 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              title: Text(
+                                                              title: const Text(
                                                                   'flow finished'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -2328,7 +2314,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                 .columnMarkdownScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -2343,7 +2329,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                 .columnMarkdownScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -2360,7 +2346,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                 .columnMarkdownScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -2375,7 +2361,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                 .columnMarkdownScrollable!
                                                                 .position
                                                                 .maxScrollExtent,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves.ease,
@@ -2391,14 +2377,14 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              title: Text(
+                                                              title: const Text(
                                                                   'chat was called '),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -2442,7 +2428,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             companyDocId: _model
                                                                 .companyQueryByCode2
                                                                 ?.first
-                                                                ?.reference
+                                                                .reference
                                                                 .id,
                                                             threadDetails:
                                                                 createThreadsStruct(
@@ -2450,7 +2436,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .selectedThreadId,
                                                               threadName:
                                                                   containerMyTeamRecord
-                                                                      ?.memberName,
+                                                                      .memberName,
                                                               clearUnsetFields:
                                                                   false,
                                                               create: true,
@@ -2465,7 +2451,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2504,7 +2490,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2564,9 +2550,6 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                         );
                                                         if (FFAppState()
                                                                     .nonLoggedInSessionId ==
-                                                                null ||
-                                                            FFAppState()
-                                                                    .nonLoggedInSessionId ==
                                                                 '') {}
                                                         // flowise chat document
                                                         logFirebaseEvent(
@@ -2595,9 +2578,6 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .selectedThreadId,
                                                             ));
                                                         if (!(FFAppState()
-                                                                    .selectedThreadId !=
-                                                                null &&
-                                                            FFAppState()
                                                                     .selectedThreadId !=
                                                                 '')) {
                                                           // generate active thread id
@@ -2642,7 +2622,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: Duration(
+                                                          duration: const Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -2666,7 +2646,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode1
                                                                 ?.first
-                                                                ?.supabaseProjUrl,
+                                                                .supabaseProjUrl,
                                                             'https://efdipbnxemvehcjbxekx.supabase.co',
                                                           ),
                                                           valueOrDefault<
@@ -2674,7 +2654,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode1
                                                                 ?.first
-                                                                ?.tableName,
+                                                                .tableName,
                                                             'table_name',
                                                           ),
                                                           valueOrDefault<
@@ -2682,7 +2662,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode1
                                                                 ?.first
-                                                                ?.supabaseApiKey,
+                                                                .supabaseApiKey,
                                                             'apikey',
                                                           ),
                                                           valueOrDefault<
@@ -2690,14 +2670,14 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                             _model
                                                                 .companyQueryByCode1
                                                                 ?.first
-                                                                ?.queryName,
+                                                                .queryName,
                                                             'queryName',
                                                           ),
                                                           valueOrDefault<bool>(
                                                             _model
                                                                 .companyQueryByCode1
                                                                 ?.first
-                                                                ?.isLearnCards,
+                                                                .isLearnCards,
                                                             false,
                                                           ),
                                                           () async {
@@ -2711,7 +2691,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnChatsScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -2727,7 +2707,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnMarkdownScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -2745,7 +2725,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnChatsScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -2761,7 +2741,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                                   .columnMarkdownScrollable!
                                                                   .position
                                                                   .maxScrollExtent,
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve:
@@ -2841,7 +2821,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: Duration(
+                                                          duration: const Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -2881,7 +2861,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: Duration(
+                                                          duration: const Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -2914,8 +2894,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               if (valueOrDefault<bool>(
-                FFAppState().tempStreamingMessage != null &&
-                    FFAppState().tempStreamingMessage != '',
+                FFAppState().tempStreamingMessage != '',
                 false,
               ))
                 Container(
@@ -2927,7 +2906,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
           ),
           if (FFAppState().debugCount >= 3)
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   logFirebaseEvent('A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_WELCONE');
@@ -2943,7 +2922,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                   context.pushNamed(
                     'Library-fixed',
                     extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
+                      kTransitionInfoKey: const TransitionInfo(
                         hasTransition: true,
                         transitionType: PageTransitionType.fade,
                         duration: Duration(milliseconds: 0),
@@ -2954,9 +2933,9 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                 text: 'Start Over',
                 options: FFButtonOptions(
                   height: 50.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).selectedButton,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily:
@@ -2967,7 +2946,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                             FlutterFlowTheme.of(context).titleSmallFamily),
                       ),
                   elevation: 1.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),
@@ -2980,7 +2959,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
             false,
           ))
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   logFirebaseEvent('A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_WELCONE');
@@ -2992,9 +2971,9 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                 text: 'Leave Debug Mode',
                 options: FFButtonOptions(
                   height: 50.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).selectedButton,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily:
@@ -3005,7 +2984,7 @@ class _AICOMMUNICATIONOnPageWelconeChatWidgetState
                             FlutterFlowTheme.of(context).titleSmallFamily),
                       ),
                   elevation: 1.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

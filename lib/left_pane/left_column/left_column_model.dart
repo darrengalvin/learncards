@@ -1,17 +1,12 @@
-import '/auth/base_auth_user_provider.dart';
 import '/backend/backend.dart';
 import '/components/learn_cards_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/left_pane/desktop_tile_nav_a_your_saved/desktop_tile_nav_a_your_saved_widget.dart';
 import '/left_pane/desktop_tile_nav_ai_this_week/desktop_tile_nav_ai_this_week_widget.dart';
 import '/left_pane/event_app_tiles/event_app_tiles_widget.dart';
 import '/left_pane/main_app_tiles/main_app_tiles_widget.dart';
 import 'left_column_widget.dart' show LeftColumnWidget;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class LeftColumnModel extends FlutterFlowModel<LeftColumnWidget> {
   ///  Local state fields for this component.

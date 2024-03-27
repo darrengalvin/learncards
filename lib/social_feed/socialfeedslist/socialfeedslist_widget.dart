@@ -5,9 +5,7 @@ import '/components/side_menu_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -64,8 +62,8 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(-100.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-100.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -131,7 +129,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                           FFAppState().drawerMenu = false;
                         });
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(
@@ -170,37 +168,6 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                 opaque: false,
                                                 cursor: MouseCursor.defer ??
                                                     MouseCursor.defer,
-                                                child: Visibility(
-                                                  visible: responsiveVisibility(
-                                                    context: context,
-                                                    phone: false,
-                                                    tablet: false,
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width: 40.0,
-                                                        height: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
-                                                        child: wrapWithModel(
-                                                          model: _model
-                                                              .sideMenuCopyModel,
-                                                          updateCallback: () =>
-                                                              setState(() {}),
-                                                          child:
-                                                              SideMenuCopyWidget(),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
                                                 onEnter: ((event) async {
                                                   setState(() => _model
                                                           .mouseRegionHovered1 =
@@ -229,6 +196,37 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                         false;
                                                   });
                                                 }),
+                                                child: Visibility(
+                                                  visible: responsiveVisibility(
+                                                    context: context,
+                                                    phone: false,
+                                                    tablet: false,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width: 40.0,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .sideMenuCopyModel,
+                                                          updateCallback: () =>
+                                                              setState(() {}),
+                                                          child:
+                                                              const SideMenuCopyWidget(),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -265,11 +263,11 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                           ),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: double.infinity,
                                             height: double.infinity,
                                             child: Stack(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, -1.0),
                                               children: [
                                                 SingleChildScrollView(
@@ -281,7 +279,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                         width: double.infinity,
                                                         height: 88.0,
                                                         decoration:
-                                                            BoxDecoration(),
+                                                            const BoxDecoration(),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -342,7 +340,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -358,12 +356,12 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.3,
                                                                             0.1),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           8.0,
@@ -393,7 +391,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 120.0,
                                                           10.0, 0.0),
                                                   child: StreamBuilder<
@@ -440,7 +438,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                   listViewIndex];
                                                           return Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     10.0),
                                                             child: InkWell(
                                                               splashColor: Colors
@@ -495,7 +493,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                               child: Container(
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                  boxShadow: [
+                                                                  boxShadow: const [
                                                                     BoxShadow(
                                                                       blurRadius:
                                                                           4.0,
@@ -516,15 +514,15 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                               context)
                                                                           .secondary
                                                                     ],
-                                                                    stops: [
+                                                                    stops: const [
                                                                       0.0,
                                                                       1.0
                                                                     ],
                                                                     begin:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
-                                                                    end: AlignmentDirectional(
+                                                                    end: const AlignmentDirectional(
                                                                         0, 1.0),
                                                                   ),
                                                                   borderRadius:
@@ -538,7 +536,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           16.0,
                                                                           0.0,
                                                                           16.0,
@@ -551,7 +549,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                             MainAxisAlignment.spaceBetween,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 10.0,
                                                                                 0.0,
@@ -592,7 +590,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           16.0,
                                                                           0.0,
                                                                           16.0,
@@ -608,16 +606,16 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                             width:
                                                                                 300.0,
                                                                             decoration:
-                                                                                BoxDecoration(),
+                                                                                const BoxDecoration(),
                                                                             child:
                                                                                 Column(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.center,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                                                                                   child: Container(
-                                                                                    decoration: BoxDecoration(),
+                                                                                    decoration: const BoxDecoration(),
                                                                                     child: StreamBuilder<List<TilesRecord>>(
                                                                                       stream: queryTilesRecord(
                                                                                         queryBuilder: (tilesRecord) => tilesRecord.where(
@@ -655,7 +653,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                                           children: [
                                                                                             Container(
                                                                                               decoration: BoxDecoration(
-                                                                                                boxShadow: [
+                                                                                                boxShadow: const [
                                                                                                   BoxShadow(
                                                                                                     blurRadius: 3.0,
                                                                                                     color: Color(0x411D2429),
@@ -665,14 +663,14 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                                                 borderRadius: BorderRadius.circular(13.0),
                                                                                               ),
                                                                                               child: Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                                 child: Row(
                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                   children: [
                                                                                                     Expanded(
                                                                                                       child: Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                         child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           mainAxisAlignment: MainAxisAlignment.start,
@@ -683,7 +681,7 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                                                                                               children: [
                                                                                                                 Expanded(
                                                                                                                   child: Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                                                     child: Text(
                                                                                                                       'Linked Tile: ${listViewTilesRecord?.title}',
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -741,8 +739,23 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                               MouseRegion(
                                 opaque: false,
                                 cursor: MouseCursor.defer ?? MouseCursor.defer,
+                                onEnter: ((event) async {
+                                  setState(
+                                      () => _model.mouseRegionHovered2 = true);
+                                }),
+                                onExit: ((event) async {
+                                  setState(
+                                      () => _model.mouseRegionHovered2 = false);
+                                  logFirebaseEvent(
+                                      'SOCIALFEEDSLIST_MouseRegion_9rwjrmhg_ON_');
+                                  logFirebaseEvent(
+                                      'MouseRegion_update_app_state');
+                                  setState(() {
+                                    FFAppState().drawerMenu = false;
+                                  });
+                                }),
                                 child: Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
+                                  alignment: const AlignmentDirectional(-1.0, 0.0),
                                   child: Container(
                                     width: 230.0,
                                     height: double.infinity,
@@ -765,21 +778,6 @@ class _SocialfeedslistWidgetState extends State<SocialfeedslistWidget>
                                   ).animateOnPageLoad(animationsMap[
                                       'containerOnPageLoadAnimation']!),
                                 ),
-                                onEnter: ((event) async {
-                                  setState(
-                                      () => _model.mouseRegionHovered2 = true);
-                                }),
-                                onExit: ((event) async {
-                                  setState(
-                                      () => _model.mouseRegionHovered2 = false);
-                                  logFirebaseEvent(
-                                      'SOCIALFEEDSLIST_MouseRegion_9rwjrmhg_ON_');
-                                  logFirebaseEvent(
-                                      'MouseRegion_update_app_state');
-                                  setState(() {
-                                    FFAppState().drawerMenu = false;
-                                  });
-                                }),
                               ),
                           ],
                         ),

@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'video_model.dart';
 export 'video_model.dart';
 
@@ -48,7 +45,7 @@ class _VideoWidgetState extends State<VideoWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: SafeArea(
+            body: const SafeArea(
               top: true,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -56,7 +53,7 @@ class _VideoWidgetState extends State<VideoWidget> {
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 400.0,
                         height: 400.0,
                         child: custom_widgets.VideoWithPlayAndEnd(
@@ -72,7 +69,7 @@ class _VideoWidgetState extends State<VideoWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [],
                   ),
-                  Container(
+                  SizedBox(
                     width: 400.0,
                     height: 600.0,
                     child: custom_widgets.VideoWithPlay(

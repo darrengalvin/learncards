@@ -61,7 +61,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     borderRadius: 30.0,
                     borderWidth: 1.0,
                     buttonSize: 60.0,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_rounded,
                       color: Colors.white,
                       size: 30.0,
@@ -82,7 +82,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   .headlineMediumFamily),
                         ),
                   ),
-                  actions: [],
+                  actions: const [],
                   centerTitle: true,
                   elevation: 2.0,
                 )
@@ -90,14 +90,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           body: SafeArea(
             top: true,
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 0.0, 0.0),
                     child: Text(
                       'Base URL: Do not change this.',
                       textAlign: TextAlign.start,
@@ -106,7 +106,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                     child: TextFormField(
                       controller: _model.textController,
                       focusNode: _model.textFieldFocusNode,
@@ -115,42 +115,42 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       decoration: InputDecoration(
                         hintText: FFAppState().baseurl,
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        errorBorder: UnderlineInputBorder(
+                        errorBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedErrorBorder: UnderlineInputBorder(
+                        focusedErrorBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
@@ -162,10 +162,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.05),
+                    alignment: const AlignmentDirectional(0.0, 0.05),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -174,9 +174,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         options: FFButtonOptions(
                           width: 340.0,
                           height: 60.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -189,7 +189,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         .containsKey('Lexend Deca'),
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

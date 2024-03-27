@@ -10,10 +10,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'blockv3_copy_model.dart';
@@ -66,7 +64,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AnimatedContainer(
-          duration: Duration(milliseconds: 100),
+          duration: const Duration(milliseconds: 100),
           curve: Curves.easeInOut,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),
@@ -79,9 +77,9 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               AnimatedContainer(
-                duration: Duration(milliseconds: 100),
+                duration: const Duration(milliseconds: 100),
                 curve: Curves.easeInOut,
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: 960.0,
                 ),
                 decoration: BoxDecoration(
@@ -115,7 +113,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                         builder: (context) => Container(
                           width: double.infinity,
                           height: 40.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +121,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                               Container(
                                 width: 50.0,
                                 height: 40.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                               ),
                               Expanded(
                                 child: Row(
@@ -136,7 +134,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                           .bodyMedium,
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Component${_model.showEdit.toString()}',
@@ -166,11 +164,11 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 48.0, 0.0),
                                                     child:
@@ -212,11 +210,11 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 8.0, 0.0),
                                                     child:
@@ -263,11 +261,11 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 12.0, 0.0),
                                                     child:
@@ -323,7 +321,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                               ],
                                             );
                                           } else {
-                                            return Row(
+                                            return const Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [],
                                             );
@@ -349,7 +347,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                       visible: !_model.showEdit,
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 30.0,
@@ -384,7 +382,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                               builder: (alertDialogContext) {
                                                 return WebViewAware(
                                                   child: AlertDialog(
-                                                    title: Text('block id is '),
+                                                    title: const Text('block id is '),
                                                     content: Text(FFAppState()
                                                         .drawerBlockId),
                                                     actions: [
@@ -392,7 +390,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext),
-                                                        child: Text('Ok'),
+                                                        child: const Text('Ok'),
                                                       ),
                                                     ],
                                                   ),
@@ -406,7 +404,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                               builder: (alertDialogContext) {
                                                 return WebViewAware(
                                                   child: AlertDialog(
-                                                    title: Text('block id is '),
+                                                    title: const Text('block id is '),
                                                     content: Text(widget
                                                         .tileBlock!.blockName),
                                                     actions: [
@@ -414,7 +412,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext),
-                                                        child: Text('Ok'),
+                                                        child: const Text('Ok'),
                                                       ),
                                                     ],
                                                   ),
@@ -437,7 +435,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                       visible: !_model.showEdit,
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 30.0,
@@ -465,7 +463,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                               builder: (alertDialogContext) {
                                                 return WebViewAware(
                                                   child: AlertDialog(
-                                                    title: Text('block id is '),
+                                                    title: const Text('block id is '),
                                                     content: Text(FFAppState()
                                                         .drawerBlockId),
                                                     actions: [
@@ -473,7 +471,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext),
-                                                        child: Text('Ok'),
+                                                        child: const Text('Ok'),
                                                       ),
                                                     ],
                                                   ),
@@ -528,7 +526,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                           tablet: false,
                           tabletLandscape: false,
                         ))
-                      Column(
+                      const Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [],
                       ),
@@ -590,7 +588,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            constraints: BoxConstraints(
+                                            constraints: const BoxConstraints(
                                               maxWidth: 640.0,
                                             ),
                                             decoration: BoxDecoration(
@@ -642,7 +640,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                               builder: (context) {
                                                 final textList = widget
                                                         .tileBlock?.textList
-                                                        ?.toList() ??
+                                                        .toList() ??
                                                     [];
                                                 return Column(
                                                   mainAxisSize:
@@ -654,7 +652,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                         textList[textListIndex];
                                                     return Container(
                                                       constraints:
-                                                          BoxConstraints(
+                                                          const BoxConstraints(
                                                         maxWidth: 640.0,
                                                       ),
                                                       decoration: BoxDecoration(
@@ -664,7 +662,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     16.0,
@@ -679,7 +677,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -745,7 +743,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       100.0, 0.0, 100.0, 0.0),
                                               child: ClipRRect(
@@ -753,7 +751,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                     BorderRadius.circular(8.0),
                                                 child: Container(
                                                   width: 800.0,
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     maxHeight: 400.0,
                                                   ),
                                                   decoration: BoxDecoration(
@@ -766,7 +764,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: InkWell(
                                                       splashColor:
@@ -869,7 +867,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                   Text(
                                                     valueOrDefault<String>(
                                                       widget.tileBlock
-                                                              ?.textList?[
+                                                              ?.textList[
                                                           valueOrDefault<int>(
                                                         () {
                                                           if (widget.tileBlock
@@ -904,7 +902,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                               false,
                                             ))
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 24.0, 0.0, 0.0),
                                                 child: Builder(
@@ -912,7 +910,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                     final image = widget
                                                             .tileBlock
                                                             ?.imageGallery
-                                                            ?.toList() ??
+                                                            .toList() ??
                                                         [];
                                                     return SingleChildScrollView(
                                                       scrollDirection:
@@ -949,13 +947,13 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                                       ? FlutterFlowTheme.of(
                                                                               context)
                                                                           .customColor7
-                                                                      : Color(
+                                                                      : const Color(
                                                                           0x00000000),
                                                                 ),
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1039,13 +1037,13 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                 ))
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 12.0),
                                                     child: Text(
                                                       valueOrDefault<String>(
                                                         widget.tileBlock
-                                                                ?.textList?[
+                                                                ?.textList[
                                                             valueOrDefault<int>(
                                                           () {
                                                             if (widget.tileBlock
@@ -1091,29 +1089,29 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                             ),
                                             ClipRRect(
                                               child: Container(
-                                                constraints: BoxConstraints(
+                                                constraints: const BoxConstraints(
                                                   minHeight: 400.0,
                                                 ),
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Builder(
                                                     builder: (context) {
                                                       final video = widget
                                                               .tileBlock
                                                               ?.videoGallery
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [];
-                                                      return Container(
+                                                      return SizedBox(
                                                         width: 640.0,
                                                         height: 400.0,
                                                         child: Stack(
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1191,10 +1189,10 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 1.0),
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
@@ -1218,7 +1216,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                                         .pageViewController!
                                                                         .animateToPage(
                                                                       i,
-                                                                      duration: Duration(
+                                                                      duration: const Duration(
                                                                           milliseconds:
                                                                               500),
                                                                       curve: Curves
@@ -1239,7 +1237,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                                             context)
                                                                         .btnBk,
                                                                     activeDotColor:
-                                                                        Color(
+                                                                        const Color(
                                                                             0xFF1A5AF9),
                                                                     paintStyle:
                                                                         PaintingStyle
@@ -1269,7 +1267,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 48.0, 0.0),
                                                     child: FFButtonWidget(
@@ -1281,14 +1279,14 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                       options: FFButtonOptions(
                                                         height: 40.0,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1329,7 +1327,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(48.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: FFButtonWidget(
@@ -1341,14 +1339,14 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                                                       options: FFButtonOptions(
                                                         height: 40.0,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1435,13 +1433,13 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
               Container(
                 width: 960.0,
                 height: 40.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: FlutterFlowIconButton(
                         borderColor: Colors.transparent,
                         borderRadius: 30.0,
@@ -1593,7 +1591,7 @@ class _Blockv3CopyWidgetState extends State<Blockv3CopyWidget> {
                 children: [
                   Container(
                     width: double.infinity,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 640.0,
                     ),
                     decoration: BoxDecoration(

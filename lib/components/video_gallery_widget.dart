@@ -71,7 +71,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxWidth: 500.0,
       ),
       decoration: BoxDecoration(
@@ -81,12 +81,12 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               curve: Curves.easeInOut,
               width: double.infinity,
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxHeight: 300.0,
               ),
               decoration: BoxDecoration(
@@ -99,19 +99,19 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Icon(
                               Icons.ondemand_video,
                               color: FlutterFlowTheme.of(context).secondaryText,
@@ -119,7 +119,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Add one of more videos',
@@ -131,9 +131,9 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
                       child: FlutterFlowChoiceChips(
-                        options: [
+                        options: const [
                           ChipData('Library'),
                           ChipData('Upload'),
                           ChipData('URL')
@@ -141,7 +141,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                         onChanged: (val) => setState(
                             () => _model.videoOptionsValue = val?.firstOrNull),
                         selectedChipStyle: ChipStyle(
-                          backgroundColor: Color(0xFF1AADF9),
+                          backgroundColor: const Color(0xFF1AADF9),
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
@@ -201,7 +201,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                       Flexible(
                         child: Container(
                           width: double.infinity,
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             minHeight: 180.0,
                           ),
                           decoration: BoxDecoration(
@@ -278,14 +278,14 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                       ),
                     if (_model.videoOptionsValue == 'URL')
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: TextFormField(
                           controller: _model.videoLinkController,
                           focusNode: _model.videoLinkFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
                             '_model.videoLinkController',
-                            Duration(milliseconds: 2000),
+                            const Duration(milliseconds: 2000),
                             () => setState(() {}),
                           ),
                           autofocus: true,
@@ -303,7 +303,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0xFF1AADF9),
                                 width: 2.0,
                               ),
@@ -331,7 +331,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                       ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -488,9 +488,9 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                             text: 'Add',
                             options: FFButtonOptions(
                               height: 32.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: valueOrDefault<Color>(
                                 () {
@@ -523,7 +523,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -543,13 +543,13 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Icon(
                     Icons.video_collection_outlined,
                     color: FlutterFlowTheme.of(context).secondaryText,
@@ -557,7 +557,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                   child: Text(
                     'Block Videos',
                     style: FlutterFlowTheme.of(context).bodyMedium,
@@ -567,7 +567,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
             child: Builder(
               builder: (context) {
                 final gallerVideo = _model.videoGallery.toList();
@@ -579,19 +579,18 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                   itemBuilder: (context, gallerVideoIndex) {
                     final gallerVideoItem = gallerVideo[gallerVideoIndex];
                     return Container(
-                      key: ValueKey("ListView_26kkqu13" +
-                          '_' +
+                      key: ValueKey("ListView_26kkqu13" '_' +
                           gallerVideoIndex.toString()),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 32.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 8.0, 0.0),
-                              child: Container(
+                              child: SizedBox(
                                 width: 70.0,
                                 height: 50.0,
                                 child: Stack(
@@ -618,7 +617,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(1.25, -1.5),
+                                          const AlignmentDirectional(1.25, -1.5),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -648,7 +647,7 @@ class _VideoGalleryWidgetState extends State<VideoGalleryWidget> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 16.0, 0.0),
                                 child: wrapWithModel(
                                   model: _model.dynamicTextFieldModels.getModel(

@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'nav_chips_model.dart';
 export 'nav_chips_model.dart';
 
@@ -46,10 +45,10 @@ class _NavChipsWidgetState extends State<NavChipsWidget> {
     return Container(
       width: double.infinity,
       height: 40.0,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxWidth: 400.0,
       ),
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: StreamBuilder<List<CategoriesRecord>>(
         stream: queryCategoriesRecord(
           queryBuilder: (categoriesRecord) => categoriesRecord.orderBy('index'),
@@ -102,7 +101,7 @@ class _NavChipsWidgetState extends State<NavChipsWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
@@ -124,9 +123,9 @@ class _NavChipsWidgetState extends State<NavChipsWidget> {
                           text: listViewNCategoriesRecord.categoryname,
                           options: FFButtonOptions(
                             height: 30.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             color: listViewNCategoriesRecord.categoryname ==
                                     listViewNCategoriesRecord.categoryname

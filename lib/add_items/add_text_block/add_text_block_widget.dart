@@ -1,12 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'add_text_block_model.dart';
 export 'add_text_block_model.dart';
 
@@ -65,14 +62,14 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
     return Column(
       children: [
         Align(
-          alignment: Alignment(0.0, 0),
+          alignment: const Alignment(0.0, 0),
           child: TabBar(
             isScrollable: true,
             labelColor: FlutterFlowTheme.of(context).primary,
             labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-            unselectedLabelStyle: TextStyle(),
+            unselectedLabelStyle: const TextStyle(),
             indicatorColor: FlutterFlowTheme.of(context).secondary,
-            tabs: [
+            tabs: const [
               Tab(
                 text: 'Text Content',
               ),
@@ -108,7 +105,7 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -121,7 +118,7 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                                     logFirebaseEvent('Icon_bottom_sheet');
                                     Navigator.pop(context);
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.cancel_outlined,
                                     color: Colors.black,
                                     size: 24.0,
@@ -129,7 +126,7 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: TextFormField(
                                   controller: _model.headertextController,
                                   focusNode: _model.headertextFocusNode,
@@ -148,21 +145,21 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -179,7 +176,7 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: TextFormField(
                                   controller: _model.textblockController,
                                   focusNode: _model.textblockFocusNode,
@@ -198,21 +195,21 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -253,9 +250,9 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                                 options: FFButtonOptions(
                                   width: 190.0,
                                   height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -270,7 +267,7 @@ class _AddTextBlockWidgetState extends State<AddTextBlockWidget>
                                                     .titleSmallFamily),
                                       ),
                                   elevation: 2.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),

@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/column_image_component_widget.dart';
 import '/components/document_widget.dart';
@@ -24,7 +23,7 @@ class Blockv3BackupB4cleanupWidget extends StatefulWidget {
     this.tilesv2Passed,
     required this.sessionId,
     required this.companyDoc,
-  }) : this.topicItem = topicItem ?? 'topicItem';
+  }) : topicItem = topicItem ?? 'topicItem';
 
   final TileBlocksRecord? tileBlock;
   final String topicItem;
@@ -86,7 +85,7 @@ class _Blockv3BackupB4cleanupWidgetState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -141,7 +140,7 @@ class _Blockv3BackupB4cleanupWidgetState
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxWidth: 800.0,
                         ),
                         decoration: BoxDecoration(
@@ -160,12 +159,12 @@ class _Blockv3BackupB4cleanupWidgetState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Container(
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 maxWidth: 800.0,
                               ),
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -192,7 +191,7 @@ class _Blockv3BackupB4cleanupWidgetState
                                               Container(
                                                 width: 800.0,
                                                 height: 240.0,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: StreamBuilder<
                                                     List<LearnCardsRecord>>(
                                                   stream: queryLearnCardsRecord(
@@ -305,10 +304,10 @@ class _Blockv3BackupB4cleanupWidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Container(
-                                              constraints: BoxConstraints(
+                                              constraints: const BoxConstraints(
                                                 maxWidth: 800.0,
                                               ),
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -316,19 +315,19 @@ class _Blockv3BackupB4cleanupWidgetState
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 16.0,
                                                                 16.0, 16.0),
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xB2FAFAFA),
+                                                            const Color(0xB2FAFAFA),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(8.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFFE0E3E7),
+                                                              const Color(0xFFE0E3E7),
                                                           width: 1.0,
                                                         ),
                                                       ),
@@ -338,7 +337,7 @@ class _Blockv3BackupB4cleanupWidgetState
                                                         children: [
                                                           Container(
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                             child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -352,19 +351,17 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                     if (valueOrDefault<
                                                                         bool>(
                                                                       FFAppState().selectedLearnCardId ==
-                                                                              null ||
-                                                                          FFAppState().selectedLearnCardId ==
                                                                               '',
                                                                       false,
                                                                     ))
                                                                       Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(16.0),
+                                                                              const EdgeInsets.all(16.0),
                                                                           child:
                                                                               Container(
                                                                             width:
@@ -379,7 +376,7 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsets.all(24.0),
+                                                                                  padding: const EdgeInsets.all(24.0),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -397,12 +394,12 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                           children: [
                                                                                             Expanded(
                                                                                               child: Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                                                                                                 child: Text(
                                                                                                   '20 Minutes',
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Readex Pro',
-                                                                                                        color: Color(0xFF14181B),
+                                                                                                        color: const Color(0xFF14181B),
                                                                                                         fontSize: 14.0,
                                                                                                         fontWeight: FontWeight.normal,
                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey('Readex Pro'),
@@ -411,12 +408,12 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                               ),
                                                                                             ),
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                               child: Text(
                                                                                                 'CPD  Credits: ',
                                                                                                 style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                                       fontFamily: 'Readex Pro',
-                                                                                                      color: Color(0xFF57636C),
+                                                                                                      color: const Color(0xFF57636C),
                                                                                                       fontSize: 14.0,
                                                                                                       fontWeight: FontWeight.normal,
                                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey('Readex Pro'),
@@ -426,17 +423,17 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                             Container(
                                                                                               height: 32.0,
                                                                                               decoration: BoxDecoration(
-                                                                                                color: Color(0xFFF1F4F8),
+                                                                                                color: const Color(0xFFF1F4F8),
                                                                                                 borderRadius: BorderRadius.circular(12.0),
                                                                                               ),
-                                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                               child: Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                                 child: Text(
                                                                                                   '2',
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Readex Pro',
-                                                                                                        color: Color(0xFF14181B),
+                                                                                                        color: const Color(0xFF14181B),
                                                                                                         fontSize: 14.0,
                                                                                                         fontWeight: FontWeight.normal,
                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey('Readex Pro'),
@@ -451,17 +448,17 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                         false,
                                                                                       ))
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                                                                                           child: Html(
                                                                                             data: widget.tileBlock!.htmlContent,
                                                                                             onLinkTap: (url, _, __, ___) => launchURL(url!),
                                                                                           ),
                                                                                         ),
                                                                                       Container(
-                                                                                        decoration: BoxDecoration(),
+                                                                                        decoration: const BoxDecoration(),
                                                                                       ),
                                                                                       Container(
-                                                                                        decoration: BoxDecoration(),
+                                                                                        decoration: const BoxDecoration(),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -474,19 +471,17 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                     if (valueOrDefault<
                                                                         bool>(
                                                                       FFAppState().selectedLearnCardId !=
-                                                                              null &&
-                                                                          FFAppState().selectedLearnCardId !=
                                                                               '',
                                                                       false,
                                                                     ))
                                                                       Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(16.0),
+                                                                              const EdgeInsets.all(16.0),
                                                                           child:
                                                                               StreamBuilder<List<LearnCardsRecord>>(
                                                                             stream:
@@ -523,7 +518,7 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: EdgeInsets.all(24.0),
+                                                                                      padding: const EdgeInsets.all(24.0),
                                                                                       child: Column(
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -541,12 +536,12 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                               children: [
                                                                                                 Expanded(
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                                                                                                     child: Text(
                                                                                                       '20 Minutes',
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             fontFamily: 'Readex Pro',
-                                                                                                            color: Color(0xFF14181B),
+                                                                                                            color: const Color(0xFF14181B),
                                                                                                             fontSize: 14.0,
                                                                                                             fontWeight: FontWeight.normal,
                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Readex Pro'),
@@ -555,12 +550,12 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                                   ),
                                                                                                 ),
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                   child: Text(
                                                                                                     'CPD  Credits: ',
                                                                                                     style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                                           fontFamily: 'Readex Pro',
-                                                                                                          color: Color(0xFF57636C),
+                                                                                                          color: const Color(0xFF57636C),
                                                                                                           fontSize: 14.0,
                                                                                                           fontWeight: FontWeight.normal,
                                                                                                           useGoogleFonts: GoogleFonts.asMap().containsKey('Readex Pro'),
@@ -570,17 +565,17 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                                 Container(
                                                                                                   height: 32.0,
                                                                                                   decoration: BoxDecoration(
-                                                                                                    color: Color(0xFFF1F4F8),
+                                                                                                    color: const Color(0xFFF1F4F8),
                                                                                                     borderRadius: BorderRadius.circular(12.0),
                                                                                                   ),
-                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                                     child: Text(
                                                                                                       '2',
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             fontFamily: 'Readex Pro',
-                                                                                                            color: Color(0xFF14181B),
+                                                                                                            color: const Color(0xFF14181B),
                                                                                                             fontSize: 14.0,
                                                                                                             fontWeight: FontWeight.normal,
                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Readex Pro'),
@@ -591,30 +586,30 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                                               ],
                                                                                             ),
                                                                                           Container(
-                                                                                            decoration: BoxDecoration(),
+                                                                                            decoration: const BoxDecoration(),
                                                                                           ),
                                                                                           Container(
-                                                                                            decoration: BoxDecoration(),
+                                                                                            decoration: const BoxDecoration(),
                                                                                           ),
                                                                                         ],
                                                                                       ),
                                                                                     ),
                                                                                     if (valueOrDefault<bool>(
-                                                                                      FFAppState().tempStreamingMessage != null && FFAppState().tempStreamingMessage != '',
+                                                                                      FFAppState().tempStreamingMessage != '',
                                                                                       false,
                                                                                     ))
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                                                                                         child: Column(
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           crossAxisAlignment: CrossAxisAlignment.center,
                                                                                           children: [
                                                                                             if (valueOrDefault<bool>(
-                                                                                              FFAppState().tempStreamingMessage != null && FFAppState().tempStreamingMessage != '',
+                                                                                              FFAppState().tempStreamingMessage != '',
                                                                                               false,
                                                                                             ))
                                                                                               Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 20.0),
+                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 20.0),
                                                                                                 child: Text(
                                                                                                   valueOrDefault<String>(
                                                                                                     FFAppState().tempStreamingMessage,
@@ -679,7 +674,7 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                       .data!;
                                                               return Container(
                                                                 decoration:
-                                                                    BoxDecoration(),
+                                                                    const BoxDecoration(),
                                                                 child: Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -743,7 +738,7 @@ class _Blockv3BackupB4cleanupWidgetState
                                                                       desktop:
                                                                           false,
                                                                     ))
-                                                                      FlutterFlowVideoPlayer(
+                                                                      const FlutterFlowVideoPlayer(
                                                                         path:
                                                                             'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
                                                                         videoType:
@@ -766,7 +761,7 @@ class _Blockv3BackupB4cleanupWidgetState
                                                           ),
                                                           Container(
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                           ),
                                                         ],
                                                       ),
@@ -786,17 +781,17 @@ class _Blockv3BackupB4cleanupWidgetState
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Container(
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             maxWidth: 800.0,
                           ),
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Visibility(
                                   visible: valueOrDefault<bool>(
                                     () {
@@ -827,17 +822,17 @@ class _Blockv3BackupB4cleanupWidgetState
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Container(
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             maxWidth: 800.0,
                           ),
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Visibility(
                                   visible: valueOrDefault<bool>(
                                     () {
@@ -890,7 +885,7 @@ class _Blockv3BackupB4cleanupWidgetState
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -934,7 +929,7 @@ class _Blockv3BackupB4cleanupWidgetState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 15.0),
                                   child: ChataCTIVITYWidget(
                                     key: Key(

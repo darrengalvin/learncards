@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -6,10 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'manage_member_levels_model.dart';
 export 'manage_member_levels_model.dart';
 
@@ -85,7 +82,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -110,19 +107,19 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         .headlineMediumFamily),
                               ),
                     ),
-                    actions: [],
+                    actions: const [],
                     centerTitle: true,
                     elevation: 2.0,
                   )
                 : null,
             body: Container(
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: const AlignmentDirectional(0.0, -1.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -169,7 +166,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                     return Theme(
                                       data: ThemeData(
                                         unselectedWidgetColor:
-                                            Color(0xFF95A1AC),
+                                            const Color(0xFF95A1AC),
                                       ),
                                       child: CheckboxListTile(
                                         value: _model.checkboxListTileValueMap[
@@ -186,7 +183,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall,
                                         ),
-                                        tileColor: Color(0xFFF5F5F5),
+                                        tileColor: const Color(0xFFF5F5F5),
                                         activeColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
@@ -204,14 +201,14 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 3.0,
                                     color: Color(0x24000000),
                                     offset: Offset(0.0, -1.0),
                                   )
                                 ],
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
                                   topLeft: Radius.circular(16.0),
@@ -219,13 +216,13 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 16.0, 20.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -261,7 +258,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 16.0, 20.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -299,7 +296,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -308,7 +305,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                           8.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -318,7 +315,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -331,7 +328,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                                 contentPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(16.0, 24.0,
                                                             0.0, 24.0),
                                               ),
@@ -348,7 +345,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 16.0, 20.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -387,7 +384,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -396,7 +393,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                           8.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -406,7 +403,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -419,7 +416,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                                 contentPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(16.0, 24.0,
                                                             0.0, 24.0),
                                               ),
@@ -436,7 +433,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 16.0, 20.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -475,7 +472,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -484,7 +481,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                           8.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -494,7 +491,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
@@ -507,7 +504,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                                 contentPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(16.0, 24.0,
                                                             0.0, 24.0),
                                               ),
@@ -542,7 +539,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                     Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 350.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -552,13 +549,13 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 8.0, 20.0, 0.0),
                                 child: SingleChildScrollView(
                                   child: Column(
@@ -567,7 +564,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Divider(
+                                      const Divider(
                                         thickness: 3.0,
                                         indent: 150.0,
                                         endIndent: 150.0,
@@ -580,7 +577,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 4.0, 16.0, 0.0),
                                               child: Text(
@@ -590,7 +587,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                     .headlineMedium
                                                     .override(
                                                       fontFamily: 'Outfit',
-                                                      color: Color(0xFF14181B),
+                                                      color: const Color(0xFF14181B),
                                                       fontSize: 24.0,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -609,7 +606,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'You have the option to display your logo on top of an image, some choos eto identify their group others will use their main logo. ',
@@ -618,7 +615,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                     .bodySmall
                                                     .override(
                                                       fontFamily: 'Outfit',
-                                                      color: Color(0xFF57636C),
+                                                      color: const Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -633,7 +630,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -644,7 +641,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                               width: 100.0,
                                               height: 100.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0xFFDBE2E7),
+                                                color: const Color(0xFFDBE2E7),
                                                 image: DecorationImage(
                                                   fit: BoxFit.cover,
                                                   image: Image.asset(
@@ -657,13 +654,13 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.all(4.0),
+                                                        const EdgeInsets.all(4.0),
                                                     child: Container(
                                                       width: 120.0,
                                                       height: 120.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -673,13 +670,13 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.all(4.0),
+                                                        const EdgeInsets.all(4.0),
                                                     child: Container(
                                                       width: 120.0,
                                                       height: 120.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -695,7 +692,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 24.0, 0.0, 44.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -787,20 +784,20 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                               options: FFButtonOptions(
                                                 width: 150.0,
                                                 height: 50.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0xFFDBE2E7),
+                                                color: const Color(0xFFDBE2E7),
                                                 textStyle: FlutterFlowTheme.of(
                                                         context)
                                                     .titleSmall
                                                     .override(
                                                       fontFamily: 'Outfit',
-                                                      color: Color(0xFF14181B),
+                                                      color: const Color(0xFF14181B),
                                                       fontSize: 16.0,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -810,7 +807,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                                   'Outfit'),
                                                     ),
                                                 elevation: 2.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -824,14 +821,14 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                               options: FFButtonOptions(
                                                 width: 150.0,
                                                 height: 50.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0xFF4B39EF),
+                                                color: const Color(0xFF4B39EF),
                                                 textStyle: FlutterFlowTheme.of(
                                                         context)
                                                     .titleSmall
@@ -847,7 +844,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                                   'Lexend Deca'),
                                                     ),
                                                 elevation: 2.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -868,7 +865,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                     Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 350.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -878,13 +875,13 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 8.0, 20.0, 0.0),
                                 child: SingleChildScrollView(
                                   child: Column(
@@ -893,7 +890,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Divider(
+                                      const Divider(
                                         thickness: 3.0,
                                         indent: 150.0,
                                         endIndent: 150.0,
@@ -906,7 +903,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 4.0, 16.0, 0.0),
                                               child: Text(
@@ -916,7 +913,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                     .headlineMedium
                                                     .override(
                                                       fontFamily: 'Outfit',
-                                                      color: Color(0xFF14181B),
+                                                      color: const Color(0xFF14181B),
                                                       fontSize: 24.0,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -935,7 +932,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'Upload a feature photo which will be used at the top of the member page.',
@@ -944,7 +941,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                     .bodySmall
                                                     .override(
                                                       fontFamily: 'Outfit',
-                                                      color: Color(0xFF57636C),
+                                                      color: const Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -959,7 +956,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -970,7 +967,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                               width: 100.0,
                                               height: 100.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0xFFDBE2E7),
+                                                color: const Color(0xFFDBE2E7),
                                                 image: DecorationImage(
                                                   fit: BoxFit.cover,
                                                   image: Image.asset(
@@ -983,13 +980,13 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.all(4.0),
+                                                        const EdgeInsets.all(4.0),
                                                     child: Container(
                                                       width: 120.0,
                                                       height: 120.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -999,13 +996,13 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.all(4.0),
+                                                        const EdgeInsets.all(4.0),
                                                     child: Container(
                                                       width: 120.0,
                                                       height: 120.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -1021,7 +1018,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 24.0, 0.0, 44.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1113,20 +1110,20 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                               options: FFButtonOptions(
                                                 width: 150.0,
                                                 height: 50.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0xFFDBE2E7),
+                                                color: const Color(0xFFDBE2E7),
                                                 textStyle: FlutterFlowTheme.of(
                                                         context)
                                                     .titleSmall
                                                     .override(
                                                       fontFamily: 'Outfit',
-                                                      color: Color(0xFF14181B),
+                                                      color: const Color(0xFF14181B),
                                                       fontSize: 16.0,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -1136,7 +1133,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                                   'Outfit'),
                                                     ),
                                                 elevation: 2.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -1154,14 +1151,14 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                               options: FFButtonOptions(
                                                 width: 150.0,
                                                 height: 50.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0xFF4B39EF),
+                                                color: const Color(0xFF4B39EF),
                                                 textStyle: FlutterFlowTheme.of(
                                                         context)
                                                     .titleSmall
@@ -1177,7 +1174,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                                   'Lexend Deca'),
                                                     ),
                                                 elevation: 2.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -1220,11 +1217,11 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                             options: FFButtonOptions(
                                               width: 150.0,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF4B39EF),
+                                              color: const Color(0xFF4B39EF),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -1241,7 +1238,7 @@ class _ManageMemberLevelsWidgetState extends State<ManageMemberLevelsWidget> {
                                                                     'Lexend Deca'),
                                                       ),
                                               elevation: 2.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),

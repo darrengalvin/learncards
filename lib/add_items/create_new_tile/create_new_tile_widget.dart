@@ -1,11 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -75,20 +73,20 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
         child: Column(
           children: [
             Align(
-              alignment: Alignment(0.0, 0),
+              alignment: const Alignment(0.0, 0),
               child: TabBar(
                 isScrollable: true,
                 labelColor: FlutterFlowTheme.of(context).primaryText,
                 unselectedLabelColor:
                     FlutterFlowTheme.of(context).secondaryText,
                 labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-                unselectedLabelStyle: TextStyle(),
+                unselectedLabelStyle: const TextStyle(),
                 indicatorColor: FlutterFlowTheme.of(context).secondary,
-                tabs: [
+                tabs: const [
                   Tab(
                     text: 'Tile Name',
                   ),
@@ -121,7 +119,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: SelectionArea(
                               child: Text(
@@ -130,7 +128,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                           )),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: SelectionArea(
                               child: Text(
@@ -139,7 +137,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                           )),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.tileTitleController,
                             focusNode: _model.tileTitleFocusNode,
@@ -156,21 +154,21 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -183,7 +181,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.tileSummaryController,
                             focusNode: _model.tileSummaryFocusNode,
@@ -200,21 +198,21 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -229,7 +227,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.positionIDController,
                             focusNode: _model.positionIDFocusNode,
@@ -246,21 +244,21 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -274,7 +272,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 5.0, 0.0, 5.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -284,7 +282,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Image.asset(
                                       'assets/images/red.png',
@@ -299,7 +297,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -381,10 +379,10 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                       options: FFButtonOptions(
                                         width: 150.0,
                                         height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -405,7 +403,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -417,7 +415,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                 ],
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -486,9 +484,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                         },
                                       ),
                                     }, tilesRecordReference);
-                                    if (_model.checkboxListTileCheckedItems2
-                                            .length >
-                                        0) {
+                                    if (_model.checkboxListTileCheckedItems2.isNotEmpty) {
                                       logFirebaseEvent('Button_backend_call');
 
                                       await _model.newlycreatedtile!.reference
@@ -537,9 +533,9 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                   options: FFButtonOptions(
                                     width: 150.0,
                                     height: 30.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -556,7 +552,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 2.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -568,14 +564,13 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              if (_model.uploadedFileUrl != null &&
-                                  _model.uploadedFileUrl != '')
+                              if (_model.uploadedFileUrl != '')
                                 Image.network(
                                   _model.uploadedFileUrl,
                                   width: 200.0,
@@ -599,7 +594,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               'Choose where you would like to show this tile.',
                               textAlign: TextAlign.center,
@@ -659,7 +654,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                 catagoryListViewIndex];
                                         return Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 2.0),
                                           child: Container(
                                             width: double.infinity,
@@ -668,7 +663,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary,
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 0.0,
                                                   color: Color(0xFFDBE2E7),
@@ -679,7 +674,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                   BorderRadius.circular(0.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -687,7 +682,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                   Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
-                                                    color: Color(0xFF4B39EF),
+                                                    color: const Color(0xFF4B39EF),
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -696,14 +691,14 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(2.0),
+                                                          const EdgeInsets.all(2.0),
                                                       child: Container(
                                                         width: 50.0,
                                                         height: 50.0,
                                                         clipBehavior:
                                                             Clip.antiAlias,
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                         ),
@@ -717,7 +712,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -736,7 +731,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                             ),
                                                           ),
                                                           unselectedWidgetColor:
-                                                              Color(0xFF7C8791),
+                                                              const Color(0xFF7C8791),
                                                         ),
                                                         child: CheckboxListTile(
                                                           value: _model
@@ -758,7 +753,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF090F13),
                                                                   fontSize:
                                                                       20.0,
@@ -797,7 +792,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                                   .of(context)
                                                               .primaryBackground,
                                                           activeColor:
-                                                              Color(0xFF4B39EF),
+                                                              const Color(0xFF4B39EF),
                                                           checkColor:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -834,7 +829,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -845,7 +840,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                               children: [
                                 Theme(
                                   data: ThemeData(
-                                    checkboxTheme: CheckboxThemeData(
+                                    checkboxTheme: const CheckboxThemeData(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
@@ -881,7 +876,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                               children: [
                                 Theme(
                                   data: ThemeData(
-                                    checkboxTheme: CheckboxThemeData(
+                                    checkboxTheme: const CheckboxThemeData(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
@@ -916,7 +911,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                               children: [
                                 Theme(
                                   data: ThemeData(
-                                    checkboxTheme: CheckboxThemeData(
+                                    checkboxTheme: const CheckboxThemeData(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
@@ -962,7 +957,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(40.0),
+                            padding: const EdgeInsets.all(40.0),
                             child: Text(
                               'Pick which members should see this tile. Note if you pick any name from below NO ONE else will be able to see this tile so only use it if its soley for the people you pick.',
                               textAlign: TextAlign.center,
@@ -1021,7 +1016,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                 catagoryListViewIndex];
                                         return Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 2.0),
                                           child: Container(
                                             width: double.infinity,
@@ -1030,7 +1025,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary,
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 0.0,
                                                   color: Color(0xFFDBE2E7),
@@ -1041,7 +1036,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                   BorderRadius.circular(0.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1049,7 +1044,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                   Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
-                                                    color: Color(0xFF4B39EF),
+                                                    color: const Color(0xFF4B39EF),
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -1058,14 +1053,14 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(2.0),
+                                                          const EdgeInsets.all(2.0),
                                                       child: Container(
                                                         width: 50.0,
                                                         height: 50.0,
                                                         clipBehavior:
                                                             Clip.antiAlias,
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                         ),
@@ -1079,7 +1074,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -1098,7 +1093,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                             ),
                                                           ),
                                                           unselectedWidgetColor:
-                                                              Color(0xFF7C8791),
+                                                              const Color(0xFF7C8791),
                                                         ),
                                                         child: CheckboxListTile(
                                                           value: _model
@@ -1141,7 +1136,7 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF090F13),
                                                                   fontSize:
                                                                       20.0,
@@ -1178,11 +1173,11 @@ class _CreateNewTileWidgetState extends State<CreateNewTileWidget>
                                                                 ),
                                                           ),
                                                           tileColor:
-                                                              Color(0xFFF5F5F5),
+                                                              const Color(0xFFF5F5F5),
                                                           activeColor:
-                                                              Color(0xFF4B39EF),
+                                                              const Color(0xFF4B39EF),
                                                           checkColor:
-                                                              Color(0xFF090F13),
+                                                              const Color(0xFF090F13),
                                                           dense: false,
                                                           controlAffinity:
                                                               ListTileControlAffinity

@@ -3,8 +3,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -86,7 +84,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                   .headlineMediumFamily),
                         ),
                   ),
-                  actions: [],
+                  actions: const [],
                   centerTitle: false,
                   elevation: 0.0,
                 )
@@ -132,7 +130,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -150,29 +148,29 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 0.0, 0.0),
                     child: Text(
                       listViewCategoriesRecord!.categoryname,
                       style: FlutterFlowTheme.of(context).titleLarge,
                     ),
                   ),
-                  if (listViewCategoriesRecord?.categoryname ==
+                  if (listViewCategoriesRecord.categoryname ==
                       FFAppState().selectedcategory)
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: SwitchListTile.adaptive(
                         value: _model.switchListTileValue ??=
                             FFAppState().catnotifications,
                         onChanged: (newValue) async {
                           setState(
-                              () => _model.switchListTileValue = newValue!);
-                          if (newValue!) {
+                              () => _model.switchListTileValue = newValue);
+                          if (newValue) {
                             logFirebaseEvent(
                                 'APP_SETTINGS_SwitchListTile_sacrr903_ON_');
                             logFirebaseEvent('SwitchListTile_backend_call');
 
-                            await listViewCategoriesRecord!.reference.update({
+                            await listViewCategoriesRecord.reference.update({
                               ...mapToFirestore(
                                 {
                                   'pushnotificationson': FieldValue.arrayUnion(
@@ -188,7 +186,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                 'APP_SETTINGS_SwitchListTile_sacrr903_ON_');
                             logFirebaseEvent('SwitchListTile_backend_call');
 
-                            await listViewCategoriesRecord!.reference.update({
+                            await listViewCategoriesRecord.reference.update({
                               ...mapToFirestore(
                                 {
                                   'pushnotificationsoff': FieldValue.arrayUnion(
@@ -201,7 +199,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                           }
                         },
                         title: Text(
-                          'Push Notifications  ${listViewCategoriesRecord!.pushnotificationson.contains(currentUserReference) ? 'On' : 'Off'}',
+                          'Push Notifications  ${listViewCategoriesRecord.pushnotificationson.contains(currentUserReference) ? 'On' : 'Off'}',
                           style: FlutterFlowTheme.of(context).headlineSmall,
                         ),
                         subtitle: Text(
@@ -209,10 +207,10 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                           style: FlutterFlowTheme.of(context).bodySmall,
                         ),
                         activeColor: FlutterFlowTheme.of(context).warning,
-                        activeTrackColor: Color(0x8A4B39EF),
+                        activeTrackColor: const Color(0x8A4B39EF),
                         dense: false,
                         controlAffinity: ListTileControlAffinity.trailing,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 12.0, 24.0, 12.0),
                       ),
                     ),

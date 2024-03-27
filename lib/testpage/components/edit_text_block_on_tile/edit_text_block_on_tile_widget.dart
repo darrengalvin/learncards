@@ -1,14 +1,11 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_text_block_on_tile_model.dart';
 export 'edit_text_block_on_tile_model.dart';
 
@@ -87,18 +84,18 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: TextStyle(),
+              unselectedLabelStyle: const TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Text Block',
                 ),
@@ -114,7 +111,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
               controller: _model.tabBarController,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -136,7 +133,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -149,7 +146,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                         logFirebaseEvent('Icon_bottom_sheet');
                                         Navigator.pop(context);
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.cancel_outlined,
                                         color: Colors.black,
                                         size: 24.0,
@@ -157,7 +154,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: TextFormField(
                                       controller: _model.headertextController,
                                       focusNode: _model.headertextFocusNode,
@@ -177,7 +174,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -185,7 +182,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -193,7 +190,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -211,7 +208,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: TextFormField(
                                       controller: _model.textblockController,
                                       focusNode: _model.textblockFocusNode,
@@ -232,7 +229,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -240,7 +237,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -248,7 +245,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -266,7 +263,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -348,10 +345,10 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                       options: FFButtonOptions(
                                         width: 300.0,
                                         height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -370,7 +367,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -380,7 +377,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -397,10 +394,10 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                       options: FFButtonOptions(
                                         width: 300.0,
                                         height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -419,7 +416,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -429,7 +426,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: TextFormField(
                                       controller: _model.buttonlinkController,
                                       focusNode: _model.buttonlinkFocusNode,
@@ -449,7 +446,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -457,7 +454,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -465,7 +462,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -483,7 +480,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: TextFormField(
                                       controller: _model.buttontextController,
                                       focusNode: _model.buttontextFocusNode,
@@ -503,7 +500,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -511,7 +508,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -519,7 +516,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -537,7 +534,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: TextFormField(
                                       controller: _model.positionController,
                                       focusNode: _model.positionFocusNode,
@@ -557,7 +554,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -565,7 +562,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -573,7 +570,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -595,13 +592,13 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 7.0,
                                     color: Color(0x2F1D2429),
@@ -611,7 +608,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(12.0),
+                                padding: const EdgeInsets.all(12.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -634,7 +631,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -645,7 +642,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                                 .titleMedium
                                                 .override(
                                                   fontFamily: 'Outfit',
-                                                  color: Color(0xFF101213),
+                                                  color: const Color(0xFF101213),
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.w500,
                                                   useGoogleFonts:
@@ -667,7 +664,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Outfit',
-                                                  color: Color(0xFF57636C),
+                                                  color: const Color(0xFF57636C),
                                                   fontSize: 14.0,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts:
@@ -685,7 +682,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 10.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -708,9 +705,9 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                               options: FFButtonOptions(
                                 width: 300.0,
                                 height: 30.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -725,7 +722,7 @@ class _EditTextBlockOnTileWidgetState extends State<EditTextBlockOnTileWidget>
                                                   .titleSmallFamily),
                                     ),
                                 elevation: 2.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),

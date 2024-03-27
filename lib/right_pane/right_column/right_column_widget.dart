@@ -3,7 +3,6 @@ import '/components/learn_cards_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'right_column_model.dart';
 export 'right_column_model.dart';
@@ -14,7 +13,7 @@ class RightColumnWidget extends StatefulWidget {
     required this.sessionsDoc,
     required this.companyDoc,
     bool? rightColumnShow,
-  }) : this.rightColumnShow = rightColumnShow ?? false;
+  }) : rightColumnShow = rightColumnShow ?? false;
 
   final SessionsRecord? sessionsDoc;
   final CompaniesRecord? companyDoc;
@@ -61,13 +60,13 @@ class _RightColumnWidgetState extends State<RightColumnWidget> {
             builder: (context) {
               if (FFAppState().rightPane == 'learnCards') {
                 return Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: wrapWithModel(
                     model: _model.learnCardsModel,
                     updateCallback: () => setState(() {}),
                     updateOnChange: true,
                     child: LearnCardsWidget(
-                      color: widget.companyDoc?.colors?.secondaryColor,
+                      color: widget.companyDoc?.colors.secondaryColor,
                       sessionsDoc: widget.sessionsDoc!,
                       companyDoc: widget.companyDoc!,
                       showRight: !widget.rightColumnShow,
@@ -78,7 +77,7 @@ class _RightColumnWidgetState extends State<RightColumnWidget> {
                 return Container(
                   width: 500.0,
                   height: 600.0,
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     maxWidth: 500.0,
                   ),
                   decoration: BoxDecoration(
