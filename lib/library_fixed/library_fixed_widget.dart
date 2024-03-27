@@ -76,7 +76,28 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
           ),
           logsRecordReference);
       logFirebaseEvent('Library-fixed_custom_action');
-      await actions.onPageLoadCheckUrl();
+      await actions.onAppLaunchCheckConfigurationAndRedirect();
+      logFirebaseEvent('Library-fixed_alert_dialog');
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              title: const Text('Company Doc Id is '),
+              content: Text(valueOrDefault<String>(
+                FFAppState().companyDocId,
+                'not set',
+              )),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
       logFirebaseEvent('Library-fixed_firestore_query');
       _model.companyByUrl = await queryCompaniesRecordOnce(
         queryBuilder: (companiesRecord) => companiesRecord.where(
@@ -92,6 +113,27 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       setState(() {
         FFAppState().selectedCompanyId = _model.companyByUrl!.reference.id;
       });
+      logFirebaseEvent('Library-fixed_alert_dialog');
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              title: const Text('its now '),
+              content: Text(valueOrDefault<String>(
+                FFAppState().companyDocId,
+                'not set',
+              )),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
       if (FFAppState().nonLoggedInSessionId == '') {
         logFirebaseEvent('Library-fixed_update_app_state');
         setState(() {
