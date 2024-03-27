@@ -58,6 +58,7 @@ class _BodyContenttLearnCardsWidgetState
     context.watch<FFAppState>();
 
     return SingleChildScrollView(
+      primary: false,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
