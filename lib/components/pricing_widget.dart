@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'pricing_model.dart';
 export 'pricing_model.dart';
 
@@ -49,7 +50,7 @@ class _PricingWidgetState extends State<PricingWidget> {
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 50.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 50.0, 0.0),
                 child: Text(
                   'You are out of  LearnCards, choose an option below to continue your learning journey. ',
                   textAlign: TextAlign.center,
@@ -62,7 +63,7 @@ class _PricingWidgetState extends State<PricingWidget> {
               borderRadius: 20.0,
               borderWidth: 1.0,
               buttonSize: 40.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.cancel_outlined,
                 size: 24.0,
               ),
@@ -82,18 +83,18 @@ class _PricingWidgetState extends State<PricingWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: Container(
                       width: double.infinity,
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 530.0,
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -108,13 +109,13 @@ class _PricingWidgetState extends State<PricingWidget> {
                       ),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 16.0, 24.0, 16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -127,7 +128,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                         .headlineMedium,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Text(
                                       'You can purchase learncards in packs of 5, 10 or 50, these can be redeemed at your own pace.',
@@ -154,7 +155,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                               scrollDirection: Axis.vertical,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 1.0),
                                   child: Container(
                                     width: 100.0,
@@ -166,12 +167,12 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           blurRadius: 0.0,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          offset: const Offset(0.0, 1.0),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 8.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -226,7 +227,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -271,7 +272,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 1.0),
                                   child: Container(
                                     width: 100.0,
@@ -283,12 +284,12 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           blurRadius: 0.0,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          offset: const Offset(0.0, 1.0),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 8.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -303,7 +304,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 70.0, 0.0),
                                                     child: Text(
@@ -350,7 +351,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -395,7 +396,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 1.0),
                                   child: Container(
                                     width: 100.0,
@@ -407,12 +408,12 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           blurRadius: 0.0,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          offset: const Offset(0.0, 1.0),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 8.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -427,7 +428,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 70.0, 0.0),
                                                     child: Text(
@@ -453,7 +454,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                               ),
                                             ],
                                           ),
-                                          const Column(
+                                          Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [],
                                           ),
@@ -467,7 +468,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -512,7 +513,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 1.0),
                                   child: Container(
                                     width: 100.0,
@@ -524,7 +525,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           blurRadius: 0.0,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          offset: const Offset(0.0, 1.0),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
                                     ),
@@ -537,7 +538,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 12.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () {
@@ -546,10 +547,10 @@ class _PricingWidgetState extends State<PricingWidget> {
                                     text: 'Buy Now',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -569,17 +570,17 @@ class _PricingWidgetState extends State<PricingWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: Container(
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 530.0,
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -594,13 +595,13 @@ class _PricingWidgetState extends State<PricingWidget> {
                       ),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 16.0, 24.0, 16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -613,7 +614,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                         .headlineMedium,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Text(
                                       'For those that prioritise their education this is the plan for you.',
@@ -640,7 +641,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                               scrollDirection: Axis.vertical,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 1.0),
                                   child: Container(
                                     width: 100.0,
@@ -652,12 +653,12 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           blurRadius: 0.0,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          offset: const Offset(0.0, 1.0),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 8.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -672,7 +673,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'A',
                                               style:
@@ -695,7 +696,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Row(
@@ -752,7 +753,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 1.0),
                                   child: Container(
                                     width: 100.0,
@@ -764,12 +765,12 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           blurRadius: 0.0,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          offset: const Offset(0.0, 1.0),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 8.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -784,7 +785,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'A',
                                               style:
@@ -807,7 +808,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Row(
@@ -864,7 +865,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 1.0),
                                   child: Container(
                                     width: 100.0,
@@ -876,12 +877,12 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           blurRadius: 0.0,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          offset: const Offset(0.0, 1.0),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 8.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -896,7 +897,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'A',
                                               style:
@@ -919,7 +920,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Row(
@@ -978,7 +979,7 @@ class _PricingWidgetState extends State<PricingWidget> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 24.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -991,17 +992,17 @@ class _PricingWidgetState extends State<PricingWidget> {
                                     text: 'Subscribe',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall,
                                       elevation: 0.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                       ),
                                       borderRadius: BorderRadius.circular(40.0),

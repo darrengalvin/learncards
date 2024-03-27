@@ -3,8 +3,10 @@ import '/components/expand_session_details_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sessions_model.dart';
 export 'sessions_model.dart';
 
@@ -80,7 +82,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                         context.pop();
                       },
                     ),
-                    actions: const [],
+                    actions: [],
                     centerTitle: true,
                     elevation: 0.0,
                   )
@@ -114,14 +116,14 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                   List<SessionsRecord> containerSessionsRecordList =
                       snapshot.data!;
                   return Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Sessions',
@@ -130,7 +132,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 4.0, 0.0, 0.0),
                             child: Text(
                               'Below are your Apps recent Sessions',
@@ -139,7 +141,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 24.0),
                             child: Builder(
                               builder: (context) {
@@ -154,11 +156,11 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                       final sessionsItem =
                                           sessions[sessionsIndex];
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
-                                          constraints: const BoxConstraints(
+                                          constraints: BoxConstraints(
                                             maxWidth: 570.0,
                                           ),
                                           decoration: BoxDecoration(
@@ -180,7 +182,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 12.0,
                                                           16.0, 0.0),
                                                   child: Row(
@@ -192,7 +194,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -210,7 +212,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           12.0,
@@ -237,12 +239,12 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                                                 ),
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             7.0,
                                                                             0.0,
@@ -271,7 +273,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 12.0,
                                                           16.0, 12.0),
                                                   child: Row(
@@ -309,10 +311,10 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                                             ),
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child: Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -383,7 +385,7 @@ class _SessionsWidgetState extends State<SessionsWidget> {
                                           ),
                                         ),
                                       );
-                                    }).divide(const SizedBox(height: 12.0)),
+                                    }).divide(SizedBox(height: 12.0)),
                                   ),
                                 );
                               },

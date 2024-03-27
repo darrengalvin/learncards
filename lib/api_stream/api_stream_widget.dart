@@ -2,6 +2,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +66,7 @@ class _ApiStreamWidgetState extends State<ApiStreamWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -90,7 +91,7 @@ class _ApiStreamWidgetState extends State<ApiStreamWidget> {
                                         .headlineMediumFamily),
                               ),
                     ),
-                    actions: const [],
+                    actions: [],
                     centerTitle: false,
                     elevation: 2.0,
                   )
@@ -186,7 +187,7 @@ class _ApiStreamWidgetState extends State<ApiStreamWidget> {
                       ),
                     ],
                   ),
-                  const Align(
+                  Align(
                     alignment: AlignmentDirectional(0.0, 1.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -197,13 +198,13 @@ class _ApiStreamWidgetState extends State<ApiStreamWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 8.0),
                                 child: TextFormField(
                                   controller: _model.askTheQuestionController,
@@ -235,7 +236,7 @@ class _ApiStreamWidgetState extends State<ApiStreamWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0xFF464646),
                                         width: 2.0,
                                       ),
@@ -258,7 +259,7 @@ class _ApiStreamWidgetState extends State<ApiStreamWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)

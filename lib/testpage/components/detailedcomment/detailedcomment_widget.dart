@@ -7,9 +7,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'detailedcomment_model.dart';
 export 'detailedcomment_model.dart';
 
@@ -57,13 +59,13 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         height: 300.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 5.0,
               color: Color(0x162D3A21),
@@ -76,7 +78,7 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +88,7 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                       width: 50.0,
                       height: 50.0,
                       clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         shape: BoxShape.circle,
                       ),
                       child: Image.network(
@@ -98,13 +100,13 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.detailedCommentController,
                         focusNode: _model.detailedCommentFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
                           '_model.detailedCommentController',
-                          const Duration(milliseconds: 2000),
+                          Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
                         autofocus: true,
@@ -112,47 +114,47 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                         decoration: InputDecoration(
                           hintText: 'Write something...',
                           hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                          enabledBorder: const UnderlineInputBorder(
+                          enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          focusedBorder: const UnderlineInputBorder(
+                          focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          errorBorder: const UnderlineInputBorder(
+                          errorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          focusedErrorBorder: const UnderlineInputBorder(
+                          focusedErrorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 8.0, 12.0),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
@@ -171,7 +173,7 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
               color: FlutterFlowTheme.of(context).primaryBackground,
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,7 +183,7 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
@@ -260,7 +262,7 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
@@ -340,7 +342,7 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
@@ -364,8 +366,8 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                                         .primaryText,
                                   ),
                                 ),
-                                duration: const Duration(milliseconds: 4000),
-                                backgroundColor: const Color(0x00000000),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
                               ),
                             );
                           },
@@ -395,9 +397,9 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                       width: 90.0,
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -409,7 +411,7 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 2.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -419,13 +421,15 @@ class _DetailedcommentWidgetState extends State<DetailedcommentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if ((_model.uploadedFileUrl1 != '') ||
-                      (_model.uploadedFileUrl2 != ''))
+                  if ((_model.uploadedFileUrl1 != null &&
+                          _model.uploadedFileUrl1 != '') ||
+                      (_model.uploadedFileUrl2 != null &&
+                          _model.uploadedFileUrl2 != ''))
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [

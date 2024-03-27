@@ -10,7 +10,7 @@ class SummaryEmbeddingTable extends SupabaseTable<SummaryEmbeddingRow> {
 }
 
 class SummaryEmbeddingRow extends SupabaseDataRow {
-  SummaryEmbeddingRow(super.data);
+  SummaryEmbeddingRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => SummaryEmbeddingTable();

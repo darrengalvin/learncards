@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_web_view.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'cloudinary_upload_test_model.dart';
 export 'cloudinary_upload_test_model.dart';
 
@@ -67,7 +68,7 @@ class _CloudinaryUploadTestWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 12.0, 0.0, 12.0),
                         child: FlutterFlowIconButton(
                           borderColor: FlutterFlowTheme.of(context).primary,
@@ -99,9 +100,9 @@ class _CloudinaryUploadTestWidgetState
                         text: 'Button',
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: FlutterFlowTheme.of(context)
@@ -115,7 +116,7 @@ class _CloudinaryUploadTestWidgetState
                                         .titleSmallFamily),
                               ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

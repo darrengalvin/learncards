@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/empty_list_nav_tile_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -15,7 +16,7 @@ class HeaderItlesWidget extends StatefulWidget {
     super.key,
     this.tileDocs,
     int? initialTileIndex,
-  }) : initialTileIndex = initialTileIndex ?? 0;
+  }) : this.initialTileIndex = initialTileIndex ?? 0;
 
   final List<Tilesv2Record>? tileDocs;
   final int initialTileIndex;
@@ -43,18 +44,18 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
       logFirebaseEvent('HEADER_ITLES_headerItles_ON_INIT_STATE');
       logFirebaseEvent('headerItles_update_app_state');
       FFAppState().navPath = [];
-      if (widget.tileDocs!.isNotEmpty) {
+      if (widget.tileDocs!.length >= 1) {
         logFirebaseEvent('headerItles_update_app_state');
         FFAppState().addToNavPath(valueOrDefault<String>(
-          widget.tileDocs?[widget.initialTileIndex].reference.id,
+          widget.tileDocs?[widget.initialTileIndex]?.reference.id,
           '0',
         ));
         FFAppState().viewTileContentId = valueOrDefault<String>(
-          widget.tileDocs?[widget.initialTileIndex].reference.id,
+          widget.tileDocs?[widget.initialTileIndex]?.reference.id,
           '0',
         );
         FFAppState().updateTileNavStruct(
-          (e) => e..tier0Id = widget.tileDocs?.first.reference.id,
+          (e) => e..tier0Id = widget.tileDocs?.first?.reference.id,
         );
       }
     });
@@ -78,8 +79,8 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
       children: [
         ClipRRect(
           child: Container(
-            decoration: const BoxDecoration(),
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            decoration: BoxDecoration(),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -87,7 +88,7 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                   builder: (context) {
                     final tile = widget.tileDocs?.toList() ?? [];
                     if (tile.isEmpty) {
-                      return const Center(
+                      return Center(
                         child: EmptyListNavTileWidget(
                           tileIndex: 0,
                           tileTier: 0,
@@ -106,12 +107,12 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                         children: List.generate(tile.length, (tileIndex) {
                           final tileItem = tile[tileIndex];
                           return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(17.0),
                               child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 100),
+                                duration: Duration(milliseconds: 100),
                                 curve: Curves.easeIn,
                                 width: 250.0,
                                 height: 100.0,
@@ -120,15 +121,16 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                                     () {
                                       if (FFAppState().tileNav.tier0Id ==
                                           tileItem.reference.id) {
-                                        return const Color(0xFF1AADF9);
-                                      } else if (tileItem.image != '') {
+                                        return Color(0xFF1AADF9);
+                                      } else if (tileItem.image != null &&
+                                          tileItem.image != '') {
                                         return FlutterFlowTheme.of(context)
                                             .primary;
                                       } else {
-                                        return const Color(0xFFF4FDFF);
+                                        return Color(0xFFF4FDFF);
                                       }
                                     }(),
-                                    const Color(0xFFF4FDFF),
+                                    Color(0xFFF4FDFF),
                                   ),
                                   borderRadius: BorderRadius.circular(17.0),
                                   border: Border.all(
@@ -137,7 +139,7 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
+                                  padding: EdgeInsets.all(4.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -181,7 +183,7 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(17.0),
                                       child: AnimatedContainer(
-                                        duration: const Duration(milliseconds: 100),
+                                        duration: Duration(milliseconds: 100),
                                         curve: Curves.easeIn,
                                         width: 250.0,
                                         height: 120.0,
@@ -189,7 +191,7 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                                           image: DecorationImage(
                                             fit: BoxFit.cover,
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             image: Image.network(
                                               tileItem.image,
                                             ).image,
@@ -201,14 +203,16 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                                           ),
                                         ),
                                         child: Visibility(
-                                          visible: tileItem.image != ''
+                                          visible: tileItem.image != null &&
+                                                  tileItem.image != ''
                                               ? false
                                               : true,
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
-                                              tileItem.title != ''
+                                              tileItem.title != null &&
+                                                      tileItem.title != ''
                                                   ? tileItem.title
                                                   : valueOrDefault<String>(
                                                       'Tile ${tileIndex.toString()}',
@@ -252,7 +256,7 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Container(
                     width: double.infinity,
                     height: 100.0,
@@ -267,16 +271,6 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                     child: MouseRegion(
                       opaque: false,
                       cursor: MouseCursor.defer ?? MouseCursor.defer,
-                      onEnter: ((event) async {
-                        setState(() => _model.mouseRegionHovered = true);
-                        logFirebaseEvent(
-                            'HEADER_ITLES_MouseRegion_e87qt2fo_ON_TOG');
-                      }),
-                      onExit: ((event) async {
-                        setState(() => _model.mouseRegionHovered = false);
-                        logFirebaseEvent(
-                            'HEADER_ITLES_MouseRegion_e87qt2fo_ON_TOG');
-                      }),
                       child: Opacity(
                         opacity: 10.0,
                         child: InkWell(
@@ -291,7 +285,7 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                           child: Container(
                             width: 100.0,
                             height: 100.0,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0x121AADF9),
                             ),
                             child: Column(
@@ -299,7 +293,7 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: FlutterFlowIconButton(
                                     borderColor:
@@ -331,6 +325,16 @@ class _HeaderItlesWidgetState extends State<HeaderItlesWidget> {
                           ),
                         ),
                       ),
+                      onEnter: ((event) async {
+                        setState(() => _model.mouseRegionHovered = true);
+                        logFirebaseEvent(
+                            'HEADER_ITLES_MouseRegion_e87qt2fo_ON_TOG');
+                      }),
+                      onExit: ((event) async {
+                        setState(() => _model.mouseRegionHovered = false);
+                        logFirebaseEvent(
+                            'HEADER_ITLES_MouseRegion_e87qt2fo_ON_TOG');
+                      }),
                     ),
                   ),
                 ),

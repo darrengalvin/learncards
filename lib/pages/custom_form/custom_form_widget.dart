@@ -6,8 +6,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'custom_form_model.dart';
 export 'custom_form_model.dart';
 
@@ -77,7 +79,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                     actions: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
@@ -118,14 +120,14 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                             style: FlutterFlowTheme.of(context).headlineSmall,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(25.0),
+                            padding: EdgeInsets.all(25.0),
                             child: Text(
                               'In the questionnaire you have the opportunity to tell us where you are now in your business and what you want to achieve. \n\nYou can review this every three months to check your progress and we can see that you are accessing and taking action on the right resources to assist you on your journey.\n\nSo grab a coffee, have a think and get it filled in and submitted today.\n\nSee you on the inside,\n\nGordon and Chris.',
                               style: FlutterFlowTheme.of(context).bodySmall,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.whereNowController,
@@ -144,27 +146,27 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -176,7 +178,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.numberOfStudentsController,
@@ -196,27 +198,27 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -228,7 +230,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.aveTOController,
@@ -248,27 +250,27 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -279,12 +281,12 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: FlutterFlowDropDown<String>(
                               controller: _model.fullPartTimeValueController ??=
                                   FormFieldController<String>(null),
-                              options: const ['Part Time', 'Full Time', 'Complete'],
+                              options: ['Part Time', 'Full Time', 'Complete'],
                               onChanged: (val) => setState(
                                   () => _model.fullPartTimeValue = val),
                               width: double.infinity,
@@ -315,7 +317,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                                   .primaryBackground,
                               borderWidth: 2.0,
                               borderRadius: 8.0,
-                              margin: const EdgeInsetsDirectional.fromSTEB(
+                              margin: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 12.0, 4.0),
                               hidesUnderline: true,
                               isSearchable: false,
@@ -323,7 +325,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.locationTypeController,
@@ -343,27 +345,27 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -375,7 +377,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.goalsController,
@@ -395,27 +397,27 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -429,7 +431,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 24.0, 0.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -465,9 +467,9 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                           options: FFButtonOptions(
                             width: 270.0,
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -481,7 +483,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                                           .titleMediumFamily),
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

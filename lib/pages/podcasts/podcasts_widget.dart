@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'podcasts_model.dart';
 export 'podcasts_model.dart';
 
@@ -67,14 +68,14 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                           FlutterFlowTheme.of(context).primary,
                           FlutterFlowTheme.of(context).secondaryBackground
                         ],
-                        stops: const [0.0, 1.0],
-                        begin: const AlignmentDirectional(0.0, -1.0),
-                        end: const AlignmentDirectional(0, 1.0),
+                        stops: [0.0, 1.0],
+                        begin: AlignmentDirectional(0.0, -1.0),
+                        end: AlignmentDirectional(0, 1.0),
                       ),
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 44.0, 16.0, 1.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 44.0, 16.0, 1.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,7 +96,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                             },
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -111,7 +112,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -125,7 +126,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 8.0, 0.0, 0.0),
                                           child: Text(
                                             'Author Name',
@@ -141,7 +142,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 24.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -156,10 +157,10 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                       options: FFButtonOptions(
                                         width: 90.0,
                                         height: 36.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -181,7 +182,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -195,10 +196,10 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                       options: FFButtonOptions(
                                         width: 90.0,
                                         height: 36.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -227,7 +228,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
@@ -246,7 +247,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
@@ -265,7 +266,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
@@ -292,7 +293,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Text(
                       'This is the official description of the best podcast on theis platform and we love that we are here and the love you give to us...',
                       style: FlutterFlowTheme.of(context).bodySmall,
@@ -300,14 +301,14 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 0.0, 0.0),
                             child: Container(
                               height: 36.0,
@@ -320,7 +321,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -342,7 +343,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Icon(
                                         Icons.star_outline_rounded,
@@ -373,7 +374,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
                             child: Text(
                               '•',
@@ -392,7 +393,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 8.0, 0.0),
                             child: Container(
                               height: 36.0,
@@ -405,7 +406,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -432,7 +433,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 8.0, 0.0),
                             child: Container(
                               height: 36.0,
@@ -445,7 +446,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -472,7 +473,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 12.0, 0.0),
                             child: Container(
                               height: 36.0,
@@ -485,7 +486,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -506,7 +507,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       primary: false,
@@ -514,7 +515,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                       scrollDirection: Axis.vertical,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           child: Container(
                             width: 100.0,
@@ -524,7 +525,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -535,7 +536,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                         FlutterFlowTheme.of(context).bodySmall,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Text(
                                       'Podcast Title Goes Here',
@@ -544,7 +545,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 0.0),
                                     child: Text(
                                       'This is the podcast description and we go over the proper content that is covered in this podcast.',
@@ -553,7 +554,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -566,7 +567,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Mar 25 • 3 hr, 32 min',
@@ -596,7 +597,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                         },
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -615,7 +616,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -636,10 +637,10 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                       Expanded(
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: FlutterFlowIconButton(
                                               borderColor: Colors.transparent,
@@ -649,7 +650,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                               fillColor:
                                                   FlutterFlowTheme.of(context)
                                                       .secondary,
-                                              icon: const Icon(
+                                              icon: Icon(
                                                 Icons.play_arrow_rounded,
                                                 color: Colors.white,
                                                 size: 20.0,
@@ -670,11 +671,11 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                         ),
                         Container(
                           height: 500.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             children: [
                               Align(
-                                alignment: const Alignment(0.0, 0),
+                                alignment: Alignment(0.0, 0),
                                 child: TabBar(
                                   isScrollable: true,
                                   labelColor:
@@ -684,11 +685,11 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                           .secondaryText,
                                   labelStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
-                                  unselectedLabelStyle: const TextStyle(),
+                                  unselectedLabelStyle: TextStyle(),
                                   indicatorColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   indicatorWeight: 0.0,
-                                  tabs: const [
+                                  tabs: [
                                     Tab(
                                       text: 'Episodes',
                                     ),
@@ -707,7 +708,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                   controller: _model.tabBarController,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: ListView(
                                         padding: EdgeInsets.zero,
@@ -717,7 +718,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 12.0),
                                             child: Container(
                                               width: 100.0,
@@ -729,7 +730,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(12.0),
+                                                padding: EdgeInsets.all(12.0),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -745,7 +746,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -761,7 +762,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -780,7 +781,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -821,7 +822,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -850,7 +851,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -880,11 +881,11 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         Expanded(
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -903,7 +904,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                                 fillColor: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondary,
-                                                                icon: const Icon(
+                                                                icon: Icon(
                                                                   Icons
                                                                       .play_arrow_rounded,
                                                                   color: Colors
@@ -927,7 +928,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 12.0),
                                             child: Container(
                                               width: 100.0,
@@ -939,7 +940,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(12.0),
+                                                padding: EdgeInsets.all(12.0),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -955,7 +956,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -971,7 +972,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -990,7 +991,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -1031,7 +1032,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1060,7 +1061,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1090,11 +1091,11 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         Expanded(
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -1113,7 +1114,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                                 fillColor: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondary,
-                                                                icon: const Icon(
+                                                                icon: Icon(
                                                                   Icons
                                                                       .play_arrow_rounded,
                                                                   color: Colors
@@ -1139,7 +1140,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: ListView(
                                         padding: EdgeInsets.zero,
@@ -1149,7 +1150,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 12.0),
                                             child: Container(
                                               width: 100.0,
@@ -1161,7 +1162,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(12.0),
+                                                padding: EdgeInsets.all(12.0),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -1177,7 +1178,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -1193,7 +1194,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -1212,7 +1213,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -1253,7 +1254,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1282,7 +1283,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1312,11 +1313,11 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         Expanded(
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -1335,7 +1336,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                                 fillColor: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondary,
-                                                                icon: const Icon(
+                                                                icon: Icon(
                                                                   Icons
                                                                       .play_arrow_rounded,
                                                                   color: Colors
@@ -1359,7 +1360,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 12.0),
                                             child: Container(
                                               width: 100.0,
@@ -1371,7 +1372,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(12.0),
+                                                padding: EdgeInsets.all(12.0),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -1387,7 +1388,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -1403,7 +1404,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -1422,7 +1423,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -1463,7 +1464,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1492,7 +1493,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1522,11 +1523,11 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                         Expanded(
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -1545,7 +1546,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget>
                                                                 fillColor: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondary,
-                                                                icon: const Icon(
+                                                                icon: Icon(
                                                                   Icons
                                                                       .play_arrow_rounded,
                                                                   color: Colors

@@ -1,5 +1,7 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,6 +11,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -25,7 +29,7 @@ class AICOMMUNICATIONDeletesoonWidget extends StatefulWidget {
     bool? askingQuestion,
     this.learnCard,
     this.learnCardId,
-  }) : askingQuestion = askingQuestion ?? false;
+  }) : this.askingQuestion = askingQuestion ?? false;
 
   final bool askingQuestion;
   final LearnCardsRecord? learnCard;
@@ -80,7 +84,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
       logFirebaseEvent('AI_COMMUNICATION-deletesoon_scroll_to');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -103,18 +107,18 @@ class _AICOMMUNICATIONDeletesoonWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(-1.0, -1.0),
+      alignment: AlignmentDirectional(-1.0, -1.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(22.0),
         child: Container(
           width: double.infinity,
           height: MediaQuery.sizeOf(context).height * 0.9,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 1000.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xC5FFFFFF),
-            boxShadow: const [
+            color: Color(0xC5FFFFFF),
+            boxShadow: [
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
@@ -138,21 +142,21 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 12.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       80.0, 0.0, 80.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -202,7 +206,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                         false,
                       ))
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 12.0, 12.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -229,11 +233,11 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                   text: 'CLEAR CHAT',
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFFADADAD),
+                                    color: Color(0xFFADADAD),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -247,7 +251,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 0.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -255,9 +259,9 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                   ),
                                 ),
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 12.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -268,7 +272,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                         controller: _model
                                                 .dropDownValueController ??=
                                             FormFieldController<String>(null),
-                                        options: const ['Reading Topic (thread)'],
+                                        options: ['Reading Topic (thread)'],
                                         onChanged: (val) => setState(
                                             () => _model.dropDownValue = val),
                                         width: 300.0,
@@ -290,7 +294,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -333,9 +337,9 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                         ),
                       Expanded(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: StreamBuilder<List<FlowiseChatsRecord>>(
                               stream: queryFlowiseChatsRecord(
                                 queryBuilder: (flowiseChatsRecord) =>
@@ -375,7 +379,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                       columnChatsScrollableFlowiseChatsRecordList
                                           .length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 8.0),
+                                      SizedBox(height: 8.0),
                                   itemBuilder:
                                       (context, columnChatsScrollableIndex) {
                                     final columnChatsScrollableFlowiseChatsRecord =
@@ -399,11 +403,11 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                             children: [
                                               Flexible(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           33.0, 0.0, 0.0, 0.0),
                                                   child: Container(
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       color: Color(0xFF74C5FF),
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -423,7 +427,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(4.0),
+                                                          EdgeInsets.all(4.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.min,
@@ -434,7 +438,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                           Flexible(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(9.0),
                                                               child: Text(
                                                                 valueOrDefault<
@@ -481,7 +485,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                         if (columnChatsScrollableFlowiseChatsRecord
                                                 .role ==
                                             'ai')
-                                          SizedBox(
+                                          Container(
                                             width: double.infinity,
                                             child: Stack(
                                               children: [
@@ -506,17 +510,17 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                             MainAxisSize.max,
                                                         children: [
                                                           AnimatedContainer(
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves
                                                                 .easeInOut,
                                                             constraints:
-                                                                const BoxConstraints(
+                                                                BoxConstraints(
                                                               maxWidth: 600.0,
                                                             ),
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFEEEEEE),
                                                               borderRadius:
@@ -537,11 +541,11 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                               ),
                                                             ),
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 1.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -560,7 +564,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                                 children: [
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             4.0),
                                                                     child: Row(
                                                                       mainAxisSize:
@@ -582,7 +586,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                                         ))
                                                                           Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(6.0),
+                                                                                EdgeInsets.all(6.0),
                                                                             child:
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(8.0),
@@ -606,7 +610,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                 ),
                                                                                 child: Padding(
-                                                                                  padding: const EdgeInsets.all(6.0),
+                                                                                  padding: EdgeInsets.all(6.0),
                                                                                   child: MarkdownBody(
                                                                                     data: valueOrDefault<String>(
                                                                                       columnChatsScrollableFlowiseChatsRecord.text,
@@ -638,7 +642,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                 ))
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.all(6.0),
+                                                        EdgeInsets.all(6.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -664,9 +668,9 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                           ),
                         ),
                       ),
-                      if (FFAppState().flowiseMessages.isNotEmpty)
+                      if (FFAppState().flowiseMessages.length > 0)
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -676,9 +680,9 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                 phone: false,
                               ))
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(6.0),
+                                    padding: EdgeInsets.all(6.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.asset(
@@ -692,11 +696,11 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                 ),
                               Expanded(
                                 child: Container(
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 600.0,
                                     maxHeight: 600.0,
                                   ),
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: SingleChildScrollView(
                                     primary: false,
                                     controller: _model.columnController,
@@ -706,9 +710,9 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                         Flexible(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 55.0, 0.0),
                                               child: Text(
@@ -736,7 +740,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                           ),
                         ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -745,7 +749,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                               true,
                             ))
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -775,7 +779,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                 size: 24.0,
                                               ).animateOnPageLoad(animationsMap[
                                                   'iconOnPageLoadAnimation']!),
-                                            ].divide(const SizedBox(width: 9.0)),
+                                            ].divide(SizedBox(width: 9.0)),
                                           ),
                                           Container(
                                             height: 55.0,
@@ -785,7 +789,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                       .secondaryBackground,
                                             ),
                                           ),
-                                          const Divider(
+                                          Divider(
                                             thickness: 1.0,
                                             color: Color(0xFF505050),
                                           ),
@@ -798,8 +802,8 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                       borderRadius: 5.0,
                                       borderWidth: 1.0,
                                       buttonSize: 55.0,
-                                      fillColor: const Color(0xFFCDCDCD),
-                                      icon: const Icon(
+                                      fillColor: Color(0xFFCDCDCD),
+                                      icon: Icon(
                                         Icons.send_sharp,
                                         color: Color(0xFFA6A6A6),
                                         size: 24.0,
@@ -817,13 +821,13 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                               false,
                             ))
                               Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 8.0),
                                         child: TextFormField(
                                           controller:
@@ -864,7 +868,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                   BorderRadius.circular(8.0),
                                             ),
                                             focusedBorder: UnderlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFF464646),
                                                 width: 2.0,
                                               ),
@@ -893,7 +897,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                                   BorderRadius.circular(8.0),
                                             ),
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -949,6 +953,8 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                           ),
                                         );
                                         if (FFAppState().nonLoggedInSessionId ==
+                                                null ||
+                                            FFAppState().nonLoggedInSessionId ==
                                                 '') {
                                           // set session id on appstate
                                           logFirebaseEvent(
@@ -1003,10 +1009,12 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
-                                        if (!(FFAppState().activeThread != '')) {
+                                        if (!(FFAppState().activeThread !=
+                                                null &&
+                                            FFAppState().activeThread != '')) {
                                           // generate active thread id
                                           logFirebaseEvent(
                                               'IconButton_generateactivethreadid');
@@ -1033,7 +1041,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
                                         logFirebaseEvent(
@@ -1041,7 +1049,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                         await actions.callFlowiseStreamingChat(
                                           _model.askTheQuestionController.text,
                                           _model.companyQueryByCode?.first
-                                              .continueLearnCardPrompt,
+                                              ?.continueLearnCardPrompt,
                                           '1',
                                           valueOrDefault<String>(
                                             widget.learnCard?.inputKey,
@@ -1052,16 +1060,16 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                             'output key not set',
                                           ),
                                           _model.companyQueryByCode?.first
-                                              .supabaseProjUrl,
+                                              ?.supabaseProjUrl,
                                           _model.companyQueryByCode?.first
-                                              .tableName,
+                                              ?.tableName,
                                           _model.companyQueryByCode?.first
-                                              .supabaseApiKey,
+                                              ?.supabaseApiKey,
                                           _model.companyQueryByCode?.first
-                                              .queryName,
+                                              ?.queryName,
                                           valueOrDefault<bool>(
                                             _model.companyQueryByCode?.first
-                                                .isLearnCards,
+                                                ?.isLearnCards,
                                             false,
                                           ),
                                           () async {},
@@ -1108,7 +1116,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
                                         logFirebaseEvent(
@@ -1137,7 +1145,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
 
@@ -1152,7 +1160,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       30.0, 0.0, 30.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor:
@@ -1197,8 +1205,8 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                         ),
                                       });
                                       if (_model.activeSession?.first
-                                              .learnCardFeedbackGivenIds
-                                              .contains(valueOrDefault<String>(
+                                              ?.learnCardFeedbackGivenIds
+                                              ?.contains(valueOrDefault<String>(
                                             widget.learnCard?.learnCardId,
                                             '1212',
                                           )) ==
@@ -1210,14 +1218,14 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                title: const Text(
+                                                title: Text(
                                                     'This LearnCard has already recieved Feedback'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
@@ -1261,6 +1269,8 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                         ),
                                       );
                                       if (FFAppState().nonLoggedInSessionId ==
+                                              null ||
+                                          FFAppState().nonLoggedInSessionId ==
                                               '') {
                                         // set session id on appstate
                                         logFirebaseEvent(
@@ -1306,7 +1316,8 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                               'notset',
                                             ),
                                           ));
-                                      if (!(FFAppState().activeThread != '')) {
+                                      if (!(FFAppState().activeThread != null &&
+                                          FFAppState().activeThread != '')) {
                                         // generate active thread id
                                         logFirebaseEvent(
                                             'IconButton_generateactivethreadid');
@@ -1332,7 +1343,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                           ?.animateTo(
                                         _model.columnChatsScrollable!.position
                                             .maxScrollExtent,
-                                        duration: const Duration(milliseconds: 100),
+                                        duration: Duration(milliseconds: 100),
                                         curve: Curves.ease,
                                       );
                                       logFirebaseEvent(
@@ -1340,7 +1351,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                       await actions.callFlowiseStreamingChat(
                                         _model.askTheQuestionController.text,
                                         _model.companyQueryByCode1?.first
-                                            .continueLearnCardPrompt,
+                                            ?.continueLearnCardPrompt,
                                         '1',
                                         valueOrDefault<String>(
                                           widget.learnCard?.inputKey,
@@ -1351,16 +1362,16 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                           'output key not set',
                                         ),
                                         _model.companyQueryByCode?.first
-                                            .supabaseProjUrl,
+                                            ?.supabaseProjUrl,
                                         _model.companyQueryByCode?.first
-                                            .tableName,
+                                            ?.tableName,
                                         _model.companyQueryByCode?.first
-                                            .supabaseApiKey,
+                                            ?.supabaseApiKey,
                                         _model.companyQueryByCode?.first
-                                            .queryName,
+                                            ?.queryName,
                                         valueOrDefault<bool>(
                                           _model.companyQueryByCode?.first
-                                              .isLearnCards,
+                                              ?.isLearnCards,
                                           false,
                                         ),
                                         () async {},
@@ -1425,7 +1436,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                           ?.animateTo(
                                         _model.columnChatsScrollable!.position
                                             .maxScrollExtent,
-                                        duration: const Duration(milliseconds: 100),
+                                        duration: Duration(milliseconds: 100),
                                         curve: Curves.ease,
                                       );
 
@@ -1434,7 +1445,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       30.0, 0.0, 30.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor:
@@ -1497,8 +1508,8 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                         ),
                                       });
                                       if (_model.activeSession?.first
-                                              .learnCardFeedbackGivenIds
-                                              .contains(widget
+                                              ?.learnCardFeedbackGivenIds
+                                              ?.contains(widget
                                                   .learnCard?.learnCardId) ==
                                           true) {
                                         logFirebaseEvent(
@@ -1508,14 +1519,14 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                title: const Text(
+                                                title: Text(
                                                     'This LearnCard has already recieved Feedback'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
@@ -1549,7 +1560,7 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: EdgeInsets.all(12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1559,10 +1570,10 @@ class _AICOMMUNICATIONDeletesoonWidgetState
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Container(
                                           width: 400.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                         ),
                                       ),
                                     ],

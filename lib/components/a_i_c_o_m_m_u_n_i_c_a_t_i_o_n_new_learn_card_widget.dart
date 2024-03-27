@@ -1,5 +1,7 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/learning_card_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -11,6 +13,8 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -29,7 +33,7 @@ class AICOMMUNICATIONNewLearnCardWidget extends StatefulWidget {
     this.learnCardId,
     this.learnCardTitle,
     this.learnCardDoc,
-  }) : askingQuestion = askingQuestion ?? false;
+  }) : this.askingQuestion = askingQuestion ?? false;
 
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
@@ -86,7 +90,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
       logFirebaseEvent('AI_COMMUNICATION-NewLearnCard_scroll_to');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -114,7 +118,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: StreamBuilder<List<SessionsRecord>>(
               stream: querySessionsRecord(
                 queryBuilder: (sessionsRecord) => sessionsRecord.where(
@@ -161,7 +165,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                       }(),
                     ),
                     decoration: BoxDecoration(
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x33000000),
@@ -216,7 +220,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.all(12.0),
+                                        padding: EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -226,14 +230,16 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 if (valueOrDefault<bool>(
-                                                  FFAppState()
+                                                  FFAppState().tempStreamingMessage !=
+                                                          null &&
+                                                      FFAppState()
                                                               .tempStreamingMessage !=
                                                           '',
                                                   false,
                                                 ))
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(25.0, 0.0,
                                                                 25.0, 0.0),
                                                     child: Text(
@@ -307,7 +313,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                   false,
                                 ))
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 12.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -316,7 +322,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -330,7 +336,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                   _model.dropDownValue ??=
                                                       'Reading Topic (thread)',
                                                 ),
-                                                options: const [
+                                                options: [
                                                   'Reading Topic (thread)'
                                                 ],
                                                 onChanged: (val) => setState(
@@ -359,7 +365,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                         .alternate,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
-                                                margin: const EdgeInsetsDirectional
+                                                margin: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
@@ -407,9 +413,9 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                   ),
                                 Expanded(
                                   child: Align(
-                                    alignment: const AlignmentDirectional(-1.0, 1.0),
+                                    alignment: AlignmentDirectional(-1.0, 1.0),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(8.0),
                                       child: StreamBuilder<
                                           List<FlowiseChatsRecord>>(
                                         stream: queryFlowiseChatsRecord(
@@ -458,7 +464,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                 columnChatsScrollableFlowiseChatsRecordList
                                                     .length,
                                             separatorBuilder: (_, __) =>
-                                                const SizedBox(height: 8.0),
+                                                SizedBox(height: 8.0),
                                             itemBuilder: (context,
                                                 columnChatsScrollableIndex) {
                                               final columnChatsScrollableFlowiseChatsRecord =
@@ -482,7 +488,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                         Flexible(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         33.0,
                                                                         0.0,
@@ -513,7 +519,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                 }(),
                                                               ),
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 color: Color(
                                                                     0xFFE6EDFB),
                                                                 borderRadius:
@@ -535,7 +541,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsets
+                                                                    EdgeInsets
                                                                         .all(
                                                                             4.0),
                                                                 child: Row(
@@ -550,7 +556,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            const EdgeInsets.all(9.0),
+                                                                            EdgeInsets.all(9.0),
                                                                         child:
                                                                             Text(
                                                                           columnChatsScrollableFlowiseChatsRecord
@@ -585,7 +591,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                   if (columnChatsScrollableFlowiseChatsRecord
                                                           .role ==
                                                       'ai')
-                                                    SizedBox(
+                                                    Container(
                                                       width: double.infinity,
                                                       child: Stack(
                                                         children: [
@@ -607,7 +613,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                           .start,
                                                                   children: [
                                                                     AnimatedContainer(
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -631,7 +637,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                         }(),
                                                                       ),
                                                                       decoration:
-                                                                          const BoxDecoration(
+                                                                          BoxDecoration(
                                                                         color: Color(
                                                                             0xFFEEEEEE),
                                                                         borderRadius:
@@ -647,12 +653,12 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                         ),
                                                                       ),
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               -1.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -667,7 +673,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsets.all(4.0),
+                                                                              padding: EdgeInsets.all(4.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -679,7 +685,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                                     desktop: false,
                                                                                   ))
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(3.0),
+                                                                                      padding: EdgeInsets.all(3.0),
                                                                                       child: ClipRRect(
                                                                                         borderRadius: BorderRadius.circular(8.0),
                                                                                         child: Image.network(
@@ -704,7 +710,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: const EdgeInsets.all(6.0),
+                                                                                                padding: EdgeInsets.all(6.0),
                                                                                                 child: MarkdownBody(
                                                                                                   data: valueOrDefault<String>(
                                                                                                     columnChatsScrollableFlowiseChatsRecord.text,
@@ -738,7 +744,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                           ))
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(6.0),
                                                               child: ClipRRect(
                                                                 borderRadius:
@@ -769,8 +775,8 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                     ),
                                   ),
                                 ),
-                                if (FFAppState().flowiseMessages.isNotEmpty)
-                                  SizedBox(
+                                if (FFAppState().flowiseMessages.length > 0)
+                                  Container(
                                     width: double.infinity,
                                     child: Stack(
                                       children: [
@@ -784,13 +790,13 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   AnimatedContainer(
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.easeInOut,
-                                                    constraints: const BoxConstraints(
+                                                    constraints: BoxConstraints(
                                                       maxWidth: 600.0,
                                                     ),
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       color: Color(0xFFEEEEEE),
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -809,11 +815,11 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                       ),
                                                     ),
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             -1.0, 1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -831,7 +837,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     4.0),
                                                             child: Row(
                                                               mainAxisSize:
@@ -867,7 +873,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                                 CrossAxisAlignment.start,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsets.all(6.0),
+                                                                                padding: EdgeInsets.all(6.0),
                                                                                 child: MarkdownBody(
                                                                                   data: valueOrDefault<String>(
                                                                                     FFAppState().flowiseMessages.first.message,
@@ -901,7 +907,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                           phone: false,
                                         ))
                                           Padding(
-                                            padding: const EdgeInsets.all(6.0),
+                                            padding: EdgeInsets.all(6.0),
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
@@ -916,13 +922,13 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                       ],
                                     ),
                                   ),
-                                if ((FFAppState().flowiseMessages.isNotEmpty) &&
+                                if ((FFAppState().flowiseMessages.length > 0) &&
                                     responsiveVisibility(
                                       context: context,
                                       desktop: false,
                                     ))
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.0, 1.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       crossAxisAlignment:
@@ -933,10 +939,10 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                           phone: false,
                                         ))
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(6.0),
+                                              padding: EdgeInsets.all(6.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -951,17 +957,17 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                           ),
                                         Expanded(
                                           child: Container(
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               maxWidth: 600.0,
                                               maxHeight: 600.0,
                                             ),
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 0.0),
                                                   child: MarkdownBody(
                                                     data:
@@ -985,14 +991,14 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                     ),
                                   ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  alignment: AlignmentDirectional(0.0, 1.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       if (_model.questionReady == false)
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1028,9 +1034,9 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                             animationsMap[
                                                                 'iconOnPageLoadAnimation']!),
                                                       ].divide(
-                                                          const SizedBox(width: 9.0)),
+                                                          SizedBox(width: 9.0)),
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFF505050),
                                                     ),
@@ -1044,8 +1050,8 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                 borderRadius: 5.0,
                                                 borderWidth: 1.0,
                                                 buttonSize: 55.0,
-                                                fillColor: const Color(0xFFCDCDCD),
-                                                icon: const Icon(
+                                                fillColor: Color(0xFFCDCDCD),
+                                                icon: Icon(
                                                   Icons.send_sharp,
                                                   color: Color(0xFFA6A6A6),
                                                   size: 24.0,
@@ -1067,7 +1073,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                         child: Visibility(
                                           visible: _model.questionReady == true,
                                           child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                            padding: EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -1114,7 +1120,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                       ),
                                                       focusedBorder:
                                                           UnderlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF464646),
                                                           width: 2.0,
@@ -1148,7 +1154,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                                 .circular(8.0),
                                                       ),
                                                       contentPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -1221,6 +1227,9 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                     );
                                                     if (FFAppState()
                                                                 .nonLoggedInSessionId ==
+                                                            null ||
+                                                        FFAppState()
+                                                                .nonLoggedInSessionId ==
                                                             '') {}
                                                     // flowise chat document
                                                     logFirebaseEvent(
@@ -1253,6 +1262,9 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                           ),
                                                         ));
                                                     if (!(FFAppState()
+                                                                .selectedThreadId !=
+                                                            null &&
+                                                        FFAppState()
                                                                 .selectedThreadId !=
                                                             '')) {
                                                       // generate active thread id
@@ -1297,7 +1309,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                           .columnChatsScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -1311,7 +1323,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                       _model
                                                           .companyQueryByCode
                                                           ?.first
-                                                          .userGatherDataPrompt,
+                                                          ?.userGatherDataPrompt,
                                                       '1',
                                                       FFAppState()
                                                           .nonLoggedInSessionId,
@@ -1321,35 +1333,35 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                         _model
                                                             .companyQueryByCode
                                                             ?.first
-                                                            .supabaseProjUrl,
+                                                            ?.supabaseProjUrl,
                                                         'https://efdipbnxemvehcjbxekx.supabase.co',
                                                       ),
                                                       valueOrDefault<String>(
                                                         _model
                                                             .companyQueryByCode
                                                             ?.first
-                                                            .tableName,
+                                                            ?.tableName,
                                                         'table_name',
                                                       ),
                                                       valueOrDefault<String>(
                                                         _model
                                                             .companyQueryByCode
                                                             ?.first
-                                                            .supabaseApiKey,
+                                                            ?.supabaseApiKey,
                                                         'apikey',
                                                       ),
                                                       valueOrDefault<String>(
                                                         _model
                                                             .companyQueryByCode
                                                             ?.first
-                                                            .queryName,
+                                                            ?.queryName,
                                                         'queryName',
                                                       ),
                                                       valueOrDefault<bool>(
                                                         _model
                                                             .companyQueryByCode
                                                             ?.first
-                                                            .isLearnCards,
+                                                            ?.isLearnCards,
                                                         false,
                                                       ),
                                                       () async {
@@ -1363,7 +1375,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -1378,7 +1390,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                               .columnMarkdownScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -1395,7 +1407,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                               .columnChatsScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -1410,7 +1422,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                               .columnMarkdownScrollable!
                                                               .position
                                                               .maxScrollExtent,
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   100),
                                                           curve: Curves.ease,
@@ -1478,7 +1490,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                                           .columnChatsScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -1503,7 +1515,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                           false,
                         ))
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 25.0, 0.0, 0.0),
                             child: PinCodeTextField(
                               autoDisposeControllers: false,
@@ -1524,7 +1536,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                 fieldHeight: 44.0,
                                 fieldWidth: 44.0,
                                 borderWidth: 2.0,
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(12.0),
                                   bottomRight: Radius.circular(12.0),
                                   topLeft: Radius.circular(12.0),
@@ -1558,20 +1570,20 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                             e.companyCode ==
                                             _model.pinCodeController!.text)
                                         .toList()
-                                        .first
-                                        .companyCode) {
+                                        ?.first
+                                        ?.companyCode) {
                                   logFirebaseEvent('PinCode_alert_dialog');
                                   await showDialog(
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: const Text('ok'),
+                                          title: Text('ok'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -1590,12 +1602,12 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: const Text('no match found'),
+                                          title: Text('no match found'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -1613,13 +1625,13 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                       return WebViewAware(
                                         child: AlertDialog(
                                           title:
-                                              const Text('Reverted back to default '),
-                                          content: const Text('LearnCards'),
+                                              Text('Reverted back to default '),
+                                          content: Text('LearnCards'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -1633,7 +1645,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                 context.goNamed(
                                   'landing',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -1660,7 +1672,8 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               if (valueOrDefault<bool>(
-                FFAppState().tempStreamingMessage != '',
+                FFAppState().tempStreamingMessage != null &&
+                    FFAppState().tempStreamingMessage != '',
                 false,
               ))
                 Container(
@@ -1678,7 +1691,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                 false,
               ))
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent(
@@ -1692,9 +1705,9 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                     options: FFButtonOptions(
                       height: 50.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).selectedButton,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -1707,7 +1720,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 1.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -1717,7 +1730,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                 ),
               if (FFAppState().debugCount >= 3)
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent(
@@ -1734,7 +1747,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                       context.pushNamed(
                         'landing',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
+                          kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
@@ -1746,9 +1759,9 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                     options: FFButtonOptions(
                       height: 50.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).selectedButton,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -1761,7 +1774,7 @@ class _AICOMMUNICATIONNewLearnCardWidgetState
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 1.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

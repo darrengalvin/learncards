@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'session_checks_model.dart';
 export 'session_checks_model.dart';
 
@@ -54,7 +55,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          const Column(
+          Column(
             mainAxisSize: MainAxisSize.max,
             children: [],
           ),
@@ -98,9 +99,9 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                         final listViewErrorChecksRecord =
                             listViewErrorChecksRecordList[listViewIndex];
                         return Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 1.0),
                             child: Container(
                               width: double.infinity,
@@ -112,7 +113,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                     blurRadius: 0.0,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                    offset: const Offset(0.0, 1.0),
+                                    offset: Offset(0.0, 1.0),
                                   )
                                 ],
                                 borderRadius: BorderRadius.circular(0.0),
@@ -123,7 +124,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -133,7 +134,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -160,7 +161,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     4.0,
@@ -196,7 +197,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     4.0,
@@ -235,7 +236,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                                                             true,
                                                                         false,
                                                                       )) {
-                                                                    return const Color(
+                                                                    return Color(
                                                                         0xFFFB920B);
                                                                   } else {
                                                                     return FlutterFlowTheme.of(
@@ -261,7 +262,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 0.0, 0.0),
                                       child: Container(
                                         width: 44.0,
@@ -272,7 +273,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                           shape: BoxShape.circle,
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Stack(
                                           children: [
                                             if (listViewErrorChecksRecord
@@ -326,7 +327,7 @@ class _SessionChecksWidgetState extends State<SessionChecksWidget> {
                                                   ),
                                               false,
                                             ))
-                                              const Column(
+                                              Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Icon(

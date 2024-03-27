@@ -5,6 +5,7 @@ import '/left_pane/left_column/left_column_widget.dart';
 import '/middle_pane/middle_column/middle_column_widget.dart';
 import '/right_pane/right_column/right_column_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'middle_body_all_model.dart';
 export 'middle_body_all_model.dart';
@@ -75,7 +76,7 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
         }
         List<SessionsRecord> containerSessionsRecordList = snapshot.data!;
         return Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: StreamBuilder<List<CompaniesRecord>>(
             stream: queryCompaniesRecord(
               queryBuilder: (companiesRecord) => companiesRecord.where(
@@ -113,10 +114,10 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
                       ? containerCompaniesRecordList.first
                       : null;
               return Container(
-                constraints: const BoxConstraints(
+                constraints: BoxConstraints(
                   maxHeight: double.infinity,
                 ),
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,15 +127,15 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             maxWidth: 600.0,
                           ),
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Container(
                             constraints: BoxConstraints(
                               maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                             ),
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: wrapWithModel(
                               model: _model.leftColumnModel,
                               updateCallback: () => setState(() {}),
@@ -155,10 +156,10 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 480.0,
                             ),
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: wrapWithModel(
                               model: _model.middleColumnModel,
                               updateCallback: () => setState(() {}),
@@ -180,19 +181,19 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 450.0,
                             ),
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               child: Container(
                                 constraints: BoxConstraints(
                                   maxWidth:
                                       MediaQuery.sizeOf(context).width * 1.0,
                                 ),
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: wrapWithModel(
                                   model: _model.rightColumnModel,
                                   updateCallback: () => setState(() {}),
@@ -200,7 +201,7 @@ class _MiddleBodyAllWidgetState extends State<MiddleBodyAllWidget> {
                                   child: RightColumnWidget(
                                     sessionsDoc:
                                         containerSessionsRecordList.first,
-                                    companyDoc: containerCompaniesRecord,
+                                    companyDoc: containerCompaniesRecord!,
                                     rightColumnShow:
                                         FFAppState().rightColumnShow,
                                   ),

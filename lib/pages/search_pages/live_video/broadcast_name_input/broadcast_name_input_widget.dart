@@ -2,8 +2,10 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'broadcast_name_input_model.dart';
 export 'broadcast_name_input_model.dart';
 
@@ -64,9 +66,9 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
             FlutterFlowTheme.of(context).primaryBackground,
             FlutterFlowTheme.of(context).secondary
           ],
-          stops: const [0.0, 1.0],
-          begin: const AlignmentDirectional(0.0, -1.0),
-          end: const AlignmentDirectional(0, 1.0),
+          stops: [0.0, 1.0],
+          begin: AlignmentDirectional(0.0, -1.0),
+          end: AlignmentDirectional(0, 1.0),
         ),
       ),
       child: SingleChildScrollView(
@@ -79,13 +81,13 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 20.0),
                             child: Icon(
                               Icons.settings_input_antenna,
@@ -94,7 +96,7 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: SelectionArea(
                                 child: Text(
@@ -138,7 +140,7 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.all(10.0),
+                                        padding: EdgeInsets.all(10.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -203,7 +205,7 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                                                       .primary
                                                   : FlutterFlowTheme.of(context)
                                                       .accent4,
-                                              boxShadow: const [
+                                              boxShadow: [
                                                 BoxShadow(
                                                   blurRadius: 4.0,
                                                   color: Color(0x33000000),
@@ -220,7 +222,7 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                                               ),
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 listViewCategoriesRecord
@@ -248,7 +250,7 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
               child: TextFormField(
                 controller: _model.textController,
                 focusNode: _model.textFieldFocusNode,
@@ -273,32 +275,32 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                       topRight: Radius.circular(4.0),
                     ),
                   ),
-                  focusedBorder: const UnderlineInputBorder(
+                  focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Color(0x00000000),
                       width: 2.0,
                     ),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(4.0),
                       topRight: Radius.circular(4.0),
                     ),
                   ),
-                  errorBorder: const UnderlineInputBorder(
+                  errorBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Color(0x00000000),
                       width: 2.0,
                     ),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(4.0),
                       topRight: Radius.circular(4.0),
                     ),
                   ),
-                  focusedErrorBorder: const UnderlineInputBorder(
+                  focusedErrorBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Color(0x00000000),
                       width: 2.0,
                     ),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(4.0),
                       topRight: Radius.circular(4.0),
                     ),
@@ -312,7 +314,7 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent(
@@ -353,9 +355,9 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                       width: 130.0,
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -367,7 +369,7 @@ class _BroadcastNameInputWidgetState extends State<BroadcastNameInputWidget> {
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 2.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

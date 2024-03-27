@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'user_discover_model.dart';
 export 'user_discover_model.dart';
@@ -10,7 +11,7 @@ class UserDiscoverWidget extends StatefulWidget {
   const UserDiscoverWidget({
     super.key,
     bool? askingQuestion,
-  }) : askingQuestion = askingQuestion ?? false;
+  }) : this.askingQuestion = askingQuestion ?? false;
 
   final bool askingQuestion;
 
@@ -76,14 +77,15 @@ class _UserDiscoverWidgetState extends State<UserDiscoverWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             if (valueOrDefault<bool>(
-              FFAppState().tempStreamingMessage != '',
+              FFAppState().tempStreamingMessage != null &&
+                  FFAppState().tempStreamingMessage != '',
               false,
             ))
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
               ),
             Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(0.0),
                 child: Container(
@@ -91,7 +93,7 @@ class _UserDiscoverWidgetState extends State<UserDiscoverWidget> {
                   height: MediaQuery.sizeOf(context).height * 0.3,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primary,
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 4.0,
                         color: Color(0x33000000),

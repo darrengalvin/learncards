@@ -9,7 +9,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -67,8 +69,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(-10.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-10.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -80,8 +82,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: const Offset(81.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(81.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -100,8 +102,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 1000.ms,
           duration: 600.ms,
-          begin: const Offset(81.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(81.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -120,8 +122,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 1200.ms,
           duration: 600.ms,
-          begin: const Offset(92.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(92.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -140,8 +142,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(-31.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-31.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -160,8 +162,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -180,8 +182,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 150.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -200,8 +202,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -220,8 +222,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 250.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -240,8 +242,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 400.ms,
-          begin: const Offset(-26.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-26.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -304,7 +306,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                           FFAppState().drawerMenu = false;
                         });
                       },
-                      child: SizedBox(
+                      child: Container(
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(
@@ -312,8 +314,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
                             Container(
                               width: 30.0,
                               height: 25.0,
-                              decoration: const BoxDecoration(),
-                              child: const FlutterFlowVideoPlayer(
+                              decoration: BoxDecoration(),
+                              child: FlutterFlowVideoPlayer(
                                 path: '',
                                 videoType: VideoType.network,
                                 width: 800.0,
@@ -342,9 +344,9 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                     FlutterFlowTheme.of(context)
                                         .secondaryBackground
                                   ],
-                                  stops: const [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
-                                  begin: const AlignmentDirectional(1.0, 0.0),
-                                  end: const AlignmentDirectional(-1.0, 0),
+                                  stops: [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
+                                  begin: AlignmentDirectional(1.0, 0.0),
+                                  end: AlignmentDirectional(-1.0, 0),
                                 ),
                               ),
                             ),
@@ -372,6 +374,37 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                 opaque: false,
                                                 cursor: MouseCursor.defer ??
                                                     MouseCursor.defer,
+                                                child: Visibility(
+                                                  visible: responsiveVisibility(
+                                                    context: context,
+                                                    phone: false,
+                                                    tablet: false,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width: 50.0,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .sideMenuCopyModel,
+                                                          updateCallback: () =>
+                                                              setState(() {}),
+                                                          child:
+                                                              SideMenuCopyWidget(),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                                 onEnter: ((event) async {
                                                   setState(() => _model
                                                           .mouseRegionHovered1 =
@@ -398,18 +431,21 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                         false;
                                                   });
                                                 }),
+                                              ),
+                                              MouseRegion(
+                                                opaque: false,
+                                                cursor: MouseCursor.defer ??
+                                                    MouseCursor.defer,
                                                 child: Visibility(
-                                                  visible: responsiveVisibility(
-                                                    context: context,
-                                                    phone: false,
-                                                    tablet: false,
-                                                  ),
+                                                  visible: FFAppState()
+                                                          .showmenuopen ==
+                                                      true,
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
                                                       Container(
-                                                        width: 50.0,
+                                                        width: 230.0,
                                                         height: double.infinity,
                                                         decoration:
                                                             BoxDecoration(
@@ -417,23 +453,27 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                   .of(context)
                                                               .secondaryBackground,
                                                         ),
-                                                        child: wrapWithModel(
-                                                          model: _model
-                                                              .sideMenuCopyModel,
-                                                          updateCallback: () =>
-                                                              setState(() {}),
-                                                          child:
-                                                              const SideMenuCopyWidget(),
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: wrapWithModel(
+                                                            model: _model
+                                                                .sideMenuModel,
+                                                            updateCallback:
+                                                                () => setState(
+                                                                    () {}),
+                                                            child:
+                                                                SideMenuWidget(
+                                                              action:
+                                                                  () async {},
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              ),
-                                              MouseRegion(
-                                                opaque: false,
-                                                cursor: MouseCursor.defer ??
-                                                    MouseCursor.defer,
                                                 onEnter: ((event) async {
                                                   setState(() => _model
                                                           .mouseRegionHovered2 =
@@ -464,44 +504,6 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                         false;
                                                   });
                                                 }),
-                                                child: Visibility(
-                                                  visible: FFAppState()
-                                                          .showmenuopen ==
-                                                      true,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width: 230.0,
-                                                        height: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
-                                                        child: Align(
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: wrapWithModel(
-                                                            model: _model
-                                                                .sideMenuModel,
-                                                            updateCallback:
-                                                                () => setState(
-                                                                    () {}),
-                                                            child:
-                                                                SideMenuWidget(
-                                                              action:
-                                                                  () async {},
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
                                               ),
                                             ],
                                           ),
@@ -524,12 +526,12 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
                                         ),
-                                        child: SizedBox(
+                                        child: Container(
                                           width: double.infinity,
                                           height: double.infinity,
                                           child: Stack(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             children: [
                                               SingleChildScrollView(
                                                 child: Column(
@@ -540,7 +542,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                       width: double.infinity,
                                                       height: 88.0,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -556,7 +558,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                               children: [
                                                                 Expanded(
                                                                   child:
-                                                                      SizedBox(
+                                                                      Container(
                                                                     width: double
                                                                         .infinity,
                                                                     height:
@@ -569,15 +571,15 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                               MainAxisSize.max,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(26.0, 0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(26.0, 0.0, 0.0, 0.0),
                                                                               child: Container(
                                                                                 width: 50.0,
                                                                                 height: 100.0,
-                                                                                decoration: const BoxDecoration(),
+                                                                                decoration: BoxDecoration(),
                                                                                 child: Visibility(
                                                                                   visible: FFAppState().showDotMenu,
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(26.0, 0.0, 0.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(26.0, 0.0, 0.0, 0.0),
                                                                                     child: InkWell(
                                                                                       splashColor: Colors.transparent,
                                                                                       focusColor: Colors.transparent,
@@ -593,7 +595,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                       child: Container(
                                                                                         width: 50.0,
                                                                                         height: 88.0,
-                                                                                        decoration: const BoxDecoration(),
+                                                                                        decoration: BoxDecoration(),
                                                                                         child: Icon(
                                                                                           Icons.notes,
                                                                                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -609,7 +611,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -631,7 +633,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                         ],
                                                                                       ),
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                         child: Row(
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           children: [
@@ -651,7 +653,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Icon(
                                                                                     Icons.arrow_drop_down_rounded,
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
@@ -668,7 +670,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                           height:
                                                                               100.0,
                                                                           decoration:
-                                                                              const BoxDecoration(),
+                                                                              BoxDecoration(),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -690,7 +692,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         20.0,
@@ -718,7 +720,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                             .stretch,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -742,7 +744,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                                     children: [
-                                                                                      if ((currentUserDocument?.hasaccess.toList() ?? []).contains(FFAppState().selectedcategory))
+                                                                                      if ((currentUserDocument?.hasaccess?.toList() ?? []).contains(FFAppState().selectedcategory))
                                                                                         AuthUserStreamWidget(
                                                                                           builder: (context) => StreamBuilder<List<SocialfeedRecord>>(
                                                                                             stream: querySocialfeedRecord(
@@ -786,9 +788,9 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         children: [
                                                                                                           Align(
-                                                                                                            alignment: const AlignmentDirectional(0.1, 0.0),
+                                                                                                            alignment: AlignmentDirectional(0.1, 0.0),
                                                                                                             child: Padding(
-                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                                                                                                               child: Container(
                                                                                                                 width: double.infinity,
                                                                                                                 decoration: BoxDecoration(
@@ -798,7 +800,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                 child: Visibility(
                                                                                                                   visible: FFAppState().showresponse == true,
                                                                                                                   child: Padding(
-                                                                                                                    padding: const EdgeInsets.all(20.0),
+                                                                                                                    padding: EdgeInsets.all(20.0),
                                                                                                                     child: Text(
                                                                                                                       OpenaidavinciCall.choices(
                                                                                                                         (_model.yesok?.jsonBody ?? ''),
@@ -841,7 +843,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                         ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation1']!),
                                                                       ),
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             16.0,
                                                                             6.0,
                                                                             0.0,
@@ -893,7 +895,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                             children: [
                                                                                                               Padding(
-                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                                                                                                                 child: StreamBuilder<List<QuestionsRecord>>(
                                                                                                                   stream: queryQuestionsRecord(
                                                                                                                     queryBuilder: (questionsRecord) => questionsRecord
@@ -928,12 +930,12 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                       itemBuilder: (context, listViewIndex) {
                                                                                                                         final listViewQuestionsRecord = listViewQuestionsRecordList[listViewIndex];
                                                                                                                         return Padding(
-                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
                                                                                                                           child: Container(
                                                                                                                             width: double.infinity,
                                                                                                                             decoration: BoxDecoration(
                                                                                                                               color: Colors.white,
-                                                                                                                              boxShadow: const [
+                                                                                                                              boxShadow: [
                                                                                                                                 BoxShadow(
                                                                                                                                   blurRadius: 3.0,
                                                                                                                                   color: Color(0x33000000),
@@ -943,7 +945,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                               borderRadius: BorderRadius.circular(12.0),
                                                                                                                             ),
                                                                                                                             child: Padding(
-                                                                                                                              padding: const EdgeInsets.all(12.0),
+                                                                                                                              padding: EdgeInsets.all(12.0),
                                                                                                                               child: Column(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -964,7 +966,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                                       ),
                                                                                                                                       Expanded(
                                                                                                                                         child: Padding(
-                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                                                           child: Column(
                                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -973,7 +975,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                                                 listViewQuestionsRecord.questions,
                                                                                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                                                       fontFamily: 'Outfit',
-                                                                                                                                                      color: const Color(0xFF101213),
+                                                                                                                                                      color: Color(0xFF101213),
                                                                                                                                                       fontSize: 18.0,
                                                                                                                                                       fontWeight: FontWeight.w500,
                                                                                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -986,12 +988,12 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                                     ],
                                                                                                                                   ),
                                                                                                                                   Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                                                                     child: Text(
                                                                                                                                       listViewQuestionsRecord.answer,
                                                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                                             fontFamily: 'Outfit',
-                                                                                                                                            color: const Color(0xFF57636C),
+                                                                                                                                            color: Color(0xFF57636C),
                                                                                                                                             fontSize: 14.0,
                                                                                                                                             fontWeight: FontWeight.normal,
                                                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -999,18 +1001,18 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                                     ),
                                                                                                                                   ),
                                                                                                                                   Padding(
-                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                                                                                                                     child: Row(
                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                       children: [
                                                                                                                                         Padding(
-                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                                                                           child: SelectionArea(
                                                                                                                                               child: Text(
                                                                                                                                             'Asked',
                                                                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                                                   fontFamily: 'Outfit',
-                                                                                                                                                  color: const Color(0xFF57636C),
+                                                                                                                                                  color: Color(0xFF57636C),
                                                                                                                                                   fontSize: 12.0,
                                                                                                                                                   fontWeight: FontWeight.normal,
                                                                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1019,13 +1021,13 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                                         ),
                                                                                                                                         Expanded(
                                                                                                                                           child: Padding(
-                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(4.0, 8.0, 0.0, 0.0),
+                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(4.0, 8.0, 0.0, 0.0),
                                                                                                                                             child: SelectionArea(
                                                                                                                                                 child: Text(
                                                                                                                                               dateTimeFormat('relative', listViewQuestionsRecord.time!),
                                                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                                                     fontFamily: 'Outfit',
-                                                                                                                                                    color: const Color(0xFF101213),
+                                                                                                                                                    color: Color(0xFF101213),
                                                                                                                                                     fontSize: 12.0,
                                                                                                                                                     fontWeight: FontWeight.normal,
                                                                                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1064,7 +1066,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                               ),
                                                                             ),
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                                                                               child: Container(
                                                                                 width: double.infinity,
                                                                                 decoration: BoxDecoration(
@@ -1079,7 +1081,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               ),
                                                                               child: Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                                                                                 child: StreamBuilder<List<QuestionsRecord>>(
                                                                                   stream: queryQuestionsRecord(
                                                                                     queryBuilder: (questionsRecord) => questionsRecord
@@ -1114,12 +1116,12 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                       itemBuilder: (context, listViewIndex) {
                                                                                         final listViewQuestionsRecord = listViewQuestionsRecordList[listViewIndex];
                                                                                         return Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
                                                                                           child: Container(
                                                                                             width: double.infinity,
                                                                                             decoration: BoxDecoration(
                                                                                               color: Colors.white,
-                                                                                              boxShadow: const [
+                                                                                              boxShadow: [
                                                                                                 BoxShadow(
                                                                                                   blurRadius: 3.0,
                                                                                                   color: Color(0x33000000),
@@ -1129,7 +1131,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                               borderRadius: BorderRadius.circular(12.0),
                                                                                             ),
                                                                                             child: Padding(
-                                                                                              padding: const EdgeInsets.all(12.0),
+                                                                                              padding: EdgeInsets.all(12.0),
                                                                                               child: Column(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1150,7 +1152,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                       ),
                                                                                                       Expanded(
                                                                                                         child: Padding(
-                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                           child: Column(
                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1159,7 +1161,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                                 listViewQuestionsRecord.questions,
                                                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                       fontFamily: 'Outfit',
-                                                                                                                      color: const Color(0xFF101213),
+                                                                                                                      color: Color(0xFF101213),
                                                                                                                       fontSize: 18.0,
                                                                                                                       fontWeight: FontWeight.w500,
                                                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1172,12 +1174,12 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                     ],
                                                                                                   ),
                                                                                                   Padding(
-                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                                     child: Text(
                                                                                                       listViewQuestionsRecord.answer,
                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                             fontFamily: 'Outfit',
-                                                                                                            color: const Color(0xFF57636C),
+                                                                                                            color: Color(0xFF57636C),
                                                                                                             fontSize: 14.0,
                                                                                                             fontWeight: FontWeight.normal,
                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1185,18 +1187,18 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                     ),
                                                                                                   ),
                                                                                                   Padding(
-                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                                                                                     child: Row(
                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                       children: [
                                                                                                         Padding(
-                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                                           child: SelectionArea(
                                                                                                               child: Text(
                                                                                                             'Asked',
                                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                   fontFamily: 'Outfit',
-                                                                                                                  color: const Color(0xFF57636C),
+                                                                                                                  color: Color(0xFF57636C),
                                                                                                                   fontSize: 12.0,
                                                                                                                   fontWeight: FontWeight.normal,
                                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1205,13 +1207,13 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                         ),
                                                                                                         Expanded(
                                                                                                           child: Padding(
-                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(4.0, 8.0, 0.0, 0.0),
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(4.0, 8.0, 0.0, 0.0),
                                                                                                             child: SelectionArea(
                                                                                                                 child: Text(
                                                                                                               dateTimeFormat('relative', listViewQuestionsRecord.time!),
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: 'Outfit',
-                                                                                                                    color: const Color(0xFF101213),
+                                                                                                                    color: Color(0xFF101213),
                                                                                                                     fontSize: 12.0,
                                                                                                                     fontWeight: FontWeight.normal,
                                                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -1251,7 +1253,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                     flex: 1,
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           0.0,
@@ -1268,7 +1270,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                 false,
                                                                           ))
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
@@ -1279,14 +1281,14 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                     Container(
                                                                                       width: double.infinity,
                                                                                       decoration: BoxDecoration(
-                                                                                        boxShadow: const [
+                                                                                        boxShadow: [
                                                                                           BoxShadow(
                                                                                             blurRadius: 15.0,
                                                                                             color: Color(0x25000000),
                                                                                             offset: Offset(0.0, 8.0),
                                                                                           )
                                                                                         ],
-                                                                                        gradient: const LinearGradient(
+                                                                                        gradient: LinearGradient(
                                                                                           colors: [
                                                                                             Color(0x12068DE2),
                                                                                             Color(0x00068DE2),
@@ -1313,7 +1315,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                         ),
                                                                                         child: ClipRRect(
                                                                                           child: Container(
-                                                                                            decoration: const BoxDecoration(),
+                                                                                            decoration: BoxDecoration(),
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -1323,7 +1325,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                     decoration: BoxDecoration(
                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
-                                                                                    child: const FlutterFlowVideoPlayer(
+                                                                                    child: FlutterFlowVideoPlayer(
                                                                                       path: 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
                                                                                       videoType: VideoType.network,
                                                                                       width: double.infinity,
@@ -1336,21 +1338,21 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                     ),
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Container(
                                                                                           width: double.infinity,
                                                                                           decoration: BoxDecoration(
-                                                                                            boxShadow: const [
+                                                                                            boxShadow: [
                                                                                               BoxShadow(
                                                                                                 blurRadius: 15.0,
                                                                                                 color: Color(0x25000000),
                                                                                                 offset: Offset(0.0, 8.0),
                                                                                               )
                                                                                             ],
-                                                                                            gradient: const LinearGradient(
+                                                                                            gradient: LinearGradient(
                                                                                               colors: [
                                                                                                 Color(0x12068DE2),
                                                                                                 Color(0x00068DE2),
@@ -1383,7 +1385,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                           width: 500.0,
                                                                                           decoration: BoxDecoration(
                                                                                             color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                            boxShadow: const [
+                                                                                            boxShadow: [
                                                                                               BoxShadow(
                                                                                                 blurRadius: 4.0,
                                                                                                 color: Color(0x25090F13),
@@ -1393,7 +1395,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                             borderRadius: BorderRadius.circular(12.0),
                                                                                           ),
                                                                                           child: Stack(
-                                                                                            alignment: const AlignmentDirectional(0.0, 1.0),
+                                                                                            alignment: AlignmentDirectional(0.0, 1.0),
                                                                                             children: [
                                                                                               Column(
                                                                                                 mainAxisSize: MainAxisSize.max,
@@ -1405,7 +1407,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                     ),
                                                                                                     child: Padding(
-                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                                       child: TextFormField(
                                                                                                         controller: _model.askGController,
                                                                                                         focusNode: _model.askGFocusNode,
@@ -1418,14 +1420,14 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                                                               width: 2.0,
                                                                                                             ),
-                                                                                                            borderRadius: const BorderRadius.only(
+                                                                                                            borderRadius: BorderRadius.only(
                                                                                                               bottomLeft: Radius.circular(0.0),
                                                                                                               bottomRight: Radius.circular(0.0),
                                                                                                               topLeft: Radius.circular(22.0),
                                                                                                               topRight: Radius.circular(22.0),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          focusedBorder: const OutlineInputBorder(
+                                                                                                          focusedBorder: OutlineInputBorder(
                                                                                                             borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
@@ -1437,7 +1439,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                               topRight: Radius.circular(22.0),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          errorBorder: const OutlineInputBorder(
+                                                                                                          errorBorder: OutlineInputBorder(
                                                                                                             borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
@@ -1449,7 +1451,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                               topRight: Radius.circular(22.0),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          focusedErrorBorder: const OutlineInputBorder(
+                                                                                                          focusedErrorBorder: OutlineInputBorder(
                                                                                                             borderSide: BorderSide(
                                                                                                               color: Color(0x00000000),
                                                                                                               width: 2.0,
@@ -1479,7 +1481,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           children: [
                                                                                             Align(
-                                                                                              alignment: const AlignmentDirectional(0.0, -0.3),
+                                                                                              alignment: AlignmentDirectional(0.0, -0.3),
                                                                                               child: FFButtonWidget(
                                                                                                 onPressed: () async {
                                                                                                   logFirebaseEvent('AIFEED_PAGE_ASK_GORDON_BTN_ON_TAP');
@@ -1510,12 +1512,12 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                       builder: (alertDialogContext) {
                                                                                                         return WebViewAware(
                                                                                                           child: AlertDialog(
-                                                                                                            title: const Text('Shucks, the AI did not respond'),
-                                                                                                            content: const Text('Technical has been alerted'),
+                                                                                                            title: Text('Shucks, the AI did not respond'),
+                                                                                                            content: Text('Technical has been alerted'),
                                                                                                             actions: [
                                                                                                               TextButton(
                                                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                                child: const Text('Ok'),
+                                                                                                                child: Text('Ok'),
                                                                                                               ),
                                                                                                             ],
                                                                                                           ),
@@ -1533,7 +1535,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                             actions: [
                                                                                                               TextButton(
                                                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                                child: const Text('Ok'),
+                                                                                                                child: Text('Ok'),
                                                                                                               ),
                                                                                                             ],
                                                                                                           ),
@@ -1548,8 +1550,8 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                 options: FFButtonOptions(
                                                                                                   width: 300.0,
                                                                                                   height: 40.0,
-                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                  iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                   color: FlutterFlowTheme.of(context).primary,
                                                                                                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -1558,11 +1560,11 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                                       ),
                                                                                                   elevation: 2.0,
-                                                                                                  borderSide: const BorderSide(
+                                                                                                  borderSide: BorderSide(
                                                                                                     color: Colors.transparent,
                                                                                                     width: 1.0,
                                                                                                   ),
-                                                                                                  borderRadius: const BorderRadius.only(
+                                                                                                  borderRadius: BorderRadius.only(
                                                                                                     bottomLeft: Radius.circular(12.0),
                                                                                                     bottomRight: Radius.circular(12.0),
                                                                                                     topLeft: Radius.circular(0.0),
@@ -1595,16 +1597,16 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                               if (FFAppState().drawerMenu)
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(40.0,
                                                                 80.0, 0.0, 0.0),
                                                     child: Container(
                                                       width: 300.0,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color:
                                                             Color(0xE6070814),
                                                         boxShadow: [
@@ -1630,7 +1632,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(
                                                                           20.0),
                                                               child: Column(
@@ -1639,7 +1641,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1678,7 +1680,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1695,7 +1697,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Stations',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1715,7 +1717,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                             animationsMap['containerOnPageLoadAnimation5']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1754,7 +1756,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1771,7 +1773,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Car connect',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1791,7 +1793,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                             animationsMap['containerOnPageLoadAnimation6']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1830,7 +1832,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1847,7 +1849,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Locker',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1867,7 +1869,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                             animationsMap['containerOnPageLoadAnimation7']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1906,7 +1908,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1923,7 +1925,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Charge reports',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1943,7 +1945,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                             animationsMap['containerOnPageLoadAnimation8']!),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1982,7 +1984,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                         height:
                                                                             50.0,
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -1999,7 +2001,7 @@ class _AifeedWidgetState extends State<AifeedWidget>
                                                                                   size: 20.0,
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Warnings',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'header_container_model.dart';
 export 'header_container_model.dart';
@@ -17,8 +18,8 @@ class HeaderContainerWidget extends StatefulWidget {
     this.companiesDoc,
     this.memberLevels,
     this.sessionsDoc,
-  })  : title = title ?? 'Library',
-        currentTier = currentTier ?? 0;
+  })  : this.title = title ?? 'Library',
+        this.currentTier = currentTier ?? 0;
 
   final Future Function()? action;
   final String title;
@@ -89,10 +90,10 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
             }
             List<Tilesv2Record> containerTilesv2RecordList = snapshot.data!;
             return Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 850.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +127,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                             MediaQuery.sizeOf(context).height *
                                                 1.0,
                                       ),
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Builder(
                                           builder: (context) {
@@ -135,7 +136,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                     ?.where((e) =>
                                                         valueOrDefault<bool>(
                                                           valueOrDefault<bool>(
-                                                                (currentUserDocument?.hasaccess.toList() ??
+                                                                (currentUserDocument?.hasaccess?.toList() ??
                                                                             [])
                                                                         .contains(e
                                                                             .reference
@@ -150,7 +151,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                                   false) ||
                                                               (widget.sessionsDoc
                                                                       ?.hasAccess
-                                                                      .contains(e
+                                                                      ?.contains(e
                                                                           .reference
                                                                           .id) ==
                                                                   false) ||
@@ -163,7 +164,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                             widget.companiesDoc
                                                                 ?.reference.id))
                                                     .toList()
-                                                    .toList() ??
+                                                    ?.toList() ??
                                                 [];
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
@@ -223,7 +224,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsets.all(5.0),
+                                                            EdgeInsets.all(5.0),
                                                         child: Container(
                                                           height: 100.0,
                                                           constraints:
@@ -250,7 +251,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         5.0,
@@ -329,10 +330,10 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
             }
             List<Tilesv2Record> containerTilesv2RecordList = snapshot.data!;
             return Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 850.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -387,7 +388,7 @@ class _HeaderContainerWidgetState extends State<HeaderContainerWidget> {
                                                 1.0,
                                             maxHeight: 130.0,
                                           ),
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                         );
                                       },
                                     ),
