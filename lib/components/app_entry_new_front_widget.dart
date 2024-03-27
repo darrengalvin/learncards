@@ -5,9 +5,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'app_entry_new_front_model.dart';
 export 'app_entry_new_front_model.dart';
 
@@ -67,11 +69,11 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x2B202529),
@@ -83,14 +85,14 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
               FlutterFlowTheme.of(context).primaryBackground,
               FlutterFlowTheme.of(context).secondary
             ],
-            stops: const [0.0, 1.0],
-            begin: const AlignmentDirectional(0.0, -1.0),
-            end: const AlignmentDirectional(0, 1.0),
+            stops: [0.0, 1.0],
+            begin: AlignmentDirectional(0.0, -1.0),
+            end: AlignmentDirectional(0, 1.0),
           ),
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(12.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -99,7 +101,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 4.0,
                         color: Color(0x2B202529),
@@ -111,9 +113,9 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                         FlutterFlowTheme.of(context).primaryBackground,
                         FlutterFlowTheme.of(context).secondary
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
@@ -127,7 +129,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 0.0, 10.0),
                               child: Text(
                                 widget.tiledoc!.title,
@@ -148,12 +150,12 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                         ],
                       ),
                       Stack(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 70.0),
-                            child: SizedBox(
+                            child: Container(
                               width: 370.0,
                               height: 290.0,
                               child: custom_widgets.VideoWithPlay(
@@ -165,7 +167,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Material(
                               color: Colors.transparent,
                               elevation: 3.0,
@@ -174,7 +176,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFDADADA),
+                                  color: Color(0xFFDADADA),
                                   borderRadius: BorderRadius.circular(17.0),
                                   border: Border.all(
                                     color: FlutterFlowTheme.of(context)
@@ -186,13 +188,13 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                   visible: widget.tiledoc?.summary != null &&
                                       widget.tiledoc?.summary != '',
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.0, 1.0),
                                     child: TextFormField(
                                       controller: _model.replyController,
                                       focusNode: _model.replyFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.replyController',
-                                        const Duration(milliseconds: 2000),
+                                        Duration(milliseconds: 2000),
                                         () async {
                                           logFirebaseEvent(
                                               'APP_ENTRY_NEW_FRONT_Reply_ON_TEXTFIELD_C');
@@ -284,15 +286,15 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 1.0),
+                            alignment: AlignmentDirectional(0.0, 1.0),
                             child: Container(
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Color(0xFFDADADA),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.85),
+                            alignment: AlignmentDirectional(0.0, 0.85),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -300,7 +302,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                 if (widget.tiledoc?.summary != null &&
                                     widget.tiledoc?.summary != '')
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 10.0, 10.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -350,7 +352,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                               ),
                                             ),
                                             duration:
-                                                const Duration(milliseconds: 4000),
+                                                Duration(milliseconds: 4000),
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .secondary,
@@ -389,17 +391,17 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                         });
                                       },
                                       text: 'Save',
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.cloud_download_rounded,
                                         size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         width: 130.0,
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -420,7 +422,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                                               context)
                                                           .titleSmallFamily),
                                             ),
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -430,7 +432,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                 if (widget.tiledoc?.summary == null ||
                                     widget.tiledoc?.summary == '')
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 10.0, 10.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -476,17 +478,17 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                         });
                                       },
                                       text: 'Next',
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.skip_next_rounded,
                                         size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         width: 130.0,
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -507,7 +509,7 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                                                               context)
                                                           .titleSmallFamily),
                                             ),
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -533,42 +535,42 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                       decoration: InputDecoration(
                         hintText: '[Some hint text...]',
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                        enabledBorder: const UnderlineInputBorder(
+                        enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedBorder: const UnderlineInputBorder(
+                        focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        errorBorder: const UnderlineInputBorder(
+                        errorBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedErrorBorder: const UnderlineInputBorder(
+                        focusedErrorBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
@@ -590,42 +592,42 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                       decoration: InputDecoration(
                         hintText: '[Some hint text...]',
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                        enabledBorder: const UnderlineInputBorder(
+                        enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedBorder: const UnderlineInputBorder(
+                        focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        errorBorder: const UnderlineInputBorder(
+                        errorBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedErrorBorder: const UnderlineInputBorder(
+                        focusedErrorBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
@@ -647,42 +649,42 @@ class _AppEntryNewFrontWidgetState extends State<AppEntryNewFrontWidget> {
                       decoration: InputDecoration(
                         hintText: '[Some hint text...]',
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                        enabledBorder: const UnderlineInputBorder(
+                        enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedBorder: const UnderlineInputBorder(
+                        focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        errorBorder: const UnderlineInputBorder(
+                        errorBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedErrorBorder: const UnderlineInputBorder(
+                        focusedErrorBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),

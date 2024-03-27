@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'edit_text_model.dart';
 export 'edit_text_model.dart';
 
@@ -10,7 +11,7 @@ class EditTextWidget extends StatefulWidget {
   const EditTextWidget({
     super.key,
     String? editTextValue,
-  }) : editTextValue = editTextValue ?? 'Value Here';
+  }) : this.editTextValue = editTextValue ?? 'Value Here';
 
   final String editTextValue;
 
@@ -56,7 +57,7 @@ class _EditTextWidgetState extends State<EditTextWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -66,24 +67,24 @@ class _EditTextWidgetState extends State<EditTextWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 18.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 18.0, 0.0),
                     child: Container(
                       width: 50.0,
                       height: 50.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Container(
                           width: 32.0,
                           height: 32.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Color(0xFF1AADF9),
                             shape: BoxShape.circle,
                           ),
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             '>',
                             style: FlutterFlowTheme.of(context)
@@ -111,7 +112,7 @@ class _EditTextWidgetState extends State<EditTextWidget> {
                   ))
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Label',
                         style: FlutterFlowTheme.of(context).titleMedium,
@@ -131,7 +132,7 @@ class _EditTextWidgetState extends State<EditTextWidget> {
                     focusNode: _model.editTextEntryFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.editTextEntryController',
-                      const Duration(milliseconds: 2000),
+                      Duration(milliseconds: 2000),
                       () => setState(() {}),
                     ),
                     obscureText: false,
@@ -147,7 +148,7 @@ class _EditTextWidgetState extends State<EditTextWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Color(0xFF1AADF9),
                           width: 2.0,
                         ),

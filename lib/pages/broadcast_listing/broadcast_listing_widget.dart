@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/search_pages/live_video/broadcast_name_input/broadcast_name_input_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +72,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                       isScrollControlled: true,
                       backgroundColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      barrierColor: const Color(0x00000000),
+                      barrierColor: Color(0x00000000),
                       context: context,
                       builder: (context) {
                         return WebViewAware(
@@ -82,7 +83,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                 : FocusScope.of(context).unfocus(),
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: const SizedBox(
+                              child: Container(
                                 height: 350.0,
                                 child: BroadcastNameInputWidget(),
                               ),
@@ -114,7 +115,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: Colors.white,
                         size: 30.0,
@@ -139,7 +140,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                         .headlineMediumFamily),
                               ),
                     ),
-                    actions: const [],
+                    actions: [],
                     centerTitle: true,
                     elevation: 2.0,
                   )
@@ -149,7 +150,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const SingleChildScrollView(
+                  SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -184,7 +185,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
@@ -280,7 +281,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                                             .displaySmallFamily),
                                                               ),
                                                         ),
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 4000),
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
@@ -299,7 +300,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       3.0,
                                                                       0.0,
@@ -326,14 +327,14 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -490,7 +491,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -498,7 +499,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 5.0, 20.0, 5.0),
                                                   child: Container(
@@ -511,7 +512,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -523,7 +524,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                                const BorderRadius
+                                                                BorderRadius
                                                                     .only(
                                                               bottomLeft: Radius
                                                                   .circular(
@@ -548,7 +549,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -608,7 +609,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                                     if (listViewBroadcastsRecord
                                                                         .isLive)
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
@@ -628,7 +629,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -649,7 +650,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -670,7 +671,7 @@ class _BroadcastListingWidgetState extends State<BroadcastListingWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         40.0,
                                                                         0.0,

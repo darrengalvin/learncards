@@ -1,10 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'edit_text_block_model.dart';
 export 'edit_text_block_model.dart';
 
@@ -70,13 +73,13 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: TextFormField(
               controller: _model.headerController,
               focusNode: _model.headerFocusNode,
               onChanged: (_) => EasyDebounce.debounce(
                 '_model.headerController',
-                const Duration(milliseconds: 2000),
+                Duration(milliseconds: 2000),
                 () => setState(() {}),
               ),
               obscureText: false,
@@ -92,7 +95,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Color(0xFF1AADF9),
                     width: 2.0,
                   ),
@@ -119,13 +122,13 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
             child: TextFormField(
               controller: _model.paragraphController,
               focusNode: _model.paragraphFocusNode,
               onChanged: (_) => EasyDebounce.debounce(
                 '_model.paragraphController',
-                const Duration(milliseconds: 2000),
+                Duration(milliseconds: 2000),
                 () => setState(() {}),
               ),
               obscureText: false,
@@ -141,7 +144,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Color(0xFF1AADF9),
                     width: 2.0,
                   ),
@@ -169,7 +172,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () async {
                 logFirebaseEvent('EDIT_TEXT_BLOCK_COMP_UPDATE_BTN_ON_TAP');
@@ -193,8 +196,8 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
               text: 'Update',
               options: FFButtonOptions(
                 height: 40.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -203,7 +206,7 @@ class _EditTextBlockWidgetState extends State<EditTextBlockWidget> {
                           FlutterFlowTheme.of(context).titleSmallFamily),
                     ),
                 elevation: 3.0,
-                borderSide: const BorderSide(
+                borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 1.0,
                 ),

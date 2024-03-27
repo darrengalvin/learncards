@@ -1,5 +1,7 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -10,6 +12,8 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -25,7 +29,7 @@ class AICOMMUNICATIONLeardCardCopyWidget extends StatefulWidget {
     super.key,
     bool? askingQuestion,
     this.learnCard,
-  }) : askingQuestion = askingQuestion ?? false;
+  }) : this.askingQuestion = askingQuestion ?? false;
 
   final bool askingQuestion;
   final LearnCardsRecord? learnCard;
@@ -79,7 +83,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
       logFirebaseEvent('AI_COMMUNICATIONLeardCardCopy_scroll_to');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -102,18 +106,18 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(22.0),
         child: Container(
           width: double.infinity,
           height: MediaQuery.sizeOf(context).height * 0.9,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 750.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xC5FFFFFF),
-            boxShadow: const [
+            color: Color(0xC5FFFFFF),
+            boxShadow: [
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
@@ -141,11 +145,12 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           if (valueOrDefault<bool>(
-                            FFAppState().selectedLearnCardId != '',
+                            FFAppState().selectedLearnCardId != null &&
+                                FFAppState().selectedLearnCardId != '',
                             false,
                           ))
                             Padding(
-                              padding: const EdgeInsets.all(15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 valueOrDefault<String>(
                                   widget.learnCard?.title,
@@ -193,7 +198,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                         false,
                       ))
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 12.0, 12.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -220,11 +225,11 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                   text: 'CLEAR CHAT',
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFFADADAD),
+                                    color: Color(0xFFADADAD),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -238,7 +243,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 0.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -275,9 +280,9 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                       containerLearnCardsRecordList =
                                       snapshot.data!;
                                   return Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 12.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -322,7 +327,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                             borderWidth: 2.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isOverButton: true,
@@ -344,9 +349,9 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                         ),
                       Expanded(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: StreamBuilder<List<FlowiseChatsRecord>>(
                               stream: queryFlowiseChatsRecord(
                                 queryBuilder: (flowiseChatsRecord) =>
@@ -393,7 +398,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                       columnChatsScrollableFlowiseChatsRecordList
                                           .length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 8.0),
+                                      SizedBox(height: 8.0),
                                   itemBuilder:
                                       (context, columnChatsScrollableIndex) {
                                     final columnChatsScrollableFlowiseChatsRecord =
@@ -414,11 +419,11 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                             children: [
                                               Flexible(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           33.0, 0.0, 0.0, 0.0),
                                                   child: Container(
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       color: Color(0xFF74C5FF),
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -438,7 +443,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(4.0),
+                                                          EdgeInsets.all(4.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.min,
@@ -449,7 +454,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                           Flexible(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(9.0),
                                                               child: Text(
                                                                 columnChatsScrollableFlowiseChatsRecord
@@ -492,7 +497,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                         if (columnChatsScrollableFlowiseChatsRecord
                                                 .role ==
                                             'ai')
-                                          SizedBox(
+                                          Container(
                                             width: double.infinity,
                                             child: Stack(
                                               children: [
@@ -517,17 +522,17 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                             MainAxisSize.max,
                                                         children: [
                                                           AnimatedContainer(
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     100),
                                                             curve: Curves
                                                                 .easeInOut,
                                                             constraints:
-                                                                const BoxConstraints(
+                                                                BoxConstraints(
                                                               maxWidth: 600.0,
                                                             ),
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFEEEEEE),
                                                               borderRadius:
@@ -548,11 +553,11 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                               ),
                                                             ),
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 1.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -571,7 +576,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                                 children: [
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             4.0),
                                                                     child: Row(
                                                                       mainAxisSize:
@@ -593,7 +598,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                                         ))
                                                                           Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(6.0),
+                                                                                EdgeInsets.all(6.0),
                                                                             child:
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(8.0),
@@ -617,7 +622,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                 ),
                                                                                 child: Padding(
-                                                                                  padding: const EdgeInsets.all(6.0),
+                                                                                  padding: EdgeInsets.all(6.0),
                                                                                   child: MarkdownBody(
                                                                                     data: valueOrDefault<String>(
                                                                                       columnChatsScrollableFlowiseChatsRecord.text,
@@ -649,7 +654,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                 ))
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.all(6.0),
+                                                        EdgeInsets.all(6.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -675,9 +680,9 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                           ),
                         ),
                       ),
-                      if (FFAppState().flowiseMessages.isNotEmpty)
+                      if (FFAppState().flowiseMessages.length > 0)
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -687,9 +692,9 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                 phone: false,
                               ))
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(6.0),
+                                    padding: EdgeInsets.all(6.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.asset(
@@ -703,11 +708,11 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                 ),
                               Expanded(
                                 child: Container(
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 600.0,
                                     maxHeight: 600.0,
                                   ),
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: SingleChildScrollView(
                                     primary: false,
                                     controller: _model.columnController,
@@ -717,9 +722,9 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                         Flexible(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 55.0, 0.0),
                                               child: Text(
@@ -747,13 +752,13 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                           ),
                         ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             if (_model.questionReady == false)
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -783,7 +788,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                 size: 24.0,
                                               ).animateOnPageLoad(animationsMap[
                                                   'iconOnPageLoadAnimation']!),
-                                            ].divide(const SizedBox(width: 9.0)),
+                                            ].divide(SizedBox(width: 9.0)),
                                           ),
                                           Container(
                                             width: 100.0,
@@ -794,7 +799,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                       .secondaryBackground,
                                             ),
                                           ),
-                                          const Divider(
+                                          Divider(
                                             thickness: 1.0,
                                             color: Color(0xFF505050),
                                           ),
@@ -807,8 +812,8 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                       borderRadius: 5.0,
                                       borderWidth: 1.0,
                                       buttonSize: 55.0,
-                                      fillColor: const Color(0xFFCDCDCD),
-                                      icon: const Icon(
+                                      fillColor: Color(0xFFCDCDCD),
+                                      icon: Icon(
                                         Icons.send_sharp,
                                         color: Color(0xFFA6A6A6),
                                         size: 24.0,
@@ -823,17 +828,17 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                               ),
                             if (_model.questionReady == true)
                               Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, -1.0),
+                                            AlignmentDirectional(0.0, -1.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 45.0, 8.0),
                                           child: TextFormField(
                                             controller:
@@ -874,7 +879,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                     BorderRadius.circular(8.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0xFF464646),
                                                   width: 1.0,
                                                 ),
@@ -903,7 +908,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                     BorderRadius.circular(8.0),
                                               ),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                             ),
@@ -962,6 +967,8 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                           ),
                                         );
                                         if (FFAppState().nonLoggedInSessionId ==
+                                                null ||
+                                            FFAppState().nonLoggedInSessionId ==
                                                 '') {
                                           // set session id on appstate
                                           logFirebaseEvent(
@@ -1010,7 +1017,9 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                 'notset',
                                               ),
                                             ));
-                                        if (!(FFAppState().activeThread != '')) {
+                                        if (!(FFAppState().activeThread !=
+                                                null &&
+                                            FFAppState().activeThread != '')) {
                                           // generate active thread id
                                           logFirebaseEvent(
                                               'IconButton_generateactivethreadid');
@@ -1037,7 +1046,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
                                         logFirebaseEvent(
@@ -1045,7 +1054,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                         await actions.callFlowiseStreamingChat(
                                           _model.askTheQuestionController.text,
                                           _model.companyQueryByCode?.first
-                                              .startLearnCardPrompt,
+                                              ?.startLearnCardPrompt,
                                           '1',
                                           'learnCards',
                                           valueOrDefault<String>(
@@ -1053,16 +1062,16 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                             'outputKey not set',
                                           ),
                                           _model.companyQueryByCode?.first
-                                              .supabaseProjUrl,
+                                              ?.supabaseProjUrl,
                                           _model.companyQueryByCode?.first
-                                              .tableName,
+                                              ?.tableName,
                                           _model.companyQueryByCode?.first
-                                              .supabaseApiKey,
+                                              ?.supabaseApiKey,
                                           _model.companyQueryByCode?.first
-                                              .queryName,
+                                              ?.queryName,
                                           valueOrDefault<bool>(
                                             _model.companyQueryByCode?.first
-                                                .isLearnCards,
+                                                ?.isLearnCards,
                                             false,
                                           ),
                                           () async {},
@@ -1129,7 +1138,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                             ?.animateTo(
                                           _model.columnChatsScrollable!.position
                                               .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
+                                          duration: Duration(milliseconds: 100),
                                           curve: Curves.ease,
                                         );
 
@@ -1141,7 +1150,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                               ),
                             if (_model.questionReady == true)
                               Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1180,10 +1189,10 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
@@ -1207,7 +1216,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                                                                   .titleSmallFamily),
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -1228,7 +1237,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                 child: PinCodeTextField(
                   autoDisposeControllers: false,
                   appContext: context,
@@ -1248,7 +1257,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                     fieldHeight: 44.0,
                     fieldWidth: 44.0,
                     borderWidth: 2.0,
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(12.0),
                       bottomRight: Radius.circular(12.0),
                       topLeft: Radius.circular(12.0),
@@ -1281,19 +1290,19 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                           _model.pinCodeController!.text;
                     });
                     if (FFAppState().companySecretCode ==
-                        _model.companyQueryByCode?.first.companyCode) {
+                        _model.companyQueryByCode?.first?.companyCode) {
                       logFirebaseEvent('PinCode_alert_dialog');
                       await showDialog(
                         context: context,
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              title: const Text('ok'),
+                              title: Text('ok'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -1307,12 +1316,12 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              title: const Text('no match found'),
+                              title: Text('no match found'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -1326,7 +1335,7 @@ class _AICOMMUNICATIONLeardCardCopyWidgetState
                     context.goNamed(
                       'landing',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
+                        kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.fade,
                           duration: Duration(milliseconds: 0),

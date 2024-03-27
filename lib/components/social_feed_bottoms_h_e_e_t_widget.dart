@@ -15,7 +15,7 @@ class SocialFeedBottomsHEETWidget extends StatefulWidget {
     super.key,
     bool? askingQuestion,
     required this.companiesDoc,
-  }) : askingQuestion = askingQuestion ?? false;
+  }) : this.askingQuestion = askingQuestion ?? false;
 
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
@@ -52,7 +52,7 @@ class _SocialFeedBottomsHEETWidgetState
       logFirebaseEvent('SocialFeedBottomsHEET_scroll_to');
       await _model.columnController?.animateTo(
         _model.columnController!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -77,7 +77,7 @@ class _SocialFeedBottomsHEETWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: StreamBuilder<List<SessionsRecord>>(
               stream: querySessionsRecord(
                 queryBuilder: (sessionsRecord) => sessionsRecord.where(
@@ -123,7 +123,7 @@ class _SocialFeedBottomsHEETWidgetState
                       }(),
                     ),
                     decoration: BoxDecoration(
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x33000000),
@@ -135,7 +135,7 @@ class _SocialFeedBottomsHEETWidgetState
                     child: wrapWithModel(
                       model: _model.socialFeedNewComponantModel,
                       updateCallback: () => setState(() {}),
-                      child: const SocialFeedNewComponantWidget(),
+                      child: SocialFeedNewComponantWidget(),
                     ),
                   ),
                 );
@@ -146,7 +146,8 @@ class _SocialFeedBottomsHEETWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               if (valueOrDefault<bool>(
-                FFAppState().tempStreamingMessage != '',
+                FFAppState().tempStreamingMessage != null &&
+                    FFAppState().tempStreamingMessage != '',
                 false,
               ))
                 Container(
@@ -164,7 +165,7 @@ class _SocialFeedBottomsHEETWidgetState
                 false,
               ))
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent(
@@ -178,9 +179,9 @@ class _SocialFeedBottomsHEETWidgetState
                     options: FFButtonOptions(
                       height: 50.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).selectedButton,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -193,7 +194,7 @@ class _SocialFeedBottomsHEETWidgetState
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 1.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -203,7 +204,7 @@ class _SocialFeedBottomsHEETWidgetState
                 ),
               if (FFAppState().debugCount >= 3)
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent(
@@ -220,7 +221,7 @@ class _SocialFeedBottomsHEETWidgetState
                       context.pushNamed(
                         'landing',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
+                          kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
@@ -232,9 +233,9 @@ class _SocialFeedBottomsHEETWidgetState
                     options: FFButtonOptions(
                       height: 50.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 4.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).selectedButton,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -247,7 +248,7 @@ class _SocialFeedBottomsHEETWidgetState
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 1.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -77,13 +78,13 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 100.0),
+          padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 100.0),
           child: Container(
             width: double.infinity,
             height: 450.0,
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 5.0,
                   color: Color(0x162D3A21),
@@ -93,7 +94,7 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -102,7 +103,7 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                     children: [
                       AuthUserStreamWidget(
                         builder: (context) => Text(
-                          'Hi, $currentUserDisplayName',
+                          'Hi, ${currentUserDisplayName}',
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ),
@@ -110,7 +111,7 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,7 +121,7 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                             width: 50.0,
                             height: 50.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
@@ -131,14 +132,14 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: TextFormField(
                               controller: _model.textController,
                               focusNode: _model.textFieldFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.textController',
-                                const Duration(milliseconds: 2000),
+                                Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
                               autofocus: true,
@@ -149,60 +150,60 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                                     .bodySmall
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: const Color(0xFF57636C),
+                                      color: Color(0xFF57636C),
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey('Outfit'),
                                     ),
-                                enabledBorder: const UnderlineInputBorder(
+                                enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                focusedBorder: const UnderlineInputBorder(
+                                focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                errorBorder: const UnderlineInputBorder(
+                                errorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                focusedErrorBorder: const UnderlineInputBorder(
+                                focusedErrorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 8.0, 12.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Outfit',
-                                    color: const Color(0xFF101213),
+                                    color: Color(0xFF101213),
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: GoogleFonts.asMap()
@@ -217,14 +218,14 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                       ],
                     ),
                   ),
-                  const Divider(
+                  Divider(
                     height: 12.0,
                     thickness: 2.0,
                     color: Color(0xFFF1F4F8),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -233,14 +234,14 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 4.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 40.0,
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.photo_outlined,
                                   color: Color(0xFF57636C),
                                   size: 20.0,
@@ -319,14 +320,14 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 4.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 40.0,
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.video_call,
                                   color: Color(0xFF57636C),
                                   size: 20.0,
@@ -460,11 +461,11 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                           options: FFButtonOptions(
                             width: 70.0,
                             height: 30.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF4B39EF),
+                            color: Color(0xFF4B39EF),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -476,7 +477,7 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                                       GoogleFonts.asMap().containsKey('Outfit'),
                                 ),
                             elevation: 2.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -490,9 +491,10 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                     children: [
                       Stack(
                         children: [
-                          if (_model.uploadedFileUrl2 != '')
+                          if (_model.uploadedFileUrl2 != null &&
+                              _model.uploadedFileUrl2 != '')
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowVideoPlayer(
                                 path: _model.uploadedFileUrl2,
                                 videoType: VideoType.network,
@@ -504,9 +506,9 @@ class _SocialcreatePostsWidgetState extends State<SocialcreatePostsWidget> {
                               ),
                             ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, -1.67),
+                            alignment: AlignmentDirectional(0.0, -1.67),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 30.0),
                               child: Image.network(
                                 _model.uploadedFileUrl1,

@@ -1,5 +1,7 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -9,6 +11,7 @@ import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -27,8 +30,8 @@ class AICOMMUNICATIONOnNewMentorWidget extends StatefulWidget {
     bool? isLearnCard,
     this.learnCardDoc,
     this.sessionsDoc,
-  })  : askingQuestion = askingQuestion ?? false,
-        isLearnCard = isLearnCard ?? false;
+  })  : this.askingQuestion = askingQuestion ?? false,
+        this.isLearnCard = isLearnCard ?? false;
 
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
@@ -208,7 +211,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
       logFirebaseEvent('AI_COMMUNICATION-On-newMentor_scroll_to');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -265,7 +268,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
             ? containerMyTeamRecordList.first
             : null;
         return Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: SingleChildScrollView(
             controller: _model.columnController1,
             child: Column(
@@ -279,7 +282,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -289,11 +292,12 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   if (valueOrDefault<bool>(
-                                    FFAppState().tempStreamingMessage != '',
+                                    FFAppState().tempStreamingMessage != null &&
+                                        FFAppState().tempStreamingMessage != '',
                                     false,
                                   ))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           25.0, 0.0, 25.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -362,7 +366,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding: EdgeInsets.all(12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -403,28 +407,6 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                             opaque: false,
                                             cursor: MouseCursor.defer ??
                                                 MouseCursor.defer,
-                                            onEnter: ((event) async {
-                                              setState(() => _model
-                                                  .mouseRegionHovered = true);
-                                              logFirebaseEvent(
-                                                  'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_NEW_MEN');
-                                              logFirebaseEvent(
-                                                  'MouseRegion_update_component_state');
-                                              setState(() {
-                                                _model.showMemberDetails = true;
-                                              });
-                                            }),
-                                            onExit: ((event) async {
-                                              setState(() => _model
-                                                  .mouseRegionHovered = false);
-                                              logFirebaseEvent(
-                                                  'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_NEW_MEN');
-                                              logFirebaseEvent(
-                                                  'MouseRegion_update_component_state');
-                                              setState(() {
-                                                _model.showMemberDetails = true;
-                                              });
-                                            }),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -466,6 +448,28 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                 ),
                                               ],
                                             ),
+                                            onEnter: ((event) async {
+                                              setState(() => _model
+                                                  .mouseRegionHovered = true);
+                                              logFirebaseEvent(
+                                                  'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_NEW_MEN');
+                                              logFirebaseEvent(
+                                                  'MouseRegion_update_component_state');
+                                              setState(() {
+                                                _model.showMemberDetails = true;
+                                              });
+                                            }),
+                                            onExit: ((event) async {
+                                              setState(() => _model
+                                                  .mouseRegionHovered = false);
+                                              logFirebaseEvent(
+                                                  'A_I_C_O_M_M_U_N_I_C_A_T_I_O_N_ON_NEW_MEN');
+                                              logFirebaseEvent(
+                                                  'MouseRegion_update_component_state');
+                                              setState(() {
+                                                _model.showMemberDetails = true;
+                                              });
+                                            }),
                                           ),
                                         ],
                                       ),
@@ -485,7 +489,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                               width: 60.0,
                                               height: 60.0,
                                               clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
@@ -503,12 +507,12 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 7.0, 7.0, 0.0),
                             child: Builder(
                               builder: (context) {
                                 final skills =
-                                    containerMyTeamRecord.skills.toList() ??
+                                    containerMyTeamRecord?.skills?.toList() ??
                                         [];
                                 return Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -516,7 +520,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                       (skillsIndex) {
                                     final skillsItem = skills[skillsIndex];
                                     return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 7.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -543,7 +547,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(22.0),
                           child: Container(
@@ -566,7 +570,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                               }(),
                             ),
                             decoration: BoxDecoration(
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -604,7 +608,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         fit: BoxFit.cover,
                                         image: Image.network(
                                           valueOrDefault<String>(
-                                            containerMyTeamRecord.image,
+                                            containerMyTeamRecord?.image,
                                             'https://res.cloudinary.com/dplpckpbm/image/upload/v1703535226/learningPathwaysBright_b3strj.webp',
                                           ),
                                         ).image,
@@ -619,9 +623,9 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 1.0),
+                                                AlignmentDirectional(-1.0, 1.0),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: StreamBuilder<
                                                   List<FlowiseChatsRecord>>(
                                                 stream: queryFlowiseChatsRecord(
@@ -672,7 +676,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                         columnChatsScrollableFlowiseChatsRecordList
                                                             .length,
                                                     separatorBuilder: (_, __) =>
-                                                        const SizedBox(height: 8.0),
+                                                        SizedBox(height: 8.0),
                                                     itemBuilder: (context,
                                                         columnChatsScrollableIndex) {
                                                       final columnChatsScrollableFlowiseChatsRecord =
@@ -699,7 +703,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 Flexible(
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             33.0,
                                                                             0.0,
@@ -726,7 +730,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                         }(),
                                                                       ),
                                                                       decoration:
-                                                                          const BoxDecoration(
+                                                                          BoxDecoration(
                                                                         color: Color(
                                                                             0xFFE6EDFB),
                                                                         borderRadius:
@@ -744,7 +748,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            const EdgeInsets.all(4.0),
+                                                                            EdgeInsets.all(4.0),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
@@ -754,7 +758,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           children: [
                                                                             Flexible(
                                                                               child: Padding(
-                                                                                padding: const EdgeInsets.all(9.0),
+                                                                                padding: EdgeInsets.all(9.0),
                                                                                 child: Text(
                                                                                   columnChatsScrollableFlowiseChatsRecord.text,
                                                                                   textAlign: TextAlign.start,
@@ -788,7 +792,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                               (columnChatsScrollableFlowiseChatsRecord
                                                                       .role ==
                                                                   'system'))
-                                                            SizedBox(
+                                                            Container(
                                                               width: double
                                                                   .infinity,
                                                               child: Stack(
@@ -812,7 +816,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                             if (columnChatsScrollableFlowiseChatsRecord.role ==
                                                                                 'ai')
                                                                               AnimatedContainer(
-                                                                                duration: const Duration(milliseconds: 100),
+                                                                                duration: Duration(milliseconds: 100),
                                                                                 curve: Curves.easeInOut,
                                                                                 constraints: BoxConstraints(
                                                                                   maxWidth: () {
@@ -827,7 +831,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                     }
                                                                                   }(),
                                                                                 ),
-                                                                                decoration: const BoxDecoration(
+                                                                                decoration: BoxDecoration(
                                                                                   color: Color(0xFFF5F5F5),
                                                                                   borderRadius: BorderRadius.only(
                                                                                     bottomLeft: Radius.circular(8.0),
@@ -836,16 +840,16 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                     topRight: Radius.circular(8.0),
                                                                                   ),
                                                                                 ),
-                                                                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                                                                alignment: AlignmentDirectional(-1.0, 0.0),
                                                                                 child: Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.min,
                                                                                     mainAxisAlignment: MainAxisAlignment.end,
                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsets.all(4.0),
+                                                                                        padding: EdgeInsets.all(4.0),
                                                                                         child: Row(
                                                                                           mainAxisSize: MainAxisSize.min,
                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -857,7 +861,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                               desktop: false,
                                                                                             ))
                                                                                               Padding(
-                                                                                                padding: const EdgeInsets.all(3.0),
+                                                                                                padding: EdgeInsets.all(3.0),
                                                                                                 child: ClipRRect(
                                                                                                   borderRadius: BorderRadius.circular(8.0),
                                                                                                   child: Image.network(
@@ -882,7 +886,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                       children: [
                                                                                                         Padding(
-                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                                           child: MarkdownBody(
                                                                                                             data: valueOrDefault<String>(
                                                                                                               columnChatsScrollableFlowiseChatsRecord.text,
@@ -908,9 +912,9 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                             if (columnChatsScrollableFlowiseChatsRecord.role ==
                                                                                 'system')
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                                                                                 child: AnimatedContainer(
-                                                                                  duration: const Duration(milliseconds: 100),
+                                                                                  duration: Duration(milliseconds: 100),
                                                                                   curve: Curves.easeInOut,
                                                                                   constraints: BoxConstraints(
                                                                                     maxWidth: () {
@@ -927,23 +931,23 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                   ),
                                                                                   decoration: BoxDecoration(
                                                                                     color: FlutterFlowTheme.of(context).customColor3,
-                                                                                    borderRadius: const BorderRadius.only(
+                                                                                    borderRadius: BorderRadius.only(
                                                                                       bottomLeft: Radius.circular(8.0),
                                                                                       bottomRight: Radius.circular(8.0),
                                                                                       topLeft: Radius.circular(0.0),
                                                                                       topRight: Radius.circular(8.0),
                                                                                     ),
                                                                                   ),
-                                                                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 9.0),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       mainAxisAlignment: MainAxisAlignment.end,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: const EdgeInsets.all(4.0),
+                                                                                          padding: EdgeInsets.all(4.0),
                                                                                           child: Row(
                                                                                             mainAxisSize: MainAxisSize.min,
                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -955,7 +959,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                                 desktop: false,
                                                                                               ))
                                                                                                 Padding(
-                                                                                                  padding: const EdgeInsets.all(3.0),
+                                                                                                  padding: EdgeInsets.all(3.0),
                                                                                                   child: ClipRRect(
                                                                                                     borderRadius: BorderRadius.circular(8.0),
                                                                                                     child: Image.network(
@@ -980,7 +984,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
                                                                                                           Padding(
-                                                                                                            padding: const EdgeInsets.all(6.0),
+                                                                                                            padding: EdgeInsets.all(6.0),
                                                                                                             child: MarkdownBody(
                                                                                                               data: valueOrDefault<String>(
                                                                                                                 columnChatsScrollableFlowiseChatsRecord.text,
@@ -1017,7 +1021,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                   ))
                                                                     Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               6.0),
                                                                       child:
                                                                           ClipRRect(
@@ -1050,14 +1054,16 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                           ),
                                         ),
                                         if (FFAppState()
-                                                .flowiseMessages.isNotEmpty)
-                                          SizedBox(
+                                                .flowiseMessages
+                                                .length >
+                                            0)
+                                          Container(
                                             width: double.infinity,
                                             child: Stack(
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, -429.57),
                                                   child: Row(
                                                     mainAxisSize:
@@ -1071,17 +1077,17 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                               MainAxisSize.max,
                                                           children: [
                                                             AnimatedContainer(
-                                                              duration: const Duration(
+                                                              duration: Duration(
                                                                   milliseconds:
                                                                       100),
                                                               curve: Curves
                                                                   .easeInOut,
                                                               constraints:
-                                                                  const BoxConstraints(
+                                                                  BoxConstraints(
                                                                 maxWidth: 600.0,
                                                               ),
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 color: Color(
                                                                     0xFFEEEEEE),
                                                                 borderRadius:
@@ -1102,12 +1108,12 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.0,
                                                                       1.0),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1126,7 +1132,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                   children: [
                                                                     Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               4.0),
                                                                       child:
                                                                           Row(
@@ -1152,7 +1158,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                           child: MarkdownBody(
                                                                                             data: valueOrDefault<String>(
                                                                                               FFAppState().flowiseMessages.first.message,
@@ -1188,7 +1194,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                 ))
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.all(6.0),
+                                                        EdgeInsets.all(6.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1205,10 +1211,12 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                             ),
                                           ),
                                         if (FFAppState()
-                                                .flowiseMessages.isNotEmpty)
+                                                .flowiseMessages
+                                                .length >
+                                            0)
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 1.0),
+                                                AlignmentDirectional(0.0, 1.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:
@@ -1220,11 +1228,11 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                 ))
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             -1.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(6.0),
+                                                          EdgeInsets.all(6.0),
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius
@@ -1240,11 +1248,11 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                   ),
                                                 Expanded(
                                                   child: Container(
-                                                    constraints: const BoxConstraints(
+                                                    constraints: BoxConstraints(
                                                       maxWidth: 600.0,
                                                       maxHeight: 600.0,
                                                     ),
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.min,
@@ -1259,7 +1267,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                         ))
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: MarkdownBody(
                                                               data:
@@ -1288,13 +1296,13 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                           ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.0, 1.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               if (_model.questionReady == false)
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 0.0, 12.0,
                                                           12.0),
                                                   child: Row(
@@ -1333,10 +1341,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 ).animateOnPageLoad(
                                                                     animationsMap[
                                                                         'iconOnPageLoadAnimation']!),
-                                                              ].divide(const SizedBox(
+                                                              ].divide(SizedBox(
                                                                   width: 9.0)),
                                                             ),
-                                                            const Divider(
+                                                            Divider(
                                                               thickness: 1.0,
                                                               color: Color(
                                                                   0xFF505050),
@@ -1353,8 +1361,8 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                         borderWidth: 1.0,
                                                         buttonSize: 55.0,
                                                         fillColor:
-                                                            const Color(0xFFCDCDCD),
-                                                        icon: const Icon(
+                                                            Color(0xFFCDCDCD),
+                                                        icon: Icon(
                                                           Icons.send_sharp,
                                                           color:
                                                               Color(0xFFA6A6A6),
@@ -1388,7 +1396,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             true,
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(12.0),
+                                                          EdgeInsets.all(12.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -1440,7 +1448,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 focusedBorder:
                                                                     UnderlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
+                                                                      BorderSide(
                                                                     color: Color(
                                                                         0xFF464646),
                                                                     width: 2.0,
@@ -1479,7 +1487,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                               8.0),
                                                                 ),
                                                                 contentPadding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -1563,6 +1571,9 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 );
                                                                 if (FFAppState()
                                                                             .nonLoggedInSessionId ==
+                                                                        null ||
+                                                                    FFAppState()
+                                                                            .nonLoggedInSessionId ==
                                                                         '') {}
                                                                 // flowise chat document
                                                                 logFirebaseEvent(
@@ -1593,6 +1604,9 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                               .selectedThreadId,
                                                                     ));
                                                                 if (!(FFAppState()
+                                                                            .selectedThreadId !=
+                                                                        null &&
+                                                                    FFAppState()
                                                                             .selectedThreadId !=
                                                                         '')) {
                                                                   // generate active thread id
@@ -1637,7 +1651,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       .columnChatsScrollable!
                                                                       .position
                                                                       .maxScrollExtent,
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           100),
                                                                   curve: Curves
@@ -1663,7 +1677,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode
                                                                         ?.first
-                                                                        .supabaseProjUrl,
+                                                                        ?.supabaseProjUrl,
                                                                     'https://efdipbnxemvehcjbxekx.supabase.co',
                                                                   ),
                                                                   valueOrDefault<
@@ -1671,7 +1685,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode
                                                                         ?.first
-                                                                        .tableName,
+                                                                        ?.tableName,
                                                                     'table_name',
                                                                   ),
                                                                   valueOrDefault<
@@ -1679,7 +1693,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode
                                                                         ?.first
-                                                                        .supabaseApiKey,
+                                                                        ?.supabaseApiKey,
                                                                     'apikey',
                                                                   ),
                                                                   valueOrDefault<
@@ -1687,7 +1701,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode
                                                                         ?.first
-                                                                        .queryName,
+                                                                        ?.queryName,
                                                                     'queryName',
                                                                   ),
                                                                   valueOrDefault<
@@ -1695,7 +1709,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode
                                                                         ?.first
-                                                                        .isLearnCards,
+                                                                        ?.isLearnCards,
                                                                     false,
                                                                   ),
                                                                   () async {
@@ -1709,7 +1723,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnChatsScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -1725,7 +1739,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnMarkdownScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -1743,7 +1757,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnChatsScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -1759,7 +1773,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnMarkdownScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -1810,7 +1824,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       .columnChatsScrollable!
                                                                       .position
                                                                       .maxScrollExtent,
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           100),
                                                                   curve: Curves
@@ -1851,7 +1865,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       .columnChatsScrollable!
                                                                       .position
                                                                       .maxScrollExtent,
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           100),
                                                                   curve: Curves
@@ -1915,6 +1929,9 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 );
                                                                 if (FFAppState()
                                                                             .nonLoggedInSessionId ==
+                                                                        null ||
+                                                                    FFAppState()
+                                                                            .nonLoggedInSessionId ==
                                                                         '') {}
                                                                 // flowise chat document
                                                                 logFirebaseEvent(
@@ -1945,6 +1962,9 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                               .selectedThreadId,
                                                                     ));
                                                                 if (!(FFAppState()
+                                                                            .selectedThreadId !=
+                                                                        null &&
+                                                                    FFAppState()
                                                                             .selectedThreadId !=
                                                                         '')) {
                                                                   // generate active thread id
@@ -1989,7 +2009,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       .columnChatsScrollable!
                                                                       .position
                                                                       .maxScrollExtent,
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           100),
                                                                   curve: Curves
@@ -2015,7 +2035,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode1
                                                                         ?.first
-                                                                        .supabaseProjUrl,
+                                                                        ?.supabaseProjUrl,
                                                                     'https://efdipbnxemvehcjbxekx.supabase.co',
                                                                   ),
                                                                   valueOrDefault<
@@ -2023,7 +2043,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode1
                                                                         ?.first
-                                                                        .tableName,
+                                                                        ?.tableName,
                                                                     'table_name',
                                                                   ),
                                                                   valueOrDefault<
@@ -2031,7 +2051,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode1
                                                                         ?.first
-                                                                        .supabaseApiKey,
+                                                                        ?.supabaseApiKey,
                                                                     'apikey',
                                                                   ),
                                                                   valueOrDefault<
@@ -2039,7 +2059,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode1
                                                                         ?.first
-                                                                        .queryName,
+                                                                        ?.queryName,
                                                                     'queryName',
                                                                   ),
                                                                   valueOrDefault<
@@ -2047,7 +2067,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     _model
                                                                         .companyQueryByCode1
                                                                         ?.first
-                                                                        .isLearnCards,
+                                                                        ?.isLearnCards,
                                                                     false,
                                                                   ),
                                                                   () async {
@@ -2061,7 +2081,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnChatsScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -2077,7 +2097,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnMarkdownScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -2095,7 +2115,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnChatsScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -2111,7 +2131,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .columnMarkdownScrollable!
                                                                           .position
                                                                           .maxScrollExtent,
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -2178,7 +2198,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       .columnChatsScrollable!
                                                                       .position
                                                                       .maxScrollExtent,
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           100),
                                                                   curve: Curves
@@ -2219,7 +2239,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       .columnChatsScrollable!
                                                                       .position
                                                                       .maxScrollExtent,
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           100),
                                                                   curve: Curves
@@ -2355,7 +2375,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                   ),
                                                                   threadName:
                                                                       containerMyTeamRecord
-                                                                          .memberName,
+                                                                          ?.memberName,
                                                                   clearUnsetFields:
                                                                       false,
                                                                   create: true,
@@ -2411,7 +2431,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                                     : FFAppState().selectedThreadId,
                                                                                 'threadDetailsNotSet',
                                                                               ),
-                                                                              threadName: containerMyTeamRecord.memberName,
+                                                                              threadName: containerMyTeamRecord?.memberName,
                                                                               clearUnsetFields: false,
                                                                               create: true,
                                                                             ),
@@ -2433,7 +2453,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     .columnChatsScrollable!
                                                                     .position
                                                                     .maxScrollExtent,
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         100),
                                                                 curve:
@@ -2473,7 +2493,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                           .companiesDoc
                                                                           ?.userGatherDataPrompt;
                                                                     } else {
-                                                                      return 'You are ${containerMyTeamRecord.memberName} you are the users  ${containerMyTeamRecord.role} your summary is ${containerMyTeamRecord.memberSummary}your persona is ${containerMyTeamRecord.persona} Words and phrases you use in your vocalabary are ${containerMyTeamRecord.buzzWordsPhrases.take(15).toList().first}: ${widget.companiesDoc?.youAreMyCoachPrompt}ai instruction not to be shared with user:sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
+                                                                      return 'You are ${containerMyTeamRecord?.memberName} you are the users  ${containerMyTeamRecord?.role} your summary is ${containerMyTeamRecord?.memberSummary}your persona is ${containerMyTeamRecord?.persona} Words and phrases you use in your vocalabary are ${containerMyTeamRecord?.buzzWordsPhrases?.take(15).toList()?.first}: ${widget.companiesDoc?.youAreMyCoachPrompt}ai instruction not to be shared with user:sometimes you ask questions that are not saved in history but the user responds so if the question is set then the user is responding to your question  and you should reply to this using the previous contect that you do havethe question you asked is  : ${valueOrDefault<String>(
                                                                         widget
                                                                             .sessionsDoc
                                                                             ?.aiQuestionAsked,
@@ -2524,7 +2544,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                         .columnMarkdownScrollable!
                                                                         .position
                                                                         .maxScrollExtent,
-                                                                    duration: const Duration(
+                                                                    duration: Duration(
                                                                         milliseconds:
                                                                             100),
                                                                     curve: Curves
@@ -2540,7 +2560,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                         .columnMarkdownScrollable!
                                                                         .position
                                                                         .maxScrollExtent,
-                                                                    duration: const Duration(
+                                                                    duration: Duration(
                                                                         milliseconds:
                                                                             100),
                                                                     curve: Curves
@@ -2558,7 +2578,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                         .columnMarkdownScrollable!
                                                                         .position
                                                                         .maxScrollExtent,
-                                                                    duration: const Duration(
+                                                                    duration: Duration(
                                                                         milliseconds:
                                                                             100),
                                                                     curve: Curves
@@ -2574,7 +2594,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                         .columnMarkdownScrollable!
                                                                         .position
                                                                         .maxScrollExtent,
-                                                                    duration: const Duration(
+                                                                    duration: Duration(
                                                                         milliseconds:
                                                                             100),
                                                                     curve: Curves
@@ -2649,7 +2669,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                               .selectedThreadId,
                                                                       threadName:
                                                                           containerMyTeamRecord
-                                                                              .memberName,
+                                                                              ?.memberName,
                                                                       clearUnsetFields:
                                                                           false,
                                                                       create:
@@ -2665,7 +2685,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     .columnChatsScrollable!
                                                                     .position
                                                                     .maxScrollExtent,
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         100),
                                                                 curve:
@@ -2706,7 +2726,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                     .columnChatsScrollable!
                                                                     .position
                                                                     .maxScrollExtent,
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         100),
                                                                 curve:
@@ -2744,7 +2764,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             true,
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(12.0),
+                                                          EdgeInsets.all(12.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -2798,7 +2818,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 focusedBorder:
                                                                     UnderlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
+                                                                      BorderSide(
                                                                     color: Color(
                                                                         0xFF464646),
                                                                     width: 2.0,
@@ -2837,7 +2857,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                               8.0),
                                                                 ),
                                                                 contentPadding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -2877,14 +2897,14 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2907,7 +2927,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -2939,7 +2959,8 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           if (valueOrDefault<bool>(
-                            FFAppState().tempStreamingMessage != '',
+                            FFAppState().tempStreamingMessage != null &&
+                                FFAppState().tempStreamingMessage != '',
                             false,
                           ))
                             Container(
@@ -2952,7 +2973,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                         child: Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           color:
@@ -2972,12 +2993,12 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                const Row(
+                                Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [],
                                 ),
-                                const Row(
+                                Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [],
@@ -3006,10 +3027,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 4.0, 24.0, 4.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .selectedButton,
@@ -3032,7 +3053,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -3074,10 +3095,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 4.0, 24.0, 4.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .customColor3,
@@ -3100,7 +3121,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -3149,10 +3170,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 4.0, 24.0, 4.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .selectedButton,
@@ -3175,7 +3196,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -3226,10 +3247,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 4.0, 24.0, 4.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .selectedButton,
@@ -3252,7 +3273,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -3297,10 +3318,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 4.0, 24.0, 4.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .selectedButton,
@@ -3323,7 +3344,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -3363,7 +3384,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                   widget
                                                       .companiesDoc
                                                       ?.companyAiData
-                                                      .ownerName,
+                                                      ?.ownerName,
                                                   'the app owner ',
                                                 )} and the team, I am equipped to serve as your mentor. My role is to generate content, address your queries, and ensure your educational journey remains engaging. I kindly ask for your patience as I am currently analysing our recent dialogue to identify a suitable topic that will effectively address your challenges and facilitate your progress. I will add this to your learning plan when I am finished.  In the meantime, why not check out a learnCard?',
                                                 threadId: FFAppState()
@@ -3377,10 +3398,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 4.0, 24.0, 4.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .selectedButton,
@@ -3403,7 +3424,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -3538,7 +3559,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                   widget
                                                       .companiesDoc
                                                       ?.companyAiData
-                                                      .ownerName,
+                                                      ?.ownerName,
                                                   'the app owner ',
                                                 )} and the team, I am equipped to serve as your mentor. My role is to generate content, address your queries, and ensure your educational journey remains engaging. I kindly ask for your patience as I am currently analysing our recent dialogue to identify a suitable topic that will effectively address your challenges and facilitate your progress. I will add this to your learning plan when I am finished.  In the meantime, why not check out a learnCard?',
                                                 threadId: FFAppState()
@@ -3552,10 +3573,10 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 4.0, 24.0, 4.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .selectedButton,
@@ -3578,7 +3599,7 @@ class _AICOMMUNICATIONOnNewMentorWidgetState
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),

@@ -19,6 +19,7 @@ import '/right_pane/chata_c_t_i_v_i_t_y/chata_c_t_i_v_i_t_y_widget.dart';
 import '/right_pane/social_feed_new_componant/social_feed_new_componant_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -52,8 +53,8 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: const Offset(-10.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-10.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -132,7 +133,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                 : FocusScope.of(context).unfocus(),
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: const LearnCardChatActivityWidget(
+                              child: LearnCardChatActivityWidget(
                                 learcardId: '',
                                 learningCardTitle: '',
                               ),
@@ -148,12 +149,12 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                     });
                   },
                   backgroundColor: FlutterFlowTheme.of(context).accent2,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.wechat_rounded,
                   ),
                   elevation: 8.0,
                   label: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Icon(
                       Icons.keyboard_arrow_up,
                       color: FlutterFlowTheme.of(context).primary,
@@ -165,7 +166,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                   elevation: 16.0,
                   child: WebViewAware(
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
@@ -178,7 +179,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                           ),
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.sideMenuModel,
                             updateCallback: () => setState(() {}),
@@ -197,7 +198,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                     ),
                   ),
                 ),
-                endDrawer: SizedBox(
+                endDrawer: Container(
                   width: 450.0,
                   child: Drawer(
                     elevation: 16.0,
@@ -256,7 +257,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                         .headlineMediumFamily),
                               ),
                         ),
-                        actions: const [],
+                        actions: [],
                         centerTitle: true,
                         elevation: 2.0,
                       )
@@ -264,7 +265,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                 body: SafeArea(
                   top: true,
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: StreamBuilder<List<SessionsRecord>>(
                       stream: FFAppState().sessionsBySessionid(
                         requestFn: () => querySessionsRecord(
@@ -293,7 +294,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                         List<SessionsRecord> containerSessionsRecordList =
                             snapshot.data!;
                         return Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: StreamBuilder<List<CompaniesRecord>>(
                             stream: FFAppState().companyCode(
                               requestFn: () => queryCompaniesRecord(
@@ -326,11 +327,11 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                   containerCompanyCompaniesRecordList =
                                   snapshot.data!;
                               return Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -338,9 +339,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Container(
-                                              constraints: const BoxConstraints(
+                                              constraints: BoxConstraints(
                                                 maxHeight: double.infinity,
                                               ),
                                               decoration: BoxDecoration(
@@ -354,7 +355,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                 ),
                                               ),
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -369,7 +370,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                       opacity: 0.8,
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Container(
                                                           width:
@@ -377,7 +378,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                           height:
                                                               double.infinity,
                                                           constraints:
-                                                              const BoxConstraints(
+                                                              BoxConstraints(
                                                             minWidth: 900.0,
                                                             minHeight: 900.0,
                                                             maxHeight: 750.0,
@@ -395,16 +396,16 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                           ),
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Stack(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       1.0, 0.0),
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -428,12 +429,12 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             400.0,
                                                                             100.0,
@@ -451,7 +452,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 0.7,
                                                                       ),
                                                                       decoration:
-                                                                          const BoxDecoration(
+                                                                          BoxDecoration(
                                                                         shape: BoxShape
                                                                             .rectangle,
                                                                       ),
@@ -462,7 +463,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                         children: [
                                                                           Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(10.0),
+                                                                                EdgeInsets.all(10.0),
                                                                             child:
                                                                                 Container(
                                                                               decoration: BoxDecoration(
@@ -478,7 +479,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                         borderRadius: BorderRadius.circular(17.0),
                                                                                       ),
                                                                                       child: Padding(
-                                                                                        padding: const EdgeInsets.all(50.0),
+                                                                                        padding: EdgeInsets.all(50.0),
                                                                                         child: ClipRRect(
                                                                                           borderRadius: BorderRadius.circular(16.0),
                                                                                           child: Image.network(
@@ -540,7 +541,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                           .viewTileContentId,
                                                                   false,
                                                                 ))
-                                                            .toList().isNotEmpty) {
+                                                            .toList()
+                                                            .length >=
+                                                        1) {
                                                       return valueOrDefault<
                                                           String>(
                                                         socialFeedTilesv2RecordList
@@ -559,6 +562,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                         'Welcome to your Website',
                                                       );
                                                     } else if (FFAppState()
+                                                                .viewTileContentId ==
+                                                            null ||
+                                                        FFAppState()
                                                                 .viewTileContentId ==
                                                             '') {
                                                       return '';
@@ -647,7 +653,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           7.0,
                                                                           0.0,
@@ -675,7 +681,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     },
                                                                     text:
                                                                         'social',
-                                                                    icon: const Icon(
+                                                                    icon: Icon(
                                                                       Icons
                                                                           .wechat_sharp,
                                                                       size:
@@ -684,9 +690,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     options:
                                                                         FFButtonOptions(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               10.0),
-                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -711,7 +717,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                           ),
                                                                       borderSide:
-                                                                          const BorderSide(
+                                                                          BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -721,7 +727,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           7.0,
                                                                           0.0,
@@ -743,7 +749,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     },
                                                                     text:
                                                                         'Welcome Chat',
-                                                                    icon: const Icon(
+                                                                    icon: Icon(
                                                                       Icons
                                                                           .wechat_sharp,
                                                                       size:
@@ -752,9 +758,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     options:
                                                                         FFButtonOptions(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               10.0),
-                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -779,7 +785,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                           ),
                                                                       borderSide:
-                                                                          const BorderSide(
+                                                                          BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -789,7 +795,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           7.0,
                                                                           0.0,
@@ -811,7 +817,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     },
                                                                     text:
                                                                         'Preparing',
-                                                                    icon: const Icon(
+                                                                    icon: Icon(
                                                                       Icons
                                                                           .read_more_sharp,
                                                                       size:
@@ -820,9 +826,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     options:
                                                                         FFButtonOptions(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               10.0),
-                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -847,7 +853,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                           ),
                                                                       borderSide:
-                                                                          const BorderSide(
+                                                                          BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -857,7 +863,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           7.0,
                                                                           0.0,
@@ -879,7 +885,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     },
                                                                     text:
                                                                         'Topics',
-                                                                    icon: const Icon(
+                                                                    icon: Icon(
                                                                       Icons
                                                                           .toc_rounded,
                                                                       size:
@@ -888,9 +894,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     options:
                                                                         FFButtonOptions(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               10.0),
-                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -915,7 +921,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                           ),
                                                                       borderSide:
-                                                                          const BorderSide(
+                                                                          BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -926,9 +932,12 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                 ),
                                                                 if (FFAppState()
                                                                             .viewTileContentId !=
+                                                                        null &&
+                                                                    FFAppState()
+                                                                            .viewTileContentId !=
                                                                         '')
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             7.0,
                                                                             0.0,
@@ -951,7 +960,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                       text:
                                                                           'content',
                                                                       icon:
-                                                                          const Icon(
+                                                                          Icon(
                                                                         Icons
                                                                             .crop_din,
                                                                         size:
@@ -960,8 +969,8 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                       options:
                                                                           FFButtonOptions(
                                                                         padding:
-                                                                            const EdgeInsets.all(10.0),
-                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            EdgeInsets.all(10.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -980,7 +989,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                             ),
                                                                         borderSide:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           color:
                                                                               Colors.transparent,
                                                                           width:
@@ -991,9 +1000,12 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   ),
                                                                 if (FFAppState()
                                                                             .viewTileContentId !=
+                                                                        null &&
+                                                                    FFAppState()
+                                                                            .viewTileContentId !=
                                                                         '')
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             7.0,
                                                                             0.0,
@@ -1016,7 +1028,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                       text:
                                                                           'APP CONTENT',
                                                                       icon:
-                                                                          const Icon(
+                                                                          Icon(
                                                                         Icons
                                                                             .crop_din,
                                                                         size:
@@ -1025,8 +1037,8 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                       options:
                                                                           FFButtonOptions(
                                                                         padding:
-                                                                            const EdgeInsets.all(10.0),
-                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            EdgeInsets.all(10.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -1045,7 +1057,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                             ),
                                                                         borderSide:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           color:
                                                                               Colors.transparent,
                                                                           width:
@@ -1055,7 +1067,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     ),
                                                                   ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           7.0,
                                                                           0.0,
@@ -1077,7 +1089,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     },
                                                                     text:
                                                                         'learncards',
-                                                                    icon: const Icon(
+                                                                    icon: Icon(
                                                                       Icons
                                                                           .crop_din,
                                                                       size:
@@ -1086,9 +1098,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     options:
                                                                         FFButtonOptions(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               10.0),
-                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1113,7 +1125,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                           ),
                                                                       borderSide:
-                                                                          const BorderSide(
+                                                                          BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -1123,7 +1135,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           7.0,
                                                                           0.0,
@@ -1138,7 +1150,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     },
                                                                     text:
                                                                         'Learn Pilot',
-                                                                    icon: const Icon(
+                                                                    icon: Icon(
                                                                       Icons
                                                                           .wechat_sharp,
                                                                       size:
@@ -1147,9 +1159,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                     options:
                                                                         FFButtonOptions(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               10.0),
-                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1174,7 +1186,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 GoogleFonts.asMap().containsKey('Lexend Deca'),
                                                                           ),
                                                                       borderSide:
-                                                                          const BorderSide(
+                                                                          BorderSide(
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
@@ -1267,6 +1279,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                             return true;
                                                           } else if (FFAppState()
                                                                       .showPane ==
+                                                                  null ||
+                                                              FFAppState()
+                                                                      .showPane ==
                                                                   '') {
                                                             return true;
                                                           } else if ((FFAppState()
@@ -1315,12 +1330,16 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                         .width <
                                                                     kBreakpointMedium) &&
                                                                 (FFAppState().showPane !=
+                                                                        null &&
+                                                                    FFAppState().showPane !=
                                                                         '')) {
                                                               return true;
                                                             } else if ((MediaQuery.sizeOf(context)
                                                                         .width <
                                                                     kBreakpointLarge) &&
-                                                                (FFAppState().showPane != '')) {
+                                                                (FFAppState().showPane !=
+                                                                        null &&
+                                                                    FFAppState().showPane != '')) {
                                                               return true;
                                                             } else {
                                                               return true;
@@ -1359,10 +1378,10 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   }(),
                                                                 ),
                                                                 decoration:
-                                                                    const BoxDecoration(),
+                                                                    BoxDecoration(),
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -1383,7 +1402,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   ),
                                                                 ),
                                                               ),
-                                                              const Column(
+                                                              Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
@@ -1400,6 +1419,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                               'Initial Chat') {
                                                             return true;
                                                           } else if (FFAppState()
+                                                                      .showPane ==
+                                                                  null ||
+                                                              FFAppState()
                                                                       .showPane ==
                                                                   '') {
                                                             return true;
@@ -1442,12 +1464,16 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                         .width <
                                                                     kBreakpointMedium) &&
                                                                 (FFAppState().showPane !=
+                                                                        null &&
+                                                                    FFAppState().showPane !=
                                                                         '')) {
                                                               return true;
                                                             } else if ((MediaQuery.sizeOf(context)
                                                                         .width <
                                                                     kBreakpointLarge) &&
-                                                                (FFAppState().showPane != '')) {
+                                                                (FFAppState().showPane !=
+                                                                        null &&
+                                                                    FFAppState().showPane != '')) {
                                                               return true;
                                                             } else {
                                                               return true;
@@ -1487,7 +1513,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                   }(),
                                                                 ),
                                                                 decoration:
-                                                                    const BoxDecoration(),
+                                                                    BoxDecoration(),
                                                                 child: Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -1500,7 +1526,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                           () =>
                                                                               setState(() {}),
                                                                       child:
-                                                                          const LearnTopicOnPageWidget(),
+                                                                          LearnTopicOnPageWidget(),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -1516,6 +1542,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                               'APP CONTENT') {
                                                             return true;
                                                           } else if (FFAppState()
+                                                                      .showPane ==
+                                                                  null ||
+                                                              FFAppState()
                                                                       .showPane ==
                                                                   '') {
                                                             return true;
@@ -1562,7 +1591,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                 }(),
                                                               ),
                                                               decoration:
-                                                                  const BoxDecoration(),
+                                                                  BoxDecoration(),
                                                               child:
                                                                   wrapWithModel(
                                                                 model: _model
@@ -1617,12 +1646,14 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                   return true;
                                                 } else if ((MediaQuery.sizeOf(context).width <
                                                         kBreakpointMedium) &&
-                                                    (FFAppState().showPane !=
+                                                    (FFAppState().showPane != null &&
+                                                        FFAppState().showPane !=
                                                             '')) {
                                                   return true;
                                                 } else if ((MediaQuery.sizeOf(context).width <
                                                         kBreakpointLarge) &&
-                                                    (FFAppState().showPane !=
+                                                    (FFAppState().showPane != null &&
+                                                        FFAppState().showPane !=
                                                             '')) {
                                                   return true;
                                                 } else if ((MediaQuery.sizeOf(context).width <
@@ -1639,11 +1670,11 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                 Flexible(
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -1682,7 +1713,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                         setState(
                                                                             () {}),
                                                                     child:
-                                                                        const SocialFeedNewComponantWidget(),
+                                                                        SocialFeedNewComponantWidget(),
                                                                   ),
                                                                 ],
                                                               ),
@@ -1696,7 +1727,9 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                               ) ||
                                                               valueOrDefault<
                                                                   bool>(
-                                                                FFAppState()
+                                                                FFAppState().viewTileContentId !=
+                                                                        null &&
+                                                                    FFAppState()
                                                                             .viewTileContentId !=
                                                                         '',
                                                                 false,
@@ -1761,6 +1794,8 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                       if (valueOrDefault<
                                                                           bool>(
                                                                         FFAppState().viewTileContentId !=
+                                                                                null &&
+                                                                            FFAppState().viewTileContentId !=
                                                                                 '',
                                                                         false,
                                                                       ))
@@ -1777,7 +1812,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                   .toList();
                                                                               if (tileContent.isEmpty) {
                                                                                 return Center(
-                                                                                  child: SizedBox(
+                                                                                  child: Container(
                                                                                     width: 640.0,
                                                                                     child: DrawerEmptyListTilesWidget(
                                                                                       tileDoc: socialFeedTilesv2RecordList
@@ -1800,7 +1835,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                                 itemBuilder: (context, tileContentIndex) {
                                                                                   final tileContentItem = tileContent[tileContentIndex];
                                                                                   return Align(
-                                                                                    alignment: const AlignmentDirectional(0.0, -1.0),
+                                                                                    alignment: AlignmentDirectional(0.0, -1.0),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1874,13 +1909,15 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                 } else if ((MediaQuery.sizeOf(context)
                                                             .width <
                                                         kBreakpointMedium) &&
-                                                    (FFAppState().showPane !=
+                                                    (FFAppState().showPane != null &&
+                                                        FFAppState().showPane !=
                                                             '')) {
                                                   return true;
                                                 } else if ((MediaQuery.sizeOf(context)
                                                             .width <
                                                         kBreakpointLarge) &&
-                                                    (FFAppState().showPane !=
+                                                    (FFAppState().showPane != null &&
+                                                        FFAppState().showPane !=
                                                             '')) {
                                                   return true;
                                                 } else {
@@ -1896,7 +1933,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Container(
                                                               constraints:
@@ -1923,7 +1960,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                 }(),
                                                               ),
                                                               decoration:
-                                                                  const BoxDecoration(),
+                                                                  BoxDecoration(),
                                                               child: StreamBuilder<
                                                                   List<
                                                                       LearnCardsRecord>>(
@@ -1991,7 +2028,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                             CrossAxisAlignment.center,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -2026,7 +2063,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                           ))
                                                             Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.0,
                                                                       -1.0),
                                                               child: Container(
@@ -2038,7 +2075,7 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                 ),
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           0.0),
                                                                   child: Column(
@@ -2052,20 +2089,20 @@ class _SocialFeedWidgetState extends State<SocialFeedWidget>
                                                                       if (FFAppState()
                                                                           .endDrawerOpen)
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               -1.0,
                                                                               -1.0),
                                                                           child:
                                                                               Container(
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                               children: [
                                                                                 Align(
-                                                                                  alignment: const AlignmentDirectional(1.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(1.0, 0.0),
                                                                                   child: wrapWithModel(
                                                                                     model: _model.aICOMMUNICATIONDeletesoonModel,
                                                                                     updateCallback: () => setState(() {}),

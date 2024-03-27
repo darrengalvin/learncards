@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,8 +6,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'add_text_block_to_tile_model.dart';
 export 'add_text_block_to_tile_model.dart';
 
@@ -89,18 +92,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: const Alignment(0.0, 0),
+            alignment: Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: const TextStyle(),
+              unselectedLabelStyle: TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: const [
+              tabs: [
                 Tab(
                   text: 'Text Block',
                 ),
@@ -116,7 +119,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
               controller: _model.tabBarController,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -138,7 +141,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         25.0, 15.0, 25.0, 0.0),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
@@ -147,7 +150,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 50.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -162,7 +165,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     'Icon_bottom_sheet');
                                                 Navigator.pop(context);
                                               },
-                                              child: const Icon(
+                                              child: Icon(
                                                 Icons.cancel_outlined,
                                                 color: Colors.black,
                                                 size: 24.0,
@@ -171,10 +174,10 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 8.0),
                                             child: FlutterFlowChoiceChips(
-                                              options: const [
+                                              options: [
                                                 ChipData('Header Text',
                                                     Icons.text_fields_sharp),
                                                 ChipData('Paragraph',
@@ -234,7 +237,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                                       context)
                                                                   .bodySmallFamily,
                                                           color:
-                                                              const Color(0xFFE3E7ED),
+                                                              Color(0xFFE3E7ED),
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -266,7 +269,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         40.0, 20.0, 40.0, 20.0),
                                     child: Text(
                                       'This section will create a content block on the page, what ever you put in here will display within that block',
@@ -276,18 +279,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 530.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -297,13 +300,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                           border: Border.all(
-                                            color: const Color(0xFFEFF7F5),
+                                            color: Color(0xFFEFF7F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -311,7 +314,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 16.0, 24.0, 16.0),
                                                 child: Column(
@@ -330,7 +333,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF111417),
                                                             fontSize: 28.0,
                                                             fontWeight:
@@ -344,7 +347,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -358,7 +361,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -376,7 +379,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .headertextController,
@@ -405,7 +408,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -416,7 +419,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -427,7 +430,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -455,18 +458,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 530.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -476,13 +479,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                           border: Border.all(
-                                            color: const Color(0xFFEFF7F5),
+                                            color: Color(0xFFEFF7F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -490,7 +493,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 16.0, 24.0, 16.0),
                                                 child: Column(
@@ -509,7 +512,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF111417),
                                                             fontSize: 28.0,
                                                             fontWeight:
@@ -523,7 +526,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -537,7 +540,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -555,7 +558,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .textblockController,
@@ -585,7 +588,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -596,7 +599,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -607,7 +610,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -635,18 +638,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 530.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -656,13 +659,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                           border: Border.all(
-                                            color: const Color(0xFFEFF7F5),
+                                            color: Color(0xFFEFF7F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -670,7 +673,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 16.0, 24.0, 16.0),
                                                 child: Column(
@@ -689,7 +692,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF111417),
                                                             fontSize: 28.0,
                                                             fontWeight:
@@ -703,7 +706,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -717,7 +720,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -735,7 +738,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .videoTitleController,
@@ -764,7 +767,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -775,7 +778,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -786,7 +789,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -814,18 +817,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 530.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -835,13 +838,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                           border: Border.all(
-                                            color: const Color(0xFFEFF7F5),
+                                            color: Color(0xFFEFF7F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -849,7 +852,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 16.0, 24.0, 16.0),
                                                 child: Column(
@@ -868,7 +871,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF111417),
                                                             fontSize: 28.0,
                                                             fontWeight:
@@ -882,7 +885,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -896,7 +899,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -910,12 +913,12 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             ),
                                                       ),
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -929,7 +932,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -947,7 +950,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller:
                                                       _model.linktextController,
@@ -976,7 +979,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -987,7 +990,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -998,7 +1001,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1020,7 +1023,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .buttonlinkController,
@@ -1051,7 +1054,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1062,7 +1065,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1073,7 +1076,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1094,11 +1097,11 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                       .asValidator(context),
                                                 ),
                                               ),
-                                              const Divider(
+                                              Divider(
                                                 thickness: 1.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 12.0, 0.0, 0.0),
                                                 child: Text(
@@ -1109,7 +1112,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF57636C),
+                                                            Color(0xFF57636C),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.normal,
@@ -1121,7 +1124,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .buttontextController,
@@ -1151,7 +1154,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1162,7 +1165,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1173,7 +1176,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1201,18 +1204,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 530.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -1222,13 +1225,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                           border: Border.all(
-                                            color: const Color(0xFFEFF7F5),
+                                            color: Color(0xFFEFF7F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1236,7 +1239,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 16.0, 24.0, 16.0),
                                                 child: Column(
@@ -1255,7 +1258,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF111417),
                                                             fontSize: 28.0,
                                                             fontWeight:
@@ -1269,7 +1272,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -1283,7 +1286,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -1301,7 +1304,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller:
                                                       _model.docTextController,
@@ -1330,7 +1333,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1341,7 +1344,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1352,7 +1355,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1396,18 +1399,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 530.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -1417,13 +1420,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                           border: Border.all(
-                                            color: const Color(0xFFEFF7F5),
+                                            color: Color(0xFFEFF7F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1431,7 +1434,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 16.0, 24.0, 16.0),
                                                 child: Column(
@@ -1450,7 +1453,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF111417),
                                                             fontSize: 28.0,
                                                             fontWeight:
@@ -1464,7 +1467,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -1478,7 +1481,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -1502,7 +1505,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0,
                                                                 10.0, 0.0, 0.0),
                                                     child: FFButtonWidget(
@@ -1515,14 +1518,14 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                         width: 300.0,
                                                         height: 30.0,
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1549,7 +1552,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                                               .titleSmallFamily),
                                                                 ),
                                                         elevation: 2.0,
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,
@@ -1569,18 +1572,18 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 530.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -1590,13 +1593,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                           border: Border.all(
-                                            color: const Color(0xFFEFF7F5),
+                                            color: Color(0xFFEFF7F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1604,7 +1607,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 16.0, 24.0, 16.0),
                                                 child: Column(
@@ -1623,7 +1626,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF111417),
                                                             fontSize: 28.0,
                                                             fontWeight:
@@ -1637,7 +1640,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -1651,7 +1654,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -1669,7 +1672,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 child: TextFormField(
                                                   controller:
                                                       _model.tiletextController,
@@ -1699,7 +1702,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1710,7 +1713,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1721,7 +1724,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -1749,7 +1752,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(20.0),
+                                    padding: EdgeInsets.all(20.0),
                                     child: Text(
                                       'THIS IS VERY IMPORTANT ',
                                       textAlign: TextAlign.center,
@@ -1758,7 +1761,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: TextFormField(
                                       controller: _model.positionController,
                                       focusNode: _model.positionFocusNode,
@@ -1778,7 +1781,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -1786,7 +1789,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -1794,7 +1797,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                               BorderRadius.circular(25.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -1816,7 +1819,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 30.0, 0.0, 30.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -1861,9 +1864,9 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                               options: FFButtonOptions(
                                 width: 300.0,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -1878,7 +1881,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                   .titleSmallFamily),
                                     ),
                                 elevation: 2.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -1887,13 +1890,13 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 36.0, 12.0, 36.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 7.0,
                                     color: Color(0x2F1D2429),
@@ -1903,7 +1906,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -1917,7 +1920,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 30.0, 0.0, 30.0),
                                       child: FFButtonWidget(
                                         onPressed: () {
@@ -1928,10 +1931,10 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                           width: 300.0,
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -1951,7 +1954,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 2.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -1960,7 +1963,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                         ),
                                       ),
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 30.0, 0.0, 0.0),
                                       child: FlutterFlowVideoPlayer(
@@ -1975,7 +1978,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1986,7 +1989,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 .titleMedium
                                                 .override(
                                                   fontFamily: 'Outfit',
-                                                  color: const Color(0xFF101213),
+                                                  color: Color(0xFF101213),
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.w500,
                                                   useGoogleFonts:
@@ -2008,7 +2011,7 @@ class _AddTextBlockToTileWidgetState extends State<AddTextBlockToTileWidget>
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Outfit',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 14.0,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts:

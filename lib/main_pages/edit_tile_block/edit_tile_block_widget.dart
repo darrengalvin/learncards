@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/testpage/components/add_video_to_existing_tile/add_video_to_existing_tile_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -171,13 +172,13 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Container(
                               width: 220.0,
                               height: 900.0,
                               decoration: BoxDecoration(
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 7.0,
                                     color: Color(0x32171717),
@@ -190,14 +191,14 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         .primaryBackground,
                                     FlutterFlowTheme.of(context).secondary
                                   ],
-                                  stops: const [0.0, 1.0],
-                                  begin: const AlignmentDirectional(0.0, -1.0),
-                                  end: const AlignmentDirectional(0, 1.0),
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
                                 ),
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     3.0, 8.0, 3.0, 16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -206,7 +207,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                       width: 60.0,
                                       height: 4.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFDBE2E7),
+                                        color: Color(0xFFDBE2E7),
                                         borderRadius:
                                             BorderRadius.circular(4.0),
                                       ),
@@ -231,7 +232,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                       },
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -256,7 +257,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         ],
                                       ),
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Row(
@@ -271,8 +272,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                           widget.tileblock?.headertext != '',
                                       onChanged: (newValue) async {
                                         setState(() => _model
-                                            .headerSwitchValue = newValue);
-                                        if (newValue) {
+                                            .headerSwitchValue = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_HeaderSwitch_ON_TOGGLE_O');
                                           logFirebaseEvent(
@@ -328,8 +329,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               widget.tileblock?.textblock != '',
                                       onChanged: (newValue) async {
                                         setState(() =>
-                                            _model.parawitchValue = newValue);
-                                        if (newValue) {
+                                            _model.parawitchValue = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_Parawitch_ON_TOGGLE_ON');
                                           logFirebaseEvent(
@@ -389,8 +390,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               '',
                                       onChanged: (newValue) async {
                                         setState(() => _model
-                                            .buttonSwitchValue = newValue);
-                                        if (newValue) {
+                                            .buttonSwitchValue = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_buttonSwitch_ON_TOGGLE_O');
                                           logFirebaseEvent(
@@ -447,8 +448,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               widget.tileblock?.docintext != '',
                                       onChanged: (newValue) async {
                                         setState(() =>
-                                            _model.docSwitchValue = newValue);
-                                        if (newValue) {
+                                            _model.docSwitchValue = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_DocSwitch_ON_TOGGLE_ON');
                                           logFirebaseEvent(
@@ -508,8 +509,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               '',
                                       onChanged: (newValue) async {
                                         setState(() => _model.imageSwitchValue =
-                                            newValue);
-                                        if (newValue) {
+                                            newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_imageSwitch_ON_TOGGLE_ON');
                                           logFirebaseEvent(
@@ -559,11 +560,13 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     SwitchListTile(
                                       value: _model.videoSwitchValue1 ??= widget
                                               .tileblock!
-                                              .videolisttitle.isNotEmpty,
+                                              .videolisttitle
+                                              .length >
+                                          0,
                                       onChanged: (newValue) async {
                                         setState(() => _model
-                                            .videoSwitchValue1 = newValue);
-                                        if (newValue) {
+                                            .videoSwitchValue1 = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_videoSwitch_ON_TOGGLE_ON');
                                           logFirebaseEvent(
@@ -618,8 +621,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               '',
                                       onChanged: (newValue) async {
                                         setState(() => _model
-                                            .videoSwitchValue2 = newValue);
-                                        if (newValue) {
+                                            .videoSwitchValue2 = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_videoSwitch_ON_TOGGLE_ON');
                                           logFirebaseEvent(
@@ -669,8 +672,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                       value: _model.socialFeedValue ??= true,
                                       onChanged: (newValue) async {
                                         setState(() =>
-                                            _model.socialFeedValue = newValue);
-                                        if (newValue) {
+                                            _model.socialFeedValue = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_SocialFeed_ON_TOGGLE_ON');
                                           logFirebaseEvent(
@@ -737,8 +740,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                       value: _model.aISwitchValue ??= false,
                                       onChanged: (newValue) async {
                                         setState(() =>
-                                            _model.aISwitchValue = newValue);
-                                        if (newValue) {
+                                            _model.aISwitchValue = newValue!);
+                                        if (newValue!) {
                                           logFirebaseEvent(
                                               'EDIT_TILE_BLOCK_AISwitch_ON_TOGGLE_ON');
                                           logFirebaseEvent(
@@ -802,17 +805,17 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     widget.tileblock?.headertext != '') ||
                                 _model.choicesselected.contains('Header Text'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -825,18 +828,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -845,7 +848,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -917,7 +920,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: TextFormField(
                                               controller:
                                                   _model.headertextController,
@@ -926,7 +929,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.headertextController',
-                                                const Duration(milliseconds: 2000),
+                                                Duration(milliseconds: 2000),
                                                 () async {
                                                   logFirebaseEvent(
                                                       'EDIT_TILE_BLOCK_headertext_ON_TEXTFIELD_');
@@ -965,7 +968,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -974,7 +977,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                           25.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -984,7 +987,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -1014,17 +1017,17 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     widget.tileblock?.textblock != '') ||
                                 _model.choicesselected.contains('Paragraph'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -1037,18 +1040,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -1057,7 +1060,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -1129,7 +1132,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: TextFormField(
                                               controller:
                                                   _model.paragraphController,
@@ -1138,7 +1141,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.paragraphController',
-                                                const Duration(milliseconds: 2000),
+                                                Duration(milliseconds: 2000),
                                                 () async {
                                                   logFirebaseEvent(
                                                       'EDIT_TILE_BLOCK_paragraph_ON_TEXTFIELD_C');
@@ -1177,7 +1180,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -1186,7 +1189,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                           25.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -1196,7 +1199,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -1226,17 +1229,17 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     widget.tileblock?.videointext != '') ||
                                 _model.choicesselected.contains('Video'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -1249,18 +1252,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -1269,7 +1272,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -1316,10 +1319,10 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                               context)
                                                           .secondary
                                                     ],
-                                                    stops: const [0.0, 1.0],
-                                                    begin: const AlignmentDirectional(
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
                                                         0.0, -1.0),
-                                                    end: const AlignmentDirectional(
+                                                    end: AlignmentDirectional(
                                                         0, 1.0),
                                                   ),
                                                 ),
@@ -1327,7 +1330,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const Alignment(0.0, 0),
+                                                          Alignment(0.0, 0),
                                                       child: TabBar(
                                                         isScrollable: true,
                                                         labelColor:
@@ -1343,12 +1346,12 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                     context)
                                                                 .bodyMedium,
                                                         unselectedLabelStyle:
-                                                            const TextStyle(),
+                                                            TextStyle(),
                                                         indicatorColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondary,
-                                                        tabs: const [
+                                                        tabs: [
                                                           Tab(
                                                             text: 'Add Video',
                                                           ),
@@ -1391,16 +1394,16 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           context)
                                                                       .secondary
                                                                 ],
-                                                                stops: const [
+                                                                stops: [
                                                                   0.0,
                                                                   1.0
                                                                 ],
                                                                 begin:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.0,
                                                                         -1.0),
                                                                 end:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0, 1.0),
                                                               ),
                                                             ),
@@ -1412,7 +1415,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             12.0,
@@ -1439,7 +1442,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                   ),
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             10.0),
                                                                     child:
                                                                         TextFormField(
@@ -1453,7 +1456,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           (_) =>
                                                                               EasyDebounce.debounce(
                                                                         '_model.videoTitleController',
-                                                                        const Duration(
+                                                                        Duration(
                                                                             milliseconds:
                                                                                 2000),
                                                                         () async {
@@ -1491,7 +1494,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1503,7 +1506,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         errorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1515,7 +1518,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedErrorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1549,7 +1552,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                   ),
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             10.0),
                                                                     child:
                                                                         TextFormField(
@@ -1584,7 +1587,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1596,7 +1599,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         errorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1608,7 +1611,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedErrorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1634,7 +1637,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                   ),
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             10.0),
                                                                     child:
                                                                         TextFormField(
@@ -1669,7 +1672,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1681,7 +1684,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         errorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1693,7 +1696,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedErrorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1717,7 +1720,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                   ),
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             10.0),
                                                                     child:
                                                                         TextFormField(
@@ -1752,7 +1755,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1764,7 +1767,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         errorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1776,7 +1779,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedErrorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -1802,7 +1805,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                     data:
                                                                         ThemeData(
                                                                       checkboxTheme:
-                                                                          const CheckboxThemeData(
+                                                                          CheckboxThemeData(
                                                                         shape:
                                                                             RoundedRectangleBorder(
                                                                           borderRadius:
@@ -1845,7 +1848,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         .bodyMedium,
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             10.0,
@@ -1918,12 +1921,12 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             150.0,
                                                                         height:
                                                                             30.0,
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -1940,7 +1943,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         elevation:
                                                                             2.0,
                                                                         borderSide:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           color:
                                                                               Colors.transparent,
                                                                           width:
@@ -1951,7 +1954,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  const Row(
+                                                                  Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
@@ -1960,7 +1963,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             .center,
                                                                     children: [],
                                                                   ),
-                                                                  const FlutterFlowVideoPlayer(
+                                                                  FlutterFlowVideoPlayer(
                                                                     path:
                                                                         'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
                                                                     videoType:
@@ -1993,7 +1996,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -2006,7 +2009,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           10.0,
                                                                           20.0,
@@ -2021,7 +2024,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             (_) =>
                                                                                 EasyDebounce.debounce(
                                                                           '_model.existingNameController1',
-                                                                          const Duration(
+                                                                          Duration(
                                                                               milliseconds: 2000),
                                                                           () async {
                                                                             logFirebaseEvent('EDIT_TILE_BLOCK_ExistingName_ON_TEXTFIEL');
@@ -2065,7 +2068,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           focusedBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -2075,7 +2078,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           errorBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -2085,7 +2088,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           focusedErrorBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -2157,7 +2160,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         final listViewVideosRecord =
                                                                             listViewVideosRecordList[listViewIndex];
                                                                         return Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               16.0,
@@ -2169,7 +2172,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              boxShadow: const [
+                                                                              boxShadow: [
                                                                                 BoxShadow(
                                                                                   blurRadius: 3.0,
                                                                                   color: Color(0x32000000),
@@ -2189,7 +2192,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                       width: MediaQuery.sizeOf(context).width * 1.0,
                                                                                       height: 130.0,
                                                                                       decoration: BoxDecoration(
-                                                                                        boxShadow: const [
+                                                                                        boxShadow: [
                                                                                           BoxShadow(
                                                                                             blurRadius: 3.0,
                                                                                             color: Color(0x411D2429),
@@ -2201,14 +2204,14 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                             FlutterFlowTheme.of(context).primaryBackground,
                                                                                             FlutterFlowTheme.of(context).secondary
                                                                                           ],
-                                                                                          stops: const [0.0, 1.0],
-                                                                                          begin: const AlignmentDirectional(0.0, -1.0),
-                                                                                          end: const AlignmentDirectional(0, 1.0),
+                                                                                          stops: [0.0, 1.0],
+                                                                                          begin: AlignmentDirectional(0.0, -1.0),
+                                                                                          end: AlignmentDirectional(0, 1.0),
                                                                                         ),
                                                                                         borderRadius: BorderRadius.circular(16.0),
                                                                                       ),
                                                                                       child: Padding(
-                                                                                        padding: const EdgeInsets.all(8.0),
+                                                                                        padding: EdgeInsets.all(8.0),
                                                                                         child: Row(
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           children: [
@@ -2224,7 +2227,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                             ),
                                                                                             Expanded(
                                                                                               child: Padding(
-                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                                                                                                 child: Column(
                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -2234,7 +2237,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                       listViewVideosRecord.title,
                                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                             fontFamily: 'Outfit',
-                                                                                                            color: const Color(0xFF090F13),
+                                                                                                            color: Color(0xFF090F13),
                                                                                                             fontSize: 18.0,
                                                                                                             fontWeight: FontWeight.w500,
                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2251,7 +2254,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                               children: [
                                                                                                 Theme(
                                                                                                   data: ThemeData(
-                                                                                                    checkboxTheme: const CheckboxThemeData(
+                                                                                                    checkboxTheme: CheckboxThemeData(
                                                                                                       visualDensity: VisualDensity.standard,
                                                                                                       materialTapTargetSize: MaterialTapTargetSize.padded,
                                                                                                       shape: CircleBorder(),
@@ -2398,7 +2401,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                     await showModalBottomSheet(
                                                                                                       isScrollControlled: true,
                                                                                                       backgroundColor: Colors.transparent,
-                                                                                                      barrierColor: const Color(0x00000000),
+                                                                                                      barrierColor: Color(0x00000000),
                                                                                                       enableDrag: false,
                                                                                                       context: context,
                                                                                                       builder: (context) {
@@ -2445,7 +2448,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -2515,10 +2518,10 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             listViewVideosRecordList[listViewIndex];
                                                                         return Visibility(
                                                                           visible:
-                                                                              widget.tileblock?.videolisttitle.contains(listViewVideosRecord.title) == true,
+                                                                              widget.tileblock?.videolisttitle?.contains(listViewVideosRecord.title) == true,
                                                                           child:
                                                                               Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 16.0,
                                                                                 0.0,
                                                                                 16.0,
@@ -2528,7 +2531,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                               width: double.infinity,
                                                                               decoration: BoxDecoration(
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                boxShadow: const [
+                                                                                boxShadow: [
                                                                                   BoxShadow(
                                                                                     blurRadius: 3.0,
                                                                                     color: Color(0x32000000),
@@ -2548,7 +2551,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                         height: 130.0,
                                                                                         decoration: BoxDecoration(
                                                                                           color: _model.tileselected.contains(listViewVideosRecord.title) == true ? FlutterFlowTheme.of(context).warning : FlutterFlowTheme.of(context).primaryBackground,
-                                                                                          boxShadow: const [
+                                                                                          boxShadow: [
                                                                                             BoxShadow(
                                                                                               blurRadius: 3.0,
                                                                                               color: Color(0x411D2429),
@@ -2558,7 +2561,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                           borderRadius: BorderRadius.circular(16.0),
                                                                                         ),
                                                                                         child: Padding(
-                                                                                          padding: const EdgeInsets.all(8.0),
+                                                                                          padding: EdgeInsets.all(8.0),
                                                                                           child: Row(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             children: [
@@ -2574,7 +2577,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                               ),
                                                                                               Expanded(
                                                                                                 child: Padding(
-                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                                                                                                   child: Column(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -2584,7 +2587,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                         listViewVideosRecord.title,
                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                               fontFamily: 'Outfit',
-                                                                                                              color: const Color(0xFF090F13),
+                                                                                                              color: Color(0xFF090F13),
                                                                                                               fontSize: 18.0,
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2601,7 +2604,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                 children: [
                                                                                                   Theme(
                                                                                                     data: ThemeData(
-                                                                                                      checkboxTheme: const CheckboxThemeData(
+                                                                                                      checkboxTheme: CheckboxThemeData(
                                                                                                         shape: CircleBorder(),
                                                                                                       ),
                                                                                                       unselectedWidgetColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -2684,7 +2687,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                       await showModalBottomSheet(
                                                                                                         isScrollControlled: true,
                                                                                                         backgroundColor: Colors.transparent,
-                                                                                                        barrierColor: const Color(0x00000000),
+                                                                                                        barrierColor: Color(0x00000000),
                                                                                                         enableDrag: false,
                                                                                                         context: context,
                                                                                                         builder: (context) {
@@ -2738,17 +2741,17 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     widget.tileblock?.docintext != '') ||
                                 _model.choicesselected.contains('Document'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -2761,18 +2764,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -2781,7 +2784,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -2841,10 +2844,10 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                               context)
                                                           .secondary
                                                     ],
-                                                    stops: const [0.0, 1.0],
-                                                    begin: const AlignmentDirectional(
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
                                                         0.0, -1.0),
-                                                    end: const AlignmentDirectional(
+                                                    end: AlignmentDirectional(
                                                         0, 1.0),
                                                   ),
                                                 ),
@@ -2852,7 +2855,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const Alignment(0.0, 0),
+                                                          Alignment(0.0, 0),
                                                       child: TabBar(
                                                         isScrollable: true,
                                                         labelColor:
@@ -2868,12 +2871,12 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                     context)
                                                                 .bodyMedium,
                                                         unselectedLabelStyle:
-                                                            const TextStyle(),
+                                                            TextStyle(),
                                                         indicatorColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondary,
-                                                        tabs: const [
+                                                        tabs: [
                                                           Tab(
                                                             text:
                                                                 'Add Document',
@@ -2913,16 +2916,16 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           context)
                                                                       .secondary
                                                                 ],
-                                                                stops: const [
+                                                                stops: [
                                                                   0.0,
                                                                   1.0
                                                                 ],
                                                                 begin:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.0,
                                                                         -1.0),
                                                                 end:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0, 1.0),
                                                               ),
                                                             ),
@@ -2934,7 +2937,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             12.0,
@@ -2961,7 +2964,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                   ),
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             10.0),
                                                                     child:
                                                                         TextFormField(
@@ -2994,7 +2997,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -3006,7 +3009,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         errorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -3018,7 +3021,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedErrorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -3052,7 +3055,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                   ),
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             10.0),
                                                                     child:
                                                                         TextFormField(
@@ -3087,7 +3090,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -3099,7 +3102,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         errorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -3111,7 +3114,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         focusedErrorBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
-                                                                              const BorderSide(
+                                                                              BorderSide(
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
@@ -3134,7 +3137,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -3142,7 +3145,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             8.0),
                                                                     child:
                                                                         FlutterFlowChoiceChips(
-                                                                      options: const [
+                                                                      options: [
                                                                         ChipData(
                                                                             'Upload',
                                                                             Icons.train_outlined),
@@ -3190,7 +3193,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             .bodySmall
                                                                             .override(
                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                              color: const Color(0xFFE3E7ED),
+                                                                              color: Color(0xFFE3E7ED),
                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
                                                                             ),
                                                                         iconColor:
@@ -3224,7 +3227,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                       'Provide Link')
                                                                     Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               10.0),
                                                                       child:
                                                                           TextFormField(
@@ -3236,7 +3239,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             (_) =>
                                                                                 EasyDebounce.debounce(
                                                                           '_model.docLinkController',
-                                                                          const Duration(
+                                                                          Duration(
                                                                               milliseconds: 2000),
                                                                           () async {
                                                                             logFirebaseEvent('EDIT_TILE_BLOCK_docLink_ON_TEXTFIELD_CHA');
@@ -3269,7 +3272,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           focusedBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -3279,7 +3282,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           errorBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -3289,7 +3292,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           focusedErrorBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -3394,12 +3397,12 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                 150.0,
                                                                             height:
                                                                                 40.0,
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0),
-                                                                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -3412,7 +3415,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                 ),
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Colors.transparent,
                                                                               width: 1.0,
                                                                             ),
@@ -3423,7 +3426,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                     ],
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -3534,7 +3537,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                               ),
                                                                             ),
                                                                             duration:
-                                                                                const Duration(milliseconds: 4000),
+                                                                                Duration(milliseconds: 4000),
                                                                             backgroundColor:
                                                                                 FlutterFlowTheme.of(context).secondary,
                                                                           ),
@@ -3551,12 +3554,12 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             250.0,
                                                                         height:
                                                                             30.0,
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -3573,7 +3576,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         elevation:
                                                                             2.0,
                                                                         borderSide:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           color:
                                                                               Colors.transparent,
                                                                           width:
@@ -3600,7 +3603,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           0.0,
                                                                           20.0,
@@ -3613,7 +3616,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
                                                                           10.0,
                                                                           20.0,
@@ -3628,7 +3631,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             (_) =>
                                                                                 EasyDebounce.debounce(
                                                                           '_model.existingNameController2',
-                                                                          const Duration(
+                                                                          Duration(
                                                                               milliseconds: 2000),
                                                                           () async {
                                                                             logFirebaseEvent('EDIT_TILE_BLOCK_ExistingName_ON_TEXTFIEL');
@@ -3676,7 +3679,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           focusedBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -3686,7 +3689,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           errorBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -3696,7 +3699,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           focusedErrorBorder:
                                                                               OutlineInputBorder(
                                                                             borderSide:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               color: Color(0x00000000),
                                                                               width: 1.0,
                                                                             ),
@@ -3768,7 +3771,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         final listViewDocumentsRecord =
                                                                             listViewDocumentsRecordList[listViewIndex];
                                                                         return Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               16.0,
@@ -3780,7 +3783,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              boxShadow: const [
+                                                                              boxShadow: [
                                                                                 BoxShadow(
                                                                                   blurRadius: 3.0,
                                                                                   color: Color(0x32000000),
@@ -3820,7 +3823,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                         height: 130.0,
                                                                                         decoration: BoxDecoration(
                                                                                           color: _model.selectedDoc.contains(listViewDocumentsRecord.reference) == true ? FlutterFlowTheme.of(context).primary : FlutterFlowTheme.of(context).primaryText,
-                                                                                          boxShadow: const [
+                                                                                          boxShadow: [
                                                                                             BoxShadow(
                                                                                               blurRadius: 3.0,
                                                                                               color: Color(0x411D2429),
@@ -3830,13 +3833,13 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                           borderRadius: BorderRadius.circular(16.0),
                                                                                         ),
                                                                                         child: Padding(
-                                                                                          padding: const EdgeInsets.all(8.0),
+                                                                                          padding: EdgeInsets.all(8.0),
                                                                                           child: Row(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             children: [
                                                                                               Expanded(
                                                                                                 child: Padding(
-                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                                                                                                   child: Column(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -3846,7 +3849,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                         listViewDocumentsRecord.documenttitle,
                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                               fontFamily: 'Outfit',
-                                                                                                              color: const Color(0xFF090F13),
+                                                                                                              color: Color(0xFF090F13),
                                                                                                               fontSize: 18.0,
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -3863,7 +3866,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                 children: [
                                                                                                   Theme(
                                                                                                     data: ThemeData(
-                                                                                                      checkboxTheme: const CheckboxThemeData(
+                                                                                                      checkboxTheme: CheckboxThemeData(
                                                                                                         shape: CircleBorder(),
                                                                                                       ),
                                                                                                       unselectedWidgetColor: FlutterFlowTheme.of(context).alternate,
@@ -3933,14 +3936,14 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                       await showModalBottomSheet(
                                                                                                         isScrollControlled: true,
                                                                                                         backgroundColor: Colors.transparent,
-                                                                                                        barrierColor: const Color(0x00000000),
+                                                                                                        barrierColor: Color(0x00000000),
                                                                                                         enableDrag: false,
                                                                                                         context: context,
                                                                                                         builder: (context) {
                                                                                                           return WebViewAware(
                                                                                                             child: Padding(
                                                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                                                              child: const AddDocumentToTileWidget(),
+                                                                                                              child: AddDocumentToTileWidget(),
                                                                                                             ),
                                                                                                           );
                                                                                                         },
@@ -3985,16 +3988,16 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     widget.tileblock?.tileintiletext != '') ||
                                 _model.choicesselected.contains('Tile'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -4007,18 +4010,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -4027,7 +4030,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -4074,10 +4077,10 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                               context)
                                                           .secondary
                                                     ],
-                                                    stops: const [0.0, 1.0],
-                                                    begin: const AlignmentDirectional(
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
                                                         0.0, -1.0),
-                                                    end: const AlignmentDirectional(
+                                                    end: AlignmentDirectional(
                                                         0, 1.0),
                                                   ),
                                                 ),
@@ -4085,7 +4088,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const Alignment(0.0, 0),
+                                                          Alignment(0.0, 0),
                                                       child: TabBar(
                                                         isScrollable: true,
                                                         labelColor:
@@ -4097,12 +4100,12 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                     context)
                                                                 .bodyMedium,
                                                         unselectedLabelStyle:
-                                                            const TextStyle(),
+                                                            TextStyle(),
                                                         indicatorColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondary,
-                                                        tabs: const [
+                                                        tabs: [
                                                           Tab(
                                                             text:
                                                                 'From Existing',
@@ -4199,7 +4202,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                           .listViewPagingController4!
                                                                           .itemList![listViewIndex];
                                                                       return Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             16.0,
                                                                             0.0,
                                                                             16.0,
@@ -4242,7 +4245,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: const Text('Ok'),
+                                                                                          child: Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -4274,7 +4277,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: const Text('Ok'),
+                                                                                          child: Text('Ok'),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -4302,8 +4305,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                 double.infinity,
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: widget.tileblock?.tileWithinTileRef.contains(listViewTilesRecord.reference) == true ? FlutterFlowTheme.of(context).warning : FlutterFlowTheme.of(context).tertiary,
-                                                                              boxShadow: const [
+                                                                              color: widget.tileblock?.tileWithinTileRef?.contains(listViewTilesRecord.reference) == true ? FlutterFlowTheme.of(context).warning : FlutterFlowTheme.of(context).tertiary,
+                                                                              boxShadow: [
                                                                                 BoxShadow(
                                                                                   blurRadius: 3.0,
                                                                                   color: Color(0x32000000),
@@ -4323,8 +4326,8 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                       width: MediaQuery.sizeOf(context).width * 1.0,
                                                                                       height: 130.0,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: widget.tileblock?.tileWithinTileRef.contains(listViewTilesRecord.reference) == true ? FlutterFlowTheme.of(context).warning : FlutterFlowTheme.of(context).tertiary,
-                                                                                        boxShadow: const [
+                                                                                        color: widget.tileblock?.tileWithinTileRef?.contains(listViewTilesRecord.reference) == true ? FlutterFlowTheme.of(context).warning : FlutterFlowTheme.of(context).tertiary,
+                                                                                        boxShadow: [
                                                                                           BoxShadow(
                                                                                             blurRadius: 3.0,
                                                                                             color: Color(0x411D2429),
@@ -4334,13 +4337,13 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                         borderRadius: BorderRadius.circular(16.0),
                                                                                       ),
                                                                                       child: Padding(
-                                                                                        padding: const EdgeInsets.all(8.0),
+                                                                                        padding: EdgeInsets.all(8.0),
                                                                                         child: Row(
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           children: [
                                                                                             Expanded(
                                                                                               child: Padding(
-                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
                                                                                                 child: Column(
                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -4350,7 +4353,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                       listViewTilesRecord.title,
                                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                             fontFamily: 'Outfit',
-                                                                                                            color: const Color(0xFF090F13),
+                                                                                                            color: Color(0xFF090F13),
                                                                                                             fontSize: 18.0,
                                                                                                             fontWeight: FontWeight.w500,
                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -4384,7 +4387,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                           ),
                                                                                                         });
                                                                                                       },
-                                                                                                      child: const Icon(
+                                                                                                      child: Icon(
                                                                                                         Icons.cancel_outlined,
                                                                                                         color: Colors.black,
                                                                                                         size: 34.0,
@@ -4406,14 +4409,14 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                                                         await showModalBottomSheet(
                                                                                                           isScrollControlled: true,
                                                                                                           backgroundColor: Colors.transparent,
-                                                                                                          barrierColor: const Color(0x00000000),
+                                                                                                          barrierColor: Color(0x00000000),
                                                                                                           enableDrag: false,
                                                                                                           context: context,
                                                                                                           builder: (context) {
                                                                                                             return WebViewAware(
                                                                                                               child: Padding(
                                                                                                                 padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                child: const AddDocumentToTileWidget(),
+                                                                                                                child: AddDocumentToTileWidget(),
                                                                                                               ),
                                                                                                             );
                                                                                                           },
@@ -4460,17 +4463,17 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         '') ||
                                 _model.choicesselected.contains('Button'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -4483,18 +4486,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -4503,7 +4506,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -4532,7 +4535,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 12.0, 0.0, 0.0),
                                                   child: Text(
@@ -4556,14 +4559,14 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                         ),
                                                   ),
                                                 ),
-                                                const Divider(
+                                                Divider(
                                                   thickness: 1.0,
                                                 ),
                                               ],
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: TextFormField(
                                               controller:
                                                   _model.linktextController,
@@ -4572,7 +4575,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.linktextController',
-                                                const Duration(milliseconds: 2000),
+                                                Duration(milliseconds: 2000),
                                                 () async {
                                                   logFirebaseEvent(
                                                       'EDIT_TILE_BLOCK_linktext_ON_TEXTFIELD_CH');
@@ -4610,7 +4613,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4619,7 +4622,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                           25.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4629,7 +4632,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4650,7 +4653,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: TextFormField(
                                               controller:
                                                   _model.buttonlinkController1,
@@ -4659,7 +4662,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.buttonlinkController1',
-                                                const Duration(milliseconds: 2000),
+                                                Duration(milliseconds: 2000),
                                                 () async {
                                                   logFirebaseEvent(
                                                       'EDIT_TILE_BLOCK_buttonlink_ON_TEXTFIELD_');
@@ -4699,7 +4702,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4708,7 +4711,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                           25.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4718,7 +4721,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4738,7 +4741,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                   .asValidator(context),
                                             ),
                                           ),
-                                          const Divider(
+                                          Divider(
                                             thickness: 1.0,
                                           ),
                                         ],
@@ -4750,16 +4753,16 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                             if ((widget.tileblock?.hassocialfeed == true) ||
                                 _model.choicesselected.contains('Social Feed'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -4772,18 +4775,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -4792,7 +4795,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -4821,7 +4824,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 12.0, 0.0, 0.0),
                                                   child: Text(
@@ -4845,14 +4848,14 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                         ),
                                                   ),
                                                 ),
-                                                const Divider(
+                                                Divider(
                                                   thickness: 1.0,
                                                 ),
                                               ],
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: TextFormField(
                                               controller: _model
                                                   .socialfeednameController,
@@ -4879,7 +4882,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4888,7 +4891,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                           25.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4898,7 +4901,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4919,7 +4922,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: TextFormField(
                                               controller:
                                                   _model.buttonlinkController2,
@@ -4948,7 +4951,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4957,7 +4960,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                           25.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -4967,7 +4970,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -5049,14 +5052,14 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 builder: (alertDialogContext) {
                                                   return WebViewAware(
                                                     child: AlertDialog(
-                                                      title: const Text(
+                                                      title: Text(
                                                           'Social Feed Created'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     ),
@@ -5070,9 +5073,9 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                             options: FFButtonOptions(
                                               width: 130.0,
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -5093,7 +5096,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                                         context)
                                                                     .titleSmallFamily),
                                                       ),
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -5101,7 +5104,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                   BorderRadius.circular(8.0),
                                             ),
                                           ),
-                                          const Divider(
+                                          Divider(
                                             thickness: 1.0,
                                           ),
                                         ],
@@ -5114,17 +5117,17 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     widget.tileblock?.docintext != '') ||
                                 _model.choicesselected.contains('Document'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -5137,18 +5140,18 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -5157,7 +5160,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 16.0, 24.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -5186,7 +5189,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 12.0, 0.0, 0.0),
                                                   child: Text(
@@ -5214,7 +5217,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: TextFormField(
                                               controller:
                                                   _model.docTextController,
@@ -5223,7 +5226,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.docTextController',
-                                                const Duration(milliseconds: 2000),
+                                                Duration(milliseconds: 2000),
                                                 () async {
                                                   logFirebaseEvent(
                                                       'EDIT_TILE_BLOCK_docText_ON_TEXTFIELD_CHA');
@@ -5260,7 +5263,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -5269,7 +5272,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                           25.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -5279,7 +5282,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -5325,17 +5328,17 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                     widget.tileblock?.image != '') ||
                                 _model.choicesselected.contains('Image'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 12.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 530.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x33000000),
@@ -5348,13 +5351,13 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                               .primaryBackground,
                                           FlutterFlowTheme.of(context).secondary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
-                                        color: const Color(0xFFEFF7F5),
+                                        color: Color(0xFFEFF7F5),
                                         width: 1.0,
                                       ),
                                     ),
@@ -5363,7 +5366,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -5377,7 +5380,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 10.0,
                                                                 10.0, 10.0),
                                                     child: InkWell(
@@ -5429,7 +5432,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -5437,7 +5440,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 0.0, 20.0, 0.0),
                                                 child: Row(
@@ -5449,7 +5452,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -5559,7 +5562,7 @@ class _EditTileBlockWidgetState extends State<EditTileBlockWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,

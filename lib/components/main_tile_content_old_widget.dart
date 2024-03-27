@@ -15,6 +15,7 @@ import '/testpage/components/history_tiles/history_tiles_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,14 +70,14 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
     context.watch<FFAppState>();
 
     return Visibility(
-      visible: (currentUserDocument?.hasaccess.toList() ?? [])
+      visible: (currentUserDocument?.hasaccess?.toList() ?? [])
           .contains(FFAppState().selectedcategory),
       child: AuthUserStreamWidget(
         builder: (context) => Container(
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 870.0,
           ),
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,8 +182,8 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                         logFirebaseEvent('Row_bottom_sheet');
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
-                                          backgroundColor: const Color(0x00000000),
-                                          barrierColor: const Color(0x00000000),
+                                          backgroundColor: Color(0x00000000),
+                                          barrierColor: Color(0x00000000),
                                           context: context,
                                           builder: (context) {
                                             return WebViewAware(
@@ -190,7 +191,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: SizedBox(
+                                                child: Container(
                                                   height: double.infinity,
                                                   child: EditTileBlockWidget(
                                                     tileblock: _model
@@ -246,7 +247,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                             false) ==
                                         true)
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -263,7 +264,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              barrierColor: const Color(0x00000000),
+                                              barrierColor: Color(0x00000000),
                                               context: context,
                                               builder: (context) {
                                                 return WebViewAware(
@@ -271,7 +272,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       height: 600.0,
                                                       child:
                                                           CreateNewTileaInsideWidget(
@@ -354,7 +355,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: const SizedBox(
+                                                    child: Container(
                                                       height: 150.0,
                                                       child:
                                                           HistoryTilesWidget(),
@@ -378,7 +379,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                     if ((FFAppState().childrenfound == true) &&
                                         (FFAppState().isasubtile == true))
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 7.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -398,7 +399,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                         1.0,
                                                     maxHeight: 80.0,
                                                   ),
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: StreamBuilder<
                                                       List<TilesRecord>>(
                                                     stream: queryTilesRecord(
@@ -467,7 +468,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                               children: [
                                                                 Padding(
                                                                   padding:
-                                                                      const EdgeInsets
+                                                                      EdgeInsets
                                                                           .all(
                                                                               10.0),
                                                                   child:
@@ -484,7 +485,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                     ),
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           3.0,
                                                                           0.0,
@@ -512,7 +513,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                             FFAppState().selectedTile =
                                                                                 listViewTilesRecord.title;
                                                                             FFAppState().selectedSubTilesRef =
-                                                                                listViewTilesRecord.reference;
+                                                                                listViewTilesRecord?.reference;
                                                                             FFAppState().SelectedTileRef =
                                                                                 listViewTilesRecord.reference;
                                                                             FFAppState().isSubTile =
@@ -527,7 +528,8 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                             _model.historyID =
                                                                                 _model.historyID! + 1;
                                                                           });
-                                                                          if (listViewTilesRecord.children.isNotEmpty) {
+                                                                          if (listViewTilesRecord.children.length >
+                                                                              0) {
                                                                             logFirebaseEvent('tile_update_app_state');
                                                                             setState(() {
                                                                               FFAppState().childrenfound = true;
@@ -554,12 +556,12 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: const Text('Do nothing'),
-                                                                                    content: const Text('This will be deleted'),
+                                                                                    title: Text('Do nothing'),
+                                                                                    content: Text('This will be deleted'),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: const Text('Ok'),
+                                                                                        child: Text('Ok'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -615,7 +617,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                               BoxShadow(
                                                                                 blurRadius: 3.0,
                                                                                 color: FlutterFlowTheme.of(context).lightergrey,
-                                                                                offset: const Offset(0.0, 1.0),
+                                                                                offset: Offset(0.0, 1.0),
                                                                               )
                                                                             ],
                                                                             gradient:
@@ -624,12 +626,12 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 FlutterFlowTheme.of(context).primaryBackground,
                                                                                 FlutterFlowTheme.of(context).secondary
                                                                               ],
-                                                                              stops: const [
+                                                                              stops: [
                                                                                 0.0,
                                                                                 1.0
                                                                               ],
-                                                                              begin: const AlignmentDirectional(0.0, -1.0),
-                                                                              end: const AlignmentDirectional(0, 1.0),
+                                                                              begin: AlignmentDirectional(0.0, -1.0),
+                                                                              end: AlignmentDirectional(0, 1.0),
                                                                             ),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(16.0),
@@ -645,7 +647,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                             children: [
                                                                               Expanded(
                                                                                 child: Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                   child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -675,7 +677,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                           child: InkWell(
                                                                                             splashColor: Colors.transparent,
                                                                                             focusColor: Colors.transparent,
@@ -693,7 +695,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                                 ),
                                                                                               });
                                                                                             },
-                                                                                            child: const Icon(
+                                                                                            child: Icon(
                                                                                               Icons.upload_sharp,
                                                                                               color: Color(0xFF57636C),
                                                                                               size: 24.0,
@@ -701,7 +703,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                           child: InkWell(
                                                                                             splashColor: Colors.transparent,
                                                                                             focusColor: Colors.transparent,
@@ -719,7 +721,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                                 ),
                                                                                               });
                                                                                             },
-                                                                                            child: const Icon(
+                                                                                            child: Icon(
                                                                                               Icons.download_outlined,
                                                                                               color: Color(0xFF57636C),
                                                                                               size: 24.0,
@@ -727,7 +729,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                           child: InkWell(
                                                                                             splashColor: Colors.transparent,
                                                                                             focusColor: Colors.transparent,
@@ -741,16 +743,16 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                                     builder: (alertDialogContext) {
                                                                                                       return WebViewAware(
                                                                                                         child: AlertDialog(
-                                                                                                          title: const Text('Delete Tile'),
-                                                                                                          content: const Text('Are you sure you wish to delete this tile?'),
+                                                                                                          title: Text('Delete Tile'),
+                                                                                                          content: Text('Are you sure you wish to delete this tile?'),
                                                                                                           actions: [
                                                                                                             TextButton(
                                                                                                               onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                              child: const Text('Cancel'),
+                                                                                                              child: Text('Cancel'),
                                                                                                             ),
                                                                                                             TextButton(
                                                                                                               onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                              child: const Text('Confirm '),
+                                                                                                              child: Text('Confirm '),
                                                                                                             ),
                                                                                                           ],
                                                                                                         ),
@@ -763,7 +765,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                                 await listViewTilesRecord.reference.delete();
                                                                                               }
                                                                                             },
-                                                                                            child: const Icon(
+                                                                                            child: Icon(
                                                                                               Icons.delete_forever_outlined,
                                                                                               color: Color(0xFF57636C),
                                                                                               size: 24.0,
@@ -771,7 +773,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                           child: InkWell(
                                                                                             splashColor: Colors.transparent,
                                                                                             focusColor: Colors.transparent,
@@ -783,13 +785,13 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                               await showModalBottomSheet(
                                                                                                 isScrollControlled: true,
                                                                                                 backgroundColor: FlutterFlowTheme.of(context).secondary,
-                                                                                                barrierColor: const Color(0x00000000),
+                                                                                                barrierColor: Color(0x00000000),
                                                                                                 context: context,
                                                                                                 builder: (context) {
                                                                                                   return WebViewAware(
                                                                                                     child: Padding(
                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                      child: SizedBox(
+                                                                                                      child: Container(
                                                                                                         height: 600.0,
                                                                                                         child: EditTileWidget(
                                                                                                           tilesdoc: listViewTilesRecord,
@@ -800,7 +802,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                                 },
                                                                                               ).then((value) => safeSetState(() {}));
                                                                                             },
-                                                                                            child: const Icon(
+                                                                                            child: Icon(
                                                                                               Icons.edit_outlined,
                                                                                               color: Color(0xFF57636C),
                                                                                               size: 24.0,
@@ -890,12 +892,12 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 6.0, 16.0, 6.0),
                                             child: Container(
                                               width: double.infinity,
                                               decoration: BoxDecoration(
-                                                boxShadow: const [
+                                                boxShadow: [
                                                   BoxShadow(
                                                     blurRadius: 4.0,
                                                     color: Color(0x33000000),
@@ -909,10 +911,10 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .secondary
                                                   ],
-                                                  stops: const [0.0, 1.0],
-                                                  begin: const AlignmentDirectional(
+                                                  stops: [0.0, 1.0],
+                                                  begin: AlignmentDirectional(
                                                       0.0, -1.0),
-                                                  end: const AlignmentDirectional(
+                                                  end: AlignmentDirectional(
                                                       0, 1.0),
                                                 ),
                                                 borderRadius:
@@ -932,7 +934,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           true)
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -945,7 +947,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsets
+                                                                    EdgeInsets
                                                                         .all(
                                                                             4.0),
                                                                 child: InkWell(
@@ -971,16 +973,16 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: const Text('Delete Tile Block'),
-                                                                                    content: const Text('Are you sure you wish to delete this tile block?'),
+                                                                                    title: Text('Delete Tile Block'),
+                                                                                    content: Text('Are you sure you wish to delete this tile block?'),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                        child: const Text('Cancel'),
+                                                                                        child: Text('Cancel'),
                                                                                       ),
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                        child: const Text('Confirm '),
+                                                                                        child: Text('Confirm '),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -996,7 +998,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                           .delete();
                                                                     }
                                                                   },
-                                                                  child: const Icon(
+                                                                  child: Icon(
                                                                     Icons
                                                                         .delete_forever_outlined,
                                                                     color: Color(
@@ -1013,7 +1015,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsets
+                                                                    EdgeInsets
                                                                         .all(
                                                                             4.0),
                                                                 child: InkWell(
@@ -1045,7 +1047,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                       ),
                                                                     });
                                                                   },
-                                                                  child: const Icon(
+                                                                  child: Icon(
                                                                     Icons
                                                                         .upload_sharp,
                                                                     color: Color(
@@ -1056,7 +1058,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsets
+                                                                    EdgeInsets
                                                                         .all(
                                                                             4.0),
                                                                 child: InkWell(
@@ -1088,7 +1090,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                       ),
                                                                     });
                                                                   },
-                                                                  child: const Icon(
+                                                                  child: Icon(
                                                                     Icons
                                                                         .download_outlined,
                                                                     color: Color(
@@ -1127,9 +1129,9 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                               isScrollControlled:
                                                                   true,
                                                               backgroundColor:
-                                                                  const Color(
+                                                                  Color(
                                                                       0x00000000),
-                                                              barrierColor: const Color(
+                                                              barrierColor: Color(
                                                                   0x00000000),
                                                               context: context,
                                                               builder:
@@ -1141,7 +1143,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                         .viewInsetsOf(
                                                                             context),
                                                                     child:
-                                                                        SizedBox(
+                                                                        Container(
                                                                       height: double
                                                                           .infinity,
                                                                       child:
@@ -1173,7 +1175,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.all(2.0),
+                                                        EdgeInsets.all(2.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1190,19 +1192,22 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           children: [
                                                             Container(
                                                               constraints:
-                                                                  const BoxConstraints(
+                                                                  BoxConstraints(
                                                                 maxWidth: 340.0,
                                                                 maxHeight:
                                                                     300.0,
                                                               ),
                                                               decoration:
-                                                                  const BoxDecoration(),
+                                                                  BoxDecoration(),
                                                               child: Visibility(
                                                                 visible: listViewTileblocksRecord
                                                                             .image !=
+                                                                        null &&
+                                                                    listViewTileblocksRecord
+                                                                            .image !=
                                                                         '',
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           3.0,
@@ -1230,10 +1235,13 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                         ),
                                                         if (listViewTileblocksRecord
                                                                     .headertext !=
+                                                                null &&
+                                                            listViewTileblocksRecord
+                                                                    .headertext !=
                                                                 '')
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     5.0),
                                                             child: Text(
                                                               listViewTileblocksRecord
@@ -1245,7 +1253,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       7.0,
@@ -1258,12 +1266,15 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                             children: [
                                                               if (listViewTileblocksRecord
                                                                           .textblock !=
+                                                                      null &&
+                                                                  listViewTileblocksRecord
+                                                                          .textblock !=
                                                                       '')
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             5.0),
                                                                     child: Text(
                                                                       listViewTileblocksRecord
@@ -1291,7 +1302,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1299,7 +1310,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                       0.0),
                                                           child: Container(
                                                             constraints:
-                                                                const BoxConstraints(
+                                                                BoxConstraints(
                                                               maxWidth: 1200.0,
                                                             ),
                                                             decoration:
@@ -1314,16 +1325,16 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                           context)
                                                                       .secondary
                                                                 ],
-                                                                stops: const [
+                                                                stops: [
                                                                   0.0,
                                                                   1.0
                                                                 ],
                                                                 begin:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.0,
                                                                         -1.0),
                                                                 end:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0, 1.0),
                                                               ),
                                                             ),
@@ -1338,13 +1349,19 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           children: [
                                                             if ((listViewTileblocksRecord
                                                                             .buttontextlinktopage !=
+                                                                        null &&
+                                                                    listViewTileblocksRecord
+                                                                            .buttontextlinktopage !=
                                                                         '') ||
                                                                 (listViewTileblocksRecord
+                                                                            .linktopage !=
+                                                                        null &&
+                                                                    listViewTileblocksRecord
                                                                             .linktopage !=
                                                                         ''))
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -1367,10 +1384,10 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                   options:
                                                                       FFButtonOptions(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             20.0),
                                                                     iconPadding:
-                                                                        const EdgeInsetsDirectional.fromSTEB(
+                                                                        EdgeInsetsDirectional.fromSTEB(
                                                                             20.0,
                                                                             0.0,
                                                                             20.0,
@@ -1464,7 +1481,9 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                   listViewVideosIndex];
                                                           return Visibility(
                                                             visible: (listViewTileblocksRecord
-                                                                        .videolisttitle.isNotEmpty) &&
+                                                                        .videolisttitle
+                                                                        .length >
+                                                                    0) &&
                                                                 listViewTileblocksRecord
                                                                     .videolisttitle
                                                                     .contains(
@@ -1475,7 +1494,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                     true),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           3.0,
@@ -1483,13 +1502,13 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                           3.0),
                                                               child: Container(
                                                                 constraints:
-                                                                    const BoxConstraints(
+                                                                    BoxConstraints(
                                                                   maxWidth:
                                                                       300.0,
                                                                 ),
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                  boxShadow: const [
+                                                                  boxShadow: [
                                                                     BoxShadow(
                                                                       blurRadius:
                                                                           5.0,
@@ -1510,15 +1529,15 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                               context)
                                                                           .secondary
                                                                     ],
-                                                                    stops: const [
+                                                                    stops: [
                                                                       0.0,
                                                                       1.0
                                                                     ],
                                                                     begin:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
-                                                                    end: const AlignmentDirectional(
+                                                                    end: AlignmentDirectional(
                                                                         0, 1.0),
                                                                   ),
                                                                   borderRadius:
@@ -1543,7 +1562,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                           height:
                                                                               32.0,
                                                                           constraints:
-                                                                              const BoxConstraints(
+                                                                              BoxConstraints(
                                                                             maxWidth:
                                                                                 1200.0,
                                                                           ),
@@ -1555,41 +1574,41 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 FlutterFlowTheme.of(context).accent3,
                                                                                 FlutterFlowTheme.of(context).secondary
                                                                               ],
-                                                                              stops: const [
+                                                                              stops: [
                                                                                 0.0,
                                                                                 1.0
                                                                               ],
-                                                                              begin: const AlignmentDirectional(0.0, -1.0),
-                                                                              end: const AlignmentDirectional(0, 1.0),
+                                                                              begin: AlignmentDirectional(0.0, -1.0),
+                                                                              end: AlignmentDirectional(0, 1.0),
                                                                             ),
                                                                             borderRadius:
-                                                                                const BorderRadius.only(
+                                                                                BorderRadius.only(
                                                                               bottomLeft: Radius.circular(0.0),
                                                                               bottomRight: Radius.circular(0.0),
                                                                               topLeft: Radius.circular(16.0),
                                                                               topRight: Radius.circular(16.0),
                                                                             ),
                                                                           ),
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                         ),
                                                                         Container(
                                                                           constraints:
-                                                                              const BoxConstraints(
+                                                                              BoxConstraints(
                                                                             maxWidth:
                                                                                 600.0,
                                                                           ),
                                                                           decoration:
-                                                                              const BoxDecoration(),
+                                                                              BoxDecoration(),
                                                                           child:
                                                                               Container(
                                                                             constraints:
-                                                                                const BoxConstraints(
+                                                                                BoxConstraints(
                                                                               maxWidth: 1200.0,
                                                                             ),
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 FlutterFlowVideoPlayer(
                                                                               path: listViewVideosVideosRecord.videofromurl,
@@ -1615,15 +1634,15 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 FlutterFlowTheme.of(context).primaryBackground,
                                                                                 FlutterFlowTheme.of(context).secondary
                                                                               ],
-                                                                              stops: const [
+                                                                              stops: [
                                                                                 0.0,
                                                                                 1.0
                                                                               ],
-                                                                              begin: const AlignmentDirectional(0.0, -1.0),
-                                                                              end: const AlignmentDirectional(0, 1.0),
+                                                                              begin: AlignmentDirectional(0.0, -1.0),
+                                                                              end: AlignmentDirectional(0, 1.0),
                                                                             ),
                                                                             borderRadius:
-                                                                                const BorderRadius.only(
+                                                                                BorderRadius.only(
                                                                               bottomLeft: Radius.circular(16.0),
                                                                               bottomRight: Radius.circular(16.0),
                                                                               topLeft: Radius.circular(0.0),
@@ -1636,7 +1655,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsets.all(12.0),
+                                                                                padding: EdgeInsets.all(12.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1651,7 +1670,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                       child: Text(
                                                                                         listViewVideosVideosRecord.videosummary,
                                                                                         style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -1663,7 +1682,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                       ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(7.0),
+                                                                                      padding: EdgeInsets.all(7.0),
                                                                                       child: Row(
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         children: [
@@ -1677,7 +1696,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                             ),
                                                                                           ),
                                                                                           Padding(
-                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                             child: Text(
                                                                                               listViewVideosVideosRecord.videoby,
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1766,7 +1785,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                     true,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           3.0,
@@ -1774,13 +1793,13 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                           3.0),
                                                               child: Container(
                                                                 constraints:
-                                                                    const BoxConstraints(
+                                                                    BoxConstraints(
                                                                   maxWidth:
                                                                       300.0,
                                                                 ),
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                  boxShadow: const [
+                                                                  boxShadow: [
                                                                     BoxShadow(
                                                                       blurRadius:
                                                                           5.0,
@@ -1801,15 +1820,15 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                               context)
                                                                           .secondary
                                                                     ],
-                                                                    stops: const [
+                                                                    stops: [
                                                                       0.0,
                                                                       1.0
                                                                     ],
                                                                     begin:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
-                                                                    end: const AlignmentDirectional(
+                                                                    end: AlignmentDirectional(
                                                                         0, 1.0),
                                                                   ),
                                                                   borderRadius:
@@ -1834,7 +1853,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                           height:
                                                                               32.0,
                                                                           constraints:
-                                                                              const BoxConstraints(
+                                                                              BoxConstraints(
                                                                             maxWidth:
                                                                                 1200.0,
                                                                           ),
@@ -1846,46 +1865,46 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 FlutterFlowTheme.of(context).primaryBackground,
                                                                                 FlutterFlowTheme.of(context).secondary
                                                                               ],
-                                                                              stops: const [
+                                                                              stops: [
                                                                                 0.0,
                                                                                 1.0
                                                                               ],
-                                                                              begin: const AlignmentDirectional(0.0, -1.0),
-                                                                              end: const AlignmentDirectional(0, 1.0),
+                                                                              begin: AlignmentDirectional(0.0, -1.0),
+                                                                              end: AlignmentDirectional(0, 1.0),
                                                                             ),
                                                                             borderRadius:
-                                                                                const BorderRadius.only(
+                                                                                BorderRadius.only(
                                                                               bottomLeft: Radius.circular(0.0),
                                                                               bottomRight: Radius.circular(0.0),
                                                                               topLeft: Radius.circular(16.0),
                                                                               topRight: Radius.circular(16.0),
                                                                             ),
                                                                           ),
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                         ),
                                                                         Container(
                                                                           constraints:
-                                                                              const BoxConstraints(
+                                                                              BoxConstraints(
                                                                             maxWidth:
                                                                                 600.0,
                                                                           ),
                                                                           decoration:
-                                                                              const BoxDecoration(),
+                                                                              BoxDecoration(),
                                                                           child:
                                                                               Container(
                                                                             constraints:
-                                                                                const BoxConstraints(
+                                                                                BoxConstraints(
                                                                               maxWidth: 1200.0,
                                                                             ),
                                                                             decoration:
-                                                                                const BoxDecoration(),
+                                                                                BoxDecoration(),
                                                                             child:
                                                                                 Column(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
-                                                                                SizedBox(
+                                                                                Container(
                                                                                   width: 1700.0,
                                                                                   height: 300.0,
                                                                                   child: custom_widgets.VideoWithPlay(
@@ -1906,7 +1925,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                             borderRadius:
-                                                                                const BorderRadius.only(
+                                                                                BorderRadius.only(
                                                                               bottomLeft: Radius.circular(16.0),
                                                                               bottomRight: Radius.circular(16.0),
                                                                               topLeft: Radius.circular(0.0),
@@ -1919,7 +1938,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsets.all(12.0),
+                                                                                padding: EdgeInsets.all(12.0),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1934,7 +1953,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                       child: Text(
                                                                                         listViewAIVideosVideosRecord.videosummary,
                                                                                         style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -1946,7 +1965,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                       ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(7.0),
+                                                                                      padding: EdgeInsets.all(7.0),
                                                                                       child: Row(
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         children: [
@@ -1960,7 +1979,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                             ),
                                                                                           ),
                                                                                           Padding(
-                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                             child: Text(
                                                                                               listViewAIVideosVideosRecord.videoby,
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2043,10 +2062,12 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                   return Visibility(
                                                     visible:
                                                         listViewTileblocksRecord
-                                                                .doclistitle.isNotEmpty,
+                                                                .doclistitle
+                                                                .length >
+                                                            0,
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   26.0,
                                                                   3.0,
@@ -2065,6 +2086,9 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           logFirebaseEvent(
                                                               'MAIN_TILE_CONTENT_OLD_COMP_tile_ON_TAP');
                                                           if (listViewDocumentsRecord
+                                                                      .documentupload !=
+                                                                  null &&
+                                                              listViewDocumentsRecord
                                                                       .documentupload !=
                                                                   '') {
                                                             logFirebaseEvent(
@@ -2085,7 +2109,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           decoration:
                                                               BoxDecoration(
                                                             color: Colors.white,
-                                                            boxShadow: const [
+                                                            boxShadow: [
                                                               BoxShadow(
                                                                 blurRadius: 3.0,
                                                                 color: Color(
@@ -2101,7 +2125,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     3.0),
                                                             child: Row(
                                                               mainAxisSize:
@@ -2109,7 +2133,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                       .max,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           8.0,
                                                                           8.0,
@@ -2140,7 +2164,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             8.0,
@@ -2165,7 +2189,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                               .titleMedium
                                                                               .override(
                                                                                 fontFamily: 'Outfit',
-                                                                                color: const Color(0xFF090F13),
+                                                                                color: Color(0xFF090F13),
                                                                                 fontSize: 18.0,
                                                                                 fontWeight: FontWeight.w500,
                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2174,7 +2198,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                         Expanded(
                                                                           child:
                                                                               Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 4.0,
                                                                                 8.0,
@@ -2188,7 +2212,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                               textAlign: TextAlign.start,
                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                     fontFamily: 'Outfit',
-                                                                                    color: const Color(0xFF7C8791),
+                                                                                    color: Color(0xFF7C8791),
                                                                                     fontSize: 14.0,
                                                                                     fontWeight: FontWeight.normal,
                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2203,12 +2227,12 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                             if (valueOrDefault<bool>(currentUserDocument?.isadmin, false) ==
                                                                                 true)
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                 child: Row(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(4.0),
+                                                                                      padding: EdgeInsets.all(4.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -2222,16 +2246,16 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                                 builder: (alertDialogContext) {
                                                                                                   return WebViewAware(
                                                                                                     child: AlertDialog(
-                                                                                                      title: const Text('Are you sure you wish to delete this Document ?'),
-                                                                                                      content: const Text('This will delete the document, if you are just loooking to remove it from this tile block then use. the edit button on the tile block instead.'),
+                                                                                                      title: Text('Are you sure you wish to delete this Document ?'),
+                                                                                                      content: Text('This will delete the document, if you are just loooking to remove it from this tile block then use. the edit button on the tile block instead.'),
                                                                                                       actions: [
                                                                                                         TextButton(
                                                                                                           onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                          child: const Text('Cancel'),
+                                                                                                          child: Text('Cancel'),
                                                                                                         ),
                                                                                                         TextButton(
                                                                                                           onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                          child: const Text('Confirm '),
+                                                                                                          child: Text('Confirm '),
                                                                                                         ),
                                                                                                       ],
                                                                                                     ),
@@ -2244,7 +2268,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                             await listViewDocumentsRecord.reference.delete();
                                                                                           }
                                                                                         },
-                                                                                        child: const Icon(
+                                                                                        child: Icon(
                                                                                           Icons.delete_forever_outlined,
                                                                                           color: Color(0xFF57636C),
                                                                                           size: 24.0,
@@ -2252,7 +2276,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                       ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(4.0),
+                                                                                      padding: EdgeInsets.all(4.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -2270,7 +2294,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                             ),
                                                                                           });
                                                                                         },
-                                                                                        child: const Icon(
+                                                                                        child: Icon(
                                                                                           Icons.upload_sharp,
                                                                                           color: Color(0xFF57636C),
                                                                                           size: 24.0,
@@ -2278,7 +2302,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                       ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: const EdgeInsets.all(4.0),
+                                                                                      padding: EdgeInsets.all(4.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -2296,7 +2320,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                             ),
                                                                                           });
                                                                                         },
-                                                                                        child: const Icon(
+                                                                                        child: Icon(
                                                                                           Icons.download_outlined,
                                                                                           color: Color(0xFF57636C),
                                                                                           size: 24.0,
@@ -2324,13 +2348,13 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                   await showModalBottomSheet(
                                                                                     isScrollControlled: true,
                                                                                     backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                    barrierColor: const Color(0x00000000),
+                                                                                    barrierColor: Color(0x00000000),
                                                                                     context: context,
                                                                                     builder: (context) {
                                                                                       return WebViewAware(
                                                                                         child: Padding(
                                                                                           padding: MediaQuery.viewInsetsOf(context),
-                                                                                          child: SizedBox(
+                                                                                          child: Container(
                                                                                             height: 600.0,
                                                                                             child: EditDocumentTileWidget(
                                                                                               document: listViewDocumentsRecord,
@@ -2412,7 +2436,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 3.0,
                                                                 16.0, 0.0),
                                                     child: InkWell(
@@ -2430,7 +2454,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                         logFirebaseEvent(
                                                             'tile_launch_u_r_l');
                                                         await launchURL(
-                                                            listViewLinksRecord
+                                                            listViewLinksRecord!
                                                                 .linkurl);
                                                       },
                                                       child: Container(
@@ -2443,7 +2467,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                         decoration:
                                                             BoxDecoration(
                                                           color: Colors.white,
-                                                          boxShadow: const [
+                                                          boxShadow: [
                                                             BoxShadow(
                                                               blurRadius: 3.0,
                                                               color: Color(
@@ -2459,7 +2483,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   3.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -2468,7 +2492,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           8.0,
                                                                           8.0,
@@ -2492,7 +2516,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                             .titleMedium
                                                                             .override(
                                                                               fontFamily: 'Outfit',
-                                                                              color: const Color(0xFF090F13),
+                                                                              color: Color(0xFF090F13),
                                                                               fontSize: 18.0,
                                                                               fontWeight: FontWeight.w500,
                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2501,14 +2525,14 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                       Expanded(
                                                                         child:
                                                                             Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               4.0,
                                                                               8.0,
                                                                               0.0),
                                                                           child:
                                                                               AutoSizeText(
-                                                                            listViewLinksRecord.summary.maybeHandleOverflow(
+                                                                            listViewLinksRecord!.summary.maybeHandleOverflow(
                                                                               maxChars: 70,
                                                                               replacement: '…',
                                                                             ),
@@ -2516,7 +2540,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                   fontFamily: 'Outfit',
-                                                                                  color: const Color(0xFF7C8791),
+                                                                                  color: Color(0xFF7C8791),
                                                                                   fontSize: 14.0,
                                                                                   fontWeight: FontWeight.normal,
                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2531,12 +2555,12 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                           if (valueOrDefault<bool>(currentUserDocument?.isadmin, false) ==
                                                                               true)
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: const EdgeInsets.all(4.0),
+                                                                                    padding: EdgeInsets.all(4.0),
                                                                                     child: InkWell(
                                                                                       splashColor: Colors.transparent,
                                                                                       focusColor: Colors.transparent,
@@ -2550,16 +2574,16 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                               builder: (alertDialogContext) {
                                                                                                 return WebViewAware(
                                                                                                   child: AlertDialog(
-                                                                                                    title: const Text('Delete Link'),
-                                                                                                    content: const Text('Are you sure you wish to delete this link block?'),
+                                                                                                    title: Text('Delete Link'),
+                                                                                                    content: Text('Are you sure you wish to delete this link block?'),
                                                                                                     actions: [
                                                                                                       TextButton(
                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                        child: const Text('Cancel'),
+                                                                                                        child: Text('Cancel'),
                                                                                                       ),
                                                                                                       TextButton(
                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                        child: const Text('Confirm '),
+                                                                                                        child: Text('Confirm '),
                                                                                                       ),
                                                                                                     ],
                                                                                                   ),
@@ -2569,10 +2593,10 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                             false;
                                                                                         if (confirmDialogResponse) {
                                                                                           logFirebaseEvent('Icon_backend_call');
-                                                                                          await listViewLinksRecord.reference.delete();
+                                                                                          await listViewLinksRecord!.reference.delete();
                                                                                         }
                                                                                       },
-                                                                                      child: const Icon(
+                                                                                      child: Icon(
                                                                                         Icons.delete_forever_outlined,
                                                                                         color: Color(0xFF57636C),
                                                                                         size: 24.0,
@@ -2580,7 +2604,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                     ),
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: const EdgeInsets.all(4.0),
+                                                                                    padding: EdgeInsets.all(4.0),
                                                                                     child: InkWell(
                                                                                       splashColor: Colors.transparent,
                                                                                       focusColor: Colors.transparent,
@@ -2590,7 +2614,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                         logFirebaseEvent('MAIN_TILE_CONTENT_OLD_Icon_5sulyfmu_ON_T');
                                                                                         logFirebaseEvent('Icon_backend_call');
 
-                                                                                        await listViewLinksRecord.reference.update({
+                                                                                        await listViewLinksRecord!.reference.update({
                                                                                           ...mapToFirestore(
                                                                                             {
                                                                                               'id': FieldValue.increment(-1),
@@ -2598,7 +2622,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                         });
                                                                                       },
-                                                                                      child: const Icon(
+                                                                                      child: Icon(
                                                                                         Icons.upload_sharp,
                                                                                         color: Color(0xFF57636C),
                                                                                         size: 24.0,
@@ -2606,7 +2630,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                     ),
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: const EdgeInsets.all(4.0),
+                                                                                    padding: EdgeInsets.all(4.0),
                                                                                     child: InkWell(
                                                                                       splashColor: Colors.transparent,
                                                                                       focusColor: Colors.transparent,
@@ -2616,7 +2640,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                         logFirebaseEvent('MAIN_TILE_CONTENT_OLD_Icon_hm29m9cw_ON_T');
                                                                                         logFirebaseEvent('Icon_backend_call');
 
-                                                                                        await listViewLinksRecord.reference.update({
+                                                                                        await listViewLinksRecord!.reference.update({
                                                                                           ...mapToFirestore(
                                                                                             {
                                                                                               'id': FieldValue.increment(1),
@@ -2624,7 +2648,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                         });
                                                                                       },
-                                                                                      child: const Icon(
+                                                                                      child: Icon(
                                                                                         Icons.download_outlined,
                                                                                         color: Color(0xFF57636C),
                                                                                         size: 24.0,
@@ -2652,16 +2676,16 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 await showModalBottomSheet(
                                                                                   isScrollControlled: true,
                                                                                   backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  barrierColor: const Color(0x00000000),
+                                                                                  barrierColor: Color(0x00000000),
                                                                                   context: context,
                                                                                   builder: (context) {
                                                                                     return WebViewAware(
                                                                                       child: Padding(
                                                                                         padding: MediaQuery.viewInsetsOf(context),
-                                                                                        child: SizedBox(
+                                                                                        child: Container(
                                                                                           height: 600.0,
                                                                                           child: EditLinkInTileWidget(
-                                                                                            linkref: listViewLinksRecord.reference,
+                                                                                            linkref: listViewLinksRecord?.reference,
                                                                                             linkdoc: listViewLinksRecord,
                                                                                           ),
                                                                                         ),
@@ -2689,10 +2713,10 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 40.0, 0.0),
                                             child: Container(
-                                              constraints: const BoxConstraints(
+                                              constraints: BoxConstraints(
                                                 maxWidth: 1200.0,
                                               ),
                                               decoration: BoxDecoration(
@@ -2753,7 +2777,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           3.0,
@@ -2793,7 +2817,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                       BoxDecoration(
                                                                     color: Colors
                                                                         .white,
-                                                                    boxShadow: const [
+                                                                    boxShadow: [
                                                                       BoxShadow(
                                                                         blurRadius:
                                                                             3.0,
@@ -2811,7 +2835,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             8.0),
                                                                     child: Row(
                                                                       mainAxisSize:
@@ -2821,7 +2845,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                         Expanded(
                                                                           child:
                                                                               Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 8.0,
                                                                                 8.0,
                                                                                 4.0,
@@ -2836,7 +2860,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                   listViewTilesTilesRecord.title,
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: 'Outfit',
-                                                                                        color: const Color(0xFF090F13),
+                                                                                        color: Color(0xFF090F13),
                                                                                         fontSize: 18.0,
                                                                                         fontWeight: FontWeight.w500,
                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2844,7 +2868,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                 ),
                                                                                 Expanded(
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 8.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 8.0, 0.0),
                                                                                     child: AutoSizeText(
                                                                                       listViewTilesTilesRecord.summary.maybeHandleOverflow(
                                                                                         maxChars: 70,
@@ -2853,7 +2877,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                       textAlign: TextAlign.start,
                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: 'Outfit',
-                                                                                            color: const Color(0xFF7C8791),
+                                                                                            color: Color(0xFF7C8791),
                                                                                             fontSize: 14.0,
                                                                                             fontWeight: FontWeight.normal,
                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
@@ -2885,7 +2909,7 @@ class _MainTileContentOldWidgetState extends State<MainTileContentOldWidget> {
                                                                                           ),
                                                                                         });
                                                                                       },
-                                                                                      child: const Icon(
+                                                                                      child: Icon(
                                                                                         Icons.cancel_outlined,
                                                                                         color: Colors.black,
                                                                                         size: 27.0,

@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class NavchipsimagesV1Widget extends StatefulWidget {
     super.key,
     this.tileDocs,
     int? initialTileIndex,
-  }) : initialTileIndex = initialTileIndex ?? 0;
+  }) : this.initialTileIndex = initialTileIndex ?? 0;
 
   final List<TilesRecord>? tileDocs;
   final int initialTileIndex;
@@ -41,18 +42,18 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
       logFirebaseEvent('NAVCHIPSIMAGES_V1_navchipsimagesV1_ON_IN');
       logFirebaseEvent('navchipsimagesV1_update_app_state');
       FFAppState().navPath = [];
-      if (widget.tileDocs!.isNotEmpty) {
+      if (widget.tileDocs!.length >= 1) {
         logFirebaseEvent('navchipsimagesV1_update_app_state');
         FFAppState().addToNavPath(valueOrDefault<String>(
-          widget.tileDocs?[widget.initialTileIndex].reference.id,
+          widget.tileDocs?[widget.initialTileIndex]?.reference.id,
           '0',
         ));
         FFAppState().viewTileContentId = valueOrDefault<String>(
-          widget.tileDocs?[widget.initialTileIndex].reference.id,
+          widget.tileDocs?[widget.initialTileIndex]?.reference.id,
           '0',
         );
         FFAppState().updateTileNavStruct(
-          (e) => e..tier0Id = widget.tileDocs?.first.reference.id,
+          (e) => e..tier0Id = widget.tileDocs?.first?.reference.id,
         );
       }
     });
@@ -73,8 +74,8 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
 
     return ClipRRect(
       child: Container(
-        decoration: const BoxDecoration(),
-        alignment: const AlignmentDirectional(0.0, 0.0),
+        decoration: BoxDecoration(),
+        alignment: AlignmentDirectional(0.0, 0.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -86,7 +87,7 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
                   final tile = widget.tileDocs
                           ?.where((e) => e.tier == 99)
                           .toList()
-                          .toList() ??
+                          ?.toList() ??
                       [];
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -96,12 +97,12 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
                       children: List.generate(tile.length, (tileIndex) {
                         final tileItem = tile[tileIndex];
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(17.0),
                             child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 100),
+                              duration: Duration(milliseconds: 100),
                               curve: Curves.easeIn,
                               width: 300.0,
                               height: 40.0,
@@ -112,16 +113,17 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
                                         tileItem.reference.id) {
                                       return FlutterFlowTheme.of(context)
                                           .accent4;
-                                    } else if (tileItem.image != '') {
+                                    } else if (tileItem.image != null &&
+                                        tileItem.image != '') {
                                       return FlutterFlowTheme.of(context)
                                           .primary;
                                     } else {
-                                      return const Color(0xFFF4FDFF);
+                                      return Color(0xFFF4FDFF);
                                     }
                                   }(),
-                                  const Color(0xFFF4FDFF),
+                                  Color(0xFFF4FDFF),
                                 ),
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -136,20 +138,21 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
                                           tileItem.reference.id) {
                                         return FlutterFlowTheme.of(context)
                                             .accent3;
-                                      } else if (tileItem.image != '') {
+                                      } else if (tileItem.image != null &&
+                                          tileItem.image != '') {
                                         return FlutterFlowTheme.of(context)
                                             .primary;
                                       } else {
-                                        return const Color(0xFFF4FDFF);
+                                        return Color(0xFFF4FDFF);
                                       }
                                     }(),
-                                    const Color(0xFFF4FDFF),
+                                    Color(0xFFF4FDFF),
                                   ),
                                   width: 1.0,
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: EdgeInsets.all(4.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -187,7 +190,7 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(17.0),
                                     child: AnimatedContainer(
-                                      duration: const Duration(milliseconds: 100),
+                                      duration: Duration(milliseconds: 100),
                                       curve: Curves.easeIn,
                                       width: 150.0,
                                       height: 50.0,
@@ -195,7 +198,7 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
                                         image: DecorationImage(
                                           fit: BoxFit.cover,
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           image: Image.network(
                                             tileItem.image,
                                           ).image,
@@ -207,14 +210,16 @@ class _NavchipsimagesV1WidgetState extends State<NavchipsimagesV1Widget> {
                                         ),
                                       ),
                                       child: Visibility(
-                                        visible: tileItem.image != ''
+                                        visible: tileItem.image != null &&
+                                                tileItem.image != ''
                                             ? false
                                             : true,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
-                                            tileItem.title != ''
+                                            tileItem.title != null &&
+                                                    tileItem.title != ''
                                                 ? tileItem.title
                                                 : valueOrDefault<String>(
                                                     'Tile ${tileIndex.toString()}',

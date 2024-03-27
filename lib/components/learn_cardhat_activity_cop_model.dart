@@ -1,9 +1,12 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/right_pane/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_deletesoon/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_deletesoon_widget.dart';
 import 'learn_cardhat_activity_cop_widget.dart'
     show LearnCardhatActivityCopWidget;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LearnCardhatActivityCopModel
     extends FlutterFlowModel<LearnCardhatActivityCopWidget> {

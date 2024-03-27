@@ -1,3 +1,4 @@
+import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -5,7 +6,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -74,7 +77,7 @@ class _ExpandSessionDetailsWidgetState
     context.watch<FFAppState>();
 
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Container(
         width: double.infinity,
         color: Colors.white,
@@ -86,7 +89,7 @@ class _ExpandSessionDetailsWidgetState
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                   child: Text(
                     'Last Active: ${widget.parameter1}',
                     style: FlutterFlowTheme.of(context).displaySmall.override(
@@ -100,7 +103,7 @@ class _ExpandSessionDetailsWidgetState
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                   child: Text(
                     widget.parameter2!,
                     style: FlutterFlowTheme.of(context).displaySmall.override(
@@ -140,10 +143,10 @@ class _ExpandSessionDetailsWidgetState
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 570.0,
                         ),
                         decoration: BoxDecoration(
@@ -156,14 +159,14 @@ class _ExpandSessionDetailsWidgetState
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -175,7 +178,7 @@ class _ExpandSessionDetailsWidgetState
                                           MediaQuery.of(context).textScaler,
                                       text: TextSpan(
                                         children: [
-                                          const TextSpan(
+                                          TextSpan(
                                             text: 'Name #: ',
                                             style: TextStyle(),
                                           ),
@@ -194,7 +197,7 @@ class _ExpandSessionDetailsWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         widget.parameter4!,
@@ -203,7 +206,7 @@ class _ExpandSessionDetailsWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: Container(
                                         height: 32.0,
@@ -220,10 +223,10 @@ class _ExpandSessionDetailsWidgetState
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     7.0, 0.0, 7.0, 0.0),
                                             child: Text(
                                               widget.parameter5!,
@@ -243,7 +246,7 @@ class _ExpandSessionDetailsWidgetState
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       height: 32.0,
@@ -260,10 +263,10 @@ class _ExpandSessionDetailsWidgetState
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
@@ -334,21 +337,21 @@ class _ExpandSessionDetailsWidgetState
                 List<FlowiseChatsRecord> containerFlowiseChatsRecordList =
                     snapshot.data!;
                 return Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: SingleChildScrollView(
                     primary: false,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 6.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 7.0,
                                   color: Color(0x2F1D2429),
@@ -369,7 +372,7 @@ class _ExpandSessionDetailsWidgetState
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -419,7 +422,7 @@ class _ExpandSessionDetailsWidgetState
                                               return WebViewAware(
                                                 child: AlertDialog(
                                                   title:
-                                                      const Text('Thread Id set to '),
+                                                      Text('Thread Id set to '),
                                                   content: Text(FFAppState()
                                                       .selectedThreadId),
                                                   actions: [
@@ -427,7 +430,7 @@ class _ExpandSessionDetailsWidgetState
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -454,7 +457,7 @@ class _ExpandSessionDetailsWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -462,10 +465,10 @@ class _ExpandSessionDetailsWidgetState
                                         isMultiSelect: false,
                                       ),
                                       Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 12.0, 0.0),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
@@ -495,7 +498,7 @@ class _ExpandSessionDetailsWidgetState
                                                                 flowiseChatsByDFilterIndex];
                                                         return Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -516,7 +519,7 @@ class _ExpandSessionDetailsWidgetState
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           8.0,
@@ -534,7 +537,7 @@ class _ExpandSessionDetailsWidgetState
                                                                     clipBehavior:
                                                                         Clip.antiAlias,
                                                                     decoration:
-                                                                        const BoxDecoration(
+                                                                        BoxDecoration(
                                                                       shape: BoxShape
                                                                           .circle,
                                                                     ),
@@ -548,7 +551,7 @@ class _ExpandSessionDetailsWidgetState
                                                                   Expanded(
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           12.0,
                                                                           0.0,
                                                                           0.0,
@@ -572,7 +575,7 @@ class _ExpandSessionDetailsWidgetState
                                                                                 ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 4.0,
                                                                                 0.0,
@@ -626,11 +629,11 @@ class _ExpandSessionDetailsWidgetState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller: _model.textController,
@@ -803,7 +806,7 @@ class _ExpandSessionDetailsWidgetState
                 );
               },
             ),
-            theme: const ExpandableThemeData(
+            theme: ExpandableThemeData(
               tapHeaderToExpand: true,
               tapBodyToExpand: false,
               tapBodyToCollapse: false,
