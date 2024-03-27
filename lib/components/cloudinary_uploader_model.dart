@@ -1,10 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_web_view.dart';
 import 'cloudinary_uploader_widget.dart' show CloudinaryUploaderWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class CloudinaryUploaderModel
     extends FlutterFlowModel<CloudinaryUploaderWidget> {

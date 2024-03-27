@@ -9,10 +9,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'create_new_tile_beta_model.dart';
 export 'create_new_tile_beta_model.dart';
 
@@ -65,15 +63,15 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Container(
         width: double.infinity,
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 570.0,
         ),
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x33000000),
@@ -101,7 +99,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 20.0, 0.0, 0.0),
                             child: SelectionArea(
                                 child: Text(
@@ -111,7 +109,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                             )),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 16.0, 0.0),
                             child: FlutterFlowIconButton(
                               borderColor: Colors.transparent,
@@ -135,7 +133,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
                         child: SelectionArea(
                             child: Text(
                           'BETA - Not ready ',
@@ -153,7 +151,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
                         child: SelectionArea(
                             child: Text(
                           'Please add the name & description below.',
@@ -161,7 +159,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                         )),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 0.0),
                         child: TextFormField(
                           controller: _model.titleTitleController,
@@ -209,7 +207,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            contentPadding: EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 32.0, 20.0, 12.0),
                           ),
                           style: FlutterFlowTheme.of(context).headlineSmall,
@@ -219,7 +217,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 0.0),
                         child: TextFormField(
                           controller: _model.descriptionController,
@@ -256,7 +254,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            contentPadding: EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 32.0, 20.0, 12.0),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
@@ -269,12 +267,12 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                       ),
                       Flexible(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               50.0, 0.0, 0.0, 0.0),
                           child: Container(
                             width: 300.0,
                             height: 300.0,
-                            constraints: BoxConstraints(
+                            constraints: const BoxConstraints(
                               maxWidth: 300.0,
                             ),
                             decoration: BoxDecoration(
@@ -282,19 +280,19 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 250.0,
                                     child: Stack(
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -392,7 +390,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -415,7 +413,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             26.0, 0.0, 26.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -426,7 +424,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                               color: FlutterFlowTheme.of(context).accent4,
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -434,10 +432,10 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 8.0, 0.0, 8.0),
                                     child: FlutterFlowChoiceChips(
-                                      options: [
+                                      options: const [
                                         ChipData('Individual Users',
                                             Icons.train_outlined),
                                         ChipData('Groups')
@@ -476,7 +474,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmallFamily,
-                                              color: Color(0xFFE3E7ED),
+                                              color: const Color(0xFFE3E7ED),
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
                                                       .containsKey(
@@ -484,7 +482,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                   context)
                                                               .bodySmallFamily),
                                             ),
-                                        iconColor: Color(0xFFE3E7ED),
+                                        iconColor: const Color(0xFFE3E7ED),
                                         iconSize: 18.0,
                                         elevation: 4.0,
                                       ),
@@ -510,7 +508,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                         children: [
                           if (_model.choiceChipsValue == 'Individual Users')
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: SingleChildScrollView(
                                 child: Column(
@@ -518,7 +516,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Assign Users',
@@ -527,7 +525,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         'Find members by searching below',
@@ -536,7 +534,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 44.0),
                                       child: StreamBuilder<List<UsersRecord>>(
                                         stream: FFAppState().queryname1(
@@ -578,7 +576,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                   userListUsersRecordList[
                                                       userListIndex];
                                               return Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 8.0),
                                                 child: Container(
@@ -588,7 +586,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: [
+                                                    boxShadow: const [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -609,7 +607,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: Row(
@@ -627,11 +625,11 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                           child:
                                                               CachedNetworkImage(
                                                             fadeInDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             fadeOutDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             imageUrl:
@@ -645,7 +643,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -734,7 +732,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                       ),
                                                                 ),
-                                                                duration: Duration(
+                                                                duration: const Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -750,14 +748,14 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                             width: 80.0,
                                                             height: 36.0,
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -783,7 +781,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                     ),
                                                             elevation: 2.0,
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -811,7 +809,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                           if ((_model.choiceChipsValue == 'Groups') &&
                               (_model.choiceChipsValue != 'Individual Users'))
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: SingleChildScrollView(
                                 child: Column(
@@ -819,7 +817,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Assign Groups',
@@ -828,7 +826,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         'Assign to Groups',
@@ -837,7 +835,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 44.0),
                                       child:
                                           StreamBuilder<List<CategoriesRecord>>(
@@ -882,7 +880,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                   groupsListCategoriesRecordList[
                                                       groupsListIndex];
                                               return Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 8.0),
                                                 child: Container(
@@ -892,7 +890,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: [
+                                                    boxShadow: const [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -913,7 +911,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: Row(
@@ -931,11 +929,11 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                           child:
                                                               CachedNetworkImage(
                                                             fadeInDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             fadeOutDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             imageUrl:
@@ -949,7 +947,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -977,7 +975,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                           context)
                                                                       .bodyMedium,
                                                                 ),
-                                                                Row(
+                                                                const Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
@@ -989,7 +987,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                         ),
                                                         if ((currentUserDocument
                                                                         ?.hasaccess
-                                                                        ?.toList() ??
+                                                                        .toList() ??
                                                                     [])
                                                                 .contains(
                                                                     groupsListCategoriesRecord
@@ -997,7 +995,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                             false)
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1028,7 +1026,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                             ),
                                                                       ),
-                                                                      duration: Duration(
+                                                                      duration: const Duration(
                                                                           milliseconds:
                                                                               4000),
                                                                       backgroundColor:
@@ -1042,13 +1040,13 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                     FFButtonOptions(
                                                                   width: 80.0,
                                                                   height: 36.0,
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                  iconPadding: EdgeInsetsDirectional
+                                                                  iconPadding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1073,7 +1071,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                   elevation:
                                                                       2.0,
                                                                   borderSide:
-                                                                      BorderSide(
+                                                                      const BorderSide(
                                                                     color: Colors
                                                                         .transparent,
                                                                     width: 1.0,
@@ -1110,7 +1108,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                       ),
                                                                 ),
-                                                                duration: Duration(
+                                                                duration: const Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -1126,14 +1124,14 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                             width: 80.0,
                                                             height: 36.0,
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1161,7 +1159,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                                                     ),
                                                             elevation: 2.0,
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -1201,7 +1199,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                     children: [
                       Theme(
                         data: ThemeData(
-                          checkboxTheme: CheckboxThemeData(
+                          checkboxTheme: const CheckboxThemeData(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(0.0),
@@ -1231,7 +1229,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -1241,7 +1239,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                       children: [
                         Theme(
                           data: ThemeData(
-                            checkboxTheme: CheckboxThemeData(
+                            checkboxTheme: const CheckboxThemeData(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
@@ -1278,7 +1276,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -1365,9 +1363,9 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                         width: 270.0,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
@@ -1380,7 +1378,7 @@ class _CreateNewTileBetaWidgetState extends State<CreateNewTileBetaWidget> {
                                       .titleSmallFamily),
                             ),
                         elevation: 3.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

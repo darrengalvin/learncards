@@ -21,7 +21,6 @@ import '/testpage/components/post_comment_functions/post_comment_functions_widge
 import '/testpage/components/post_functions/post_functions_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -110,8 +109,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -130,8 +129,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(-31.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-31.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -150,8 +149,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -170,8 +169,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
           curve: Curves.easeInOut,
           delay: 150.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -190,8 +189,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -210,8 +209,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
           curve: Curves.easeInOut,
           delay: 250.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -230,8 +229,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 400.ms,
-          begin: Offset(-26.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-26.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -339,7 +338,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                               FFAppState().drawerMenu = false;
                             });
                           },
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: double.infinity,
                             child: Stack(
@@ -347,7 +346,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                 Container(
                                   width: double.infinity,
                                   height: double.infinity,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                 ).animateOnPageLoad(animationsMap[
                                     'containerOnPageLoadAnimation1']!),
                                 Container(
@@ -366,9 +365,9 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                         FlutterFlowTheme.of(context)
                                             .secondaryBackground
                                       ],
-                                      stops: [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
-                                      begin: AlignmentDirectional(1.0, 0.0),
-                                      end: AlignmentDirectional(-1.0, 0),
+                                      stops: const [0.0, 0.1, 0.4, 0.6, 0.9, 1.0],
+                                      begin: const AlignmentDirectional(1.0, 0.0),
+                                      end: const AlignmentDirectional(-1.0, 0),
                                     ),
                                   ),
                                 ),
@@ -391,6 +390,32 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                   opaque: false,
                                                   cursor: MouseCursor.defer ??
                                                       MouseCursor.defer,
+                                                  onEnter: ((event) async {
+                                                    setState(() => _model
+                                                            .mouseRegionHovered1 =
+                                                        true);
+                                                    logFirebaseEvent(
+                                                        'SOCIAL_FEED_COPY_MouseRegion_oih78tw1_ON');
+                                                    logFirebaseEvent(
+                                                        'MouseRegion_update_app_state');
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .showmenuopen = true;
+                                                    });
+                                                  }),
+                                                  onExit: ((event) async {
+                                                    setState(() => _model
+                                                            .mouseRegionHovered1 =
+                                                        false);
+                                                    logFirebaseEvent(
+                                                        'SOCIAL_FEED_COPY_MouseRegion_oih78tw1_ON');
+                                                    logFirebaseEvent(
+                                                        'MouseRegion_update_app_state');
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .showmenuopen = false;
+                                                    });
+                                                  }),
                                                   child: Visibility(
                                                     visible:
                                                         responsiveVisibility(
@@ -419,83 +444,17 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                 () => setState(
                                                                     () {}),
                                                             child:
-                                                                SideMenuCopyWidget(),
+                                                                const SideMenuCopyWidget(),
                                                           ),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
-                                                  onEnter: ((event) async {
-                                                    setState(() => _model
-                                                            .mouseRegionHovered1 =
-                                                        true);
-                                                    logFirebaseEvent(
-                                                        'SOCIAL_FEED_COPY_MouseRegion_oih78tw1_ON');
-                                                    logFirebaseEvent(
-                                                        'MouseRegion_update_app_state');
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .showmenuopen = true;
-                                                    });
-                                                  }),
-                                                  onExit: ((event) async {
-                                                    setState(() => _model
-                                                            .mouseRegionHovered1 =
-                                                        false);
-                                                    logFirebaseEvent(
-                                                        'SOCIAL_FEED_COPY_MouseRegion_oih78tw1_ON');
-                                                    logFirebaseEvent(
-                                                        'MouseRegion_update_app_state');
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .showmenuopen = false;
-                                                    });
-                                                  }),
                                                 ),
                                                 MouseRegion(
                                                   opaque: false,
                                                   cursor: MouseCursor.defer ??
                                                       MouseCursor.defer,
-                                                  child: Visibility(
-                                                    visible: FFAppState()
-                                                            .showmenuopen ==
-                                                        true,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Container(
-                                                          width: 230.0,
-                                                          height:
-                                                              double.infinity,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                          ),
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child:
-                                                                wrapWithModel(
-                                                              model: _model
-                                                                  .sideMenuModel,
-                                                              updateCallback:
-                                                                  () => setState(
-                                                                      () {}),
-                                                              child:
-                                                                  SideMenuWidget(
-                                                                action:
-                                                                    () async {},
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
                                                   onEnter: ((event) async {
                                                     setState(() => _model
                                                             .mouseRegionHovered2 =
@@ -526,6 +485,46 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                           false;
                                                     });
                                                   }),
+                                                  child: Visibility(
+                                                    visible: FFAppState()
+                                                            .showmenuopen ==
+                                                        true,
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Container(
+                                                          width: 230.0,
+                                                          height:
+                                                              double.infinity,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
+                                                          child: Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child:
+                                                                wrapWithModel(
+                                                              model: _model
+                                                                  .sideMenuModel,
+                                                              updateCallback:
+                                                                  () => setState(
+                                                                      () {}),
+                                                              child:
+                                                                  SideMenuWidget(
+                                                                action:
+                                                                    () async {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -564,12 +563,12 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBackground,
                                               ),
-                                              child: Container(
+                                              child: SizedBox(
                                                 width: double.infinity,
                                                 height: double.infinity,
                                                 child: Stack(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, -1.0),
                                                   children: [
                                                     SingleChildScrollView(
@@ -582,7 +581,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                 double.infinity,
                                                             height: 88.0,
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                             child: Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -599,7 +598,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                     children: [
                                                                       Expanded(
                                                                         child:
-                                                                            Container(
+                                                                            SizedBox(
                                                                           width:
                                                                               double.infinity,
                                                                           height:
@@ -610,7 +609,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                               Container(
                                                                                 width: 400.0,
                                                                                 height: 100.0,
-                                                                                decoration: BoxDecoration(),
+                                                                                decoration: const BoxDecoration(),
                                                                               ),
                                                                               Row(
                                                                                 mainAxisSize: MainAxisSize.max,
@@ -646,7 +645,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                       .stretch,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           20.0,
@@ -673,13 +672,13 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                               CrossAxisAlignment.stretch,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: EdgeInsets.all(10.0),
+                                                                                    padding: const EdgeInsets.all(10.0),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
@@ -725,7 +724,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                               scrollDirection: Axis.vertical,
                                                                                               children: [
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                                                                                                   child: InkWell(
                                                                                                     splashColor: Colors.transparent,
                                                                                                     focusColor: Colors.transparent,
@@ -733,18 +732,18 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                     highlightColor: Colors.transparent,
                                                                                                     onTap: () async {
                                                                                                       logFirebaseEvent('SOCIAL_FEED_COPY_Card_cwmzcva4_ON_TAP');
-                                                                                                      if (listViewBroadcastsRecord!.isLive) {
+                                                                                                      if (listViewBroadcastsRecord.isLive) {
                                                                                                         logFirebaseEvent('Card_navigate_to');
 
                                                                                                         context.pushNamed(
                                                                                                           'ViewBroadcast',
                                                                                                           queryParameters: {
                                                                                                             'url': serializeParam(
-                                                                                                              listViewBroadcastsRecord?.url,
+                                                                                                              listViewBroadcastsRecord.url,
                                                                                                               ParamType.String,
                                                                                                             ),
                                                                                                             'broadcastdocref': serializeParam(
-                                                                                                              listViewBroadcastsRecord?.reference,
+                                                                                                              listViewBroadcastsRecord.reference,
                                                                                                               ParamType.DocumentReference,
                                                                                                             ),
                                                                                                           }.withoutNulls,
@@ -752,7 +751,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                       } else {
                                                                                                         logFirebaseEvent('Card_backend_call');
                                                                                                         _model.nEWliveStreamIdResultre = await MuxVideoGroup.newGetLiveStreamIDCall.call(
-                                                                                                          playbackIds: functions.getPlaybackIdFromUrl(listViewBroadcastsRecord!.url),
+                                                                                                          playbackIds: functions.getPlaybackIdFromUrl(listViewBroadcastsRecord.url),
                                                                                                         );
                                                                                                         if ((_model.nEWliveStreamIdResultre?.succeeded ?? true)) {
                                                                                                           logFirebaseEvent('Card_backend_call');
@@ -790,19 +789,19 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                           FlutterFlowTheme.of(context).primaryBackground,
                                                                                                                           FlutterFlowTheme.of(context).secondary
                                                                                                                         ],
-                                                                                                                        stops: [0.0, 1.0],
-                                                                                                                        begin: AlignmentDirectional(0.0, -1.0),
-                                                                                                                        end: AlignmentDirectional(0, 1.0),
+                                                                                                                        stops: const [0.0, 1.0],
+                                                                                                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                                                                                                        end: const AlignmentDirectional(0, 1.0),
                                                                                                                       ),
                                                                                                                       borderRadius: BorderRadius.circular(16.0),
                                                                                                                     ),
                                                                                                                     child: Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
                                                                                                                       child: Row(
                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                         children: [
                                                                                                                           ClipRRect(
-                                                                                                                            borderRadius: BorderRadius.only(
+                                                                                                                            borderRadius: const BorderRadius.only(
                                                                                                                               bottomLeft: Radius.circular(8.0),
                                                                                                                               bottomRight: Radius.circular(0.0),
                                                                                                                               topLeft: Radius.circular(8.0),
@@ -817,7 +816,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                           ),
                                                                                                                           Expanded(
                                                                                                                             child: Padding(
-                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                                               child: Column(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -848,14 +847,14 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                         ),
                                                                                                                                       if (listViewBroadcastsRecord?.isLive ?? true)
                                                                                                                                         Padding(
-                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                                           child: Text(
                                                                                                                                             'Live Now',
                                                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                           ),
                                                                                                                                         ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: FlutterFlowIconButton(
                                                                                                                                           borderColor: Colors.transparent,
                                                                                                                                           borderRadius: 30.0,
@@ -881,7 +880,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                       children: [
                                                                                                                                         Expanded(
                                                                                                                                           child: Padding(
-                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                             child: Text(
                                                                                                                                               listViewBroadcastsRecord!.name,
                                                                                                                                               style: FlutterFlowTheme.of(context).bodySmall,
@@ -895,9 +894,9 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                         child: Text(
-                                                                                                                                          dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord!.time!),
+                                                                                                                                          dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord.time!),
                                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                         ),
                                                                                                                                       ),
@@ -933,7 +932,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                       wrapWithModel(
                                                                                         model: _model.navChipsModel,
                                                                                         updateCallback: () => setState(() {}),
-                                                                                        child: NavChipsWidget(),
+                                                                                        child: const NavChipsWidget(),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -950,7 +949,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                                                           children: [
-                                                                                            if ((currentUserDocument?.hasaccess?.toList() ?? []).contains(FFAppState().selectedcategory))
+                                                                                            if ((currentUserDocument?.hasaccess.toList() ?? []).contains(FFAppState().selectedcategory))
                                                                                               AuthUserStreamWidget(
                                                                                                 builder: (context) => StreamBuilder<List<SocialfeedRecord>>(
                                                                                                   stream: querySocialfeedRecord(
@@ -1003,7 +1002,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                       children: [
                                                                                                                         if (valueOrDefault<bool>(currentUserDocument?.isadmin, false) == true)
                                                                                                                           Padding(
-                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                             child: InkWell(
                                                                                                                               splashColor: Colors.transparent,
                                                                                                                               focusColor: Colors.transparent,
@@ -1023,7 +1022,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                         onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                         child: Padding(
                                                                                                                                           padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                          child: BroadcastNameInputWidget(),
+                                                                                                                                          child: const BroadcastNameInputWidget(),
                                                                                                                                         ),
                                                                                                                                       ),
                                                                                                                                     );
@@ -1036,7 +1035,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 0.0),
                                                                                                                                         child: FlutterFlowIconButton(
                                                                                                                                           borderColor: Colors.transparent,
                                                                                                                                           borderRadius: 30.0,
@@ -1062,7 +1061,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                     onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                                     child: Padding(
                                                                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                                      child: BroadcastNameInputWidget(),
+                                                                                                                                                      child: const BroadcastNameInputWidget(),
                                                                                                                                                     ),
                                                                                                                                                   ),
                                                                                                                                                 );
@@ -1077,7 +1076,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 25.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 25.0, 0.0),
                                                                                                                                         child: FlutterFlowIconButton(
                                                                                                                                           borderColor: Colors.transparent,
                                                                                                                                           borderRadius: 30.0,
@@ -1103,7 +1102,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                     onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                                     child: Padding(
                                                                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                                      child: BroadcastNameInputWidget(),
+                                                                                                                                                      child: const BroadcastNameInputWidget(),
                                                                                                                                                     ),
                                                                                                                                                   ),
                                                                                                                                                 );
@@ -1119,7 +1118,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                             ),
                                                                                                                           ),
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                           child: Stack(
                                                                                                                             children: [
                                                                                                                               Column(
@@ -1127,7 +1126,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                 children: [
                                                                                                                                   if (FFAppState().readytopost != true)
                                                                                                                                     Padding(
-                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 0.0),
+                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 0.0),
                                                                                                                                       child: FlutterFlowIconButton(
                                                                                                                                         borderColor: Colors.transparent,
                                                                                                                                         borderRadius: 30.0,
@@ -1155,7 +1154,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                 children: [
                                                                                                                                   if (FFAppState().readytopost == true)
                                                                                                                                     Padding(
-                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 25.0, 0.0),
+                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 25.0, 0.0),
                                                                                                                                       child: FlutterFlowIconButton(
                                                                                                                                         borderColor: Colors.transparent,
                                                                                                                                         borderRadius: 30.0,
@@ -1211,11 +1210,11 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                         ),
                                                                                                         Stack(
                                                                                                           children: [
-                                                                                                            if ((currentUserDocument?.hasaccess?.toList() ?? []).contains(FFAppState().selectedcategory) != false)
+                                                                                                            if ((currentUserDocument?.hasaccess.toList() ?? []).contains(FFAppState().selectedcategory) != false)
                                                                                                               wrapWithModel(
                                                                                                                 model: _model.noAccessModel,
                                                                                                                 updateCallback: () => setState(() {}),
-                                                                                                                child: NoAccessWidget(),
+                                                                                                                child: const NoAccessWidget(),
                                                                                                               ),
                                                                                                             if (FFAppState().readytopost == true)
                                                                                                               Container(
@@ -1228,15 +1227,15 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                                                                                                   children: [
                                                                                                                     Align(
-                                                                                                                      alignment: AlignmentDirectional(0.95, 0.0),
+                                                                                                                      alignment: const AlignmentDirectional(0.95, 0.0),
                                                                                                                       child: Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
+                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
                                                                                                                         child: Column(
                                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                                           crossAxisAlignment: CrossAxisAlignment.stretch,
                                                                                                                           children: [
                                                                                                                             Padding(
-                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
+                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 8.0),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1245,7 +1244,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                     width: 50.0,
                                                                                                                                     height: 50.0,
                                                                                                                                     clipBehavior: Clip.antiAlias,
-                                                                                                                                    decoration: BoxDecoration(
+                                                                                                                                    decoration: const BoxDecoration(
                                                                                                                                       shape: BoxShape.circle,
                                                                                                                                     ),
                                                                                                                                     child: Image.network(
@@ -1255,13 +1254,13 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                   ),
                                                                                                                                   Expanded(
                                                                                                                                     child: Padding(
-                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                                                                       child: TextFormField(
                                                                                                                                         controller: _model.textController,
                                                                                                                                         focusNode: _model.textFieldFocusNode,
                                                                                                                                         onChanged: (_) => EasyDebounce.debounce(
                                                                                                                                           '_model.textController',
-                                                                                                                                          Duration(milliseconds: 2000),
+                                                                                                                                          const Duration(milliseconds: 2000),
                                                                                                                                           () => setState(() {}),
                                                                                                                                         ),
                                                                                                                                         autofocus: true,
@@ -1270,52 +1269,52 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                           hintText: 'Write something...',
                                                                                                                                           hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                                                 fontFamily: 'Outfit',
-                                                                                                                                                color: Color(0xFF57636C),
+                                                                                                                                                color: const Color(0xFF57636C),
                                                                                                                                                 fontSize: 14.0,
                                                                                                                                                 fontWeight: FontWeight.normal,
                                                                                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                                                                               ),
-                                                                                                                                          enabledBorder: UnderlineInputBorder(
+                                                                                                                                          enabledBorder: const UnderlineInputBorder(
                                                                                                                                             borderSide: BorderSide(
                                                                                                                                               color: Color(0x00000000),
                                                                                                                                               width: 1.0,
                                                                                                                                             ),
-                                                                                                                                            borderRadius: const BorderRadius.only(
+                                                                                                                                            borderRadius: BorderRadius.only(
                                                                                                                                               topLeft: Radius.circular(4.0),
                                                                                                                                               topRight: Radius.circular(4.0),
                                                                                                                                             ),
                                                                                                                                           ),
-                                                                                                                                          focusedBorder: UnderlineInputBorder(
+                                                                                                                                          focusedBorder: const UnderlineInputBorder(
                                                                                                                                             borderSide: BorderSide(
                                                                                                                                               color: Color(0x00000000),
                                                                                                                                               width: 1.0,
                                                                                                                                             ),
-                                                                                                                                            borderRadius: const BorderRadius.only(
+                                                                                                                                            borderRadius: BorderRadius.only(
                                                                                                                                               topLeft: Radius.circular(4.0),
                                                                                                                                               topRight: Radius.circular(4.0),
                                                                                                                                             ),
                                                                                                                                           ),
-                                                                                                                                          errorBorder: UnderlineInputBorder(
+                                                                                                                                          errorBorder: const UnderlineInputBorder(
                                                                                                                                             borderSide: BorderSide(
                                                                                                                                               color: Color(0x00000000),
                                                                                                                                               width: 1.0,
                                                                                                                                             ),
-                                                                                                                                            borderRadius: const BorderRadius.only(
+                                                                                                                                            borderRadius: BorderRadius.only(
                                                                                                                                               topLeft: Radius.circular(4.0),
                                                                                                                                               topRight: Radius.circular(4.0),
                                                                                                                                             ),
                                                                                                                                           ),
-                                                                                                                                          focusedErrorBorder: UnderlineInputBorder(
+                                                                                                                                          focusedErrorBorder: const UnderlineInputBorder(
                                                                                                                                             borderSide: BorderSide(
                                                                                                                                               color: Color(0x00000000),
                                                                                                                                               width: 1.0,
                                                                                                                                             ),
-                                                                                                                                            borderRadius: const BorderRadius.only(
+                                                                                                                                            borderRadius: BorderRadius.only(
                                                                                                                                               topLeft: Radius.circular(4.0),
                                                                                                                                               topRight: Radius.circular(4.0),
                                                                                                                                             ),
                                                                                                                                           ),
-                                                                                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 8.0, 12.0),
+                                                                                                                                          contentPadding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 8.0, 12.0),
                                                                                                                                         ),
                                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                                               fontFamily: 'Outfit',
@@ -1333,7 +1332,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                               ),
                                                                                                                             ),
                                                                                                                             Padding(
-                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
+                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
                                                                                                                               child: Row(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1342,13 +1341,13 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                     children: [
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                                                         child: FlutterFlowIconButton(
                                                                                                                                           borderColor: Colors.transparent,
                                                                                                                                           borderRadius: 30.0,
                                                                                                                                           borderWidth: 1.0,
                                                                                                                                           buttonSize: 40.0,
-                                                                                                                                          icon: Icon(
+                                                                                                                                          icon: const Icon(
                                                                                                                                             Icons.photo_outlined,
                                                                                                                                             color: Color(0xFF57636C),
                                                                                                                                             size: 20.0,
@@ -1409,13 +1408,13 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                         ),
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                                                                         child: FlutterFlowIconButton(
                                                                                                                                           borderColor: Colors.transparent,
                                                                                                                                           borderRadius: 30.0,
                                                                                                                                           borderWidth: 1.0,
                                                                                                                                           buttonSize: 40.0,
-                                                                                                                                          icon: Icon(
+                                                                                                                                          icon: const Icon(
                                                                                                                                             Icons.video_call,
                                                                                                                                             color: Color(0xFF57636C),
                                                                                                                                             size: 20.0,
@@ -1477,7 +1476,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                         ),
                                                                                                                                       ),
                                                                                                                                       Padding(
-                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                                         child: FlutterFlowIconButton(
                                                                                                                                           borderColor: Colors.transparent,
                                                                                                                                           borderRadius: 30.0,
@@ -1561,8 +1560,8 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                     options: FFButtonOptions(
                                                                                                                                       width: 70.0,
                                                                                                                                       height: 30.0,
-                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                                                       color: FlutterFlowTheme.of(context).primary,
                                                                                                                                       textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                                                             fontFamily: 'Outfit',
@@ -1572,7 +1571,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                             useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                                                                           ),
                                                                                                                                       elevation: 2.0,
-                                                                                                                                      borderSide: BorderSide(
+                                                                                                                                      borderSide: const BorderSide(
                                                                                                                                         color: Colors.transparent,
                                                                                                                                         width: 1.0,
                                                                                                                                       ),
@@ -1581,18 +1580,18 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                 ],
                                                                                                                               ),
                                                                                                                             ),
-                                                                                                                            if ((_model.uploadedFileUrl2 != null && _model.uploadedFileUrl2 != '') || (_model.uploadedFileUrl1 != null && _model.uploadedFileUrl1 != ''))
+                                                                                                                            if ((_model.uploadedFileUrl2 != '') || (_model.uploadedFileUrl1 != ''))
                                                                                                                               Column(
                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                                                                                                                 children: [
-                                                                                                                                  Container(
+                                                                                                                                  SizedBox(
                                                                                                                                     width: double.infinity,
                                                                                                                                     child: Stack(
-                                                                                                                                      alignment: AlignmentDirectional(0.050000000000000044, 0.0),
+                                                                                                                                      alignment: const AlignmentDirectional(0.050000000000000044, 0.0),
                                                                                                                                       children: [
                                                                                                                                         Padding(
-                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
                                                                                                                                           child: Container(
                                                                                                                                             decoration: BoxDecoration(
                                                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1600,11 +1599,11 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                             child: Column(
                                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                                               children: [
-                                                                                                                                                if (_model.uploadedFileUrl1 != null && _model.uploadedFileUrl1 != '')
+                                                                                                                                                if (_model.uploadedFileUrl1 != '')
                                                                                                                                                   Align(
-                                                                                                                                                    alignment: AlignmentDirectional(0.0, -1.67),
+                                                                                                                                                    alignment: const AlignmentDirectional(0.0, -1.67),
                                                                                                                                                     child: Padding(
-                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
                                                                                                                                                       child: Image.network(
                                                                                                                                                         _model.uploadedFileUrl2,
                                                                                                                                                         width: double.infinity,
@@ -1612,9 +1611,9 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                       ),
                                                                                                                                                     ),
                                                                                                                                                   ),
-                                                                                                                                                if (_model.uploadedFileUrl2 != null && _model.uploadedFileUrl2 != '')
+                                                                                                                                                if (_model.uploadedFileUrl2 != '')
                                                                                                                                                   Align(
-                                                                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                                                                                                                                     child: FlutterFlowVideoPlayer(
                                                                                                                                                       path: _model.uploadedFileUrl1,
                                                                                                                                                       videoType: VideoType.network,
@@ -1664,12 +1663,12 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                                                                                     child: Container(
                                                                                       width: double.infinity,
-                                                                                      decoration: BoxDecoration(),
+                                                                                      decoration: const BoxDecoration(),
                                                                                       child: Visibility(
-                                                                                        visible: (currentUserDocument?.hasaccess?.toList() ?? []).contains(FFAppState().selectedcategory),
+                                                                                        visible: (currentUserDocument?.hasaccess.toList() ?? []).contains(FFAppState().selectedcategory),
                                                                                         child: AuthUserStreamWidget(
                                                                                           builder: (context) => StreamBuilder<List<SocialpostsRecord>>(
                                                                                             stream: querySocialpostsRecord(
@@ -1705,7 +1704,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                 itemBuilder: (context, listViewIndex) {
                                                                                                   final listViewSocialpostsRecord = listViewSocialpostsRecordList[listViewIndex];
                                                                                                   return Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 9.0),
+                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 9.0),
                                                                                                     child: Container(
                                                                                                       width: double.infinity,
                                                                                                       decoration: BoxDecoration(
@@ -1714,9 +1713,9 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                             FlutterFlowTheme.of(context).primaryBackground,
                                                                                                             FlutterFlowTheme.of(context).secondary
                                                                                                           ],
-                                                                                                          stops: [0.0, 1.0],
-                                                                                                          begin: AlignmentDirectional(0.0, -1.0),
-                                                                                                          end: AlignmentDirectional(0, 1.0),
+                                                                                                          stops: const [0.0, 1.0],
+                                                                                                          begin: const AlignmentDirectional(0.0, -1.0),
+                                                                                                          end: const AlignmentDirectional(0, 1.0),
                                                                                                         ),
                                                                                                         borderRadius: BorderRadius.circular(8.0),
                                                                                                         border: Border.all(
@@ -1734,7 +1733,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                               children: [
                                                                                                                 Padding(
-                                                                                                                  padding: EdgeInsets.all(7.0),
+                                                                                                                  padding: const EdgeInsets.all(7.0),
                                                                                                                   child: ClipRRect(
                                                                                                                     borderRadius: BorderRadius.circular(40.0),
                                                                                                                     child: Image.network(
@@ -1751,13 +1750,13 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                 ),
                                                                                                                 Expanded(
                                                                                                                   child: Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                                                     child: Column(
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       crossAxisAlignment: CrossAxisAlignment.end,
                                                                                                                       children: [
                                                                                                                         Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                                           child: Text(
                                                                                                                             dateTimeFormat('relative', listViewSocialpostsRecord.datetime!),
                                                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -1774,7 +1773,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                           borderRadius: 30.0,
                                                                                                                           borderWidth: 1.0,
                                                                                                                           buttonSize: 40.0,
-                                                                                                                          icon: Icon(
+                                                                                                                          icon: const Icon(
                                                                                                                             Icons.keyboard_control_rounded,
                                                                                                                             color: Color(0xFF57636C),
                                                                                                                             size: 20.0,
@@ -1785,7 +1784,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                             await showModalBottomSheet(
                                                                                                                               isScrollControlled: true,
                                                                                                                               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                              barrierColor: Color(0x00000000),
+                                                                                                                              barrierColor: const Color(0x00000000),
                                                                                                                               context: context,
                                                                                                                               builder: (context) {
                                                                                                                                 return WebViewAware(
@@ -1793,7 +1792,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                     onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                     child: Padding(
                                                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                      child: Container(
+                                                                                                                                      child: SizedBox(
                                                                                                                                         height: 200.0,
                                                                                                                                         child: PostFunctionsWidget(
                                                                                                                                           postdetailsref: listViewSocialpostsRecord.reference,
@@ -1813,7 +1812,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                               ],
                                                                                                             ),
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(17.0, 7.0, 7.0, 7.0),
+                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(17.0, 7.0, 7.0, 7.0),
                                                                                                               child: Text(
                                                                                                                 listViewSocialpostsRecord.postdescription,
                                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -1825,7 +1824,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                               ),
                                                                                                             ),
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                                                                                                               child: SingleChildScrollView(
                                                                                                                 scrollDirection: Axis.horizontal,
                                                                                                                 child: Row(
@@ -1843,7 +1842,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                       child: Container(
                                                                                                                         width: 40.0,
                                                                                                                         height: 40.0,
-                                                                                                                        decoration: BoxDecoration(),
+                                                                                                                        decoration: const BoxDecoration(),
                                                                                                                         child: ToggleIcon(
                                                                                                                           onPressed: () async {
                                                                                                                             final likesElement = currentUserReference;
@@ -1871,7 +1870,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                     Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
                                                                                                                       child: Text(
                                                                                                                         listViewSocialpostsRecord.likes.length.toString(),
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1884,7 +1883,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                     Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                                                       child: Text(
                                                                                                                         'likes',
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1897,7 +1896,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                     Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                                                                                                                       child: Icon(
                                                                                                                         Icons.mode_comment_outlined,
                                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -1905,7 +1904,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                     Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
                                                                                                                       child: Text(
                                                                                                                         listViewSocialpostsRecord.numbercomments.toString(),
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1918,7 +1917,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                       ),
                                                                                                                     ),
                                                                                                                     Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
                                                                                                                       child: InkWell(
                                                                                                                         splashColor: Colors.transparent,
                                                                                                                         focusColor: Colors.transparent,
@@ -1930,7 +1929,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                           await showModalBottomSheet(
                                                                                                                             isScrollControlled: true,
                                                                                                                             backgroundColor: FlutterFlowTheme.of(context).primary,
-                                                                                                                            barrierColor: Color(0x00000000),
+                                                                                                                            barrierColor: const Color(0x00000000),
                                                                                                                             context: context,
                                                                                                                             builder: (context) {
                                                                                                                               return WebViewAware(
@@ -1938,7 +1937,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                   onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                   child: Padding(
                                                                                                                                     padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                    child: Container(
+                                                                                                                                    child: SizedBox(
                                                                                                                                       height: 300.0,
                                                                                                                                       child: ReplyToPostWidget(
                                                                                                                                         postid: listViewSocialpostsRecord.reference,
@@ -1966,7 +1965,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                   ),
                                                                                                                             ),
                                                                                                                             Padding(
-                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                                                               child: Icon(
                                                                                                                                 Icons.reply_sharp,
                                                                                                                                 color: FlutterFlowTheme.of(context).secondaryText,
@@ -1990,12 +1989,12 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                     children: [
                                                                                                                       Padding(
-                                                                                                                        padding: EdgeInsets.all(15.0),
+                                                                                                                        padding: const EdgeInsets.all(15.0),
                                                                                                                         child: Container(
                                                                                                                           constraints: BoxConstraints(
                                                                                                                             maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                                                                                                                           ),
-                                                                                                                          decoration: BoxDecoration(),
+                                                                                                                          decoration: const BoxDecoration(),
                                                                                                                           child: SingleChildScrollView(
                                                                                                                             child: Column(
                                                                                                                               mainAxisSize: MainAxisSize.max,
@@ -2053,18 +2052,18 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                 highlightColor: Colors.transparent,
                                                                                                                                                 onTap: () async {
                                                                                                                                                   logFirebaseEvent('SOCIAL_FEED_COPY_Card_nx4kdjl4_ON_TAP');
-                                                                                                                                                  if (listViewBroadcastsRecord!.isLive) {
+                                                                                                                                                  if (listViewBroadcastsRecord.isLive) {
                                                                                                                                                     logFirebaseEvent('Card_navigate_to');
 
                                                                                                                                                     context.pushNamed(
                                                                                                                                                       'ViewBroadcast',
                                                                                                                                                       queryParameters: {
                                                                                                                                                         'url': serializeParam(
-                                                                                                                                                          listViewBroadcastsRecord?.url,
+                                                                                                                                                          listViewBroadcastsRecord.url,
                                                                                                                                                           ParamType.String,
                                                                                                                                                         ),
                                                                                                                                                         'broadcastdocref': serializeParam(
-                                                                                                                                                          listViewBroadcastsRecord?.reference,
+                                                                                                                                                          listViewBroadcastsRecord.reference,
                                                                                                                                                           ParamType.DocumentReference,
                                                                                                                                                         ),
                                                                                                                                                       }.withoutNulls,
@@ -2072,7 +2071,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                   } else {
                                                                                                                                                     logFirebaseEvent('Card_backend_call');
                                                                                                                                                     _model.nEWliveStreamIdResult = await MuxVideoGroup.newGetLiveStreamIDCall.call(
-                                                                                                                                                      playbackIds: functions.getPlaybackIdFromUrl(listViewBroadcastsRecord!.url),
+                                                                                                                                                      playbackIds: functions.getPlaybackIdFromUrl(listViewBroadcastsRecord.url),
                                                                                                                                                     );
                                                                                                                                                     if ((_model.nEWliveStreamIdResult?.succeeded ?? true)) {
                                                                                                                                                       logFirebaseEvent('Card_backend_call');
@@ -2096,7 +2095,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                               ParamType.String,
                                                                                                                                                             ),
                                                                                                                                                             'broadcastdocref': serializeParam(
-                                                                                                                                                              listViewBroadcastsRecord?.reference,
+                                                                                                                                                              listViewBroadcastsRecord.reference,
                                                                                                                                                               ParamType.DocumentReference,
                                                                                                                                                             ),
                                                                                                                                                           }.withoutNulls,
@@ -2126,19 +2125,19 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                                       FlutterFlowTheme.of(context).primaryBackground,
                                                                                                                                                                       FlutterFlowTheme.of(context).secondary
                                                                                                                                                                     ],
-                                                                                                                                                                    stops: [0.0, 1.0],
-                                                                                                                                                                    begin: AlignmentDirectional(0.0, -1.0),
-                                                                                                                                                                    end: AlignmentDirectional(0, 1.0),
+                                                                                                                                                                    stops: const [0.0, 1.0],
+                                                                                                                                                                    begin: const AlignmentDirectional(0.0, -1.0),
+                                                                                                                                                                    end: const AlignmentDirectional(0, 1.0),
                                                                                                                                                                   ),
                                                                                                                                                                   borderRadius: BorderRadius.circular(16.0),
                                                                                                                                                                 ),
                                                                                                                                                                 child: Padding(
-                                                                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
+                                                                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 1.0),
                                                                                                                                                                   child: Row(
                                                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                                                     children: [
                                                                                                                                                                       ClipRRect(
-                                                                                                                                                                        borderRadius: BorderRadius.only(
+                                                                                                                                                                        borderRadius: const BorderRadius.only(
                                                                                                                                                                           bottomLeft: Radius.circular(8.0),
                                                                                                                                                                           bottomRight: Radius.circular(0.0),
                                                                                                                                                                           topLeft: Radius.circular(8.0),
@@ -2153,7 +2152,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                                       ),
                                                                                                                                                                       Expanded(
                                                                                                                                                                         child: Padding(
-                                                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                                                                                                                                                           child: Column(
                                                                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                                                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -2184,14 +2183,14 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                                                     ),
                                                                                                                                                                                   if (listViewBroadcastsRecord?.isLive ?? true)
                                                                                                                                                                                     Padding(
-                                                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                                                                                       child: Text(
                                                                                                                                                                                         'Live Now',
                                                                                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                                                                       ),
                                                                                                                                                                                     ),
                                                                                                                                                                                   Padding(
-                                                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                                                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                                                                                                                                                                                     child: FlutterFlowIconButton(
                                                                                                                                                                                       borderColor: Colors.transparent,
                                                                                                                                                                                       borderRadius: 30.0,
@@ -2217,7 +2216,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                                                   children: [
                                                                                                                                                                                     Expanded(
                                                                                                                                                                                       child: Padding(
-                                                                                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                                                                         child: Text(
                                                                                                                                                                                           listViewBroadcastsRecord!.name,
                                                                                                                                                                                           style: FlutterFlowTheme.of(context).bodySmall,
@@ -2231,9 +2230,9 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                                                                                 children: [
                                                                                                                                                                                   Padding(
-                                                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                                                                                                                     child: Text(
-                                                                                                                                                                                      dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord!.time!),
+                                                                                                                                                                                      dateTimeFormat('MMMMEEEEd', listViewBroadcastsRecord.time!),
                                                                                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                                                                                     ),
                                                                                                                                                                                   ),
@@ -2268,20 +2267,20 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                       Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                                                                                                                         child: Container(
                                                                                                                           constraints: BoxConstraints(
                                                                                                                             maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                                                                                                                           ),
-                                                                                                                          decoration: BoxDecoration(),
+                                                                                                                          decoration: const BoxDecoration(),
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     ],
                                                                                                                   ),
                                                                                                                 ),
-                                                                                                                if (listViewSocialpostsRecord.video != null && listViewSocialpostsRecord.video != '')
+                                                                                                                if (listViewSocialpostsRecord.video != '')
                                                                                                                   Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                                                                                                                     child: FlutterFlowVideoPlayer(
                                                                                                                       path: listViewSocialpostsRecord.video,
                                                                                                                       videoType: VideoType.network,
@@ -2295,9 +2294,9 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                   ),
                                                                                                               ],
                                                                                                             ),
-                                                                                                            if (listViewSocialpostsRecord.photo != null && listViewSocialpostsRecord.photo != '')
+                                                                                                            if (listViewSocialpostsRecord.photo != '')
                                                                                                               Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                                                                                                 child: ClipRRect(
                                                                                                                   borderRadius: BorderRadius.circular(15.0),
                                                                                                                   child: Image.network(
@@ -2309,7 +2308,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                 ),
                                                                                                               ),
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                                                                                                               child: StreamBuilder<List<SocialCommentsRecord>>(
                                                                                                                 stream: querySocialCommentsRecord(
                                                                                                                   parent: listViewSocialpostsRecord.reference,
@@ -2345,7 +2344,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                     itemBuilder: (context, listViewCommentsIndex) {
                                                                                                                       final listViewCommentsSocialCommentsRecord = listViewCommentsSocialCommentsRecordList[listViewCommentsIndex];
                                                                                                                       return Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                                                         child: Row(
                                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2357,7 +2356,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                               children: [
                                                                                                                                 Padding(
-                                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                                                                   child: Container(
                                                                                                                                     width: 500.0,
                                                                                                                                     constraints: BoxConstraints(
@@ -2371,7 +2370,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                       children: [
                                                                                                                                         Padding(
-                                                                                                                                          padding: EdgeInsets.all(7.0),
+                                                                                                                                          padding: const EdgeInsets.all(7.0),
                                                                                                                                           child: Column(
                                                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -2384,7 +2383,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                                                                     children: [
                                                                                                                                                       Padding(
-                                                                                                                                                        padding: EdgeInsets.all(5.0),
+                                                                                                                                                        padding: const EdgeInsets.all(5.0),
                                                                                                                                                         child: ClipRRect(
                                                                                                                                                           borderRadius: BorderRadius.circular(40.0),
                                                                                                                                                           child: Image.network(
@@ -2398,7 +2397,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                     ],
                                                                                                                                                   ),
                                                                                                                                                   Padding(
-                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                                                                                     child: Text(
                                                                                                                                                       listViewCommentsSocialCommentsRecord.username,
                                                                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -2411,7 +2410,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                     ),
                                                                                                                                                   ),
                                                                                                                                                   Padding(
-                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
+                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 0.0, 0.0),
                                                                                                                                                     child: Text(
                                                                                                                                                       dateTimeFormat('relative', getCurrentTimestamp),
                                                                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -2428,7 +2427,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                     borderRadius: 30.0,
                                                                                                                                                     borderWidth: 1.0,
                                                                                                                                                     buttonSize: 40.0,
-                                                                                                                                                    icon: Icon(
+                                                                                                                                                    icon: const Icon(
                                                                                                                                                       Icons.keyboard_control_rounded,
                                                                                                                                                       color: Color(0xFF57636C),
                                                                                                                                                       size: 20.0,
@@ -2439,7 +2438,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                       await showModalBottomSheet(
                                                                                                                                                         isScrollControlled: true,
                                                                                                                                                         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                                                        barrierColor: Color(0x00000000),
+                                                                                                                                                        barrierColor: const Color(0x00000000),
                                                                                                                                                         context: context,
                                                                                                                                                         builder: (context) {
                                                                                                                                                           return WebViewAware(
@@ -2447,7 +2446,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                                               child: Padding(
                                                                                                                                                                 padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                                                child: Container(
+                                                                                                                                                                child: SizedBox(
                                                                                                                                                                   height: 200.0,
                                                                                                                                                                   child: PostCommentFunctionsWidget(
                                                                                                                                                                     commentposterref: listViewCommentsSocialCommentsRecord.reference,
@@ -2463,7 +2462,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                 ],
                                                                                                                                               ),
                                                                                                                                               Padding(
-                                                                                                                                                padding: EdgeInsets.all(15.0),
+                                                                                                                                                padding: const EdgeInsets.all(15.0),
                                                                                                                                                 child: Column(
                                                                                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -2485,7 +2484,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                           ),
                                                                                                                                         ),
                                                                                                                                         Padding(
-                                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
+                                                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
                                                                                                                                           child: InkWell(
                                                                                                                                             splashColor: Colors.transparent,
                                                                                                                                             focusColor: Colors.transparent,
@@ -2497,7 +2496,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                               await showModalBottomSheet(
                                                                                                                                                 isScrollControlled: true,
                                                                                                                                                 backgroundColor: FlutterFlowTheme.of(context).primary,
-                                                                                                                                                barrierColor: Color(0x00000000),
+                                                                                                                                                barrierColor: const Color(0x00000000),
                                                                                                                                                 context: context,
                                                                                                                                                 builder: (context) {
                                                                                                                                                   return WebViewAware(
@@ -2505,7 +2504,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                       onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                                                                       child: Padding(
                                                                                                                                                         padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                                        child: Container(
+                                                                                                                                                        child: SizedBox(
                                                                                                                                                           height: 300.0,
                                                                                                                                                           child: ReplyToPostWidget(
                                                                                                                                                             postid: listViewSocialpostsRecord.reference,
@@ -2533,7 +2532,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                                                                                       ),
                                                                                                                                                 ),
-                                                                                                                                                Padding(
+                                                                                                                                                const Padding(
                                                                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                                                                                   child: Icon(
                                                                                                                                                     Icons.reply_sharp,
@@ -2561,13 +2560,13 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                                             ),
                                                                                                             if (listViewSocialpostsRecord.islive == true)
                                                                                                               Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                                                                                                                 child: Container(
                                                                                                                   constraints: BoxConstraints(
                                                                                                                     maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                                                                                                                   ),
-                                                                                                                  decoration: BoxDecoration(),
-                                                                                                                  child: SingleChildScrollView(
+                                                                                                                  decoration: const BoxDecoration(),
+                                                                                                                  child: const SingleChildScrollView(
                                                                                                                     child: Column(
                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                       children: [],
@@ -2606,11 +2605,11 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                     if (FFAppState().drawerMenu)
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, -1.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       40.0,
                                                                       80.0,
@@ -2619,7 +2618,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                           child: Container(
                                                             width: 300.0,
                                                             decoration:
-                                                                BoxDecoration(
+                                                                const BoxDecoration(
                                                               color: Color(
                                                                   0xE6070814),
                                                               boxShadow: [
@@ -2649,7 +2648,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                 children: [
                                                                   Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             20.0),
                                                                     child:
                                                                         Column(
@@ -2658,7 +2657,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2685,7 +2684,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                 Container(
                                                                               width: double.infinity,
                                                                               height: 50.0,
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2699,7 +2698,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                         size: 20.0,
                                                                                       ),
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Stations',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2718,7 +2717,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation3']!),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2745,7 +2744,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                 Container(
                                                                               width: double.infinity,
                                                                               height: 50.0,
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2759,7 +2758,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                         size: 20.0,
                                                                                       ),
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Car connect',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2778,7 +2777,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation4']!),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2805,7 +2804,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                 Container(
                                                                               width: double.infinity,
                                                                               height: 50.0,
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2819,7 +2818,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                         size: 20.0,
                                                                                       ),
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Locker',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2838,7 +2837,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation5']!),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2865,7 +2864,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                 Container(
                                                                               width: double.infinity,
                                                                               height: 50.0,
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2879,7 +2878,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                         size: 20.0,
                                                                                       ),
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Charge reports',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2898,7 +2897,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation6']!),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               0.0,
                                                                               20.0,
@@ -2925,7 +2924,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                 Container(
                                                                               width: double.infinity,
                                                                               height: 50.0,
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2939,7 +2938,7 @@ class _SocialFeedCopyWidgetState extends State<SocialFeedCopyWidget>
                                                                                         size: 20.0,
                                                                                       ),
                                                                                       Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Warnings',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(

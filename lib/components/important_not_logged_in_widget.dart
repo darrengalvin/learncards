@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -66,14 +65,14 @@ class _ImportantNotLoggedInWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 7.0,
                 color: Color(0x2F1D2429),
@@ -83,7 +82,7 @@ class _ImportantNotLoggedInWidgetState
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -112,7 +111,7 @@ class _ImportantNotLoggedInWidgetState
                         borderRadius: 20.0,
                         borderWidth: 1.0,
                         buttonSize: 40.0,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.close,
                           size: 24.0,
                         ),
@@ -163,7 +162,7 @@ class _ImportantNotLoggedInWidgetState
                     builder: (context) {
                       if (FFAppState().wantsToLogin == true) {
                         return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'If you have already completed this process login below and we will connect you to your account.\n\n',
@@ -172,7 +171,7 @@ class _ImportantNotLoggedInWidgetState
                         );
                       } else {
                         return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'While you\'re welcome to browse this app as a guest, please be aware that your learning journey history may not be saved once you leave. \n\nTo keep your progress and preferences secure, we recommend and highly encourage creating an account. \n\nIt\'s an easy process: simply choose a password and remember it — we\'ll handle everything else.',
@@ -182,7 +181,7 @@ class _ImportantNotLoggedInWidgetState
                       }
                     },
                   ),
-                  Padding(
+                  const Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Row(
@@ -199,7 +198,7 @@ class _ImportantNotLoggedInWidgetState
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: Autocomplete<String>(
                                 initialValue: TextEditingValue(
@@ -227,7 +226,7 @@ class _ImportantNotLoggedInWidgetState
                                     onSelected: onSelected,
                                     textStyle:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    textHighlightStyle: TextStyle(),
+                                    textHighlightStyle: const TextStyle(),
                                     elevation: 4.0,
                                     optionBackgroundColor:
                                         FlutterFlowTheme.of(context)
@@ -259,7 +258,7 @@ class _ImportantNotLoggedInWidgetState
                                     focusNode: focusNode,
                                     onEditingComplete: onEditingComplete,
                                     autofocus: true,
-                                    autofillHints: [AutofillHints.email],
+                                    autofillHints: const [AutofillHints.email],
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Email',
@@ -321,10 +320,10 @@ class _ImportantNotLoggedInWidgetState
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: Autocomplete<String>(
-                                initialValue: TextEditingValue(),
+                                initialValue: const TextEditingValue(),
                                 optionsBuilder: (textEditingValue) {
                                   if (textEditingValue.text == '') {
                                     return const Iterable<String>.empty();
@@ -345,7 +344,7 @@ class _ImportantNotLoggedInWidgetState
                                     onSelected: onSelected,
                                     textStyle:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    textHighlightStyle: TextStyle(),
+                                    textHighlightStyle: const TextStyle(),
                                     elevation: 4.0,
                                     optionBackgroundColor:
                                         FlutterFlowTheme.of(context)
@@ -377,7 +376,7 @@ class _ImportantNotLoggedInWidgetState
                                     focusNode: focusNode,
                                     onEditingComplete: onEditingComplete,
                                     autofocus: true,
-                                    autofillHints: [AutofillHints.password],
+                                    autofillHints: const [AutofillHints.password],
                                     obscureText: !_model.passwordVisibility,
                                     decoration: InputDecoration(
                                       labelText: 'Choose Password',
@@ -450,7 +449,7 @@ class _ImportantNotLoggedInWidgetState
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 7.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 7.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -458,11 +457,9 @@ class _ImportantNotLoggedInWidgetState
                               child: Container(
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: _model.passwordController.text !=
-                                                null &&
-                                            _model.passwordController.text != ''
+                                    color: _model.passwordController.text != ''
                                         ? FlutterFlowTheme.of(context).error
-                                        : Color(0x00000000),
+                                        : const Color(0x00000000),
                                     width: 1.0,
                                   ),
                                 ),
@@ -470,8 +467,6 @@ class _ImportantNotLoggedInWidgetState
                                   visible: valueOrDefault<bool>(
                                     valueOrDefault<bool>(
                                           _model.passwordController.text !=
-                                                  null &&
-                                              _model.passwordController.text !=
                                                   '',
                                           false,
                                         ) &&
@@ -482,10 +477,10 @@ class _ImportantNotLoggedInWidgetState
                                     false,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: Autocomplete<String>(
-                                      initialValue: TextEditingValue(),
+                                      initialValue: const TextEditingValue(),
                                       optionsBuilder: (textEditingValue) {
                                         if (textEditingValue.text == '') {
                                           return const Iterable<String>.empty();
@@ -510,7 +505,7 @@ class _ImportantNotLoggedInWidgetState
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium,
-                                          textHighlightStyle: TextStyle(),
+                                          textHighlightStyle: const TextStyle(),
                                           elevation: 4.0,
                                           optionBackgroundColor:
                                               FlutterFlowTheme.of(context)
@@ -544,7 +539,7 @@ class _ImportantNotLoggedInWidgetState
                                           focusNode: focusNode,
                                           onEditingComplete: onEditingComplete,
                                           autofocus: true,
-                                          autofillHints: [
+                                          autofillHints: const [
                                             AutofillHints.password
                                           ],
                                           obscureText:
@@ -645,7 +640,7 @@ class _ImportantNotLoggedInWidgetState
                                               .confirmPassowrdController.text) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
-                                          SnackBar(
+                                          const SnackBar(
                                             content: Text(
                                               'Passwords don\'t match!',
                                             ),
@@ -736,10 +731,10 @@ class _ImportantNotLoggedInWidgetState
                                     text: 'Create Account',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -758,7 +753,7 @@ class _ImportantNotLoggedInWidgetState
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -789,10 +784,10 @@ class _ImportantNotLoggedInWidgetState
                                     text: 'Login',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -811,7 +806,7 @@ class _ImportantNotLoggedInWidgetState
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -826,7 +821,7 @@ class _ImportantNotLoggedInWidgetState
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
@@ -839,9 +834,9 @@ class _ImportantNotLoggedInWidgetState
                           text: 'I have already done this',
                           options: FFButtonOptions(
                             height: 20.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -856,7 +851,7 @@ class _ImportantNotLoggedInWidgetState
                                           .titleSmallFamily),
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -865,7 +860,7 @@ class _ImportantNotLoggedInWidgetState
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             10.0, 10.0, 10.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,

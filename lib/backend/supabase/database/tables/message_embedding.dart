@@ -10,7 +10,7 @@ class MessageEmbeddingTable extends SupabaseTable<MessageEmbeddingRow> {
 }
 
 class MessageEmbeddingRow extends SupabaseDataRow {
-  MessageEmbeddingRow(Map<String, dynamic> data) : super(data);
+  MessageEmbeddingRow(super.data);
 
   @override
   SupabaseTable get table => MessageEmbeddingTable();

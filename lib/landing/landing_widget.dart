@@ -1,4 +1,3 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/learn_abot_companies_widget.dart';
@@ -9,9 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,15 +47,13 @@ class _LandingWidgetState extends State<LandingWidget> {
           ),
         ),
       );
-      if (FFAppState().companySecretCode == null ||
-          FFAppState().companySecretCode == '') {
+      if (FFAppState().companySecretCode == '') {
         logFirebaseEvent('landing_update_app_state');
         setState(() {
           FFAppState().companySecretCode = '22335555';
         });
       }
-      if (!(FFAppState().nonLoggedInSessionId != null &&
-          FFAppState().nonLoggedInSessionId != '')) {
+      if (!(FFAppState().nonLoggedInSessionId != '')) {
         logFirebaseEvent('landing_backend_call');
 
         var sessionsRecordReference = SessionsRecord.collection.doc();
@@ -84,8 +78,7 @@ class _LandingWidgetState extends State<LandingWidget> {
               _model.sessionsCreated!.reference.id;
         });
       }
-      if (!(FFAppState().activeThread != null &&
-          FFAppState().activeThread != '')) {
+      if (!(FFAppState().activeThread != '')) {
         logFirebaseEvent('landing_update_app_state');
         setState(() {
           FFAppState().activeThread = random_data.randomString(
@@ -114,7 +107,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                   : FFAppState().nonLoggedInSessionId,
               role: 'ai',
               text: valueOrDefault<String>(
-                _model.companyQueryOnPageLoad?.first?.welcomeMessage,
+                _model.companyQueryOnPageLoad?.first.welcomeMessage,
                 'Welcome',
               ),
               createdTime: getCurrentTimestamp,
@@ -197,7 +190,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(0.0),
                                   child: BackdropFilter(
@@ -206,13 +199,13 @@ class _LandingWidgetState extends State<LandingWidget> {
                                       sigmaY: 2.0,
                                     ),
                                     child: Container(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Stack(
                                           alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
+                                              const AlignmentDirectional(-1.0, 0.0),
                                           children: [
                                             ClipRRect(
                                               borderRadius:
@@ -256,7 +249,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, -1.89),
                                               child: SingleChildScrollView(
                                                 child: Column(
@@ -273,7 +266,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                         children: [
                                                           Container(
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                           ),
                                                         ],
                                                       ),
@@ -282,7 +275,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                       width: 850.0,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x49E0D9D9),
+                                                            const Color(0x49E0D9D9),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(17.0),
@@ -300,7 +293,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                   () => setState(
                                                                       () {}),
                                                               child:
-                                                                  LearnTopicWidget(),
+                                                                  const LearnTopicWidget(),
                                                             ),
                                                           ],
                                                         ),
@@ -315,11 +308,11 @@ class _LandingWidgetState extends State<LandingWidget> {
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           1.0, 1.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 25.0,
                                                                 20.0, 0.0),
                                                     child:
@@ -342,149 +335,6 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     .defer ??
                                                                 MouseCursor
                                                                     .defer,
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      FFButtonWidget(
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'LANDING_GOT_A_COMPANY_CODE?_BTN_ON_TAP');
-                                                                      logFirebaseEvent(
-                                                                          'Button_update_page_state');
-                                                                      setState(
-                                                                          () {
-                                                                        _model.showCompanyCode =
-                                                                            true;
-                                                                      });
-                                                                    },
-                                                                    text:
-                                                                        'Got a company Code?',
-                                                                    options:
-                                                                        FFButtonOptions(
-                                                                      height:
-                                                                          50.0,
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          24.0,
-                                                                          0.0,
-                                                                          24.0,
-                                                                          0.0),
-                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      textStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            fontSize:
-                                                                                20.0,
-                                                                            useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                          ),
-                                                                      elevation:
-                                                                          3.0,
-                                                                      borderSide:
-                                                                          BorderSide(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      FFButtonWidget(
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'LANDING_PAGE_CLEAR_DEBUG_BTN_ON_TAP');
-                                                                      logFirebaseEvent(
-                                                                          'Button_update_app_state');
-                                                                      setState(
-                                                                          () {
-                                                                        FFAppState()
-                                                                            .debugCount = 0;
-                                                                      });
-                                                                    },
-                                                                    text:
-                                                                        'Clear Debug',
-                                                                    options:
-                                                                        FFButtonOptions(
-                                                                      height:
-                                                                          50.0,
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          24.0,
-                                                                          0.0,
-                                                                          24.0,
-                                                                          0.0),
-                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      textStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            fontSize:
-                                                                                20.0,
-                                                                            useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                          ),
-                                                                      elevation:
-                                                                          3.0,
-                                                                      borderSide:
-                                                                          BorderSide(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
                                                             onEnter:
                                                                 ((event) async {
                                                               setState(() =>
@@ -513,6 +363,149 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     false;
                                                               });
                                                             }),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      FFButtonWidget(
+                                                                    onPressed:
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'LANDING_GOT_A_COMPANY_CODE?_BTN_ON_TAP');
+                                                                      logFirebaseEvent(
+                                                                          'Button_update_page_state');
+                                                                      setState(
+                                                                          () {
+                                                                        _model.showCompanyCode =
+                                                                            true;
+                                                                      });
+                                                                    },
+                                                                    text:
+                                                                        'Got a company Code?',
+                                                                    options:
+                                                                        FFButtonOptions(
+                                                                      height:
+                                                                          50.0,
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      textStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontSize:
+                                                                                20.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                          ),
+                                                                      elevation:
+                                                                          3.0,
+                                                                      borderSide:
+                                                                          const BorderSide(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      FFButtonWidget(
+                                                                    onPressed:
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'LANDING_PAGE_CLEAR_DEBUG_BTN_ON_TAP');
+                                                                      logFirebaseEvent(
+                                                                          'Button_update_app_state');
+                                                                      setState(
+                                                                          () {
+                                                                        FFAppState()
+                                                                            .debugCount = 0;
+                                                                      });
+                                                                    },
+                                                                    text:
+                                                                        'Clear Debug',
+                                                                    options:
+                                                                        FFButtonOptions(
+                                                                      height:
+                                                                          50.0,
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      textStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontSize:
+                                                                                20.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                          ),
+                                                                      elevation:
+                                                                          3.0,
+                                                                      borderSide:
+                                                                          const BorderSide(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ],
                                                       ),
@@ -521,11 +514,11 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           1.0, 1.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 25.0,
                                                                 20.0, 0.0),
                                                     child:
@@ -550,13 +543,41 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                       .defer ??
                                                                   MouseCursor
                                                                       .defer,
+                                                              onEnter:
+                                                                  ((event) async {
+                                                                setState(() =>
+                                                                    _model.mouseRegionHovered2 =
+                                                                        true);
+                                                                logFirebaseEvent(
+                                                                    'LANDING_MouseRegion_4mkm6vjf_ON_TOGGLE_O');
+                                                                logFirebaseEvent(
+                                                                    'MouseRegion_update_page_state');
+                                                                setState(() {
+                                                                  _model.showCompanyCode =
+                                                                      true;
+                                                                });
+                                                              }),
+                                                              onExit:
+                                                                  ((event) async {
+                                                                setState(() =>
+                                                                    _model.mouseRegionHovered2 =
+                                                                        false);
+                                                                logFirebaseEvent(
+                                                                    'LANDING_MouseRegion_4mkm6vjf_ON_TOGGLE_O');
+                                                                logFirebaseEvent(
+                                                                    'MouseRegion_update_page_state');
+                                                                setState(() {
+                                                                  _model.showCompanyCode =
+                                                                      false;
+                                                                });
+                                                              }),
                                                               child: Container(
                                                                 width: double
                                                                     .infinity,
                                                                 height: double
                                                                     .infinity,
                                                                 constraints:
-                                                                    BoxConstraints(
+                                                                    const BoxConstraints(
                                                                   maxWidth:
                                                                       900.0,
                                                                   maxHeight:
@@ -564,7 +585,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                 ),
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFE6EDFB),
                                                                   borderRadius:
                                                                       BorderRadius
@@ -595,7 +616,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: EdgeInsets.all(25.0),
+                                                                                    padding: const EdgeInsets.all(25.0),
                                                                                     child: Text(
                                                                                       'Have a Company Code? Enter it Here!',
                                                                                       style: FlutterFlowTheme.of(context).headlineLarge.override(
@@ -611,7 +632,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                                                                                     child: FFButtonWidget(
                                                                                       onPressed: () async {
                                                                                         logFirebaseEvent('LANDING_PAGE_DEMOS_HERE_BTN_ON_TAP');
@@ -623,8 +644,8 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                       text: 'Demos Here',
                                                                                       options: FFButtonOptions(
                                                                                         height: 40.0,
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                         color: FlutterFlowTheme.of(context).accent2,
                                                                                         textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -632,7 +653,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                             ),
                                                                                         elevation: 3.0,
-                                                                                        borderSide: BorderSide(
+                                                                                        borderSide: const BorderSide(
                                                                                           color: Colors.transparent,
                                                                                           width: 1.0,
                                                                                         ),
@@ -664,7 +685,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: EdgeInsets.all(25.0),
+                                                                                                padding: const EdgeInsets.all(25.0),
                                                                                                 child: Text(
                                                                                                   'Are you associated with a membership body, institution, or organisation that\'s invited you to join their custom learning plan? \n\nEnter your code here, and we\'ll direct you to their tailored platform for a self-guided learning experience with their curated content.\n\nOpting to proceed without a company code? No worries! You\'ll access a wide range of AI-generated content through LearnCards, crafted to enhance your learning journey.',
                                                                                                   style: FlutterFlowTheme.of(context).headlineLarge.override(
@@ -683,13 +704,13 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                 children: [
                                                                                                   if (_model.showDemoCompanies == true)
                                                                                                     Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 15.0),
+                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 15.0),
                                                                                                       child: Column(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
                                                                                                           Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                                                                                                             child: Text(
                                                                                                               'Demos ',
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -714,13 +735,13 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                                                       ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: '22334455',
                                                                                                                   style: TextStyle(
                                                                                                                     fontSize: 22.0,
                                                                                                                   ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: '',
                                                                                                                   style: TextStyle(),
                                                                                                                 )
@@ -747,13 +768,13 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                                                       ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: 'lE3DUN!V',
                                                                                                                   style: TextStyle(
                                                                                                                     fontSize: 22.0,
                                                                                                                   ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: '',
                                                                                                                   style: TextStyle(),
                                                                                                                 )
@@ -779,13 +800,13 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                                                       ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: 'MABM4455',
                                                                                                                   style: TextStyle(
                                                                                                                     fontSize: 22.0,
                                                                                                                   ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: '',
                                                                                                                   style: TextStyle(),
                                                                                                                 )
@@ -811,13 +832,13 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                                                       ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: 'AA1AA212',
                                                                                                                   style: TextStyle(
                                                                                                                     fontSize: 22.0,
                                                                                                                   ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: '',
                                                                                                                   style: TextStyle(),
                                                                                                                 )
@@ -843,7 +864,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                                                       ),
                                                                                                                 ),
-                                                                                                                TextSpan(
+                                                                                                                const TextSpan(
                                                                                                                   text: '09090808',
                                                                                                                   style: TextStyle(
                                                                                                                     fontWeight: FontWeight.normal,
@@ -878,12 +899,12 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                                                                                                     child: Column(
                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                       children: [
                                                                                                         Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                                                                                                           child: Text(
                                                                                                             'Enter your code here',
                                                                                                             style: FlutterFlowTheme.of(context).headlineSmall.override(
@@ -905,7 +926,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 10.0, 0.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 10.0, 0.0),
                                                                                                         child: FFButtonWidget(
                                                                                                           onPressed: () async {
                                                                                                             logFirebaseEvent('LANDING_WANT_YOUR_OWN_PLATFORM?_BTN_ON_T');
@@ -933,8 +954,8 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                           text: 'Want your own Platform?',
                                                                                                           options: FFButtonOptions(
                                                                                                             height: 50.0,
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                                            iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                             color: FlutterFlowTheme.of(context).primary,
                                                                                                             textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                                   fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -943,7 +964,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                                                 ),
                                                                                                             elevation: 3.0,
-                                                                                                            borderSide: BorderSide(
+                                                                                                            borderSide: const BorderSide(
                                                                                                               color: Colors.transparent,
                                                                                                               width: 1.0,
                                                                                                             ),
@@ -966,7 +987,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                             color: FlutterFlowTheme.of(context).accent2,
                                                                                           ),
                                                                                           Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                                                                                             child: PinCodeTextField(
                                                                                               autoDisposeControllers: false,
                                                                                               appContext: context,
@@ -986,7 +1007,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                 fieldHeight: 44.0,
                                                                                                 fieldWidth: 44.0,
                                                                                                 borderWidth: 2.0,
-                                                                                                borderRadius: BorderRadius.only(
+                                                                                                borderRadius: const BorderRadius.only(
                                                                                                   bottomLeft: Radius.circular(12.0),
                                                                                                   bottomRight: Radius.circular(12.0),
                                                                                                   topLeft: Radius.circular(12.0),
@@ -1006,18 +1027,18 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                 logFirebaseEvent('LANDING_PinCode_oibym5xx_ON_PINCODE_COMP');
                                                                                                 logFirebaseEvent('PinCode_firestore_query');
                                                                                                 _model.allCompanies = await queryCompaniesRecordOnce();
-                                                                                                if (_model.pinCodeController!.text == _model.allCompanies?.where((e) => e.companyCode == _model.pinCodeController!.text).toList()?.first?.companyCode) {
+                                                                                                if (_model.pinCodeController!.text == _model.allCompanies?.where((e) => e.companyCode == _model.pinCodeController!.text).toList().first.companyCode) {
                                                                                                   logFirebaseEvent('PinCode_alert_dialog');
                                                                                                   await showDialog(
                                                                                                     context: context,
                                                                                                     builder: (alertDialogContext) {
                                                                                                       return WebViewAware(
                                                                                                         child: AlertDialog(
-                                                                                                          title: Text('ok'),
+                                                                                                          title: const Text('ok'),
                                                                                                           actions: [
                                                                                                             TextButton(
                                                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                              child: Text('Ok'),
+                                                                                                              child: const Text('Ok'),
                                                                                                             ),
                                                                                                           ],
                                                                                                         ),
@@ -1035,11 +1056,11 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                     builder: (alertDialogContext) {
                                                                                                       return WebViewAware(
                                                                                                         child: AlertDialog(
-                                                                                                          title: Text('no match found'),
+                                                                                                          title: const Text('no match found'),
                                                                                                           actions: [
                                                                                                             TextButton(
                                                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                              child: Text('Ok'),
+                                                                                                              child: const Text('Ok'),
                                                                                                             ),
                                                                                                           ],
                                                                                                         ),
@@ -1056,12 +1077,12 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                     builder: (alertDialogContext) {
                                                                                                       return WebViewAware(
                                                                                                         child: AlertDialog(
-                                                                                                          title: Text('Reverted back to default '),
-                                                                                                          content: Text('LearnCards'),
+                                                                                                          title: const Text('Reverted back to default '),
+                                                                                                          content: const Text('LearnCards'),
                                                                                                           actions: [
                                                                                                             TextButton(
                                                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                              child: Text('Ok'),
+                                                                                                              child: const Text('Ok'),
                                                                                                             ),
                                                                                                           ],
                                                                                                         ),
@@ -1075,7 +1096,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                                                 context.goNamed(
                                                                                                   'landing',
                                                                                                   extra: <String, dynamic>{
-                                                                                                    kTransitionInfoKey: TransitionInfo(
+                                                                                                    kTransitionInfoKey: const TransitionInfo(
                                                                                                       hasTransition: true,
                                                                                                       transitionType: PageTransitionType.fade,
                                                                                                       duration: Duration(milliseconds: 0),
@@ -1103,34 +1124,6 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                   ],
                                                                 ),
                                                               ),
-                                                              onEnter:
-                                                                  ((event) async {
-                                                                setState(() =>
-                                                                    _model.mouseRegionHovered2 =
-                                                                        true);
-                                                                logFirebaseEvent(
-                                                                    'LANDING_MouseRegion_4mkm6vjf_ON_TOGGLE_O');
-                                                                logFirebaseEvent(
-                                                                    'MouseRegion_update_page_state');
-                                                                setState(() {
-                                                                  _model.showCompanyCode =
-                                                                      true;
-                                                                });
-                                                              }),
-                                                              onExit:
-                                                                  ((event) async {
-                                                                setState(() =>
-                                                                    _model.mouseRegionHovered2 =
-                                                                        false);
-                                                                logFirebaseEvent(
-                                                                    'LANDING_MouseRegion_4mkm6vjf_ON_TOGGLE_O');
-                                                                logFirebaseEvent(
-                                                                    'MouseRegion_update_page_state');
-                                                                setState(() {
-                                                                  _model.showCompanyCode =
-                                                                      false;
-                                                                });
-                                                              }),
                                                             ),
                                                         ],
                                                       ),

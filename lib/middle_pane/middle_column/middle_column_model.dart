@@ -1,7 +1,4 @@
-import '/backend/backend.dart';
 import '/components/social_feed_bottoms_h_e_e_t_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/middle_pane/body_content/body_content_widget.dart';
 import '/middle_pane/body_content_mainiles/body_content_mainiles_widget.dart';
@@ -10,9 +7,6 @@ import '/middle_pane/preparing/preparing_widget.dart';
 import '/right_pane/social_feed_new_componant/social_feed_new_componant_widget.dart';
 import 'middle_column_widget.dart' show MiddleColumnWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class MiddleColumnModel extends FlutterFlowModel<MiddleColumnWidget> {
   ///  State fields for stateful widgets in this component.

@@ -1,10 +1,8 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'featured_tiles_delete_model.dart';
 export 'featured_tiles_delete_model.dart';
@@ -14,7 +12,7 @@ class FeaturedTilesDeleteWidget extends StatefulWidget {
     super.key,
     this.tileDocs,
     int? initialTileIndex,
-  }) : this.initialTileIndex = initialTileIndex ?? 0;
+  }) : initialTileIndex = initialTileIndex ?? 0;
 
   final List<Tilesv2Record>? tileDocs;
   final int initialTileIndex;
@@ -44,7 +42,7 @@ class _FeaturedTilesDeleteWidgetState extends State<FeaturedTilesDeleteWidget> {
       logFirebaseEvent('featuredTiles-delete_update_component_st');
       setState(() {
         _model.selectedTileId = valueOrDefault<String>(
-          widget.tileDocs?[widget.initialTileIndex]?.reference.id,
+          widget.tileDocs?[widget.initialTileIndex].reference.id,
           '0',
         );
       });
@@ -70,10 +68,10 @@ class _FeaturedTilesDeleteWidgetState extends State<FeaturedTilesDeleteWidget> {
           maxWidth: MediaQuery.sizeOf(context).width * 12.0,
           maxHeight: 160.0,
         ),
-        decoration: BoxDecoration(),
-        alignment: AlignmentDirectional(0.0, 0.0),
+        decoration: const BoxDecoration(),
+        alignment: const AlignmentDirectional(0.0, 0.0),
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Builder(
             builder: (context) {
               final tile = widget.tileDocs?.toList() ?? [];
@@ -83,7 +81,7 @@ class _FeaturedTilesDeleteWidgetState extends State<FeaturedTilesDeleteWidget> {
                 children: List.generate(tile.length, (tileIndex) {
                   final tileItem = tile[tileIndex];
                   return Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -122,13 +120,13 @@ class _FeaturedTilesDeleteWidgetState extends State<FeaturedTilesDeleteWidget> {
                         }
                       },
                       child: AnimatedContainer(
-                        duration: Duration(milliseconds: 100),
+                        duration: const Duration(milliseconds: 100),
                         curve: Curves.easeIn,
                         decoration: BoxDecoration(
                           color: valueOrDefault<Color>(
                             FFAppState().tileNav.tier0Id ==
                                     tileItem.reference.id
-                                ? Color(0xFF1AADF9)
+                                ? const Color(0xFF1AADF9)
                                 : FlutterFlowTheme.of(context).primary,
                             FlutterFlowTheme.of(context).primary,
                           ),
@@ -137,7 +135,7 @@ class _FeaturedTilesDeleteWidgetState extends State<FeaturedTilesDeleteWidget> {
                             color: valueOrDefault<Color>(
                               FFAppState().tileNav.tier0Id ==
                                       tileItem.reference.id
-                                  ? Color(0xFF1A5AF9)
+                                  ? const Color(0xFF1A5AF9)
                                   : Colors.transparent,
                               Colors.transparent,
                             ),
@@ -145,7 +143,7 @@ class _FeaturedTilesDeleteWidgetState extends State<FeaturedTilesDeleteWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(5.0),
+                          padding: const EdgeInsets.all(5.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(17.0),
                             child: Image.network(

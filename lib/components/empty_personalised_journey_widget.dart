@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_personalised_journey_model.dart';
 export 'empty_personalised_journey_model.dart';
 
@@ -54,14 +52,14 @@ class _EmptyPersonalisedJourneyWidgetState
             size: 72.0,
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
               'No Personalised Journey',
               style: FlutterFlowTheme.of(context).headlineMedium,
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
             child: Text(
               'You do not yet have a personalised Journey, you must be a member to use this facility.\n\nThis feature will be ready to try on the 7th April ',
               textAlign: TextAlign.center,

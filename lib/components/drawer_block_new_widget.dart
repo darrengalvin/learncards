@@ -15,7 +15,6 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'drawer_block_new_model.dart';
 export 'drawer_block_new_model.dart';
 
@@ -23,7 +22,7 @@ class DrawerBlockNewWidget extends StatefulWidget {
   const DrawerBlockNewWidget({
     super.key,
     bool? isNavBar,
-  }) : this.isNavBar = isNavBar ?? false;
+  }) : isNavBar = isNavBar ?? false;
 
   final bool isNavBar;
 
@@ -97,7 +96,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
             color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -107,7 +106,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                 ))
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,7 +115,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 20.0, 0.0),
                               child: Container(
                                 width: 50.0,
@@ -125,7 +124,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                 ),
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
                                   borderRadius: 20.0,
@@ -159,7 +158,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Builder(
                             builder: (context) {
                               if (_model.isEdit) {
@@ -189,7 +188,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                   borderRadius: 20.0,
                                   borderWidth: 1.0,
                                   buttonSize: 40.0,
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.add,
                                     color: Color(0xFF1AADF9),
                                     size: 24.0,
@@ -219,7 +218,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 20.0, 12.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
@@ -228,19 +227,19 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
                                         width: 60.0,
                                         height: 60.0,
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: Container(
                                           width: 60.0,
                                           height: 60.0,
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            gradient: const LinearGradient(
                                               colors: [
                                                 Color(0xFF1AADF9),
                                                 Color(0xA41A5AF9)
@@ -255,7 +254,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Icon(
                                               Icons.dashboard_customize_sharp,
                                               color:
@@ -269,7 +268,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 4.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -279,20 +278,18 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   valueOrDefault<String>(
-                                                    '${valueOrDefault<String>(
+                                                    valueOrDefault<String>(
                                                       _model.currentId !=
-                                                                  null &&
-                                                              _model.currentId !=
                                                                   ''
                                                           ? 'Edit Tile'
                                                           : 'New Tile',
                                                       'New Tile',
-                                                    )}',
+                                                    ),
                                                     'New Block',
                                                   ),
                                                   textAlign: TextAlign.start,
@@ -303,7 +300,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
-                                                            Color(0xFF090F13),
+                                                            const Color(0xFF090F13),
                                                         fontSize: 32.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -347,12 +344,12 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: Column(
                                   children: [
                                     Align(
-                                      alignment: Alignment(0.0, 0),
+                                      alignment: const Alignment(0.0, 0),
                                       child: TabBar(
                                         labelColor: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -361,12 +358,12 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                 .secondaryText,
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .titleMedium,
-                                        unselectedLabelStyle: TextStyle(),
+                                        unselectedLabelStyle: const TextStyle(),
                                         indicatorColor:
                                             FlutterFlowTheme.of(context)
                                                 .customColor7,
-                                        padding: EdgeInsets.all(4.0),
-                                        tabs: [
+                                        padding: const EdgeInsets.all(4.0),
+                                        tabs: const [
                                           Tab(
                                             text: 'Settings',
                                           ),
@@ -403,7 +400,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   24.0,
@@ -431,12 +428,12 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                       .secondaryBackground,
                                                                 ),
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
                                                                 child: Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -445,14 +442,14 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                     height:
                                                                         32.0,
                                                                     decoration:
-                                                                        BoxDecoration(
+                                                                        const BoxDecoration(
                                                                       color: Color(
                                                                           0xFF1AADF9),
                                                                       shape: BoxShape
                                                                           .circle,
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child: Text(
@@ -476,7 +473,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -501,7 +498,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                   .secondaryBackground,
                                                             ),
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Builder(
                                                               builder:
@@ -563,9 +560,6 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                     bool>(
                                                                   _model.textController1
                                                                               .text !=
-                                                                          null &&
-                                                                      _model.textController1
-                                                                              .text !=
                                                                           '',
                                                                   false,
                                                                 )) {
@@ -626,7 +620,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   8.0,
@@ -641,7 +635,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                             EasyDebounce
                                                                 .debounce(
                                                           '_model.textController1',
-                                                          Duration(
+                                                          const Duration(
                                                               milliseconds:
                                                                   2000),
                                                           () => setState(() {}),
@@ -677,7 +671,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFF1AADF9),
                                                               width: 2.0,
@@ -736,7 +730,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   24.0,
@@ -764,12 +758,12 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                       .secondaryBackground,
                                                                 ),
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
                                                                 child: Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -778,14 +772,14 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                     height:
                                                                         32.0,
                                                                     decoration:
-                                                                        BoxDecoration(
+                                                                        const BoxDecoration(
                                                                       color: Color(
                                                                           0xFF1AADF9),
                                                                       shape: BoxShape
                                                                           .circle,
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child: Text(
@@ -809,7 +803,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -834,7 +828,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                   .secondaryBackground,
                                                             ),
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, 0.0),
                                                           ),
                                                         ],
@@ -842,11 +836,11 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     10.0,
@@ -854,7 +848,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                     20.0),
                                                         child:
                                                             FlutterFlowChoiceChips(
-                                                          options: [
+                                                          options: const [
                                                             ChipData('Text'),
                                                             ChipData('Image'),
                                                             ChipData('Video'),
@@ -868,7 +862,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                           selectedChipStyle:
                                                               ChipStyle(
                                                             backgroundColor:
-                                                                Color(
+                                                                const Color(
                                                                     0xFF1AADF9),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -955,7 +949,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     24.0,
@@ -983,12 +977,12 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                         .secondaryBackground,
                                                                   ),
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child: Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
@@ -998,14 +992,14 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                       height:
                                                                           32.0,
                                                                       decoration:
-                                                                          BoxDecoration(
+                                                                          const BoxDecoration(
                                                                         color: Color(
                                                                             0xFF1AADF9),
                                                                         shape: BoxShape
                                                                             .circle,
                                                                       ),
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                       child:
@@ -1024,7 +1018,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -1079,7 +1073,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                     .secondaryBackground,
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                             ),
                                                           ],
@@ -1102,7 +1096,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                   (newValue) async {
                                                                 setState(() =>
                                                                     _model.switchListTileValue1 =
-                                                                        newValue!);
+                                                                        newValue);
                                                               },
                                                               title: Text(
                                                                 'Members',
@@ -1113,7 +1107,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                               tileColor: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryBackground,
-                                                              activeColor: Color(
+                                                              activeColor: const Color(
                                                                   0xFF1AADF9),
                                                               activeTrackColor:
                                                                   FlutterFlowTheme.of(
@@ -1133,7 +1127,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                   (newValue) async {
                                                                 setState(() =>
                                                                     _model.switchListTileValue2 =
-                                                                        newValue!);
+                                                                        newValue);
                                                               },
                                                               title: Text(
                                                                 'Subscriptions',
@@ -1166,7 +1160,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                   (newValue) async {
                                                                 setState(() =>
                                                                     _model.switchListTileValue3 =
-                                                                        newValue!);
+                                                                        newValue);
                                                               },
                                                               title: Text(
                                                                 'Livestreams',
@@ -1205,7 +1199,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                 CrossAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 24.0, 16.0, 0.0),
                                                 child: Row(
@@ -1229,24 +1223,24 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                 .secondaryBackground,
                                                           ),
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Container(
                                                               width: 32.0,
                                                               height: 32.0,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 color: Color(
                                                                     0xFF1AADF9),
                                                                 shape: BoxShape
                                                                     .circle,
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child: Text(
                                                                 '4',
@@ -1272,7 +1266,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1321,14 +1315,14 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                             .secondaryBackground,
                                                       ),
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                     ),
                                                   ],
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child:
@@ -1337,7 +1331,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                           .blockTypeValueController ??=
                                                       FormFieldController<
                                                           String>(null),
-                                                  options: [
+                                                  options: const [
                                                     'Text',
                                                     'Image',
                                                     'Video',
@@ -1370,10 +1364,10 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                           .secondaryBackground,
                                                   elevation: 2.0,
                                                   borderColor:
-                                                      Color(0xFF1AADF9),
+                                                      const Color(0xFF1AADF9),
                                                   borderWidth: 2.0,
                                                   borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
+                                                  margin: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 4.0, 16.0, 4.0),
                                                   hidesUnderline: true,
@@ -1383,7 +1377,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 24.0, 0.0, 0.0),
                                                   child: Container(
@@ -1409,11 +1403,11 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           10.0,
@@ -1421,7 +1415,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                           20.0),
                                                                   child:
                                                                       FlutterFlowChoiceChips(
-                                                                    options: [
+                                                                    options: const [
                                                                       ChipData(
                                                                           'Heading'),
                                                                       ChipData(
@@ -1436,7 +1430,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                     selectedChipStyle:
                                                                         ChipStyle(
                                                                       backgroundColor:
-                                                                          Color(
+                                                                          const Color(
                                                                               0xFF1AADF9),
                                                                       textStyle: FlutterFlowTheme.of(
                                                                               context)
@@ -1514,7 +1508,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                 false,
                                                               ))
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           8.0,
@@ -1532,7 +1526,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                         EasyDebounce
                                                                             .debounce(
                                                                       '_model.headerController',
-                                                                      Duration(
+                                                                      const Duration(
                                                                           milliseconds:
                                                                               2000),
                                                                       () => setState(
@@ -1567,7 +1561,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                       focusedBorder:
                                                                           OutlineInputBorder(
                                                                         borderSide:
-                                                                            BorderSide(
+                                                                            const BorderSide(
                                                                           color:
                                                                               Color(0xFF1AADF9),
                                                                           width:
@@ -1619,7 +1613,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                 false,
                                                               ))
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           12.0,
@@ -1637,7 +1631,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                         EasyDebounce
                                                                             .debounce(
                                                                       '_model.paragraphController',
-                                                                      Duration(
+                                                                      const Duration(
                                                                           milliseconds:
                                                                               2000),
                                                                       () => setState(
@@ -1672,7 +1666,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                       focusedBorder:
                                                                           OutlineInputBorder(
                                                                         borderSide:
-                                                                            BorderSide(
+                                                                            const BorderSide(
                                                                           color:
                                                                               Color(0xFF1AADF9),
                                                                           width:
@@ -1723,7 +1717,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                 false,
                                                               ))
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -1739,7 +1733,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                     updateOnChange:
                                                                         true,
                                                                     child:
-                                                                        TextListWidget(),
+                                                                        const TextListWidget(),
                                                                   ),
                                                                 ),
                                                             ],
@@ -1844,7 +1838,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             24.0,
@@ -1929,7 +1923,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                               itemBuilder: (context, appDocIndex) {
                                 final appDocItem = appDoc[appDocIndex];
                                 return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       4.0, 20.0, 4.0, 0.0),
                                   child: Container(
                                     width:
@@ -1937,7 +1931,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                     height: 100.0,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 3.0,
                                           color: Color(0x411D2429),
@@ -1947,13 +1941,13 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 1.0, 1.0),
                                             child: ClipRRect(
                                               borderRadius:
@@ -1971,7 +1965,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 8.0, 4.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1988,7 +1982,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
-                                                              Color(0xFF090F13),
+                                                              const Color(0xFF090F13),
                                                           fontSize: 18.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -2009,7 +2003,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -2049,11 +2043,11 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                         return FlutterFlowTheme.of(context)
                                                                             .error;
                                                                       } else {
-                                                                        return Color(
+                                                                        return const Color(
                                                                             0xFF7C8791);
                                                                       }
                                                                     }(),
-                                                                    Color(
+                                                                    const Color(
                                                                         0xFF7C8791),
                                                                   ),
                                                                   fontSize:
@@ -2078,7 +2072,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                                                 .secondaryBackground,
                                                           ),
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Builder(
                                                             builder: (context) {
@@ -2178,7 +2172,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
@@ -2191,9 +2185,9 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                         text: 'Cancel',
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).selectedButton,
                           textStyle: FlutterFlowTheme.of(context)
@@ -2207,7 +2201,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                         .titleSmallFamily),
                               ),
                           elevation: 0.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -2218,7 +2212,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                     if (_model.isEdit)
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
@@ -2231,9 +2225,9 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                           text: 'DELETE',
                           options: FFButtonOptions(
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).error,
                             textStyle: FlutterFlowTheme.of(context)
@@ -2247,7 +2241,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                           .titleSmallFamily),
                                 ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -2261,7 +2255,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                     ))
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
@@ -2274,11 +2268,11 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                           text: 'Save',
                           options: FFButtonOptions(
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF1AADF9),
+                            color: const Color(0xFF1AADF9),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -2290,7 +2284,7 @@ class _DrawerBlockNewWidgetState extends State<DrawerBlockNewWidget>
                                           .titleSmallFamily),
                                 ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

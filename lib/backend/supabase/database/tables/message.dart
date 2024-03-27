@@ -9,7 +9,7 @@ class MessageTable extends SupabaseTable<MessageRow> {
 }
 
 class MessageRow extends SupabaseDataRow {
-  MessageRow(Map<String, dynamic> data) : super(data);
+  MessageRow(super.data);
 
   @override
   SupabaseTable get table => MessageTable();
@@ -41,6 +41,6 @@ class MessageRow extends SupabaseDataRow {
   int get tokenCount => getField<int>('token_count')!;
   set tokenCount(int value) => setField<int>('token_count', value);
 
-  dynamic? get metadata => getField<dynamic>('metadata');
-  set metadata(dynamic? value) => setField<dynamic>('metadata', value);
+  dynamic get metadata => getField<dynamic>('metadata');
+  set metadata(dynamic value) => setField<dynamic>('metadata', value);
 }

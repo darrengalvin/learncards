@@ -1,12 +1,7 @@
-import '/backend/backend.dart';
 import '/components/dynamic_text_field_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'text_list_widget.dart' show TextListWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class TextListModel extends FlutterFlowModel<TextListWidget> {
   ///  Local state fields for this component.

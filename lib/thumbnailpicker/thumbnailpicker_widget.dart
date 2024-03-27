@@ -6,7 +6,6 @@ import '/flutter_flow/upload_data.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'thumbnailpicker_model.dart';
 export 'thumbnailpicker_model.dart';
 
@@ -56,7 +55,7 @@ class _ThumbnailpickerWidgetState extends State<ThumbnailpickerWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 400.0,
                     height: 600.0,
                     child: custom_widgets.ThumbnailPicker(
@@ -123,9 +122,9 @@ class _ThumbnailpickerWidgetState extends State<ThumbnailpickerWidget> {
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
@@ -137,7 +136,7 @@ class _ThumbnailpickerWidgetState extends State<ThumbnailpickerWidget> {
                                 FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
                       elevation: 3.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

@@ -1,9 +1,7 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -63,18 +61,18 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
       child: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               isScrollable: true,
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-              unselectedLabelStyle: TextStyle(),
+              unselectedLabelStyle: const TextStyle(),
               indicatorColor: FlutterFlowTheme.of(context).secondary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Link Details',
                 ),
@@ -102,7 +100,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -115,7 +113,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                               logFirebaseEvent('Icon_bottom_sheet');
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.cancel_outlined,
                               color: Colors.black,
                               size: 24.0,
@@ -123,7 +121,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.linkTitleController,
                             focusNode: _model.linkTitleFocusNode,
@@ -140,21 +138,21 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -167,7 +165,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
                             controller: _model.linkURLController,
                             focusNode: _model.linkURLFocusNode,
@@ -184,21 +182,21 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -212,7 +210,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 10.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -240,9 +238,9 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                             options: FFButtonOptions(
                               width: 150.0,
                               height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -257,7 +255,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -279,7 +277,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Text(
                           'Choose where you would like to show this tile.',
                           textAlign: TextAlign.center,
@@ -334,14 +332,14 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                         catagoryListViewCategoriesRecordList[
                                             catagoryListViewIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 2.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 70.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 0.0,
                                               color: Color(0xFFDBE2E7),
@@ -353,7 +351,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -361,20 +359,20 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                               Card(
                                                 clipBehavior:
                                                     Clip.antiAliasWithSaveLayer,
-                                                color: Color(0xFF4B39EF),
+                                                color: const Color(0xFF4B39EF),
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           40.0),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsets.all(2.0),
+                                                  padding: const EdgeInsets.all(2.0),
                                                   child: Container(
                                                     width: 50.0,
                                                     height: 50.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -386,7 +384,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           2.0, 0.0, 0.0, 0.0),
                                                   child: Theme(
@@ -401,7 +399,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                                         ),
                                                       ),
                                                       unselectedWidgetColor:
-                                                          Color(0xFF7C8791),
+                                                          const Color(0xFF7C8791),
                                                     ),
                                                     child: CheckboxListTile(
                                                       value: _model
@@ -423,7 +421,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Outfit',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF090F13),
                                                               fontSize: 20.0,
                                                               fontWeight:
@@ -443,7 +441,7 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Outfit',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF7C8791),
                                                               fontSize: 14.0,
                                                               fontWeight:
@@ -456,11 +454,11 @@ class _AddLinkInTileWidgetState extends State<AddLinkInTileWidget>
                                                             ),
                                                       ),
                                                       tileColor:
-                                                          Color(0xFFF5F5F5),
+                                                          const Color(0xFFF5F5F5),
                                                       activeColor:
-                                                          Color(0xFF4B39EF),
+                                                          const Color(0xFF4B39EF),
                                                       checkColor:
-                                                          Color(0xFF090F13),
+                                                          const Color(0xFF090F13),
                                                       dense: false,
                                                       controlAffinity:
                                                           ListTileControlAffinity
