@@ -19,27 +19,77 @@ import 'package:package_info_plus/package_info_plus.dart';
 Future<void> onAppLaunchCheckConfigurationAndRedirect(
     BuildContext context) async {
   try {
+    final logStyle =
+        'color: blue; background-color: yellow; font-size: 14px; font-weight: bold;';
+    final separatorStyle = 'color: red; font-size: 16px;';
+
+    debugPrint(
+        '%c===== Entering onAppLaunchCheckConfigurationAndRedirect function =====',
+        logStyle);
+    debugPrint(
+        '%c===== Entering onAppLaunchCheckConfigurationAndRedirect function =====',
+        logStyle);
+    debugPrint(
+        '%c===== Entering onAppLaunchCheckConfigurationAndRedirect function =====',
+        logStyle);
+
     String pageUrl = '';
     if (kIsWeb) {
       // Web-specific logic
       pageUrl = Uri.base.toString();
-      debugPrint('Current web URL: $pageUrl');
+      debugPrint('%cCurrent web URL: $pageUrl', logStyle);
       final uri = Uri.parse(pageUrl);
+
+      // Test 1: Manual redirect
+      if (uri.path == '/test1') {
+        debugPrint('%cTest 1: Manual redirect triggered', logStyle);
+        final redirectUrl = '/library?companiesDoc=0fXG0CVY9h92MjpurneyForward';
+        await Future.delayed(Duration(seconds: 2));
+        await Navigator.pushReplacementNamed(context, redirectUrl);
+        return;
+      }
+
+      // Test 2: Query companies document based on landingUrl
+      if (uri.path == '/test2') {
+        debugPrint(
+            '%cTest 2: Query companies document based on landingUrl triggered',
+            logStyle);
+        final collection = FirebaseFirestore.instance.collection('companies');
+        final querySnapshot =
+            await collection.where('landingUrls', arrayContains: pageUrl).get();
+        if (querySnapshot.docs.isNotEmpty) {
+          final foundDocId = querySnapshot.docs.first.id;
+          debugPrint('%cDocument ID found: $foundDocId', logStyle);
+          final redirectUrl = '/library?companiesDoc=$foundDocId';
+          await Future.delayed(Duration(seconds: 2));
+          await Navigator.pushReplacementNamed(context, redirectUrl);
+          return;
+        } else {
+          debugPrint('%cNo document with matching landingUrl found', logStyle);
+        }
+      }
+
+      // Test 3: Additional test (you can add your own logic here)
+      if (uri.path == '/test3') {
+        debugPrint('%cTest 3: Additional test triggered', logStyle);
+        // Add your own test logic here
+      }
+
       final companyDoc = uri.queryParameters['companiesDoc'];
       if (companyDoc != null && companyDoc.isNotEmpty) {
         FFAppState().selectedCompanyId = companyDoc;
         FFAppState().companyDocId = companyDoc;
-        debugPrint("CompanyDoc found in URL and AppState updated: $companyDoc");
+        debugPrint(
+            '%cCompanyDoc found in URL and AppState updated: $companyDoc',
+            logStyle);
 
-        // Redirect to the library page with the companiesDoc parameter
         final redirectUrl = '/library?companiesDoc=$companyDoc';
-        debugPrint("Redirecting to: $redirectUrl");
-        await Future.delayed(
-            Duration(milliseconds: 500)); // Optional delay before redirecting
+        debugPrint('%cRedirecting to: $redirectUrl', logStyle);
+        await Future.delayed(Duration(seconds: 2));
         await Navigator.pushReplacementNamed(context, redirectUrl);
-        return; // Exit the function after redirecting
+        return;
       } else {
-        debugPrint("No companyDoc found in the URL or it is empty");
+        debugPrint('%cNo companyDoc found in the URL or it is empty', logStyle);
       }
 
       final collection = FirebaseFirestore.instance.collection('companies');
@@ -49,24 +99,24 @@ Future<void> onAppLaunchCheckConfigurationAndRedirect(
         final foundDocId = querySnapshot.docs.first.id;
         FFAppState().selectedCompanyId = foundDocId;
         FFAppState().companyDocId = foundDocId;
-        debugPrint("Document ID found and AppState updated: $foundDocId");
+        debugPrint(
+            '%cDocument ID found and AppState updated: $foundDocId', logStyle);
 
-        // Redirect to the library page with the companiesDoc parameter
         final redirectUrl = '/library?companiesDoc=$foundDocId';
-        debugPrint("Redirecting to: $redirectUrl");
-        await Future.delayed(
-            Duration(milliseconds: 500)); // Optional delay before redirecting
+        debugPrint('%cRedirecting to: $redirectUrl', logStyle);
+        await Future.delayed(Duration(seconds: 2));
         await Navigator.pushReplacementNamed(context, redirectUrl);
-        return; // Exit the function after redirecting
+        return;
       } else {
         debugPrint(
-            "No document with matching landingUrl found in the 'companies' collection");
+            '%cNo document with matching landingUrl found in the "companies" collection',
+            logStyle);
       }
     } else {
-// Mobile app-specific logic
+      // Mobile app-specific logic
       final packageInfo = await PackageInfo.fromPlatform();
       final packageName = packageInfo.packageName;
-      debugPrint('Current app package name: $packageName');
+      debugPrint('%cCurrent app package name: $packageName', logStyle);
 
       final collection = FirebaseFirestore.instance.collection('companies');
       final querySnapshot =
@@ -75,26 +125,36 @@ Future<void> onAppLaunchCheckConfigurationAndRedirect(
         final foundDocId = querySnapshot.docs.first.id;
         FFAppState().selectedCompanyId = foundDocId;
         FFAppState().companyDocId = foundDocId;
-        debugPrint("Document ID found and AppState updated: $foundDocId");
+        debugPrint(
+            '%cDocument ID found and AppState updated: $foundDocId', logStyle);
       } else {
         debugPrint(
-            "No document with matching packageName found in the 'companies' collection");
+            '%cNo document with matching packageName found in the "companies" collection',
+            logStyle);
       }
     }
 
     // Additional logging for AppState
     debugPrint(
-        "Final AppState: selectedCompanyId = ${FFAppState().selectedCompanyId}");
-    debugPrint("Final AppState: companyDocId = ${FFAppState().companyDocId}");
+        '%cFinal AppState: selectedCompanyId = ${FFAppState().selectedCompanyId}',
+        logStyle);
+    debugPrint('%cFinal AppState: companyDocId = ${FFAppState().companyDocId}',
+        logStyle);
+
+    debugPrint(
+        '%c----- Exiting onAppLaunchCheckConfigurationAndRedirect function -----',
+        separatorStyle);
+    debugPrint(
+        '%c----- Exiting onAppLaunchCheckConfigurationAndRedirect function -----',
+        separatorStyle);
+    debugPrint(
+        '%c----- Exiting onAppLaunchCheckConfigurationAndRedirect function -----',
+        separatorStyle);
   } catch (error, stackTrace) {
-    // Error handling
-    if (!error.toString().contains("Error serializing doc") &&
-        !error.toString().contains(
-            "type 'minified:lf<String, dynamic>' is not a subtype of type 'String'")) {
-      debugPrint(
-          "Error occurred while checking configuration and redirecting: $error");
-      debugPrint("Stack trace: $stackTrace");
-    }
-    // You can choose to display an error message to the user or take appropriate action
+    debugPrint(
+        '%cError in onAppLaunchCheckConfigurationAndRedirect function: $error',
+        'color: red; font-size: 14px;');
+    debugPrint('%cStack trace: $stackTrace', 'color: red; font-size: 14px;');
+    // Handle the error or display an error message
   }
 }

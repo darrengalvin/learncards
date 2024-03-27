@@ -57,28 +57,6 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('LIBRARY_FIXED_Library-fixed_ON_INIT_STAT');
-      // Start a user log
-      logFirebaseEvent('Library-fixed_Startauserlog');
-
-      var logsRecordReference = LogsRecord.collection.doc();
-      await logsRecordReference.set(createLogsRecordData(
-        uid: currentUserDocument?.userref?.id,
-        time: getCurrentTimestamp,
-        sessionId: FFAppState().nonLoggedInSessionId != null &&
-                FFAppState().nonLoggedInSessionId != ''
-            ? FFAppState().nonLoggedInSessionId
-            : 'unset',
-      ));
-      _model.userLog = LogsRecord.getDocumentFromData(
-          createLogsRecordData(
-            uid: currentUserDocument?.userref?.id,
-            time: getCurrentTimestamp,
-            sessionId: FFAppState().nonLoggedInSessionId != null &&
-                    FFAppState().nonLoggedInSessionId != ''
-                ? FFAppState().nonLoggedInSessionId
-                : 'unset',
-          ),
-          logsRecordReference);
       logFirebaseEvent('Library-fixed_alert_dialog');
       await showDialog(
         context: context,
@@ -100,6 +78,34 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
       await actions.onAppLaunchCheckConfigurationAndRedirect(
         context,
       );
+      // Start a user log
+      logFirebaseEvent('Library-fixed_Startauserlog');
+
+      var logsRecordReference = LogsRecord.collection.doc();
+      await logsRecordReference.set(createLogsRecordData(
+        uid: currentUserDocument?.userref?.id,
+        time: getCurrentTimestamp,
+        sessionId: FFAppState().nonLoggedInSessionId != null &&
+                FFAppState().nonLoggedInSessionId != ''
+            ? valueOrDefault<String>(
+                FFAppState().nonLoggedInSessionId,
+                '0',
+              )
+            : 'unset',
+      ));
+      _model.userLog = LogsRecord.getDocumentFromData(
+          createLogsRecordData(
+            uid: currentUserDocument?.userref?.id,
+            time: getCurrentTimestamp,
+            sessionId: FFAppState().nonLoggedInSessionId != null &&
+                    FFAppState().nonLoggedInSessionId != ''
+                ? valueOrDefault<String>(
+                    FFAppState().nonLoggedInSessionId,
+                    '0',
+                  )
+                : 'unset',
+          ),
+          logsRecordReference);
       logFirebaseEvent('Library-fixed_alert_dialog');
       await showDialog(
         context: context,
