@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 const _kDynamicLinksUrl = 'https://journeyforward.app';
 const _kAppBundleId = 'com.goappy.learncards';
-const _kIosAppId = '6480002288';
+const _kIosAppId = '6443817635';
 
 Future<String> generateCurrentPageLink(
   BuildContext context, {

@@ -97,7 +97,9 @@ class _LibraryFixedWidgetState extends State<LibraryFixedWidget> {
         },
       );
       logFirebaseEvent('Library-fixed_custom_action');
-      await actions.onAppLaunchCheckConfigurationAndRedirect();
+      await actions.onAppLaunchCheckConfigurationAndRedirect(
+        context,
+      );
       logFirebaseEvent('Library-fixed_alert_dialog');
       await showDialog(
         context: context,

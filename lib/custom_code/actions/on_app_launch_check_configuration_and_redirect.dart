@@ -16,7 +16,8 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-Future<void> onAppLaunchCheckConfigurationAndRedirect() async {
+Future<void> onAppLaunchCheckConfigurationAndRedirect(
+    BuildContext context) async {
   try {
     String pageUrl = '';
     if (kIsWeb) {
@@ -29,6 +30,14 @@ Future<void> onAppLaunchCheckConfigurationAndRedirect() async {
         FFAppState().selectedCompanyId = companyDoc;
         FFAppState().companyDocId = companyDoc;
         debugPrint("CompanyDoc found in URL and AppState updated: $companyDoc");
+
+        // Redirect to the library page with the companiesDoc parameter
+        final redirectUrl = '/library?companiesDoc=$companyDoc';
+        debugPrint("Redirecting to: $redirectUrl");
+        await Future.delayed(
+            Duration(milliseconds: 500)); // Optional delay before redirecting
+        await Navigator.pushReplacementNamed(context, redirectUrl);
+        return; // Exit the function after redirecting
       } else {
         debugPrint("No companyDoc found in the URL or it is empty");
       }
@@ -41,6 +50,14 @@ Future<void> onAppLaunchCheckConfigurationAndRedirect() async {
         FFAppState().selectedCompanyId = foundDocId;
         FFAppState().companyDocId = foundDocId;
         debugPrint("Document ID found and AppState updated: $foundDocId");
+
+        // Redirect to the library page with the companiesDoc parameter
+        final redirectUrl = '/library?companiesDoc=$foundDocId';
+        debugPrint("Redirecting to: $redirectUrl");
+        await Future.delayed(
+            Duration(milliseconds: 500)); // Optional delay before redirecting
+        await Navigator.pushReplacementNamed(context, redirectUrl);
+        return; // Exit the function after redirecting
       } else {
         debugPrint(
             "No document with matching landingUrl found in the 'companies' collection");
@@ -81,18 +98,3 @@ Future<void> onAppLaunchCheckConfigurationAndRedirect() async {
     // You can choose to display an error message to the user or take appropriate action
   }
 }
-
-/*
- * IMPORTANT NOTE:
- * ================
- * In the error handling section of this code, certain serialization warnings are being intentionally ignored.
- * Specifically, the warnings related to "Error serializing doc" and "type 'minified:lf<String, dynamic>' is not a subtype of type 'String'" are being filtered out and not logged.
- * This is done to keep the logs cleaner and focus on other important messages or errors.
- *
- * However, it's crucial to keep in mind that ignoring these warnings may not be the best long-term solution.
- * These warnings could indicate potential issues in the code or data, and it's generally recommended to investigate and address the root cause of the warnings whenever possible.
- *
- * If you encounter issues related to serialization or data type mismatches in the future, please refer back to this comment and consider addressing the underlying problems instead of simply ignoring the warnings.
- *
- * Take care and happy coding!
- */
