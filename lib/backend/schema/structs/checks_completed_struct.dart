@@ -178,7 +178,7 @@ class ChecksCompletedStruct extends FFFirebaseStruct {
           ParamType.DateTime,
           false,
         ),
-        firestoreUtilData: FirestoreUtilData(
+        firestoreUtilData: const FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
         ),

@@ -1,13 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'uploadimage_model.dart';
 export 'uploadimage_model.dart';
 
@@ -52,16 +48,16 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
         child: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 400.0,
           ),
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
                 color: Color(0x33000000),
@@ -73,9 +69,9 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                 FlutterFlowTheme.of(context).primaryBackground,
                 FlutterFlowTheme.of(context).secondary
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
             borderRadius: BorderRadius.circular(8.0),
             border: Border.all(
@@ -84,7 +80,7 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -92,7 +88,7 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 100.0,
@@ -101,7 +97,7 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                           BoxShadow(
                             blurRadius: 0.0,
                             color: FlutterFlowTheme.of(context).lineColor,
-                            offset: Offset(0.0, 1.0),
+                            offset: const Offset(0.0, 1.0),
                           )
                         ],
                         gradient: LinearGradient(
@@ -109,11 +105,11 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                             FlutterFlowTheme.of(context).primaryBackground,
                             FlutterFlowTheme.of(context).secondary
                           ],
-                          stops: [0.0, 1.0],
-                          begin: AlignmentDirectional(0.0, -1.0),
-                          end: AlignmentDirectional(0, 1.0),
+                          stops: const [0.0, 1.0],
+                          begin: const AlignmentDirectional(0.0, -1.0),
+                          end: const AlignmentDirectional(0, 1.0),
                         ),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
                           bottomRight: Radius.circular(0.0),
                           topLeft: Radius.circular(8.0),
@@ -121,7 +117,7 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -138,7 +134,7 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                                         .titleMedium,
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Text(
                                       'These is a beta uploader',
@@ -150,9 +146,9 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Icon(
                                   Icons.more_vert,
@@ -173,8 +169,7 @@ class _UploadimageWidgetState extends State<UploadimageWidget> {
                     ),
                     child: Stack(
                       children: [
-                        if ((_model.uploadedFileUrl == null ||
-                                _model.uploadedFileUrl == '') ||
+                        if ((_model.uploadedFileUrl == '') ||
                             (widget.tileblock?.image == null ||
                                 widget.tileblock?.image == ''))
                           InkWell(

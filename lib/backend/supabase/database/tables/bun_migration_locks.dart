@@ -10,7 +10,7 @@ class BunMigrationLocksTable extends SupabaseTable<BunMigrationLocksRow> {
 }
 
 class BunMigrationLocksRow extends SupabaseDataRow {
-  BunMigrationLocksRow(Map<String, dynamic> data) : super(data);
+  BunMigrationLocksRow(super.data);
 
   @override
   SupabaseTable get table => BunMigrationLocksTable();

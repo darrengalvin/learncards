@@ -1,16 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,8 +19,8 @@ class HeaderContainerCopyWidget extends StatefulWidget {
     this.action,
     String? title,
     int? currentTier,
-  })  : this.title = title ?? 'Library',
-        this.currentTier = currentTier ?? 0;
+  })  : title = title ?? 'Library',
+        currentTier = currentTier ?? 0;
 
   final Future Function()? action;
   final String title;
@@ -48,8 +43,8 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(-37.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-37.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -60,8 +55,8 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(-37.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-37.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -72,8 +67,8 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: Offset(-10.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-10.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -84,8 +79,8 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: Offset(-10.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-10.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -96,8 +91,8 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: Offset(-10.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-10.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -108,8 +103,8 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: Offset(-10.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-10.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -163,10 +158,10 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
         return Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
           height: double.infinity,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxHeight: 200.0,
           ),
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -184,7 +179,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -208,7 +203,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                         .secondaryBackground,
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: FaIcon(
                                       FontAwesomeIcons.gripVertical,
                                       color: FlutterFlowTheme.of(context)
@@ -223,7 +218,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 50.0, 0.0),
                           child: Container(
                             height: 88.0,
@@ -234,7 +229,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 50.0, 0.0),
                           child: Container(
                             height: 88.0,
@@ -246,10 +241,10 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                         ),
                         Container(
                           height: 100.0,
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             maxWidth: 600.0,
                           ),
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -263,8 +258,6 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                     children: [
                                       if (valueOrDefault<bool>(
                                         FFAppState().learningTypeSelected !=
-                                                null &&
-                                            FFAppState().learningTypeSelected !=
                                                 '',
                                         false,
                                       ))
@@ -348,7 +341,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                                   TextSpan(
                                                     text: FFAppState()
                                                         .learningTypeSelected,
-                                                    style: TextStyle(),
+                                                    style: const TextStyle(),
                                                   )
                                                 ],
                                                 style:
@@ -455,12 +448,12 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                                   text: valueOrDefault<String>(
                                                     richTextTotalTokensSessionUsersRecord
                                                         ?.newTotal
-                                                        ?.toString(),
+                                                        .toString(),
                                                     '0',
                                                   ),
-                                                  style: TextStyle(),
+                                                  style: const TextStyle(),
                                                 ),
-                                                TextSpan(
+                                                const TextSpan(
                                                   text: 'Learning Cards Left',
                                                   style: TextStyle(),
                                                 )
@@ -565,12 +558,12 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                                   text: valueOrDefault<String>(
                                                     richTextLearnCardsRecord
                                                         ?.learnCardsRemaining
-                                                        ?.toString(),
+                                                        .toString(),
                                                     '0',
                                                   ),
-                                                  style: TextStyle(),
+                                                  style: const TextStyle(),
                                                 ),
-                                                TextSpan(
+                                                const TextSpan(
                                                   text: 'Learning Cards Left',
                                                   style: TextStyle(),
                                                 )
@@ -675,7 +668,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                                                     .bodyMediumFamily),
                                                       ),
                                                 ),
-                                                TextSpan(
+                                                const TextSpan(
                                                   text: '',
                                                   style: TextStyle(),
                                                 ),
@@ -685,7 +678,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                                         .nonLoggedInSessionId,
                                                     'sessionId',
                                                   ),
-                                                  style: TextStyle(),
+                                                  style: const TextStyle(),
                                                 )
                                               ],
                                               style:
@@ -713,7 +706,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                 ],
                               ),
                               Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                               ),
                             ],
                           ),
@@ -721,9 +714,9 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                         Container(
                           width: 300.0,
                           height: 88.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -749,7 +742,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: InkWell(
                                                   splashColor:
@@ -787,7 +780,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: InkWell(
                                                         splashColor:
@@ -825,7 +818,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 30.0, 0.0),
                                             child: Text(
                                               'Edit Mode ${FFAppState().editMode.toString()}',
@@ -836,7 +829,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 30.0, 0.0),
                                             child: ClipRRect(
                                               borderRadius:
@@ -937,13 +930,13 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                               'iconButtonOnPageLoadAnimation2']!),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 12.0, 0.0),
                                             child: Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
-                                              alignment: AlignmentDirectional(
+                                              decoration: const BoxDecoration(),
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: FlutterFlowIconButton(
                                                 borderColor:
@@ -974,16 +967,9 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                                   if (() {
                                                     if (FFAppState()
                                                                 .viewTileContentId ==
-                                                            null ||
-                                                        FFAppState()
-                                                                .viewTileContentId ==
                                                             '') {
                                                       return true;
                                                     } else if (FFAppState()
-                                                                .tileNav
-                                                                .tier0Id ==
-                                                            null ||
-                                                        FFAppState()
                                                                 .tileNav
                                                                 .tier0Id ==
                                                             '') {
@@ -1760,13 +1746,13 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 12.0, 0.0),
                                             child: Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
-                                              alignment: AlignmentDirectional(
+                                              decoration: const BoxDecoration(),
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: FlutterFlowIconButton(
                                                 borderColor:
@@ -1825,7 +1811,7 @@ class _HeaderContainerCopyWidgetState extends State<HeaderContainerCopyWidget>
                 children: [
                   Container(
                     height: 50.0,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                   ),
                 ],
               ),

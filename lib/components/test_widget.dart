@@ -1,10 +1,8 @@
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'test_model.dart';
 export 'test_model.dart';
 
@@ -61,8 +59,8 @@ class _TestWidgetState extends State<TestWidget> {
       text: 'Button',
       options: FFButtonOptions(
         height: 40.0,
-        padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-        iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+        iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         color: FlutterFlowTheme.of(context).primary,
         textStyle: FlutterFlowTheme.of(context).titleSmall.override(
               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -71,7 +69,7 @@ class _TestWidgetState extends State<TestWidget> {
                   .containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
             ),
         elevation: 3.0,
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.transparent,
           width: 1.0,
         ),

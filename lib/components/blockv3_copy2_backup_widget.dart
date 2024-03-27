@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -13,11 +12,9 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'blockv3_copy2_backup_model.dart';
 export 'blockv3_copy2_backup_model.dart';
@@ -78,7 +75,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AnimatedContainer(
-                duration: Duration(milliseconds: 100),
+                duration: const Duration(milliseconds: 100),
                 curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
@@ -90,7 +87,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                             (FFAppState().selectedBlockID ==
                                 widget.tileBlock?.blockId)
                         ? FlutterFlowTheme.of(context).accent4
-                        : Color(0x00000000),
+                        : const Color(0x00000000),
                     width: 3.0,
                   ),
                 ),
@@ -108,9 +105,9 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                               Stack(
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Container(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 800.0,
                                       ),
                                       decoration: BoxDecoration(
@@ -145,10 +142,10 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 8.0, 8.0, 0.0),
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 300.0,
                                                     child: TextFormField(
                                                       controller: _model
@@ -158,7 +155,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.textEntryController',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 2000),
                                                         () async {
                                                           logFirebaseEvent(
@@ -243,7 +240,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsets.all(6.0),
+                                                            const EdgeInsets.all(6.0),
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -259,7 +256,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                                                   widget
                                                                       .tileBlock
                                                                       ?.fontSettings
-                                                                      ?.fontSizeDouble,
+                                                                      .fontSizeDouble,
                                                                   14.0,
                                                                 ),
                                                                 useGoogleFonts: GoogleFonts
@@ -285,9 +282,9 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Container(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 800.0,
                                       ),
                                       decoration: BoxDecoration(
@@ -358,7 +355,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                                                     widget
                                                                         .tileBlock
                                                                         ?.fontSettings
-                                                                        ?.fontSizeDouble,
+                                                                        .fontSizeDouble,
                                                                     14.0,
                                                                   ),
                                                             14.0,
@@ -382,7 +379,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                               ),
                               Container(
                                 width: double.infinity,
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                   maxWidth: 640.0,
                                 ),
                                 decoration: BoxDecoration(
@@ -393,16 +390,16 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                             ],
                           ),
                           AnimatedContainer(
-                            duration: Duration(milliseconds: 100),
+                            duration: const Duration(milliseconds: 100),
                             curve: Curves.easeInOut,
-                            constraints: BoxConstraints(
+                            constraints: const BoxConstraints(
                               maxWidth: 960.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).primary,
                               borderRadius: BorderRadius.circular(12.0),
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [],
                             ),
@@ -416,13 +413,13 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                             Container(
                               width: 960.0,
                               height: 40.0,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 10.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller:
@@ -431,10 +428,10 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                         _model.dropDownValue ??= widget
                                             .tileBlock
                                             ?.fontSettings
-                                            ?.fontSizeDouble
-                                            ?.toString(),
+                                            .fontSizeDouble
+                                            .toString(),
                                       ),
-                                      options: [
+                                      options: const [
                                         '12',
                                         '14',
                                         '16',
@@ -488,7 +485,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                      margin: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isSearchable: false,
@@ -502,10 +499,10 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 48.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -544,10 +541,10 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 48.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -748,10 +745,10 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 8.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -795,10 +792,10 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 12.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -850,8 +847,6 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                                               false,
                                                         ),
                                                         text: _model.changedText !=
-                                                                    null &&
-                                                                _model.changedText !=
                                                                     ''
                                                             ? _model
                                                                 .textEntryController
@@ -936,10 +931,10 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 48.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -977,7 +972,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                 ],
                               ),
                             ),
-                          Column(
+                          const Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [],
@@ -989,7 +984,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: FlutterFlowIconButton(
                             borderColor: Colors.transparent,
                             borderRadius: 30.0,
@@ -1060,7 +1055,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                         Container(
                           width: 250.0,
                           height: 50.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Visibility(
                             visible: valueOrDefault<bool>(
                               valueOrDefault<bool>(
@@ -1078,7 +1073,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                               false,
                             ),
                             child: FlutterFlowChoiceChips(
-                              options: [
+                              options: const [
                                 ChipData('Text'),
                                 ChipData('Image'),
                                 ChipData('Video')
@@ -1182,23 +1177,23 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                   ))
                 ClipRRect(
                   child: Container(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minHeight: 400.0,
                     ),
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Builder(
                         builder: (context) {
                           final video =
-                              widget.tileBlock?.videoGallery?.toList() ?? [];
-                          return Container(
+                              widget.tileBlock?.videoGallery.toList() ?? [];
+                          return SizedBox(
                             width: 640.0,
                             height: 400.0,
                             child: Stack(
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 50.0),
                                   child: PageView.builder(
                                     physics:
@@ -1248,9 +1243,9 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 16.0),
                                     child: smooth_page_indicator
                                         .SmoothPageIndicator(
@@ -1264,7 +1259,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                         await _model.pageViewController!
                                             .animateToPage(
                                           i,
-                                          duration: Duration(milliseconds: 500),
+                                          duration: const Duration(milliseconds: 500),
                                           curve: Curves.ease,
                                         );
                                       },
@@ -1275,7 +1270,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                         dotHeight: 12.0,
                                         dotColor:
                                             FlutterFlowTheme.of(context).btnBk,
-                                        activeDotColor: Color(0xFF1A5AF9),
+                                        activeDotColor: const Color(0xFF1A5AF9),
                                         paintStyle: PaintingStyle.fill,
                                       ),
                                     ),
@@ -1297,13 +1292,13 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           100.0, 0.0, 100.0, 0.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Container(
                           width: 800.0,
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             maxHeight: 400.0,
                           ),
                           decoration: BoxDecoration(
@@ -1312,7 +1307,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -1369,7 +1364,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                         ))
                           Text(
                             valueOrDefault<String>(
-                              widget.tileBlock?.textList?[valueOrDefault<int>(
+                              widget.tileBlock?.textList[valueOrDefault<int>(
                                 () {
                                   if (widget.tileBlock?.blockType == 'Video') {
                                     return _model.pageViewCurrentIndex;
@@ -1394,11 +1389,11 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                     ))
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: Builder(
                           builder: (context) {
                             final image =
-                                widget.tileBlock?.imageGallery?.toList() ?? [];
+                                widget.tileBlock?.imageGallery.toList() ?? [];
                             return SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
@@ -1420,11 +1415,11 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                                   imageIndex
                                               ? FlutterFlowTheme.of(context)
                                                   .customColor7
-                                              : Color(0x00000000),
+                                              : const Color(0x00000000),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -1469,7 +1464,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                 children: [
                   Container(
                     width: double.infinity,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 640.0,
                     ),
                     decoration: BoxDecoration(
@@ -1507,14 +1502,14 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                     Builder(
                       builder: (context) {
                         final textList =
-                            widget.tileBlock?.textList?.toList() ?? [];
+                            widget.tileBlock?.textList.toList() ?? [];
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children:
                               List.generate(textList.length, (textListIndex) {
                             final textListItem = textList[textListIndex];
                             return Container(
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 maxWidth: 640.0,
                               ),
                               decoration: BoxDecoration(
@@ -1522,14 +1517,14 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                                     .secondaryBackground,
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Container(
                                         width: 12.0,
@@ -1593,7 +1588,7 @@ class _Blockv3Copy2BackupWidgetState extends State<Blockv3Copy2BackupWidget> {
                     ),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [],
               ),

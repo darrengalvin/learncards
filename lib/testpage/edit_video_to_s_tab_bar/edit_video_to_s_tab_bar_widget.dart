@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -76,14 +74,14 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
     return Column(
       children: [
         Align(
-          alignment: Alignment(0.0, 0),
+          alignment: const Alignment(0.0, 0),
           child: TabBar(
             isScrollable: true,
             labelColor: FlutterFlowTheme.of(context).primary,
             labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-            unselectedLabelStyle: TextStyle(),
+            unselectedLabelStyle: const TextStyle(),
             indicatorColor: FlutterFlowTheme.of(context).secondary,
-            tabs: [
+            tabs: const [
               Tab(
                 text: 'Update Video',
               ),
@@ -109,7 +107,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -121,7 +119,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                             logFirebaseEvent('Icon_bottom_sheet');
                             Navigator.pop(context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.cancel_outlined,
                             color: Colors.black,
                             size: 24.0,
@@ -129,7 +127,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.videotitleController,
                           focusNode: _model.videotitleFocusNode,
@@ -146,21 +144,21 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -173,7 +171,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.videosummaryController,
                           focusNode: _model.videosummaryFocusNode,
@@ -190,21 +188,21 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -219,7 +217,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.videoURLController,
                           focusNode: _model.videoURLFocusNode,
@@ -236,21 +234,21 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -271,7 +269,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Image.asset(
                                   'assets/images/video.png',
@@ -286,7 +284,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -365,9 +363,9 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                                   options: FFButtonOptions(
                                     width: 230.0,
                                     height: 30.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -383,7 +381,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 2.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -395,8 +393,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                           ),
                         ],
                       ),
-                      if (_model.uploadedFileUrl != null &&
-                          _model.uploadedFileUrl != '')
+                      if (_model.uploadedFileUrl != '')
                         FlutterFlowVideoPlayer(
                           path: widget.video!.videofromurl,
                           videoType: VideoType.network,
@@ -407,7 +404,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                           allowPlaybackSpeedMenu: false,
                         ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 10.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -429,9 +426,9 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                           options: FFButtonOptions(
                             width: 150.0,
                             height: 30.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -445,7 +442,7 @@ class _EditVideoToSTabBarWidgetState extends State<EditVideoToSTabBarWidget>
                                           .titleSmallFamily),
                                 ),
                             elevation: 2.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

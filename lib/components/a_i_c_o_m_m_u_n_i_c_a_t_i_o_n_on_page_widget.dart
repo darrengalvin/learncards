@@ -1,8 +1,6 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/important_not_logged_in_widget.dart';
 import '/components/session_checks_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -16,7 +14,6 @@ import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -37,8 +34,8 @@ class AICOMMUNICATIONOnPageWidget extends StatefulWidget {
     bool? isLearnCard,
     required this.teamDoc,
     required this.sessionsDoc,
-  })  : this.askingQuestion = askingQuestion ?? false,
-        this.isLearnCard = isLearnCard ?? false;
+  })  : askingQuestion = askingQuestion ?? false,
+        isLearnCard = isLearnCard ?? false;
 
   final bool askingQuestion;
   final CompaniesRecord? companiesDoc;
@@ -218,7 +215,7 @@ class _AICOMMUNICATIONOnPageWidgetState
       logFirebaseEvent('AI_COMMUNICATION-OnPage_scroll_to');
       await _model.columnChatsScrollable?.animateTo(
         _model.columnChatsScrollable!.position.maxScrollExtent,
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -249,7 +246,7 @@ class _AICOMMUNICATIONOnPageWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(22.0),
               child: Container(
@@ -271,7 +268,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                   maxHeight: MediaQuery.sizeOf(context).height * 0.8,
                 ),
                 decoration: BoxDecoration(
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       blurRadius: 4.0,
                       color: Color(0x33000000),
@@ -323,7 +320,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 12.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -349,7 +346,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ))
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     25.0,
                                                                     0.0,
@@ -453,7 +450,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -465,15 +462,13 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               if (valueOrDefault<bool>(
-                                                FFAppState().tempStreamingMessage !=
-                                                        null &&
-                                                    FFAppState()
+                                                FFAppState()
                                                             .tempStreamingMessage !=
                                                         '',
                                                 false,
                                               ))
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           25.0, 0.0, 25.0, 0.0),
                                                   child: Text(
@@ -515,7 +510,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                               false,
                             ))
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 12.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -523,7 +518,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 12.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -537,7 +532,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                               _model.dropDownValue ??=
                                                   'Reading Topic (thread)',
                                             ),
-                                            options: ['Reading Topic (thread)'],
+                                            options: const ['Reading Topic (thread)'],
                                             onChanged: (val) => setState(() =>
                                                 _model.dropDownValue = val),
                                             width: 300.0,
@@ -563,7 +558,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             borderWidth: 2.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isOverButton: true,
@@ -654,10 +649,10 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             text: 'New Thread',
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -682,7 +677,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                     .titleSmallFamily),
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -729,9 +724,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                               ),
                             Expanded(
                               child: Align(
-                                alignment: AlignmentDirectional(-1.0, 1.0),
+                                alignment: const AlignmentDirectional(-1.0, 1.0),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child:
                                       StreamBuilder<List<FlowiseChatsRecord>>(
                                     stream: queryFlowiseChatsRecord(
@@ -775,7 +770,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             _model.columnChatsScrollable!
                                                 .position.maxScrollExtent,
                                             duration:
-                                                Duration(milliseconds: 100),
+                                                const Duration(milliseconds: 100),
                                             curve: Curves.ease,
                                           );
                                           // scroll streaming
@@ -786,7 +781,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             _model.columnMarkdownScrollable!
                                                 .position.maxScrollExtent,
                                             duration:
-                                                Duration(milliseconds: 100),
+                                                const Duration(milliseconds: 100),
                                             curve: Curves.ease,
                                           );
                                           logFirebaseEvent(
@@ -837,7 +832,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             columnChatsScrollableFlowiseChatsRecordList
                                                 .length,
                                         separatorBuilder: (_, __) =>
-                                            SizedBox(height: 8.0),
+                                            const SizedBox(height: 8.0),
                                         itemBuilder: (context,
                                             columnChatsScrollableIndex) {
                                           final columnChatsScrollableFlowiseChatsRecord =
@@ -886,7 +881,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     Flexible(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     33.0,
                                                                     0.0,
@@ -919,7 +914,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             }(),
                                                           ),
                                                           decoration:
-                                                              BoxDecoration(
+                                                              const BoxDecoration(
                                                             color: Color(
                                                                 0xFFE6EDFB),
                                                             borderRadius:
@@ -942,7 +937,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     4.0),
                                                             child: Row(
                                                               mainAxisSize:
@@ -956,7 +951,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             9.0),
                                                                     child: Text(
                                                                       columnChatsScrollableFlowiseChatsRecord
@@ -1026,7 +1021,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   (columnChatsScrollableFlowiseChatsRecord
                                                           .createdTime! <=
                                                       getCurrentTimestamp))
-                                                Container(
+                                                SizedBox(
                                                   width: double.infinity,
                                                   child: Stack(
                                                     children: [
@@ -1074,7 +1069,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                             .createdTime! <=
                                                                         getCurrentTimestamp))
                                                                   AnimatedContainer(
-                                                                    duration: Duration(
+                                                                    duration: const Duration(
                                                                         milliseconds:
                                                                             100),
                                                                     curve: Curves
@@ -1099,10 +1094,10 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                     ),
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFFF5F5F5),
                                                                       borderRadius:
-                                                                          BorderRadius
+                                                                          const BorderRadius
                                                                               .only(
                                                                         bottomLeft:
                                                                             Radius.circular(8.0),
@@ -1119,18 +1114,18 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         color: columnChatsScrollableFlowiseChatsRecord.style ==
                                                                                 'notification'
                                                                             ? FlutterFlowTheme.of(context).customColor3
-                                                                            : Color(0x00000000),
+                                                                            : const Color(0x00000000),
                                                                         width:
                                                                             1.0,
                                                                       ),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             -1.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1146,7 +1141,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         children: [
                                                                           Padding(
                                                                             padding:
-                                                                                EdgeInsets.all(4.0),
+                                                                                const EdgeInsets.all(4.0),
                                                                             child:
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.min,
@@ -1159,7 +1154,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                   desktop: false,
                                                                                 ))
                                                                                   Padding(
-                                                                                    padding: EdgeInsets.all(3.0),
+                                                                                    padding: const EdgeInsets.all(3.0),
                                                                                     child: ClipRRect(
                                                                                       borderRadius: BorderRadius.circular(8.0),
                                                                                       child: Image.network(
@@ -1184,7 +1179,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                                                           children: [
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                               child: MarkdownBody(
                                                                                                 data: valueOrDefault<String>(
                                                                                                   columnChatsScrollableFlowiseChatsRecord.text,
@@ -1234,7 +1229,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                             .createdTime! <=
                                                                         getCurrentTimestamp))
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             15.0,
@@ -1242,7 +1237,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                             0.0),
                                                                     child:
                                                                         AnimatedContainer(
-                                                                      duration: Duration(
+                                                                      duration: const Duration(
                                                                           milliseconds:
                                                                               100),
                                                                       curve: Curves
@@ -1270,7 +1265,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .customColor3,
                                                                         borderRadius:
-                                                                            BorderRadius.only(
+                                                                            const BorderRadius.only(
                                                                           bottomLeft:
                                                                               Radius.circular(8.0),
                                                                           bottomRight:
@@ -1282,12 +1277,12 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                         ),
                                                                       ),
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               -1.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -1302,7 +1297,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsets.all(4.0),
+                                                                              padding: const EdgeInsets.all(4.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1314,7 +1309,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                     desktop: false,
                                                                                   ))
                                                                                     Padding(
-                                                                                      padding: EdgeInsets.all(3.0),
+                                                                                      padding: const EdgeInsets.all(3.0),
                                                                                       child: ClipRRect(
                                                                                         borderRadius: BorderRadius.circular(8.0),
                                                                                         child: Image.network(
@@ -1339,7 +1334,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: EdgeInsets.all(6.0),
+                                                                                                padding: const EdgeInsets.all(6.0),
                                                                                                 child: MarkdownBody(
                                                                                                   data: valueOrDefault<String>(
                                                                                                     columnChatsScrollableFlowiseChatsRecord.text,
@@ -1374,7 +1369,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       ))
                                                         Padding(
                                                           padding:
-                                                              EdgeInsets.all(
+                                                              const EdgeInsets.all(
                                                                   6.0),
                                                           child: ClipRRect(
                                                             borderRadius:
@@ -1404,14 +1399,14 @@ class _AICOMMUNICATIONOnPageWidgetState
                                 ),
                               ),
                             ),
-                            if (FFAppState().flowiseMessages.length > 0)
-                              Container(
+                            if (FFAppState().flowiseMessages.isNotEmpty)
+                              SizedBox(
                                 width: double.infinity,
                                 child: Stack(
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.0, -429.57),
+                                          const AlignmentDirectional(0.0, -429.57),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -1422,13 +1417,13 @@ class _AICOMMUNICATIONOnPageWidgetState
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 AnimatedContainer(
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.easeInOut,
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     maxWidth: 600.0,
                                                   ),
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color(0xFFEEEEEE),
                                                     borderRadius:
                                                         BorderRadius.only(
@@ -1443,11 +1438,11 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ),
                                                   ),
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           -1.0, 1.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 9.0),
                                                     child: Column(
@@ -1461,7 +1456,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsets.all(
+                                                              const EdgeInsets.all(
                                                                   4.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -1498,7 +1493,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                               child: MarkdownBody(
                                                                                 data: valueOrDefault<String>(
                                                                                   FFAppState().flowiseMessages.first.message,
@@ -1533,7 +1528,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       phone: false,
                                     ))
                                       Padding(
-                                        padding: EdgeInsets.all(6.0),
+                                        padding: const EdgeInsets.all(6.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -1548,7 +1543,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                   ],
                                 ),
                               ),
-                            if ((FFAppState().flowiseMessages.length > 0) &&
+                            if ((FFAppState().flowiseMessages.isNotEmpty) &&
                                 responsiveVisibility(
                                   context: context,
                                   phone: false,
@@ -1557,7 +1552,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                   desktop: false,
                                 ))
                               Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
+                                alignment: const AlignmentDirectional(0.0, 1.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1568,9 +1563,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     ))
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, -1.0),
+                                            const AlignmentDirectional(-1.0, -1.0),
                                         child: Padding(
-                                          padding: EdgeInsets.all(6.0),
+                                          padding: const EdgeInsets.all(6.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
@@ -1585,11 +1580,11 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       ),
                                     Expanded(
                                       child: Container(
-                                        constraints: BoxConstraints(
+                                        constraints: const BoxConstraints(
                                           maxWidth: 600.0,
                                           maxHeight: 600.0,
                                         ),
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
@@ -1601,7 +1596,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                               desktop: false,
                                             ))
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: MarkdownBody(
                                                   data: valueOrDefault<String>(
@@ -1624,13 +1619,13 @@ class _AICOMMUNICATIONOnPageWidgetState
                                 ),
                               ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: const AlignmentDirectional(0.0, 1.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   if (_model.questionReady == false)
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1665,9 +1660,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         animationsMap[
                                                             'iconOnPageLoadAnimation']!),
                                                   ].divide(
-                                                      SizedBox(width: 9.0)),
+                                                      const SizedBox(width: 9.0)),
                                                 ),
-                                                Divider(
+                                                const Divider(
                                                   thickness: 1.0,
                                                   color: Color(0xFF505050),
                                                 ),
@@ -1681,8 +1676,8 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             borderRadius: 5.0,
                                             borderWidth: 1.0,
                                             buttonSize: 55.0,
-                                            fillColor: Color(0xFFCDCDCD),
-                                            icon: Icon(
+                                            fillColor: const Color(0xFFCDCDCD),
+                                            icon: const Icon(
                                               Icons.send_sharp,
                                               color: Color(0xFFA6A6A6),
                                               size: 24.0,
@@ -1710,7 +1705,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             .primary,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(12.0),
+                                        padding: const EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -1763,7 +1758,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   ),
                                                   focusedBorder:
                                                       UnderlineInputBorder(
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Color(0xFF464646),
                                                       width: 2.0,
                                                     ),
@@ -1798,7 +1793,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             8.0),
                                                   ),
                                                   contentPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 0.0,
                                                               0.0, 0.0),
                                                 ),
@@ -1872,9 +1867,6 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   );
                                                   if (FFAppState()
                                                               .nonLoggedInSessionId ==
-                                                          null ||
-                                                      FFAppState()
-                                                              .nonLoggedInSessionId ==
                                                           '') {}
                                                   // flowise chat document
                                                   logFirebaseEvent(
@@ -1902,9 +1894,6 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .selectedThreadId,
                                                       ));
                                                   if (!(FFAppState()
-                                                              .selectedThreadId !=
-                                                          null &&
-                                                      FFAppState()
                                                               .selectedThreadId !=
                                                           '')) {
                                                     // generate active thread id
@@ -1949,7 +1938,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -1971,29 +1960,29 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       _model
                                                           .companyQueryByCode
                                                           ?.first
-                                                          ?.supabaseProjUrl,
+                                                          .supabaseProjUrl,
                                                       'https://efdipbnxemvehcjbxekx.supabase.co',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode
-                                                          ?.first?.tableName,
+                                                          ?.first.tableName,
                                                       'table_name',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model
                                                           .companyQueryByCode
                                                           ?.first
-                                                          ?.supabaseApiKey,
+                                                          .supabaseApiKey,
                                                       'apikey',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode
-                                                          ?.first?.queryName,
+                                                          ?.first.queryName,
                                                       'queryName',
                                                     ),
                                                     valueOrDefault<bool>(
                                                       _model.companyQueryByCode
-                                                          ?.first?.isLearnCards,
+                                                          ?.first.isLearnCards,
                                                       false,
                                                     ),
                                                     () async {
@@ -2007,7 +1996,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2021,7 +2010,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2037,7 +2026,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2051,7 +2040,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2098,7 +2087,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2135,7 +2124,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2340,7 +2329,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ?.animateTo(
                                                   _model.columnChatsScrollable!
                                                       .position.maxScrollExtent,
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.ease,
                                                 );
@@ -2383,7 +2372,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                               .sessionForFlowise
                                                               ?.currentNavJourney ==
                                                           'newSession') {
-                                                        return 'This weeks topic is : ${widget.companiesDoc?.companyAiData?.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
+                                                        return 'This weeks topic is : ${widget.companiesDoc?.companyAiData.thisWeeksTopic} ${widget.companiesDoc?.userGatherDataPrompt}';
                                                       } else if (_model
                                                               .sessionForFlowise
                                                               ?.currentNavJourney ==
@@ -2409,9 +2398,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           )} Words and phrases you use in your vocalabary are ${valueOrDefault<String>(
                                                             widget.teamDoc
                                                                 ?.buzzWordsPhrases
-                                                                ?.take(15)
+                                                                .take(15)
                                                                 .toList()
-                                                                ?.first,
+                                                                .first,
                                                             'NOT SET',
                                                           )}: ${valueOrDefault<String>(
                                                             widget.companiesDoc
@@ -2421,7 +2410,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             widget
                                                                 .companiesDoc
                                                                 ?.companyAiData
-                                                                ?.thisWeeksTopic,
+                                                                .thisWeeksTopic,
                                                             'THIS WEEKS TOPIC IS NOT SET',
                                                           )} the user is currently looking at the SUBJECT  ${valueOrDefault<String>(
                                                             _model
@@ -2457,9 +2446,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           )} Words and phrases you use in your vocalabary are ${valueOrDefault<String>(
                                                             widget.teamDoc
                                                                 ?.buzzWordsPhrases
-                                                                ?.take(15)
+                                                                .take(15)
                                                                 .toList()
-                                                                ?.first,
+                                                                .first,
                                                             'NOT SET',
                                                           )}: ${valueOrDefault<String>(
                                                             widget.companiesDoc
@@ -2469,7 +2458,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             widget
                                                                 .companiesDoc
                                                                 ?.companyAiData
-                                                                ?.thisWeeksTopic,
+                                                                .thisWeeksTopic,
                                                             'THIS WEEKS TOPIC IS NOT SET',
                                                           )} the user is currently looking at the SUBJECT  ${valueOrDefault<String>(
                                                             _model
@@ -2521,7 +2510,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnChatsScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: Duration(
+                                                      duration: const Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2535,7 +2524,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnMarkdownScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: Duration(
+                                                      duration: const Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2551,7 +2540,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnChatsScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: Duration(
+                                                      duration: const Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2565,7 +2554,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           .columnMarkdownScrollable!
                                                           .position
                                                           .maxScrollExtent,
-                                                      duration: Duration(
+                                                      duration: const Duration(
                                                           milliseconds: 100),
                                                       curve: Curves.ease,
                                                     );
@@ -2651,7 +2640,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ?.animateTo(
                                                   _model.columnChatsScrollable!
                                                       .position.maxScrollExtent,
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.ease,
                                                 );
@@ -2686,7 +2675,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ?.animateTo(
                                                   _model.columnChatsScrollable!
                                                       .position.maxScrollExtent,
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 100),
                                                   curve: Curves.ease,
                                                 );
@@ -2741,9 +2730,6 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   );
                                                   if (FFAppState()
                                                               .nonLoggedInSessionId ==
-                                                          null ||
-                                                      FFAppState()
-                                                              .nonLoggedInSessionId ==
                                                           '') {}
                                                   // flowise chat document
                                                   logFirebaseEvent(
@@ -2771,9 +2757,6 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .selectedThreadId,
                                                       ));
                                                   if (!(FFAppState()
-                                                              .selectedThreadId !=
-                                                          null &&
-                                                      FFAppState()
                                                               .selectedThreadId !=
                                                           '')) {
                                                     // generate active thread id
@@ -2818,7 +2801,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -2840,29 +2823,29 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                       _model
                                                           .companyQueryByCode1
                                                           ?.first
-                                                          ?.supabaseProjUrl,
+                                                          .supabaseProjUrl,
                                                       'https://efdipbnxemvehcjbxekx.supabase.co',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode1
-                                                          ?.first?.tableName,
+                                                          ?.first.tableName,
                                                       'table_name',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model
                                                           .companyQueryByCode1
                                                           ?.first
-                                                          ?.supabaseApiKey,
+                                                          .supabaseApiKey,
                                                       'apikey',
                                                     ),
                                                     valueOrDefault<String>(
                                                       _model.companyQueryByCode1
-                                                          ?.first?.queryName,
+                                                          ?.first.queryName,
                                                       'queryName',
                                                     ),
                                                     valueOrDefault<bool>(
                                                       _model.companyQueryByCode1
-                                                          ?.first?.isLearnCards,
+                                                          ?.first.isLearnCards,
                                                       false,
                                                     ),
                                                     () async {
@@ -2876,7 +2859,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2890,7 +2873,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2906,7 +2889,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnChatsScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2920,7 +2903,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             .columnMarkdownScrollable!
                                                             .position
                                                             .maxScrollExtent,
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 100),
                                                         curve: Curves.ease,
                                                       );
@@ -2996,7 +2979,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -3033,7 +3016,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         .columnChatsScrollable!
                                                         .position
                                                         .maxScrollExtent,
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 100),
                                                     curve: Curves.ease,
                                                   );
@@ -3061,7 +3044,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                             .primary,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(12.0),
+                                        padding: const EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -3111,7 +3094,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                   ),
                                                   focusedBorder:
                                                       UnderlineInputBorder(
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Color(0xFF464646),
                                                       width: 2.0,
                                                     ),
@@ -3146,7 +3129,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                             8.0),
                                                   ),
                                                   contentPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 0.0,
                                                               0.0, 0.0),
                                                 ),
@@ -3224,7 +3207,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                         padding: MediaQuery
                                                             .viewInsetsOf(
                                                                 context),
-                                                        child: Container(
+                                                        child: SizedBox(
                                                           height:
                                                               MediaQuery.sizeOf(
                                                                           context)
@@ -3304,13 +3287,13 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           return WebViewAware(
                                                             child: AlertDialog(
                                                               title:
-                                                                  Text('PASS'),
+                                                                  const Text('PASS'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -3332,13 +3315,13 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                           return WebViewAware(
                                                             child: AlertDialog(
                                                               title:
-                                                                  Text('FAIL'),
+                                                                  const Text('FAIL'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -3395,7 +3378,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                         ),
                                       ),
                                     ),
-                                  Column(
+                                  const Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [],
                                   ),
@@ -3415,8 +3398,7 @@ class _AICOMMUNICATIONOnPageWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               if (valueOrDefault<bool>(
-                FFAppState().tempStreamingMessage != null &&
-                    FFAppState().tempStreamingMessage != '',
+                FFAppState().tempStreamingMessage != '',
                 false,
               ))
                 Container(
@@ -3427,7 +3409,7 @@ class _AICOMMUNICATIONOnPageWidgetState
             ],
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -3446,12 +3428,12 @@ class _AICOMMUNICATIONOnPageWidgetState
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Row(
+                    const Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [],
                     ),
-                    Row(
+                    const Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [],
@@ -3478,9 +3460,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Continue',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3498,7 +3480,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3536,9 +3518,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Get Tiles',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).customColor3,
                               textStyle: FlutterFlowTheme.of(context)
@@ -3555,7 +3537,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3598,9 +3580,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Create Chat',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3618,7 +3600,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3661,9 +3643,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Update Learn Count and NavPath',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3681,7 +3663,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3722,9 +3704,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Columns States',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3742,7 +3724,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3776,7 +3758,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     text:
                                         'I\'m here to assist and navigate you through your learning journey. With the invaluable guidance and knowledge imparted by ${valueOrDefault<String>(
                                       widget.companiesDoc?.companyAiData
-                                          ?.ownerName,
+                                          .ownerName,
                                       'the app owner ',
                                     )} and the team, I am equipped to serve as your mentor. My role is to generate content, address your queries, and ensure your educational journey remains engaging. I kindly ask for your patience as I am currently analysing our recent dialogue to identify a suitable topic that will effectively address your challenges and facilitate your progress. I will add this to your learning plan when I am finished.  In the meantime, why not check out a learnCard?',
                                     threadId: FFAppState().selectedThreadId,
@@ -3787,9 +3769,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: 'Chat Doc',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3807,7 +3789,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -3917,7 +3899,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                     text:
                                         'I\'m here to assist and navigate you through your learning journey. With the invaluable guidance and knowledge imparted by ${valueOrDefault<String>(
                                       widget.companiesDoc?.companyAiData
-                                          ?.ownerName,
+                                          .ownerName,
                                       'the app owner ',
                                     )} and the team, I am equipped to serve as your mentor. My role is to generate content, address your queries, and ensure your educational journey remains engaging. I kindly ask for your patience as I am currently analysing our recent dialogue to identify a suitable topic that will effectively address your challenges and facilitate your progress. I will add this to your learning plan when I am finished.  In the meantime, why not check out a learnCard?',
                                     threadId: FFAppState().selectedThreadId,
@@ -3928,9 +3910,9 @@ class _AICOMMUNICATIONOnPageWidgetState
                             text: '2. Start my learning journey',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 4.0, 24.0, 4.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).selectedButton,
@@ -3948,7 +3930,7 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 .titleSmallFamily),
                                   ),
                               elevation: 1.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

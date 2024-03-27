@@ -1,11 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/commenting_thread_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -69,6 +66,33 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
     return MouseRegion(
       opaque: false,
       cursor: MouseCursor.defer ?? MouseCursor.defer,
+      onEnter: ((event) async {
+        setState(() => _model.mouseRegionHovered = true);
+        logFirebaseEvent('CHATA_C_T_I_V_I_T_Y_MouseRegion_fxr7w4t0');
+        logFirebaseEvent('MouseRegion_firestore_query');
+        _model.companyForColor1 = await queryCompaniesRecordOnce(
+          queryBuilder: (companiesRecord) => companiesRecord.where(
+            'companyCode',
+            isEqualTo: FFAppState().companySecretCode,
+          ),
+        );
+        logFirebaseEvent('MouseRegion_update_component_state');
+        setState(() {
+          _model.learnCardBackgroundColour =
+              _model.companyForColor1?.first.colors.teritoryColor;
+        });
+
+        setState(() {});
+      }),
+      onExit: ((event) async {
+        setState(() => _model.mouseRegionHovered = false);
+        logFirebaseEvent('CHATA_C_T_I_V_I_T_Y_MouseRegion_fxr7w4t0');
+        logFirebaseEvent('MouseRegion_update_component_state');
+        setState(() {
+          _model.learnCardBackgroundColour =
+              _model.companyForColor1?.first.colors.secondaryTextColor;
+        });
+      }),
       child: Container(
         decoration: BoxDecoration(
           color: valueOrDefault<Color>(
@@ -78,7 +102,7 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
           borderRadius: BorderRadius.circular(17.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: SingleChildScrollView(
             primary: false,
             child: Column(
@@ -103,7 +127,7 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -162,7 +186,7 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
                                   ),
                                 ],
                               ),
-                              Row(
+                              const Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [],
                               ),
@@ -186,7 +210,7 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 8.0, 0.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -196,7 +220,7 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
                                 wrapWithModel(
                                   model: _model.commentingThreadModel,
                                   updateCallback: () => setState(() {}),
-                                  child: CommentingThreadWidget(),
+                                  child: const CommentingThreadWidget(),
                                 ),
                               ],
                             ),
@@ -218,7 +242,7 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
                       ),
                       AlignedTooltip(
                         content: Padding(
-                            padding: EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Text(
                               'Message...',
                               style: FlutterFlowTheme.of(context).bodyLarge,
@@ -231,8 +255,8 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
                         elevation: 4.0,
                         tailBaseWidth: 24.0,
                         tailLength: 12.0,
-                        waitDuration: Duration(milliseconds: 100),
-                        showDuration: Duration(milliseconds: 1500),
+                        waitDuration: const Duration(milliseconds: 100),
+                        showDuration: const Duration(milliseconds: 1500),
                         triggerMode: TooltipTriggerMode.tap,
                         child: Text(
                           'Hello World',
@@ -246,33 +270,6 @@ class _ChataCTIVITYWidgetState extends State<ChataCTIVITYWidget> {
           ),
         ),
       ),
-      onEnter: ((event) async {
-        setState(() => _model.mouseRegionHovered = true);
-        logFirebaseEvent('CHATA_C_T_I_V_I_T_Y_MouseRegion_fxr7w4t0');
-        logFirebaseEvent('MouseRegion_firestore_query');
-        _model.companyForColor1 = await queryCompaniesRecordOnce(
-          queryBuilder: (companiesRecord) => companiesRecord.where(
-            'companyCode',
-            isEqualTo: FFAppState().companySecretCode,
-          ),
-        );
-        logFirebaseEvent('MouseRegion_update_component_state');
-        setState(() {
-          _model.learnCardBackgroundColour =
-              _model.companyForColor1?.first?.colors?.teritoryColor;
-        });
-
-        setState(() {});
-      }),
-      onExit: ((event) async {
-        setState(() => _model.mouseRegionHovered = false);
-        logFirebaseEvent('CHATA_C_T_I_V_I_T_Y_MouseRegion_fxr7w4t0');
-        logFirebaseEvent('MouseRegion_update_component_state');
-        setState(() {
-          _model.learnCardBackgroundColour =
-              _model.companyForColor1?.first?.colors?.secondaryTextColor;
-        });
-      }),
     );
   }
 }

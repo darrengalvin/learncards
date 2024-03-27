@@ -104,7 +104,7 @@ class TabsStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
-        firestoreUtilData: FirestoreUtilData(
+        firestoreUtilData: const FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
         ),

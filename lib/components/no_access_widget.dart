@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +34,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
 
     _model.youEnquiryController ??= TextEditingController(
         text:
-            'My name is  ${currentUserDisplayName} and I am interested in learning more about ${FFAppState().selectedcategory}  and to gain access to the members area content please contact me on ');
+            'My name is  $currentUserDisplayName and I am interested in learning more about ${FFAppState().selectedcategory}  and to gain access to the members area content please contact me on ');
     _model.youEnquiryFocusNode ??= FocusNode();
 
     _model.yoMobileController ??= TextEditingController(
@@ -57,12 +56,12 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
     context.watch<FFAppState>();
 
     return Visibility(
-      visible: !(currentUserDocument?.hasaccess?.toList() ?? [])
+      visible: !(currentUserDocument?.hasaccess.toList() ?? [])
           .contains(FFAppState().selectedcategory),
       child: Align(
-        alignment: AlignmentDirectional(0.0, 0.0),
+        alignment: const AlignmentDirectional(0.0, 0.0),
         child: Padding(
-          padding: EdgeInsets.all(25.0),
+          padding: const EdgeInsets.all(25.0),
           child: AuthUserStreamWidget(
             builder: (context) => Container(
               constraints: BoxConstraints(
@@ -72,7 +71,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                 borderRadius: BorderRadius.circular(17.0),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                 child: StreamBuilder<List<CategoriesRecord>>(
                   stream: queryCategoriesRecord(
                     queryBuilder: (categoriesRecord) => categoriesRecord.where(
@@ -107,7 +106,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                       primary: false,
                       scrollDirection: Axis.vertical,
                       children: [
-                        if (!(currentUserDocument?.hasaccess?.toList() ?? [])
+                        if (!(currentUserDocument?.hasaccess.toList() ?? [])
                             .contains(FFAppState().selectedcategory))
                           Container(
                             constraints: BoxConstraints(
@@ -120,9 +119,9 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                       .primaryBackground,
                                   FlutterFlowTheme.of(context).secondary
                                 ],
-                                stops: [0.0, 1.0],
-                                begin: AlignmentDirectional(0.0, -1.0),
-                                end: AlignmentDirectional(0, 1.0),
+                                stops: const [0.0, 1.0],
+                                begin: const AlignmentDirectional(0.0, -1.0),
+                                end: const AlignmentDirectional(0, 1.0),
                               ),
                               borderRadius: BorderRadius.circular(17.0),
                             ),
@@ -130,7 +129,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Padding(
+                                const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Icon(
@@ -140,7 +139,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -148,12 +147,12 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                     children: [
                                       if (listViewCategoriesRecord
                                               ?.userspendingaccess
-                                              ?.contains(
+                                              .contains(
                                                   currentUserReference) ==
                                           false)
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 20.0, 10.0),
                                           child: Text(
                                             listViewCategoriesRecord!
@@ -179,10 +178,10 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                   ),
                                 ),
                                 if (listViewCategoriesRecord?.userspendingaccess
-                                        ?.contains(currentUserReference) ==
+                                        .contains(currentUserReference) ==
                                     false)
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 0.0),
                                     child: Text(
                                       listViewCategoriesRecord!.noaccessbody,
@@ -192,10 +191,10 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                     ),
                                   ),
                                 if (listViewCategoriesRecord?.userspendingaccess
-                                        ?.contains(currentUserReference) ==
+                                        .contains(currentUserReference) ==
                                     true)
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 10.0, 20.0, 10.0),
                                     child: Text(
                                       listViewCategoriesRecord!
@@ -206,7 +205,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                   ),
                                 if (_model.accessRequested != true)
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 22.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -239,17 +238,17 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                         });
                                       },
                                       text: 'Have an access code',
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.lock_open_rounded,
                                         size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         width: 230.0,
                                         height: 50.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -268,7 +267,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                           'Lexend Deca'),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -280,11 +279,11 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                     maxWidth:
                                         MediaQuery.sizeOf(context).width * 1.0,
                                   ),
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Visibility(
                                     visible: _model.accessRequested == true,
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 20.0, 10.0, 0.0),
                                       child: PinCodeTextField(
                                         autoDisposeControllers: false,
@@ -322,7 +321,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                           fieldHeight: 50.0,
                                           fieldWidth: 50.0,
                                           borderWidth: 2.0,
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(12.0),
                                             bottomRight: Radius.circular(12.0),
                                             topLeft: Radius.circular(12.0),
@@ -377,7 +376,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                         .primaryText,
                                                   ),
                                                 ),
-                                                duration: Duration(
+                                                duration: const Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
                                                     FlutterFlowTheme.of(context)
@@ -411,16 +410,16 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                               builder: (alertDialogContext) {
                                                 return WebViewAware(
                                                   child: AlertDialog(
-                                                    title: Text(
+                                                    title: const Text(
                                                         'Error - The code does not match'),
-                                                    content: Text(
+                                                    content: const Text(
                                                         'Your entries are being logged, incorrect entries may result in your account being suspended and/or deleted, please only try to add the code if you have been given one from an official source.'),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext),
-                                                        child: Text('Ok'),
+                                                        child: const Text('Ok'),
                                                       ),
                                                     ],
                                                   ),
@@ -440,7 +439,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                 ),
                                 if (_model.tellMeMorePressed != true)
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 22.0, 0.0, 22.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -458,17 +457,17 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                         });
                                       },
                                       text: 'Tell me more',
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.perm_device_info,
                                         size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         width: 190.0,
                                         height: 50.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
@@ -487,7 +486,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                           'Lexend Deca'),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -496,7 +495,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                   ),
                                 if (FFAppState().showtellmemore == true)
                                   Padding(
-                                    padding: EdgeInsets.all(15.0),
+                                    padding: const EdgeInsets.all(15.0),
                                     child: Container(
                                       width: double.infinity,
                                       decoration: BoxDecoration(
@@ -513,7 +512,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                           autovalidateMode:
                                               AutovalidateMode.disabled,
                                           child: Padding(
-                                            padding: EdgeInsets.all(15.0),
+                                            padding: const EdgeInsets.all(15.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -556,14 +555,14 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                                 context)
                                                             .bodySmall,
                                                     enabledBorder:
-                                                        UnderlineInputBorder(
+                                                        const UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
-                                                          const BorderRadius
+                                                          BorderRadius
                                                               .only(
                                                         topLeft:
                                                             Radius.circular(
@@ -574,14 +573,14 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                       ),
                                                     ),
                                                     focusedBorder:
-                                                        UnderlineInputBorder(
+                                                        const UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
-                                                          const BorderRadius
+                                                          BorderRadius
                                                               .only(
                                                         topLeft:
                                                             Radius.circular(
@@ -592,14 +591,14 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                       ),
                                                     ),
                                                     errorBorder:
-                                                        UnderlineInputBorder(
+                                                        const UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
-                                                          const BorderRadius
+                                                          BorderRadius
                                                               .only(
                                                         topLeft:
                                                             Radius.circular(
@@ -610,14 +609,14 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                       ),
                                                     ),
                                                     focusedErrorBorder:
-                                                        UnderlineInputBorder(
+                                                        const UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
-                                                          const BorderRadius
+                                                          BorderRadius
                                                               .only(
                                                         topLeft:
                                                             Radius.circular(
@@ -678,7 +677,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -689,7 +688,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -700,7 +699,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -721,7 +720,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                       .asValidator(context),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 22.0, 0.0, 0.0),
                                                   child: FFButtonWidget(
@@ -762,7 +761,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                       });
                                                     },
                                                     text: 'Send Enquiry',
-                                                    icon: Icon(
+                                                    icon: const Icon(
                                                       Icons.send_to_mobile,
                                                       size: 15.0,
                                                     ),
@@ -770,14 +769,14 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                       width: 190.0,
                                                       height: 50.0,
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -807,7 +806,7 @@ class _NoAccessWidgetState extends State<NoAccessWidget> {
                                                                         'Lexend Deca'),
                                                               ),
                                                       elevation: 2.0,
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,

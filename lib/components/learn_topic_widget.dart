@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_landing_widget.dart';
 import '/components/user_discover_widget.dart';
@@ -8,10 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -37,8 +33,8 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -77,7 +73,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<List<CompaniesRecord>>(
         stream: queryCompaniesRecord(
           queryBuilder: (companiesRecord) => companiesRecord.where(
@@ -114,21 +110,21 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
               });
             },
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0x85FAFAFA),
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -142,14 +138,14 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                     children: [
                                       Container(
                                         width: double.infinity,
-                                        constraints: BoxConstraints(
+                                        constraints: const BoxConstraints(
                                           minWidth: 380.0,
                                           maxWidth: 750.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(17.0),
@@ -167,11 +163,11 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Container(
-                                                  constraints: BoxConstraints(
+                                                  constraints: const BoxConstraints(
                                                     maxWidth: 300.0,
                                                     maxHeight: 160.0,
                                                   ),
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -217,7 +213,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       25.0, 5.0, 25.0, 0.0),
                                               child: Text(
@@ -261,7 +257,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 40.0, 0.0),
                                                     child: SelectionArea(
@@ -281,7 +277,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(25.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -306,7 +302,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 40.0, 0.0),
                                                     child: SelectionArea(
@@ -346,13 +342,13 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                               updateCallback: () =>
                                                   setState(() {}),
                                               child:
-                                                  AICOMMUNICATIONLandingWidget(
+                                                  const AICOMMUNICATIONLandingWidget(
                                                 askingQuestion: false,
                                               ),
                                             ),
                                             if (FFAppState().debugCount >= 3)
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 1.0, 0.0, 10.0),
                                                 child: FFButtonWidget(
@@ -378,7 +374,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                       'Library-fixed',
                                                       extra: <String, dynamic>{
                                                         kTransitionInfoKey:
-                                                            TransitionInfo(
+                                                            const TransitionInfo(
                                                           hasTransition: true,
                                                           transitionType:
                                                               PageTransitionType
@@ -394,11 +390,11 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                     width: 600.0,
                                                     height: 50.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 4.0,
                                                                 24.0, 4.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -425,7 +421,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 1.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -440,7 +436,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                               false,
                                             ))
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 1.0, 0.0, 10.0),
                                                 child: FFButtonWidget(
@@ -459,11 +455,11 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                     width: 600.0,
                                                     height: 50.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 4.0,
                                                                 24.0, 4.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -490,7 +486,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 1.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -737,14 +733,14 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                         width: 600.0,
                                                         height: 70.0,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     4.0,
                                                                     24.0,
                                                                     4.0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -774,7 +770,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                                                               .titleSmallFamily),
                                                                 ),
                                                         elevation: 1.0,
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,
@@ -797,7 +793,7 @@ class _LearnTopicWidgetState extends State<LearnTopicWidget>
                                   wrapWithModel(
                                     model: _model.userDiscoverModel,
                                     updateCallback: () => setState(() {}),
-                                    child: UserDiscoverWidget(
+                                    child: const UserDiscoverWidget(
                                       askingQuestion: false,
                                     ),
                                   ),

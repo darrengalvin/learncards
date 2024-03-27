@@ -1,4 +1,3 @@
-import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -9,10 +8,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'editing_a_tile_model.dart';
 export 'editing_a_tile_model.dart';
@@ -23,7 +20,7 @@ class EditingATileWidget extends StatefulWidget {
     String? tileId,
     this.tileDoc,
     required this.tileBlock,
-  }) : this.tileId = tileId ?? 'tileRef';
+  }) : tileId = tileId ?? 'tileRef';
 
   final String tileId;
   final TilesRecord? tileDoc;
@@ -75,13 +72,13 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +101,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   desktop: false,
                                 ))
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 25.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -119,9 +116,9 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   text: 'ADD',
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -138,7 +135,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                       .titleSmallFamily),
                                         ),
                                     elevation: 3.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -156,7 +153,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                     false,
                                   ))
                                     FlutterFlowChoiceChips(
-                                      options: [
+                                      options: const [
                                         ChipData('Text'),
                                         ChipData('Image'),
                                         ChipData('Video'),
@@ -249,7 +246,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                             ),
                             if (_model.showItems == true)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     50.0, 0.0, 50.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -265,7 +262,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                       _model.showItems = false;
                                     });
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.cancel_outlined,
                                     color: Colors.black,
                                     size: 24.0,
@@ -300,10 +297,10 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                     ))
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 48.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -337,9 +334,9 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              title: Text(
+                                                              title: const Text(
                                                                   'Delete this block?'),
-                                                              content: Text(
+                                                              content: const Text(
                                                                   'Are you sure'),
                                                               actions: [
                                                                 TextButton(
@@ -347,7 +344,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                                       Navigator.pop(
                                                                           alertDialogContext,
                                                                           false),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Cancel'),
                                                                 ),
                                                                 TextButton(
@@ -355,7 +352,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                                       Navigator.pop(
                                                                           alertDialogContext,
                                                                           true),
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Confirm'),
                                                                 ),
                                                               ],
@@ -378,7 +375,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         ),
                                       ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 30.0,
@@ -401,7 +398,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 15.0, 0.0),
                                       child: Text(
                                         '',
@@ -427,18 +424,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                             ),
                             Container(
                               height: 50.0,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: Container(
-                                    decoration: BoxDecoration(),
-                                    child: Align(
+                                    decoration: const BoxDecoration(),
+                                    child: const Align(
                                       alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -471,7 +468,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                   valueOrDefault<bool>(currentUserDocument?.isadmin, false))
                 AuthUserStreamWidget(
                   builder: (context) => Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                   ),
                 ),
             ],
@@ -485,7 +482,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -506,7 +503,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       25.0, 15.0, 25.0, 0.0),
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
@@ -515,7 +512,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 50.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -529,7 +526,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                   'Icon_bottom_sheet');
                                               Navigator.pop(context);
                                             },
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.cancel_outlined,
                                               color: Colors.black,
                                               size: 24.0,
@@ -538,10 +535,10 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 8.0, 0.0, 8.0),
                                           child: FlutterFlowChoiceChips(
-                                            options: [
+                                            options: const [
                                               ChipData('Header Text',
                                                   Icons.text_fields_sharp),
                                               ChipData('Paragraph',
@@ -601,7 +598,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                                     context)
                                                                 .bodySmallFamily,
                                                         color:
-                                                            Color(0xFFE3E7ED),
+                                                            const Color(0xFFE3E7ED),
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
@@ -633,7 +630,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       40.0, 20.0, 40.0, 20.0),
                                   child: Text(
                                     'This section will create a content block on the page, what ever you put in here will display within that block',
@@ -643,18 +640,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Container(
                                       width: double.infinity,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 530.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 3.0,
                                             color: Color(0x33000000),
@@ -664,7 +661,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         borderRadius:
                                             BorderRadius.circular(24.0),
                                         border: Border.all(
-                                          color: Color(0xFFEFF7F5),
+                                          color: const Color(0xFFEFF7F5),
                                           width: 1.0,
                                         ),
                                       ),
@@ -673,7 +670,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 12.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -681,7 +678,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(24.0, 16.0,
                                                           24.0, 16.0),
                                                   child: Column(
@@ -707,7 +704,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF111417),
                                                                   fontSize: _model
                                                                       .tempFontSize,
@@ -722,7 +719,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -736,7 +733,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -753,7 +750,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.all(10.0),
+                                                  padding: const EdgeInsets.all(10.0),
                                                   child: TextFormField(
                                                     controller: _model
                                                         .theTextController,
@@ -781,7 +778,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -792,7 +789,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -803,7 +800,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1.0,
@@ -835,10 +832,10 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                               Expanded(
                                                 child: Container(
                                                   width: 40.0,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: TextFormField(
@@ -942,7 +939,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 5.0, 5.0),
                                                 child: FFButtonWidget(
@@ -980,18 +977,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                         ));
                                                   },
                                                   text: ' Above  ',
-                                                  icon: Icon(
+                                                  icon: const Icon(
                                                     Icons.add,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1017,7 +1014,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1035,7 +1032,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 10.0, 0.0),
                                                 child:
@@ -1047,7 +1044,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                     _model.dropDownValue ??=
                                                         '14',
                                                   ),
-                                                  options: [
+                                                  options: const [
                                                     '12',
                                                     '14',
                                                     '16',
@@ -1096,7 +1093,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                           .alternate,
                                                   borderWidth: 2.0,
                                                   borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
+                                                  margin: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 4.0, 16.0, 4.0),
                                                   hidesUnderline: true,
@@ -1105,7 +1102,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 5.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1143,18 +1140,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                         ));
                                                   },
                                                   text: ' Below',
-                                                  icon: Icon(
+                                                  icon: const Icon(
                                                     Icons.add,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1180,7 +1177,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                                           .titleSmallFamily),
                                                             ),
                                                     elevation: 3.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1198,18 +1195,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Container(
                                       width: double.infinity,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 530.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 3.0,
                                             color: Color(0x33000000),
@@ -1219,7 +1216,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         borderRadius:
                                             BorderRadius.circular(24.0),
                                         border: Border.all(
-                                          color: Color(0xFFEFF7F5),
+                                          color: const Color(0xFFEFF7F5),
                                           width: 1.0,
                                         ),
                                       ),
@@ -1227,18 +1224,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Container(
                                       width: double.infinity,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 530.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 3.0,
                                             color: Color(0x33000000),
@@ -1248,7 +1245,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         borderRadius:
                                             BorderRadius.circular(24.0),
                                         border: Border.all(
-                                          color: Color(0xFFEFF7F5),
+                                          color: const Color(0xFFEFF7F5),
                                           width: 1.0,
                                         ),
                                       ),
@@ -1256,18 +1253,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Container(
                                       width: double.infinity,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 530.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 3.0,
                                             color: Color(0x33000000),
@@ -1277,7 +1274,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         borderRadius:
                                             BorderRadius.circular(24.0),
                                         border: Border.all(
-                                          color: Color(0xFFEFF7F5),
+                                          color: const Color(0xFFEFF7F5),
                                           width: 1.0,
                                         ),
                                       ),
@@ -1285,18 +1282,18 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Container(
                                       width: double.infinity,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 530.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 3.0,
                                             color: Color(0x33000000),
@@ -1306,12 +1303,12 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                         borderRadius:
                                             BorderRadius.circular(24.0),
                                         border: Border.all(
-                                          color: Color(0xFFEFF7F5),
+                                          color: const Color(0xFFEFF7F5),
                                           width: 1.0,
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 12.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -1319,7 +1316,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 16.0, 24.0, 16.0),
                                               child: Column(
@@ -1336,7 +1333,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color:
-                                                              Color(0xFF111417),
+                                                              const Color(0xFF111417),
                                                           fontSize: 28.0,
                                                           fontWeight:
                                                               FontWeight.w300,
@@ -1349,7 +1346,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -1359,7 +1356,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                           .bodySmall
                                                           .override(
                                                             fontFamily: 'Inter',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF57636C),
                                                             fontSize: 14.0,
                                                             fontWeight:
@@ -1377,7 +1374,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(10.0),
+                                              padding: const EdgeInsets.all(10.0),
                                               child: TextFormField(
                                                 controller:
                                                     _model.tiletextController,
@@ -1407,7 +1404,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1417,7 +1414,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1427,7 +1424,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -1454,7 +1451,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.all(20.0),
+                                  padding: const EdgeInsets.all(20.0),
                                   child: Text(
                                     'THIS IS VERY IMPORTANT ',
                                     textAlign: TextAlign.center,
@@ -1463,7 +1460,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: TextFormField(
                                     controller: _model.positionController,
                                     focusNode: _model.positionFocusNode,
@@ -1483,7 +1480,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                             BorderRadius.circular(25.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -1491,7 +1488,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                             BorderRadius.circular(25.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -1499,7 +1496,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                             BorderRadius.circular(25.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -1521,7 +1518,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 30.0, 0.0, 30.0),
                           child: FFButtonWidget(
                             onPressed: () {
@@ -1531,9 +1528,9 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                             options: FFButtonOptions(
                               width: 300.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -1548,7 +1545,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -1557,13 +1554,13 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               36.0, 12.0, 36.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   blurRadius: 7.0,
                                   color: Color(0x2F1D2429),
@@ -1573,7 +1570,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -1587,7 +1584,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 30.0, 0.0, 30.0),
                                     child: FFButtonWidget(
                                       onPressed: () {
@@ -1597,10 +1594,10 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                       options: FFButtonOptions(
                                         width: 300.0,
                                         height: 50.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -1619,7 +1616,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 2.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -1628,7 +1625,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 30.0, 0.0, 0.0),
                                     child: FlutterFlowVideoPlayer(
@@ -1643,7 +1640,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 8.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1654,7 +1651,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                               .titleMedium
                                               .override(
                                                 fontFamily: 'Outfit',
-                                                color: Color(0xFF101213),
+                                                color: const Color(0xFF101213),
                                                 fontSize: 18.0,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts:
@@ -1675,7 +1672,7 @@ class _EditingATileWidgetState extends State<EditingATileWidget> {
                                               .bodySmall
                                               .override(
                                                 fontFamily: 'Outfit',
-                                                color: Color(0xFF57636C),
+                                                color: const Color(0xFF57636C),
                                                 fontSize: 14.0,
                                                 fontWeight: FontWeight.normal,
                                                 useGoogleFonts:

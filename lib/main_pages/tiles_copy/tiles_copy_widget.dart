@@ -9,11 +9,9 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/testpage/components/edit_tile/edit_tile_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -76,8 +74,8 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
           curve: Curves.easeInOut,
           delay: 700.ms,
           duration: 600.ms,
-          begin: Offset(81.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(81.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -173,41 +171,6 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                             MouseRegion(
                               opaque: false,
                               cursor: MouseCursor.defer ?? MouseCursor.defer,
-                              child: Visibility(
-                                visible: responsiveVisibility(
-                                  context: context,
-                                  phone: false,
-                                  tablet: false,
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Container(
-                                      width: 40.0,
-                                      height: double.infinity,
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            FlutterFlowTheme.of(context)
-                                                .secondary
-                                          ],
-                                          stops: [0.0, 1.0],
-                                          begin:
-                                              AlignmentDirectional(0.0, -1.0),
-                                          end: AlignmentDirectional(0, 1.0),
-                                        ),
-                                      ),
-                                      child: wrapWithModel(
-                                        model: _model.sideMenuCopyModel,
-                                        updateCallback: () => setState(() {}),
-                                        child: SideMenuCopyWidget(),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                               onEnter: ((event) async {
                                 setState(
                                     () => _model.mouseRegionHovered1 = true);
@@ -230,37 +193,45 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                   FFAppState().showmenuopen = false;
                                 });
                               }),
-                            ),
-                            MouseRegion(
-                              opaque: false,
-                              cursor: MouseCursor.defer ?? MouseCursor.defer,
                               child: Visibility(
-                                visible: FFAppState().showmenuopen == true,
+                                visible: responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                  tablet: false,
+                                ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Container(
-                                      width: 230.0,
+                                      width: 40.0,
                                       height: double.infinity,
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: wrapWithModel(
-                                          model: _model.sideMenuModel,
-                                          updateCallback: () => setState(() {}),
-                                          child: SideMenuWidget(
-                                            action: () async {},
-                                          ),
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                            FlutterFlowTheme.of(context)
+                                                .secondary
+                                          ],
+                                          stops: const [0.0, 1.0],
+                                          begin:
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          end: const AlignmentDirectional(0, 1.0),
                                         ),
+                                      ),
+                                      child: wrapWithModel(
+                                        model: _model.sideMenuCopyModel,
+                                        updateCallback: () => setState(() {}),
+                                        child: const SideMenuCopyWidget(),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
+                            ),
+                            MouseRegion(
+                              opaque: false,
+                              cursor: MouseCursor.defer ?? MouseCursor.defer,
                               onEnter: ((event) async {
                                 setState(
                                     () => _model.mouseRegionHovered2 = true);
@@ -285,6 +256,33 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                   FFAppState().drawerMenu = false;
                                 });
                               }),
+                              child: Visibility(
+                                visible: FFAppState().showmenuopen == true,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: 230.0,
+                                      height: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: wrapWithModel(
+                                          model: _model.sideMenuModel,
+                                          updateCallback: () => setState(() {}),
+                                          child: SideMenuWidget(
+                                            action: () async {},
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -331,8 +329,8 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(),
-                                    child: Row(
+                                    decoration: const BoxDecoration(),
+                                    child: const Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -340,7 +338,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                     ),
                                   ),
                                   Expanded(
-                                    child: Container(
+                                    child: SizedBox(
                                       width: MediaQuery.sizeOf(context).width *
                                           1.0,
                                       child: Stack(
@@ -369,7 +367,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                             children: [
                                                               if ((currentUserDocument
                                                                               ?.hasaccess
-                                                                              ?.toList() ??
+                                                                              .toList() ??
                                                                           [])
                                                                       .contains(
                                                                           FFAppState()
@@ -387,7 +385,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             20.0,
@@ -401,10 +399,10 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                         width:
                                                                             370.0,
                                                                         decoration:
-                                                                            BoxDecoration(),
+                                                                            const BoxDecoration(),
                                                                         child:
                                                                             Visibility(
-                                                                          visible: (currentUserDocument?.hasaccess?.toList() ?? []).contains(FFAppState().selectedcategory) &&
+                                                                          visible: (currentUserDocument?.hasaccess.toList() ?? []).contains(FFAppState().selectedcategory) &&
                                                                               responsiveVisibility(
                                                                                 context: context,
                                                                                 phone: false,
@@ -457,7 +455,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                   return Visibility(
                                                                                     visible: listViewWebTilesRecord.isFeatured != true,
                                                                                     child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
                                                                                       child: Container(
                                                                                         width: double.infinity,
                                                                                         decoration: BoxDecoration(
@@ -476,12 +474,12 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                 children: [
                                                                                                   if ((listViewWebTilesRecord.show == true) && (listViewWebTilesRecord.isFeatured != true))
                                                                                                     Padding(
-                                                                                                      padding: EdgeInsets.all(10.0),
+                                                                                                      padding: const EdgeInsets.all(10.0),
                                                                                                       child: Container(
                                                                                                         width: MediaQuery.sizeOf(context).width * 1.0,
                                                                                                         decoration: BoxDecoration(
                                                                                                           color: FlutterFlowTheme.of(context).accent4,
-                                                                                                          boxShadow: [
+                                                                                                          boxShadow: const [
                                                                                                             BoxShadow(
                                                                                                               blurRadius: 3.0,
                                                                                                               color: Color(0x411D2429),
@@ -496,20 +494,20 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                         child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
-                                                                                                            Row(
+                                                                                                            const Row(
                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                               mainAxisAlignment: MainAxisAlignment.center,
                                                                                                               children: [],
                                                                                                             ),
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 5.0),
+                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 5.0),
                                                                                                               child: Row(
                                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                 children: [
                                                                                                                   Expanded(
                                                                                                                     child: Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                       child: Column(
                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                         mainAxisAlignment: MainAxisAlignment.center,
@@ -537,7 +535,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                   ),
                                                                                                                   Expanded(
                                                                                                                     child: Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                       child: Column(
                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                         mainAxisAlignment: MainAxisAlignment.center,
@@ -639,16 +637,16 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                               builder: (alertDialogContext) {
                                                                                                                                 return WebViewAware(
                                                                                                                                   child: AlertDialog(
-                                                                                                                                    title: Text('Delete Tile?'),
-                                                                                                                                    content: Text('If you continue this tile will be deleted forever'),
+                                                                                                                                    title: const Text('Delete Tile?'),
+                                                                                                                                    content: const Text('If you continue this tile will be deleted forever'),
                                                                                                                                     actions: [
                                                                                                                                       TextButton(
                                                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                        child: Text('Cancel'),
+                                                                                                                                        child: const Text('Cancel'),
                                                                                                                                       ),
                                                                                                                                       TextButton(
                                                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                        child: Text('Confirm'),
+                                                                                                                                        child: const Text('Confirm'),
                                                                                                                                       ),
                                                                                                                                     ],
                                                                                                                                   ),
@@ -680,7 +678,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                   highlightColor: Colors.transparent,
                                                                                                   onTap: () async {
                                                                                                     logFirebaseEvent('TILES_COPY_PAGE_tile_ON_TAP');
-                                                                                                    if (listViewWebTilesRecord.children.length > 0) {
+                                                                                                    if (listViewWebTilesRecord.children.isNotEmpty) {
                                                                                                       logFirebaseEvent('tile_update_app_state');
                                                                                                       setState(() {
                                                                                                         FFAppState().childrenfound = true;
@@ -702,7 +700,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                   },
                                                                                                   child: Container(
                                                                                                     width: MediaQuery.sizeOf(context).width * 1.0,
-                                                                                                    decoration: BoxDecoration(
+                                                                                                    decoration: const BoxDecoration(
                                                                                                       borderRadius: BorderRadius.only(
                                                                                                         bottomLeft: Radius.circular(16.0),
                                                                                                         bottomRight: Radius.circular(16.0),
@@ -711,14 +709,14 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                       ),
                                                                                                     ),
                                                                                                     child: Padding(
-                                                                                                      padding: EdgeInsets.all(8.0),
+                                                                                                      padding: const EdgeInsets.all(8.0),
                                                                                                       child: Row(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
                                                                                                           Expanded(
                                                                                                             child: Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 4.0, 0.0),
+                                                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 4.0, 0.0),
                                                                                                               child: SingleChildScrollView(
                                                                                                                 child: Column(
                                                                                                                   mainAxisSize: MainAxisSize.max,
@@ -727,10 +725,10 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                   children: [
                                                                                                                     if (listViewWebTilesRecord.parent == FFAppState().grandParentTileRefSelected)
                                                                                                                       Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                                                         child: Container(
                                                                                                                           width: 305.0,
-                                                                                                                          decoration: BoxDecoration(
+                                                                                                                          decoration: const BoxDecoration(
                                                                                                                             borderRadius: BorderRadius.only(
                                                                                                                               bottomLeft: Radius.circular(16.0),
                                                                                                                               bottomRight: Radius.circular(16.0),
@@ -739,13 +737,13 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                             ),
                                                                                                                           ),
                                                                                                                           child: Padding(
-                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 8.0),
+                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 8.0),
                                                                                                                             child: Row(
                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                               children: [
                                                                                                                                 Expanded(
                                                                                                                                   child: Padding(
-                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 4.0, 0.0),
+                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 4.0, 0.0),
                                                                                                                                     child: Column(
                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -787,7 +785,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                   itemBuilder: (context, listViewIndex) {
                                                                                                                                                     final listViewTilesRecord = listViewTilesRecordList[listViewIndex];
                                                                                                                                                     return Padding(
-                                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
+                                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                                                                                                                                                       child: InkWell(
                                                                                                                                                         splashColor: Colors.transparent,
                                                                                                                                                         focusColor: Colors.transparent,
@@ -807,7 +805,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                             FFAppState().grandParentTileRefSelected = listViewTilesRecord.grandParentRef;
                                                                                                                                                             FFAppState().isasubtile = true;
                                                                                                                                                           });
-                                                                                                                                                          if (listViewTilesRecord.children.length > 0) {
+                                                                                                                                                          if (listViewTilesRecord.children.isNotEmpty) {
                                                                                                                                                             logFirebaseEvent('tile_update_app_state');
                                                                                                                                                             setState(() {
                                                                                                                                                               FFAppState().childrenfound = true;
@@ -831,7 +829,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                               BoxShadow(
                                                                                                                                                                 blurRadius: 3.0,
                                                                                                                                                                 color: FlutterFlowTheme.of(context).lightergrey,
-                                                                                                                                                                offset: Offset(0.0, 1.0),
+                                                                                                                                                                offset: const Offset(0.0, 1.0),
                                                                                                                                                               )
                                                                                                                                                             ],
                                                                                                                                                             borderRadius: BorderRadius.circular(16.0),
@@ -840,14 +838,14 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                             ),
                                                                                                                                                           ),
                                                                                                                                                           child: Padding(
-                                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 5.0),
+                                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 5.0),
                                                                                                                                                             child: Row(
                                                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                                                               children: [
                                                                                                                                                                 Expanded(
                                                                                                                                                                   child: Padding(
-                                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                                                                     child: Column(
                                                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -868,7 +866,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                                 ),
                                                                                                                                                                 Expanded(
                                                                                                                                                                   child: Padding(
-                                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                                                                     child: Column(
                                                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -890,7 +888,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                                 ),
                                                                                                                                                                 Expanded(
                                                                                                                                                                   child: Padding(
-                                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                                                                     child: Column(
                                                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -939,7 +937,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                                                   },
                                                                                                                                                                                 ),
                                                                                                                                                                               Padding(
-                                                                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                                                                                                                                                                                 child: FlutterFlowIconButton(
                                                                                                                                                                                   borderColor: FlutterFlowTheme.of(context).primary,
                                                                                                                                                                                   borderRadius: 20.0,
@@ -960,15 +958,15 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                                                             return WebViewAware(
                                                                                                                                                                                               child: AlertDialog(
                                                                                                                                                                                                 title: Text('Delete ${listViewTilesRecord.title} ?'),
-                                                                                                                                                                                                content: Text('If you continue this tile will be deleted forever'),
+                                                                                                                                                                                                content: const Text('If you continue this tile will be deleted forever'),
                                                                                                                                                                                                 actions: [
                                                                                                                                                                                                   TextButton(
                                                                                                                                                                                                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                                                                                    child: Text('Cancel'),
+                                                                                                                                                                                                    child: const Text('Cancel'),
                                                                                                                                                                                                   ),
                                                                                                                                                                                                   TextButton(
                                                                                                                                                                                                     onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                                                                                    child: Text('Confirm'),
+                                                                                                                                                                                                    child: const Text('Confirm'),
                                                                                                                                                                                                   ),
                                                                                                                                                                                                 ],
                                                                                                                                                                                               ),
@@ -1063,10 +1061,10 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                           280.0,
                                                                     ),
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                     child:
                                                                         Visibility(
-                                                                      visible: (currentUserDocument?.hasaccess?.toList() ??
+                                                                      visible: (currentUserDocument?.hasaccess.toList() ??
                                                                               [])
                                                                           .contains(
                                                                               FFAppState().selectedcategory),
@@ -1122,7 +1120,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                 return Visibility(
                                                                                   visible: listViewTilesRecord.isFeatured != true,
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                     child: InkWell(
                                                                                       splashColor: Colors.transparent,
                                                                                       focusColor: Colors.transparent,
@@ -1144,7 +1142,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                         setState(() {
                                                                                           _model.historyID = _model.historyID! + 1;
                                                                                         });
-                                                                                        if (listViewTilesRecord.children.length > 0) {
+                                                                                        if (listViewTilesRecord.children.isNotEmpty) {
                                                                                           logFirebaseEvent('Container_update_app_state');
                                                                                           setState(() {
                                                                                             FFAppState().childrenfound = true;
@@ -1160,19 +1158,19 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                         setState(() {
                                                                                           FFAppState().lasttiletouched = listViewTilesRecord.reference;
                                                                                         });
-                                                                                        if ((currentUserDocument?.lasttiletouched?.toList() ?? []).contains(listViewTilesRecord.reference) == true) {
+                                                                                        if ((currentUserDocument?.lasttiletouched.toList() ?? []).contains(listViewTilesRecord.reference) == true) {
                                                                                           logFirebaseEvent('Container_alert_dialog');
                                                                                           await showDialog(
                                                                                             context: context,
                                                                                             builder: (alertDialogContext) {
                                                                                               return WebViewAware(
                                                                                                 child: AlertDialog(
-                                                                                                  title: Text('Do nothing'),
-                                                                                                  content: Text('This will be deleted'),
+                                                                                                  title: const Text('Do nothing'),
+                                                                                                  content: const Text('This will be deleted'),
                                                                                                   actions: [
                                                                                                     TextButton(
                                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                      child: Text('Ok'),
+                                                                                                      child: const Text('Ok'),
                                                                                                     ),
                                                                                                   ],
                                                                                                 ),
@@ -1201,7 +1199,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                               historyRecordReference);
                                                                                         }
 
-                                                                                        if ((currentUserDocument?.lasttiletouched?.toList() ?? []).contains(listViewTilesRecord.reference) == true) {
+                                                                                        if ((currentUserDocument?.lasttiletouched.toList() ?? []).contains(listViewTilesRecord.reference) == true) {
                                                                                           logFirebaseEvent('Container_update_page_state');
                                                                                           setState(() {
                                                                                             _model.showsubsubs = true;
@@ -1225,10 +1223,10 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                           children: [
                                                                                             if (listViewTilesRecord.isFeatured != true)
                                                                                               Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                                                                                                 child: Container(
                                                                                                   width: 300.0,
-                                                                                                  decoration: BoxDecoration(
+                                                                                                  decoration: const BoxDecoration(
                                                                                                     borderRadius: BorderRadius.only(
                                                                                                       bottomLeft: Radius.circular(0.0),
                                                                                                       bottomRight: Radius.circular(0.0),
@@ -1313,16 +1311,16 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                   builder: (alertDialogContext) {
                                                                                                                                     return WebViewAware(
                                                                                                                                       child: AlertDialog(
-                                                                                                                                        title: Text('Delete Tile?'),
-                                                                                                                                        content: Text('If you continue this tile will be deleted forever'),
+                                                                                                                                        title: const Text('Delete Tile?'),
+                                                                                                                                        content: const Text('If you continue this tile will be deleted forever'),
                                                                                                                                         actions: [
                                                                                                                                           TextButton(
                                                                                                                                             onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                            child: Text('Cancel'),
+                                                                                                                                            child: const Text('Cancel'),
                                                                                                                                           ),
                                                                                                                                           TextButton(
                                                                                                                                             onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                            child: Text('Confirm'),
+                                                                                                                                            child: const Text('Confirm'),
                                                                                                                                           ),
                                                                                                                                         ],
                                                                                                                                       ),
@@ -1345,7 +1343,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                           ],
                                                                                                         ),
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsets.all(10.0),
+                                                                                                        padding: const EdgeInsets.all(10.0),
                                                                                                         child: Row(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           children: [
@@ -1368,14 +1366,14 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                                     child: Container(
                                                                                                       width: 305.0,
                                                                                                       height: 180.0,
-                                                                                                      constraints: BoxConstraints(
+                                                                                                      constraints: const BoxConstraints(
                                                                                                         maxHeight: 220.0,
                                                                                                       ),
-                                                                                                      decoration: BoxDecoration(
+                                                                                                      decoration: const BoxDecoration(
                                                                                                         borderRadius: BorderRadius.only(
                                                                                                           bottomLeft: Radius.circular(16.0),
                                                                                                           bottomRight: Radius.circular(16.0),
@@ -1384,14 +1382,14 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                         ),
                                                                                                       ),
                                                                                                       child: Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 8.0),
+                                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 8.0),
                                                                                                         child: Row(
                                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                                           crossAxisAlignment: CrossAxisAlignment.stretch,
                                                                                                           children: [
                                                                                                             Expanded(
                                                                                                               child: Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 24.0, 0.0),
+                                                                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 24.0, 0.0),
                                                                                                                 child: SingleChildScrollView(
                                                                                                                   child: Column(
                                                                                                                     mainAxisSize: MainAxisSize.max,
@@ -1436,7 +1434,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                   itemBuilder: (context, listViewIndex) {
                                                                                                                                     final listViewTilesRecord = listViewTilesRecordList[listViewIndex];
                                                                                                                                     return Padding(
-                                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
+                                                                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                                                                                                                                       child: InkWell(
                                                                                                                                         splashColor: Colors.transparent,
                                                                                                                                         focusColor: Colors.transparent,
@@ -1458,7 +1456,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                           setState(() {
                                                                                                                                             _model.historyID = _model.historyID! + 1;
                                                                                                                                           });
-                                                                                                                                          if (listViewTilesRecord.children.length > 0) {
+                                                                                                                                          if (listViewTilesRecord.children.isNotEmpty) {
                                                                                                                                             logFirebaseEvent('tile_update_app_state');
                                                                                                                                             setState(() {
                                                                                                                                               FFAppState().childrenfound = true;
@@ -1474,19 +1472,19 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                           setState(() {
                                                                                                                                             FFAppState().lasttiletouched = listViewTilesRecord.reference;
                                                                                                                                           });
-                                                                                                                                          if ((currentUserDocument?.lasttiletouched?.toList() ?? []).contains(listViewTilesRecord.reference) == true) {
+                                                                                                                                          if ((currentUserDocument?.lasttiletouched.toList() ?? []).contains(listViewTilesRecord.reference) == true) {
                                                                                                                                             logFirebaseEvent('tile_alert_dialog');
                                                                                                                                             await showDialog(
                                                                                                                                               context: context,
                                                                                                                                               builder: (alertDialogContext) {
                                                                                                                                                 return WebViewAware(
                                                                                                                                                   child: AlertDialog(
-                                                                                                                                                    title: Text('Do nothing'),
-                                                                                                                                                    content: Text('This will be deleted'),
+                                                                                                                                                    title: const Text('Do nothing'),
+                                                                                                                                                    content: const Text('This will be deleted'),
                                                                                                                                                     actions: [
                                                                                                                                                       TextButton(
                                                                                                                                                         onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                                                                        child: Text('Ok'),
+                                                                                                                                                        child: const Text('Ok'),
                                                                                                                                                       ),
                                                                                                                                                     ],
                                                                                                                                                   ),
@@ -1515,7 +1513,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                 historyRecordReference);
                                                                                                                                           }
 
-                                                                                                                                          if (listViewTilesRecord.children.length > 0) {
+                                                                                                                                          if (listViewTilesRecord.children.isNotEmpty) {
                                                                                                                                             logFirebaseEvent('tile_update_page_state');
                                                                                                                                             setState(() {
                                                                                                                                               _model.showsubsubs = true;
@@ -1532,7 +1530,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                               BoxShadow(
                                                                                                                                                 blurRadius: 3.0,
                                                                                                                                                 color: FlutterFlowTheme.of(context).lightergrey,
-                                                                                                                                                offset: Offset(0.0, 1.0),
+                                                                                                                                                offset: const Offset(0.0, 1.0),
                                                                                                                                               )
                                                                                                                                             ],
                                                                                                                                             gradient: LinearGradient(
@@ -1540,9 +1538,9 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                                 FlutterFlowTheme.of(context).primaryBackground,
                                                                                                                                                 FlutterFlowTheme.of(context).secondary
                                                                                                                                               ],
-                                                                                                                                              stops: [0.0, 1.0],
-                                                                                                                                              begin: AlignmentDirectional(0.0, -1.0),
-                                                                                                                                              end: AlignmentDirectional(0, 1.0),
+                                                                                                                                              stops: const [0.0, 1.0],
+                                                                                                                                              begin: const AlignmentDirectional(0.0, -1.0),
+                                                                                                                                              end: const AlignmentDirectional(0, 1.0),
                                                                                                                                             ),
                                                                                                                                             borderRadius: BorderRadius.circular(16.0),
                                                                                                                                             border: Border.all(
@@ -1550,13 +1548,13 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                                                                             ),
                                                                                                                                           ),
                                                                                                                                           child: Padding(
-                                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                                                                                                                                             child: Row(
                                                                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                                                                               children: [
                                                                                                                                                 Expanded(
                                                                                                                                                   child: Padding(
-                                                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
+                                                                                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 4.0, 0.0),
                                                                                                                                                     child: Column(
                                                                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                                                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -1627,7 +1625,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                   ),
                                                                 Expanded(
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     height:
                                                                         MediaQuery.sizeOf(context).height *
                                                                             1.0,
@@ -1635,7 +1633,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                         Stack(
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               24.0,
                                                                               0.0,
@@ -1649,13 +1647,13 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                               maxHeight: MediaQuery.sizeOf(context).height * 0.7,
                                                                             ),
                                                                             decoration:
-                                                                                BoxDecoration(),
+                                                                                const BoxDecoration(),
                                                                             child:
                                                                                 wrapWithModel(
                                                                               model: _model.mainTileContentOldModel,
                                                                               updateCallback: () => setState(() {}),
                                                                               updateOnChange: true,
-                                                                              child: MainTileContentOldWidget(),
+                                                                              child: const MainTileContentOldWidget(),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -1664,14 +1662,14 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                               MainAxisSize.max,
                                                                           children: [
                                                                             if (valueOrDefault<bool>(
-                                                                              (currentUserDocument?.hasaccess?.toList() ?? []).contains(FFAppState().selectedcategory) == false,
+                                                                              (currentUserDocument?.hasaccess.toList() ?? []).contains(FFAppState().selectedcategory) == false,
                                                                               false,
                                                                             ))
                                                                               Expanded(
                                                                                 child: AuthUserStreamWidget(
                                                                                   builder: (context) => Builder(
                                                                                     builder: (context) {
-                                                                                      if ((currentUserDocument?.hasaccess?.toList() ?? []).contains(currentUserReference?.id) == false) {
+                                                                                      if ((currentUserDocument?.hasaccess.toList() ?? []).contains(currentUserReference?.id) == false) {
                                                                                         return Container(
                                                                                           width: MediaQuery.sizeOf(context).width * 1.0,
                                                                                           constraints: BoxConstraints(
@@ -1683,12 +1681,12 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                           child: wrapWithModel(
                                                                                             model: _model.noAccessModel1,
                                                                                             updateCallback: () => setState(() {}),
-                                                                                            child: NoAccessWidget(),
+                                                                                            child: const NoAccessWidget(),
                                                                                           ),
                                                                                         );
                                                                                       } else {
                                                                                         return Visibility(
-                                                                                          visible: (currentUserDocument?.hasaccess?.toList() ?? []).contains(FFAppState().selectedcategory) == false,
+                                                                                          visible: (currentUserDocument?.hasaccess.toList() ?? []).contains(FFAppState().selectedcategory) == false,
                                                                                           child: Container(
                                                                                             width: MediaQuery.sizeOf(context).width * 1.0,
                                                                                             constraints: BoxConstraints(
@@ -1700,7 +1698,7 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                                                                                             child: wrapWithModel(
                                                                                               model: _model.noAccessModel2,
                                                                                               updateCallback: () => setState(() {}),
-                                                                                              child: NoAccessWidget(),
+                                                                                              child: const NoAccessWidget(),
                                                                                             ),
                                                                                           ),
                                                                                         );
@@ -1749,12 +1747,12 @@ class _TilesCopyWidgetState extends State<TilesCopyWidget>
                         ))
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 40.0, 0.0),
                               child: Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                               ),
                             ),
                           ),

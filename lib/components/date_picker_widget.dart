@@ -1,13 +1,10 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'date_picker_model.dart';
 export 'date_picker_model.dart';
 
@@ -56,7 +53,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 4.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +78,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
               false,
             ))
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
                 child: FlutterFlowIconButton(
                   borderColor: FlutterFlowTheme.of(context).primary,
                   borderRadius: 20.0,
@@ -110,7 +107,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
                         ),
-                        duration: Duration(milliseconds: 4000),
+                        duration: const Duration(milliseconds: 4000),
                         backgroundColor: FlutterFlowTheme.of(context).secondary,
                       ),
                     );
@@ -123,7 +120,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 500.0,
               ),
               decoration: BoxDecoration(

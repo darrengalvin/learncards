@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +36,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
 
     _model.youEnquiryController ??= TextEditingController(
         text:
-            'My name is  ${currentUserDisplayName} and I am interested in learning more about ${FFAppState().selectedcategory}  and to gain access to the members area content please contact me on ');
+            'My name is  $currentUserDisplayName and I am interested in learning more about ${FFAppState().selectedcategory}  and to gain access to the members area content please contact me on ');
     _model.youEnquiryFocusNode ??= FocusNode();
 
     _model.yoMobileController ??= TextEditingController(
@@ -59,9 +58,9 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(25.0),
         child: Container(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.sizeOf(context).width * 1.0,
@@ -114,9 +113,9 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                           FlutterFlowTheme.of(context).primaryBackground,
                           FlutterFlowTheme.of(context).secondary
                         ],
-                        stops: [0.0, 1.0],
-                        begin: AlignmentDirectional(0.0, -1.0),
-                        end: AlignmentDirectional(0, 1.0),
+                        stops: const [0.0, 1.0],
+                        begin: const AlignmentDirectional(0.0, -1.0),
+                        end: const AlignmentDirectional(0, 1.0),
                       ),
                       borderRadius: BorderRadius.circular(17.0),
                     ),
@@ -124,7 +123,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
+                        const Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Icon(
@@ -134,17 +133,17 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               if (listViewCategoriesRecord?.userspendingaccess
-                                      ?.contains(currentUserReference) ==
+                                      .contains(currentUserReference) ==
                                   false)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 10.0),
                                   child: Text(
                                     listViewCategoriesRecord!.noaccesstitle,
@@ -185,10 +184,10 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                           ),
                         ),
                         if (listViewCategoriesRecord?.userspendingaccess
-                                ?.contains(currentUserReference) ==
+                                .contains(currentUserReference) ==
                             false)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: Text(
                               listViewCategoriesRecord!.noaccessbody,
@@ -197,10 +196,10 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                             ),
                           ),
                         if (listViewCategoriesRecord?.userspendingaccess
-                                ?.contains(currentUserReference) ==
+                                .contains(currentUserReference) ==
                             true)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 10.0, 20.0, 10.0),
                             child: Text(
                               listViewCategoriesRecord!.accesspendngmessage,
@@ -209,7 +208,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                           ),
                         if (_model.accessRequested == true)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 20.0, 10.0, 0.0),
                             child: PinCodeTextField(
                               autoDisposeControllers: false,
@@ -240,7 +239,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                 fieldHeight: 50.0,
                                 fieldWidth: 50.0,
                                 borderWidth: 2.0,
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(12.0),
                                   bottomRight: Radius.circular(12.0),
                                   topLeft: Radius.circular(12.0),
@@ -284,7 +283,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                               .primaryText,
                                         ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
+                                      duration: const Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
@@ -313,15 +312,15 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: Text(
+                                          title: const Text(
                                               'Error - The code does not match'),
-                                          content: Text(
+                                          content: const Text(
                                               'Your entries are being logged, incorrect entries may result in your account being suspended and/or deleted, please only try to add the code if you have been given one from an official source.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('Ok'),
+                                              child: const Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -338,7 +337,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                           ),
                         if (_model.tellMeMorePressed != true)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 22.0, 0.0, 22.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -353,16 +352,16 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                 setState(() {});
                               },
                               text: 'Tell me more',
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.perm_device_info,
                                 size: 15.0,
                               ),
                               options: FFButtonOptions(
                                 width: 190.0,
                                 height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).secondary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -377,7 +376,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                           .containsKey('Lexend Deca'),
                                     ),
                                 elevation: 2.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -386,7 +385,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                           ),
                         if (_model.accessRequested != true)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 22.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -418,16 +417,16 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                 });
                               },
                               text: 'Have an access code',
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.lock_open_rounded,
                                 size: 15.0,
                               ),
                               options: FFButtonOptions(
                                 width: 230.0,
                                 height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -442,7 +441,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                           .containsKey('Lexend Deca'),
                                     ),
                                 elevation: 2.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -453,11 +452,11 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                           constraints: BoxConstraints(
                             maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                           ),
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                         ),
                         if (FFAppState().showtellmemore == true)
                           Padding(
-                            padding: EdgeInsets.all(15.0),
+                            padding: const EdgeInsets.all(15.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
@@ -471,7 +470,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                   key: _model.formKey,
                                   autovalidateMode: AutovalidateMode.disabled,
                                   child: Padding(
-                                    padding: EdgeInsets.all(15.0),
+                                    padding: const EdgeInsets.all(15.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -510,51 +509,51 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall,
                                               enabledBorder:
-                                                  UnderlineInputBorder(
+                                                  const UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
+                                                    BorderRadius.only(
                                                   topLeft: Radius.circular(4.0),
                                                   topRight:
                                                       Radius.circular(4.0),
                                                 ),
                                               ),
                                               focusedBorder:
-                                                  UnderlineInputBorder(
+                                                  const UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
+                                                    BorderRadius.only(
                                                   topLeft: Radius.circular(4.0),
                                                   topRight:
                                                       Radius.circular(4.0),
                                                 ),
                                               ),
-                                              errorBorder: UnderlineInputBorder(
+                                              errorBorder: const UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
+                                                    BorderRadius.only(
                                                   topLeft: Radius.circular(4.0),
                                                   topRight:
                                                       Radius.circular(4.0),
                                                 ),
                                               ),
                                               focusedErrorBorder:
-                                                  UnderlineInputBorder(
+                                                  const UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
+                                                    BorderRadius.only(
                                                   topLeft: Radius.circular(4.0),
                                                   topRight:
                                                       Radius.circular(4.0),
@@ -605,7 +604,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                                     BorderRadius.circular(25.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -613,7 +612,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                                     BorderRadius.circular(25.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -622,7 +621,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -641,7 +640,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 22.0, 0.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -677,16 +676,16 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                               });
                                             },
                                             text: 'Send Enquiry',
-                                            icon: Icon(
+                                            icon: const Icon(
                                               Icons.send_to_mobile,
                                               size: 15.0,
                                             ),
                                             options: FFButtonOptions(
                                               width: 190.0,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -708,7 +707,7 @@ class _NoaccesspopupCopyWidgetState extends State<NoaccesspopupCopyWidget> {
                                                                 'Lexend Deca'),
                                                   ),
                                               elevation: 2.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),

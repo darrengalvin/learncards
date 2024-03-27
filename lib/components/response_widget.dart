@@ -1,13 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'response_model.dart';
 export 'response_model.dart';
 
@@ -66,13 +62,13 @@ class _ResponseWidgetState extends State<ResponseWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
       child: TextFormField(
         controller: _model.textController,
         focusNode: _model.textFieldFocusNode,
         onChanged: (_) => EasyDebounce.debounce(
           '_model.textController',
-          Duration(milliseconds: 2000),
+          const Duration(milliseconds: 2000),
           () async {
             logFirebaseEvent('RESPONSE_TextField_27901nx3_ON_TEXTFIELD');
             logFirebaseEvent('TextField_backend_call');
