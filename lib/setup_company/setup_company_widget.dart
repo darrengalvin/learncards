@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 's_e_t_u_pc_o_m_p_a_n_y_model.dart';
-export 's_e_t_u_pc_o_m_p_a_n_y_model.dart';
+import 'setup_company_model.dart';
+export 'setup_company_model.dart';
 
-class SETUPcOMPANYWidget extends StatefulWidget {
-  const SETUPcOMPANYWidget({
+class SetupCompanyWidget extends StatefulWidget {
+  const SetupCompanyWidget({
     super.key,
     required this.companyDoc,
   });
@@ -21,22 +21,22 @@ class SETUPcOMPANYWidget extends StatefulWidget {
   final CompaniesRecord? companyDoc;
 
   @override
-  State<SETUPcOMPANYWidget> createState() => _SETUPcOMPANYWidgetState();
+  State<SetupCompanyWidget> createState() => _SetupCompanyWidgetState();
 }
 
-class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
+class _SetupCompanyWidgetState extends State<SetupCompanyWidget>
     with TickerProviderStateMixin {
-  late SETUPcOMPANYModel _model;
+  late SetupCompanyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SETUPcOMPANYModel());
+    _model = createModel(context, () => SetupCompanyModel());
 
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'sETUPcOMPANY'});
+        parameters: {'screen_name': 'setupCompany'});
     _model.flowiseURLController ??= TextEditingController(
         text:
             'https://nafya-flowise.alikibao.online/api/v1/prediction/bdae9275-a3cd-49db-9278-2b8f0789aca1');
@@ -85,7 +85,7 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
     context.watch<FFAppState>();
 
     return Title(
-        title: 'sETUPcOMPANY',
+        title: 'setupCompany',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -140,7 +140,7 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                           ),
                           onPressed: () async {
                             logFirebaseEvent(
-                                'S_E_T_U_PC_O_M_P_A_N_Y_close_rounded_ICN');
+                                'SETUP_COMPANY_close_rounded_ICN_ON_TAP');
                             logFirebaseEvent('IconButton_navigate_back');
                             context.safePop();
                           },
@@ -240,6 +240,7 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                                                       snapshot.data!;
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
+                                                    primary: false,
                                                     shrinkWrap: true,
                                                     scrollDirection:
                                                         Axis.vertical,
@@ -345,13 +346,7 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                                                                                   children: [
                                                                                     Text(
                                                                                       listViewTilesv2Record.title,
-                                                                                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                            fontFamily: 'Outfit',
-                                                                                            color: FlutterFlowTheme.of(context).primaryText,
-                                                                                            fontSize: 15.0,
-                                                                                            fontWeight: FontWeight.w500,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
-                                                                                          ),
+                                                                                      style: FlutterFlowTheme.of(context).titleLarge,
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -437,10 +432,14 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                                                                                           size: 24.0,
                                                                                         ),
                                                                                         onPressed: () async {
-                                                                                          logFirebaseEvent('S_E_T_U_PC_O_M_P_A_N_Y_grade_ICN_ON_TAP');
+                                                                                          logFirebaseEvent('SETUP_COMPANY_PAGE_grade_ICN_ON_TAP');
                                                                                           logFirebaseEvent('IconButton_update_page_state');
                                                                                           setState(() {
                                                                                             _model.showCalendar = !_model.showCalendar;
+                                                                                            _model.showCalendarTileId = valueOrDefault<String>(
+                                                                                              listViewTilesv2Record.reference.id,
+                                                                                              '-',
+                                                                                            );
                                                                                           });
                                                                                         },
                                                                                       ),
@@ -490,22 +489,30 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Expanded(
-                                                                        child:
-                                                                            DatePickerWidget(
-                                                                          key: Key(
-                                                                              'Keyg0t_${listViewIndex}_of_${listViewTilesv2RecordList.length}'),
-                                                                          tilev2passed:
-                                                                              listViewTilesv2Record,
+                                                                  if (valueOrDefault<
+                                                                      bool>(
+                                                                    (_model.showCalendar ==
+                                                                            true) &&
+                                                                        (_model.showCalendarTileId ==
+                                                                            listViewTilesv2Record.reference.id),
+                                                                    false,
+                                                                  ))
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Expanded(
+                                                                          child:
+                                                                              DatePickerWidget(
+                                                                            key:
+                                                                                Key('Keyg0t_${listViewIndex}_of_${listViewTilesv2RecordList.length}'),
+                                                                            tilev2passed:
+                                                                                listViewTilesv2Record,
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
+                                                                      ],
+                                                                    ),
                                                                 ],
                                                               ),
                                                             ],
@@ -527,9 +534,157 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                                               width: 1.0,
                                             ),
                                           ),
-                                          child: const Column(
+                                          child: Column(
                                             mainAxisSize: MainAxisSize.max,
-                                            children: [],
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 12.0, 16.0, 12.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'SETUP_COMPANY_GET_A_NEW_WEEKLY_TOPIC_BTN');
+                                                    logFirebaseEvent(
+                                                        'Button_backend_call');
+                                                    _model.apiResultdkp =
+                                                        await CloudFunctionsGroup
+                                                            .getTopicsCall
+                                                            .call(
+                                                      sessionId: FFAppState()
+                                                          .nonLoggedInSessionId,
+                                                      systemMessagePrompt:
+                                                          'As a business that ${widget.companyDoc?.companyAiData.companySummary}${valueOrDefault<String>(
+                                                        widget.companyDoc
+                                                            ?.getTilesPrompt,
+                                                        '|',
+                                                      )}I need a weekly topic to help my users with their business journey, lean on some famous frameworks if it helps. The topic should  have a unique name and have 5 days of activities, these activities are delivered via by my interactive ai coach and mentor in an app, so they can either be designed to get immediate responses or for the individual to take an action and then share their actions,The activity should be designed to last only 6-8 minutes, they are bite size.  The 5 days  must have a conclusion, whereby the person who has completed 1-5 activities feels satisfied and complete with a learning outcome that will move them forward. Please return JSON in the following format. Id increment by 1, start at 1 pillarCategory weeklyTopicName dailyActivity (list of 1-5 days of activities)  just the activity name a showAdminDate which is always today. And reasonForTopic, a short paragraph explaining why you have chosen this topic for the user, if you hold any previous conversations or data then use that for context.  Always Use English UK Locale and Spelling do not use backticks or new line characters, note to AI: This request can be made multiple times so even if you have been asked before please continue to carry out the task',
+                                                      flowiseUrl: _model
+                                                          .flowiseURLController
+                                                          .text,
+                                                      companyDocId: widget
+                                                          .companyDoc
+                                                          ?.reference
+                                                          .id,
+                                                      tableName: _model
+                                                          .tableNameController
+                                                          .text,
+                                                      queryName: _model
+                                                          .queryNameController
+                                                          .text,
+                                                      supabaseProjUrl: _model
+                                                          .supabaseProjectURLController
+                                                          .text,
+                                                    );
+                                                    if ((_model.apiResultdkp
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      logFirebaseEvent(
+                                                          'Button_alert_dialog');
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              title: const Text(
+                                                                  'Success '),
+                                                              content: Text((_model
+                                                                      .apiResultdkp
+                                                                      ?.bodyText ??
+                                                                  '')),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    } else {
+                                                      logFirebaseEvent(
+                                                          'Button_alert_dialog');
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              title: const Text(
+                                                                  'API Failed'),
+                                                              content: Text((_model
+                                                                      .apiResultdkp
+                                                                      ?.bodyText ??
+                                                                  '')),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    }
+
+                                                    setState(() {});
+                                                  },
+                                                  text:
+                                                      'Get a new Weekly Topic',
+                                                  options: FFButtonOptions(
+                                                    width: double.infinity,
+                                                    height: 48.0,
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                              useGoogleFonts: GoogleFonts
+                                                                      .asMap()
+                                                                  .containsKey(
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmallFamily),
+                                                            ),
+                                                    elevation: 3.0,
+                                                    borderSide: const BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                         Text(
@@ -876,9 +1031,6 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                                           validator: _model
                                               .tableNameControllerValidator
                                               .asValidator(context),
-                                          inputFormatters: [
-                                            _model.tableNameMask
-                                          ],
                                         ),
                                         Text(
                                           'Supabase Project URL',
@@ -892,12 +1044,12 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                                               .supabaseProjectURLFocusNode,
                                           onFieldSubmitted: (_) async {
                                             logFirebaseEvent(
-                                                'S_E_T_U_PC_O_M_P_A_N_Y_supabaseProjectUR');
+                                                'SETUP_COMPANY_supabaseProjectURL_ON_TEXT');
                                             logFirebaseEvent(
                                                 'supabaseProjectURL_navigate_to');
 
                                             context.pushNamed(
-                                              'sETUPcOMPANY',
+                                              'setupCompany',
                                               queryParameters: {
                                                 'companyDoc': serializeParam(
                                                   widget.companyDoc,
@@ -1640,104 +1792,6 @@ class _SETUPcOMPANYWidgetState extends State<SETUPcOMPANYWidget>
                           maxWidth: 770.0,
                         ),
                         decoration: const BoxDecoration(),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 12.0, 16.0, 12.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'S_E_T_U_PC_O_M_P_A_N_Y_GET_TOPICS_BTN_ON');
-                              logFirebaseEvent('Button_backend_call');
-                              _model.apiResultdkp =
-                                  await CloudFunctionsGroup.getTopicsCall.call(
-                                sessionId: FFAppState().nonLoggedInSessionId,
-                                systemMessagePrompt:
-                                    _model.promptController.text,
-                                flowiseUrl: _model.flowiseURLController.text,
-                                companyDocId: widget.companyDoc?.reference.id,
-                                tableName: _model.tableNameController.text,
-                                queryName: _model.queryNameController.text,
-                                supabaseProjUrl:
-                                    _model.supabaseProjectURLController.text,
-                              );
-                              if ((_model.apiResultdkp?.succeeded ?? true)) {
-                                logFirebaseEvent('Button_alert_dialog');
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return WebViewAware(
-                                      child: AlertDialog(
-                                        title: const Text('Success '),
-                                        content: Text(
-                                            (_model.apiResultdkp?.bodyText ??
-                                                '')),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: const Text('Ok'),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              } else {
-                                logFirebaseEvent('Button_alert_dialog');
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return WebViewAware(
-                                      child: AlertDialog(
-                                        title: const Text('API Failed'),
-                                        content: Text(
-                                            (_model.apiResultdkp?.bodyText ??
-                                                '')),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: const Text('Ok'),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              }
-
-                              setState(() {});
-                            },
-                            text: 'GetTopics',
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
-                                  ),
-                              elevation: 3.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
                       ),
                     ],
                   ),

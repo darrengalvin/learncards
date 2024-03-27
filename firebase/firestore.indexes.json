@@ -303,15 +303,15 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "thread_id",
-          "order": "ASCENDING"
-        },
-        {
           "fieldPath": "companyDocId",
           "order": "ASCENDING"
         },
         {
           "fieldPath": "session_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "thread_id",
           "order": "ASCENDING"
         },
         {

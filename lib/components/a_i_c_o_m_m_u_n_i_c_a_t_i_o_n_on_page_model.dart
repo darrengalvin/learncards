@@ -5,6 +5,7 @@ import '/flutter_flow/form_field_controller.dart';
 import 'a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_widget.dart'
     show AICOMMUNICATIONOnPageWidget;
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class AICOMMUNICATIONOnPageModel
     extends FlutterFlowModel<AICOMMUNICATIONOnPageWidget> {
@@ -30,6 +31,7 @@ class AICOMMUNICATIONOnPageModel
   // State field(s) for Column-chats-scrollable widget.
   ScrollController? columnChatsScrollable;
   List<FlowiseChatsRecord>? columnChatsScrollablePreviousSnapshot;
+  AudioPlayer? soundPlayer;
   // State field(s) for Column-markdown-scrollable widget.
   ScrollController? columnMarkdownScrollable;
   // State field(s) for AskTheQuestion widget.

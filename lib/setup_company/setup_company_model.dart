@@ -1,18 +1,21 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 's_e_t_u_pc_o_m_p_a_n_y_widget.dart' show SETUPcOMPANYWidget;
+import 'setup_company_widget.dart' show SetupCompanyWidget;
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class SETUPcOMPANYModel extends FlutterFlowModel<SETUPcOMPANYWidget> {
+class SetupCompanyModel extends FlutterFlowModel<SetupCompanyWidget> {
   ///  Local state fields for this page.
 
   bool showCalendar = false;
+
+  String? showCalendarTileId;
 
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Backend Call - API (getTopics)] action in Button widget.
+  ApiCallResponse? apiResultdkp;
   // State field(s) for flowiseURL widget.
   FocusNode? flowiseURLFocusNode;
   TextEditingController? flowiseURLController;
@@ -24,7 +27,6 @@ class SETUPcOMPANYModel extends FlutterFlowModel<SETUPcOMPANYWidget> {
   // State field(s) for TableName widget.
   FocusNode? tableNameFocusNode;
   TextEditingController? tableNameController;
-  final tableNameMask = MaskTextInputFormatter(mask: '##/##/####');
   String? Function(BuildContext, String?)? tableNameControllerValidator;
   // State field(s) for supabaseProjectURL widget.
   FocusNode? supabaseProjectURLFocusNode;
@@ -52,8 +54,6 @@ class SETUPcOMPANYModel extends FlutterFlowModel<SETUPcOMPANYWidget> {
   FocusNode? coachmepromptFocusNode;
   TextEditingController? coachmepromptController;
   String? Function(BuildContext, String?)? coachmepromptControllerValidator;
-  // Stores action output result for [Backend Call - API (getTopics)] action in Button widget.
-  ApiCallResponse? apiResultdkp;
 
   /// Initialization and disposal methods.
 

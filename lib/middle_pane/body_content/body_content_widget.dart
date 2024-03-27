@@ -135,22 +135,6 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                       maxWidth: 600.0,
                                     ),
                                     decoration: const BoxDecoration(),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 6.0),
-                                      child: wrapWithModel(
-                                        model: _model.learningCardModel1,
-                                        updateCallback: () => setState(() {}),
-                                        updateOnChange: true,
-                                        child: LearningCardWidget(
-                                          learnCard: containerLearnCardsRecord!,
-                                          companyDoc: widget.companyDoc!,
-                                          sessionsDoc: widget.sessionId!,
-                                          showLearnCard:
-                                              FFAppState().showLearnCard,
-                                        ),
-                                      ),
-                                    ),
                                   ),
                                 ],
                               ),
@@ -453,6 +437,33 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                                                                 onLinkTap: (url, _, __, ___) => launchURL(url!),
                                                                               ),
                                                                             ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            6.0),
+                                                                        child:
+                                                                            wrapWithModel(
+                                                                          model:
+                                                                              _model.learningCardModel1,
+                                                                          updateCallback: () =>
+                                                                              setState(() {}),
+                                                                          updateOnChange:
+                                                                              true,
+                                                                          child:
+                                                                              LearningCardWidget(
+                                                                            learnCard:
+                                                                                containerLearnCardsRecord!,
+                                                                            companyDoc:
+                                                                                widget.companyDoc!,
+                                                                            sessionsDoc:
+                                                                                widget.sessionId!,
+                                                                            showLearnCard:
+                                                                                FFAppState().showLearnCard,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -858,7 +869,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                                   updateCallback: () => setState(() {}),
                                   updateOnChange: true,
                                   child: LearningCardWidget(
-                                    learnCard: containerLearnCardsRecord,
+                                    learnCard: containerLearnCardsRecord!,
                                     companyDoc: widget.companyDoc!,
                                     sessionsDoc: widget.sessionId!,
                                     showLearnCard: FFAppState().showLearnCard,

@@ -501,7 +501,7 @@ class _DesktopTileNavAiThisWeekWidgetState
                                                                                                                                           tapBodyToCollapse: false,
                                                                                                                                           headerAlignment: ExpandablePanelHeaderAlignment.center,
                                                                                                                                           hasIcon: true,
-                                                                                                                                          expandIcon: Icons.info_sharp,
+                                                                                                                                          expandIcon: Icons.keyboard_arrow_down_sharp,
                                                                                                                                           collapseIcon: Icons.close_fullscreen,
                                                                                                                                         ),
                                                                                                                                       ),

@@ -134,19 +134,17 @@ async function _getTopicsCall(context, ffVariables) {
   var queryName = ffVariables["queryName"];
   var supabaseProjUrl = ffVariables["supabaseProjUrl"];
 
-  var url = `${cloudFunctionsGroup.baseUrl}/getTopics`;
+  var url = `${cloudFunctionsGroup.baseUrl}getTopics`;
   var headers = { "Content-Type": `application/json` };
   var params = {};
   var ffApiRequestBody = `
 {
-  "sessionId": "${sessionId}",
   "systemMessagePrompt": "${systemMessagePrompt}",
-  "isLearnCards": "${isLearnCards}",
-  "learnCardId": "${learnCardId}",
   "flowiseUrl": "${flowiseUrl}",
   "threadId": "${threadId}",
   "companyDocId": "${companyDocId}",
-  "previousTopics": "<previousTopics>"
+  "queryName": "${queryName}",
+  "tableName": "${tableName}"
 }`;
 
   return makeApiRequest({

@@ -465,7 +465,7 @@ final parametersBuilderMap =
       ),
   'subjectsCovered': ParameterData.none(),
   'createcompany': ParameterData.none(),
-  'sETUPcOMPANY': (data) async => ParameterData(
+  'setupCompany': (data) async => ParameterData(
         allParams: {
           'companyDoc': await getDocumentParameter<CompaniesRecord>(
               data, 'companyDoc', CompaniesRecord.fromSnapshot),

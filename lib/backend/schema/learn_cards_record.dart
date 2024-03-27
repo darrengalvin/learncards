@@ -115,6 +115,16 @@ class LearnCardsRecord extends FirestoreRecord {
   List<String> get sessionsActiveId => _sessionsActiveId ?? const [];
   bool hasSessionsActiveId() => _sessionsActiveId != null;
 
+  // "mentorSuggestion" field.
+  String? _mentorSuggestion;
+  String get mentorSuggestion => _mentorSuggestion ?? '';
+  bool hasMentorSuggestion() => _mentorSuggestion != null;
+
+  // "mentorQuestion" field.
+  String? _mentorQuestion;
+  String get mentorQuestion => _mentorQuestion ?? '';
+  bool hasMentorQuestion() => _mentorQuestion != null;
+
   void _initializeFields() {
     _learnCardsRemaining = castToType<int>(snapshotData['learnCardsRemaining']);
     _sessionId = snapshotData['sessionId'] as String?;
@@ -136,6 +146,8 @@ class LearnCardsRecord extends FirestoreRecord {
     _mentorMessages = getDataList(snapshotData['mentorMessages']);
     _usersId = getDataList(snapshotData['usersId']);
     _sessionsActiveId = getDataList(snapshotData['sessionsActiveId']);
+    _mentorSuggestion = snapshotData['mentorSuggestion'] as String?;
+    _mentorQuestion = snapshotData['mentorQuestion'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -190,6 +202,8 @@ Map<String, dynamic> createLearnCardsRecordData({
   String? companyDocId,
   String? description,
   bool? isWeeklyTopic,
+  String? mentorSuggestion,
+  String? mentorQuestion,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -210,6 +224,8 @@ Map<String, dynamic> createLearnCardsRecordData({
       'companyDocId': companyDocId,
       'description': description,
       'isWeeklyTopic': isWeeklyTopic,
+      'mentorSuggestion': mentorSuggestion,
+      'mentorQuestion': mentorQuestion,
     }.withoutNulls,
   );
 
@@ -241,7 +257,9 @@ class LearnCardsRecordDocumentEquality implements Equality<LearnCardsRecord> {
         e1?.isWeeklyTopic == e2?.isWeeklyTopic &&
         listEquality.equals(e1?.mentorMessages, e2?.mentorMessages) &&
         listEquality.equals(e1?.usersId, e2?.usersId) &&
-        listEquality.equals(e1?.sessionsActiveId, e2?.sessionsActiveId);
+        listEquality.equals(e1?.sessionsActiveId, e2?.sessionsActiveId) &&
+        e1?.mentorSuggestion == e2?.mentorSuggestion &&
+        e1?.mentorQuestion == e2?.mentorQuestion;
   }
 
   @override
@@ -265,7 +283,9 @@ class LearnCardsRecordDocumentEquality implements Equality<LearnCardsRecord> {
         e?.isWeeklyTopic,
         e?.mentorMessages,
         e?.usersId,
-        e?.sessionsActiveId
+        e?.sessionsActiveId,
+        e?.mentorSuggestion,
+        e?.mentorQuestion
       ]);
 
   @override

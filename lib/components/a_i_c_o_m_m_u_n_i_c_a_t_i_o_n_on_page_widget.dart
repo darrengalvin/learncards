@@ -20,6 +20,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'a_i_c_o_m_m_u_n_i_c_a_t_i_o_n_on_page_model.dart';
@@ -732,14 +733,6 @@ class _AICOMMUNICATIONOnPageWidgetState
                                       queryBuilder: (flowiseChatsRecord) =>
                                           flowiseChatsRecord
                                               .where(
-                                                'thread_id',
-                                                isEqualTo:
-                                                    valueOrDefault<String>(
-                                                  FFAppState().selectedThreadId,
-                                                  'noidset',
-                                                ),
-                                              )
-                                              .where(
                                                 'companyDocId',
                                                 isEqualTo: FFAppState()
                                                     .selectedCompanyId,
@@ -748,6 +741,11 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                 'session_id',
                                                 isEqualTo: FFAppState()
                                                     .nonLoggedInSessionId,
+                                              )
+                                              .where(
+                                                'thread_id',
+                                                isEqualTo: FFAppState()
+                                                    .selectedThreadId,
                                               )
                                               .orderBy('created_time'),
                                     )..listen((snapshot) async {
@@ -789,6 +787,18 @@ class _AICOMMUNICATIONOnPageWidgetState
                                           logFirebaseEvent(
                                               'Column-chats-scrollable_update_app_state');
                                           FFAppState().update(() {});
+                                          logFirebaseEvent(
+                                              'Column-chats-scrollable_play_sound');
+                                          _model.soundPlayer ??= AudioPlayer();
+                                          if (_model.soundPlayer!.playing) {
+                                            await _model.soundPlayer!.stop();
+                                          }
+                                          _model.soundPlayer!.setVolume(1.0);
+                                          _model.soundPlayer!
+                                              .setUrl(
+                                                  'https://res.cloudinary.com/dplpckpbm/video/upload/v1711502194/click-21156_kks6fo.mp3')
+                                              .then((_) =>
+                                                  _model.soundPlayer!.play());
 
                                           setState(() {});
                                         }
@@ -831,9 +841,35 @@ class _AICOMMUNICATIONOnPageWidgetState
                                           return Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              if (columnChatsScrollableFlowiseChatsRecord
-                                                      .role ==
-                                                  'human')
+                                              if ((columnChatsScrollableFlowiseChatsRecord
+                                                          .role ==
+                                                      'human') &&
+                                                  valueOrDefault<bool>(
+                                                    (columnChatsScrollableFlowiseChatsRecord
+                                                                .threadId ==
+                                                            FFAppState()
+                                                                .selectedThreadId) ||
+                                                        (columnChatsScrollableFlowiseChatsRecord
+                                                                .showToAll ==
+                                                            true),
+                                                    false,
+                                                  ) &&
+                                                  valueOrDefault<bool>(
+                                                    (columnChatsScrollableFlowiseChatsRecord
+                                                                .sessionId ==
+                                                            FFAppState()
+                                                                .nonLoggedInSessionId) ||
+                                                        valueOrDefault<bool>(
+                                                          columnChatsScrollableFlowiseChatsRecord
+                                                                  .showToAll ==
+                                                              true,
+                                                          false,
+                                                        ),
+                                                    false,
+                                                  ) &&
+                                                  (columnChatsScrollableFlowiseChatsRecord
+                                                          .createdTime! <=
+                                                      getCurrentTimestamp))
                                                 Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -953,12 +989,38 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                     ),
                                                   ],
                                                 ),
-                                              if ((columnChatsScrollableFlowiseChatsRecord
-                                                          .role ==
-                                                      'ai') ||
+                                              if (((columnChatsScrollableFlowiseChatsRecord
+                                                              .role ==
+                                                          'ai') ||
+                                                      (columnChatsScrollableFlowiseChatsRecord
+                                                              .role ==
+                                                          'system')) &&
+                                                  valueOrDefault<bool>(
+                                                    (columnChatsScrollableFlowiseChatsRecord
+                                                                .threadId ==
+                                                            FFAppState()
+                                                                .selectedThreadId) ||
+                                                        (columnChatsScrollableFlowiseChatsRecord
+                                                                .showToAll ==
+                                                            true),
+                                                    false,
+                                                  ) &&
+                                                  valueOrDefault<bool>(
+                                                    (columnChatsScrollableFlowiseChatsRecord
+                                                                .sessionId ==
+                                                            FFAppState()
+                                                                .nonLoggedInSessionId) ||
+                                                        valueOrDefault<bool>(
+                                                          columnChatsScrollableFlowiseChatsRecord
+                                                                  .showToAll ==
+                                                              true,
+                                                          false,
+                                                        ),
+                                                    false,
+                                                  ) &&
                                                   (columnChatsScrollableFlowiseChatsRecord
-                                                          .role ==
-                                                      'system'))
+                                                          .createdTime! <=
+                                                      getCurrentTimestamp))
                                                 SizedBox(
                                                   width: double.infinity,
                                                   child: Stack(
@@ -979,9 +1041,33 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                   CrossAxisAlignment
                                                                       .start,
                                                               children: [
-                                                                if (columnChatsScrollableFlowiseChatsRecord
-                                                                        .role ==
-                                                                    'ai')
+                                                                if (((columnChatsScrollableFlowiseChatsRecord.role ==
+                                                                            'ai') ||
+                                                                        (columnChatsScrollableFlowiseChatsRecord.role ==
+                                                                            'system')) &&
+                                                                    valueOrDefault<
+                                                                        bool>(
+                                                                      (columnChatsScrollableFlowiseChatsRecord.threadId ==
+                                                                              FFAppState()
+                                                                                  .selectedThreadId) ||
+                                                                          (columnChatsScrollableFlowiseChatsRecord.showToAll ==
+                                                                              true),
+                                                                      false,
+                                                                    ) &&
+                                                                    valueOrDefault<
+                                                                        bool>(
+                                                                      (columnChatsScrollableFlowiseChatsRecord.sessionId ==
+                                                                              FFAppState().nonLoggedInSessionId) ||
+                                                                          valueOrDefault<bool>(
+                                                                            columnChatsScrollableFlowiseChatsRecord.showToAll ==
+                                                                                true,
+                                                                            false,
+                                                                          ),
+                                                                      false,
+                                                                    ) &&
+                                                                    (columnChatsScrollableFlowiseChatsRecord
+                                                                            .createdTime! <=
+                                                                        getCurrentTimestamp))
                                                                   AnimatedContainer(
                                                                     duration: const Duration(
                                                                         milliseconds:
@@ -1116,9 +1202,32 @@ class _AICOMMUNICATIONOnPageWidgetState
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                if (columnChatsScrollableFlowiseChatsRecord
-                                                                        .role ==
-                                                                    'system')
+                                                                if ((columnChatsScrollableFlowiseChatsRecord
+                                                                            .role ==
+                                                                        'system') &&
+                                                                    valueOrDefault<
+                                                                        bool>(
+                                                                      (columnChatsScrollableFlowiseChatsRecord.threadId ==
+                                                                              FFAppState()
+                                                                                  .selectedThreadId) ||
+                                                                          (columnChatsScrollableFlowiseChatsRecord.showToAll ==
+                                                                              true),
+                                                                      false,
+                                                                    ) &&
+                                                                    valueOrDefault<
+                                                                        bool>(
+                                                                      (columnChatsScrollableFlowiseChatsRecord.sessionId ==
+                                                                              FFAppState().nonLoggedInSessionId) ||
+                                                                          valueOrDefault<bool>(
+                                                                            columnChatsScrollableFlowiseChatsRecord.showToAll ==
+                                                                                true,
+                                                                            false,
+                                                                          ),
+                                                                      false,
+                                                                    ) &&
+                                                                    (columnChatsScrollableFlowiseChatsRecord
+                                                                            .createdTime! <=
+                                                                        getCurrentTimestamp))
                                                                   Padding(
                                                                     padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(

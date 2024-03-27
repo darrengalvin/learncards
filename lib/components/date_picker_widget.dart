@@ -60,7 +60,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Go Live Date ${_model.calendarSelectedDay?.start.toString()}',
+                    'Go Live Date ${dateTimeFormat('MMMMEEEEd', _model.calendarSelectedDay?.start)}',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
                           fontFamily: 'Outfit',
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -98,6 +98,19 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                         .update(createTilesv2RecordData(
                       triggerWeekly: true,
                     ));
+                    logFirebaseEvent('IconButton_show_snack_bar');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Saved',
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                        duration: const Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).secondary,
+                      ),
+                    );
                   },
                 ),
               ),
@@ -120,13 +133,31 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                 weekStartsMonday: true,
                 initialDate: getCurrentTimestamp,
                 rowHeight: 64.0,
-                onChange: (DateTimeRange? newSelectedDate) {
-                  setState(() => _model.calendarSelectedDay = newSelectedDate);
+                onChange: (DateTimeRange? newSelectedDate) async {
+                  if (_model.calendarSelectedDay == newSelectedDate) {
+                    return;
+                  }
+                  _model.calendarSelectedDay = newSelectedDate;
+                  logFirebaseEvent('DATE_PICKER_Calendar_t6r8zgil_ON_DATE_SE');
+                  logFirebaseEvent('Calendar_backend_call');
+
+                  await widget.tilev2passed!.reference
+                      .update(createTilesv2RecordData(
+                    showUsersDate: _model.calendarSelectedDay?.start,
+                  ));
+                  setState(() {});
                 },
                 titleStyle: FlutterFlowTheme.of(context).headlineSmall,
                 dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
                 dateStyle: FlutterFlowTheme.of(context).bodyMedium,
-                selectedDateStyle: FlutterFlowTheme.of(context).titleSmall,
+                selectedDateStyle: FlutterFlowTheme.of(context)
+                    .titleSmall
+                    .override(
+                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                      color: FlutterFlowTheme.of(context).alternate,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).titleSmallFamily),
+                    ),
                 inactiveDateStyle: FlutterFlowTheme.of(context).labelMedium,
               ),
             ),

@@ -80,5 +80,4 @@ export '/login/login_widget.dart' show LoginWidget;
 export '/subjects_covered/subjects_covered_widget.dart'
     show SubjectsCoveredWidget;
 export '/createcompany/createcompany_widget.dart' show CreatecompanyWidget;
-export '/s_e_t_u_pc_o_m_p_a_n_y/s_e_t_u_pc_o_m_p_a_n_y_widget.dart'
-    show SETUPcOMPANYWidget;
+export '/setup_company/setup_company_widget.dart' show SetupCompanyWidget;

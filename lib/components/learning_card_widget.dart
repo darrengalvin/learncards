@@ -145,7 +145,7 @@ class _LearningCardWidgetState extends State<LearningCardWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Activity: ${valueOrDefault<String>(
+                                  'Click Here For Todays Activity: ${valueOrDefault<String>(
                                     widget.learnCard?.title,
                                     'title',
                                   )}',

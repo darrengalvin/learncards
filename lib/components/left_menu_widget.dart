@@ -211,7 +211,7 @@ class _LeftMenuWidgetState extends State<LeftMenuWidget> {
                                 logFirebaseEvent('Button_navigate_to');
 
                                 context.pushNamed(
-                                  'sETUPcOMPANY',
+                                  'setupCompany',
                                   queryParameters: {
                                     'companyDoc': serializeParam(
                                       _model.companiesForSetup,

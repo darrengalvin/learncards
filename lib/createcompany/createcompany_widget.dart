@@ -4744,7 +4744,7 @@ class _CreatecompanyWidgetState extends State<CreatecompanyWidget>
                               logFirebaseEvent('Button_navigate_to');
 
                               context.pushNamed(
-                                'sETUPcOMPANY',
+                                'setupCompany',
                                 queryParameters: {
                                   'companyDoc': serializeParam(
                                     _model.createdCompany,
