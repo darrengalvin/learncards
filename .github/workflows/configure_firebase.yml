@@ -36,20 +36,24 @@ jobs:
       - name: Create firebase.json
         run: |
           echo '{
-            "hosting": {
-              "public": "build/web",
-              "ignore": [
-                "firebase.json",
-                "**/.*",
-                "**/node_modules/**"
-              ],
-              "rewrites": [
-                {
-                  "source": "**",
-                  "destination": "/index.html"
-                }
-              ]
-            }
+          "hosting": {
+            "public": "build/web",
+            "ignore": [
+              "firebase.json",
+              "**/.*",
+              "**/node_modules/**"
+            ],
+            "rewrites": [
+              {
+                "source": "/",
+                "function": "handleRedirection"
+              },
+              {
+                "source": "**",
+                "destination": "/index.html"
+              }
+            ]
+          }
           }' > firebase.json
 
       - name: Deploy to Firebase
